@@ -6,27 +6,6 @@ import Script from "next/script";
 type Segment = "retreat" | "startup" | "smb";
 const RECAPTCHA_SITE_KEY = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
 
-interface ReCaptchaEnterprise {
-  ready: (callback: () => void) => void;
-  execute: (siteKey: string, options: { action: string }) => Promise<string>;
-}
-
-interface ReCaptchaV2 {
-  render: (container: string | HTMLElement, parameters: Record<string, unknown>) => void;
-  reset: (widgetId?: number) => void;
-  getResponse: (widgetId?: number) => string;
-  execute: (siteKey: string, options: { action: string }) => Promise<string>;
-  ready: (cb: () => void) => void;
-}
-
-declare global {
-  interface Window {
-    grecaptcha?: ReCaptchaV2 & {
-      enterprise: ReCaptchaEnterprise;
-    };
-  }
-}
-
 export default function Contact() {
   const [segment, setSegment] = useState<Segment>("retreat");
   const [form, setForm] = useState({ name:"", email:"", website:"", budget:"", timeline:"", goals:"", extra:"" });

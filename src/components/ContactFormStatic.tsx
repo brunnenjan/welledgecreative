@@ -2,15 +2,6 @@
 
 import Script from "next/script";
 
-declare global {
-  interface Window {
-    grecaptcha?: {
-      execute: (siteKey: string, options: { action: string }) => Promise<string>;
-      ready: (cb: () => void) => void;
-    };
-  }
-}
-
 const FALLBACK_SITE_KEY = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
 
 export default function ContactFormStatic() {
