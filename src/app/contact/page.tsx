@@ -49,10 +49,10 @@ export default function Contact() {
       formData.append("extra", form.extra);
       formData.append("g-recaptcha-response", token);
 
-      console.log("Sending form data to /contact.php...");
+      console.log("Sending form data to Strato PHP backend...");
 
-      // Send to backend
-      const response = await fetch("/contact.php", {
+      // Send to backend (PHP on Strato)
+      const response = await fetch("https://well-edge-creative.com/contact.php", {
         method: "POST",
         body: formData,
       });
