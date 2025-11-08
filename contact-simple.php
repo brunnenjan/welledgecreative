@@ -1,6 +1,6 @@
 <?php
 // Contact Form - Well Edge Creative
-// Homepage contact form with project type, budget, and message
+// Homepage contact form with reCAPTCHA Enterprise
 
 // CORS headers - Allow all origins
 header('Access-Control-Allow-Origin: *');
@@ -26,6 +26,7 @@ $email = trim($_POST['email'] ?? '');
 $projectType = trim($_POST['projectType'] ?? '');
 $budget = trim($_POST['budget'] ?? '');
 $message = trim($_POST['message'] ?? '');
+$captchaToken = $_POST['g-recaptcha-response'] ?? '';
 
 // Validate required fields
 if (!$name || !$email || !$message) {
@@ -38,6 +39,56 @@ if (!$name || !$email || !$message) {
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   http_response_code(400);
   echo 'Invalid email address';
+  exit;
+}
+
+// Validate reCAPTCHA token
+if (!$captchaToken) {
+  http_response_code(400);
+  echo 'No reCAPTCHA token found';
+  exit;
+}
+
+// === reCAPTCHA Enterprise Verification ===
+$recaptchaSiteKey = '6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t';
+$recaptchaApiKey = 'AIzaSyDQrkFXCJAK2Z623a-_Z8UOrEJmWjlB9M4';
+$recaptchaProjectId = 'welledgecreative-1761883050337';
+
+$data = [
+  'event' => [
+    'token' => $captchaToken,
+    'expectedAction' => 'submit',
+    'siteKey' => $recaptchaSiteKey
+  ]
+];
+
+$url = "https://recaptchaenterprise.googleapis.com/v1/projects/$recaptchaProjectId/assessments?key=$recaptchaApiKey";
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+$response = curl_exec($ch);
+$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
+
+$result = json_decode($response, true);
+
+// Check if verification succeeded
+if ($status !== 200 || empty($result['tokenProperties']['valid']) || $result['tokenProperties']['valid'] !== true) {
+  error_log('reCAPTCHA Enterprise failed: ' . $response);
+  http_response_code(400);
+  echo 'Captcha verification failed';
+  exit;
+}
+
+// Check score (optional, but recommended)
+$score = $result['riskAnalysis']['score'] ?? 0;
+if ($score < 0.3) {
+  error_log("reCAPTCHA Enterprise: Low trust score ($score)");
+  http_response_code(400);
+  echo "Security check failed. Please try again.";
   exit;
 }
 

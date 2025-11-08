@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
+import Script from "next/script";
 
 const PROJECT_TYPES = [
   "Branding & Logo Design",
@@ -12,6 +13,7 @@ const PROJECT_TYPES = [
 ];
 
 const BUDGET_RANGES = ["< €2k", "€2–5k", "€5–10k", "€10k+", "Not sure yet"];
+const RECAPTCHA_SITE_KEY = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
 
 export default function ContactFormStatic() {
   const [formData, setFormData] = useState({
@@ -23,6 +25,7 @@ export default function ContactFormStatic() {
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
 
   const handleProjectTypeChange = (type: string) => {
     setFormData(prev => ({
@@ -38,17 +41,36 @@ export default function ContactFormStatic() {
     console.log("Form submitted!", formData);
 
     setIsSubmitting(true);
-    setStatus("Sending...");
+    setStatus("Verifying...");
 
     try {
+      // Get reCAPTCHA token
+      if (!window.grecaptcha?.enterprise) {
+        console.error("reCAPTCHA not loaded");
+        setStatus("⚠️ reCAPTCHA not loaded. Please refresh and try again.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      console.log("Getting reCAPTCHA token...");
+      const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: "submit" });
+      console.log("Token received:", token ? "✓" : "✗");
+
+      if (!token) {
+        throw new Error("Failed to get reCAPTCHA token");
+      }
+
+      setStatus("Sending...");
+
       const data = new FormData();
       data.append("name", formData.name);
       data.append("email", formData.email);
       data.append("projectType", formData.projectType.join(", "));
       data.append("budget", formData.budget);
       data.append("message", formData.message);
+      data.append("g-recaptcha-response", token);
 
-      console.log("Sending to backend...");
+      console.log("Sending to backend with reCAPTCHA token...");
 
       const response = await fetch("https://well-edge-creative.com/contact.php", {
         method: "POST",
@@ -59,7 +81,7 @@ export default function ContactFormStatic() {
       console.log("Response:", text);
 
       if (text.includes("OK")) {
-        setStatus("✅ Message sent successfully!");
+        setStatus("✅ Message sent successfully! Check your email for confirmation.");
         setFormData({ name: "", email: "", projectType: [], budget: "", message: "" });
       } else {
         setStatus(`⚠️ ${text}`);
@@ -73,8 +95,19 @@ export default function ContactFormStatic() {
   };
 
   return (
-    <div className="contact-form-container" style={{ maxWidth: "600px", margin: "0 auto" }}>
-      <form onSubmit={handleSubmit} className="contact-form" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <>
+      {/* Load reCAPTCHA Enterprise Script */}
+      <Script
+        src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`}
+        strategy="lazyOnload"
+        onLoad={() => {
+          console.log("reCAPTCHA Enterprise loaded");
+          setRecaptchaLoaded(true);
+        }}
+      />
+
+      <div className="contact-form-container" style={{ maxWidth: "600px", margin: "0 auto" }}>
+        <form onSubmit={handleSubmit} className="contact-form" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
 
         {/* Name & Email */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
@@ -193,5 +226,6 @@ export default function ContactFormStatic() {
         )}
       </form>
     </div>
+    </>
   );
 }
