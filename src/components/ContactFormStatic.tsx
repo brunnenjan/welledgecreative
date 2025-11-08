@@ -1,19 +1,41 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+
+const PROJECT_TYPES = [
+  "Branding & Logo Design",
+  "Website Design",
+  "Website Development",
+  "Full Brand & Web Package",
+  "Strategy & Consultation",
+  "Other",
+];
+
+const BUDGET_RANGES = ["< €2k", "€2–5k", "€5–10k", "€10k+", "Not sure yet"];
 
 export default function ContactFormStatic() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    projectType: [] as string[],
+    budget: "",
     message: ""
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const handleProjectTypeChange = (type: string) => {
+    setFormData(prev => ({
+      ...prev,
+      projectType: prev.projectType.includes(type)
+        ? prev.projectType.filter(t => t !== type)
+        : [...prev.projectType, type]
+    }));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted!");
+    console.log("Form submitted!", formData);
 
     setIsSubmitting(true);
     setStatus("Sending...");
@@ -22,6 +44,8 @@ export default function ContactFormStatic() {
       const data = new FormData();
       data.append("name", formData.name);
       data.append("email", formData.email);
+      data.append("projectType", formData.projectType.join(", "));
+      data.append("budget", formData.budget);
       data.append("message", formData.message);
 
       console.log("Sending to backend...");
@@ -36,7 +60,7 @@ export default function ContactFormStatic() {
 
       if (text.includes("OK")) {
         setStatus("✅ Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", projectType: [], budget: "", message: "" });
       } else {
         setStatus(`⚠️ ${text}`);
       }
@@ -49,41 +73,120 @@ export default function ContactFormStatic() {
   };
 
   return (
-    <div className="contact-form-container" style={{ maxWidth: "500px", margin: "0 auto" }}>
-      <form onSubmit={handleSubmit} className="contact-form" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+    <div className="contact-form-container" style={{ maxWidth: "600px", margin: "0 auto" }}>
+      <form onSubmit={handleSubmit} className="contact-form" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+
+        {/* Name & Email */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name *"
+            required
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            disabled={isSubmitting}
+            style={{ padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff" }}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email *"
+            required
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            disabled={isSubmitting}
+            style={{ padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff" }}
+          />
+        </div>
+
+        {/* Project Type Checkboxes */}
+        <div>
+          <label style={{ display: "block", marginBottom: "0.75rem", color: "#fff", fontWeight: "600" }}>
+            What can I help you with?
+          </label>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.5rem" }}>
+            {PROJECT_TYPES.map((type) => (
+              <label key={type} style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer", color: "#fff" }}>
+                <input
+                  type="checkbox"
+                  checked={formData.projectType.includes(type)}
+                  onChange={() => handleProjectTypeChange(type)}
+                  disabled={isSubmitting}
+                  style={{ cursor: "pointer" }}
+                />
+                <span style={{ fontSize: "0.9rem" }}>{type}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Budget */}
+        <div>
+          <label htmlFor="budget" style={{ display: "block", marginBottom: "0.5rem", color: "#fff", fontWeight: "600" }}>
+            Budget Range
+          </label>
+          <select
+            id="budget"
+            name="budget"
+            value={formData.budget}
+            onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+            disabled={isSubmitting}
+            style={{ width: "100%", padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff", cursor: "pointer" }}
+          >
+            <option value="">Select budget range</option>
+            {BUDGET_RANGES.map((range) => (
+              <option key={range} value={range} style={{ background: "#1a1a1a", color: "#fff" }}>
+                {range}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Message */}
+        <div>
+          <label htmlFor="message" style={{ display: "block", marginBottom: "0.5rem", color: "#fff", fontWeight: "600" }}>
+            Tell me about your project *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Share your vision, goals, timeline, or any questions..."
+            required
+            rows={6}
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            disabled={isSubmitting}
+            style={{ width: "100%", padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff", resize: "vertical" }}
+          />
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="btn"
           disabled={isSubmitting}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          disabled={isSubmitting}
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          required
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          disabled={isSubmitting}
-        />
-        <button type="submit" className="btn" disabled={isSubmitting}>
-          {isSubmitting ? "Sending..." : "Send"}
+          style={{
+            padding: "1rem 2rem",
+            fontSize: "1rem",
+            fontWeight: "600",
+            borderRadius: "0.5rem",
+            cursor: isSubmitting ? "not-allowed" : "pointer",
+            opacity: isSubmitting ? 0.6 : 1
+          }}
+        >
+          {isSubmitting ? "Sending..." : "Send Message"}
         </button>
+
+        {/* Status Message */}
         {status && (
           <p style={{
-            marginTop: "10px",
-            color: status.includes("✅") ? "#4ade80" : status.includes("⚠️") ? "#fbbf24" : "#fff"
+            textAlign: "center",
+            padding: "1rem",
+            borderRadius: "0.5rem",
+            background: status.includes("✅") ? "rgba(74, 222, 128, 0.1)" : "rgba(251, 191, 36, 0.1)",
+            color: status.includes("✅") ? "#4ade80" : "#fbbf24",
+            fontWeight: "600"
           }}>
             {status}
           </p>
