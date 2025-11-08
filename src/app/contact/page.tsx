@@ -6,14 +6,16 @@ import Script from "next/script";
 type Segment = "retreat" | "startup" | "smb";
 const RECAPTCHA_SITE_KEY = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
 
+interface ReCaptchaEnterprise {
+  ready: (callback: () => void) => void;
+  execute: (siteKey: string, options: { action: string }) => Promise<string>;
+}
+
 declare global {
   interface Window {
     grecaptcha?: {
-      enterprise: {
-        ready: (callback: () => void) => void;
-        execute: (siteKey: string, options: { action: string }) => Promise<string>;
-      };
-    };
+      enterprise: ReCaptchaEnterprise;
+    } & any;
   }
 }
 
