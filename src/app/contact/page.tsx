@@ -11,11 +11,19 @@ interface ReCaptchaEnterprise {
   execute: (siteKey: string, options: { action: string }) => Promise<string>;
 }
 
+interface ReCaptchaV2 {
+  render: (container: string | HTMLElement, parameters: Record<string, unknown>) => void;
+  reset: (widgetId?: number) => void;
+  getResponse: (widgetId?: number) => string;
+  execute: (siteKey: string, options: { action: string }) => Promise<string>;
+  ready: (cb: () => void) => void;
+}
+
 declare global {
   interface Window {
-    grecaptcha?: {
+    grecaptcha?: ReCaptchaV2 & {
       enterprise: ReCaptchaEnterprise;
-    } & any;
+    };
   }
 }
 
