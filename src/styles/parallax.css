@@ -1,0 +1,6 @@
+.parallax-preserve { transform-style: preserve-3d; will-change: transform; }
+.layer { backface-visibility: hidden; will-change: transform; }
+.scene-contain { contain: layout paint; }
+@media (max-width: 767px) and (orientation: portrait) {
+  .hide-on-phone-portrait { display: none !important; }
+}

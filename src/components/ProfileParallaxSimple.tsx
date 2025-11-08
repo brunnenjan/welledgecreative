@@ -1,0 +1,326 @@
+// src/components/ProfileParallaxSimple.tsx
+"use client";
+/* eslint-disable @next/next/no-img-element */
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { PROFILE_CONFIG } from "../lib/profileConfig";
+import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const CONFIG = PROFILE_CONFIG;
+
+export default function ProfileParallaxSimple() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const arrowRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useRef(false);
+  const [bucketInitialTop, setBucketInitialTop] = useState('clamp(-15vh, -10vh, -8vh)');
+  const [bucketWidth, setBucketWidth] = useState('min(90vw, 900px)');
+
+  useEffect(() => {
+    prefersReducedMotion.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const bg = section.querySelector('[data-layer="bg"]');
+    const bucket = section.querySelector('[data-layer="bucket"]');
+    const fg = section.querySelector('[data-layer="fg"]');
+    const bucketImg = section.querySelector<HTMLImageElement>(".profile-bucket-img");
+    if (!bg || !bucket || !fg || !bucketImg) {
+      return;
+    }
+
+    let ctx: gsap.Context | null = null;
+
+    const initParallax = () => {
+      // Set initial visibility immediately to prevent black flash
+      gsap.set([bg, bucket, fg], { opacity: 1, visibility: "visible" });
+
+      if (prefersReducedMotion.current) {
+        gsap.set([bg, bucket, fg], { y: 0 });
+        gsap.set(bucketImg, { opacity: 1, y: 0, scale: 1 });
+        return;
+      }
+
+      // Bucket visible from start - scrolls down naturally, no pop-in
+      gsap.set(bucketImg, { opacity: 1, y: 0, scale: 1 });
+
+      // Arrow starts hidden
+      if (CONFIG.showArrow && arrowRef.current) {
+        gsap.set(arrowRef.current, { opacity: 0 });
+      }
+
+      ctx = gsap.context(() => {
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
+        const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+
+        // Get device-specific config for profile section
+        const config = isMobile
+          ? PARALLAX_CONFIG.profile.mobile
+          : isTablet
+            ? PARALLAX_CONFIG.profile.tablet
+            : PARALLAX_CONFIG.profile.desktop;
+
+        const { bgSpeed, fgSpeed, bucketSpeed } = config;
+
+        // Background parallax (smoother, extended range)
+        gsap.to(bg, {
+          y: () => `${window.innerHeight * bgSpeed}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "+=220%",
+            scrub: 3.8,
+          },
+        });
+
+        // Foreground parallax (moves up, smoother, extended range)
+        gsap.to(fg, {
+          y: () => `-${window.innerHeight * Math.abs(fgSpeed)}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "+=220%",
+            scrub: 3.8,
+          },
+        });
+
+        // Bucket parallax (descends, smoother, extended range)
+        gsap.to(bucket, {
+          y: () => `${window.innerHeight * bucketSpeed}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "+=220%",
+            scrub: 3.8,
+          },
+        });
+
+        // Arrow fade in and out
+        if (CONFIG.showArrow && arrowRef.current) {
+          const arrow = arrowRef.current;
+          const arrowTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "+=220%",
+              scrub: 3.8,
+            },
+          });
+
+          arrowTimeline.fromTo(
+            arrow,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 0.2,
+              ease: "none",
+            },
+            CONFIG.ARROW_FADE_IN_PROGRESS
+          );
+
+          arrowTimeline.to(
+            arrow,
+            {
+              opacity: 0,
+              duration: 0.22,
+              ease: "none",
+            },
+            CONFIG.ARROW_FADE_OUT_PROGRESS
+          );
+        }
+
+        // Continuous bucket swing - subtle on touch devices, wider on desktop
+        const swingAngle = isMobile ? 1.2 : isTablet ? 1.6 : 2.2;
+        gsap.fromTo(
+          bucketImg,
+          { rotation: -swingAngle },
+          {
+            rotation: swingAngle,
+            transformOrigin: "50% 0%",
+            duration: isMobile ? 4 : isTablet ? 3.6 : 3.2,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+          }
+        );
+      }, section);
+    };
+
+    const images = Array.from(section.querySelectorAll("img"));
+    const imagePromises = images.map(
+      (img) =>
+        new Promise<void>((resolve) => {
+          if (img.complete) return resolve();
+          img.addEventListener("load", () => resolve(), { once: true });
+          img.addEventListener("error", () => resolve(), { once: true });
+        })
+    );
+
+    let isMounted = true;
+
+    Promise.allSettled(imagePromises).then(() => {
+      if (!isMounted) return;
+      initParallax();
+    });
+
+    return () => {
+      isMounted = false;
+      ctx?.revert();
+    };
+  }, []);
+
+  // Set bucket initial position and size after mount to avoid hydration mismatch
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+    const config = isMobile
+      ? PARALLAX_CONFIG.profile.mobile
+      : isTablet
+        ? PARALLAX_CONFIG.profile.tablet
+        : PARALLAX_CONFIG.profile.desktop;
+    setBucketInitialTop(`${config.bucketStart}px`);
+    if ("bucketWidth" in config) {
+      const vwCap = isMobile ? 120 : isTablet ? 105 : 90;
+      setBucketWidth(`min(${vwCap}vw, ${config.bucketWidth}px)`);
+    }
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="profile"
+      className="profile-section relative overflow-hidden profile-bucket bg-background"
+      style={{
+        minHeight: "100vh",
+        height: "140vh",
+        paddingTop: "clamp(3rem, 8vh, 6rem)",
+        paddingBottom: "clamp(3rem, 8vh, 6rem)",
+        paddingInline: "clamp(2rem, 5vw, 4rem)"
+      }}
+    >
+      {/* Background Layer */}
+      <div
+        data-layer="bg"
+        className="absolute inset-0 z-[1] will-change-transform"
+        aria-hidden
+      >
+        <img
+          src="/assets/parallax/section-profile/parallax-bg-profile-secondary.webp"
+          alt=""
+          className="w-full h-full object-cover"
+          width={1536}
+          height={1024}
+          loading="lazy"
+          decoding="async"
+          style={{
+            display: "block",
+            objectPosition: "center 40%",
+            transform: "translateY(-0.5px) scale(1.01)",
+          }}
+        />
+      </div>
+
+      {/* Bucket with Profile */}
+      <div
+        data-layer="bucket"
+        className="absolute left-1/2 -translate-x-1/2 z-[40] will-change-transform pointer-events-none"
+        style={{
+          top: bucketInitialTop,
+          width: bucketWidth
+        }}
+        aria-hidden
+      >
+        <Image
+          src="/assets/parallax/section-profile/parallax-bucket-profile-alt.webp"
+          alt="Profile bucket"
+          className="profile-bucket-img w-full h-auto"
+          width={1920}
+          height={1080}
+          priority
+          quality={90}
+          sizes="(max-width: 768px) 90vw, (max-width: 1024px) 70vw, 50vw"
+          style={{
+            display: "block",
+            pointerEvents: "none",
+            transform: "translateZ(0)",
+          }}
+        />
+      </div>
+
+      {/* Foreground Cutout Overlay */}
+      <div
+        data-layer="fg"
+        className="pointer-events-none absolute left-0 right-0 z-[50] will-change-transform"
+        style={{ top: "-5vh", height: "110%" }}
+        aria-hidden
+      >
+        <img
+          src="/assets/parallax/section-profile/parallax-foreground-profile-secondary.webp"
+          alt="Foreground cutout framing the profile section"
+          className="w-full h-full object-cover"
+          width={1920}
+          height={2702}
+          loading="lazy"
+          decoding="async"
+          style={{
+            display: "block",
+            transform: "translateY(-0.5px) scale(1.01)",
+          }}
+        />
+      </div>
+
+      {/* Arrow "That's Me!" - positioned to the left of the profile cutout */}
+      {CONFIG.showArrow && (
+        <div
+          ref={arrowRef}
+          className="fixed left-[15%] pointer-events-none hidden md:flex"
+          style={{
+            top: "48%",
+            transform: "translateY(-50%)",
+            zIndex: 9999,
+            opacity: 0,
+          }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="text-[#ff7a00] text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg">
+              That&rsquo;s Me!
+            </div>
+            <svg
+              width="120"
+              height="60"
+              viewBox="0 0 120 60"
+              className="drop-shadow-lg"
+              aria-hidden="true"
+            >
+              <path
+                d="M 5 30 Q 60 15, 110 30"
+                stroke="#ff7a00"
+                strokeWidth="4"
+                fill="none"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 110 30 L 95 22 M 110 30 L 95 38"
+                stroke="#ff7a00"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      )}
+
+    </section>
+  );
+}

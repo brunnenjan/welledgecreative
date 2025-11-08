@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export",
+  images: {
+    unoptimized: true, // 🔥 deaktiviert /_next/image Optimierung
+  },
+  assetPrefix: "/",   // relative Pfade für statisches Hosting
+  basePath: "",        // leer, da Domain direkt auf /well-edge zeigt
 };
 
-export default nextConfig;
+module.exports = nextConfig; // ✅ CommonJS statt export default

@@ -1,0 +1,360 @@
+/* Responsive bucket sections for Discover / Design / Deliver */
+.bucket-section {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(120vh, 145vh, 170vh);
+  padding: clamp(4rem, 8vw, 6rem) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bucket-section__background,
+.bucket-section__foreground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.bucket-section__foreground {
+  z-index: 35;
+}
+
+.bucket-section__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(12, 12, 12, 0.18) 0%, rgba(12, 12, 12, 0.5) 80%);
+}
+
+.bucket-section__scrim--light {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.85) 75%);
+}
+
+.bucket-section__scrim--dark {
+  background: linear-gradient(180deg, rgba(5, 6, 10, 0.65) 0%, rgba(5, 6, 10, 0.85) 80%);
+}
+
+.bucket-section__content {
+  position: relative;
+  z-index: 20;
+  width: min(960px, 92vw);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 3.5rem);
+  border-radius: clamp(1.5rem, 4vw, 2.5rem);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 45px 90px rgba(15, 23, 42, 0.18);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+.bucket-section__eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.bucket-section__title {
+  font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.bucket-section__description {
+  font-size: clamp(1.06rem, 2.4vw, 1.35rem);
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 46rem;
+}
+
+.bucket-section__list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+  max-width: clamp(22rem, 52vw, 32rem);
+  text-align: left;
+}
+
+.bucket-section__list li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.bucket-section__list li::before {
+  content: "";
+  position: absolute;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 9999px;
+  left: 0;
+  top: 0.5rem;
+  background: currentColor;
+  opacity: 0.28;
+}
+
+.bucket-section__bucket {
+  position: absolute;
+  top: clamp(-24vh, -18vw, -8vh);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  pointer-events: none;
+  width: clamp(220px, 26vw, 420px);
+}
+
+.bucket-section__bucket img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Section-specific theming */
+.bucket-section--discover .bucket-section__content {
+  background: rgba(255, 255, 255, 0.78);
+  color: #0e0e0e;
+}
+
+.bucket-section--discover .bucket-section__eyebrow {
+  color: #ff7a00;
+}
+
+.bucket-section--design .bucket-section__content {
+  background: rgba(5, 6, 10, 0.78);
+  color: #f5f7fa;
+  box-shadow: 0 45px 90px rgba(4, 6, 12, 0.4);
+}
+
+.bucket-section--design .bucket-section__eyebrow {
+  color: #ffd3a6;
+}
+
+.bucket-section--design .bucket-section__list li::before {
+  opacity: 0.45;
+}
+
+.bucket-section--deliver .bucket-section__content {
+  background: rgba(7, 10, 16, 0.82);
+  color: #f6f8fb;
+  box-shadow: 0 50px 110px rgba(4, 6, 12, 0.45);
+}
+
+.bucket-section--deliver .bucket-section__eyebrow {
+  color: #ffb357;
+}
+
+.bucket-section--deliver .bucket-section__list li::before {
+  opacity: 0.48;
+}
+
+@media (max-width: 768px) {
+  .bucket-section__content {
+    text-align: center;
+  }
+
+  .bucket-section__list {
+    text-align: left;
+  }
+}
+
+/* Shared responsive parallax sections (responsive variants) */
+.parallax-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  color: var(--parallax-text, #ffffff);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+  isolation: isolate;
+}
+
+.parallax-section + .parallax-section {
+  margin-top: clamp(2rem, 6vw, 4rem);
+}
+
+.parallax-section__bg,
+.parallax-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.parallax-section__bg img,
+.parallax-bg img {
+  object-fit: cover;
+}
+
+.parallax-section__foreground,
+.parallax-foreground {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.parallax-section__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(6, 7, 10, 0.65), rgba(6, 7, 10, 0.35) 70%, rgba(6, 7, 10, 0.75));
+}
+
+.parallax-section__content,
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  max-width: min(820px, 92vw);
+  display: grid;
+  gap: clamp(1.4rem, 3vw, 2rem);
+  padding: clamp(2.5rem, 6vw, 3.5rem);
+  border-radius: clamp(1.5rem, 4vw, 2.5rem);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 40px 90px rgba(6, 7, 10, 0.32);
+}
+
+.parallax-section__eyebrow,
+.parallax-content span[data-type="eyebrow"] {
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.parallax-section__title,
+.parallax-content h3 {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.parallax-section__description,
+.parallax-content p {
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 46rem;
+}
+
+.parallax-section__list,
+.parallax-content ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+  max-width: clamp(22rem, 52vw, 32rem);
+  text-align: left;
+}
+
+.parallax-section__list li,
+.parallax-content li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.parallax-section__list li::before,
+.parallax-content li::before {
+  content: "";
+  position: absolute;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 9999px;
+  left: 0;
+  top: 0.55rem;
+  background: currentColor;
+  opacity: 0.32;
+}
+
+.parallax-section__bucket,
+.parallax-bucket {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  width: clamp(220px, 25vw, 340px);
+  pointer-events: none;
+}
+
+.parallax-section__bucket img,
+.parallax-bucket img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.parallax-section--discover {
+  --parallax-text: #141414;
+}
+
+.parallax-section--discover .parallax-content {
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 38px 90px rgba(12, 16, 32, 0.22);
+}
+
+.parallax-section--discover .parallax-content span[data-type="eyebrow"] {
+  color: #ff7a00;
+}
+
+.parallax-section--profile {
+  --parallax-text: #101010;
+}
+
+.parallax-section--profile .parallax-content {
+  background: rgba(255, 255, 255, 0.8);
+  color: #141414;
+  box-shadow: 0 42px 96px rgba(12, 16, 26, 0.28);
+}
+
+.parallax-section--profile .parallax-content span[data-type="eyebrow"] {
+  color: #ff9f4d;
+}
+
+.parallax-section--design .parallax-content {
+  background: rgba(10, 12, 18, 0.78);
+  color: #f4f7fb;
+  box-shadow: 0 48px 110px rgba(3, 5, 12, 0.42);
+}
+
+.parallax-section--design .parallax-content span[data-type="eyebrow"] {
+  color: #ffd3a6;
+}
+
+.parallax-section--deliver .parallax-content {
+  background: rgba(7, 10, 16, 0.82);
+  color: #f6f8fb;
+  box-shadow: 0 52px 120px rgba(3, 5, 12, 0.5);
+}
+
+.parallax-section--deliver .parallax-content span[data-type="eyebrow"] {
+  color: #ffb357;
+}
+
+@media (max-width: 768px) {
+  .parallax-section {
+    padding: clamp(3.5rem, 12vw, 4rem) clamp(1rem, 6vw, 1.75rem);
+  }
+
+  .parallax-content {
+    padding: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .parallax-bucket {
+    margin-top: clamp(1rem, 6vw, 1.75rem);
+  }
+}
