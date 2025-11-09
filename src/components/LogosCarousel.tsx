@@ -48,7 +48,8 @@ export default function LogosCarousel() {
   const slides: Slide[] = useMemo(
     () => [
       ...logoData.map((logo, index) => ({ ...logo, key: `logo-${index}`, clone: false })),
-      ...logoData.map((logo, index) => ({ ...logo, key: `logo-${index}-clone`, clone: true })),
+      ...logoData.map((logo, index) => ({ ...logo, key: `logo-${index}-clone-1`, clone: true })),
+      ...logoData.map((logo, index) => ({ ...logo, key: `logo-${index}-clone-2`, clone: true })),
     ],
     []
   );
@@ -181,10 +182,13 @@ export default function LogosCarousel() {
       if (!isPausedRef.current && loopWidthRef.current > 0) {
         const distance = (CONFIG.MARQUEE_SPEED_PX_PER_SEC * delta) / 1000;
         offsetRef.current += distance;
-        if (offsetRef.current >= loopWidthRef.current) {
-          offsetRef.current -= loopWidthRef.current;
-        }
-        track.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
+
+        // Smooth looping using modulo
+        offsetRef.current = offsetRef.current % loopWidthRef.current;
+
+        // Use Math.round for pixel-perfect rendering
+        const roundedOffset = Math.round(offsetRef.current * 100) / 100;
+        track.style.transform = `translate3d(${-roundedOffset}px, 0, 0)`;
       }
 
       frameRef.current = window.requestAnimationFrame(step);
