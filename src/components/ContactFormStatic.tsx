@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent } from "react";
 import Script from "next/script";
 
 const PROJECT_TYPES = [
@@ -25,7 +25,6 @@ export default function ContactFormStatic() {
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
 
   const handleProjectTypeChange = (type: string) => {
     setFormData(prev => ({
@@ -102,7 +101,6 @@ export default function ContactFormStatic() {
         strategy="lazyOnload"
         onLoad={() => {
           console.log("reCAPTCHA Enterprise loaded");
-          setRecaptchaLoaded(true);
         }}
       />
 
