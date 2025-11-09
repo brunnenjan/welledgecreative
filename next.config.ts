@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  // Removed output: "export" to enable API routes on Vercel
   images: {
-    unoptimized: true, // 🔥 deaktiviert /_next/image Optimierung
+    unoptimized: true,
   },
-  assetPrefix: "/",   // relative Pfade für statisches Hosting
-  basePath: "",        // leer, da Domain direkt auf /well-edge zeigt
 };
 
-module.exports = nextConfig; // ✅ CommonJS statt export default
+module.exports = nextConfig;
