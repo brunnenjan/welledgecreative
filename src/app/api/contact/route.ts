@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Force Node.js runtime (required for nodemailer)
+export const runtime = 'nodejs';
+
 // CORS headers
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
