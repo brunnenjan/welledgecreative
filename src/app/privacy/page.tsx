@@ -1,30 +1,31 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklärung | Well Edge Creative",
-  description: "Informationen über die Verarbeitung personenbezogener Daten bei Well Edge Creative.",
+  title: "Privacy Policy / Datenschutzerklärung | Well Edge Creative",
+  description: "Privacy policy and data protection information for Well Edge Creative.",
 };
 
-const MAIL = "info@well-edge-creative.com";
+const MAIL = "jan@well-edge-creative.de";
 
 export default function PrivacyPolicyPage() {
   return (
     <main className="relative z-[60] bg-white text-slate-900">
       <section className="mx-auto max-w-4xl px-6 py-20 md:py-24 lg:py-28">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
-          Datenschutzerklärung
+          Privacy Policy / Datenschutzerklärung
         </h1>
         <p className="mt-4 text-sm text-slate-500">
-          Diese Datenschutzerklärung erläutert Art, Umfang und Zweck der Verarbeitung personenbezogener Daten innerhalb dieser Website. Bitte prüfen Sie die Angaben und ergänzen Sie fehlende Informationen (z.&nbsp;B. Anschrift oder Ansprechpartner) gemäß Ihren tatsächlichen Verhältnissen.
+          This privacy policy explains the nature, scope and purpose of the processing of personal data on this website. · Diese Datenschutzerklärung erläutert Art, Umfang und Zweck der Verarbeitung personenbezogener Daten innerhalb dieser Website.
         </p>
 
         <div className="mt-10 grid gap-8 text-base leading-relaxed text-slate-700">
           <section>
-            <h2 className="text-xl font-semibold text-slate-900">1. Verantwortliche Stelle</h2>
+            <h2 className="text-xl font-semibold text-slate-900">1. Responsible Party / Verantwortliche Stelle</h2>
             <p className="mt-3">
-              Well Edge Creative<br />
-              Jan Brunnenkant<br />
-              <span className="text-slate-500">(Bitte hier Ihre ladungsfähige Anschrift eintragen)</span>
+              Well Edge Creative · Jan Brunnenkant<br />
+              Hauptstraße 15<br />
+              78713 Schramberg<br />
+              Germany / Deutschland
             </p>
             <p className="mt-3">
               E-Mail: <a href={`mailto:${MAIL}`} className="underline decoration-slate-400 underline-offset-4 hover:text-slate-900">{MAIL}</a>
