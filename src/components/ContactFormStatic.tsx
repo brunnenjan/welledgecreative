@@ -72,7 +72,7 @@ export default function ContactFormStatic() {
 
       console.log("Sending to backend with reCAPTCHA token...");
 
-      const response = await fetch("https://api.well-edge-creative.com/contact.php", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         body: data
       });
