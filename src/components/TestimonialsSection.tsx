@@ -141,13 +141,8 @@ export default function TestimonialsSection() {
           })
           .filter((item) => Boolean(item)) as TestimonialEntry[];
 
-        const filtered = normalised.filter((entry) => {
-          const normalizedName = entry.name.replace(/[\s-]+/g, "").toLowerCase();
-          return normalizedName !== "tanjamariawegmann";
-        });
-
-        setTestimonials(filtered);
-        setLoadError(filtered.length === 0);
+        setTestimonials(normalised);
+        setLoadError(normalised.length === 0);
       } catch (error) {
         console.error("Testimonials load error", error);
         if (isMounted) {
