@@ -223,6 +223,9 @@
 .logo-marquee__shell {
   position: relative;
   overflow: visible;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
 }
 
 .logo-marquee__viewport {
@@ -231,11 +234,60 @@
   outline: none;
   padding-block: clamp(2.5rem, 5vw, 4rem);
   padding-inline: clamp(1.5rem, 3.5vw, 3rem);
+  flex: 1;
 }
 
 .logo-marquee__viewport:focus-visible {
   outline: 2px solid #ff7a00;
   outline-offset: 4px;
+}
+
+.logo-marquee__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(2.5rem, 5vw, 3.5rem);
+  height: clamp(2.5rem, 5vw, 3.5rem);
+  border-radius: 50%;
+  border: 2px solid rgba(15, 23, 42, 0.15);
+  background: #ffffff;
+  color: #1a1a1a;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  flex-shrink: 0;
+}
+
+.logo-marquee__nav:hover:not(:disabled) {
+  border-color: #ff7a00;
+  background: #ff7a00;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(255, 122, 0, 0.25);
+}
+
+.logo-marquee__nav:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.logo-marquee__nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.logo-marquee__nav:focus-visible {
+  outline: 2px solid #ff7a00;
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .logo-marquee__nav {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
 }
 
 .logo-marquee__track {

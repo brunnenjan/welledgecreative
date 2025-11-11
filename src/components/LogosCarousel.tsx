@@ -153,6 +153,41 @@ export default function LogosCarousel() {
     lastTimestampRef.current = null;
   }, []);
 
+  const scrollBy = useCallback((direction: 'left' | 'right') => {
+    if (!trackRef.current || loopWidthRef.current === 0) return;
+
+    // Pause autoplay temporarily
+    setIsPaused(true);
+
+    // Calculate scroll distance (one card width + gap)
+    const track = trackRef.current;
+    const firstCard = track.querySelector<HTMLLIElement>('[data-clone="false"]');
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const scrollDistance = cardWidth + gap;
+
+    // Update offset
+    if (direction === 'right') {
+      offsetRef.current += scrollDistance;
+    } else {
+      offsetRef.current -= scrollDistance;
+    }
+
+    // Keep within bounds using modulo
+    offsetRef.current = ((offsetRef.current % loopWidthRef.current) + loopWidthRef.current) % loopWidthRef.current;
+
+    // Apply transform
+    const roundedOffset = Math.round(offsetRef.current * 100) / 100;
+    track.style.transform = `translate3d(${-roundedOffset}px, 0, 0)`;
+
+    // Resume autoplay after a delay
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 3000);
+  }, []);
+
   const measureLoopWidth = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -327,6 +362,16 @@ export default function LogosCarousel() {
         </div>
 
         <div className="logo-marquee__shell">
+          <button
+            type="button"
+            className="logo-marquee__nav logo-marquee__nav--prev"
+            onClick={() => scrollBy('left')}
+            aria-label="Previous logos"
+            disabled={prefersReducedMotion}
+          >
+            ‹
+          </button>
+
           <div
             ref={containerRef}
             className="logo-marquee__viewport"
@@ -357,6 +402,16 @@ export default function LogosCarousel() {
               ))}
             </ul>
           </div>
+
+          <button
+            type="button"
+            className="logo-marquee__nav logo-marquee__nav--next"
+            onClick={() => scrollBy('right')}
+            aria-label="Next logos"
+            disabled={prefersReducedMotion}
+          >
+            ›
+          </button>
         </div>
       </div>
     </section>
