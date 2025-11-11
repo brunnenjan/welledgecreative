@@ -14,6 +14,6 @@ export const logos: LogoItem[] = [
   { src: "/assets/misc/logos/wegmann-unternehmensberatung.webp", alt: "Wegmann Unternehmensberatung", width: 360, height: 180, variant: "wide" },
   { src: "/assets/misc/logos/lisa-mary.webp", alt: "Lisa Mary", width: 320, height: 320, variant: "square" },
   { src: "/assets/misc/logos/logo-black.webp", alt: "Well Edge Creative", width: 240, height: 240, variant: "square" },
-  { src: "/assets/misc/logos/reutter-farms.webp", alt: "Reutter Farms", width: 494, height: 346, variant: "square" },
+  { src: "/assets/misc/logos/reutter-farms.webp", alt: "Reutter Farms", width: 600, height: 420, variant: "square" },
   { src: "/assets/misc/logos/rocklore.webp", alt: "Rocklore Irish Pub", width: 360, height: 180, variant: "wide" }
 ];
