@@ -28,19 +28,40 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
 
     const ctx = gsap.context(() => {
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
       gsap.set(sectionRef.current, { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 30 });
 
       // Set initial states explicitly to prevent flash
       gsap.set([designHighlightRef.current, strategyHighlightRef.current], {
-        scaleX: prefersReducedMotion ? 1 : 0,
+        scaleX: (prefersReducedMotion || isMobile) ? 1 : 0,
         transformOrigin: "left"
       });
       gsap.set([designTextRef.current, strategyTextRef.current], {
-        color: prefersReducedMotion ? "#ffffff" : "#1a1a1a"
+        color: (prefersReducedMotion || isMobile) ? "#ffffff" : "#1a1a1a"
       });
 
       if (prefersReducedMotion) return;
+
+      // Simplified animation for mobile - just fade in from below
+      if (isMobile) {
+        gsap.fromTo(
+          sectionRef.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: "power2.out",
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+        return;
+      }
 
       gsap.to(sectionRef.current, {
         opacity: 1,
