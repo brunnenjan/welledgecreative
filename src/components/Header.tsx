@@ -7,14 +7,14 @@ import { createPortal } from "react-dom";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 
 const SECTIONS = [
-  { id: "hero", label: "Start" },
-  { id: "design-strategy", label: "Über mich" },
-  { id: "profile", label: "Profil" },
-  { id: "how-i-work", label: "Arbeitsweise" },
-  { id: "selected-projects", label: "Projekte" },
+  { id: "hero", label: "Home" },
+  { id: "design-strategy", label: "About" },
+  { id: "profile", label: "Profile" },
+  { id: "how-i-work", label: "How I Work" },
+  { id: "selected-projects", label: "Projects" },
   { id: "logos", label: "Logos & Brandings" },
-  { id: "testimonials", label: "Referenzen" },
-  { id: "contact-section", label: "Kontakt" },
+  { id: "testimonials", label: "Testimonials" },
+  { id: "contact-section", label: "Contact" },
 ];
 
 export default function Header() {
