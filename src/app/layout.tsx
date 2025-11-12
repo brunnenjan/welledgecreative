@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     siteName: "Well Edge Creative",
     images: [
       {
-        url: "/assets/hero/hero-background.webp",
-        width: 2688,
-        height: 1792,
+        url: "/assets/og-image.jpg",
+        width: 1200,
+        height: 630,
         alt: "Well Edge Creative — Branding & Web Design",
       },
     ],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Well Edge Creative | Branding & Web Design by Jan Brunnenkant",
     description: "Strategy with depth, design with clarity. I craft brands and websites that tell your story and connect with your audience.",
-    images: ["/assets/hero/hero-background.webp"],
+    images: ["/assets/og-image.jpg"],
   },
   robots: {
     index: true,
