@@ -113,11 +113,11 @@ export default function ProfileContent() {
                 transformOrigin: "left",
                 zIndex: -1,
                 margin: "-0.08em -0.15em",
-                backgroundColor: '#ff7a00',
+                backgroundColor: '#f58222',
               }}
             />
           </span>{" "}
-          that Speak for Themselves.
+          that speaks for itself.
         </h1>
         <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto">
           <p>
