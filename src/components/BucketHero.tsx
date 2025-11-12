@@ -119,6 +119,11 @@ export default function BucketHero() {
           return;
         }
 
+        // Disable complex animations on mobile to prevent jitter
+        if (isMobile) {
+          return;
+        }
+
         const makeScrollTriggerConfig = () => ({
           trigger: heroRef.current,
           start: "top top",
@@ -317,7 +322,8 @@ export default function BucketHero() {
 
   // Mouse parallax effect
   useEffect(() => {
-    if (isTouchDevice || !bgRef.current) return;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (isTouchDevice || !bgRef.current || isMobile) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;

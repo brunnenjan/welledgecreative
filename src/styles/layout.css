@@ -752,6 +752,7 @@
   bottom: 1.25rem;
   z-index: 120;
   display: flex;
+  width: fit-content;
   padding: 0.6rem 0.75rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.9);
