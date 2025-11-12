@@ -119,11 +119,6 @@ export default function BucketHero() {
           return;
         }
 
-        // Disable complex animations on mobile to prevent jitter
-        if (isMobile) {
-          return;
-        }
-
         const makeScrollTriggerConfig = () => ({
           trigger: heroRef.current,
           start: "top top",
@@ -191,34 +186,53 @@ export default function BucketHero() {
           }
         };
 
+        // Simplified config for mobile - no pinning, just fade
+        const scrollTriggerOptions = isMobile
+          ? {
+              trigger: heroRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.5,
+              invalidateOnRefresh: true,
+              onEnter: showPinned,
+              onEnterBack: showPinned,
+              onLeave: hidePinned,
+              onLeaveBack: () => {
+                showPinned();
+                resetHeroScene();
+              },
+            }
+          : {
+              ...makeScrollTriggerConfig(),
+              scrub: timelineScrub,
+              pin: pinRef.current,
+              pinSpacing: true,
+              anticipatePin: 1,
+              fastScrollEnd: true,
+              onEnter: showPinned,
+              onEnterBack: showPinned,
+              onLeave: hidePinned,
+              onLeaveBack: () => {
+                showPinned();
+                resetHeroScene();
+              },
+            };
+
         const tl = gsap.timeline({
           defaults: { ease: "none" },
-          scrollTrigger: {
-            ...makeScrollTriggerConfig(),
-            scrub: timelineScrub,
-            pin: pinRef.current,
-            pinSpacing: true,
-            anticipatePin: 1,
-            fastScrollEnd: true,
-            onEnter: showPinned,
-            onEnterBack: showPinned,
-            onLeave: hidePinned,
-            onLeaveBack: () => {
-              showPinned();
-              resetHeroScene();
-            },
-          },
+          scrollTrigger: scrollTriggerOptions,
         });
 
         timelineRef.current = tl;
         scrollTriggerRef.current = tl.scrollTrigger ?? null;
 
         if (bucketRef.current) {
+          // Simpler bucket animation on mobile
           tl.to(
             bucketRef.current,
             {
-              y: () => bucketDrop(),
-              ease: "power1.inOut",
+              y: isMobile ? () => window.innerHeight * 0.3 : () => bucketDrop(),
+              ease: isMobile ? "power2.out" : "power1.inOut",
               duration: 1,
             },
             0
@@ -254,25 +268,37 @@ export default function BucketHero() {
           );
         }
 
+        // Simpler parallax on mobile
+        const bgScrollConfig = isMobile
+          ? {
+              trigger: heroRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.3,
+              invalidateOnRefresh: true,
+            }
+          : makeScrollTriggerConfig();
+
         gsap.to(bgRef.current, {
-          y: () => window.innerHeight * bgSpeed,
+          y: isMobile ? () => window.innerHeight * 0.15 : () => window.innerHeight * bgSpeed,
           ease: "none",
-          scrollTrigger: makeScrollTriggerConfig(),
+          scrollTrigger: bgScrollConfig,
         });
 
         gsap.to(fgRef.current, {
-          y: () => -window.innerHeight * Math.abs(fgSpeed),
+          y: isMobile ? () => -window.innerHeight * 0.1 : () => -window.innerHeight * Math.abs(fgSpeed),
           ease: "none",
-          scrollTrigger: makeScrollTriggerConfig(),
+          scrollTrigger: bgScrollConfig,
         });
 
+        // Gentler swing on mobile
         swingTweenRef.current = gsap.fromTo(
           bucketRef.current,
-          { rotation: -swingAngle },
+          { rotation: isMobile ? -0.5 : -swingAngle },
           {
-            rotation: swingAngle,
+            rotation: isMobile ? 0.5 : swingAngle,
             transformOrigin: "50% 0%",
-            duration: isMobile ? 3.9 : isTablet ? 3.6 : 3.4,
+            duration: isMobile ? 4.5 : isTablet ? 3.6 : 3.4,
             ease: "sine.inOut",
             yoyo: true,
             repeat: -1,
@@ -322,8 +348,7 @@ export default function BucketHero() {
 
   // Mouse parallax effect
   useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    if (isTouchDevice || !bgRef.current || isMobile) return;
+    if (isTouchDevice || !bgRef.current) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
