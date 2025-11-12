@@ -9,7 +9,7 @@ export type LogoItem = {
 export const logos: LogoItem[] = [
   { src: "/assets/misc/logos/ata-solo.webp", alt: "ATA Solo", width: 240, height: 240, variant: "square" },
   { src: "/assets/misc/logos/einfach-schee (1).webp", alt: "einfach-schee", width: 360, height: 180, variant: "wide" },
-  { src: "/assets/misc/logos/freiheitszirkus.webp", alt: "Freiheitszirkus", width: 360, height: 180, variant: "wide" },
+  { src: "/assets/misc/logos/freiheitszirkus.webp", alt: "Freiheitszirkus", width: 288, height: 144, variant: "wide" },
   { src: "/assets/misc/logos/kulturerbe-fastnacht.webp", alt: "Kulturerbe Fastnacht", width: 480, height: 240, variant: "wide" },
   { src: "/assets/misc/logos/wegmann-unternehmensberatung.webp", alt: "Wegmann Unternehmensberatung", width: 360, height: 180, variant: "wide" },
   { src: "/assets/misc/logos/lisa-mary.webp", alt: "Lisa Mary", width: 320, height: 320, variant: "square" },
