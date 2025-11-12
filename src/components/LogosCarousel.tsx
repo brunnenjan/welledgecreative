@@ -61,7 +61,7 @@ export default function LogosCarousel() {
       gsap.set(brandingsHighlightRef.current, {
         scaleX: prefersReducedMotion ? 1 : 0,
         transformOrigin: "left",
-        backgroundColor: "#ff7a00",
+        backgroundColor: "#f58222",
       });
       gsap.set(brandingsTextRef.current, { color: prefersReducedMotion ? "#ffffff" : "#1a1a1a" });
 
@@ -335,6 +335,46 @@ export default function LogosCarousel() {
     return () => container.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Touch swipe gestures for mobile
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      touchEndX = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+      const distance = touchStartX - touchEndX;
+      const isLeftSwipe = distance > minSwipeDistance;
+      const isRightSwipe = distance < -minSwipeDistance;
+
+      if (isLeftSwipe) {
+        scrollBy('right');
+      } else if (isRightSwipe) {
+        scrollBy('left');
+      }
+    };
+
+    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    container.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [scrollBy]);
+
   return (
     <section
       ref={sectionRef}
@@ -361,7 +401,7 @@ export default function LogosCarousel() {
                   transformOrigin: "left",
                   zIndex: -1,
                   margin: "-0.08em -0.15em",
-                  backgroundColor: "#ff7a00",
+                  backgroundColor: "#f58222",
                 }}
                 aria-hidden="true"
               />

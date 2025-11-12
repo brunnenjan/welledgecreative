@@ -169,7 +169,7 @@ export default function TestimonialsSection() {
     gsap.set(highlight, {
       scaleX: prefersReducedMotion ? 1 : 0,
       transformOrigin: "left",
-      backgroundColor: "#ff7a00",
+      backgroundColor: "#f58222",
     });
 
     gsap.set(text, { color: prefersReducedMotion ? "#ffffff" : "#1a1a1a" });
@@ -486,7 +486,7 @@ export default function TestimonialsSection() {
                 transformOrigin: "left",
                 transform: "scaleX(0)",
                 margin: "-0.1em 0",
-                backgroundColor: "#ff7a00",
+                backgroundColor: "#f58222",
                 zIndex: -1,
               }}
             />
@@ -651,7 +651,7 @@ export default function TestimonialsSection() {
                                   href={data.site}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="testimonial-verify justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff7a00]"
+                                  className="testimonial-verify justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f58222]"
                                   onClick={(event) => event.stopPropagation()}
                                 >
                                   Website

@@ -27,7 +27,7 @@
 
 .footer-link:hover,
 .footer-link:focus-visible {
-  color: #ff7a00;
+  color: #f58222;
 }
 
 .footer-link:hover::after,
@@ -39,7 +39,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #ff7a00;
+  color: #f58222;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;

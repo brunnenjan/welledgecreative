@@ -186,7 +186,7 @@ export default function WorkShowcase() {
                 transformOrigin: "left",
                 zIndex: -1,
                 margin: "-0.1em -0.15em",
-                backgroundColor: "#ff7a00",
+                backgroundColor: "#f58222",
               }}
             />
           </span>
@@ -231,7 +231,7 @@ export default function WorkShowcase() {
                   <div
                     data-anim="text"
                     className="text-sm md:text-base uppercase tracking-wider"
-                    style={{ color: "#ff7a00", opacity: 0 }}
+                    style={{ color: "#f58222", opacity: 0 }}
                   >
                     {project.client} · {project.year}
                   </div>
@@ -283,7 +283,7 @@ export default function WorkShowcase() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-lg font-semibold mt-4 group"
-                        style={{ color: "#ff7a00" }}
+                        style={{ color: "#f58222" }}
                       >
                         View Project
                         <svg
@@ -320,7 +320,7 @@ export default function WorkShowcase() {
             href="/work"
             className="px-8 py-4 text-lg md:text-xl font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
             style={{
-              backgroundColor: "#ff7a00",
+              backgroundColor: "#f58222",
               color: "#ffffff",
             }}
           >

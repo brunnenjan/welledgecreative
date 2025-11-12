@@ -293,7 +293,7 @@ export default function ProfileParallaxSimple() {
           }}
         >
           <div className="flex items-center gap-4">
-            <div className="text-[#ff7a00] text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg">
+            <div className="text-[#f58222] text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg">
               That&rsquo;s Me!
             </div>
             <svg
@@ -305,14 +305,14 @@ export default function ProfileParallaxSimple() {
             >
               <path
                 d="M 5 30 Q 60 15, 110 30"
-                stroke="#ff7a00"
+                stroke="#f58222"
                 strokeWidth="4"
                 fill="none"
                 strokeLinecap="round"
               />
               <path
                 d="M 110 30 L 95 22 M 110 30 L 95 38"
-                stroke="#ff7a00"
+                stroke="#f58222"
                 strokeWidth="4"
                 strokeLinecap="round"
               />

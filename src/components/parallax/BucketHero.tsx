@@ -20,7 +20,7 @@ export default function BucketHero() {
           className="mx-auto h-auto w-auto max-w-[320px]"
         />
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
-          <span style={{ color: "#ff7a00" }}>Branding &amp; Web Design</span>{" "}
+          <span style={{ color: "#f58222" }}>Branding &amp; Web Design</span>{" "}
           <span>that tells your story.</span>
         </h1>
         <p className="text-white/90 text-lg">

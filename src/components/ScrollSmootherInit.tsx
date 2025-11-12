@@ -64,13 +64,15 @@ export default function ScrollSmootherInit() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    // Initialize ScrollSmoother
+    // Initialize ScrollSmoother - disable on mobile to prevent jitter
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
     const smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1.6, // Lighter smoothing so sections don’t overshoot
+      smooth: isMobile ? 0 : 1.2, // Disable smooth scroll on mobile to prevent jitter
       effects: true, // Enable data-speed attributes
-      smoothTouch: 0.12, // Softer touch inertia for better control
+      smoothTouch: 0, // Disable touch smoothing to prevent conflicts
     });
 
     return () => {

@@ -76,7 +76,7 @@
 }
 
 .testimonial-carousel:focus-visible {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid #f58222;
   outline-offset: 4px;
 }
 
@@ -238,7 +238,7 @@
 }
 
 .logo-marquee__viewport:focus-visible {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid #f58222;
   outline-offset: 4px;
 }
 
@@ -261,11 +261,11 @@
 }
 
 .logo-marquee__nav:hover:not(:disabled) {
-  border-color: #ff7a00;
-  background: #ff7a00;
+  border-color: #f58222;
+  background: #f58222;
   color: #ffffff;
   transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(255, 122, 0, 0.25);
+  box-shadow: 0 6px 16px rgba(245, 130, 34, 0.25);
 }
 
 .logo-marquee__nav:active:not(:disabled) {
@@ -278,7 +278,7 @@
 }
 
 .logo-marquee__nav:focus-visible {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid #f58222;
   outline-offset: 4px;
 }
 
@@ -326,7 +326,7 @@
 .logo-marquee__cell:hover,
 .logo-marquee__cell:focus-within {
   transform: translateY(-2px);
-  border-color: #ff7a00;
+  border-color: #f58222;
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
 }
 
@@ -416,7 +416,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 1px solid rgba(255, 122, 0, 0.6);
+  border: 1px solid rgba(245, 130, 34, 0.6);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
@@ -497,7 +497,7 @@
   align-self: center;
   background: transparent;
   border: 2px solid transparent;
-  color: #ff7a00;
+  color: #f58222;
   font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -512,9 +512,9 @@
 .testimonial-readmore:hover,
 .testimonial-readmore:focus-visible {
   background: transparent;
-  border-color: #ff7a00;
+  border-color: #f58222;
   transform: translateY(-2px);
-  outline: 2px solid #ff7a00;
+  outline: 2px solid #f58222;
   outline-offset: 3px;
 }
 
@@ -561,7 +561,7 @@
 }
 
 .testimonial-pagination__dot.is-active {
-  background: #ff7a00;
+  background: #f58222;
   transform: scale(1.4);
 }
 
@@ -571,7 +571,7 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  color: #ff7a00;
+  color: #f58222;
   transition: transform 0.2s ease;
 }
 
@@ -628,7 +628,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: #ff7a00;
+  background: #f58222;
   border-radius: 9999px;
   transition: height 0.2s ease;
 }
@@ -664,7 +664,7 @@
 }
 
 .progress-nav__home:focus-visible {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid #f58222;
   outline-offset: 4px;
 }
 
@@ -691,7 +691,7 @@
 }
 
 .progress-nav__dot:focus-visible {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid #f58222;
   outline-offset: 6px;
   border-radius: 9999px;
 }
@@ -707,15 +707,15 @@
 }
 
 .progress-nav__dot.is-active .progress-nav__dot-visual {
-  background: #ff7a00;
-  border-color: #ff7a00;
+  background: #f58222;
+  border-color: #f58222;
   transform: scale(1.35);
   animation: pulse-ring 2s ease-out infinite;
 }
 
 .progress-nav__dot.is-visited .progress-nav__dot-visual {
-  background: #ff7a00;
-  border-color: #ff7a00;
+  background: #f58222;
+  border-color: #f58222;
   transform: scale(1.15);
   box-shadow: none;
 }
@@ -784,21 +784,21 @@
 }
 
 .progress-nav-mobile__dot:focus-visible {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid #f58222;
   outline-offset: 4px;
   border-radius: 9999px;
 }
 
 .progress-nav-mobile__dot.is-active {
-  background: #ff7a00;
-  border-color: #ff7a00;
+  background: #f58222;
+  border-color: #f58222;
   transform: scale(1.25);
-  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.24);
+  box-shadow: 0 0 0 3px rgba(245, 130, 34, 0.24);
 }
 
 .progress-nav-mobile__dot.is-visited {
-  background: #ff7a00;
-  border-color: #ff7a00;
+  background: #f58222;
+  border-color: #f58222;
 }
 
 .testimonials-section {
@@ -894,7 +894,7 @@
 
 .testimonial-modal-close:hover {
   background: rgba(0, 0, 0, 0.1);
-  color: #ff7a00;
+  color: #f58222;
 }
 
 .testimonial-modal-body {
@@ -977,7 +977,7 @@
   gap: 0.5rem;
   padding: 0.65rem 1.5rem;
   border-radius: 9999px;
-  background: #ff7a00;
+  background: #f58222;
   color: #ffffff;
   font-weight: 600;
   text-decoration: none;
@@ -986,7 +986,7 @@
 
 .testimonial-modal-link:hover,
 .testimonial-modal-link:focus-visible {
-  background: #e66d00;
+  background: #d35c2c;
 }
 
 .testimonial-modal-nav {
@@ -1011,8 +1011,8 @@
 
 .testimonial-modal-nav:hover {
   background: #ffffff;
-  border-color: #ff7a00;
-  color: #ff7a00;
+  border-color: #f58222;
+  color: #f58222;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -1162,7 +1162,7 @@
 .about-stat span {
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  color: #ff7a00;
+  color: #f58222;
 }
 
 .about-stat p {

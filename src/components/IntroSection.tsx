@@ -188,7 +188,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     transformOrigin: 'left',
                     zIndex: -1,
                     margin: '-0.08em -0.15em',
-                    backgroundColor: '#ff7a00'
+                    backgroundColor: '#f58222'
                   }}
                 />
               </span> that connects.<br />
@@ -202,7 +202,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     transformOrigin: 'left',
                     zIndex: -1,
                     margin: '-0.08em -0.15em',
-                    backgroundColor: '#ff7a00'
+                    backgroundColor: '#f58222'
                   }}
                 />
               </span> that lasts.

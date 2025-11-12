@@ -242,7 +242,7 @@ export default function SelectedProjects() {
                 transformOrigin: "left",
                 zIndex: -1,
                 margin: "-0.1em -0.15em",
-                backgroundColor: "#ff7a00",
+                backgroundColor: "#f58222",
               }}
             />
           </span>
@@ -324,11 +324,11 @@ export default function SelectedProjects() {
                     <div
                       data-anim="text"
                       className="space-y-3 pt-4 border-l-2 pl-4"
-                      style={{ borderColor: "#ff7a00", opacity: 0 }}
+                      style={{ borderColor: "#f58222", opacity: 0 }}
                     >
                       {project.challenge && (
                         <div>
-                          <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#ff7a00" }}>
+                          <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#f58222" }}>
                             Challenge
                           </h4>
                           <p className="text-sm md:text-base leading-relaxed" style={{ color: "#6a6a6a" }}>
@@ -338,7 +338,7 @@ export default function SelectedProjects() {
                       )}
                       {project.solution && (
                         <div>
-                          <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#ff7a00" }}>
+                          <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#f58222" }}>
                             Solution
                           </h4>
                           <p className="text-sm md:text-base leading-relaxed" style={{ color: "#6a6a6a" }}>
@@ -348,14 +348,14 @@ export default function SelectedProjects() {
                       )}
                       {project.result && (
                         <div>
-                          <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#ff7a00" }}>
+                          <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#f58222" }}>
                             Result
                           </h4>
                           <p className="text-sm md:text-base leading-relaxed" style={{ color: "#6a6a6a" }}>
                             {project.result}
                           </p>
                           {project.award && (
-                            <p className="text-sm md:text-base leading-relaxed font-semibold italic mt-2" style={{ color: "#ff7a00" }}>
+                            <p className="text-sm md:text-base leading-relaxed font-semibold italic mt-2" style={{ color: "#f58222" }}>
                               {project.award}
                             </p>
                           )}

@@ -136,7 +136,7 @@ export default function HowIWork() {
                 transformOrigin: "left",
                 zIndex: -1,
                 margin: "-0.1em -0.15em",
-                backgroundColor: "#ff7a00",
+                backgroundColor: "#f58222",
               }}
             />
           </span>
@@ -156,7 +156,7 @@ export default function HowIWork() {
               {/* Number */}
               <div
                 className="text-6xl md:text-7xl font-bold flex-shrink-0"
-                style={{ color: "#ff7a00" }}
+                style={{ color: "#f58222" }}
               >
                 {phase.number}
               </div>

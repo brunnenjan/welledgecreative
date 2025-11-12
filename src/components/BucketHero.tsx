@@ -446,7 +446,7 @@ export default function BucketHero() {
               className="w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[320px] h-auto"
             />
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-12 sm:mt-6 md:mt-0">
-              <span style={{ color: '#ff7a00' }}>Branding &amp; Web Design</span>{" "}
+              <span style={{ color: '#f58222' }}>Branding &amp; Web Design</span>{" "}
               <span className="text-white">that tells your story.</span>
             </h1>
             <p className="text-white/90 text-base sm:text-lg leading-relaxed">

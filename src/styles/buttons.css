@@ -32,22 +32,22 @@
   background-color: var(--accent);
   color: #ffffff;
   border-color: var(--accent);
-  box-shadow: 0 12px 28px rgba(255, 122, 0, 0.22);
+  box-shadow: 0 12px 28px rgba(245, 130, 34, 0.22);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 36px rgba(255, 122, 0, 0.28);
+  box-shadow: 0 16px 36px rgba(245, 130, 34, 0.28);
 }
 
 .btn-secondary {
   background-color: #ffffff;
   color: var(--accent);
   border-color: var(--accent);
-  box-shadow: 0 10px 24px rgba(255, 122, 0, 0.14);
+  box-shadow: 0 10px 24px rgba(245, 130, 34, 0.14);
 }
 
 .btn-secondary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 32px rgba(255, 122, 0, 0.2);
+  box-shadow: 0 14px 32px rgba(245, 130, 34, 0.2);
 }
