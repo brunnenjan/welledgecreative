@@ -195,15 +195,12 @@ export default function ContactFormStatic() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="btn"
+          className="btn btn-primary"
           disabled={isSubmitting}
           style={{
-            padding: "1rem 2rem",
-            fontSize: "1rem",
-            fontWeight: "600",
-            borderRadius: "0.5rem",
-            cursor: isSubmitting ? "not-allowed" : "pointer",
-            opacity: isSubmitting ? 0.6 : 1
+            minWidth: "160px",
+            opacity: isSubmitting ? 0.6 : 1,
+            cursor: isSubmitting ? "not-allowed" : "pointer"
           }}
         >
           {isSubmitting ? "Sending..." : "Send Message"}
