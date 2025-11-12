@@ -154,18 +154,23 @@ export default function LogosCarousel() {
   }, []);
 
   const scrollBy = useCallback((direction: 'left' | 'right') => {
-    if (!trackRef.current || loopWidthRef.current === 0) return;
+    const track = trackRef.current;
+    if (!track || loopWidthRef.current === 0) return;
 
     // Pause autoplay temporarily
     setIsPaused(true);
 
     // Calculate scroll distance (one card width + gap)
-    const track = trackRef.current;
     const firstCard = track.querySelector<HTMLLIElement>('[data-clone="false"]');
     if (!firstCard) return;
 
     const cardWidth = firstCard.getBoundingClientRect().width;
-    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+
+    // Safari-compatible gap calculation
+    const styles = window.getComputedStyle(track);
+    const gapValue = styles.gap || styles.columnGap || '0px';
+    const gap = parseFloat(gapValue) || 0;
+
     const scrollDistance = cardWidth + gap;
 
     // Update offset
@@ -176,16 +181,20 @@ export default function LogosCarousel() {
     }
 
     // Keep within bounds using modulo
-    offsetRef.current = ((offsetRef.current % loopWidthRef.current) + loopWidthRef.current) % loopWidthRef.current;
+    if (loopWidthRef.current > 0) {
+      offsetRef.current = ((offsetRef.current % loopWidthRef.current) + loopWidthRef.current) % loopWidthRef.current;
+    }
 
-    // Apply transform
+    // Apply transform - Safari needs explicit units
     const roundedOffset = Math.round(offsetRef.current * 100) / 100;
-    track.style.transform = `translate3d(${-roundedOffset}px, 0, 0)`;
+    track.style.transform = `translate3d(${-roundedOffset}px, 0px, 0px)`;
 
     // Resume autoplay after a delay
-    setTimeout(() => {
+    const timer = window.setTimeout(() => {
       setIsPaused(false);
     }, 3000);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   const measureLoopWidth = useCallback(() => {
@@ -197,7 +206,7 @@ export default function LogosCarousel() {
 
     loopWidthRef.current = width;
     offsetRef.current = 0;
-    track.style.transform = "translate3d(0px, 0, 0)";
+    track.style.transform = "translate3d(0px, 0px, 0px)";
   }, []);
 
   const startAnimation = useCallback(() => {
@@ -221,9 +230,11 @@ export default function LogosCarousel() {
         // Smooth looping using modulo
         offsetRef.current = offsetRef.current % loopWidthRef.current;
 
-        // Use Math.round for pixel-perfect rendering
+        // Use Math.round for pixel-perfect rendering - Safari needs explicit units
         const roundedOffset = Math.round(offsetRef.current * 100) / 100;
-        track.style.transform = `translate3d(${-roundedOffset}px, 0, 0)`;
+        if (track) {
+          track.style.transform = `translate3d(${-roundedOffset}px, 0px, 0px)`;
+        }
       }
 
       frameRef.current = window.requestAnimationFrame(step);
@@ -238,7 +249,7 @@ export default function LogosCarousel() {
 
     if (prefersReducedMotion) {
       cancelAnimation();
-      track.style.transform = "translate3d(0px, 0, 0)";
+      track.style.transform = "translate3d(0px, 0px, 0px)";
       return;
     }
 
