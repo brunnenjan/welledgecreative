@@ -446,11 +446,11 @@ export default function BucketHero() {
               className="w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[320px] h-auto"
             />
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-12 sm:mt-6 md:mt-0">
-              <span style={{ color: '#ff7a00' }}>Branding &amp; Web Design</span>{" "}
-              <span className="text-white">that tells your story.</span>
+              <span style={{ color: '#ff7a00' }}>Branding &amp; Webdesign</span>{" "}
+              <span className="text-white">das deine Geschichte erzählt.</span>
             </h1>
             <p className="text-white/90 text-base sm:text-lg leading-relaxed">
-              Strategy with <strong className="text-white font-semibold">depth</strong>. Design with <strong className="text-white font-semibold">clarity</strong>.
+              Strategie mit <strong className="text-white font-semibold">Tiefe</strong>. Design mit <strong className="text-white font-semibold">Klarheit</strong>.
             </p>
             <div className="mt-6 flex flex-col items-center sm:flex-row sm:justify-center">
               <a
@@ -461,7 +461,7 @@ export default function BucketHero() {
                   smoothScrollTo("selected-projects");
                 }}
               >
-                See my work
+                Projekte ansehen
               </a>
               <a
                 href="https://calendly.com/well-edge-creative/30min"
@@ -469,7 +469,7 @@ export default function BucketHero() {
                 rel="noreferrer"
                 className="btn btn-secondary min-w-[160px] sm:min-w-[200px] mt-3 sm:mt-0 sm:ml-4 text-sm sm:text-base"
               >
-                Book a call
+                Termin buchen
               </a>
             </div>
             <button
