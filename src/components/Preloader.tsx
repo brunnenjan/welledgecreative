@@ -28,6 +28,41 @@ export default function Preloader() {
     // Disable scroll during loading
     document.body.style.overflow = "hidden";
 
+    // Define all critical images to preload
+    const criticalImages = [
+      // Hero section
+      "/assets/parallax/section-hero/parallax-bg-hero.webp",
+      "/assets/parallax/section-hero/parallax-bucket-hero.webp",
+      "/assets/parallax/section-hero/parallax-foreground-hero-only-well.webp",
+      // Profile section
+      "/assets/parallax/section-profile/parallax-bg-profile-secondary.webp",
+      "/assets/parallax/section-profile/parallax-bucket-profile-alt.webp",
+      "/assets/parallax/section-profile/parallax-foreground-profile-secondary.webp",
+      // Discover section
+      "/assets/parallax/section-discover/parallax-bg-discover.webp",
+      "/assets/parallax/section-discover/parallax-bucket-discover.webp",
+      "/assets/parallax/section-discover/parallax-foreground-discover.webp",
+      // Design section
+      "/assets/parallax/section-design/parallax-bg-design.webp",
+      "/assets/parallax/section-design/parallax-bucket-design.webp",
+      "/assets/parallax/section-design/parallax-foreground-design.webp",
+      // Deliver section
+      "/assets/parallax/section-deliver/parallax-bg-deliver.webp",
+      "/assets/parallax/section-deliver/parallax-bucket-deliver.webp",
+      "/assets/parallax/section-deliver/parallax-foreground-deliver.webp",
+    ];
+
+    // Create promises for all image loads
+    const imagePromises = criticalImages.map(
+      (src) =>
+        new Promise<void>((resolve) => {
+          const img = new window.Image();
+          img.onload = () => resolve();
+          img.onerror = () => resolve(); // Resolve even on error to not block loading
+          img.src = src;
+        })
+    );
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
@@ -42,11 +77,11 @@ export default function Preloader() {
         });
       }
 
-      // Progress bar animation (3-5 seconds)
+      // Progress bar animation - faster initial fill
       if (progressFillRef.current) {
         tl.to(progressFillRef.current, {
-          width: "100%",
-          duration: 4,
+          width: "90%",
+          duration: 2,
           ease: "power2.inOut",
         });
       }
@@ -56,43 +91,53 @@ export default function Preloader() {
         setCurrentPhrase((prev) => (prev + 1) % LOADING_PHRASES.length);
       }, 1000);
 
-      // Complete loading after progress bar fills
-      tl.call(() => {
-        clearInterval(textInterval);
-
-        // Hide loading elements (icon, text, progress bar)
-        const fadeOutElements = [iconRef.current, textRef.current, progressBarRef.current];
-        gsap.to(fadeOutElements, {
-          opacity: 0,
-          duration: 0.4,
-          ease: "power2.out",
-        });
-
-        // Show full logo
-        if (logoTextRef.current) {
-          gsap.to(logoTextRef.current, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
+      // Wait for all critical images to load
+      Promise.all(imagePromises).then(() => {
+        // Complete progress bar fill
+        if (progressFillRef.current) {
+          gsap.to(progressFillRef.current, {
+            width: "100%",
+            duration: 0.5,
             ease: "power2.out",
-            delay: 0.2,
+            onComplete: () => {
+              clearInterval(textInterval);
+
+              // Hide loading elements (icon, text, progress bar)
+              const fadeOutElements = [iconRef.current, textRef.current, progressBarRef.current];
+              gsap.to(fadeOutElements, {
+                opacity: 0,
+                duration: 0.4,
+                ease: "power2.out",
+              });
+
+              // Show full logo
+              if (logoTextRef.current) {
+                gsap.to(logoTextRef.current, {
+                  opacity: 1,
+                  scale: 1,
+                  duration: 0.6,
+                  ease: "power2.out",
+                  delay: 0.2,
+                });
+              }
+
+              // Wait a bit, then fade out entire preloader
+              gsap.delayedCall(1.2, () => {
+                if (preloaderRef.current) {
+                  gsap.to(preloaderRef.current, {
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                      setIsLoading(false);
+                      document.body.style.overflow = "";
+                    },
+                  });
+                }
+              });
+            },
           });
         }
-
-        // Wait a bit, then fade out entire preloader
-        gsap.delayedCall(1.2, () => {
-          if (preloaderRef.current) {
-            gsap.to(preloaderRef.current, {
-              opacity: 0,
-              duration: 1,
-              ease: "power2.inOut",
-              onComplete: () => {
-                setIsLoading(false);
-                document.body.style.overflow = "";
-              },
-            });
-          }
-        });
       });
 
       return () => {

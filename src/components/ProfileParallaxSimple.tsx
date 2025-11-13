@@ -44,7 +44,7 @@ export default function ProfileParallaxSimple() {
 
       const isMobileCheck = window.matchMedia("(max-width: 768px)").matches;
 
-      if (prefersReducedMotion.current || isMobileCheck) {
+      if (prefersReducedMotion.current) {
         gsap.set([bg, bucket, fg], { y: 0 });
         gsap.set(bucketImg, { opacity: 1, y: 0, scale: 1 });
         return;
@@ -59,53 +59,59 @@ export default function ProfileParallaxSimple() {
       }
 
       ctx = gsap.context(() => {
+        const isMobile = isMobileCheck;
         const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-        // Get device-specific config for profile section (desktop/tablet only)
-        const config = isTablet
-          ? PARALLAX_CONFIG.profile.tablet
-          : PARALLAX_CONFIG.profile.desktop;
+        // Get device-specific config for profile section
+        const config = isMobile
+          ? PARALLAX_CONFIG.profile.mobile
+          : isTablet
+            ? PARALLAX_CONFIG.profile.tablet
+            : PARALLAX_CONFIG.profile.desktop;
 
         const { bgSpeed, fgSpeed, bucketSpeed } = config;
 
-        // Background parallax (smoother, extended range)
-        gsap.to(bg, {
-          y: () => `${window.innerHeight * bgSpeed}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "+=220%",
-            scrub: 3.8,
-          },
-        });
+        // Background/Foreground parallax (desktop/tablet only)
+        if (!isMobile) {
+          // Background parallax (smoother, extended range)
+          gsap.to(bg, {
+            y: () => `${window.innerHeight * bgSpeed}px`,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "+=220%",
+              scrub: 3.8,
+            },
+          });
 
-        // Foreground parallax (moves up, smoother, extended range)
-        gsap.to(fg, {
-          y: () => `-${window.innerHeight * Math.abs(fgSpeed)}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "+=220%",
-            scrub: 3.8,
-          },
-        });
+          // Foreground parallax (moves up, smoother, extended range)
+          gsap.to(fg, {
+            y: () => `-${window.innerHeight * Math.abs(fgSpeed)}px`,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "+=220%",
+              scrub: 3.8,
+            },
+          });
 
-        // Bucket parallax (descends, smoother, extended range)
-        gsap.to(bucket, {
-          y: () => `${window.innerHeight * bucketSpeed}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "+=220%",
-            scrub: 3.8,
-          },
-        });
+          // Bucket parallax (descends, smoother, extended range)
+          gsap.to(bucket, {
+            y: () => `${window.innerHeight * bucketSpeed}px`,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "+=220%",
+              scrub: 3.8,
+            },
+          });
+        }
 
-        // Arrow fade in and out
-        if (CONFIG.showArrow && arrowRef.current) {
+        // Arrow fade in and out (desktop only)
+        if (!isMobile && CONFIG.showArrow && arrowRef.current) {
           const arrow = arrowRef.current;
           const arrowTimeline = gsap.timeline({
             scrollTrigger: {
@@ -138,15 +144,17 @@ export default function ProfileParallaxSimple() {
           );
         }
 
-        // Continuous bucket swing (desktop/tablet only)
-        const swingAngle = isTablet ? 1.6 : 2.2;
+        // Continuous bucket swing (all devices)
+        const swingAngle = isMobile ? 1.0 : isTablet ? 1.6 : 2.2;
+        const swingDuration = isMobile ? 4 : isTablet ? 3.6 : 3.2;
+
         gsap.fromTo(
           bucketImg,
           { rotation: -swingAngle },
           {
             rotation: swingAngle,
             transformOrigin: "50% 0%",
-            duration: isTablet ? 3.6 : 3.2,
+            duration: swingDuration,
             ease: "sine.inOut",
             yoyo: true,
             repeat: -1,
@@ -280,45 +288,86 @@ export default function ProfileParallaxSimple() {
         />
       </div>
 
-      {/* Arrow "That's Me!" - positioned to the left of the profile cutout */}
+      {/* Arrow "That's Me!" - Desktop: positioned to the left, Mobile: below bucket pointing up */}
       {CONFIG.showArrow && (
-        <div
-          ref={arrowRef}
-          className="fixed left-[15%] pointer-events-none hidden md:flex"
-          style={{
-            top: "48%",
-            transform: "translateY(-50%)",
-            zIndex: 9999,
-            opacity: 0,
-          }}
-        >
-          <div className="flex items-center gap-4">
-            <div className="text-[#f58222] text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg">
-              That&rsquo;s Me!
+        <>
+          {/* Desktop Arrow - Left positioned, pointing right */}
+          <div
+            ref={arrowRef}
+            className="fixed left-[15%] pointer-events-none hidden md:flex"
+            style={{
+              top: "48%",
+              transform: "translateY(-50%)",
+              zIndex: 9999,
+              opacity: 0,
+            }}
+          >
+            <div className="flex items-center gap-4">
+              <div className="text-[#f58222] text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg">
+                That&rsquo;s Me!
+              </div>
+              <svg
+                width="120"
+                height="60"
+                viewBox="0 0 120 60"
+                className="drop-shadow-lg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M 5 30 Q 60 15, 110 30"
+                  stroke="#f58222"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 110 30 L 95 22 M 110 30 L 95 38"
+                  stroke="#f58222"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                />
+              </svg>
             </div>
-            <svg
-              width="120"
-              height="60"
-              viewBox="0 0 120 60"
-              className="drop-shadow-lg"
-              aria-hidden="true"
-            >
-              <path
-                d="M 5 30 Q 60 15, 110 30"
-                stroke="#f58222"
-                strokeWidth="4"
-                fill="none"
-                strokeLinecap="round"
-              />
-              <path
-                d="M 110 30 L 95 22 M 110 30 L 95 38"
-                stroke="#f58222"
-                strokeWidth="4"
-                strokeLinecap="round"
-              />
-            </svg>
           </div>
-        </div>
+
+          {/* Mobile Arrow - Centered below bucket, pointing up */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2 pointer-events-none flex md:hidden"
+            style={{
+              top: "65%",
+              zIndex: 60,
+            }}
+          >
+            <div className="flex flex-col items-center gap-2">
+              <svg
+                width="60"
+                height="80"
+                viewBox="0 0 60 80"
+                className="drop-shadow-lg"
+                aria-hidden="true"
+              >
+                {/* Curved arrow pointing up */}
+                <path
+                  d="M 30 75 Q 30 40, 30 10"
+                  stroke="#f58222"
+                  strokeWidth="4"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+                {/* Arrow head pointing up */}
+                <path
+                  d="M 30 10 L 20 25 M 30 10 L 40 25"
+                  stroke="#f58222"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="text-[#f58222] text-2xl font-bold tracking-wide drop-shadow-lg">
+                That&rsquo;s Me!
+              </div>
+            </div>
+          </div>
+        </>
       )}
 
     </section>

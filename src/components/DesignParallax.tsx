@@ -37,56 +37,62 @@ export default function DesignParallax() {
     const isMobileCheck = window.matchMedia("(max-width: 768px)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Disable all animations on mobile to prevent glitches
-    if (isMobileCheck || prefersReducedMotion) return;
+    // Disable all animations if reduced motion is preferred
+    if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
+      const isMobile = isMobileCheck;
       const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-      // Get device-specific config for design section (desktop/tablet only)
-      const config = isTablet
-        ? PARALLAX_CONFIG.design.tablet
-        : PARALLAX_CONFIG.design.desktop;
+      // Get device-specific config for design section
+      const config = isMobile
+        ? PARALLAX_CONFIG.design.mobile
+        : isTablet
+          ? PARALLAX_CONFIG.design.tablet
+          : PARALLAX_CONFIG.design.desktop;
 
       const { bgSpeed, fgSpeed, bucketSpeed } = config;
       const scrollRange = "+=200%";
       const scrubValue = 3.8;
 
-      // Background parallax (smoother, extended range)
-      gsap.to(bgRef.current, {
-        y: () => `${window.innerHeight * bgSpeed}px`,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: scrollRange,
-          scrub: scrubValue,
-        },
-      });
+      // Background/Foreground/Bucket parallax (desktop/tablet only)
+      if (!isMobile) {
+        // Background parallax (smoother, extended range)
+        gsap.to(bgRef.current, {
+          y: () => `${window.innerHeight * bgSpeed}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: scrollRange,
+            scrub: scrubValue,
+          },
+        });
 
-      // Foreground parallax (moves up, smoother, extended range)
-      gsap.to(fgRef.current, {
-        y: () => `-${window.innerHeight * fgSpeed}px`,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: scrollRange,
-          scrub: scrubValue,
-        },
-      });
+        // Foreground parallax (moves up, smoother, extended range)
+        gsap.to(fgRef.current, {
+          y: () => `-${window.innerHeight * fgSpeed}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: scrollRange,
+            scrub: scrubValue,
+          },
+        });
 
-      // Bucket parallax (descends, smoother, extended range)
-      gsap.to(bucketRef.current, {
-        y: () => `${window.innerHeight * bucketSpeed}px`,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: scrollRange,
-          scrub: scrubValue,
-        },
-      });
+        // Bucket parallax (descends, smoother, extended range)
+        gsap.to(bucketRef.current, {
+          y: () => `${window.innerHeight * bucketSpeed}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: scrollRange,
+            scrub: scrubValue,
+          },
+        });
+      }
 
       // Bucket fade/scale animation (appears from well cutout)
       gsap.fromTo(
@@ -132,15 +138,17 @@ export default function DesignParallax() {
         );
       }
 
-      // Continuous bucket swing (desktop/tablet only)
-      const swingAngle = isTablet ? 1.7 : 2.1;
+      // Continuous bucket swing (all devices)
+      const swingAngle = isMobile ? 1.2 : isTablet ? 1.7 : 2.1;
+      const swingDuration = isMobile ? 4 : isTablet ? 3.6 : 3.2;
+
       gsap.fromTo(
         bucketRef.current,
         { rotation: -swingAngle },
         {
           rotation: swingAngle,
           transformOrigin: "50% 0%",
-          duration: isTablet ? 3.6 : 3.2,
+          duration: swingDuration,
           ease: "sine.inOut",
           yoyo: true,
           repeat: -1,

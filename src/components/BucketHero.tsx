@@ -93,15 +93,16 @@ export default function BucketHero() {
           gsap.set(whitePanelRef.current, { opacity: 0, scaleY: 0, transformOrigin: "50% 0%" });
         }
 
-        // Mobile: disable all animations, keep static composition
-        if (isMobile || prefersReducedMotion) {
+        if (prefersReducedMotion) {
           return;
         }
 
-        // Desktop/Tablet only from here on
-        const config = isTablet
-          ? PARALLAX_CONFIG.hero.tablet
-          : PARALLAX_CONFIG.hero.desktop;
+        // Get device-specific config
+        const config = isMobile
+          ? PARALLAX_CONFIG.hero.mobile
+          : isTablet
+            ? PARALLAX_CONFIG.hero.tablet
+            : PARALLAX_CONFIG.hero.desktop;
 
         const {
           bucketSpeed,
@@ -187,21 +188,30 @@ export default function BucketHero() {
           }
         };
 
-        const scrollTriggerOptions = {
-          ...makeScrollTriggerConfig(),
-          scrub: timelineScrub,
-          pin: pinRef.current,
-          pinSpacing: true,
-          anticipatePin: 1,
-          fastScrollEnd: true,
-          onEnter: showPinned,
-          onEnterBack: showPinned,
-          onLeave: hidePinned,
-          onLeaveBack: () => {
-            showPinned();
-            resetHeroScene();
-          },
-        };
+        // Mobile: simpler, no pinning
+        const scrollTriggerOptions = isMobile
+          ? {
+              trigger: heroRef.current,
+              start: "top top",
+              end: () => `+=${window.innerHeight * 1.5}`,
+              scrub: 1,
+              invalidateOnRefresh: true,
+            }
+          : {
+              ...makeScrollTriggerConfig(),
+              scrub: timelineScrub,
+              pin: pinRef.current,
+              pinSpacing: true,
+              anticipatePin: 1,
+              fastScrollEnd: true,
+              onEnter: showPinned,
+              onEnterBack: showPinned,
+              onLeave: hidePinned,
+              onLeaveBack: () => {
+                showPinned();
+                resetHeroScene();
+              },
+            };
 
         const tl = gsap.timeline({
           defaults: { ease: "none" },
@@ -212,10 +222,15 @@ export default function BucketHero() {
         scrollTriggerRef.current = tl.scrollTrigger ?? null;
 
         if (bucketRef.current) {
+          // Mobile: simpler, shorter bucket drop
+          const bucketDistance = isMobile
+            ? () => window.innerHeight * 0.6
+            : () => bucketDrop();
+
           tl.to(
             bucketRef.current,
             {
-              y: () => bucketDrop(),
+              y: bucketDistance,
               ease: "power1.inOut",
               duration: 1,
             },
@@ -239,7 +254,8 @@ export default function BucketHero() {
           );
         }
 
-        if (whitePanelRef.current) {
+        // White panel animation (desktop/tablet only - mobile doesn't need the hold)
+        if (!isMobile && whitePanelRef.current) {
           tl.to(
             whitePanelRef.current,
             { opacity: 1, ease: "sine.inOut", duration: 0.35 },
@@ -252,27 +268,32 @@ export default function BucketHero() {
           );
         }
 
-        // Parallax animations for background and foreground
-        gsap.to(bgRef.current, {
-          y: () => window.innerHeight * bgSpeed,
-          ease: "none",
-          scrollTrigger: makeScrollTriggerConfig(),
-        });
+        // Parallax animations for background and foreground (desktop/tablet only)
+        if (!isMobile) {
+          gsap.to(bgRef.current, {
+            y: () => window.innerHeight * bgSpeed,
+            ease: "none",
+            scrollTrigger: makeScrollTriggerConfig(),
+          });
 
-        gsap.to(fgRef.current, {
-          y: () => -window.innerHeight * Math.abs(fgSpeed),
-          ease: "none",
-          scrollTrigger: makeScrollTriggerConfig(),
-        });
+          gsap.to(fgRef.current, {
+            y: () => -window.innerHeight * Math.abs(fgSpeed),
+            ease: "none",
+            scrollTrigger: makeScrollTriggerConfig(),
+          });
+        }
 
         // Bucket swing animation
+        const swingDuration = isMobile ? 4 : isTablet ? 3.6 : 3.4;
+        const swingAngleAdjusted = isMobile ? 0.8 : swingAngle;
+
         swingTweenRef.current = gsap.fromTo(
           bucketRef.current,
-          { rotation: -swingAngle },
+          { rotation: -swingAngleAdjusted },
           {
-            rotation: swingAngle,
+            rotation: swingAngleAdjusted,
             transformOrigin: "50% 0%",
-            duration: isTablet ? 3.6 : 3.4,
+            duration: swingDuration,
             ease: "sine.inOut",
             yoyo: true,
             repeat: -1,
