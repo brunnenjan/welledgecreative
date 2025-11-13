@@ -496,10 +496,10 @@ export default function BucketHero() {
             <p className="text-white/90 text-base sm:text-lg leading-relaxed">
               Strategy with <strong className="text-white font-semibold">depth</strong>. Design with <strong className="text-white font-semibold">clarity</strong>.
             </p>
-            <div className="mt-6 flex flex-col items-center sm:flex-row sm:justify-center">
+            <div className="mt-6 flex flex-row gap-3 items-center justify-center">
               <a
                 href="#selected-projects"
-                className="btn btn-primary min-w-[160px] sm:min-w-[200px] text-sm sm:text-base"
+                className="btn btn-primary min-w-[130px] sm:min-w-[200px] text-xs sm:text-base px-4 sm:px-6"
                 onClick={(event) => {
                   event.preventDefault();
                   smoothScrollTo("selected-projects");
@@ -511,7 +511,7 @@ export default function BucketHero() {
                 href="https://calendly.com/well-edge-creative/30min"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-secondary min-w-[160px] sm:min-w-[200px] mt-3 sm:mt-0 sm:ml-4 text-sm sm:text-base"
+                className="btn btn-secondary min-w-[130px] sm:min-w-[200px] text-xs sm:text-base px-4 sm:px-6"
               >
                 Book a call
               </a>

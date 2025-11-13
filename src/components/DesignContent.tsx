@@ -145,20 +145,20 @@ export default function DesignContent() {
           </p>
         </div>
 
-        {/* "Plan your Project" button - all devices */}
+        {/* "Plan your Project" button - all devices, no arrows */}
         <button
           ref={buttonRef}
           type="button"
           onClick={() => smoothScrollTo("contact-section")}
-          className="inline-flex items-center gap-2 px-8 py-4 text-base font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105 hover:shadow-lg"
+          className="inline-flex items-center justify-center px-8 py-4 text-base font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105 hover:shadow-lg"
           style={{
             backgroundColor: '#f58222',
             color: '#ffffff',
             letterSpacing: '0.12em',
           }}
-          aria-label="Plan your project"
+          aria-label="Plan your project - scroll to contact form"
         >
-          <span>Plan your Project</span>
+          Plan your Project
         </button>
       </div>
     </section>

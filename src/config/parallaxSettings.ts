@@ -46,7 +46,7 @@ export const PARALLAX_CONFIG = {
       fgSpeed: -0.08,
       bucketSpeed: 0.3,
       bucketStart: 120,
-      bucketWidth: 720, // Slightly larger bucket on small screens
+      bucketWidth: 1152, // 1.6x larger bucket on mobile (720 * 1.6)
     },
     tablet: {
       bgSpeed: 0.12,

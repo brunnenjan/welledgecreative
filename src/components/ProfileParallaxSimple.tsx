@@ -16,6 +16,7 @@ const CONFIG = PROFILE_CONFIG;
 export default function ProfileParallaxSimple() {
   const sectionRef = useRef<HTMLElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
+  const mobileArrowRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useRef(false);
   const [bucketInitialTop, setBucketInitialTop] = useState('clamp(-15vh, -10vh, -8vh)');
   const [bucketWidth, setBucketWidth] = useState('min(90vw, 900px)');
@@ -141,6 +142,26 @@ export default function ProfileParallaxSimple() {
               ease: "none",
             },
             CONFIG.ARROW_FADE_OUT_PROGRESS
+          );
+        }
+
+        // Mobile arrow fade in (mobile only)
+        if (isMobile && CONFIG.showArrow && mobileArrowRef.current) {
+          gsap.fromTo(
+            mobileArrowRef.current,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: section,
+                start: "top 60%",
+                end: "top 40%",
+                scrub: 1.5,
+              },
+            }
           );
         }
 
@@ -332,10 +353,12 @@ export default function ProfileParallaxSimple() {
 
           {/* Mobile Arrow - Centered below bucket, pointing up */}
           <div
+            ref={mobileArrowRef}
             className="absolute left-1/2 -translate-x-1/2 pointer-events-none flex md:hidden"
             style={{
-              top: "65%",
+              top: "55%",
               zIndex: 60,
+              opacity: 0,
             }}
           >
             <div className="flex flex-col items-center gap-2">
