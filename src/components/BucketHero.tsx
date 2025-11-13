@@ -518,7 +518,7 @@ export default function BucketHero() {
               <span className="text-white">Design with Clarity.</span>
             </h1>
             <p className="text-white/90 text-base sm:text-lg leading-relaxed">
-              I help founders transform ideas into brands with strategic depth, emotional clarity, and a digital presence built to grow.
+              I help founders build brands that connect with the right people.
             </p>
             <div className="mt-6 flex flex-row gap-3 items-center justify-center">
               <a
