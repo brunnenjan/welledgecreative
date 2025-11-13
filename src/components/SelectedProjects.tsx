@@ -425,12 +425,24 @@ export default function SelectedProjects() {
 
         <div
           ref={ctaRef}
-          className="flex justify-center mt-24 md:mt-32"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-24 md:mt-32"
           style={{ opacity: 0 }}
         >
           <Link href="/work" className="btn btn-primary text-lg md:text-xl">
             See more of my work
           </Link>
+          <button
+            type="button"
+            onClick={() => {
+              const contactSection = document.getElementById("contact-section");
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }}
+            className="btn btn-secondary text-lg md:text-xl"
+          >
+            Plan your Project
+          </button>
         </div>
       </div>
     </section>

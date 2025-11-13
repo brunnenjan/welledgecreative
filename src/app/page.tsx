@@ -27,8 +27,8 @@ export default function HomePage() {
       <DiscoverParallax />
       <HowIWork />
       <DesignParallax />
-      <MyWork />
       <DesignContent />
+      <MyWork />
       <LogosAndBranding />
       <DeliverParallax />
       <TestimonialsSection />

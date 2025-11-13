@@ -4,7 +4,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { smoothScrollTo } from "@/lib/smoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +13,7 @@ export default function DesignContent() {
   const designTextRef = useRef<HTMLSpanElement>(null);
   const designHighlightRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current || !headlineRef.current || !designTextRef.current || !designHighlightRef.current || !textRef.current) return;
@@ -145,21 +144,22 @@ export default function DesignContent() {
           </p>
         </div>
 
-        {/* "Plan your Project" button - all devices, no arrows */}
-        <button
+        {/* "Book a Call" button - all devices */}
+        <a
           ref={buttonRef}
-          type="button"
-          onClick={() => smoothScrollTo("contact-section")}
+          href="https://calendly.com/well-edge-creative/30min"
+          target="_blank"
+          rel="noreferrer"
           className="inline-flex items-center justify-center px-8 py-4 text-base font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105 hover:shadow-lg"
           style={{
             backgroundColor: '#f58222',
             color: '#ffffff',
             letterSpacing: '0.12em',
           }}
-          aria-label="Plan your project - scroll to contact form"
+          aria-label="Book a call with Well Edge Creative"
         >
-          Plan your Project
-        </button>
+          Book a Call
+        </a>
       </div>
     </section>
   );

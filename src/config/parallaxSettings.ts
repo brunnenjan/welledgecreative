@@ -68,7 +68,7 @@ export const PARALLAX_CONFIG = {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
       bucketSpeed: 0.5,
-      bucketStart: -100,
+      bucketStart: -60,
     },
     tablet: {
       bgSpeed: 0.12,
@@ -88,7 +88,7 @@ export const PARALLAX_CONFIG = {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
       bucketSpeed: 0.6,
-      bucketStart: 0,
+      bucketStart: 50,
     },
     tablet: {
       bgSpeed: 0.12,
@@ -108,7 +108,7 @@ export const PARALLAX_CONFIG = {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
       bucketSpeed: 0.5,
-      bucketStart: 0,
+      bucketStart: 50,
     },
     tablet: {
       bgSpeed: 0.12,
