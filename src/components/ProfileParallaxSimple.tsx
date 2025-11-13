@@ -145,21 +145,21 @@ export default function ProfileParallaxSimple() {
           );
         }
 
-        // Mobile arrow fade in (mobile only)
+        // Mobile arrow fade in (mobile only) - slow, gradual fade
         if (isMobile && CONFIG.showArrow && mobileArrowRef.current) {
           gsap.fromTo(
             mobileArrowRef.current,
-            { opacity: 0, y: 20 },
+            { opacity: 0, y: 30 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.8,
-              ease: "power2.out",
+              duration: 2.5,
+              ease: "power1.out",
               scrollTrigger: {
                 trigger: section,
-                start: "top 60%",
-                end: "top 40%",
-                scrub: 1.5,
+                start: "top 70%",
+                end: "top 30%",
+                scrub: 3,
               },
             }
           );

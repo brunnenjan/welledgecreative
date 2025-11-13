@@ -220,8 +220,7 @@ export default function SelectedProjects() {
       aria-labelledby="selected-projects-title"
     >
       <div
-        className="mx-auto max-w-7xl px-6 py-24 md:py-32"
-        style={{ paddingLeft: "calc(1.5rem + 25px)" }}
+        className="mx-auto max-w-7xl px-6 py-24 md:py-32 md:pl-[calc(1.5rem+25px)]"
       >
         <h2
           ref={headingRef}

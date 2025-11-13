@@ -279,12 +279,12 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
 
               <div
                 data-anim="intro-buttons"
-                className="pt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-3"
+                className="pt-8 flex flex-row gap-3 items-center justify-center"
                 style={{ opacity: 0 }}
               >
                 <a
                   href="#selected-projects"
-                  className="btn btn-primary min-w-[190px]"
+                  className="btn btn-primary min-w-[130px] sm:min-w-[190px] text-xs sm:text-base px-4 sm:px-6"
                   onClick={(event) => {
                     event.preventDefault();
                     smoothScrollTo("selected-projects");
@@ -296,7 +296,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                   href="https://calendly.com/well-edge-creative/30min"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn btn-secondary min-w-[190px]"
+                  className="btn btn-secondary min-w-[130px] sm:min-w-[190px] text-xs sm:text-base px-4 sm:px-6"
                 >
                   Book a call
                 </a>
