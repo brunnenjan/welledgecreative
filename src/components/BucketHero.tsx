@@ -27,6 +27,7 @@ export default function BucketHero() {
   const swingTweenRef = useRef<gsap.core.Tween | null>(null);
 
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [bucketInitialTop, setBucketInitialTop] = useState('-14vh');
   const [foregroundSrc, setForegroundSrc] = useState("/assets/hero/hero-foreground-desktop.webp");
   const [backgroundSrc, setBackgroundSrc] = useState("/assets/hero/hero-background.webp");
@@ -319,6 +320,20 @@ export default function BucketHero() {
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
   }, []);
 
+  // Detect mobile for fixed positioning
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Mouse parallax effect
   useEffect(() => {
     if (isTouchDevice || !bgRef.current) return;
@@ -416,8 +431,11 @@ export default function BucketHero() {
       <section
         ref={heroRef}
         id="hero"
-        className="relative overflow-hidden bg-background"
-        style={{ minHeight: "100svh", height: "200vh" }}
+        className={`overflow-hidden bg-background ${isMobile ? 'fixed top-0 left-0 right-0 z-10' : 'relative'}`}
+        style={{
+          minHeight: "100svh",
+          height: isMobile ? "100vh" : "200vh"
+        }}
       >
         <div ref={pinRef} className="relative h-full w-full will-change-transform">
         {/* Background Layer - stays fixed during pin */}
@@ -554,6 +572,10 @@ export default function BucketHero() {
         />
       </div>
     </section>
+
+    {/* Mobile spacer: pushes next content below the fixed hero */}
+    {isMobile && <div style={{ height: '100vh' }} aria-hidden="true" />}
+
     <style jsx>{`
       .hero-scroll-cue {
         display: inline-flex;

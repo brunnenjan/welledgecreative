@@ -34,19 +34,19 @@ export default function DeliverParallax() {
   useLayoutEffect(() => {
     if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) return;
 
+    const isMobileCheck = window.matchMedia("(max-width: 768px)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+
+    // Disable all animations on mobile to prevent glitches
+    if (isMobileCheck || prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-      // Get device-specific config for deliver section
-      const config = isMobile
-        ? PARALLAX_CONFIG.deliver.mobile
-        : isTablet
-          ? PARALLAX_CONFIG.deliver.tablet
-          : PARALLAX_CONFIG.deliver.desktop;
+      // Get device-specific config for deliver section (desktop/tablet only)
+      const config = isTablet
+        ? PARALLAX_CONFIG.deliver.tablet
+        : PARALLAX_CONFIG.deliver.desktop;
 
       const { bgSpeed, fgSpeed, bucketSpeed } = config;
       const scrollRange = "+=200%";
@@ -132,15 +132,15 @@ export default function DeliverParallax() {
         );
       }
 
-      // Continuous bucket swing - applied across devices
-      const swingAngle = isMobile ? 1.4 : isTablet ? 1.7 : 2.1;
+      // Continuous bucket swing (desktop/tablet only)
+      const swingAngle = isTablet ? 1.7 : 2.1;
       gsap.fromTo(
         bucketRef.current,
         { rotation: -swingAngle },
         {
           rotation: swingAngle,
           transformOrigin: "50% 0%",
-          duration: isMobile ? 4 : isTablet ? 3.6 : 3.2,
+          duration: isTablet ? 3.6 : 3.2,
           ease: "sine.inOut",
           yoyo: true,
           repeat: -1,
@@ -154,8 +154,8 @@ export default function DeliverParallax() {
   // Set bucket initial position after mount to avoid hydration mismatch
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
     const config = isMobile
       ? PARALLAX_CONFIG.deliver.mobile
       : isTablet

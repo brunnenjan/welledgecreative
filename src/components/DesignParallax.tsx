@@ -34,19 +34,19 @@ export default function DesignParallax() {
   useLayoutEffect(() => {
     if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) return;
 
+    const isMobileCheck = window.matchMedia("(max-width: 768px)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+
+    // Disable all animations on mobile to prevent glitches
+    if (isMobileCheck || prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-      // Get device-specific config for design section
-      const config = isMobile
-        ? PARALLAX_CONFIG.design.mobile
-        : isTablet
-          ? PARALLAX_CONFIG.design.tablet
-          : PARALLAX_CONFIG.design.desktop;
+      // Get device-specific config for design section (desktop/tablet only)
+      const config = isTablet
+        ? PARALLAX_CONFIG.design.tablet
+        : PARALLAX_CONFIG.design.desktop;
 
       const { bgSpeed, fgSpeed, bucketSpeed } = config;
       const scrollRange = "+=200%";
@@ -132,15 +132,15 @@ export default function DesignParallax() {
         );
       }
 
-      // Continuous bucket swing - applied across devices
-      const swingAngle = isMobile ? 1.4 : isTablet ? 1.7 : 2.1;
+      // Continuous bucket swing (desktop/tablet only)
+      const swingAngle = isTablet ? 1.7 : 2.1;
       gsap.fromTo(
         bucketRef.current,
         { rotation: -swingAngle },
         {
           rotation: swingAngle,
           transformOrigin: "50% 0%",
-          duration: isMobile ? 4 : isTablet ? 3.6 : 3.2,
+          duration: isTablet ? 3.6 : 3.2,
           ease: "sine.inOut",
           yoyo: true,
           repeat: -1,
@@ -154,8 +154,8 @@ export default function DesignParallax() {
   // Set bucket initial position after mount to avoid hydration mismatch
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
     const config = isMobile
       ? PARALLAX_CONFIG.design.mobile
       : isTablet

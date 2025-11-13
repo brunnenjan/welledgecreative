@@ -31,17 +31,19 @@ export default function ProfileParallax() {
   useLayoutEffect(() => {
     if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) return;
 
+    const isMobileCheck = window.matchMedia("(max-width: 768px)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+
+    // Disable all animations on mobile to prevent glitches
+    if (isMobileCheck || prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-      // Parallax speeds
-      const bgSpeed = isMobile ? 0.1 : isTablet ? 0.12 : 0.15;
-      const fgSpeed = isMobile ? -0.08 : isTablet ? -0.1 : -0.12;
-      const bucketSpeed = isMobile ? 0.15 : isTablet ? 0.5 : 0.5;
+      // Parallax speeds (desktop and tablet only)
+      const bgSpeed = isTablet ? 0.12 : 0.15;
+      const fgSpeed = isTablet ? -0.1 : -0.12;
+      const bucketSpeed = 0.5;
 
       // Background parallax
       gsap.to(bgRef.current, {
@@ -79,17 +81,15 @@ export default function ProfileParallax() {
         },
       });
 
-      // Subtle bucket swing
-      if (!isMobile) {
-        gsap.to(bucketRef.current, {
-          rotation: 1.5,
-          transformOrigin: "50% 0%",
-          duration: 3,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-        });
-      }
+      // Subtle bucket swing (desktop/tablet only)
+      gsap.to(bucketRef.current, {
+        rotation: 1.5,
+        transformOrigin: "50% 0%",
+        duration: 3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
     }, sectionRef);
 
     return () => ctx.revert();

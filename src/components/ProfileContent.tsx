@@ -1,9 +1,10 @@
 // src/components/ProfileContent.tsx
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,21 @@ export default function ProfileContent() {
   const designsTextRef = useRef<HTMLSpanElement>(null);
   const designsHighlightRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile for "That's Me" button
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!sectionRef.current || !headlineRef.current || !designsTextRef.current || !designsHighlightRef.current || !textRef.current) return;
@@ -130,6 +146,24 @@ export default function ProfileContent() {
             Great design begins with curiosity and ends in clarity — that&rsquo;s the edge I bring to every project.
           </p>
         </div>
+
+        {/* "That's Me" button - mobile only */}
+        {isMobile && (
+          <button
+            type="button"
+            onClick={() => smoothScrollTo("profile")}
+            className="mt-12 inline-flex items-center gap-2 px-6 py-3 text-sm font-medium uppercase tracking-wider transition-all rounded-full"
+            style={{
+              backgroundColor: '#f58222',
+              color: '#ffffff',
+              letterSpacing: '0.1em',
+            }}
+            aria-label="Scroll to profile"
+          >
+            <span>That&rsquo;s Me</span>
+            <span className="text-xl" aria-hidden="true">↑</span>
+          </button>
+        )}
       </div>
     </section>
   );
