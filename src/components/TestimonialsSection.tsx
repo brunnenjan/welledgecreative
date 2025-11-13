@@ -491,7 +491,7 @@ export default function TestimonialsSection() {
               }}
             />
           </span>{" "}
-          Say About Working Together
+          Say
         </h2>
         <p className="mx-auto mt-6 max-w-3xl text-lg md:text-xl text-[#6a6a6a]">
           Real words from people I had the pleasure to create with.
