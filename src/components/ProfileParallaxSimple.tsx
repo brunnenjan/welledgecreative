@@ -96,19 +96,19 @@ export default function ProfileParallaxSimple() {
               scrub: 3.8,
             },
           });
-
-          // Bucket parallax (descends, smoother, extended range)
-          gsap.to(bucket, {
-            y: () => `${window.innerHeight * bucketSpeed}px`,
-            ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              start: "top bottom",
-              end: "+=220%",
-              scrub: 3.8,
-            },
-          });
         }
+
+        // Bucket parallax (descends, smoother, extended range) - ALL DEVICES
+        gsap.to(bucket, {
+          y: () => `${window.innerHeight * bucketSpeed}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "+=220%",
+            scrub: 3.8,
+          },
+        });
 
         // Arrow fade in and out (desktop only)
         if (!isMobile && CONFIG.showArrow && arrowRef.current) {

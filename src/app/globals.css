@@ -1103,6 +1103,13 @@ section[id] {
   z-index: 3;
 }
 
+/* Mobile: add top spacing for menu clearance */
+@media (max-width: 768px) {
+  .hero-layer--fg {
+    top: 60px;
+  }
+}
+
 /* Desktop only: allow higher z-index for fg layer for parallax effect */
 @media (min-width: 769px) {
   .hero-layer--fg {

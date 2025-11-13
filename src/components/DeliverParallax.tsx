@@ -55,7 +55,7 @@ export default function DeliverParallax() {
       const scrollRange = "+=200%";
       const scrubValue = 3.8;
 
-      // Background/Foreground/Bucket parallax (desktop/tablet only)
+      // Background/Foreground parallax (desktop/tablet only)
       if (!isMobile) {
         // Background parallax (smoother, extended range)
         gsap.to(bgRef.current, {
@@ -80,19 +80,19 @@ export default function DeliverParallax() {
             scrub: scrubValue,
           },
         });
-
-        // Bucket parallax (descends, smoother, extended range)
-        gsap.to(bucketRef.current, {
-          y: () => `${window.innerHeight * bucketSpeed}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: scrollRange,
-            scrub: scrubValue,
-          },
-        });
       }
+
+      // Bucket parallax (descends, smoother, extended range) - ALL DEVICES
+      gsap.to(bucketRef.current, {
+        y: () => `${window.innerHeight * bucketSpeed}px`,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: scrollRange,
+          scrub: scrubValue,
+        },
+      });
 
       // Bucket fade/scale animation (appears from well cutout)
       gsap.fromTo(
