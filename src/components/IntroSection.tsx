@@ -230,7 +230,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
               style={{ color: '#1a1a1a' }}
             >
               <span className="inline-block relative">
-                <span ref={designTextRef} className="relative z-10">Define the goal</span>
+                <span ref={designTextRef} className="relative z-10">Define</span>
                 <span
                   ref={designHighlightRef}
                   className="absolute inset-0 bg-accent/80"
@@ -242,9 +242,9 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     backgroundColor: '#f58222'
                   }}
                 />
-              </span>.<br />
-              <span className="inline-block relative">
-                <span ref={strategyTextRef} className="relative z-10">Design the way</span>
+              </span> the goal.<br />
+              Design <span className="inline-block relative">
+                <span ref={strategyTextRef} className="relative z-10">the way</span>
                 <span
                   ref={strategyHighlightRef}
                   className="absolute inset-0 bg-accent/80"
