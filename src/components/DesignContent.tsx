@@ -108,7 +108,7 @@ export default function DesignContent() {
         backgroundColor: '#ffffff',
         paddingTop: "clamp(4rem, 10vh, 8rem)",
         paddingBottom: "clamp(8rem, 15vh, 12rem)",
-        zIndex: 10
+        zIndex: 70
       }}
     >
       <div className="container mx-auto max-w-4xl px-6 text-center">
