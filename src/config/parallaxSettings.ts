@@ -44,22 +44,22 @@ export const PARALLAX_CONFIG = {
     mobile: {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
-      bucketSpeed: 0.3,
-      bucketStart: 120,
+      bucketSpeed: 0.4,
+      bucketStart: 60,
       bucketWidth: 1440, // 2x larger bucket on mobile (720 * 2)
     },
     tablet: {
       bgSpeed: 0.12,
       fgSpeed: 0,
       bucketSpeed: 0.42,
-      bucketStart: -80,
+      bucketStart: -20,
       bucketWidth: 1150,
     },
     desktop: {
       bgSpeed: 0.15,
       fgSpeed: -0.12,
       bucketSpeed: 0.4,
-      bucketStart: -120,
+      bucketStart: -180,
       bucketWidth: 1350, // 1.5× base size (900 × 1.5)
     },
   },
@@ -67,13 +67,13 @@ export const PARALLAX_CONFIG = {
     mobile: {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
-      bucketSpeed: 0.8,
-      bucketStart: -50,
+      bucketSpeed: 0.5,
+      bucketStart: -100,
     },
     tablet: {
       bgSpeed: 0.12,
       fgSpeed: -0.1,
-      bucketSpeed: 0.8,
+      bucketSpeed: 0.6,
       bucketStart: -280,
     },
     desktop: {
@@ -87,14 +87,14 @@ export const PARALLAX_CONFIG = {
     mobile: {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
-      bucketSpeed: 0.8,
-      bucketStart: 50,
+      bucketSpeed: 0.6,
+      bucketStart: -50,
     },
     tablet: {
       bgSpeed: 0.12,
       fgSpeed: -0.1,
-      bucketSpeed: 0.8,
-      bucketStart: -100,
+      bucketSpeed: 0.6,
+      bucketStart: -60,
     },
     desktop: {
       bgSpeed: 0.15,
@@ -107,14 +107,14 @@ export const PARALLAX_CONFIG = {
     mobile: {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
-      bucketSpeed: 0.8,
-      bucketStart: -50,
+      bucketSpeed: 0.5,
+      bucketStart: -60,
     },
     tablet: {
       bgSpeed: 0.12,
       fgSpeed: -0.1,
-      bucketSpeed: 0.8,
-      bucketStart: -120,
+      bucketSpeed: 0.6,
+      bucketStart: -80,
     },
     desktop: {
       bgSpeed: 0.15,
