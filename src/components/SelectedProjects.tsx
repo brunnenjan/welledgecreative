@@ -248,9 +248,9 @@ export default function SelectedProjects() {
         </h2>
         <p
           ref={subtitleRef}
-          className="mx-auto mb-20 md:mb-32 max-w-3xl text-center text-base uppercase tracking-[0.3em] text-[#6a6a6a]"
+          className="mx-auto mb-20 md:mb-32 max-w-3xl text-center text-base text-[#6a6a6a]"
         >
-          Selected projects · Brand experience · Web design
+          A selection of purposeful branding &amp; web design work created for founders, retreat centers, and small businesses worldwide.
         </p>
 
         <div ref={projectsRef} className="space-y-32 md:space-y-40">

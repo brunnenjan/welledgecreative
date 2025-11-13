@@ -15,19 +15,19 @@ const phases = [
     number: "01",
     title: "Discover",
     description:
-      "I dig into who you are, who you serve, and what makes your brand matter — shaping a strategy that feels true and connects deeply.",
+      "We define your purpose, audience, and message. This step builds the strategic foundation your brand needs — clear positioning, meaningful storytelling, and a direction that actually moves you forward.",
   },
   {
     number: "02",
     title: "Design",
     description:
-      "I turn strategy into visual clarity. Every layout, word, and interaction has purpose — form follows function. Side by side I shape structure, hierarchy, and content so your message works beautifully.",
+      "Your brand identity takes shape: logo, colors, typography, visual system. Everything is crafted to reflect your purpose and create instant recognition.",
   },
   {
     number: "03",
     title: "Deliver",
     description:
-      "You get clean, complete deliverables and the guidance to use them confidently. I review everything step by step — so your brand and website not only launch well but keep growing with intention.",
+      "We turn strategy and design into a ready-to-launch digital experience. Your website becomes clear, intuitive, emotional — and aligned with your long-term goals.",
   },
 ];
 

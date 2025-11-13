@@ -67,10 +67,10 @@ export default function ContactSection() {
               id="contact-title"
               className="text-4xl font-semibold leading-tight text-white md:text-5xl"
             >
-              Ready to dive deeper.
+              Ready to build a brand with purpose?
             </h2>
             <p className="text-lg text-white/80 md:text-xl">
-              Your project deserves clarity — I&rsquo;ll help you find it.
+              If you want clarity, a strong visual identity, and a website that truly reflects your vision — let&rsquo;s talk.
             </p>
           </div>
 

@@ -120,8 +120,8 @@ export default function ProfileContent() {
           className="text-5xl md:text-7xl font-bold leading-[1.2] tracking-tight mb-12"
           style={{ color: '#1a1a1a' }}
         >
-          <span className="inline-block relative">
-            <span ref={designsTextRef} className="relative z-10">Designs</span>
+          Hi, I&rsquo;m <span className="inline-block relative">
+            <span ref={designsTextRef} className="relative z-10">Jan</span>
             <span
               ref={designsHighlightRef}
               className="absolute inset-0 bg-accent/80"
@@ -133,18 +133,17 @@ export default function ProfileContent() {
                 backgroundColor: '#f58222',
               }}
             />
-          </span>{" "}
-          that speaks for itself.
+          </span> – Designer, Brand Thinker, Problem-Solver.
         </h1>
         <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto">
           <p>
-            I&rsquo;m <span className="font-semibold text-neutral-900 text-[1.1em]">Jan</span>, a designer and storyteller with a background in Online Media (B.Sc.). Since 2017, I&rsquo;ve been helping <span className="font-semibold text-neutral-900 text-[1.08em]">small businesses</span>, <span className="font-semibold text-neutral-900 text-[1.08em]">start ups</span> und <span className="font-semibold text-neutral-900 text-[1.08em]">Retreat- &amp; Wellness Centern</span> build story-driven brands and websites that <span className="font-semibold text-neutral-900 text-[1.08em]">stand out</span> and stand for something.
+            For the past 7 years I&rsquo;ve been helping entrepreneurs, retreat &amp; wellness centers, and small businesses build brands that feel authentic, look distinctive, and work beautifully online.
           </p>
           <p
             className="pt-4 text-[1.3rem] italic"
             style={{ color: "#4a4a4a", fontWeight: 300 }}
           >
-            Great design begins with curiosity and ends in clarity — that&rsquo;s the edge I bring to every project.
+            My approach combines strategic thinking with clean, emotional design — so your audience instantly understands who you are and why you matter.
           </p>
         </div>
 

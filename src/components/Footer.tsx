@@ -115,7 +115,10 @@ export default function Footer() {
         </nav>
 
         {/* Legal Row */}
-        <div className="border-t border-white/10 pt-6 text-xs text-white/50 text-center">
+        <div className="border-t border-white/10 pt-6 text-xs text-white/50 text-center space-y-3">
+          <p className="text-sm text-white/60">
+            Helping founders build meaningful brands since 2017.
+          </p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span>© {currentYear} Well Edge Creative</span>
             <span className="text-white/30" aria-hidden="true">·</span>

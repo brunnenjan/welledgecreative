@@ -514,11 +514,11 @@ export default function BucketHero() {
               className="w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[320px] h-auto"
             />
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-6 sm:mt-6 md:mt-0">
-              <span style={{ color: '#f58222' }}>Branding &amp; Web Design</span>{" "}
-              <span className="text-white">that tells your story.</span>
+              <span style={{ color: '#f58222' }}>Brand Strategy with Purpose.</span>{" "}
+              <span className="text-white">Design with Clarity.</span>
             </h1>
             <p className="text-white/90 text-base sm:text-lg leading-relaxed">
-              Strategy with <strong className="text-white font-semibold">depth</strong>. Design with <strong className="text-white font-semibold">clarity</strong>.
+              I help founders transform ideas into brands with strategic depth, emotional clarity, and a digital presence built to grow.
             </p>
             <div className="mt-6 flex flex-row gap-3 items-center justify-center">
               <a

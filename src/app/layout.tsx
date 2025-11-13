@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.well-edge-creative.de"),
   title: "Well Edge Creative | Branding & Web Design by Jan Brunnenkant",
-  description: "Strategy with depth, design with clarity. I craft brands and websites that tell your story and connect with your audience.",
+  description: "Well Edge Creative – Branding & Web Design by Jan Brunnenkant. Purpose-driven brand strategy, clean visual identities, and websites that create clarity and emotional connection.",
   keywords: [
     "branding",
     "web design",

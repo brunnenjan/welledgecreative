@@ -229,8 +229,8 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
               className="text-5xl md:text-7xl font-bold leading-[1.2] tracking-tight"
               style={{ color: '#1a1a1a' }}
             >
-              <span className="inline-block relative">
-                <span ref={designTextRef} className="relative z-10">Design</span>
+              A <span className="inline-block relative">
+                <span ref={designTextRef} className="relative z-10">Clear Process</span>
                 <span
                   ref={designHighlightRef}
                   className="absolute inset-0 bg-accent/80"
@@ -242,9 +242,9 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     backgroundColor: '#f58222'
                   }}
                 />
-              </span> that connects.<br />
-              <span className="inline-block relative">
-                <span ref={strategyTextRef} className="relative z-10">Strategy</span>
+              </span>.<br />
+              A <span className="inline-block relative">
+                <span ref={strategyTextRef} className="relative z-10">Strategic Foundation</span>
                 <span
                   ref={strategyHighlightRef}
                   className="absolute inset-0 bg-accent/80"
@@ -256,7 +256,8 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     backgroundColor: '#f58222'
                   }}
                 />
-              </span> that lasts.
+              </span>.<br />
+              A Brand that Lasts.
             </h1>
 
             {/* Subtle accent line */}
@@ -274,7 +275,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
               className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto"
               style={{ color: '#4a4a4a', opacity: 0 }}
             >
-                I help founders turn ideas into brands that connect deeply and perform beautifully online.
+                Every successful brand begins with clarity. I guide you through a structured process that uncovers your purpose, aligns your message, and creates design that truly resonates.
             </p>
 
               <div
