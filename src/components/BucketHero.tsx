@@ -479,7 +479,7 @@ export default function BucketHero() {
         </div>
 
         {/* Text Content + Buttons - positioned in first 100vh */}
-        <div className="absolute left-0 right-0 z-20 grid place-items-center text-center px-6" style={{ top: 0, height: '100vh' }}>
+        <div className="absolute left-0 right-0 z-20 grid place-items-center text-center px-6" style={{ top: 0, height: '100vh', paddingTop: isMobile ? '10vh' : '0' }}>
           <div ref={contentRef} className="max-w-3xl flex flex-col items-center gap-4 sm:gap-5">
             <Image
               src="/assets/logo/well-edge-logo-retina.webp"
@@ -489,7 +489,7 @@ export default function BucketHero() {
               priority
               className="w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[320px] h-auto"
             />
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-12 sm:mt-6 md:mt-0">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-6 sm:mt-6 md:mt-0">
               <span style={{ color: '#f58222' }}>Branding &amp; Web Design</span>{" "}
               <span className="text-white">that tells your story.</span>
             </h1>

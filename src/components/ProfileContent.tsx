@@ -16,7 +16,7 @@ export default function ProfileContent() {
   const textRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile for "That's Me" button
+  // Detect mobile for "Plan Your Project" CTA button
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -148,21 +148,21 @@ export default function ProfileContent() {
           </p>
         </div>
 
-        {/* "That's Me" button - mobile only */}
+        {/* "Plan Your Project" CTA button - mobile only */}
         {isMobile && (
           <button
             type="button"
-            onClick={() => smoothScrollTo("profile")}
-            className="mt-12 inline-flex items-center gap-2 px-6 py-3 text-sm font-medium uppercase tracking-wider transition-all rounded-full"
+            onClick={() => smoothScrollTo("contact-section")}
+            className="mt-12 inline-flex items-center gap-2 px-6 py-3 text-sm font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105"
             style={{
               backgroundColor: '#f58222',
               color: '#ffffff',
               letterSpacing: '0.1em',
             }}
-            aria-label="Scroll to profile"
+            aria-label="Plan your project"
           >
-            <span>That&rsquo;s Me</span>
-            <span className="text-xl" aria-hidden="true">↑</span>
+            <span>Plan Your Project</span>
+            <span className="text-xl" aria-hidden="true">→</span>
           </button>
         )}
       </div>
