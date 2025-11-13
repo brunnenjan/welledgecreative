@@ -284,9 +284,15 @@
 
 @media (max-width: 768px) {
   .logo-marquee__nav {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.5rem;
+    display: none; /* Hide arrows on mobile - swipe only */
+  }
+
+  .logo-marquee__viewport {
+    padding-inline: 0; /* Full width on mobile */
+  }
+
+  .logo-marquee__shell {
+    gap: 0; /* Remove gap when arrows are hidden */
   }
 }
 

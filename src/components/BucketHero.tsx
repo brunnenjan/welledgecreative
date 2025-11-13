@@ -186,13 +186,18 @@ export default function BucketHero() {
           }
         };
 
-        // Simplified config for mobile - no pinning, just fade
+        // Mobile gets pinning too, but with simpler scrub and shorter duration
+        const mobileScrollDistance = () => window.innerHeight * 1.5; // Shorter on mobile
+
         const scrollTriggerOptions = isMobile
           ? {
               trigger: heroRef.current,
               start: "top top",
-              end: "bottom top",
-              scrub: 0.5,
+              end: () => `+=${mobileScrollDistance()}`,
+              scrub: 0.8,
+              pin: pinRef.current,
+              pinSpacing: true,
+              anticipatePin: 1,
               invalidateOnRefresh: true,
               onEnter: showPinned,
               onEnterBack: showPinned,
@@ -227,12 +232,12 @@ export default function BucketHero() {
         scrollTriggerRef.current = tl.scrollTrigger ?? null;
 
         if (bucketRef.current) {
-          // Simpler bucket animation on mobile
+          // Simpler bucket animation on mobile - less drop distance
           tl.to(
             bucketRef.current,
             {
-              y: isMobile ? () => window.innerHeight * 0.3 : () => bucketDrop(),
-              ease: isMobile ? "power2.out" : "power1.inOut",
+              y: isMobile ? () => window.innerHeight * 0.5 : () => bucketDrop(),
+              ease: "power1.inOut",
               duration: 1,
             },
             0
@@ -268,25 +273,25 @@ export default function BucketHero() {
           );
         }
 
-        // Simpler parallax on mobile
+        // Simpler parallax on mobile - reduced movement
         const bgScrollConfig = isMobile
           ? {
               trigger: heroRef.current,
               start: "top top",
-              end: "bottom top",
-              scrub: 0.3,
+              end: () => `+=${mobileScrollDistance()}`,
+              scrub: 0.8,
               invalidateOnRefresh: true,
             }
           : makeScrollTriggerConfig();
 
         gsap.to(bgRef.current, {
-          y: isMobile ? () => window.innerHeight * 0.15 : () => window.innerHeight * bgSpeed,
+          y: isMobile ? () => window.innerHeight * 0.2 : () => window.innerHeight * bgSpeed,
           ease: "none",
           scrollTrigger: bgScrollConfig,
         });
 
         gsap.to(fgRef.current, {
-          y: isMobile ? () => -window.innerHeight * 0.1 : () => -window.innerHeight * Math.abs(fgSpeed),
+          y: isMobile ? () => -window.innerHeight * 0.15 : () => -window.innerHeight * Math.abs(fgSpeed),
           ease: "none",
           scrollTrigger: bgScrollConfig,
         });

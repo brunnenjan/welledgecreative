@@ -43,23 +43,53 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
 
       if (prefersReducedMotion) return;
 
-      // Simplified animation for mobile - just fade in from below
+      // Simplified animation for mobile - fade in elements sequentially
       if (isMobile) {
-        gsap.fromTo(
+        const mobileTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        // Fade in entire section
+        mobileTl.fromTo(
           sectionRef.current,
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            ease: "power2.out",
-            duration: 0.8,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-          }
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
         );
+
+        // Fade in heading
+        mobileTl.fromTo(
+          headingRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+          "-=0.3"
+        );
+
+        // Fade in paragraph
+        const paragraph = contentRef.current?.querySelector('[data-anim="intro-subheadline"]');
+        if (paragraph) {
+          mobileTl.fromTo(
+            paragraph,
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+            "-=0.2"
+          );
+        }
+
+        // Fade in buttons
+        const buttonsDiv = contentRef.current?.querySelector('[data-anim="intro-buttons"]');
+        if (buttonsDiv) {
+          mobileTl.fromTo(
+            buttonsDiv,
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+            "-=0.2"
+          );
+        }
+
         return;
       }
 

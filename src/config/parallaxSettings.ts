@@ -7,7 +7,7 @@
 export const PARALLAX_CONFIG = {
   hero: {
     mobile: {
-      bgSpeed: 0.06,
+      bgSpeed: 1.06,
       fgSpeed: -0.15,
       bucketSpeed: 0.08,
       bucketStart: -220, // Initial Y offset (negative = above viewport)
