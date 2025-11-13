@@ -7,6 +7,7 @@ import ProfileParallaxSimple from "@/components/ProfileParallaxSimple";
 import ProfileContent from "@/components/ProfileContent";
 import HowIWork from "@/sections/HowIWork";
 import DesignParallax from "@/components/DesignParallax";
+import DesignContent from "@/components/DesignContent";
 import MyWork from "@/sections/MyWork";
 import LogosAndBranding from "@/sections/LogosAndBranding";
 import DeliverParallax from "@/components/DeliverParallax";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <DiscoverParallax />
       <HowIWork />
       <DesignParallax />
+      <DesignContent />
       <MyWork />
       <LogosAndBranding />
       <DeliverParallax />

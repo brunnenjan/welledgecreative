@@ -1,48 +1,34 @@
-// src/components/ProfileContent.tsx
+// src/components/DesignContent.tsx
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ProfileContent() {
+export default function DesignContent() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const designsTextRef = useRef<HTMLSpanElement>(null);
-  const designsHighlightRef = useRef<HTMLSpanElement>(null);
+  const designTextRef = useRef<HTMLSpanElement>(null);
+  const designHighlightRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect mobile for "That's Me" button
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !headlineRef.current || !designsTextRef.current || !designsHighlightRef.current || !textRef.current) return;
+    if (!sectionRef.current || !headlineRef.current || !designTextRef.current || !designHighlightRef.current || !textRef.current) return;
 
     const ctx = gsap.context(() => {
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       // Set initial states explicitly to prevent flash
-      gsap.set(designsHighlightRef.current, {
+      gsap.set(designHighlightRef.current, {
         scaleX: prefersReducedMotion ? 1 : 0,
         transformOrigin: "left",
       });
 
-      gsap.set(designsTextRef.current, {
+      gsap.set(designTextRef.current, {
         color: prefersReducedMotion ? "#ffffff" : "#1a1a1a",
       });
 
@@ -69,7 +55,7 @@ export default function ProfileContent() {
         }
       )
         .fromTo(
-          designsHighlightRef.current,
+          designHighlightRef.current,
           { scaleX: 0 },
           {
             scaleX: 1,
@@ -79,7 +65,7 @@ export default function ProfileContent() {
           "-=0.9"
         )
         .to(
-          designsTextRef.current,
+          designTextRef.current,
           {
             color: "#ffffff",
             duration: 1.6,
@@ -97,6 +83,17 @@ export default function ProfileContent() {
             ease: "power3.out",
           },
           "-=0.9"
+        )
+        .fromTo(
+          buttonRef.current,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.5"
         );
     }, sectionRef);
 
@@ -115,15 +112,15 @@ export default function ProfileContent() {
       }}
     >
       <div className="container mx-auto max-w-4xl px-6 text-center">
-        <h1
+        <h2
           ref={headlineRef}
           className="text-5xl md:text-7xl font-bold leading-[1.2] tracking-tight mb-12"
           style={{ color: '#1a1a1a' }}
         >
           <span className="inline-block relative">
-            <span ref={designsTextRef} className="relative z-10">Designs</span>
+            <span ref={designTextRef} className="relative z-10">Design</span>
             <span
-              ref={designsHighlightRef}
+              ref={designHighlightRef}
               className="absolute inset-0 bg-accent/80"
               style={{
                 transform: "scaleX(0)",
@@ -135,36 +132,34 @@ export default function ProfileContent() {
             />
           </span>{" "}
           that speaks for itself.
-        </h1>
-        <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto">
+        </h2>
+        <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto mb-10">
           <p>
-            I&rsquo;m <span className="font-semibold text-neutral-900 text-[1.1em]">Jan</span>, a designer and storyteller with a background in Online Media (B.Sc.). Since 2017, I&rsquo;ve been helping <span className="font-semibold text-neutral-900 text-[1.08em]">small businesses</span>, <span className="font-semibold text-neutral-900 text-[1.08em]">start ups</span> und <span className="font-semibold text-neutral-900 text-[1.08em]">Retreat- &amp; Wellness Centern</span> build story-driven brands and websites that <span className="font-semibold text-neutral-900 text-[1.08em]">stand out</span> and stand for something.
+            Every project is an opportunity to create something that not only looks beautiful but also <span className="font-semibold text-neutral-900 text-[1.08em]">communicates clearly</span> and <span className="font-semibold text-neutral-900 text-[1.08em]">resonates deeply</span> with its audience.
           </p>
           <p
             className="pt-4 text-[1.3rem] italic"
             style={{ color: "#4a4a4a", fontWeight: 300 }}
           >
-            Great design begins with curiosity and ends in clarity — that&rsquo;s the edge I bring to every project.
+            Good design doesn&rsquo;t need explanation — it speaks for itself through clarity, purpose, and impact.
           </p>
         </div>
 
-        {/* "That's Me" button - mobile only */}
-        {isMobile && (
-          <button
-            type="button"
-            onClick={() => smoothScrollTo("profile")}
-            className="mt-12 inline-flex items-center gap-2 px-6 py-3 text-sm font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105"
-            style={{
-              backgroundColor: '#f58222',
-              color: '#ffffff',
-              letterSpacing: '0.1em',
-            }}
-            aria-label="Scroll to profile"
-          >
-            <span>That&rsquo;s Me</span>
-            <span className="text-xl" aria-hidden="true">↑</span>
-          </button>
-        )}
+        {/* "Plan your Project" button - all devices */}
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={() => smoothScrollTo("contact-section")}
+          className="inline-flex items-center gap-2 px-8 py-4 text-base font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105 hover:shadow-lg"
+          style={{
+            backgroundColor: '#f58222',
+            color: '#ffffff',
+            letterSpacing: '0.12em',
+          }}
+          aria-label="Plan your project"
+        >
+          <span>Plan your Project</span>
+        </button>
       </div>
     </section>
   );

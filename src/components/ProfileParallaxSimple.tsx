@@ -15,7 +15,7 @@ const CONFIG = PROFILE_CONFIG;
 
 export default function ProfileParallaxSimple() {
   const sectionRef = useRef<HTMLElement>(null);
-  const arrowRef = useRef<HTMLButtonElement>(null);
+  const arrowRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useRef(false);
   const [bucketInitialTop, setBucketInitialTop] = useState('clamp(-15vh, -10vh, -8vh)');
   const [bucketWidth, setBucketWidth] = useState('min(90vw, 900px)');
@@ -288,31 +288,23 @@ export default function ProfileParallaxSimple() {
         />
       </div>
 
-      {/* Arrow "Plan Your Project" CTA - Desktop: positioned to the left, Mobile: below bucket pointing up */}
+      {/* Arrow "That's Me!" - Desktop: positioned to the left, Mobile: below bucket pointing up */}
       {CONFIG.showArrow && (
         <>
           {/* Desktop Arrow - Left positioned, pointing right */}
-          <button
-            type="button"
+          <div
             ref={arrowRef}
-            className="fixed left-[15%] pointer-events-auto hidden md:flex cursor-pointer bg-transparent border-none"
+            className="fixed left-[15%] pointer-events-none hidden md:flex"
             style={{
               top: "48%",
               transform: "translateY(-50%)",
               zIndex: 9999,
               opacity: 0,
             }}
-            onClick={() => {
-              const contactSection = document.getElementById("contact-section");
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }}
-            aria-label="Plan your project"
           >
-            <div className="flex items-center gap-4 transition-transform hover:scale-105">
+            <div className="flex items-center gap-4">
               <div className="text-[#f58222] text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg">
-                Plan Your Project
+                That&rsquo;s Me!
               </div>
               <svg
                 width="120"
@@ -336,25 +328,17 @@ export default function ProfileParallaxSimple() {
                 />
               </svg>
             </div>
-          </button>
+          </div>
 
           {/* Mobile Arrow - Centered below bucket, pointing up */}
-          <button
-            type="button"
-            className="absolute left-1/2 -translate-x-1/2 pointer-events-auto flex md:hidden cursor-pointer bg-transparent border-none"
+          <div
+            className="absolute left-1/2 -translate-x-1/2 pointer-events-none flex md:hidden"
             style={{
               top: "65%",
               zIndex: 60,
             }}
-            onClick={() => {
-              const contactSection = document.getElementById("contact-section");
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }}
-            aria-label="Plan your project"
           >
-            <div className="flex flex-col items-center gap-2 transition-transform hover:scale-105">
+            <div className="flex flex-col items-center gap-2">
               <svg
                 width="60"
                 height="80"
@@ -379,10 +363,10 @@ export default function ProfileParallaxSimple() {
                 />
               </svg>
               <div className="text-[#f58222] text-2xl font-bold tracking-wide drop-shadow-lg">
-                Plan Your Project
+                That&rsquo;s Me!
               </div>
             </div>
-          </button>
+          </div>
         </>
       )}
 

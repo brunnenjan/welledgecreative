@@ -479,7 +479,7 @@ export default function BucketHero() {
         </div>
 
         {/* Text Content + Buttons - positioned in first 100vh */}
-        <div className="absolute left-0 right-0 z-20 grid place-items-center text-center px-6" style={{ top: 0, height: '100vh', paddingTop: isMobile ? '10vh' : '0' }}>
+        <div className="absolute left-0 right-0 z-20 grid place-items-center text-center px-6" style={{ top: 0, height: '100vh', paddingTop: isMobile ? '2vh' : '0' }}>
           <div ref={contentRef} className="max-w-3xl flex flex-col items-center gap-4 sm:gap-5">
             <Image
               src="/assets/logo/well-edge-logo-retina.webp"
