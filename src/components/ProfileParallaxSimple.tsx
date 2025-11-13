@@ -145,23 +145,40 @@ export default function ProfileParallaxSimple() {
           );
         }
 
-        // Mobile arrow fade in (mobile only) - slow, gradual fade
+        // Mobile arrow fade in and out (mobile only) - appears when bucket is in middle, disappears when scrolling further
         if (isMobile && CONFIG.showArrow && mobileArrowRef.current) {
-          gsap.fromTo(
+          const arrowTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 2,
+            },
+          });
+
+          // Fade in when bucket enters middle
+          arrowTimeline.fromTo(
             mobileArrowRef.current,
             { opacity: 0, y: 30 },
             {
               opacity: 1,
               y: 0,
-              duration: 2.5,
+              duration: 0.3,
               ease: "power1.out",
-              scrollTrigger: {
-                trigger: section,
-                start: "top 70%",
-                end: "top 30%",
-                scrub: 3,
-              },
-            }
+            },
+            0
+          );
+
+          // Fade out when scrolling further
+          arrowTimeline.to(
+            mobileArrowRef.current,
+            {
+              opacity: 0,
+              y: -20,
+              duration: 0.3,
+              ease: "power1.in",
+            },
+            0.7
           );
         }
 
@@ -219,7 +236,7 @@ export default function ProfileParallaxSimple() {
         : PARALLAX_CONFIG.profile.desktop;
     setBucketInitialTop(`${config.bucketStart}px`);
     if ("bucketWidth" in config) {
-      const vwCap = isMobile ? 120 : isTablet ? 105 : 90;
+      const vwCap = isMobile ? 180 : isTablet ? 105 : 90;
       setBucketWidth(`min(${vwCap}vw, ${config.bucketWidth}px)`);
     }
   }, []);
