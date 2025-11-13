@@ -431,10 +431,11 @@ export default function BucketHero() {
       <section
         ref={heroRef}
         id="hero"
-        className={`overflow-hidden bg-background ${isMobile ? 'fixed top-0 left-0 right-0 z-10' : 'relative'}`}
+        className="relative overflow-hidden bg-background"
         style={{
           minHeight: "100svh",
-          height: isMobile ? "100vh" : "200vh"
+          height: isMobile ? "100vh" : "200vh",
+          zIndex: isMobile ? 1 : 'auto'
         }}
       >
         <div ref={pinRef} className="relative h-full w-full will-change-transform">
@@ -515,7 +516,7 @@ export default function BucketHero() {
         {/* Bucket & Rope Layer - descends during pin */}
         <div
           ref={bucketRef}
-          className="absolute left-1/2 z-40 -translate-x-1/2 pointer-events-none will-change-transform"
+          className={`absolute left-1/2 -translate-x-1/2 pointer-events-none will-change-transform ${isMobile ? 'z-[2]' : 'z-40'}`}
           style={{ top: bucketInitialTop, width: "max-content" }}
           aria-hidden
         >
@@ -572,9 +573,6 @@ export default function BucketHero() {
         />
       </div>
     </section>
-
-    {/* Mobile spacer: pushes next content below the fixed hero */}
-    {isMobile && <div style={{ height: '100vh' }} aria-hidden="true" />}
 
     <style jsx>{`
       .hero-scroll-cue {

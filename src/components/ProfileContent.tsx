@@ -106,11 +106,12 @@ export default function ProfileContent() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-[60] scroll-mt-16"
+      className="relative scroll-mt-16"
       style={{
         backgroundColor: '#ffffff',
         paddingTop: "clamp(4rem, 10vh, 8rem)",
         paddingBottom: "clamp(8rem, 15vh, 12rem)",
+        zIndex: 10
       }}
     >
       <div className="container mx-auto max-w-4xl px-6 text-center">

@@ -174,7 +174,8 @@ export default function DeliverParallax() {
         height: "140vh",
         paddingTop: "clamp(3rem, 8vh, 6rem)",
         paddingBottom: "clamp(3rem, 8vh, 6rem)",
-        paddingInline: "clamp(2rem, 5vw, 4rem)"
+        paddingInline: "clamp(2rem, 5vw, 4rem)",
+        zIndex: 10
       }}
     >
       {/* Background Layer */}

@@ -1095,11 +1095,18 @@ section[id] {
 }
 
 .hero-layer--bg {
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero-layer--fg {
-  z-index: 50;
+  z-index: 3;
+}
+
+/* Desktop only: allow higher z-index for fg layer for parallax effect */
+@media (min-width: 769px) {
+  .hero-layer--fg {
+    z-index: 50;
+  }
 }
 
 .hero-asset-image {

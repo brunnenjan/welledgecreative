@@ -42,7 +42,9 @@ export default function ProfileParallaxSimple() {
       // Set initial visibility immediately to prevent black flash
       gsap.set([bg, bucket, fg], { opacity: 1, visibility: "visible" });
 
-      if (prefersReducedMotion.current) {
+      const isMobileCheck = window.matchMedia("(max-width: 768px)").matches;
+
+      if (prefersReducedMotion.current || isMobileCheck) {
         gsap.set([bg, bucket, fg], { y: 0 });
         gsap.set(bucketImg, { opacity: 1, y: 0, scale: 1 });
         return;
@@ -57,15 +59,12 @@ export default function ProfileParallaxSimple() {
       }
 
       ctx = gsap.context(() => {
-        const isMobile = window.matchMedia("(max-width: 767px)").matches;
-        const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+        const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-        // Get device-specific config for profile section
-        const config = isMobile
-          ? PARALLAX_CONFIG.profile.mobile
-          : isTablet
-            ? PARALLAX_CONFIG.profile.tablet
-            : PARALLAX_CONFIG.profile.desktop;
+        // Get device-specific config for profile section (desktop/tablet only)
+        const config = isTablet
+          ? PARALLAX_CONFIG.profile.tablet
+          : PARALLAX_CONFIG.profile.desktop;
 
         const { bgSpeed, fgSpeed, bucketSpeed } = config;
 
@@ -139,15 +138,15 @@ export default function ProfileParallaxSimple() {
           );
         }
 
-        // Continuous bucket swing - subtle on touch devices, wider on desktop
-        const swingAngle = isMobile ? 1.2 : isTablet ? 1.6 : 2.2;
+        // Continuous bucket swing (desktop/tablet only)
+        const swingAngle = isTablet ? 1.6 : 2.2;
         gsap.fromTo(
           bucketImg,
           { rotation: -swingAngle },
           {
             rotation: swingAngle,
             transformOrigin: "50% 0%",
-            duration: isMobile ? 4 : isTablet ? 3.6 : 3.2,
+            duration: isTablet ? 3.6 : 3.2,
             ease: "sine.inOut",
             yoyo: true,
             repeat: -1,
@@ -206,7 +205,8 @@ export default function ProfileParallaxSimple() {
         height: "140vh",
         paddingTop: "clamp(3rem, 8vh, 6rem)",
         paddingBottom: "clamp(3rem, 8vh, 6rem)",
-        paddingInline: "clamp(2rem, 5vw, 4rem)"
+        paddingInline: "clamp(2rem, 5vw, 4rem)",
+        zIndex: 10
       }}
     >
       {/* Background Layer */}
