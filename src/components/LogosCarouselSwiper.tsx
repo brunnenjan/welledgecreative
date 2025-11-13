@@ -115,6 +115,7 @@ export default function LogosCarouselSwiper() {
       const swiper = new Swiper(swiperRef.current!, {
         modules: [Autoplay, FreeMode],
         loop: true,
+        loopAdditionalSlides: 3,
         freeMode: {
           enabled: true,
           momentum: true,
@@ -128,6 +129,7 @@ export default function LogosCarouselSwiper() {
         autoplay: {
           delay: 0,
           disableOnInteraction: false,
+          pauseOnMouseEnter: false,
         },
         on: {
           touchStart: function(swiper) {
