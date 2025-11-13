@@ -2,6 +2,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "@/styles/swiper-custom.css";
 import ScrollSmootherInit from "@/components/ScrollSmootherInit";
 import CookieConsent from "@/components/CookieConsent";
 import Preloader from "@/components/Preloader";

@@ -1,5 +1,5 @@
-import LogosCarousel from "@/components/LogosCarousel";
+import LogosCarouselSwiper from "@/components/LogosCarouselSwiper";
 
 export default function LogosAndBranding() {
-  return <LogosCarousel />;
+  return <LogosCarouselSwiper />;
 }

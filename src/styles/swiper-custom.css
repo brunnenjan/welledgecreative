@@ -1,0 +1,71 @@
+/* Custom Swiper Styles for Logo Slider */
+
+.logo-slider {
+  overflow: hidden;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.logo-slider .swiper-wrapper {
+  transition-timing-function: linear !important;
+  display: flex;
+  align-items: center;
+}
+
+.logo-slider .swiper-slide {
+  width: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-slider .logo-slide {
+  --logo-slide-height: clamp(7.5rem, 16vw, 10rem);
+  --logo-slide-padding: clamp(1.1rem, 2.8vw, 1.85rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--logo-slide-height);
+  min-height: var(--logo-slide-height);
+  max-height: var(--logo-slide-height);
+  width: clamp(11rem, 24vw, 17rem);
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+  padding: var(--logo-slide-padding);
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.logo-slider .logo-slide:hover {
+  transform: translateY(-2px);
+  border-color: #f58222;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.logo-slider .logo-marquee__image {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: calc(var(--logo-slide-height) - (var(--logo-slide-padding) * 2));
+  object-fit: contain;
+  object-position: center;
+  filter: grayscale(1) brightness(0.82);
+  opacity: 0.92;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.logo-slider .logo-slide:hover .logo-marquee__image {
+  filter: grayscale(0) brightness(0.98) saturate(1.05);
+  opacity: 1;
+}
+
+/* Cursor */
+.swiper-grab-cursor {
+  cursor: grab;
+}
+
+.swiper-grab-cursor:active {
+  cursor: grabbing;
+}

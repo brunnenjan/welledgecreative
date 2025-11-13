@@ -245,10 +245,13 @@ export default function BucketHero() {
         }
 
         if (whiteOverlayRef.current) {
+          // Mobile: fade in white at the end of bucket drop
+          // Desktop: fade in during timeline
+          const overlayDelay = isMobile ? 0.5 : 0;
           tl.to(
             whiteOverlayRef.current,
-            { opacity: 1, ease: "sine.inOut", duration: 0.45 },
-            0
+            { opacity: 1, ease: "sine.inOut", duration: isMobile ? 0.6 : 0.45 },
+            overlayDelay
           );
         }
 
@@ -273,28 +276,21 @@ export default function BucketHero() {
           );
         }
 
-        // Simpler parallax on mobile - reduced movement
-        const bgScrollConfig = isMobile
-          ? {
-              trigger: heroRef.current,
-              start: "top top",
-              end: () => `+=${mobileScrollDistance()}`,
-              scrub: 0.8,
-              invalidateOnRefresh: true,
-            }
-          : makeScrollTriggerConfig();
+        // Desktop gets full parallax, mobile gets static background
+        if (!isMobile) {
+          gsap.to(bgRef.current, {
+            y: () => window.innerHeight * bgSpeed,
+            ease: "none",
+            scrollTrigger: makeScrollTriggerConfig(),
+          });
 
-        gsap.to(bgRef.current, {
-          y: isMobile ? () => window.innerHeight * 0.2 : () => window.innerHeight * bgSpeed,
-          ease: "none",
-          scrollTrigger: bgScrollConfig,
-        });
-
-        gsap.to(fgRef.current, {
-          y: isMobile ? () => -window.innerHeight * 0.15 : () => -window.innerHeight * Math.abs(fgSpeed),
-          ease: "none",
-          scrollTrigger: bgScrollConfig,
-        });
+          gsap.to(fgRef.current, {
+            y: () => -window.innerHeight * Math.abs(fgSpeed),
+            ease: "none",
+            scrollTrigger: makeScrollTriggerConfig(),
+          });
+        }
+        // Mobile: background and foreground stay static (no parallax)
 
         // Gentler swing on mobile
         swingTweenRef.current = gsap.fromTo(
