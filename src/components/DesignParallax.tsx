@@ -15,6 +15,21 @@ export default function DesignParallax() {
   const bucketRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [bucketInitialTop, setBucketInitialTop] = useState('clamp(-15vh, -10vh, -8vh)');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile for bucket scaling
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useLayoutEffect(() => {
     if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) return;
@@ -183,7 +198,8 @@ export default function DesignParallax() {
         className="absolute left-1/2 -translate-x-1/2 z-[40] pointer-events-none will-change-transform"
         style={{
           top: bucketInitialTop,
-          width: "min(90vw, 600px)"
+          // 20% larger on mobile
+          width: isMobile ? "min(108vw, 720px)" : "min(90vw, 600px)"
         }}
         aria-hidden
       >

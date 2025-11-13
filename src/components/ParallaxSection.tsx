@@ -1,7 +1,7 @@
 // src/components/ParallaxSection.tsx
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 type Props = {
@@ -49,7 +49,7 @@ export default function ParallaxSection({
   bgSpeed = 0.15,
   fgSpeed = -0.15,  // UNIFIED foreground speed across all sections
   bucketSpeed = 0.25,
-  bucketSize: _bucketSize = 1.0,
+  bucketSize = 1.0,
   bucketDelayProgress = 0,
 }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -57,9 +57,25 @@ export default function ParallaxSection({
   const fgRef = useRef<HTMLDivElement>(null);
   const bucketRef = useRef<HTMLDivElement>(null);
   void _fgOverscan;
-  void _bucketSize;
 
-  // Responsive bucket height calculation
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Calculate final bucket scale: 20% larger on mobile
+  const finalBucketScale = isMobile ? bucketSize * 1.2 : bucketSize;
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -186,7 +202,7 @@ export default function ParallaxSection({
             height={0}
             sizes="100vw"
             style={{
-              width: "100vw",
+              width: `${finalBucketScale * 100}vw`,
               height: "auto",
               display: "block",
               transform: bucketFlipX ? "scaleX(-1)" : undefined,

@@ -78,14 +78,29 @@ export default function BucketHero() {
       await ready();
 
       ctx = gsap.context(() => {
-        const isMobile = window.matchMedia("(max-width: 767px)").matches;
-        const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-        const config = isMobile
-          ? PARALLAX_CONFIG.hero.mobile
-          : isTablet
-            ? PARALLAX_CONFIG.hero.tablet
-            : PARALLAX_CONFIG.hero.desktop;
+        // Ensure deterministic starting state
+        gsap.set(bucketRef.current, { y: 0 });
+        gsap.set(bgRef.current, { y: 0, xPercent: -50, x: 0 });
+        gsap.set(fgRef.current, { y: 0, xPercent: -50, x: 0 });
+        if (whiteOverlayRef.current) {
+          gsap.set(whiteOverlayRef.current, { opacity: 0 });
+        }
+        if (whitePanelRef.current) {
+          gsap.set(whitePanelRef.current, { opacity: 0, scaleY: 0, transformOrigin: "50% 0%" });
+        }
+
+        // Mobile: disable all animations, keep static composition
+        if (isMobile || prefersReducedMotion) {
+          return;
+        }
+
+        // Desktop/Tablet only from here on
+        const config = isTablet
+          ? PARALLAX_CONFIG.hero.tablet
+          : PARALLAX_CONFIG.hero.desktop;
 
         const {
           bucketSpeed,
@@ -103,21 +118,6 @@ export default function BucketHero() {
         const bucketDrop = () => window.innerHeight * bucketSpeed * bucketDropMultiplier;
         const scrubValue = scrub ?? 5.5;
         const timelineScrub = Math.min(1.25, Math.max(0.35, scrubValue * 0.2));
-
-        // Ensure deterministic starting state
-        gsap.set(bucketRef.current, { y: 0 });
-        gsap.set(bgRef.current, { y: 0, xPercent: -50, x: 0 });
-        gsap.set(fgRef.current, { y: 0, xPercent: -50, x: 0 });
-        if (whiteOverlayRef.current) {
-          gsap.set(whiteOverlayRef.current, { opacity: 0 });
-        }
-        if (whitePanelRef.current) {
-          gsap.set(whitePanelRef.current, { opacity: 0, scaleY: 0, transformOrigin: "50% 0%" });
-        }
-
-        if (prefersReducedMotion) {
-          return;
-        }
 
         const makeScrollTriggerConfig = () => ({
           trigger: heroRef.current,
@@ -186,42 +186,21 @@ export default function BucketHero() {
           }
         };
 
-        // Mobile gets pinning too, but with simpler scrub and shorter duration
-        const mobileScrollDistance = () => window.innerHeight * 1.5; // Shorter on mobile
-
-        const scrollTriggerOptions = isMobile
-          ? {
-              trigger: heroRef.current,
-              start: "top top",
-              end: () => `+=${mobileScrollDistance()}`,
-              scrub: 0.8,
-              pin: pinRef.current,
-              pinSpacing: true,
-              anticipatePin: 1,
-              invalidateOnRefresh: true,
-              onEnter: showPinned,
-              onEnterBack: showPinned,
-              onLeave: hidePinned,
-              onLeaveBack: () => {
-                showPinned();
-                resetHeroScene();
-              },
-            }
-          : {
-              ...makeScrollTriggerConfig(),
-              scrub: timelineScrub,
-              pin: pinRef.current,
-              pinSpacing: true,
-              anticipatePin: 1,
-              fastScrollEnd: true,
-              onEnter: showPinned,
-              onEnterBack: showPinned,
-              onLeave: hidePinned,
-              onLeaveBack: () => {
-                showPinned();
-                resetHeroScene();
-              },
-            };
+        const scrollTriggerOptions = {
+          ...makeScrollTriggerConfig(),
+          scrub: timelineScrub,
+          pin: pinRef.current,
+          pinSpacing: true,
+          anticipatePin: 1,
+          fastScrollEnd: true,
+          onEnter: showPinned,
+          onEnterBack: showPinned,
+          onLeave: hidePinned,
+          onLeaveBack: () => {
+            showPinned();
+            resetHeroScene();
+          },
+        };
 
         const tl = gsap.timeline({
           defaults: { ease: "none" },
@@ -232,11 +211,10 @@ export default function BucketHero() {
         scrollTriggerRef.current = tl.scrollTrigger ?? null;
 
         if (bucketRef.current) {
-          // Simpler bucket animation on mobile - less drop distance
           tl.to(
             bucketRef.current,
             {
-              y: isMobile ? () => window.innerHeight * 0.5 : () => bucketDrop(),
+              y: () => bucketDrop(),
               ease: "power1.inOut",
               duration: 1,
             },
@@ -245,13 +223,10 @@ export default function BucketHero() {
         }
 
         if (whiteOverlayRef.current) {
-          // Mobile: fade in white at the end of bucket drop
-          // Desktop: fade in during timeline
-          const overlayDelay = isMobile ? 0.5 : 0;
           tl.to(
             whiteOverlayRef.current,
-            { opacity: 1, ease: "sine.inOut", duration: isMobile ? 0.6 : 0.45 },
-            overlayDelay
+            { opacity: 1, ease: "sine.inOut", duration: 0.45 },
+            0
           );
         }
 
@@ -276,30 +251,27 @@ export default function BucketHero() {
           );
         }
 
-        // Desktop gets full parallax, mobile gets static background
-        if (!isMobile) {
-          gsap.to(bgRef.current, {
-            y: () => window.innerHeight * bgSpeed,
-            ease: "none",
-            scrollTrigger: makeScrollTriggerConfig(),
-          });
+        // Parallax animations for background and foreground
+        gsap.to(bgRef.current, {
+          y: () => window.innerHeight * bgSpeed,
+          ease: "none",
+          scrollTrigger: makeScrollTriggerConfig(),
+        });
 
-          gsap.to(fgRef.current, {
-            y: () => -window.innerHeight * Math.abs(fgSpeed),
-            ease: "none",
-            scrollTrigger: makeScrollTriggerConfig(),
-          });
-        }
-        // Mobile: background and foreground stay static (no parallax)
+        gsap.to(fgRef.current, {
+          y: () => -window.innerHeight * Math.abs(fgSpeed),
+          ease: "none",
+          scrollTrigger: makeScrollTriggerConfig(),
+        });
 
-        // Gentler swing on mobile
+        // Bucket swing animation
         swingTweenRef.current = gsap.fromTo(
           bucketRef.current,
-          { rotation: isMobile ? -0.5 : -swingAngle },
+          { rotation: -swingAngle },
           {
-            rotation: isMobile ? 0.5 : swingAngle,
+            rotation: swingAngle,
             transformOrigin: "50% 0%",
-            duration: isMobile ? 4.5 : isTablet ? 3.6 : 3.4,
+            duration: isTablet ? 3.6 : 3.4,
             ease: "sine.inOut",
             yoyo: true,
             repeat: -1,
@@ -397,8 +369,8 @@ export default function BucketHero() {
   // Set bucket initial position after mount to avoid hydration mismatch
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
     const config = isMobile
       ? PARALLAX_CONFIG.hero.mobile
       : isTablet
@@ -412,8 +384,8 @@ export default function BucketHero() {
     if (typeof window === 'undefined') return;
 
     const updateAssetSources = () => {
-      const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      const isTablet = window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches;
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
       const fgSrc = isMobile
         ? "/assets/hero/hero-foreground-mobile.webp"
