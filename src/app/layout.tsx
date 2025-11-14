@@ -8,6 +8,7 @@ import "@/styles/swiper-custom.css";
 import ScrollSmootherInit from "@/components/ScrollSmootherInit";
 import CookieConsent from "@/components/CookieConsent";
 import Preloader from "@/components/Preloader";
+import LandscapeOverlay from "@/components/LandscapeOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -185,6 +186,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} body-base antialiased`}>
+        <LandscapeOverlay />
         <Preloader />
         <a href="#hero" className="skip-link">
           Skip to main content
