@@ -13,19 +13,21 @@ export default function ProfileParallax() {
   const fgRef = useRef<HTMLDivElement>(null);
   const bucketRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
-  // Detect mobile for bucket scaling
+  // Detect mobile and tablet for bucket scaling
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const checkMobile = () => {
+    const checkViewport = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+      setIsTablet(window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches);
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkViewport();
+    window.addEventListener('resize', checkViewport);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkViewport);
   }, []);
 
   useLayoutEffect(() => {
@@ -129,8 +131,8 @@ export default function ProfileParallax() {
         className="absolute left-1/2 -translate-x-1/2 z-[40] pointer-events-none will-change-transform"
         style={{
           top: "clamp(-15vh, -10vh, -8vh)",
-          // 20% larger on mobile
-          width: isMobile ? "min(108vw, 720px)" : "min(90vw, 600px)"
+          // Responsive bucket sizing: larger on mobile, smaller on tablet, normal on desktop
+          width: isMobile ? "min(108vw, 720px)" : isTablet ? "min(60vw, 420px)" : "min(90vw, 600px)"
         }}
         aria-hidden
       >
