@@ -243,8 +243,8 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                   }}
                 />
               </span> in your goal.<br />
-              <span className="inline-block relative">
-                <span ref={strategyTextRef} className="relative z-10">Direction</span>
+              Direction <span className="inline-block relative">
+                <span ref={strategyTextRef} className="relative z-10">in your brand</span>
                 <span
                   ref={strategyHighlightRef}
                   className="absolute inset-0 bg-accent/80"
@@ -256,7 +256,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     backgroundColor: '#f58222'
                   }}
                 />
-              </span> in your brand.
+              </span>.
             </h1>
 
             {/* Subtle accent line */}
