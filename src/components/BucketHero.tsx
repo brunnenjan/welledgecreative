@@ -30,12 +30,17 @@ export default function BucketHero() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [bucketInitialTop, setBucketInitialTop] = useState('-14vh');
+  const [foregroundSrc, setForegroundSrc] = useState("/assets/hero/hero-foreground-desktop.webp");
   const [backgroundSrc, setBackgroundSrc] = useState("/assets/hero/hero-background.webp");
   const mouseX = useRef(0);
   const mouseY = useRef(0);
   const currentX = useRef(0);
   const currentY = useRef(0);
   const rafId = useRef<number | null>(null);
+
+  const handleForegroundFallback = useCallback(() => {
+    setForegroundSrc((prev) => (prev === "/assets/hero/hero-foreground-desktop.webp" ? prev : "/assets/hero/hero-foreground-desktop.webp"));
+  }, []);
 
   const handleBackgroundFallback = useCallback(() => {
     setBackgroundSrc((prev) => (prev === "/assets/hero/hero-background.webp" ? prev : "/assets/hero/hero-background.webp"));
@@ -417,9 +422,17 @@ export default function BucketHero() {
 
     const updateAssetSources = () => {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+
+      const fgSrc = isMobile
+        ? "/assets/hero/hero-foreground-mobile.webp"
+        : isTablet
+          ? "/assets/hero/hero-foreground-tablet.webp"
+          : "/assets/hero/hero-foreground-desktop.webp";
 
       const bgSrc = getBackgroundSrc("/assets/hero/hero-background", isMobile);
 
+      setForegroundSrc(fgSrc);
       setBackgroundSrc(bgSrc);
     };
 
@@ -545,12 +558,14 @@ export default function BucketHero() {
           aria-hidden
         >
           <Image
-            src="/assets/hero/hero-foreground-desktop.webp"
+            key={foregroundSrc}
+            src={foregroundSrc}
             alt=""
             fill
             sizes="100vw"
             quality={100}
             className="hero-asset-image"
+            onError={handleForegroundFallback}
           />
         </div>
 
