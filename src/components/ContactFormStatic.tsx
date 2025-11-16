@@ -37,7 +37,6 @@ export default function ContactFormStatic() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted!", formData);
 
     setIsSubmitting(true);
     setStatus("Verifying...");
@@ -51,9 +50,7 @@ export default function ContactFormStatic() {
         return;
       }
 
-      console.log("Getting reCAPTCHA token...");
       const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: "submit" });
-      console.log("Token received:", token ? "✓" : "✗");
 
       if (!token) {
         throw new Error("Failed to get reCAPTCHA token");
@@ -69,15 +66,12 @@ export default function ContactFormStatic() {
       data.append("message", formData.message);
       data.append("g-recaptcha-response", token);
 
-      console.log("Sending to backend with reCAPTCHA token...");
-
       const response = await fetch("/api/contact", {
         method: "POST",
         body: data
       });
 
       const text = await response.text();
-      console.log("Response:", text);
 
       if (text.includes("OK")) {
         setStatus("✅ Message sent successfully! Check your email for confirmation.");
@@ -99,9 +93,6 @@ export default function ContactFormStatic() {
       <Script
         src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`}
         strategy="lazyOnload"
-        onLoad={() => {
-          console.log("reCAPTCHA Enterprise loaded");
-        }}
       />
 
       <div className="contact-form-container" style={{ maxWidth: "600px", margin: "0 auto" }}>

@@ -29,9 +29,7 @@ export default function Contact() {
       }
 
       // Get reCAPTCHA token
-      console.log("Getting reCAPTCHA token...");
       const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: "submit" });
-      console.log("Token received:", token ? "✓" : "✗");
 
       if (!token) {
         throw new Error("Failed to get reCAPTCHA token");
@@ -49,17 +47,13 @@ export default function Contact() {
       formData.append("extra", form.extra);
       formData.append("g-recaptcha-response", token);
 
-      console.log("Sending form data to Strato PHP backend...");
-
       // Send to backend (PHP on Strato)
       const response = await fetch("https://well-edge-creative.com/contact.php", {
         method: "POST",
         body: formData,
       });
 
-      console.log("Response status:", response.status);
       const responseText = await response.text();
-      console.log("Response text:", responseText);
 
       if (response.ok) {
         setMessage({ type: "success", text: "Nachricht erfolgreich gesendet!" });

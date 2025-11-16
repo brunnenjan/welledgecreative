@@ -33,9 +33,6 @@ export default function ParallaxMinimal() {
 
   useLayoutEffect(() => {
     if (!container.current) {
-      if (isDev) {
-        console.warn("ParallaxMinimal: container ref not ready");
-      }
       return;
     }
 

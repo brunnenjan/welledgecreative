@@ -46,10 +46,6 @@ export default function ThirdParallaxSimple() {
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    if (DEBUG) {
-      console.log("ThirdParallaxSimple: initialising");
-    }
-
     const section = sectionRef.current;
     const bg = section.querySelector('[data-layer="bg"]');
     const bucket = section.querySelector('[data-layer="bucket"]');
@@ -102,10 +98,6 @@ export default function ThirdParallaxSimple() {
           id: "fg-3",
         },
       });
-
-      if (DEBUG) {
-        console.log("ThirdParallaxSimple: scroll triggers registered");
-      }
     }, 100);
 
     return () => {

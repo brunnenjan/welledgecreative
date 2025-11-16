@@ -13,11 +13,15 @@ import LandscapeOverlay from "@/components/LandscapeOverlay";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -78,13 +82,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/assets/favicon/favicon-16x16.png?v=2", sizes: "16x16", type: "image/png" },
-      { url: "/assets/favicon/favicon-32x32.png?v=2", sizes: "32x32", type: "image/png" },
-      { url: "/icon.png?v=2", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.ico?v=2", type: "image/x-icon" },
+      { url: "/assets/favicon/favicon-16x16.png?v=3", sizes: "16x16", type: "image/png" },
+      { url: "/assets/favicon/favicon-32x32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png?v=3", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico?v=3", type: "image/x-icon" },
     ],
-    apple: [{ url: "/assets/favicon/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" }],
-    shortcut: ["/favicon.ico?v=2"],
+    apple: [{ url: "/assets/favicon/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.ico?v=3"],
   },
   manifest: "/assets/favicon/site.webmanifest",
 };

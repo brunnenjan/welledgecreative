@@ -46,10 +46,6 @@ export default function SecondParallaxSimple() {
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    if (DEBUG) {
-      console.log("SecondParallaxSimple: initialising");
-    }
-
     const section = sectionRef.current;
     const bg = section.querySelector('[data-layer="bg"]');
     const bucket = section.querySelector('[data-layer="bucket"]');
@@ -102,10 +98,6 @@ export default function SecondParallaxSimple() {
           id: "fg-2",
         },
       });
-
-      if (DEBUG) {
-        console.log("SecondParallaxSimple: scroll triggers registered");
-      }
     }, 100);
 
     return () => {

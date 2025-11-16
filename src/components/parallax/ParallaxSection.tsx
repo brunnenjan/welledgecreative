@@ -34,11 +34,6 @@ export default function ParallaxSection({
     }
 
     if (!sectionRef.current || !bucketAnimRef.current || !bgWrapRef.current) {
-      console.warn("[ParallaxSection] missing refs", {
-        section: sectionRef.current,
-        bucket: bucketAnimRef.current,
-        background: bgWrapRef.current,
-      });
       return;
     }
 
@@ -70,14 +65,6 @@ export default function ParallaxSection({
       { yPercent: bgTravelValue, ease: "none" },
       0
     );
-
-    console.info("[ParallaxSection] timeline created", {
-      id,
-      startY,
-      travel,
-      bgTravel: bgTravelValue,
-      debug,
-    });
 
     ScrollTrigger.refresh();
 
