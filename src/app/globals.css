@@ -154,6 +154,7 @@ main {
 #smooth-wrapper {
   position: relative;
   overflow: visible;
+  min-height: 100vh;
 }
 
 #smooth-content {

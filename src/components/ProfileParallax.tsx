@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,14 +15,19 @@ export default function ProfileParallax() {
   const bucketRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const [bgSrc, setBgSrc] = useState("/assets/parallax/section-profile/parallax-bg-profile.webp");
 
-  // Detect mobile and tablet for bucket scaling
+  // Detect mobile and tablet for bucket scaling + background switching
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const checkViewport = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-      setIsTablet(window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches);
+      const mobile = window.matchMedia("(max-width: 768px)").matches;
+      const tablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+
+      setIsMobile(mobile);
+      setIsTablet(tablet);
+      setBgSrc(getBackgroundSrc("/assets/parallax/section-profile/parallax-bg-profile", mobile));
     };
 
     checkViewport();
@@ -117,10 +123,11 @@ export default function ProfileParallax() {
         aria-hidden
       >
         <Image
-          src="/assets/parallax/section-profile/parallax-bg-profile.webp"
+          src={bgSrc}
           alt=""
           fill
-          priority
+          sizes="100vw"
+          quality={100}
           className="object-cover"
         />
       </div>
@@ -141,8 +148,10 @@ export default function ProfileParallax() {
           alt=""
           width={600}
           height={600}
+          loading="lazy"
+          quality={100}
+          sizes="(max-width: 768px) 60vw, 600px"
           className="w-full h-auto drop-shadow-2xl"
-          priority
         />
       </div>
 
@@ -157,7 +166,8 @@ export default function ProfileParallax() {
           src="/assets/parallax/section-profile/parallax-foreground-profile.webp"
           alt=""
           fill
-          priority
+          sizes="100vw"
+          quality={100}
           className="object-cover"
         />
       </div>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
+import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,14 +18,19 @@ export default function DiscoverParallax() {
   const [bucketInitialTop, setBucketInitialTop] = useState('clamp(-15vh, -10vh, -8vh)');
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const [bgSrc, setBgSrc] = useState("/assets/parallax/section-discover/parallax-bg-discover.webp");
 
   // Detect mobile and tablet for bucket scaling
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const checkViewport = () => {
-      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-      setIsTablet(window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches);
+      const mobile = window.matchMedia("(max-width: 768px)").matches;
+      const tablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+
+      setIsMobile(mobile);
+      setIsTablet(tablet);
+      setBgSrc(getBackgroundSrc("/assets/parallax/section-discover/parallax-bg-discover", mobile));
     };
 
     checkViewport();
@@ -195,10 +201,11 @@ export default function DiscoverParallax() {
         aria-hidden
       >
         <Image
-          src="/assets/parallax/section-discover/parallax-bg-discover.webp"
+          src={bgSrc}
           alt=""
           fill
-          priority
+          sizes="100vw"
+          quality={100}
           className="object-cover"
         />
       </div>
@@ -220,7 +227,9 @@ export default function DiscoverParallax() {
           width={600}
           height={600}
           className="w-full h-auto drop-shadow-2xl"
-          priority
+          loading="lazy"
+          quality={100}
+          sizes="(max-width: 768px) 60vw, 600px"
         />
       </div>
 
@@ -253,7 +262,8 @@ export default function DiscoverParallax() {
           src="/assets/parallax/section-discover/parallax-foreground-discover.webp"
           alt=""
           fill
-          priority
+          sizes="100vw"
+          quality={100}
           className="object-cover"
         />
       </div>

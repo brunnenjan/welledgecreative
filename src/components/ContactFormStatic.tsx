@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import Script from "next/script";
 
 const PROJECT_TYPES = [
@@ -25,6 +25,24 @@ export default function ContactFormStatic() {
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [loadRecaptcha, setLoadRecaptcha] = useState(false);
+
+  // Lazy load reCAPTCHA when contact section is visible
+  useEffect(() => {
+    const contactEl = document.getElementById("contact-section");
+    if (!contactEl) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setLoadRecaptcha(true);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(contactEl);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleProjectTypeChange = (type: string) => {
     setFormData(prev => ({
@@ -89,11 +107,13 @@ export default function ContactFormStatic() {
 
   return (
     <>
-      {/* Load reCAPTCHA Enterprise Script */}
-      <Script
-        src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`}
-        strategy="lazyOnload"
-      />
+      {/* Load reCAPTCHA Enterprise Script only when contact section is visible */}
+      {loadRecaptcha && (
+        <Script
+          src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
+      )}
 
       <div className="contact-form-container" style={{ maxWidth: "600px", margin: "0 auto" }}>
         <form onSubmit={handleSubmit} className="contact-form" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>

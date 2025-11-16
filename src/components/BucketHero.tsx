@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HERO_CONFIG } from "@/lib/heroConfig";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { smoothScrollTo } from "@/lib/smoothScroll";
+import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,17 +30,12 @@ export default function BucketHero() {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [bucketInitialTop, setBucketInitialTop] = useState('-14vh');
-  const [foregroundSrc, setForegroundSrc] = useState("/assets/hero/hero-foreground-desktop.webp");
   const [backgroundSrc, setBackgroundSrc] = useState("/assets/hero/hero-background.webp");
   const mouseX = useRef(0);
   const mouseY = useRef(0);
   const currentX = useRef(0);
   const currentY = useRef(0);
   const rafId = useRef<number | null>(null);
-
-  const handleForegroundFallback = useCallback(() => {
-    setForegroundSrc((prev) => (prev === "/assets/hero/hero-foreground-desktop.webp" ? prev : "/assets/hero/hero-foreground-desktop.webp"));
-  }, []);
 
   const handleBackgroundFallback = useCallback(() => {
     setBackgroundSrc((prev) => (prev === "/assets/hero/hero-background.webp" ? prev : "/assets/hero/hero-background.webp"));
@@ -421,21 +417,9 @@ export default function BucketHero() {
 
     const updateAssetSources = () => {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-      const fgSrc = isMobile
-        ? "/assets/hero/hero-foreground-mobile.webp"
-        : isTablet
-          ? "/assets/hero/hero-foreground-tablet.webp"
-          : "/assets/hero/hero-foreground-desktop.webp"; // Desktop
+      const bgSrc = getBackgroundSrc("/assets/hero/hero-background", isMobile);
 
-      const bgSrc = isMobile
-        ? "/assets/hero/hero-background.webp"
-        : isTablet
-          ? "/assets/hero/hero-background.webp"
-          : "/assets/hero/hero-background.webp";
-
-      setForegroundSrc(fgSrc);
       setBackgroundSrc(bgSrc);
     };
 
@@ -471,8 +455,8 @@ export default function BucketHero() {
             src={backgroundSrc}
             alt=""
             fill
-            priority
             sizes="100vw"
+            quality={100}
             className="hero-asset-image"
             onError={handleBackgroundFallback}
           />
@@ -487,6 +471,8 @@ export default function BucketHero() {
               width={420}
               height={160}
               priority
+              quality={100}
+              sizes="(max-width: 768px) 60vw, 600px"
               className="w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[320px] h-auto"
             />
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-6 sm:mt-6 md:mt-0">
@@ -546,9 +532,9 @@ export default function BucketHero() {
             alt="Illustrated wooden bucket descending into the hero well"
             width={0}
             height={0}
-            sizes="100vw"
+            sizes="(max-width: 768px) 60vw, 600px"
+            quality={100}
             style={{ height: "clamp(420px, 80vh, 1000px)", width: "auto", display: "block" }}
-            priority
           />
         </div>
 
@@ -559,14 +545,12 @@ export default function BucketHero() {
           aria-hidden
         >
           <Image
-            key={foregroundSrc}
-            src={foregroundSrc}
+            src="/assets/hero/hero-foreground-desktop.webp"
             alt=""
             fill
-            priority
             sizes="100vw"
+            quality={100}
             className="hero-asset-image"
-            onError={handleForegroundFallback}
           />
         </div>
 
