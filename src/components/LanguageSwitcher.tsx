@@ -59,7 +59,7 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
 
   return (
     <div
-      className={`language-switcher inline-flex flex-col items-center gap-0.5 ${className ?? ""}`}
+      className={`language-switcher inline-flex flex-row items-center gap-1 ${className ?? ""}`}
       role="group"
       aria-label={t("languageSwitcher.label")}
     >
