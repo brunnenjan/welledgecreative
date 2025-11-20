@@ -195,13 +195,16 @@ export default function SectionProgressNav() {
         {activeLabel ? `${t("progressNav.currentSection")} ${activeLabel}` : ""}
       </div>
 
+      {/* Language Switcher - separate from nav */}
+      <div className="lang-switcher-fixed">
+        <LanguageSwitcher />
+        <div className="lang-switcher-divider" aria-hidden />
+      </div>
+
       <nav
         className="progress-nav"
         aria-label={t("progressNav.ariaLabel")}
       >
-        <div className="progress-nav__lang">
-          <LanguageSwitcher />
-        </div>
         <button
           type="button"
           className="progress-nav__home"
