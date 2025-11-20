@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, FormEvent, ChangeEvent, FocusEvent } from "react";
+import Link from "next/link";
 
 type FormData = {
   name: string;
@@ -346,9 +347,9 @@ export default function ContactForm() {
         {/* Privacy Note */}
         <p className="form-privacy">
           Your data is handled with care. See my{" "}
-          <a href="/privacy" className="form-link">
+          <Link href="/privacy" className="form-link">
             privacy policy
-          </a>
+          </Link>
           .
         </p>
 
