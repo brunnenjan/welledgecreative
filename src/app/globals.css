@@ -1390,8 +1390,8 @@ section[id] {
 
 .progress-nav__lang {
   position: fixed;
-  top: 1rem;
-  left: var(--progress-nav-left);
+  top: 0.75rem;
+  left: 0.75rem;
   z-index: 130;
 }
 
