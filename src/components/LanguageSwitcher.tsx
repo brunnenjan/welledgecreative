@@ -59,7 +59,7 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
 
   return (
     <div
-      className={`language-switcher inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/10 px-2 py-1 text-xs font-semibold uppercase text-white backdrop-blur-sm ${className ?? ""}`}
+      className={`language-switcher inline-flex flex-col items-center gap-0.5 ${className ?? ""}`}
       role="group"
       aria-label={t("languageSwitcher.label")}
     >
@@ -68,8 +68,8 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
           key={code}
           type="button"
           onClick={() => updateLocale(code as Locale)}
-          className={`flex items-center gap-1 rounded-full px-2 py-1 transition ${
-            locale === code ? "bg-white text-black" : "text-white/80 hover:text-white"
+          className={`flex items-center justify-center w-8 h-8 rounded-full transition text-xl ${
+            locale === code ? "bg-white/20 scale-110" : "opacity-70 hover:opacity-100 hover:scale-105"
           }`}
           aria-pressed={locale === code}
         >

@@ -1389,7 +1389,10 @@ section[id] {
 }
 
 .progress-nav__lang {
-  margin-bottom: 1rem;
+  position: fixed;
+  top: 1rem;
+  left: var(--progress-nav-left);
+  z-index: 130;
 }
 
 .progress-nav__spine {
