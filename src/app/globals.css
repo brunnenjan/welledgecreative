@@ -1388,6 +1388,10 @@ section[id] {
   }
 }
 
+.progress-nav__lang {
+  margin-bottom: 1rem;
+}
+
 .progress-nav__spine {
   position: absolute;
   top: 0;

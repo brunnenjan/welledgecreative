@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import { useI18n } from "@/components/providers/I18nProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 type SectionItem = {
   id: string;
@@ -198,6 +199,9 @@ export default function SectionProgressNav() {
         className="progress-nav"
         aria-label={t("progressNav.ariaLabel")}
       >
+        <div className="progress-nav__lang">
+          <LanguageSwitcher />
+        </div>
         <button
           type="button"
           className="progress-nav__home"
