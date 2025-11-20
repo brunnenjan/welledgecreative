@@ -59,20 +59,22 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
 
   return (
     <div
-      className={`language-switcher inline-flex flex-row items-center gap-1 ${className ?? ""}`}
+      className={`language-switcher inline-flex flex-row items-center ${className ?? ""}`}
       role="group"
       aria-label={t("languageSwitcher.label")}
     >
       {i18nConfig.locales.map((code, index) => (
-        <span key={code} className="flex items-center">
+        <span key={code} className="inline-flex items-center">
           {index > 0 && (
-            <span className="w-px h-5 bg-black/20 mx-1" aria-hidden />
+            <span className="w-px h-5 bg-black/20 mx-1.5" aria-hidden />
           )}
           <button
             type="button"
             onClick={() => updateLocale(code as Locale)}
-            className={`flex items-center justify-center w-8 h-8 rounded-full transition text-xl ${
-              locale === code ? "bg-white/20 scale-110" : "opacity-70 hover:opacity-100 hover:scale-105"
+            className={`flex items-center justify-center w-8 h-8 transition text-xl ${
+              locale === code
+                ? "scale-110 border-b-2 border-black/60"
+                : "opacity-70 hover:opacity-100 hover:scale-105"
             }`}
             aria-pressed={locale === code}
           >
