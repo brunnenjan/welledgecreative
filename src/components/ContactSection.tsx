@@ -5,10 +5,12 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactFormStatic from "./ContactFormStatic";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactSection() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const fgRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +27,7 @@ export default function ContactSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top bottom",
-            end: "bottom top+=400",
+            end: "bottom-=15% top",
             scrub: 3,
           },
         });
@@ -59,7 +61,7 @@ export default function ContactSection() {
       />
 
       <div
-        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-24 pb-16 text-center md:gap-16 md:pt-32 md:pb-20"
+        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-24 pb-[30vh] text-center md:gap-16 md:pt-32 md:pb-[24vh] lg:pb-[20vh]"
       >
         <div className="w-full space-y-8 md:space-y-10">
           <div className="space-y-4 text-center">
@@ -67,10 +69,10 @@ export default function ContactSection() {
               id="contact-title"
               className="text-4xl font-semibold leading-tight text-white md:text-5xl"
             >
-              Ready to build a brand with purpose?
+              {t("contact.heading")}
             </h2>
             <p className="text-lg text-white/80 md:text-xl">
-              If you want clarity, a strong visual identity, and a website that truly reflects your vision — let&rsquo;s talk.
+              {t("contact.paragraph")}
             </p>
           </div>
 
@@ -78,7 +80,7 @@ export default function ContactSection() {
 
           <div className="space-y-3 text-center text-sm text-white/70 md:text-base">
             <p>
-              Prefer to email directly?{" "}
+              {t("contact.emailPrompt")}{" "}
               <a
                 href="mailto:info@well-edge-creative.com"
                 className="underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"

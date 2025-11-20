@@ -5,19 +5,22 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
+import { useI18n } from "@/components/providers/I18nProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const SECTIONS = [
-  { id: "hero", label: "Home" },
-  { id: "design-strategy", label: "About" },
-  { id: "profile", label: "Profile" },
-  { id: "how-i-work", label: "How I Work" },
-  { id: "selected-projects", label: "Projects" },
-  { id: "logos", label: "Logos & Brandings" },
-  { id: "testimonials", label: "Testimonials" },
-  { id: "contact-section", label: "Contact" },
+  { id: "hero", labelKey: "navigation.home" },
+  { id: "design-strategy", labelKey: "navigation.about" },
+  { id: "profile", labelKey: "navigation.profile" },
+  { id: "how-i-work", labelKey: "navigation.howIWork" },
+  { id: "selected-projects", labelKey: "navigation.projects" },
+  { id: "logos", labelKey: "navigation.logos" },
+  { id: "testimonials", labelKey: "navigation.testimonials" },
+  { id: "contact-section", labelKey: "navigation.contact" },
 ];
 
 export default function Header() {
+  const { t } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const portalContainerRef = useRef<HTMLDivElement | null>(null);
@@ -77,11 +80,11 @@ export default function Header() {
           type="button"
           className="mobile-header__logo-btn"
           onClick={scrollToTop}
-          aria-label="Scroll to top"
+          aria-label={t("header.aria.scrollTop")}
         >
           <Image
             src="/assets/logo/well-edge-logo-retina.webp"
-            alt="Well Edge Creative"
+            alt={t("header.logoAlt")}
             width={120}
             height={45}
             className="mobile-header__logo"
@@ -89,17 +92,20 @@ export default function Header() {
           />
         </button>
 
-        <button
-          type="button"
-          className="mobile-header__burger"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMenuOpen}
-        >
-          <span className="mobile-header__burger-line" />
-          <span className="mobile-header__burger-line" />
-          <span className="mobile-header__burger-line" />
-        </button>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            className="mobile-header__burger"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? t("header.aria.closeMenu") : t("header.aria.openMenu")}
+            aria-expanded={isMenuOpen}
+          >
+            <span className="mobile-header__burger-line" />
+            <span className="mobile-header__burger-line" />
+            <span className="mobile-header__burger-line" />
+          </button>
+        </div>
       </header>
 
       {/* Mobile Menu Overlay */}
@@ -111,13 +117,13 @@ export default function Header() {
           <nav
             className="mobile-menu"
             onClick={(e) => e.stopPropagation()}
-            aria-label="Mobile navigation"
+            aria-label={t("header.aria.mobileNav")}
           >
             <button
               type="button"
               className="mobile-menu__close"
               onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
+              aria-label={t("header.aria.closeMenu")}
             >
               <svg
                 width="32"
@@ -143,11 +149,14 @@ export default function Header() {
                     className="mobile-menu__link"
                     onClick={() => handleNavClick(section.id)}
                   >
-                    {section.label}
+                    {t(section.labelKey)}
                   </button>
                 </li>
               ))}
             </ul>
+            <div className="mt-6 flex justify-center">
+              <LanguageSwitcher />
+            </div>
           </nav>
         </div>
       )}

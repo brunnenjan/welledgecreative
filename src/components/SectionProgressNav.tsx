@@ -1,24 +1,25 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 type SectionItem = {
   id: string;
-  label: string;
-  shortLabel?: string;
+  labelKey: string;
+  shortLabelKey?: string;
 };
 
 const SECTIONS: SectionItem[] = [
-  { id: "hero", label: "Home" },
-  { id: "design-strategy", label: "About" },
-  { id: "how-i-work", label: "How I Work" },
-  { id: "selected-projects", label: "Projects" },
-  { id: "logos", label: "Logos & Brandings" },
-  { id: "testimonials", label: "Testimonials" },
-  { id: "contact-section", label: "Contact" },
+  { id: "hero", labelKey: "navigation.home" },
+  { id: "design-strategy", labelKey: "navigation.about" },
+  { id: "how-i-work", labelKey: "navigation.howIWork" },
+  { id: "selected-projects", labelKey: "navigation.projects" },
+  { id: "logos", labelKey: "navigation.logos" },
+  { id: "testimonials", labelKey: "navigation.testimonials" },
+  { id: "contact-section", labelKey: "navigation.contact" },
 ];
 
 const INTERSECTION_ROOT_MARGIN = "-45% 0px -45%";
@@ -26,6 +27,7 @@ const INTERSECTION_THRESHOLDS = [0, 0.15, 0.30, 0.50, 0.70, 1];
 const HOME_SCROLL_RESET = 160;
 
 export default function SectionProgressNav() {
+  const { t } = useI18n();
   const [activeId, setActiveId] = useState<string | null>(null);
   const [progressRatio, setProgressRatio] = useState(0);
   const ratiosRef = useRef<Record<string, number>>({});
@@ -175,7 +177,11 @@ export default function SectionProgressNav() {
   };
 
   const activeSection = SECTIONS.find((s) => s.id === activeId);
-  const activeLabel = activeSection ? (activeSection.shortLabel ?? activeSection.label) : null;
+  const activeLabel = activeSection
+    ? activeSection.shortLabelKey
+      ? t(activeSection.shortLabelKey)
+      : t(activeSection.labelKey)
+    : null;
 
   if (!portalEl) {
     return null;
@@ -185,20 +191,26 @@ export default function SectionProgressNav() {
     <>
       {/* Screen reader announcement for active section */}
       <div className="sr-only" aria-live="polite" aria-atomic="true">
-        {activeLabel ? `Current section: ${activeLabel}` : ''}
+        {activeLabel ? `${t("progressNav.currentSection")} ${activeLabel}` : ""}
       </div>
 
       <nav
         className="progress-nav"
-        aria-label="Page section progress"
+        aria-label={t("progressNav.ariaLabel")}
       >
         <button
           type="button"
           className="progress-nav__home"
           onClick={handleHomeClick}
-          aria-label="Home"
+          aria-label={t("progressNav.homeLabel")}
         >
-          <img src="/assets/logo/well-edge-logo-icon.webp" alt="" />
+          <Image
+            src="/assets/logo/well-edge-logo-icon.webp"
+            alt=""
+            width={36}
+            height={36}
+            priority
+          />
         </button>
         <div className="progress-nav__body">
           <div className="progress-nav__spine" aria-hidden>
@@ -210,7 +222,7 @@ export default function SectionProgressNav() {
           <ul className="progress-nav__list">
             {SECTIONS.map((section, index) => {
               const isActive = section.id === activeId;
-              const label = section.shortLabel ?? section.label;
+              const label = section.shortLabelKey ? t(section.shortLabelKey) : t(section.labelKey);
               const isVisited = !isActive && activeIndex !== -1 && index < activeIndex;
               const dotClass = `progress-nav__dot${isActive ? " is-active" : isVisited ? " is-visited" : ""}`;
               return (
@@ -218,7 +230,7 @@ export default function SectionProgressNav() {
                   <button
                     type="button"
                     className={dotClass}
-                    aria-label={section.label}
+                    aria-label={t(section.labelKey)}
                     aria-current={isActive ? "true" : undefined}
                     onClick={() => handleDotClick(section.id)}
                   >
@@ -234,7 +246,7 @@ export default function SectionProgressNav() {
         </div>
       </nav>
 
-      <nav className="progress-nav-mobile" aria-label="Page section progress">
+      <nav className="progress-nav-mobile" aria-label={t("progressNav.ariaLabel")}>
         <ul className="progress-nav-mobile__list">
           {SECTIONS.map((section, index) => {
             const isActive = section.id === activeId;
@@ -245,7 +257,7 @@ export default function SectionProgressNav() {
                 <button
                   type="button"
                   className={dotClass}
-                  aria-label={section.label}
+                  aria-label={t(section.labelKey)}
                   aria-current={isActive ? "true" : undefined}
                   onClick={() => handleDotClick(section.id)}
                 />

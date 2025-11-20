@@ -9,6 +9,8 @@ import ScrollSmootherInit from "@/components/ScrollSmootherInit";
 import CookieConsent from "@/components/CookieConsent";
 import Preloader from "@/components/Preloader";
 import LandscapeOverlay from "@/components/LandscapeOverlay";
+import type { Locale } from "@/i18n/config";
+import { i18nConfig } from "@/i18n/config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -91,9 +93,20 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico?v=3"],
   },
   manifest: "/assets/favicon/site.webmanifest",
+  alternates: {
+    languages: {
+      en: "https://www.well-edge-creative.de/en",
+      de: "https://www.well-edge-creative.de/de",
+    },
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+type RootLayoutProps = {
+  children: React.ReactNode;
+};
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  const locale = i18nConfig.defaultLocale as Locale;
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -182,12 +195,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <link rel="preload" as="image" href="/assets/hero/hero-background.webp" />
+        <link rel="preload" as="image" href="/assets/hero/hero-foreground-desktop.webp" />
+        <link rel="preload" as="image" href="/assets/parallax/section-contact/parallax-bg-contact.webp" media="(min-width: 768px)" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} body-base antialiased`}>
         <LandscapeOverlay />

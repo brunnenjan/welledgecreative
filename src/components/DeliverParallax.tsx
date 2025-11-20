@@ -6,10 +6,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DeliverParallax() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const fgRef = useRef<HTMLDivElement>(null);
@@ -247,7 +249,7 @@ export default function DeliverParallax() {
             textShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
           }}
         >
-          Deliver
+          {t("deliverParallax.heading")}
         </h2>
       </div>
 

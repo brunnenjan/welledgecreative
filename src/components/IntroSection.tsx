@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { INTRO_CONFIG } from '@/lib/introConfig';
 import { smoothScrollTo } from "@/lib/smoothScroll";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,7 @@ type IntroSectionProps = {
 };
 
 export default function IntroSection({ sectionId = "design-strategy" }: IntroSectionProps) {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -230,7 +232,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
               style={{ color: '#1a1a1a' }}
             >
               <span className="inline-block relative">
-                <span ref={designTextRef} className="relative z-10">Clarity</span>
+                <span ref={designTextRef} className="relative z-10">{t("intro.headline.clarity")}</span>
                 <span
                   ref={designHighlightRef}
                   className="absolute inset-0 bg-accent/80"
@@ -242,9 +244,9 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     backgroundColor: '#f58222'
                   }}
                 />
-              </span> in your goal.<br />
-              Direction <span className="inline-block relative">
-                <span ref={strategyTextRef} className="relative z-10">in your brand</span>
+              </span> {t("intro.headline.goal")}<br />
+              {t("intro.headline.direction")} <span className="inline-block relative">
+                <span ref={strategyTextRef} className="relative z-10">{t("intro.headline.brand")}</span>
                 <span
                   ref={strategyHighlightRef}
                   className="absolute inset-0 bg-accent/80"
@@ -274,7 +276,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
               className="text-lg md:text-xl leading-relaxed max-w-3xl mx-auto"
               style={{ color: '#4a4a4a', opacity: 0 }}
             >
-                Every successful brand begins with clarity. I guide you through a structured process that uncovers your purpose, aligns your message, and creates design that truly resonates.
+                {t("intro.paragraph")}
             </p>
 
               <div
@@ -290,7 +292,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                     smoothScrollTo("selected-projects");
                   }}
                 >
-                  See my work
+                  {t("cta.seeWork")}
                 </a>
                 <a
                   href="https://calendly.com/well-edge-creative/30min"
@@ -298,7 +300,7 @@ export default function IntroSection({ sectionId = "design-strategy" }: IntroSec
                   rel="noreferrer"
                   className="btn btn-secondary min-w-[130px] sm:min-w-[190px] text-xs sm:text-base px-4 sm:px-6"
                 >
-                  Book a call
+                  {t("cta.bookCall")}
                 </a>
               </div>
             </div>

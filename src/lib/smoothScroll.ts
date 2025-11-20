@@ -1,4 +1,5 @@
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { isIosChrome } from "@/utils/device";
 
 type ScrollOptions = {
   block?: ScrollLogicalPosition;
@@ -46,15 +47,16 @@ export const smoothScrollTo = (
 
   const prefersReduce = isReducedMotion();
   const smoother = ScrollSmoother.get();
+  const iosChrome = isIosChrome();
 
   const targetScroll = getTargetScroll(element, block, offset);
 
-  if (smoother && !prefersReduce) {
+  if (smoother && !prefersReduce && !iosChrome) {
     smoother.scrollTo(targetScroll, true);
   } else {
     window.scrollTo({
       top: targetScroll,
-      behavior: prefersReduce ? "auto" : "smooth",
+      behavior: prefersReduce || iosChrome ? "auto" : "smooth",
     });
   }
 };
@@ -63,10 +65,11 @@ export const smoothScrollToTop = () => {
   if (typeof window === "undefined") return;
   const prefersReduce = isReducedMotion();
   const smoother = ScrollSmoother.get();
+  const iosChrome = isIosChrome();
 
-  if (smoother && !prefersReduce) {
+  if (smoother && !prefersReduce && !iosChrome) {
     smoother.scrollTo(0, true);
   } else {
-    window.scrollTo({ top: 0, behavior: prefersReduce ? "auto" : "smooth" });
+    window.scrollTo({ top: 0, behavior: prefersReduce || iosChrome ? "auto" : "smooth" });
   }
 };

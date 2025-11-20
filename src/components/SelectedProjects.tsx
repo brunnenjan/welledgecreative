@@ -1,81 +1,54 @@
 // src/components/SelectedProjects.tsx
 "use client";
-/* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
+import { useI18n } from "@/components/providers/I18nProvider";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 gsap.registerPlugin(ScrollTrigger);
 
 type FeaturedProject = {
   slug: string;
-  title: string;
-  client: string;
   year: string;
-  summary: string;
-  role: string[];
   site?: string;
-  images: { src: string; alt: string }[];
-  challenge?: string;
-  solution?: string;
-  result?: string;
-  award?: string;
+  images: { src: string; altKey: string }[];
 };
 
 const FEATURED_PROJECTS: FeaturedProject[] = [
   {
     slug: "brisa-bahia",
-    title: "Brisa Bahía — Retreat brand & website",
-    client: "Brisa Bahía",
     year: "2025",
-    summary: "Story-first brand system and fast, mobile-first website.",
-    role: ["Branding", "Logo", "Webdesign", "Webdev (WordPress, PHP)"],
     site: "https://www.brisabahia.com/",
     images: [
-      { src: "/assets/misc/projects/brisa-bahia.webp", alt: "Brisa Bahía hero" },
+      { src: "/assets/misc/projects/brisa-bahia.webp", altKey: "selectedProjects.projects.brisa-bahia.imageAlt" },
     ],
-    challenge: "A new retreat needed a brand that felt warm, professional, and authentic — not corporate or generic.",
-    solution: "Created a cohesive visual identity and storytelling-first website that reflects the retreat's unique character.",
-    result: "A distinctive brand and fast, accessible site that attracts the right guests and communicates genuine hospitality.",
   },
   {
     slug: "virtuelles-fastnachtsmuseum",
-    title: "Virtuelles Fastnachtsmuseum — digital exhibit",
-    client: "Virtuelles Fastnachtsmuseum",
     year: "2022",
-    summary: "Digital museum experience preserving cultural heritage.",
-    role: ["UX", "Design", "Content Creation", "Animation"],
     site: "https://www.virtuelles-fastnachtsmuseum.de",
     images: [
       {
         src: "/assets/misc/projects/virtuelles-fastnachtsmuseum.webp",
-        alt: "Virtuelles Fastnachtsmuseum hero",
+        altKey: "selectedProjects.projects.virtuelles-fastnachtsmuseum.imageAlt",
       },
     ],
-    challenge: "Making traditional cultural heritage accessible and engaging in a digital format for diverse audiences.",
-    solution: "Designed an intuitive virtual museum experience with thoughtful UX that honors the content while making it discoverable.",
-    result: "An accessible digital archive that preserves cultural heritage and reaches audiences beyond physical museum limitations.",
-    award: "🏆 Award: German Media Award (Silver)",
   },
   {
     slug: "einfach-schee",
-    title: "einfach-schee — full brand & site",
-    client: "einfach-schee",
     year: "2017",
-    summary: "End-to-end brand & website as a solo creator.",
-    role: ["Branding", "Logo", "Webdesign", "Webdev"],
     site: "https://einfach-schee.com",
     images: [
-      { src: "/assets/misc/projects/einfach-schee.webp", alt: "einfach-schee hero" },
+      { src: "/assets/misc/projects/einfach-schee.webp", altKey: "selectedProjects.projects.einfach-schee.imageAlt" },
     ],
-    challenge: "Launching a personal brand from scratch with limited resources and no prior online presence.",
-    solution: "Developed complete brand identity and custom website that established credibility and personality.",
-    result: "A professional online presence that successfully attracted clients and established market position.",
   },
 ];
 
 export default function SelectedProjects() {
+  const { t, getValue, locale } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const highlightRef = useRef<HTMLSpanElement>(null);
@@ -228,10 +201,10 @@ export default function SelectedProjects() {
           className="text-5xl md:text-7xl font-bold text-center mb-10 md:mb-12"
           style={{ color: "#1a1a1a" }}
         >
-          Selected{" "}
+          {t("selectedProjects.heading.prefix")}{" "}
           <span className="inline-block relative">
             <span ref={highlightTextRef} className="relative z-10">
-              Projects
+              {t("selectedProjects.heading.highlight")}
             </span>
             <span
               ref={highlightRef}
@@ -250,13 +223,24 @@ export default function SelectedProjects() {
           ref={subtitleRef}
           className="mx-auto mb-20 md:mb-32 max-w-3xl text-center text-base text-[#6a6a6a]"
         >
-          A selection of purposeful branding &amp; web design work created for founders, retreat centers, and small businesses worldwide.
+          {t("selectedProjects.subtitle")}
         </p>
 
         <div ref={projectsRef} className="space-y-32 md:space-y-40">
           {FEATURED_PROJECTS.map((project, index) => {
             const isLeft = index % 2 === 0;
             const heroImage = project.images[0];
+            const baseKey = `selectedProjects.projects.${project.slug}`;
+            const client = t(`${baseKey}.client`);
+            const title = t(`${baseKey}.title`);
+            const summary = t(`${baseKey}.summary`);
+            const extraNote = getValue<string>(`${baseKey}.extraNote`);
+            const challenge = getValue<string>(`${baseKey}.challenge`);
+            const solution = getValue<string>(`${baseKey}.solution`);
+            const result = getValue<string>(`${baseKey}.result`);
+            const award = getValue<string>(`${baseKey}.award`);
+            const roles = getValue<string[]>(`${baseKey}.roles`) ?? [];
+            const heroAlt = heroImage ? t(heroImage.altKey) : title;
 
             return (
               <div
@@ -269,13 +253,14 @@ export default function SelectedProjects() {
                   style={{ opacity: 0 }}
                 >
                   <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                    <img
+                    <Image
                       data-anim="picture"
                       src={heroImage?.src ?? ""}
-                      alt={heroImage?.alt ?? project.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
+                      alt={heroAlt}
+                      fill
+                      priority={false}
+                      sizes="(max-width: 768px) 90vw, (max-width: 1024px) 60vw, 640px"
+                      className="object-cover"
                       style={{ opacity: 0 }}
                     />
                   </div>
@@ -291,7 +276,7 @@ export default function SelectedProjects() {
                     className="text-sm md:text-base uppercase tracking-wider text-neutral-400"
                     style={{ opacity: 0 }}
                   >
-                    {project.client} · {project.year}
+                    {client} · {project.year}
                   </div>
 
                   <h3
@@ -299,7 +284,7 @@ export default function SelectedProjects() {
                     className="text-3xl md:text-4xl font-bold"
                     style={{ color: "#1a1a1a", opacity: 0 }}
                   >
-                    {project.title}
+                    {title}
                   </h3>
 
                   <p
@@ -307,55 +292,55 @@ export default function SelectedProjects() {
                     className="text-lg md:text-xl leading-relaxed"
                     style={{ color: "#434343", opacity: 0 }}
                   >
-                    {project.summary}
+                    {summary}
                   </p>
-                  {project.slug === "virtuelles-fastnachtsmuseum" && (
+                  {extraNote && (
                     <p
                       data-anim="text"
                       className="text-base md:text-lg leading-relaxed"
                       style={{ color: "#575757", opacity: 0 }}
                     >
-                      Created design, animations, and content — including a 20-minute interactive Bruegel painting experience (also available in English).
+                      {extraNote}
                     </p>
                   )}
 
-                  {(project.challenge || project.solution || project.result) && (
+                  {(challenge || solution || result) && (
                     <div
                       data-anim="text"
                       className="space-y-3 pt-4 border-l-2 pl-4"
                       style={{ borderColor: "#f58222", opacity: 0 }}
                     >
-                      {project.challenge && (
+                      {challenge && (
                         <div>
                           <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#f58222" }}>
-                            Challenge
+                            {t("selectedProjects.blocks.challenge")}
                           </h4>
                           <p className="text-sm md:text-base leading-relaxed" style={{ color: "#6a6a6a" }}>
-                            {project.challenge}
+                            {challenge}
                           </p>
                         </div>
                       )}
-                      {project.solution && (
+                      {solution && (
                         <div>
                           <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#f58222" }}>
-                            Solution
+                            {t("selectedProjects.blocks.solution")}
                           </h4>
                           <p className="text-sm md:text-base leading-relaxed" style={{ color: "#6a6a6a" }}>
-                            {project.solution}
+                            {solution}
                           </p>
                         </div>
                       )}
-                      {project.result && (
+                      {result && (
                         <div>
                           <h4 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: "#f58222" }}>
-                            Result
+                            {t("selectedProjects.blocks.result")}
                           </h4>
                           <p className="text-sm md:text-base leading-relaxed" style={{ color: "#6a6a6a" }}>
-                            {project.result}
+                            {result}
                           </p>
-                          {project.award && (
+                          {award && (
                             <p className="text-sm md:text-base leading-relaxed font-semibold italic mt-2" style={{ color: "#f58222" }}>
-                              {project.award}
+                              {award}
                             </p>
                           )}
                         </div>
@@ -368,7 +353,7 @@ export default function SelectedProjects() {
                     className="flex flex-wrap gap-2 pt-2"
                     style={{ opacity: 0 }}
                   >
-                    {project.role.map((role) => (
+                    {roles.map((role) => (
                       <span
                         key={role}
                         className="px-3 py-1 text-sm rounded-full border"
@@ -388,7 +373,7 @@ export default function SelectedProjects() {
                     className="flex items-center gap-3 pt-6 text-sm font-semibold uppercase tracking-wider text-neutral-500"
                     style={{ opacity: 0 }}
                   >
-                    <span>Case studies — Coming soon &rarr;</span>
+                    <span>{t("selectedProjects.cta.caseStudiesComing")}</span>
                   </div>
 
                   {project.site && (
@@ -399,7 +384,7 @@ export default function SelectedProjects() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-base font-semibold text-neutral-600 underline-offset-4 transition-colors hover:text-accent"
                       >
-                        Visit live site
+                        {t("selectedProjects.cta.visitSite")}
                         <svg
                           width="18"
                           height="18"
@@ -428,20 +413,17 @@ export default function SelectedProjects() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-24 md:mt-32"
           style={{ opacity: 0 }}
         >
-          <Link href="/work" className="btn btn-primary text-lg md:text-xl">
-            See more of my work
+          <Link href={`/${locale}/work`} className="btn btn-primary text-lg md:text-xl">
+            {t("selectedProjects.cta.seeMore")}
           </Link>
           <button
             type="button"
             onClick={() => {
-              const contactSection = document.getElementById("contact-section");
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
+              smoothScrollTo("contact-section");
             }}
             className="btn btn-secondary text-lg md:text-xl"
           >
-            Plan your Project
+            {t("profile.planProject")}
           </button>
         </div>
       </div>

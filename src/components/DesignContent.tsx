@@ -4,10 +4,12 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DesignContent() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const designTextRef = useRef<HTMLSpanElement>(null);
@@ -117,7 +119,7 @@ export default function DesignContent() {
           style={{ color: '#1a1a1a' }}
         >
           <span className="inline-block relative">
-            <span ref={designTextRef} className="relative z-10">Design</span>
+            <span ref={designTextRef} className="relative z-10">{t("designContent.headline.highlight")}</span>
             <span
               ref={designHighlightRef}
               className="absolute inset-0 bg-accent/80"
@@ -130,17 +132,25 @@ export default function DesignContent() {
               }}
             />
           </span>{" "}
-          that speaks for itself.
+          {t("designContent.headline.rest")}
         </h2>
         <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto mb-10">
           <p>
-            Every project is an opportunity to create something that not only looks beautiful but also <span className="font-semibold text-neutral-900 text-[1.08em]">communicates clearly</span> and <span className="font-semibold text-neutral-900 text-[1.08em]">resonates deeply</span> with its audience.
+            {t("designContent.paragraphOne.start")}{" "}
+            <span className="font-semibold text-neutral-900 text-[1.08em]">
+              {t("designContent.paragraphOne.calloutOne")}
+            </span>{" "}
+            {t("designContent.paragraphOne.middle")}{" "}
+            <span className="font-semibold text-neutral-900 text-[1.08em]">
+              {t("designContent.paragraphOne.calloutTwo")}
+            </span>{" "}
+            {t("designContent.paragraphOne.end")}
           </p>
           <p
             className="pt-4 text-[1.3rem] italic"
             style={{ color: "#4a4a4a", fontWeight: 300 }}
           >
-            Good design doesn&rsquo;t need explanation — it speaks for itself through clarity, purpose, and impact.
+            {t("designContent.paragraphTwo")}
           </p>
         </div>
 
@@ -156,9 +166,9 @@ export default function DesignContent() {
             color: '#ffffff',
             letterSpacing: '0.12em',
           }}
-          aria-label="Book a call with Well Edge Creative"
+          aria-label={t("designContent.bookCallAria")}
         >
-          Book a Call
+          {t("cta.bookCall")}
         </a>
       </div>
     </section>

@@ -1,39 +1,6 @@
-import Header from "@/components/Header";
-import SectionProgressNav from "@/components/SectionProgressNav";
-import BucketHero from "@/components/BucketHero";
-import DiscoverParallax from "@/components/DiscoverParallax";
-import IntroSection from "@/components/IntroSection";
-import ProfileParallaxSimple from "@/components/ProfileParallaxSimple";
-import ProfileContent from "@/components/ProfileContent";
-import HowIWork from "@/sections/HowIWork";
-import DesignParallax from "@/components/DesignParallax";
-import DesignContent from "@/components/DesignContent";
-import MyWork from "@/sections/MyWork";
-import LogosAndBranding from "@/sections/LogosAndBranding";
-import DeliverParallax from "@/components/DeliverParallax";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import { redirect } from "next/navigation";
+import { i18nConfig } from "@/i18n/config";
 
-export default function HomePage() {
-  return (
-    <>
-      <Header />
-      <SectionProgressNav />
-      <BucketHero />
-      <IntroSection />
-      <ProfileParallaxSimple />
-      <ProfileContent />
-      <DiscoverParallax />
-      <HowIWork />
-      <DesignParallax />
-      <DesignContent />
-      <MyWork />
-      <LogosAndBranding />
-      <DeliverParallax />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer />
-    </>
-  );
+export default function IndexRedirect() {
+  redirect(`/${i18nConfig.defaultLocale}`);
 }

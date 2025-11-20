@@ -9,12 +9,14 @@ import { HERO_CONFIG } from "@/lib/heroConfig";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CONFIG = HERO_CONFIG;
 
 export default function BucketHero() {
+  const { t } = useI18n();
   const heroRef   = useRef<HTMLElement>(null);
   const pinRef    = useRef<HTMLDivElement>(null);
   const bgRef     = useRef<HTMLDivElement>(null);
@@ -480,7 +482,7 @@ export default function BucketHero() {
           <div ref={contentRef} className="max-w-3xl flex flex-col items-center gap-4 sm:gap-5">
             <Image
               src="/assets/logo/well-edge-logo-retina.webp"
-              alt="Well Edge Creative"
+              alt={t("hero.logoAlt")}
               width={420}
               height={160}
               priority
@@ -489,11 +491,11 @@ export default function BucketHero() {
               className="w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[320px] h-auto"
             />
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-6 sm:mt-6 md:mt-0">
-              <span style={{ color: '#f58222' }}>Branding &amp; Web Design</span>{" "}
-              <span className="text-white">that tells your story.</span>
+              <span style={{ color: '#f58222' }}>{t("hero.headline.highlight")}</span>{" "}
+              <span className="text-white">{t("hero.headline.rest")}</span>
             </h1>
             <p className="text-white/90 text-base sm:text-lg leading-relaxed">
-              I help founders build brands that connect with the right people.
+              {t("hero.tagline")}
             </p>
             <div className="mt-6 flex flex-row gap-3 items-center justify-center">
               <a
@@ -503,18 +505,18 @@ export default function BucketHero() {
                   event.preventDefault();
                   smoothScrollTo("selected-projects");
                 }}
-              >
-                See my work
-              </a>
+                >
+                  {t("cta.seeWork")}
+                </a>
               <a
                 href="https://calendly.com/well-edge-creative/30min"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary min-w-[130px] sm:min-w-[200px] text-xs sm:text-base px-4 sm:px-6"
-              >
-                Book a call
-              </a>
-            </div>
+                >
+                  {t("cta.bookCall")}
+                </a>
+              </div>
             <button
               type="button"
               className="group mt-10 flex flex-col items-center gap-2 text-xs uppercase tracking-[0.4em] text-white/80"
@@ -523,9 +525,9 @@ export default function BucketHero() {
                 if (!target) return;
                 smoothScrollTo(target, { block: "start" });
               }}
-              aria-label="Scroll to explore"
+              aria-label={t("hero.scrollCta")}
             >
-              <span className="group-hover:text-white transition-colors">Scroll to explore</span>
+              <span className="group-hover:text-white transition-colors">{t("hero.scrollCta")}</span>
               <span className="hero-scroll-cue" aria-hidden="true">
                 <span className="hero-scroll-dot" />
               </span>
@@ -542,7 +544,7 @@ export default function BucketHero() {
         >
           <Image
             src="/assets/hero/hero-bucket.webp"
-            alt="Illustrated wooden bucket descending into the hero well"
+            alt={t("hero.bucketAlt")}
             width={0}
             height={0}
             sizes="(max-width: 768px) 60vw, 600px"

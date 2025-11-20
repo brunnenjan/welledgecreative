@@ -29,7 +29,7 @@ type Props = {
 export default function BucketBreak({
   bgSrc = "/assets/parallax/section-discover/parallax-bg-discover-secondary.webp",
   fgSrc = "/assets/parallax/section-discover/parallax-foreground-discover-alt.webp",
-  bucketSrc = "/assets/misc/bucket-generic.png",
+  bucketSrc = "/assets/misc/bucket-generic.webp",
 
   heightVh = 60,
   startOffsetVh = -10,

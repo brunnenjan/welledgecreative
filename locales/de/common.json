@@ -1,0 +1,289 @@
+{
+  "navigation": {
+    "home": "Start",
+    "about": "Über mich",
+    "profile": "Profil",
+    "howIWork": "Wie ich arbeite",
+    "projects": "Projekte",
+    "logos": "Logos & Brandings",
+    "testimonials": "Stimmen",
+    "contact": "Kontakt"
+  },
+  "header": {
+    "logoAlt": "Well Edge Creative",
+    "aria": {
+      "scrollTop": "Nach oben scrollen",
+      "openMenu": "Menü öffnen",
+      "closeMenu": "Menü schließen",
+      "mobileNav": "Mobile Navigation"
+    }
+  },
+  "languageSwitcher": {
+    "label": "Sprache wechseln",
+    "english": "Englisch",
+    "german": "Deutsch"
+  },
+  "progressNav": {
+    "currentSection": "Aktueller Abschnitt:",
+    "ariaLabel": "Fortschrittsnavigation",
+    "homeLabel": "Start"
+  },
+  "hero": {
+    "logoAlt": "Well Edge Creative Wortmarke",
+    "headline": {
+      "highlight": "Branding & Webdesign",
+      "rest": "das deine Geschichte erzählt."
+    },
+    "tagline": "Ich helfe Gründer:innen, Marken zu bauen, die die richtigen Menschen erreichen.",
+    "scrollCta": "Scrollen zum Entdecken",
+    "bucketAlt": "Illustrierter Holzeimer, der in den Brunnen des Hero eintaucht"
+  },
+  "cta": {
+    "seeWork": "Meine Arbeiten",
+    "bookCall": "Call buchen"
+  },
+  "intro": {
+    "headline": {
+      "clarity": "Klarheit",
+      "goal": "in deinem Ziel.",
+      "direction": "Richtung",
+      "brand": "in deiner Marke"
+    },
+    "paragraph": "Jede erfolgreiche Marke beginnt mit Klarheit. Ich begleite dich durch einen strukturierten Prozess, der deinen Purpose sichtbar macht, deine Botschaft schärft und Gestaltung schafft, die wirklich berührt."
+  },
+  "profile": {
+    "headline": {
+      "prefix": "Hi, ich bin",
+      "name": "Jan",
+      "suffix": "– Designer, Brand Thinker, Problemlöser."
+    },
+    "paragraphOne": "Seit 7 Jahren unterstütze ich Gründer:innen, Retreat- & Wellness-Zentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, einzigartig aussehen und online hervorragend funktionieren.",
+    "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit klarer, emotionaler Gestaltung – so versteht dein Publikum sofort, wer du bist und warum du wichtig bist.",
+    "planProject": "Plane dein Projekt",
+    "planProjectAria": "Plane dein Projekt – scrolle zum Kontaktformular"
+  },
+  "howIWork": {
+    "heading": "So",
+    "highlight": "arbeite ich.",
+    "paragraph": "Jedes Projekt folgt einem transparenten, strategischen Prozess, der Klarheit schafft und Ergebnisse liefert, die bleiben.",
+    "phases": {
+      "discover": {
+        "title": "Discover",
+        "description": "Wir definieren Purpose, Zielgruppe und Botschaft. Diese Phase legt das strategische Fundament: klare Positionierung, starke Story und Richtung, die dich wirklich voranbringt."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Deine Markenidentität nimmt Form an: Logo, Farben, Typografie, visuelles System. Alles wird so gestaltet, dass es deinen Purpose widerspiegelt und sofort wiedererkannt wird."
+      },
+      "deliver": {
+        "title": "Deliver",
+        "description": "Strategie und Design werden zur launchbereiten digitalen Experience. Deine Website wird klar, intuitiv, emotional – und auf langfristige Ziele ausgerichtet."
+      }
+    }
+  },
+  "designContent": {
+    "headline": {
+      "highlight": "Design",
+      "rest": "das für sich spricht."
+    },
+    "paragraphOne": {
+      "start": "Jedes Projekt ist eine Chance, etwas zu schaffen, das nicht nur schön aussieht, sondern auch",
+      "calloutOne": "klar kommuniziert",
+      "middle": "und",
+      "calloutTwo": "tief berührt",
+      "end": "bei der Zielgruppe."
+    },
+    "paragraphTwo": "Gutes Design braucht keine Erklärung – es spricht durch Klarheit, Purpose und Wirkung.",
+    "bookCallAria": "Call mit Well Edge Creative buchen"
+  },
+  "selectedProjects": {
+    "heading": {
+      "prefix": "Ausgewählte",
+      "highlight": "Projekte"
+    },
+    "subtitle": "Eine Auswahl zielgerichteter Branding- und Webdesign-Arbeiten für Gründer:innen, Retreat-Zentren und kleine Unternehmen weltweit.",
+    "blocks": {
+      "challenge": "Herausforderung",
+      "solution": "Lösung",
+      "result": "Ergebnis"
+    },
+    "cta": {
+      "seeMore": "Weitere Arbeiten ansehen",
+      "caseStudiesComing": "Case Studies — bald verfügbar →",
+      "visitSite": "Live-Website besuchen"
+    },
+    "projects": {
+      "brisa-bahia": {
+        "client": "Brisa Bahía",
+        "title": "Brisa Bahía — Retreat-Brand & Website",
+        "summary": "Story-first Brand-System und schnelle, mobile Website.",
+        "challenge": "Ein neues Retreat brauchte eine Marke, die warm, professionell und authentisch wirkt – nicht corporate oder generisch.",
+        "solution": "Entwicklung einer kohärenten visuellen Identität und einer storytelling-basierten Website, die den Charakter des Retreats transportiert.",
+        "result": "Eine unverwechselbare Marke und performante, barrierearme Site, die die richtigen Gäste anspricht und echte Gastfreundschaft vermittelt.",
+        "roles": ["Branding", "Logo", "Webdesign", "Webdev (WordPress, PHP)"],
+        "imageAlt": "Brisa Bahía Hero"
+      },
+      "virtuelles-fastnachtsmuseum": {
+        "client": "Virtuelles Fastnachtsmuseum",
+        "title": "Virtuelles Fastnachtsmuseum — digitale Ausstellung",
+        "summary": "Digitale Museumserfahrung zur Bewahrung von Kulturerbe.",
+        "extraNote": "Design, Animationen und Content – inklusive einer 20-minütigen interaktiven Bruegel-Erfahrung (auch auf Englisch).",
+        "challenge": "Traditionelles Kulturerbe digital zugänglich und spannend für unterschiedliche Zielgruppen machen.",
+        "solution": "Intuitive, virtuelle Museumsreise mit bedacht gestaltetem UX, die Inhalte würdigt und zugleich auffindbar macht.",
+        "result": "Ein zugängliches digitales Archiv, das Kulturerbe bewahrt und Menschen über das physische Museum hinaus erreicht.",
+        "award": "🏆 Auszeichnung: Deutscher Medienpreis (Silber)",
+        "roles": ["UX", "Design", "Content Creation", "Animation"],
+        "imageAlt": "Virtuelles Fastnachtsmuseum Hero"
+      },
+      "einfach-schee": {
+        "client": "einfach-schee",
+        "title": "einfach-schee — komplette Brand & Website",
+        "summary": "End-to-End-Brand & Website als Solo-Creator.",
+        "challenge": "Eine persönliche Marke von Grund auf mit wenig Ressourcen und ohne Online-Präsenz starten.",
+        "solution": "Komplette Markenidentität und individuelle Website, die Vertrauen und Persönlichkeit aufbaut.",
+        "result": "Eine professionelle Präsenz, die Kunden überzeugt und die Positionierung am Markt stärkt.",
+        "roles": ["Branding", "Logo", "Webdesign", "Webdev"],
+        "imageAlt": "einfach-schee Hero"
+      }
+    }
+  },
+  "logos": {
+    "heading": {
+      "prefix": "Logos &",
+      "highlight": "Branding"
+    },
+    "description": "Identitäten, die ich gemeinsam mit meinen Kund:innen entwickelt habe – jede mit eigener Geschichte.",
+    "aria": "Kundenlogos"
+  },
+  "deliverParallax": {
+    "heading": "Deliver"
+  },
+  "testimonials": {
+    "heading": {
+      "prefix": "Das sagen",
+      "highlight": "Kund:innen",
+      "suffix": "über mich"
+    },
+    "description": "Echte Worte von Menschen, mit denen ich arbeiten durfte.",
+    "carouselAria": "Kundenstimmen",
+    "buttons": {
+      "prev": "Vorheriges Testimonial",
+      "next": "Nächstes Testimonial",
+      "readMore": "Mehr lesen",
+      "closeModal": "Modal schließen",
+      "visitSite": "Website besuchen"
+    },
+    "paginationLabel": "Testimonial auswählen",
+    "jumpTo": "Wechsel zu Testimonial",
+    "ratingPrefix": "Bewertung",
+    "ratingSuffix": "von 5",
+    "status": {
+      "loading": "Stimmen werden geladen...",
+      "empty": "Stimmen von Gründer:innen und Unternehmen, die ich begleiten durfte.",
+      "unavailable": "Testimonials sind gerade nicht verfügbar."
+    },
+    "announcement": {
+      "prefix": "Testimonial",
+      "connector": "von"
+    }
+  },
+  "contact": {
+    "heading": "Bereit für eine Marke mit Purpose?",
+    "paragraph": "Wenn du Klarheit, eine starke visuelle Identität und eine Website willst, die deine Vision wirklich widerspiegelt – lass uns sprechen.",
+    "emailPrompt": "Du schreibst lieber direkt eine Mail?"
+  },
+  "contactForm": {
+    "labels": {
+      "name": "Dein Name *",
+      "email": "Deine E-Mail *",
+      "projectTypes": "Wobei kann ich dich unterstützen?",
+      "budget": "Budgetrahmen",
+      "budgetPlaceholder": "Budget auswählen",
+      "message": "Erzähl mir von deinem Projekt *",
+      "messagePlaceholder": "Vision, Ziele, Timeline oder Fragen – alles, was wichtig ist ...",
+      "submit": "Nachricht senden"
+    },
+    "projectTypes": {
+      "branding": "Branding & Logo-Design",
+      "websiteDesign": "Website Design",
+      "websiteDev": "Website Development",
+      "fullPackage": "Komplettes Brand & Web Paket",
+      "strategy": "Strategie & Beratung",
+      "other": "Sonstiges"
+    },
+    "budgetRanges": {
+      "under2k": "< 2.000 €",
+      "twoToFive": "2.000–5.000 €",
+      "fiveToTen": "5.000–10.000 €",
+      "aboveTen": "10.000 €+",
+      "unsure": "Noch unsicher"
+    },
+    "status": {
+      "verifying": "Prüfe...",
+      "recaptchaError": "⚠️ reCAPTCHA konnte nicht geladen werden. Bitte aktualisiere und versuch es erneut.",
+      "sending": "Sende...",
+      "success": "✅ Nachricht versendet! Schau in dein Postfach für die Bestätigung.",
+      "failure": "⚠️ Versand fehlgeschlagen – bitte versuch es nochmal.",
+      "errorPrefix": "⚠️"
+    }
+  },
+  "workPage": {
+    "heading": "Case Studies",
+    "description": "Ausgewählte Branding- und Webprojekte."
+  },
+  "servicesPage": {
+    "heading": "Leistungen",
+    "description": "Strategie, Brand-Systeme und Websites – story-first, mobile-first.",
+    "cards": [
+      {
+        "title": "Strategy Sprint",
+        "items": ["Positionierung & Messaging", "Content-Map + Homepage-Wire", "Roadmap"],
+        "price": "Ab 1.200 €"
+      },
+      {
+        "title": "Brand Essentials",
+        "items": ["Logo-Suite, Farben & Typo", "Brand Kit (Social, Docs)", "Key Visuals"],
+        "price": "Ab 2.800 €"
+      },
+      {
+        "title": "Launch Website",
+        "items": ["3–5 Seiten, Next.js", "GSAP-Animationen", "Mobile-first, Onpage-SEO"],
+        "price": "Ab 4.500 €"
+      }
+    ],
+    "cta": {
+      "title": "Auch für Startups & KMU",
+      "body": "Gleicher Prozess, angepasst an deine Stage. Erzähl mir deine Ziele – ich schärfe Scope und Timeline mit dir."
+    }
+  },
+  "aboutPage": {
+    "heading": "About gerade in Überarbeitung",
+    "description": "Ich aktualisiere diesen Bereich. Bis dahin findest du Profil, Prozess und Kundengeschichten auf der Startseite."
+  },
+  "approachPage": {
+    "heading": "Approach",
+    "description": "Strategie → Story → System → Site. Das Well & Bucket Bild sorgt für Tiefe und Klarheit.",
+    "steps": [
+      { "title": "Discover", "text": "Ziele, Audience, Rahmen" },
+      { "title": "Define", "text": "Positionierung, Botschaft, Content" },
+      { "title": "Design", "text": "Brand-System & UI" },
+      { "title": "Deliver", "text": "Build, QA, Übergabe" }
+    ]
+  },
+  "footer": {
+    "heading": "Bereit, etwas Sinnvolles gemeinsam zu erschaffen.",
+    "description": "Ich gestalte Marken und digitale Experiences, die zugleich tief und klar sind. Erzähl mir von deinem Projekt – wir finden gemeinsam den ersten Schritt.",
+    "remote": "Remote unterwegs und mit Kund:innen weltweit verbunden.",
+    "navAria": "Footer-Navigation",
+    "socialAria": "Social Links",
+    "social": {
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    },
+    "legal": {
+      "imprint": "Impressum",
+      "privacy": "Datenschutz"
+    },
+    "legalLine": "Ich helfe Gründer:innen seit 2017, klare und bedeutungsvolle Marken aufzubauen."
+  }
+}

@@ -1,6 +1,5 @@
 // src/components/LogosCarouselSwiper.tsx
 "use client";
-/* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
@@ -8,12 +7,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { logos as logoData } from "@/app/data/logos";
 import { LOGOS_CONFIG } from "@/lib/logosConfig";
 import type { Swiper as SwiperType } from "swiper";
+import Image from "next/image";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CONFIG = LOGOS_CONFIG;
 
 export default function LogosCarouselSwiper() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLHeadingElement>(null);
   const brandingsHighlightRef = useRef<HTMLSpanElement>(null);
@@ -173,9 +175,9 @@ export default function LogosCarouselSwiper() {
             className="text-4xl md:text-5xl font-bold mb-4"
             style={{ color: "#1a1a1a" }}
           >
-            <span className="inline-block align-middle">Logos &amp;</span>{" "}
+            <span className="inline-block align-middle">{t("logos.heading.prefix")}</span>{" "}
             <span className="inline-block align-middle relative">
-              <span ref={brandingsTextRef} className="relative z-10">Branding</span>
+              <span ref={brandingsTextRef} className="relative z-10">{t("logos.heading.highlight")}</span>
               <span
                 ref={brandingsHighlightRef}
                 className="absolute inset-0 bg-accent/80"
@@ -191,7 +193,7 @@ export default function LogosCarouselSwiper() {
             </span>
           </h2>
           <p className="text-base md:text-lg text-[#6a6a6a] max-w-2xl mx-auto">
-            Identities crafted with my clients — each with its own story.
+            {t("logos.description")}
           </p>
         </div>
 
@@ -199,16 +201,15 @@ export default function LogosCarouselSwiper() {
           ref={swiperRef}
           className="swiper logo-slider"
           role="region"
-          aria-label="Client logos"
+          aria-label={t("logos.aria")}
         >
           <div className="swiper-wrapper">
             {logoData.map((logo, index) => (
               <div key={`logo-${index}`} className="swiper-slide logo-slide">
-                <img
+                <Image
                   src={logo.src}
                   alt={logo.alt}
                   loading={index < 3 ? "eager" : "lazy"}
-                  decoding="async"
                   width={logo.width}
                   height={logo.height}
                   className="logo-marquee__image"

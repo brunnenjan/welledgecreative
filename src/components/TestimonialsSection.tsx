@@ -1,10 +1,11 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TESTIMONIALS_CONFIG } from "@/lib/testimonialsConfig";
+import Image from "next/image";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,6 +57,7 @@ const getPositionClass = (
 };
 
 export default function TestimonialsSection() {
+  const { t } = useI18n();
   const containerRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
   const pointerState = useRef<{ active: boolean; startX: number }>({ active: false, startX: 0 });
@@ -387,12 +389,12 @@ export default function TestimonialsSection() {
 
   const announcement = useMemo(() => {
     if (total === 0) {
-      return loadError ? "Testimonials are unavailable right now." : "Loading testimonials.";
+      return loadError ? t("testimonials.status.unavailable") : t("testimonials.status.loading");
     }
 
     const safeIndex = ((currentIndex % total) + total) % total;
-    return `Testimonial ${safeIndex + 1} of ${total}`;
-  }, [currentIndex, total, loadError]);
+    return `${t("testimonials.announcement.prefix")} ${safeIndex + 1} ${t("testimonials.announcement.connector")} ${total}`;
+  }, [currentIndex, total, loadError, t]);
 
   const disableNavigation = total <= 1 || !isReady;
   const handleDotSelect = (index: number) => {
@@ -470,14 +472,14 @@ export default function TestimonialsSection() {
     >
       <div className="container text-center">
         <h2 ref={titleRef} id="testimonials-title" className="section-title">
-          What{" "}
+          {t("testimonials.heading.prefix")}{" "}
           <span className="relative inline-block">
             <span
               ref={titleTextRef}
               className="relative z-10"
               style={{ color: "#1a1a1a" }}
             >
-              Clients
+              {t("testimonials.heading.highlight")}
             </span>
             <span
               ref={titleHighlightRef}
@@ -491,10 +493,10 @@ export default function TestimonialsSection() {
               }}
             />
           </span>{" "}
-          Say
+          {t("testimonials.heading.suffix")}
         </h2>
         <p className="mx-auto mt-6 max-w-3xl text-lg md:text-xl text-[#6a6a6a]">
-          Real words from people I had the pleasure to create with.
+          {t("testimonials.description")}
         </p>
 
         <div
@@ -505,7 +507,7 @@ export default function TestimonialsSection() {
           <button
             type="button"
             className="testimonial-button"
-            aria-label="Previous testimonial"
+            aria-label={t("testimonials.buttons.prev")}
             onClick={() => {
               pause();
               goToPrev();
@@ -523,7 +525,7 @@ export default function TestimonialsSection() {
               tabIndex={0}
               role="region"
               aria-roledescription="carousel"
-              aria-label="Client testimonials"
+              aria-label={t("testimonials.carouselAria")}
               onFocus={pause}
               onBlur={resume}
               onKeyDown={(event) => {
@@ -543,12 +545,12 @@ export default function TestimonialsSection() {
             >
               {total === 0 ? (
                 <div className="testimonial-empty" role="status">
-                  {loadError ? "Voices from founders and businesses I've supported over the years." : "Loading voices from clients..."}
+                  {loadError ? t("testimonials.status.empty") : t("testimonials.status.loading")}
                 </div>
               ) : (
                 <ul className="testimonial-track">
                   {testimonials.map((data, index) => {
-                    const ratingLabel = `Rated ${data.rating} out of 5`;
+                    const ratingLabel = `${t("testimonials.ratingPrefix")} ${data.rating.toFixed(1)} ${t("testimonials.ratingSuffix")}`;
                     const roundedRating = Math.round(data.rating);
                     const position = getPositionClass(currentIndex, index, total, hasPeekPositions);
                     const isHidden =
@@ -590,13 +592,12 @@ export default function TestimonialsSection() {
                         <article className="testimonial-card">
                           <figure className="p-8">
                             <div className="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
-                              <img
+                              <Image
                                 src={data.avatar}
                                 alt=""
                                 width={96}
                                 height={96}
                                 loading="lazy"
-                                decoding="async"
                                 className="h-full w-full object-cover"
                               />
                             </div>
@@ -614,7 +615,7 @@ export default function TestimonialsSection() {
                                   openModal(data, event.currentTarget);
                                 }}
                               >
-                                Read more
+                                {t("testimonials.buttons.readMore")}
                               </button>
                             )}
 
@@ -671,7 +672,7 @@ export default function TestimonialsSection() {
           <button
             type="button"
             className="testimonial-button"
-            aria-label="Next testimonial"
+            aria-label={t("testimonials.buttons.next")}
             onClick={() => {
               pause();
               goToNext();
@@ -683,7 +684,7 @@ export default function TestimonialsSection() {
           </button>
 
           {total > 1 && (
-            <ul className="testimonial-pagination" role="tablist" aria-label="Select testimonial">
+            <ul className="testimonial-pagination" role="tablist" aria-label={t("testimonials.paginationLabel")}>
               {testimonials.map((_, index) => {
                 const isActive = index === currentIndex;
                 return (
@@ -692,7 +693,7 @@ export default function TestimonialsSection() {
                       type="button"
                       role="tab"
                       aria-selected={isActive}
-                      aria-label={`Jump to testimonial ${index + 1}`}
+                      aria-label={`${t("testimonials.jumpTo")} ${index + 1}`}
                       className={`testimonial-pagination__dot${isActive ? ' is-active' : ''}`}
                       onClick={() => handleDotSelect(index)}
                     />
@@ -727,7 +728,7 @@ export default function TestimonialsSection() {
               type="button"
               className="testimonial-modal-close"
               onClick={closeModal}
-              aria-label="Close modal"
+              aria-label={t("testimonials.buttons.closeModal")}
               ref={modalCloseRef}
             >
               ×
@@ -738,7 +739,7 @@ export default function TestimonialsSection() {
               type="button"
               className="testimonial-modal-nav testimonial-modal-nav-prev"
               onClick={() => navigateModal('prev')}
-              aria-label="Previous testimonial"
+              aria-label={t("testimonials.buttons.prev")}
             >
               ‹
             </button>
@@ -746,20 +747,19 @@ export default function TestimonialsSection() {
               type="button"
               className="testimonial-modal-nav testimonial-modal-nav-next"
               onClick={() => navigateModal('next')}
-              aria-label="Next testimonial"
+              aria-label={t("testimonials.buttons.next")}
             >
               ›
             </button>
 
             <div className="testimonial-modal-body">
               <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100">
-                <img
+                <Image
                   src={modalData.avatar || FALLBACK_AVATAR}
                   alt={modalData.name}
                   width={128}
                   height={128}
                   loading="lazy"
-                  decoding="async"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -794,7 +794,7 @@ export default function TestimonialsSection() {
                   rel="noopener noreferrer"
                   className="testimonial-modal-link"
                 >
-                  Visit Website
+                  {t("testimonials.buttons.visitSite")}
                 </a>
               )}
             </div>

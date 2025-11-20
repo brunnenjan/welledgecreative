@@ -5,33 +5,32 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROCESS_CONFIG } from "@/lib/processConfig";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HOW_I_WORK_START_OFFSET = PROCESS_CONFIG.START_OFFSET;
 
-const phases = [
+const PHASES = [
   {
     number: "01",
-    title: "Discover",
-    description:
-      "We define your purpose, audience, and message. This step builds the strategic foundation your brand needs — clear positioning, meaningful storytelling, and a direction that actually moves you forward.",
+    titleKey: "howIWork.phases.discover.title",
+    descriptionKey: "howIWork.phases.discover.description",
   },
   {
     number: "02",
-    title: "Design",
-    description:
-      "Your brand identity takes shape: logo, colors, typography, visual system. Everything is crafted to reflect your purpose and create instant recognition.",
+    titleKey: "howIWork.phases.design.title",
+    descriptionKey: "howIWork.phases.design.description",
   },
   {
     number: "03",
-    title: "Deliver",
-    description:
-      "We turn strategy and design into a ready-to-launch digital experience. Your website becomes clear, intuitive, emotional — and aligned with your long-term goals.",
+    titleKey: "howIWork.phases.deliver.title",
+    descriptionKey: "howIWork.phases.deliver.description",
   },
 ];
 
 export default function HowIWork() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const workHighlightRef = useRef<HTMLSpanElement>(null);
@@ -123,10 +122,10 @@ export default function HowIWork() {
           className="text-5xl md:text-7xl font-bold text-center mb-8 md:mb-12"
           style={{ color: "#1a1a1a" }}
         >
-          That&rsquo;s how I{" "}
+          {t("howIWork.heading")}{" "}
           <span className="inline-block relative">
             <span ref={workTextRef} className="relative z-10">
-              work.
+              {t("howIWork.highlight")}
             </span>
             <span
               ref={workHighlightRef}
@@ -143,15 +142,15 @@ export default function HowIWork() {
         </h2>
 
         <p className="mx-auto mt-2 mb-16 max-w-3xl text-center text-base md:text-lg text-[#6a6a6a]">
-          Every project follows a transparent, strategic process designed to uncover clarity and deliver lasting results.
+          {t("howIWork.paragraph")}
         </p>
 
         {/* Phases - Vertical Stack */}
         <div ref={phasesRef} className="space-y-16 md:space-y-20">
-          {phases.map((phase, index) => (
+          {PHASES.map((phase, index) => (
             <div
               key={phase.number}
-              className={`flex flex-col md:flex-row gap-6 md:gap-12 items-start${index === phases.length - 1 ? ' mb-24 md:mb-32' : ''}`}
+              className={`flex flex-col md:flex-row gap-6 md:gap-12 items-start${index === PHASES.length - 1 ? ' mb-24 md:mb-32' : ''}`}
             >
               {/* Number */}
               <div
@@ -167,13 +166,13 @@ export default function HowIWork() {
                   className="text-3xl md:text-4xl font-bold"
                   style={{ color: "#1a1a1a" }}
                 >
-                  {phase.title}
-                </h3>
+                {t(phase.titleKey)}
+              </h3>
                 <p
                   className="text-lg md:text-xl leading-relaxed"
                   style={{ color: "#6a6a6a" }}
                 >
-                  {phase.description}
+                  {t(phase.descriptionKey)}
                 </p>
               </div>
             </div>

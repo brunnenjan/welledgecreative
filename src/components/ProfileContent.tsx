@@ -5,10 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { smoothScrollTo } from "@/lib/smoothScroll";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProfileContent() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const designsTextRef = useRef<HTMLSpanElement>(null);
@@ -120,8 +122,8 @@ export default function ProfileContent() {
           className="text-5xl md:text-7xl font-bold leading-[1.2] tracking-tight mb-12"
           style={{ color: '#1a1a1a' }}
         >
-          Hi, I&rsquo;m <span className="inline-block relative">
-            <span ref={designsTextRef} className="relative z-10">Jan</span>
+          {t("profile.headline.prefix")} <span className="inline-block relative">
+            <span ref={designsTextRef} className="relative z-10">{t("profile.headline.name")}</span>
             <span
               ref={designsHighlightRef}
               className="absolute inset-0 bg-accent/80"
@@ -133,17 +135,17 @@ export default function ProfileContent() {
                 backgroundColor: '#f58222',
               }}
             />
-          </span> – Designer, Brand Thinker, Problem-Solver.
+          </span> {t("profile.headline.suffix")}
         </h1>
         <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto">
           <p>
-            For the past 7 years I&rsquo;ve been helping entrepreneurs, retreat &amp; wellness centers, and small businesses build brands that feel authentic, look distinctive, and work beautifully online.
+            {t("profile.paragraphOne")}
           </p>
           <p
             className="pt-4 text-[1.3rem] italic"
             style={{ color: "#4a4a4a", fontWeight: 300 }}
           >
-            My approach combines strategic thinking with clean, emotional design — so your audience instantly understands who you are and why you matter.
+            {t("profile.paragraphTwo")}
           </p>
         </div>
 
@@ -158,9 +160,9 @@ export default function ProfileContent() {
               color: '#ffffff',
               letterSpacing: '0.12em',
             }}
-            aria-label="Plan your project - scroll to contact form"
+            aria-label={t("profile.planProjectAria")}
           >
-            Plan your Project
+            {t("profile.planProject")}
           </button>
         )}
       </div>

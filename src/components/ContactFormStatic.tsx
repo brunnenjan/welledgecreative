@@ -2,20 +2,28 @@
 
 import { useState, FormEvent, useEffect } from "react";
 import Script from "next/script";
+import { useI18n } from "@/components/providers/I18nProvider";
 
-const PROJECT_TYPES = [
-  "Branding & Logo Design",
-  "Website Design",
-  "Website Development",
-  "Full Brand & Web Package",
-  "Strategy & Consultation",
-  "Other",
-];
+const PROJECT_TYPE_KEYS = [
+  "contactForm.projectTypes.branding",
+  "contactForm.projectTypes.websiteDesign",
+  "contactForm.projectTypes.websiteDev",
+  "contactForm.projectTypes.fullPackage",
+  "contactForm.projectTypes.strategy",
+  "contactForm.projectTypes.other",
+] as const;
 
-const BUDGET_RANGES = ["< €2k", "€2–5k", "€5–10k", "€10k+", "Not sure yet"];
+const BUDGET_RANGE_KEYS = [
+  "contactForm.budgetRanges.under2k",
+  "contactForm.budgetRanges.twoToFive",
+  "contactForm.budgetRanges.fiveToTen",
+  "contactForm.budgetRanges.aboveTen",
+  "contactForm.budgetRanges.unsure",
+] as const;
 const RECAPTCHA_SITE_KEY = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
 
 export default function ContactFormStatic() {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,13 +65,13 @@ export default function ContactFormStatic() {
     e.preventDefault();
 
     setIsSubmitting(true);
-    setStatus("Verifying...");
+    setStatus(t("contactForm.status.verifying"));
 
     try {
       // Get reCAPTCHA token
       if (!window.grecaptcha?.enterprise) {
         console.error("reCAPTCHA not loaded");
-        setStatus("⚠️ reCAPTCHA not loaded. Please refresh and try again.");
+        setStatus(t("contactForm.status.recaptchaError"));
         setIsSubmitting(false);
         return;
       }
@@ -74,7 +82,7 @@ export default function ContactFormStatic() {
         throw new Error("Failed to get reCAPTCHA token");
       }
 
-      setStatus("Sending...");
+      setStatus(t("contactForm.status.sending"));
 
       const data = new FormData();
       data.append("name", formData.name);
@@ -92,14 +100,14 @@ export default function ContactFormStatic() {
       const text = await response.text();
 
       if (text.includes("OK")) {
-        setStatus("✅ Message sent successfully! Check your email for confirmation.");
+        setStatus(t("contactForm.status.success"));
         setFormData({ name: "", email: "", projectType: [], budget: "", message: "" });
       } else {
-        setStatus(`⚠️ ${text}`);
+        setStatus(`${t("contactForm.status.errorPrefix")} ${text}`);
       }
     } catch (error) {
       console.error("Error:", error);
-      setStatus("⚠️ Sending failed – please try again.");
+      setStatus(t("contactForm.status.failure"));
     } finally {
       setIsSubmitting(false);
     }
@@ -123,7 +131,7 @@ export default function ContactFormStatic() {
           <input
             type="text"
             name="name"
-            placeholder="Your Name *"
+            placeholder={t("contactForm.labels.name")}
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -133,7 +141,7 @@ export default function ContactFormStatic() {
           <input
             type="email"
             name="email"
-            placeholder="Your Email *"
+            placeholder={t("contactForm.labels.email")}
             required
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -145,28 +153,31 @@ export default function ContactFormStatic() {
         {/* Project Type Checkboxes */}
         <div>
           <label style={{ display: "block", marginBottom: "0.75rem", color: "#fff", fontWeight: "600" }}>
-            What can I help you with?
+            {t("contactForm.labels.projectTypes")}
           </label>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.5rem" }}>
-            {PROJECT_TYPES.map((type) => (
-              <label key={type} style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer", color: "#fff" }}>
+            {PROJECT_TYPE_KEYS.map((key) => {
+              const label = t(key);
+              return (
+                <label key={key} style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer", color: "#fff" }}>
                 <input
-                  type="checkbox"
-                  checked={formData.projectType.includes(type)}
-                  onChange={() => handleProjectTypeChange(type)}
-                  disabled={isSubmitting}
-                  style={{ cursor: "pointer" }}
-                />
-                <span style={{ fontSize: "0.9rem" }}>{type}</span>
-              </label>
-            ))}
+                    type="checkbox"
+                    checked={formData.projectType.includes(label)}
+                    onChange={() => handleProjectTypeChange(label)}
+                    disabled={isSubmitting}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <span style={{ fontSize: "0.9rem" }}>{label}</span>
+                </label>
+              );
+            })}
           </div>
         </div>
 
         {/* Budget */}
         <div>
           <label htmlFor="budget" style={{ display: "block", marginBottom: "0.5rem", color: "#fff", fontWeight: "600" }}>
-            Budget Range
+            {t("contactForm.labels.budget")}
           </label>
           <select
             id="budget"
@@ -176,24 +187,27 @@ export default function ContactFormStatic() {
             disabled={isSubmitting}
             style={{ width: "100%", padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff", cursor: "pointer" }}
           >
-            <option value="">Select budget range</option>
-            {BUDGET_RANGES.map((range) => (
-              <option key={range} value={range} style={{ background: "#1a1a1a", color: "#fff" }}>
-                {range}
+            <option value="">{t("contactForm.labels.budgetPlaceholder")}</option>
+            {BUDGET_RANGE_KEYS.map((key) => {
+              const label = t(key);
+              return (
+                <option key={key} value={label} style={{ background: "#1a1a1a", color: "#fff" }}>
+                  {label}
               </option>
-            ))}
+              );
+            })}
           </select>
         </div>
 
         {/* Message */}
         <div>
           <label htmlFor="message" style={{ display: "block", marginBottom: "0.5rem", color: "#fff", fontWeight: "600" }}>
-            Tell me about your project *
+            {t("contactForm.labels.message")}
           </label>
           <textarea
             id="message"
             name="message"
-            placeholder="Share your vision, goals, timeline, or any questions..."
+            placeholder={t("contactForm.labels.messagePlaceholder")}
             required
             rows={6}
             value={formData.message}
@@ -214,7 +228,7 @@ export default function ContactFormStatic() {
             cursor: isSubmitting ? "not-allowed" : "pointer"
           }}
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          {isSubmitting ? t("contactForm.status.sending") : t("contactForm.labels.submit")}
         </button>
 
         {/* Status Message */}
