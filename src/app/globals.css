@@ -1388,28 +1388,18 @@ section[id] {
   }
 }
 
-.lang-switcher-fixed {
+.progress-nav__lang {
   position: fixed;
   top: 0.75rem;
   left: 0.75rem;
   z-index: 130;
   display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
 }
 
 @media (min-width: 768px) {
-  .lang-switcher-fixed {
-    display: flex;
+  .progress-nav__lang {
+    display: block;
   }
-}
-
-.lang-switcher-divider {
-  width: 2px;
-  height: 1.5rem;
-  background: rgba(26, 26, 26, 0.2);
-  border-radius: 1px;
 }
 
 .progress-nav__spine {

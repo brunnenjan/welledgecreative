@@ -63,21 +63,25 @@ export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
       role="group"
       aria-label={t("languageSwitcher.label")}
     >
-      {i18nConfig.locales.map((code) => (
-        <button
-          key={code}
-          type="button"
-          onClick={() => updateLocale(code as Locale)}
-          className={`flex items-center justify-center w-8 h-8 rounded-full transition text-xl ${
-            locale === code ? "bg-white/20 scale-110" : "opacity-70 hover:opacity-100 hover:scale-105"
-          }`}
-          aria-pressed={locale === code}
-        >
-          <span aria-hidden>{FLAG_BY_LOCALE[code as Locale]}</span>
-          <span className="sr-only">
-            {code === "en" ? t("languageSwitcher.english") : t("languageSwitcher.german")}
-          </span>
-        </button>
+      {i18nConfig.locales.map((code, index) => (
+        <span key={code} className="flex items-center">
+          {index > 0 && (
+            <span className="w-px h-5 bg-black/20 mx-1" aria-hidden />
+          )}
+          <button
+            type="button"
+            onClick={() => updateLocale(code as Locale)}
+            className={`flex items-center justify-center w-8 h-8 rounded-full transition text-xl ${
+              locale === code ? "bg-white/20 scale-110" : "opacity-70 hover:opacity-100 hover:scale-105"
+            }`}
+            aria-pressed={locale === code}
+          >
+            <span aria-hidden>{FLAG_BY_LOCALE[code as Locale]}</span>
+            <span className="sr-only">
+              {code === "en" ? t("languageSwitcher.english") : t("languageSwitcher.german")}
+            </span>
+          </button>
+        </span>
       ))}
     </div>
   );

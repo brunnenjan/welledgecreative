@@ -196,9 +196,8 @@ export default function SectionProgressNav() {
       </div>
 
       {/* Language Switcher - separate from nav */}
-      <div className="lang-switcher-fixed">
+      <div className="progress-nav__lang">
         <LanguageSwitcher />
-        <div className="lang-switcher-divider" aria-hidden />
       </div>
 
       <nav
