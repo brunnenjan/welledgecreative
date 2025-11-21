@@ -34,7 +34,7 @@
       "highlight": "Branding & Webdesign",
       "rest": "das deine Geschichte erzählt."
     },
-    "tagline": "Ich helfe Gründer:innen, Marken zu bauen, die die richtigen Menschen erreichen.",
+    "tagline": "Ich helfe Unternehmen, Marken zu bauen, die die richtigen Menschen erreichen.",
     "scrollCta": "Scrollen zum Entdecken",
     "bucketAlt": "Illustrierter Holzeimer, der in den Brunnen des Hero eintaucht"
   },
@@ -57,7 +57,7 @@
       "name": "Jan",
       "suffix": "– Designer, Brand Thinker, Problemlöser."
     },
-    "paragraphOne": "Seit 7 Jahren unterstütze ich Gründer:innen, Retreat- & Wellness-Zentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, einzigartig aussehen und online hervorragend funktionieren.",
+    "paragraphOne": "Seit 7 Jahren unterstütze ich Selbstständige, Retreat- & Wellness-Zentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, einzigartig aussehen und online hervorragend funktionieren.",
     "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit klarer, emotionaler Gestaltung – so versteht dein Publikum sofort, wer du bist und warum du wichtig bist.",
     "planProject": "Plane dein Projekt",
     "planProjectAria": "Plane dein Projekt – scrolle zum Kontaktformular"
@@ -101,7 +101,7 @@
       "prefix": "Ausgewählte",
       "highlight": "Projekte"
     },
-    "subtitle": "Eine Auswahl zielgerichteter Branding- und Webdesign-Arbeiten für Gründer:innen, Retreat-Zentren und kleine Unternehmen weltweit.",
+    "subtitle": "Eine Auswahl zielgerichteter Branding- und Webdesign-Arbeiten für Selbstständige, Retreat-Zentren und kleine Unternehmen weltweit.",
     "blocks": {
       "challenge": "Herausforderung",
       "solution": "Lösung",
@@ -152,7 +152,7 @@
       "prefix": "Logos &",
       "highlight": "Branding"
     },
-    "description": "Identitäten, die ich gemeinsam mit meinen Kund:innen entwickelt habe – jede mit eigener Geschichte.",
+    "description": "Identitäten, die ich gemeinsam mit meinen Kunden entwickelt habe – jede mit eigener Geschichte.",
     "aria": "Kundenlogos"
   },
   "deliverParallax": {
@@ -161,7 +161,7 @@
   "testimonials": {
     "heading": {
       "prefix": "Das sagen",
-      "highlight": "Kund:innen",
+      "highlight": "Kunden",
       "suffix": "über mich"
     },
     "description": "Echte Worte von Menschen, mit denen ich arbeiten durfte.",
@@ -179,7 +179,7 @@
     "ratingSuffix": "von 5",
     "status": {
       "loading": "Stimmen werden geladen...",
-      "empty": "Stimmen von Gründer:innen und Unternehmen, die ich begleiten durfte.",
+      "empty": "Stimmen von Selbstständigen und Unternehmen, die ich begleiten durfte.",
       "unavailable": "Testimonials sind gerade nicht verfügbar."
     },
     "announcement": {
@@ -273,7 +273,7 @@
   "footer": {
     "heading": "Bereit, etwas Sinnvolles gemeinsam zu erschaffen.",
     "description": "Ich gestalte Marken und digitale Experiences, die zugleich tief und klar sind. Erzähl mir von deinem Projekt – wir finden gemeinsam den ersten Schritt.",
-    "remote": "Remote unterwegs und mit Kund:innen weltweit verbunden.",
+    "remote": "Remote unterwegs und mit Kunden weltweit verbunden.",
     "navAria": "Footer-Navigation",
     "socialAria": "Social Links",
     "social": {
@@ -284,6 +284,6 @@
       "imprint": "Impressum",
       "privacy": "Datenschutz"
     },
-    "legalLine": "Ich helfe Gründer:innen seit 2017, klare und bedeutungsvolle Marken aufzubauen."
+    "legalLine": "Ich helfe Unternehmen seit 2017, klare und bedeutungsvolle Marken aufzubauen."
   }
 }

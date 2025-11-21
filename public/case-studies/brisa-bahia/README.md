@@ -7,9 +7,14 @@
 
 ### /branding
 - `logo-main.png` - BRISA BAHÍA LOGO — transparent PNG or SVG.
+- `logo-before.png` - OLD LOGO — the previous generic text logo for comparison.
 - `color-palette.png` - COLOR PALETTE — place your final palette here.
+- `colors-before.png` - OLD COLORS — previous color palette for comparison.
 - `typography.png` - TYPOGRAPHY PREVIEW — screenshot of the fonts.
 - `icons.png` - ICON SET — one combined image of the icons you designed.
+- `mockup-business-card.jpg` - MOCKUP — business card with new brand.
+- `mockup-social.jpg` - MOCKUP — social media templates.
+- `mockup-signage.jpg` - MOCKUP — physical signage or environmental.
 
 ### /before
 - `old-homepage.jpg` - BEFORE — old homepage screenshot.

@@ -116,8 +116,123 @@ export default function BrisaBahiaCaseStudy() {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* Branding Transformation Section */}
       <section className="py-20 px-6 bg-neutral-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">The Brand Transformation</h2>
+          <p className="text-lg leading-relaxed text-black/80 mb-12">
+            The old identity was generic and forgettable — a simple text logo with no visual character. We needed something that captured the essence of Brisa Bahía: the coastal breeze, natural elements, and the feeling of peaceful escape.
+          </p>
+
+          {/* Logo Before/After */}
+          <div className="mb-16">
+            <h3 className="text-xl font-semibold mb-6">Logo Evolution</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white p-8 rounded-lg border border-neutral-200">
+                <p className="text-sm font-medium text-black/60 mb-4">Before</p>
+                <div className="flex items-center justify-center h-32">
+                  <Image
+                    src="/case-studies/brisa-bahia/branding/logo-before.png"
+                    alt="Old Brisa Bahía logo - generic text"
+                    width={250}
+                    height={100}
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-sm text-black/60 mt-4 text-center">Generic text logo with no personality</p>
+              </div>
+              <div className="bg-white p-8 rounded-lg border-2 border-accent/30">
+                <p className="text-sm font-medium text-accent mb-4">After</p>
+                <div className="flex items-center justify-center h-32">
+                  <Image
+                    src="/case-studies/brisa-bahia/branding/logo-main.png"
+                    alt="New Brisa Bahía logo"
+                    width={250}
+                    height={100}
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-sm text-black/60 mt-4 text-center">Custom mark inspired by coastal waves and natural forms</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Color Palette Comparison */}
+          <div className="mb-16">
+            <h3 className="text-xl font-semibold mb-6">Color Palette</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm font-medium text-black/60 mb-4">Before</p>
+                <Image
+                  src="/case-studies/brisa-bahia/branding/colors-before.png"
+                  alt="Old color palette - limited and generic"
+                  width={600}
+                  height={200}
+                  className="rounded-lg object-contain w-full bg-white p-4"
+                />
+                <p className="text-sm text-black/60 mt-2">Limited palette with no cohesion</p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-accent mb-4">After</p>
+                <Image
+                  src="/case-studies/brisa-bahia/branding/color-palette.png"
+                  alt="New color palette - warm, natural, cohesive"
+                  width={600}
+                  height={200}
+                  className="rounded-lg object-contain w-full bg-white p-4"
+                />
+                <p className="text-sm text-black/60 mt-2">Warm, earthy tones inspired by the Colombian coast</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Typography */}
+          <div className="mb-16">
+            <h3 className="text-xl font-semibold mb-6">Typography System</h3>
+            <Image
+              src="/case-studies/brisa-bahia/branding/typography.png"
+              alt="Brisa Bahía typography system"
+              width={800}
+              height={400}
+              className="rounded-lg object-contain w-full bg-white p-6"
+            />
+            <p className="text-sm text-black/60 mt-4">
+              A carefully selected type pairing: elegant serif headlines for warmth, clean sans-serif body text for readability.
+            </p>
+          </div>
+
+          {/* Brand Applications */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6">Brand in Action</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <Image
+                src="/case-studies/brisa-bahia/branding/mockup-business-card.jpg"
+                alt="Business card mockup"
+                width={400}
+                height={300}
+                className="rounded-lg object-cover w-full h-48"
+              />
+              <Image
+                src="/case-studies/brisa-bahia/branding/mockup-social.jpg"
+                alt="Social media mockup"
+                width={400}
+                height={300}
+                className="rounded-lg object-cover w-full h-48"
+              />
+              <Image
+                src="/case-studies/brisa-bahia/branding/mockup-signage.jpg"
+                alt="Signage mockup"
+                width={400}
+                height={300}
+                className="rounded-lg object-cover w-full h-48 col-span-2 md:col-span-1"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-12">The Process</h2>
 
