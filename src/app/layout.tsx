@@ -201,8 +201,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        {/* Critical hero images - preload for faster LCP */}
         <link rel="preload" as="image" href="/assets/hero/hero-background.webp" />
-        <link rel="preload" as="image" href="/assets/hero/hero-foreground-desktop.webp" />
+        <link rel="preload" as="image" href="/assets/hero/hero-foreground-desktop.webp" media="(min-width: 1024px)" />
+        <link rel="preload" as="image" href="/assets/hero/hero-foreground-tablet.webp" media="(min-width: 769px) and (max-width: 1023px)" />
+        <link rel="preload" as="image" href="/assets/hero/hero-foreground-mobile.webp" media="(max-width: 768px)" />
+        <link rel="preload" as="image" href="/assets/hero/hero-bucket.webp" />
+        <link rel="preload" as="image" href="/assets/logo/well-edge-logo-retina.webp" />
+        {/* Parallax section images */}
         <link rel="preload" as="image" href="/assets/parallax/section-contact/parallax-bg-contact.webp" media="(min-width: 768px)" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} body-base antialiased`}>

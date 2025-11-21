@@ -532,6 +532,50 @@ section {
   transform-origin: top center;
 }
 
+/* Hero headline light shine effect */
+.hero-headline-shine {
+  position: relative;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.hero-headline-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 40%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.15) 60%,
+    transparent 100%
+  );
+  animation: hero-shine-sweep 6s ease-in-out infinite;
+  animation-delay: 2s;
+  pointer-events: none;
+}
+
+@keyframes hero-shine-sweep {
+  0% {
+    left: -100%;
+  }
+  30%, 100% {
+    left: 200%;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-headline-shine::after {
+    animation: none;
+    display: none;
+  }
+}
+
 /* Fade in animation */
 @keyframes fade-in {
   from {

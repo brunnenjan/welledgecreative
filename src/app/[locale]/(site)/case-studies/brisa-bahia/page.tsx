@@ -2,11 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ContactSection from "@/components/ContactSection";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export default function BrisaBahiaCaseStudy() {
   return (
-    <div className="bg-white text-black">
+    <>
+      <Header />
+      <main className="bg-white text-black">
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-10" />
@@ -120,13 +125,43 @@ export default function BrisaBahiaCaseStudy() {
       <section className="py-20 px-6 bg-neutral-50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">The Brand Transformation</h2>
-          <p className="text-lg leading-relaxed text-black/80 mb-12">
-            The old identity was generic and forgettable — a simple text logo with no visual character. We needed something that captured the essence of Brisa Bahía: the coastal breeze, natural elements, and the feeling of peaceful escape.
-          </p>
+
+          {/* Why Rebrand */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-4">Why a Complete Rebrand Was Essential</h3>
+            <p className="text-lg leading-relaxed text-black/80 mb-4">
+              The old identity was generic and forgettable — a simple text logo with no visual character. It communicated nothing about the retreat&apos;s values, location, or the transformative experiences it offers. Worse, it attracted the wrong audience: tourists looking for cheap beach accommodations rather than facilitators seeking a meaningful space for their retreats.
+            </p>
+            <p className="text-lg leading-relaxed text-black/80">
+              We needed a brand that would instantly communicate Brisa Bahía&apos;s positioning: a premium, nature-connected retreat center for wellness professionals and conscious travelers. Every element — from the logo to the color palette — had to work together to tell this story.
+            </p>
+          </div>
+
+          {/* Brand Strategy */}
+          <div className="mb-12 p-6 bg-white rounded-lg border border-neutral-200">
+            <h3 className="text-xl font-semibold mb-4">The Brand Strategy</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div>
+                <p className="font-medium text-accent mb-2">Positioning</p>
+                <p className="text-sm text-black/70">Premium retreat space for facilitators and wellness teachers seeking authentic Colombian coastal experiences.</p>
+              </div>
+              <div>
+                <p className="font-medium text-accent mb-2">Tone</p>
+                <p className="text-sm text-black/70">Warm, grounded, peaceful. Professional yet approachable. Nature-connected without being cliché.</p>
+              </div>
+              <div>
+                <p className="font-medium text-accent mb-2">Audience</p>
+                <p className="text-sm text-black/70">Retreat facilitators, yoga teachers, wellness practitioners looking to host transformative experiences.</p>
+              </div>
+            </div>
+          </div>
 
           {/* Logo Before/After */}
           <div className="mb-16">
-            <h3 className="text-xl font-semibold mb-6">Logo Evolution</h3>
+            <h3 className="text-xl font-semibold mb-4">Logo Evolution</h3>
+            <p className="text-black/80 mb-6">
+              The new logo needed to be more than just pretty — it had to encapsulate the retreat&apos;s essence. We drew inspiration from the coastal breeze (&quot;brisa&quot;), the bay (&quot;bahía&quot;), and the organic shapes found in nature. The result is a mark that feels both grounded and flowing, professional yet warm.
+            </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white p-8 rounded-lg border border-neutral-200">
                 <p className="text-sm font-medium text-black/60 mb-4">Before</p>
@@ -159,7 +194,10 @@ export default function BrisaBahiaCaseStudy() {
 
           {/* Color Palette Comparison */}
           <div className="mb-16">
-            <h3 className="text-xl font-semibold mb-6">Color Palette</h3>
+            <h3 className="text-xl font-semibold mb-4">Color Palette</h3>
+            <p className="text-black/80 mb-6">
+              Colors set the emotional tone of a brand. The old palette was cold and disconnected — it could have belonged to any business. The new palette is rooted in Brisa Bahía&apos;s environment: the warm sand, tropical foliage, ocean tones, and golden sunsets. These colors evoke the feelings guests experience when they arrive: calm, connected, and inspired.
+            </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <p className="text-sm font-medium text-black/60 mb-4">Before</p>
@@ -188,7 +226,10 @@ export default function BrisaBahiaCaseStudy() {
 
           {/* Typography */}
           <div className="mb-16">
-            <h3 className="text-xl font-semibold mb-6">Typography System</h3>
+            <h3 className="text-xl font-semibold mb-4">Typography System</h3>
+            <p className="text-black/80 mb-6">
+              Typography carries the voice of a brand. We paired an elegant serif for headlines — warm and timeless — with a clean sans-serif for body text that ensures readability across all devices. Together, they strike the balance between premium feel and approachable clarity that Brisa Bahía needed.
+            </p>
             <Image
               src="/case-studies/brisa-bahia/branding/typography.png"
               alt="Brisa Bahía typography system"
@@ -196,9 +237,6 @@ export default function BrisaBahiaCaseStudy() {
               height={400}
               className="rounded-lg object-contain w-full bg-white p-6"
             />
-            <p className="text-sm text-black/60 mt-4">
-              A carefully selected type pairing: elegant serif headlines for warmth, clean sans-serif body text for readability.
-            </p>
           </div>
 
           {/* Brand Applications */}
@@ -483,6 +521,9 @@ export default function BrisaBahiaCaseStudy() {
           </Link>
         </div>
       </section>
-    </div>
+      </main>
+      <ContactSection />
+      <Footer />
+    </>
   );
 }

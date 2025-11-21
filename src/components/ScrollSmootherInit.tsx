@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { isIosChrome } from "@/utils/device";
+import { isIosChrome, isIosBrowser } from "@/utils/device";
 
 /**
  * 🧭 FIX: Ensure GSAP ScrollTrigger refreshes after navigation & content load
@@ -122,8 +122,14 @@ export default function ScrollSmootherInit() {
   }, []);
 
   useEffect(() => {
-    if (!isIosChrome()) return;
-    const normalizer = ScrollTrigger.normalizeScroll(true);
+    // Enable normalizeScroll for all iOS browsers to prevent scroll jitter
+    if (!isIosBrowser()) return;
+    const normalizer = ScrollTrigger.normalizeScroll({
+      allowNestedScroll: true,
+      lockAxis: false,
+      momentum: (self) => Math.min(3, self.velocityY / 1000),
+      type: "touch,wheel,pointer",
+    });
     return () => {
       const normalizerInstance = normalizer as { kill?: () => void } | undefined;
       normalizerInstance?.kill?.();

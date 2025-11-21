@@ -490,7 +490,7 @@ export default function BucketHero() {
               sizes="(max-width: 768px) 60vw, 600px"
               className="w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[320px] h-auto"
             />
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-6 sm:mt-6 md:mt-0">
+            <h1 className="hero-headline-shine text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-6 sm:mt-6 md:mt-0">
               <span style={{ color: '#f58222' }}>{t("hero.headline.highlight")}</span>{" "}
               <span className="text-white">{t("hero.headline.rest")}</span>
             </h1>
