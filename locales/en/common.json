@@ -293,40 +293,53 @@
     },
     "hero": {
       "title": "Brisa Bahía — Retreat Center Rebrand & Website",
-      "subtitle": "Brand Strategy · Visual Identity · UX Design · Website Development"
+      "subtitle": "Comprehensive brand strategy, visual identity, and modern web design that transformed a hidden gem into a premium retreat destination."
     },
-    "intro": {
-      "heading": "A Hidden Retreat Center Gets a New Identity",
-      "text1": "Brisa Bahía is a retreat center on Colombia's secluded Caribbean coast. When I joined the project, the center was still operating under its old name — Bahía Lodge — with outdated branding and a website that attracted backpackers instead of retreat facilitators.",
-      "text2": "My role was to rename the center, develop a complete brand identity, and build a website that positions Brisa Bahía as a premium destination for yoga teachers, wellness practitioners, and conscious travelers.",
+    "results": {
+      "heading": "The Transformation",
+      "subtitle": "From backpacker hostel to premium retreat brand.",
+      "items": [
+        "Complete rebrand with new name, logo, and identity",
+        "First retreat inquiries within weeks of launch",
+        "International facilitators now reaching out directly",
+        "Full-center rentals became possible",
+        "Website traffic increased immediately",
+        "Clear positioning for the right audience"
+      ],
+      "clientFeedback": "\"The website is what convinced them to reach out.\"",
+      "clientName": "— María & David, Founders"
+    },
+    "overview": {
+      "heading": "Project Overview",
+      "text": "Brisa Bahía is a retreat center on Colombia's secluded Caribbean coast. My role was to completely transform their brand — from naming to website — positioning them as a premium destination for yoga teachers, wellness practitioners, and retreat facilitators worldwide.",
+      "transformation": "The transformation: From 'Bahía Lodge' (generic backpacker hostel) to 'Brisa Bahía' (premium retreat sanctuary).",
       "client": "Brisa Bahía",
       "location": "Capurganá, Colombia",
-      "services": "Naming, Branding, Logo, Web Design, Development",
+      "services": "Naming, Brand Strategy, Visual Identity, Web Design & Development",
       "year": "2024"
-    },
-    "challenge": {
-      "heading": "The Challenge",
-      "text": "The old 'Bahía Lodge' brand communicated budget accommodation, not transformative retreat experiences. There was no visual identity, no clear positioning for facilitators, and the website was cluttered and confusing. The center needed a complete transformation to attract the right audience."
-    },
-    "goal": {
-      "heading": "The Goal",
-      "text1": "Create a new name, brand identity, and website that express what Brisa Bahía truly is — a nature-connected sanctuary for retreat facilitators seeking an authentic, peaceful space to host transformative experiences.",
-      "text2": "The digital presence had to feel like the retreat itself: warm, natural, grounded, and deeply meaningful."
     },
     "process": {
       "heading": "The Process",
-      "subtitle": "A structured approach from naming to launch.",
-      "step1": {
-        "title": "1. Naming & Brand Strategy",
-        "text": "We began with deep research into the retreat's values, target audience, and competitive landscape. Through collaborative sessions, we discovered 'Brisa Bahía' — meaning 'Bay Breeze' — a name that captures the coastal location and the feeling of peaceful escape."
+      "subtitle": "A structured approach from discovery to launch.",
+      "discovery": {
+        "title": "Discovery & Strategy",
+        "text": "Deep research into the retreat's values, target audience (yoga teachers, wellness practitioners), and competitive landscape. We identified the core positioning: a nature-connected sanctuary that feels authentic, not commercial."
       },
-      "step2": {
-        "title": "2. Visual Identity System",
-        "text": "The new identity needed to capture the essence of Brisa Bahía: coastal breezes, tropical nature, and the feeling of grounded tranquility. Every element was designed to work together as a cohesive system that reflects the retreat's positioning."
+      "naming": {
+        "title": "Naming & Storytelling",
+        "text": "Through collaborative sessions, we discovered 'Brisa Bahía' — meaning 'Bay Breeze' in Spanish. The name captures both the coastal location and the feeling of peaceful escape that defines the retreat experience."
       },
-      "step3": {
-        "title": "3. UX Structure & Website",
-        "text": "We redesigned the entire information architecture to clearly communicate offerings for facilitators: hosting retreats, facilities, food, accommodation, and the inquiry process. The website was built mobile-first with emotional storytelling."
+      "identity": {
+        "title": "Visual Identity",
+        "text": "The new identity captures coastal breezes, tropical nature, and grounded tranquility. Logo, colors, typography, and iconography work together as a cohesive system that reflects the retreat's premium positioning."
+      },
+      "uxWeb": {
+        "title": "UX & Web Design",
+        "text": "Complete information architecture redesign to communicate clearly with facilitators: retreat hosting, facilities, accommodation, food program, and inquiry process. Built mobile-first with emotional storytelling and optimized for conversions."
+      },
+      "implementation": {
+        "title": "Implementation",
+        "text": "Bilingual website (English/Spanish), booking inquiry system, SEO optimization for retreat-related searches, and performance tuning for visitors with slower connections in remote areas."
       }
     },
     "branding": {
@@ -336,17 +349,9 @@
       "typography": "Elegant serif headlines for warmth, clean sans-serif for readability",
       "icons": "Custom Iconography"
     },
-    "results": {
-      "heading": "The Results",
-      "subtitle": "A complete transformation of the digital presence.",
-      "items": [
-        "New name that captures the retreat's essence",
-        "Cohesive brand identity that stands out",
-        "Website traffic increased immediately after launch",
-        "First retreat inquiries through the new site",
-        "International facilitators started reaching out",
-        "Full-center rentals became possible"
-      ]
+    "challenge": {
+      "heading": "The Challenge",
+      "text": "The old 'Bahía Lodge' brand communicated budget accommodation, not transformative retreat experiences. There was no visual identity, no clear positioning for facilitators, and the website was cluttered and confusing — attracting backpackers instead of the premium retreat market they wanted to serve."
     },
     "testimonial": {
       "quote": "Jan understood exactly what we needed. He didn't just design a logo — he helped us find our identity. The new name, the brand, the website — everything feels like us now. Facilitators tell us the website is what convinced them to reach out.",
@@ -356,12 +361,12 @@
       "viewOriginal": "View Original"
     },
     "gallery": {
-      "heading": "Brand Guidelines & Assets",
-      "subtitle": "A comprehensive brand system delivered with full guidelines for consistent application."
+      "heading": "Final Showcase",
+      "subtitle": "The complete brand system: website, guidelines, and marketing assets."
     },
     "cta": {
-      "heading": "Ready to Transform Your Retreat's Presence?",
-      "text": "If you're building a retreat center or wellness space and want a brand and website that clearly communicate your vision, let's talk.",
+      "heading": "Looking to Transform Your Retreat or Eco-Lodge?",
+      "text": "If you're building a retreat center, wellness space, or eco-lodge and want a brand and website that attract the right guests — let's talk.",
       "button": "Book a Discovery Call"
     },
     "backLink": "← Back to all projects"

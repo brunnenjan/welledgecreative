@@ -22,7 +22,7 @@ export default function BrisaBahiaCaseStudy() {
           <div className="absolute inset-0">
             <Image
               src="/case-studies/brisa-bahia/hero-devices.webp"
-              alt="Brisa Bahía website shown on multiple devices - desktop, tablet, and mobile"
+              alt="Brisa Bahía website displayed on desktop, tablet, and mobile devices showcasing the complete rebrand"
               fill
               className="object-cover"
               priority
@@ -33,114 +33,81 @@ export default function BrisaBahiaCaseStudy() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-serif">
               {t("caseStudyBrisaBahia.hero.title")}
             </h1>
-            <p className="text-lg md:text-xl text-white/90">
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
               {t("caseStudyBrisaBahia.hero.subtitle")}
             </p>
           </div>
         </section>
 
-        {/* Project Intro */}
+        {/* Results / Success Highlights - FIRST */}
+        <section className="py-24 px-6 bg-neutral-50">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4">
+              {t("caseStudyBrisaBahia.results.heading")}
+            </h2>
+            <p className="text-xl text-accent font-medium mb-12">
+              {t("caseStudyBrisaBahia.results.subtitle")}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              {Array.isArray(results) && results.map((item, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <span className="text-accent mt-1 text-lg flex-shrink-0">✓</span>
+                  <span className="text-black/70">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Client Quote Highlight */}
+            <div className="bg-white p-8 rounded-xl shadow-sm border-l-4 border-accent">
+              <p className="text-xl font-serif italic text-black/80 mb-2">
+                {t("caseStudyBrisaBahia.results.clientFeedback")}
+              </p>
+              <p className="text-black/60 text-sm">
+                {t("caseStudyBrisaBahia.results.clientName")}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Project Overview */}
         <section className="py-24 px-6">
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-12 items-start mb-16">
+            <div className="grid md:grid-cols-3 gap-12 items-start">
               <div className="md:col-span-2 space-y-6">
                 <h2 className="text-3xl md:text-4xl font-serif font-semibold">
-                  {t("caseStudyBrisaBahia.intro.heading")}
+                  {t("caseStudyBrisaBahia.overview.heading")}
                 </h2>
                 <p className="text-lg leading-relaxed text-black/70">
-                  {t("caseStudyBrisaBahia.intro.text1")}
+                  {t("caseStudyBrisaBahia.overview.text")}
                 </p>
-                <p className="text-lg leading-relaxed text-black/70">
-                  {t("caseStudyBrisaBahia.intro.text2")}
+                <p className="text-lg leading-relaxed text-black/80 font-medium">
+                  {t("caseStudyBrisaBahia.overview.transformation")}
                 </p>
               </div>
               <div className="space-y-4">
                 <div>
                   <p className="text-sm font-medium text-black/50 uppercase tracking-wide mb-1">Client</p>
-                  <p className="text-black/80">{t("caseStudyBrisaBahia.intro.client")}</p>
+                  <p className="text-black/80">{t("caseStudyBrisaBahia.overview.client")}</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-black/50 uppercase tracking-wide mb-1">Location</p>
-                  <p className="text-black/80">{t("caseStudyBrisaBahia.intro.location")}</p>
+                  <p className="text-black/80">{t("caseStudyBrisaBahia.overview.location")}</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-black/50 uppercase tracking-wide mb-1">Services</p>
-                  <p className="text-black/80">{t("caseStudyBrisaBahia.intro.services")}</p>
+                  <p className="text-black/80">{t("caseStudyBrisaBahia.overview.services")}</p>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-black/50 uppercase tracking-wide mb-1">Year</p>
-                  <p className="text-black/80">{t("caseStudyBrisaBahia.intro.year")}</p>
+                  <p className="text-black/80">{t("caseStudyBrisaBahia.overview.year")}</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* The Challenge */}
-        <section className="py-24 px-6 bg-neutral-50">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8">
-              {t("caseStudyBrisaBahia.challenge.heading")}
-            </h2>
-            <p className="text-lg leading-relaxed text-black/70 mb-12">
-              {t("caseStudyBrisaBahia.challenge.text")}
-            </p>
-
-            {/* Before Images */}
-            <div className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <Image
-                    src="/case-studies/brisa-bahia/before/starting-page-bahia-lodge.webp"
-                    alt="Old Bahía Lodge homepage - cluttered layout with generic hotel styling"
-                    width={800}
-                    height={600}
-                    className="rounded-xl shadow-lg w-full"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div>
-                  <Image
-                    src="/case-studies/brisa-bahia/before/Bahia-Lodge-rooms-page-colombia.jpeg.webp"
-                    alt="Old Bahía Lodge rooms page - basic accommodation listing"
-                    width={800}
-                    height={600}
-                    className="rounded-xl shadow-lg w-full"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <div className="max-w-[200px]">
-                  <Image
-                    src="/case-studies/brisa-bahia/before/logo-Bahia-Lodge-capurgana-colombia.webp"
-                    alt="Old Bahía Lodge logo - generic text-based logo"
-                    width={400}
-                    height={200}
-                    className="w-full"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* The Goal */}
-        <section className="py-24 px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8">
-              {t("caseStudyBrisaBahia.goal.heading")}
-            </h2>
-            <p className="text-lg leading-relaxed text-black/70 mb-6">
-              {t("caseStudyBrisaBahia.goal.text1")}
-            </p>
-            <p className="text-lg leading-relaxed text-black/70">
-              {t("caseStudyBrisaBahia.goal.text2")}
-            </p>
-          </div>
-        </section>
-
-        {/* Process */}
+        {/* The Process */}
         <section className="py-24 px-6 bg-neutral-50">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4">
@@ -150,19 +117,19 @@ export default function BrisaBahiaCaseStudy() {
               {t("caseStudyBrisaBahia.process.subtitle")}
             </p>
 
-            {/* Step 1: Brand Strategy */}
-            <div className="mb-24">
+            {/* Discovery & Strategy */}
+            <div className="mb-20">
               <h3 className="text-2xl font-semibold mb-6">
-                {t("caseStudyBrisaBahia.process.step1.title")}
+                {t("caseStudyBrisaBahia.process.discovery.title")}
               </h3>
               <p className="text-black/70 leading-relaxed mb-8 max-w-3xl">
-                {t("caseStudyBrisaBahia.process.step1.text")}
+                {t("caseStudyBrisaBahia.process.discovery.text")}
               </p>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <Image
                     src="/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp"
-                    alt="Brand strategy mindmap showing core values, audience insights, and positioning"
+                    alt="Brand strategy mindmap showing core values, audience insights, and competitive positioning"
                     width={800}
                     height={600}
                     className="rounded-xl shadow-lg w-full"
@@ -172,7 +139,7 @@ export default function BrisaBahiaCaseStudy() {
                 <div>
                   <Image
                     src="/case-studies/brisa-bahia/process/mind-map-stylized-website.webp"
-                    alt="Website strategy mindmap outlining structure and user flows"
+                    alt="Website strategy mindmap outlining information architecture and user flows"
                     width={800}
                     height={600}
                     className="rounded-xl shadow-lg w-full"
@@ -182,13 +149,23 @@ export default function BrisaBahiaCaseStudy() {
               </div>
             </div>
 
-            {/* Step 2: Visual Identity */}
-            <div className="mb-24">
+            {/* Naming & Storytelling */}
+            <div className="mb-20">
               <h3 className="text-2xl font-semibold mb-6">
-                {t("caseStudyBrisaBahia.process.step2.title")}
+                {t("caseStudyBrisaBahia.process.naming.title")}
+              </h3>
+              <p className="text-black/70 leading-relaxed max-w-3xl">
+                {t("caseStudyBrisaBahia.process.naming.text")}
+              </p>
+            </div>
+
+            {/* Visual Identity */}
+            <div className="mb-20">
+              <h3 className="text-2xl font-semibold mb-6">
+                {t("caseStudyBrisaBahia.process.identity.title")}
               </h3>
               <p className="text-black/70 leading-relaxed mb-8 max-w-3xl">
-                {t("caseStudyBrisaBahia.process.step2.text")}
+                {t("caseStudyBrisaBahia.process.identity.text")}
               </p>
 
               {/* Logo */}
@@ -199,7 +176,7 @@ export default function BrisaBahiaCaseStudy() {
                 <div className="bg-white p-12 rounded-xl shadow-lg flex items-center justify-center">
                   <Image
                     src="/case-studies/brisa-bahia/branding/logo-main.webp"
-                    alt="New Brisa Bahía logo - organic shapes inspired by coastal waves and tropical leaves"
+                    alt="New Brisa Bahía logo featuring organic shapes inspired by coastal waves and tropical leaves"
                     width={400}
                     height={200}
                     className="max-w-[300px] w-full"
@@ -213,7 +190,7 @@ export default function BrisaBahiaCaseStudy() {
                   <div>
                     <Image
                       src="/case-studies/brisa-bahia/branding/colors-before.webp"
-                      alt="Old color palette - limited, cold, disconnected colors"
+                      alt="Old color palette showing limited, cold, disconnected colors"
                       width={800}
                       height={400}
                       className="rounded-xl shadow-lg w-full"
@@ -226,7 +203,7 @@ export default function BrisaBahiaCaseStudy() {
                   <div>
                     <Image
                       src="/case-studies/brisa-bahia/branding/color-palette.webp"
-                      alt="New color palette - warm earthy tones inspired by Colombian coast"
+                      alt="New color palette with warm earthy tones inspired by Colombian coast"
                       width={800}
                       height={400}
                       className="rounded-xl shadow-lg w-full"
@@ -261,7 +238,7 @@ export default function BrisaBahiaCaseStudy() {
                 </h4>
                 <Image
                   src="/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.webp"
-                  alt="Custom icon set for Brisa Bahía - nature-inspired icons for services and amenities"
+                  alt="Custom icon set for Brisa Bahía featuring nature-inspired icons for services and amenities"
                   width={1200}
                   height={600}
                   className="rounded-xl shadow-lg w-full"
@@ -270,44 +247,54 @@ export default function BrisaBahiaCaseStudy() {
               </div>
             </div>
 
-            {/* Step 3: UX & Wireframes */}
-            <div>
+            {/* UX & Web Design */}
+            <div className="mb-20">
               <h3 className="text-2xl font-semibold mb-6">
-                {t("caseStudyBrisaBahia.process.step3.title")}
+                {t("caseStudyBrisaBahia.process.uxWeb.title")}
               </h3>
               <p className="text-black/70 leading-relaxed mb-8 max-w-3xl">
-                {t("caseStudyBrisaBahia.process.step3.text")}
+                {t("caseStudyBrisaBahia.process.uxWeb.text")}
               </p>
               <Image
                 src="/case-studies/brisa-bahia/process/wireframes-desktop.webp"
-                alt="Desktop wireframes showing the new website structure and page layouts"
+                alt="Desktop wireframes showing the new website structure, page layouts, and user flow"
                 width={1400}
                 height={800}
                 className="rounded-xl shadow-lg w-full"
                 sizes="100vw"
               />
             </div>
+
+            {/* Implementation */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">
+                {t("caseStudyBrisaBahia.process.implementation.title")}
+              </h3>
+              <p className="text-black/70 leading-relaxed max-w-3xl">
+                {t("caseStudyBrisaBahia.process.implementation.text")}
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Results: Before & After */}
+        {/* The Challenge - MOVED DOWN */}
         <section className="py-24 px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4">
-              {t("caseStudyBrisaBahia.results.heading")}
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-8">
+              {t("caseStudyBrisaBahia.challenge.heading")}
             </h2>
-            <p className="text-lg text-black/70 mb-16">
-              {t("caseStudyBrisaBahia.results.subtitle")}
+            <p className="text-lg leading-relaxed text-black/70 mb-12">
+              {t("caseStudyBrisaBahia.challenge.text")}
             </p>
 
-            <div className="space-y-16">
-              {/* Homepage Comparison */}
-              <div className="grid md:grid-cols-2 gap-8">
+            {/* Before Images */}
+            <div className="space-y-8">
+              <p className="text-sm font-medium text-black/50 uppercase tracking-wide">Before</p>
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <p className="text-sm font-medium text-black/50 mb-3">Before</p>
                   <Image
                     src="/case-studies/brisa-bahia/before/starting-page-bahia-lodge.webp"
-                    alt="Old Bahía Lodge homepage"
+                    alt="Old Bahía Lodge homepage with cluttered layout and generic hotel styling"
                     width={800}
                     height={600}
                     className="rounded-xl shadow-lg w-full"
@@ -315,10 +302,9 @@ export default function BrisaBahiaCaseStudy() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-accent mb-3">After</p>
                   <Image
-                    src="/case-studies/brisa-bahia/after/starting-page-brisa-bahia.webp"
-                    alt="New Brisa Bahía homepage - clean, emotional, story-driven"
+                    src="/case-studies/brisa-bahia/before/Bahia-Lodge-rooms-page-colombia.jpeg.webp"
+                    alt="Old Bahía Lodge rooms page with basic accommodation listing style"
                     width={800}
                     height={600}
                     className="rounded-xl shadow-lg w-full"
@@ -326,12 +312,44 @@ export default function BrisaBahiaCaseStudy() {
                   />
                 </div>
               </div>
+              <div className="flex justify-center">
+                <div className="max-w-[200px]">
+                  <Image
+                    src="/case-studies/brisa-bahia/before/logo-Bahia-Lodge-capurgana-colombia.webp"
+                    alt="Old Bahía Lodge logo with generic text-based design"
+                    width={400}
+                    height={200}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Final Results: After */}
+        <section className="py-24 px-6 bg-neutral-50">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-sm font-medium text-accent uppercase tracking-wide mb-8">After</p>
+
+            <div className="space-y-16">
+              {/* Homepage */}
+              <div>
+                <Image
+                  src="/case-studies/brisa-bahia/after/starting-page-brisa-bahia.webp"
+                  alt="New Brisa Bahía homepage with clean, emotional, story-driven design"
+                  width={1400}
+                  height={800}
+                  className="rounded-xl shadow-lg w-full"
+                  sizes="100vw"
+                />
+              </div>
 
               {/* Facilities Page */}
               <div>
                 <Image
                   src="/case-studies/brisa-bahia/after/facility-page-brisa-bahia.webp"
-                  alt="New Brisa Bahía facilities page - showcasing the retreat space for facilitators"
+                  alt="New Brisa Bahía facilities page showcasing the retreat space for facilitators"
                   width={1400}
                   height={800}
                   className="rounded-xl shadow-lg w-full"
@@ -339,15 +357,71 @@ export default function BrisaBahiaCaseStudy() {
                 />
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Outcomes */}
-            <div className="mt-16 grid md:grid-cols-2 gap-8">
-              {Array.isArray(results) && results.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <span className="text-accent mt-1 text-lg">✓</span>
-                  <span className="text-black/70">{item}</span>
-                </div>
-              ))}
+        {/* Final Showcase / Gallery */}
+        <section className="py-24 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-center">
+              {t("caseStudyBrisaBahia.gallery.heading")}
+            </h2>
+            <p className="text-lg text-black/70 mb-16 text-center max-w-2xl mx-auto">
+              {t("caseStudyBrisaBahia.gallery.subtitle")}
+            </p>
+
+            {/* Masonry Grid */}
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+              <div className="break-inside-avoid">
+                <Image
+                  src="/case-studies/brisa-bahia/gallery/About-us-presentation.webp"
+                  alt="Brand presentation slide showing company story, values, and mission"
+                  width={600}
+                  height={400}
+                  className="rounded-xl shadow-lg w-full"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="break-inside-avoid">
+                <Image
+                  src="/case-studies/brisa-bahia/gallery/Logo-gap-guide-brisabahia.webp"
+                  alt="Logo spacing guidelines showing clear space rules and minimum sizes"
+                  width={600}
+                  height={800}
+                  className="rounded-xl shadow-lg w-full"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="break-inside-avoid">
+                <Image
+                  src="/case-studies/brisa-bahia/gallery/guidelines-page-3.webp"
+                  alt="Brand guidelines page demonstrating color applications across materials"
+                  width={600}
+                  height={400}
+                  className="rounded-xl shadow-lg w-full"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="break-inside-avoid">
+                <Image
+                  src="/case-studies/brisa-bahia/gallery/guidelines-page-5.webp"
+                  alt="Brand guidelines page showing typography usage and hierarchy"
+                  width={600}
+                  height={400}
+                  className="rounded-xl shadow-lg w-full"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="break-inside-avoid">
+                <Image
+                  src="/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp"
+                  alt="Logo mockup showing real-world application on signage"
+                  width={600}
+                  height={600}
+                  className="rounded-xl shadow-lg w-full"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -375,79 +449,13 @@ export default function BrisaBahiaCaseStudy() {
           </div>
         </section>
 
-        {/* Masonry Gallery */}
-        <section className="py-24 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-center">
-              {t("caseStudyBrisaBahia.gallery.heading")}
-            </h2>
-            <p className="text-lg text-black/70 mb-16 text-center max-w-2xl mx-auto">
-              {t("caseStudyBrisaBahia.gallery.subtitle")}
-            </p>
-
-            {/* Masonry Grid */}
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-              <div className="break-inside-avoid">
-                <Image
-                  src="/case-studies/brisa-bahia/gallery/About-us-presentation.webp"
-                  alt="Brand presentation showing company story and values"
-                  width={600}
-                  height={400}
-                  className="rounded-xl shadow-lg w-full"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="break-inside-avoid">
-                <Image
-                  src="/case-studies/brisa-bahia/gallery/Logo-gap-guide-brisabahia.webp"
-                  alt="Logo spacing and clear space guidelines"
-                  width={600}
-                  height={800}
-                  className="rounded-xl shadow-lg w-full"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="break-inside-avoid">
-                <Image
-                  src="/case-studies/brisa-bahia/gallery/guidelines-page-3.webp"
-                  alt="Brand guidelines page showing color applications"
-                  width={600}
-                  height={400}
-                  className="rounded-xl shadow-lg w-full"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="break-inside-avoid">
-                <Image
-                  src="/case-studies/brisa-bahia/gallery/guidelines-page-5.webp"
-                  alt="Brand guidelines page showing typography usage"
-                  width={600}
-                  height={400}
-                  className="rounded-xl shadow-lg w-full"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="break-inside-avoid">
-                <Image
-                  src="/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp"
-                  alt="Logo mockup in real-world application"
-                  width={600}
-                  height={600}
-                  className="rounded-xl shadow-lg w-full"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="relative py-32 px-6 overflow-hidden">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0">
             <Image
               src="/case-studies/brisa-bahia/hero-devices.webp"
-              alt="Brisa Bahía retreat branding"
+              alt="Brisa Bahía retreat branding and website on multiple devices"
               fill
               className="object-cover"
               sizes="100vw"
