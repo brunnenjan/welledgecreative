@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 import { useI18n } from "@/components/providers/I18nProvider";
-import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export default function BrisaBahiaCaseStudy() {
   const { t } = useI18n();
@@ -22,7 +21,7 @@ export default function BrisaBahiaCaseStudy() {
           <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="absolute inset-0">
             <Image
-              src="/case-studies/brisa-bahia/hero-devices.jpg"
+              src="/case-studies/brisa-bahia/hero-devices.webp"
               alt="Brisa Bahía website shown on multiple devices - desktop, tablet, and mobile"
               fill
               className="object-cover"
@@ -92,7 +91,7 @@ export default function BrisaBahiaCaseStudy() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <Image
-                    src="/case-studies/brisa-bahia/before/starting-page-bahia-lodge.jpg"
+                    src="/case-studies/brisa-bahia/before/starting-page-bahia-lodge.webp"
                     alt="Old Bahía Lodge homepage - cluttered layout with generic hotel styling"
                     width={800}
                     height={600}
@@ -102,7 +101,7 @@ export default function BrisaBahiaCaseStudy() {
                 </div>
                 <div>
                   <Image
-                    src="/case-studies/brisa-bahia/before/Bahia-Lodge-rooms-page-colombia.jpeg.jpg"
+                    src="/case-studies/brisa-bahia/before/Bahia-Lodge-rooms-page-colombia.jpeg.webp"
                     alt="Old Bahía Lodge rooms page - basic accommodation listing"
                     width={800}
                     height={600}
@@ -114,7 +113,7 @@ export default function BrisaBahiaCaseStudy() {
               <div className="flex justify-center">
                 <div className="max-w-[200px]">
                   <Image
-                    src="/case-studies/brisa-bahia/before/logo-Bahia-Lodge-capurgana-colombia.jpeg"
+                    src="/case-studies/brisa-bahia/before/logo-Bahia-Lodge-capurgana-colombia.webp"
                     alt="Old Bahía Lodge logo - generic text-based logo"
                     width={400}
                     height={200}
@@ -162,7 +161,7 @@ export default function BrisaBahiaCaseStudy() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <Image
-                    src="/case-studies/brisa-bahia/process/mind-map-stylized-branding.jpg"
+                    src="/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp"
                     alt="Brand strategy mindmap showing core values, audience insights, and positioning"
                     width={800}
                     height={600}
@@ -172,7 +171,7 @@ export default function BrisaBahiaCaseStudy() {
                 </div>
                 <div>
                   <Image
-                    src="/case-studies/brisa-bahia/process/mind-map-stylized-website.jpg"
+                    src="/case-studies/brisa-bahia/process/mind-map-stylized-website.webp"
                     alt="Website strategy mindmap outlining structure and user flows"
                     width={800}
                     height={600}
@@ -199,7 +198,7 @@ export default function BrisaBahiaCaseStudy() {
                 </h4>
                 <div className="bg-white p-12 rounded-xl shadow-lg flex items-center justify-center">
                   <Image
-                    src="/case-studies/brisa-bahia/branding/logo-main.png"
+                    src="/case-studies/brisa-bahia/branding/logo-main.webp"
                     alt="New Brisa Bahía logo - organic shapes inspired by coastal waves and tropical leaves"
                     width={400}
                     height={200}
@@ -213,7 +212,7 @@ export default function BrisaBahiaCaseStudy() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <Image
-                      src="/case-studies/brisa-bahia/branding/colors-before.jpg"
+                      src="/case-studies/brisa-bahia/branding/colors-before.webp"
                       alt="Old color palette - limited, cold, disconnected colors"
                       width={800}
                       height={400}
@@ -226,7 +225,7 @@ export default function BrisaBahiaCaseStudy() {
                   </div>
                   <div>
                     <Image
-                      src="/case-studies/brisa-bahia/branding/color-palette.jpg"
+                      src="/case-studies/brisa-bahia/branding/color-palette.webp"
                       alt="New color palette - warm earthy tones inspired by Colombian coast"
                       width={800}
                       height={400}
@@ -243,7 +242,7 @@ export default function BrisaBahiaCaseStudy() {
               {/* Typography */}
               <div className="mb-12">
                 <Image
-                  src="/case-studies/brisa-bahia/process/typography-presenting.jpg"
+                  src="/case-studies/brisa-bahia/process/typography-presenting.webp"
                   alt="Typography system showing elegant serif headlines paired with clean sans-serif body text"
                   width={1200}
                   height={600}
@@ -261,7 +260,7 @@ export default function BrisaBahiaCaseStudy() {
                   {t("caseStudyBrisaBahia.branding.icons")}
                 </h4>
                 <Image
-                  src="/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.jpg"
+                  src="/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.webp"
                   alt="Custom icon set for Brisa Bahía - nature-inspired icons for services and amenities"
                   width={1200}
                   height={600}
@@ -280,7 +279,7 @@ export default function BrisaBahiaCaseStudy() {
                 {t("caseStudyBrisaBahia.process.step3.text")}
               </p>
               <Image
-                src="/case-studies/brisa-bahia/process/wireframes-desktop.jpg"
+                src="/case-studies/brisa-bahia/process/wireframes-desktop.webp"
                 alt="Desktop wireframes showing the new website structure and page layouts"
                 width={1400}
                 height={800}
@@ -307,7 +306,7 @@ export default function BrisaBahiaCaseStudy() {
                 <div>
                   <p className="text-sm font-medium text-black/50 mb-3">Before</p>
                   <Image
-                    src="/case-studies/brisa-bahia/before/starting-page-bahia-lodge.jpg"
+                    src="/case-studies/brisa-bahia/before/starting-page-bahia-lodge.webp"
                     alt="Old Bahía Lodge homepage"
                     width={800}
                     height={600}
@@ -318,7 +317,7 @@ export default function BrisaBahiaCaseStudy() {
                 <div>
                   <p className="text-sm font-medium text-accent mb-3">After</p>
                   <Image
-                    src="/case-studies/brisa-bahia/after/starting-page-brisa-bahia.jpg"
+                    src="/case-studies/brisa-bahia/after/starting-page-brisa-bahia.webp"
                     alt="New Brisa Bahía homepage - clean, emotional, story-driven"
                     width={800}
                     height={600}
@@ -331,7 +330,7 @@ export default function BrisaBahiaCaseStudy() {
               {/* Facilities Page */}
               <div>
                 <Image
-                  src="/case-studies/brisa-bahia/after/facility-page-brisa-bahia.jpg"
+                  src="/case-studies/brisa-bahia/after/facility-page-brisa-bahia.webp"
                   alt="New Brisa Bahía facilities page - showcasing the retreat space for facilitators"
                   width={1400}
                   height={800}
@@ -390,7 +389,7 @@ export default function BrisaBahiaCaseStudy() {
             <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
               <div className="break-inside-avoid">
                 <Image
-                  src="/case-studies/brisa-bahia/gallery/About-us-presentation.jpg"
+                  src="/case-studies/brisa-bahia/gallery/About-us-presentation.webp"
                   alt="Brand presentation showing company story and values"
                   width={600}
                   height={400}
@@ -400,7 +399,7 @@ export default function BrisaBahiaCaseStudy() {
               </div>
               <div className="break-inside-avoid">
                 <Image
-                  src="/case-studies/brisa-bahia/gallery/Logo-gap-guide-brisabahia.jpg"
+                  src="/case-studies/brisa-bahia/gallery/Logo-gap-guide-brisabahia.webp"
                   alt="Logo spacing and clear space guidelines"
                   width={600}
                   height={800}
@@ -410,7 +409,7 @@ export default function BrisaBahiaCaseStudy() {
               </div>
               <div className="break-inside-avoid">
                 <Image
-                  src="/case-studies/brisa-bahia/gallery/guidelines-page-3.jpg"
+                  src="/case-studies/brisa-bahia/gallery/guidelines-page-3.webp"
                   alt="Brand guidelines page showing color applications"
                   width={600}
                   height={400}
@@ -420,7 +419,7 @@ export default function BrisaBahiaCaseStudy() {
               </div>
               <div className="break-inside-avoid">
                 <Image
-                  src="/case-studies/brisa-bahia/gallery/guidelines-page-5.jpg"
+                  src="/case-studies/brisa-bahia/gallery/guidelines-page-5.webp"
                   alt="Brand guidelines page showing typography usage"
                   width={600}
                   height={400}
@@ -430,7 +429,7 @@ export default function BrisaBahiaCaseStudy() {
               </div>
               <div className="break-inside-avoid">
                 <Image
-                  src="/case-studies/brisa-bahia/gallery/mockup-picture-Logo.jpg"
+                  src="/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp"
                   alt="Logo mockup in real-world application"
                   width={600}
                   height={600}
@@ -447,7 +446,7 @@ export default function BrisaBahiaCaseStudy() {
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0">
             <Image
-              src="/case-studies/brisa-bahia/hero-devices.jpg"
+              src="/case-studies/brisa-bahia/hero-devices.webp"
               alt="Brisa Bahía retreat branding"
               fill
               className="object-cover"
