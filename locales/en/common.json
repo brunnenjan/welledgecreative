@@ -285,5 +285,85 @@
       "privacy": "Privacy"
     },
     "legalLine": "Helping founders build meaningful brands since 2017."
+  },
+  "caseStudyBrisaBahia": {
+    "seo": {
+      "title": "Retreat Center Branding & Website — Brisa Bahía Case Study",
+      "description": "Complete brand transformation including new name, logo, identity and retreat-focused website for a hidden retreat center in Colombia."
+    },
+    "hero": {
+      "title": "Brisa Bahía — Retreat Center Rebrand & Website",
+      "subtitle": "Brand Strategy · Visual Identity · UX Design · Website Development"
+    },
+    "intro": {
+      "heading": "A Hidden Retreat Center Gets a New Identity",
+      "text1": "Brisa Bahía is a retreat center on Colombia's secluded Caribbean coast. When I joined the project, the center was still operating under its old name — Bahía Lodge — with outdated branding and a website that attracted backpackers instead of retreat facilitators.",
+      "text2": "My role was to rename the center, develop a complete brand identity, and build a website that positions Brisa Bahía as a premium destination for yoga teachers, wellness practitioners, and conscious travelers.",
+      "client": "Brisa Bahía",
+      "location": "Capurganá, Colombia",
+      "services": "Naming, Branding, Logo, Web Design, Development",
+      "year": "2024"
+    },
+    "challenge": {
+      "heading": "The Challenge",
+      "text": "The old 'Bahía Lodge' brand communicated budget accommodation, not transformative retreat experiences. There was no visual identity, no clear positioning for facilitators, and the website was cluttered and confusing. The center needed a complete transformation to attract the right audience."
+    },
+    "goal": {
+      "heading": "The Goal",
+      "text1": "Create a new name, brand identity, and website that express what Brisa Bahía truly is — a nature-connected sanctuary for retreat facilitators seeking an authentic, peaceful space to host transformative experiences.",
+      "text2": "The digital presence had to feel like the retreat itself: warm, natural, grounded, and deeply meaningful."
+    },
+    "process": {
+      "heading": "The Process",
+      "subtitle": "A structured approach from naming to launch.",
+      "step1": {
+        "title": "1. Naming & Brand Strategy",
+        "text": "We began with deep research into the retreat's values, target audience, and competitive landscape. Through collaborative sessions, we discovered 'Brisa Bahía' — meaning 'Bay Breeze' — a name that captures the coastal location and the feeling of peaceful escape."
+      },
+      "step2": {
+        "title": "2. Visual Identity System",
+        "text": "The new identity needed to capture the essence of Brisa Bahía: coastal breezes, tropical nature, and the feeling of grounded tranquility. Every element was designed to work together as a cohesive system that reflects the retreat's positioning."
+      },
+      "step3": {
+        "title": "3. UX Structure & Website",
+        "text": "We redesigned the entire information architecture to clearly communicate offerings for facilitators: hosting retreats, facilities, food, accommodation, and the inquiry process. The website was built mobile-first with emotional storytelling."
+      }
+    },
+    "branding": {
+      "logo": "Logo Design",
+      "colorsBefore": "Before: Limited palette with no cohesion",
+      "colorsAfter": "After: Warm, natural tones from the Colombian coast",
+      "typography": "Elegant serif headlines for warmth, clean sans-serif for readability",
+      "icons": "Custom Iconography"
+    },
+    "results": {
+      "heading": "The Results",
+      "subtitle": "A complete transformation of the digital presence.",
+      "items": [
+        "New name that captures the retreat's essence",
+        "Cohesive brand identity that stands out",
+        "Website traffic increased immediately after launch",
+        "First retreat inquiries through the new site",
+        "International facilitators started reaching out",
+        "Full-center rentals became possible"
+      ]
+    },
+    "testimonial": {
+      "quote": "Jan understood exactly what we needed. He didn't just design a logo — he helped us find our identity. The new name, the brand, the website — everything feels like us now. Facilitators tell us the website is what convinced them to reach out.",
+      "author": "María & David",
+      "role": "Founders, Brisa Bahía",
+      "translatorNote": "Translated —",
+      "viewOriginal": "View Original"
+    },
+    "gallery": {
+      "heading": "Brand Guidelines & Assets",
+      "subtitle": "A comprehensive brand system delivered with full guidelines for consistent application."
+    },
+    "cta": {
+      "heading": "Ready to Transform Your Retreat's Presence?",
+      "text": "If you're building a retreat center or wellness space and want a brand and website that clearly communicate your vision, let's talk.",
+      "button": "Book a Discovery Call"
+    },
+    "backLink": "← Back to all projects"
   }
 }
