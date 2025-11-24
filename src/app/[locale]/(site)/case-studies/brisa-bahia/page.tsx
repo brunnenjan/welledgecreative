@@ -18,11 +18,11 @@ export default function BrisaBahiaCaseStudy() {
           <div className="absolute inset-0">
             <picture>
               <source
-                srcSet="/case-studies/brisa-bahia/brisa-bahia hero.webp"
+                srcSet="/case-studies/brisa-bahia/hero.webp"
                 type="image/webp"
               />
               <Image
-                src="/case-studies/brisa-bahia/brisa-bahia hero.jpg"
+                src="/case-studies/brisa-bahia/hero.jpg"
                 alt="Brisa Bahía retreat center overlooking the Caribbean coast of Colombia"
                 fill
                 className="object-cover"
@@ -385,14 +385,14 @@ export default function BrisaBahiaCaseStudy() {
                 className="rounded-xl shadow-lg w-full h-auto"
               />
               <Image
-                src="/case-studies/brisa-bahia/gallery/Guidelines_Brisa Bahia (1)_Page_3.jpg"
+                src="/case-studies/brisa-bahia/gallery/guidelines-page-3.jpg"
                 alt="Brand guidelines page showing color applications"
                 width={600}
                 height={400}
                 className="rounded-xl shadow-lg w-full h-auto"
               />
               <Image
-                src="/case-studies/brisa-bahia/gallery/Guidelines_Brisa Bahia (1)_Page_5.jpg"
+                src="/case-studies/brisa-bahia/gallery/guidelines-page-5.jpg"
                 alt="Brand guidelines page showing typography usage"
                 width={600}
                 height={400}
@@ -414,7 +414,7 @@ export default function BrisaBahiaCaseStudy() {
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0">
             <Image
-              src="/case-studies/brisa-bahia/brisa-bahia hero.jpg"
+              src="/case-studies/brisa-bahia/hero.jpg"
               alt="Brisa Bahía retreat atmosphere"
               fill
               className="object-cover"
