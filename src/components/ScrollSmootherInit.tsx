@@ -127,7 +127,7 @@ export default function ScrollSmootherInit() {
     const normalizer = ScrollTrigger.normalizeScroll({
       allowNestedScroll: true,
       lockAxis: false,
-      momentum: (self) => Math.min(3, self.velocityY / 1000),
+      momentum: (self: { velocityY: number }) => Math.min(3, self.velocityY / 1000),
       type: "touch,wheel,pointer",
     });
     return () => {
