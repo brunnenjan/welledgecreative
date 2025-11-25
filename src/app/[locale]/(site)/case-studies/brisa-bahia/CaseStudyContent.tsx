@@ -11,7 +11,8 @@ import ImageLightbox from "@/components/ImageLightbox";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 const HERO_IMAGE = "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp";
-const MOODBOARD_IMAGE = "/case-studies/brisa-bahia/gallery/eb2e7ddd-moodboard.webp";
+const MOODBOARD_IMAGE = "/case-studies/brisa-bahia/process/Brisa-Bahia-moodboard-mockup.webp";
+const TYPOGRAPHY_IMAGE = "/case-studies/brisa-bahia/process/typography-fancy-mockup-brisa-bahia.webp";
 const BRAND_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp";
 const WEBSITE_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-website.webp";
 
@@ -62,8 +63,8 @@ const WEBSITE_PROCESS_IMAGES = [
   {
     src: "/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
     alt: "About us presentation slide for the Brisa Bahía retreat experience",
-    width: 1024,
-    height: 1024,
+    width: 696,
+    height: 696,
   },
   {
     src: "/case-studies/brisa-bahia/gallery/Logo-gap-guide-brisabahia.webp",
@@ -76,9 +77,27 @@ const WEBSITE_PROCESS_IMAGES = [
 const FINAL_SHOWCASE_IMAGES = [
   {
     src: MOODBOARD_IMAGE,
-    alt: "Brisa Bahía moodboard with lush textures and facilitator rituals",
-    width: 1920,
-    height: 1080,
+    alt: "Moodboard mixing lush jungle textures, ocean breeze palettes, and facilitator rituals",
+    width: 2464,
+    height: 1668,
+  },
+  {
+    src: TYPOGRAPHY_IMAGE,
+    alt: "Editorial serif headlines (Lora) paired with a humanist sans body for readability",
+    width: 2048,
+    height: 2048,
+  },
+  {
+    src: "/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.webp",
+    alt: "Custom icon set for Brisa Bahía retreat center",
+    width: 2048,
+    height: 2048,
+  },
+  {
+    src: HERO_IMAGE,
+    alt: "Brisa Bahía retreat center branding and website displayed on desktop, tablet and mobile devices",
+    width: 2688,
+    height: 1792,
   },
   {
     src: "/case-studies/brisa-bahia/gallery/guidelines-page-3.webp",
@@ -95,8 +114,8 @@ const FINAL_SHOWCASE_IMAGES = [
   {
     src: "/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
     alt: "Brisa Bahía about us presentation slide with facilitator messaging",
-    width: 1024,
-    height: 1024,
+    width: 696,
+    height: 696,
   },
   {
     src: "/case-studies/brisa-bahia/gallery/Logo-gap-guide-brisabahia.webp",
@@ -349,9 +368,9 @@ export default function CaseStudyContent() {
                 <div className="overflow-hidden rounded-2xl">
                   <Image
                     src={MOODBOARD_IMAGE}
-                    alt="Brisa Bahía moodboard showing warm light and facilitator moments"
-                    width={1920}
-                    height={1080}
+                    alt="Moodboard mixing lush jungle textures, ocean breeze palettes, and facilitator rituals"
+                    width={2464}
+                    height={1668}
                     className="w-full"
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     loading="lazy"
