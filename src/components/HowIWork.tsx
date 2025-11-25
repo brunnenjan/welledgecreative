@@ -30,7 +30,7 @@ const PHASES = [
 ];
 
 export default function HowIWork() {
-  const { t } = useI18n();
+  const { t, getValue } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const workHighlightRef = useRef<HTMLSpanElement>(null);
@@ -139,6 +139,7 @@ export default function HowIWork() {
               }}
             />
           </span>
+          {(getValue<string>("howIWork.suffix") ?? "")}
         </h2>
 
         <p className="mx-auto mt-2 mb-16 max-w-3xl text-center text-base md:text-lg text-[#6a6a6a]">

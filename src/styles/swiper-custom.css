@@ -23,7 +23,7 @@
 .logo-slider .logo-slide {
   --logo-slide-height: clamp(7.5rem, 16vw, 10rem);
   --logo-slide-width: clamp(11rem, 24vw, 17rem);
-  --logo-slide-padding: clamp(1.1rem, 2.8vw, 1.85rem);
+  --logo-slide-padding: clamp(1.75rem, 3.5vw, 2.75rem);
   display: inline-flex;
   align-items: center;
   justify-content: center;

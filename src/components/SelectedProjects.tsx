@@ -21,9 +21,9 @@ const FEATURED_PROJECTS: FeaturedProject[] = [
   {
     slug: "brisa-bahia",
     year: "2025",
-    site: "https://www.brisabahia.com/",
+    site: "/case-studies/brisa-bahia",
     images: [
-      { src: "/assets/misc/projects/brisa-bahia.webp", altKey: "selectedProjects.projects.brisa-bahia.imageAlt" },
+      { src: "/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp", altKey: "selectedProjects.projects.brisa-bahia.imageAlt" },
     ],
   },
   {
@@ -39,7 +39,7 @@ const FEATURED_PROJECTS: FeaturedProject[] = [
   },
   {
     slug: "einfach-schee",
-    year: "2017",
+    year: "2017 – heute",
     site: "https://einfach-schee.com",
     images: [
       { src: "/assets/misc/projects/einfach-schee.webp", altKey: "selectedProjects.projects.einfach-schee.imageAlt" },

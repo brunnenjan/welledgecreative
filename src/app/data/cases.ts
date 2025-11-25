@@ -28,10 +28,13 @@ export const cases: Case[] = [
     problem: "Needed a premium presence and a clear path to booking across devices.",
     approach: "Defined positioning and story, created logo suite & visual system, rebuilt existing WordPress site with smooth scroll depth.",
     result: "Visitors grasp the offer quickly and move confidently toward contact/booking.",
-    site: "https://www.brisabahia.com/",
+    site: "/case-studies/brisa-bahia",
     color: "#0B4216",
     images: [
-      { src: "/assets/misc/projects/brisa-bahia.webp", alt: "Brisa Bahía hero" },
+      {
+        src: "/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp",
+        alt: "Brisa Bahía retreat center branding mockup across multiple devices",
+      },
     ],
   },
   {
@@ -39,7 +42,7 @@ export const cases: Case[] = [
     title: "einfach-schee — full brand & site",
     client: "einfach-schee",
     sector: "Small Business",
-    year: "2017",
+    year: "2017 – heute",
     role: ["Branding","Logo","Webdesign","Webdev"],
     outcome: "Clear identity and website that’s delivered value for years.",
     summary: "End-to-end brand & website as a solo creator.",

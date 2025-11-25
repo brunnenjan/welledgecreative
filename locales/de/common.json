@@ -64,7 +64,8 @@
   },
   "howIWork": {
     "heading": "So",
-    "highlight": "arbeite ich.",
+    "highlight": "arbeite",
+    "suffix": " ich.",
     "paragraph": "Jedes Projekt folgt einem transparenten, strategischen Prozess, der Klarheit schafft und Ergebnisse liefert, die bleiben.",
     "phases": {
       "discover": {
@@ -96,6 +97,11 @@
     "paragraphTwo": "Gutes Design braucht keine Erklärung – es spricht durch Klarheit, Purpose und Wirkung.",
     "bookCallAria": "Call mit Well Edge Creative buchen"
   },
+  "homeDiscoveryCta": {
+    "heading": "Fühlst du dich von all den Möglichkeiten überfordert?",
+    "paragraph": "Wenn du ein Retreat Center, einen Wellness-Ort oder einen holistischen Space führst und nicht weißt, wo du mit Branding, Website und Buchungen anfangen sollst — ich begleite dich Schritt für Schritt bis zu deinen ersten Anfragen.",
+    "button": "Kostenlosen Discovery Call buchen"
+  },
   "selectedProjects": {
     "heading": {
       "prefix": "Ausgewählte",
@@ -121,7 +127,7 @@
         "solution": "Entwicklung einer kohärenten visuellen Identität und einer storytelling-basierten Website, die den Charakter des Retreats transportiert.",
         "result": "Eine unverwechselbare Marke und performante, barrierearme Site, die die richtigen Gäste anspricht und echte Gastfreundschaft vermittelt.",
         "roles": ["Branding", "Logo", "Webdesign", "Webdev (WordPress, PHP)"],
-        "imageAlt": "Brisa Bahía Hero"
+        "imageAlt": "Brisa Bahía Retreat-Center-Branding als Multi-Device-Mockup"
       },
       "virtuelles-fastnachtsmuseum": {
         "client": "Virtuelles Fastnachtsmuseum",
@@ -288,86 +294,111 @@
   },
   "caseStudyBrisaBahia": {
     "seo": {
-      "title": "Branding & Webdesign für Retreat Center — Brisa Bahía Fallstudie",
-      "description": "Vollständiges Rebranding mit neuem Namen, Logo, Identität und retreat-fokussierter Website für ein abgelegenes Retreat Center in Kolumbien."
+      "title": "Brisa Bahía — Retreat Center Branding & Website Transformation",
+      "description": "Wie ich Brisa Bahía von einer veralteten Lodge-Website zu einer Premium-Retreat-Marke mit individueller Identität, Website und facilitator-fokussierter User Experience geführt habe."
     },
     "hero": {
-      "title": "Brisa Bahía — Retreat Center Rebrand & Website",
-      "subtitle": "Umfassende Markenstrategie, visuelle Identität und modernes Webdesign, das einen versteckten Schatz in eine Premium-Retreat-Destination verwandelt hat."
-    },
-    "results": {
-      "heading": "Die Transformation",
-      "subtitle": "Vom Backpacker-Hostel zur Premium-Retreat-Marke.",
-      "items": [
-        "Komplettes Rebranding mit neuem Namen, Logo und Identität",
-        "Erste Retreat-Anfragen innerhalb von Wochen nach Launch",
-        "Internationale Facilitatoren melden sich jetzt direkt",
-        "Vermietung des gesamten Centers wurde möglich",
-        "Website-Traffic stieg sofort an",
-        "Klare Positionierung für die richtige Zielgruppe"
+      "title": "Brisa Bahía — Retreat Center Branding & Website Transformation",
+      "tagline": "Retreat-Center-Branding und facilitator-orientiertes Wellness-Webdesign für ein kolumbianisches Eco Retreat.",
+      "intro": [
+        "Kary & Nhung baten mich als ihren holistischen Retreat-Webdesigner, den geerbten Bahia-Lodge-Auftritt in eine Premium-Geschichte zu verwandeln, die den Dschungelstandort und ihre Facilitator ehrt.",
+        "Ich habe die komplette Retreat-Center-Brand-Identity, jeden digitalen Touchpoint und die Eco-Retreat-Website neu aufgebaut, damit Facilitator sofort Erfahrung, Logistik und Buchungsweg verstehen."
       ],
-      "clientFeedback": "«Die Website ist es, die sie überzeugt hat, sich zu melden.»",
-      "clientName": "— María & David, Gründer"
-    },
-    "overview": {
-      "heading": "Projektübersicht",
-      "text": "Brisa Bahía ist ein Retreat Center an Kolumbiens abgelegener Karibikküste. Meine Aufgabe war es, ihre Marke komplett zu transformieren — vom Naming bis zur Website — und sie als Premium-Destination für Yogalehrer, Wellness-Praktizierende und Retreat-Facilitatoren weltweit zu positionieren.",
-      "transformation": "Die Transformation: Von 'Bahía Lodge' (generisches Backpacker-Hostel) zu 'Brisa Bahía' (Premium-Retreat-Refugium).",
-      "client": "Brisa Bahía",
-      "location": "Capurganá, Kolumbien",
-      "services": "Naming, Markenstrategie, Visuelle Identität, Webdesign & Entwicklung",
-      "year": "2024"
-    },
-    "process": {
-      "heading": "Der Prozess",
-      "subtitle": "Ein strukturierter Ansatz von der Entdeckung bis zum Launch.",
-      "discovery": {
-        "title": "Entdeckung & Strategie",
-        "text": "Tiefgreifende Recherche zu den Werten des Retreats, der Zielgruppe (Yogalehrer, Wellness-Praktizierende) und dem Wettbewerb. Wir identifizierten die Kernpositionierung: ein naturverbundenes Refugium, das authentisch wirkt, nicht kommerziell."
-      },
-      "naming": {
-        "title": "Naming & Storytelling",
-        "text": "Durch kollaborative Sessions entdeckten wir 'Brisa Bahía' — auf Spanisch 'Bucht-Brise'. Der Name fängt sowohl den Küstenstandort als auch das Gefühl friedlicher Flucht ein, das das Retreat-Erlebnis definiert."
-      },
-      "identity": {
-        "title": "Visuelle Identität",
-        "text": "Die neue Identität fängt Küstenbrisen, tropische Natur und geerdete Ruhe ein. Logo, Farben, Typografie und Ikonografie arbeiten als kohärentes System zusammen, das die Premium-Positionierung des Retreats widerspiegelt."
-      },
-      "uxWeb": {
-        "title": "UX & Webdesign",
-        "text": "Komplette Neugestaltung der Informationsarchitektur zur klaren Kommunikation mit Facilitatoren: Retreat-Hosting, Einrichtungen, Unterkunft, Verpflegung und Anfrageprozess. Mobile-first gebaut mit emotionalem Storytelling und für Conversions optimiert."
-      },
-      "implementation": {
-        "title": "Umsetzung",
-        "text": "Zweisprachige Website (Englisch/Spanisch), Buchungsanfrage-System, SEO-Optimierung für retreat-bezogene Suchanfragen und Performance-Tuning für Besucher mit langsameren Verbindungen in abgelegenen Gebieten."
+      "meta": {
+        "clientLabel": "Kunde",
+        "client": "Brisa Bahía",
+        "ownersLabel": "Ownerinnen",
+        "owners": "Kary & Nhung",
+        "locationLabel": "Ort",
+        "location": "Capurganá, Kolumbien",
+        "servicesLabel": "Leistungen",
+        "services": "Naming, Retreat-Center-Branding, zweisprachiges WordPress",
+        "timelineLabel": "Zeitraum",
+        "timeline": "12 Wochen von Strategie bis Launch"
       }
     },
-    "branding": {
-      "logo": "Logo-Design",
-      "colorsBefore": "Vorher: Begrenzte Palette ohne Zusammenhalt",
-      "colorsAfter": "Nachher: Warme, natürliche Töne der kolumbianischen Küste",
-      "typography": "Elegante Serif-Headlines für Wärme, klare Sans-Serif für Lesbarkeit",
-      "icons": "Individuelle Ikonografie"
+    "beforeAfter": {
+      "heading": "Before & After",
+      "subtitle": "Wir haben die Bahia-Lodge-Hostel-Optik in ein facilitator-taugliches Retreat-Erlebnis gehoben.",
+      "beforeLabel": "Before — old Bahia Lodge website (previous owner)",
+      "afterLabel": "After — New Brisa Bahía retreat website",
+      "note": "Jeder Touchpoint ist für Facilitator optimiert, die ganze Wochen buchen."
     },
     "challenge": {
       "heading": "Die Herausforderung",
-      "text": "Die alte 'Bahía Lodge' Marke kommunizierte Budget-Unterkunft, keine transformativen Retreat-Erlebnisse. Es gab keine visuelle Identität, keine klare Positionierung für Facilitatoren, und die Website war überladen und verwirrend — sie zog Backpacker an statt den Premium-Retreat-Markt, den sie bedienen wollten."
+      "text": "Bahia Lodge wirkte wie ein Budget-Hostel: uneinheitliche Farben, generische Texte, veraltete Fotos und ein träges WordPress-Theme mit dutzenden nicht gepflegten Plugins. Es gab kein Yoga-Retreat-Website-Design, also fanden Facilitator weder Angebote noch Logistik oder Vertrauen."
+    },
+    "goal": {
+      "heading": "Das Ziel",
+      "text": "Eine rein digitale Transformation liefern: neuer Name, klare Positionierung, eine verfeinerte Retreat-Center-Brand-Identity und ein leistungsfähiges, zweisprachiges System, damit Facilitator ganze Wochen ohne lange DM-Verläufe buchen."
+    },
+    "brandIdentity": {
+      "heading": "Brand Identity",
+      "intro": "Wir entwickelten ein taktiles System inspiriert von der kolumbianischen Küste: handgezeichnete Muster, weiche Sonnenlicht-Verläufe und Typografie, die Ritual und Klarheit verbindet.",
+      "logo": "Modularer Schriftzug und Symbol, das auf hellen wie dunklen UI-Flächen funktioniert.",
+      "colorsBefore": "Vorher: inkonsistente Blautöne und generisches Beige wie ein Hostel.",
+      "colorsAfter": "Nachher: geerdete Neutrals mit botanischen Akzenten für ruhige Energie.",
+      "typography": "Editoriale Serif-Headlines kombiniert mit einer humanistischen Sans-Serif für lange Itineraries.",
+      "iconography": "Individuelles Icon-Set für Services, Unterkünfte und Rituale im Experience Guide.",
+      "moodboard": "Moodboard aus Dschungeltexturen, Ozeanlicht und Facilitator-Ritualen.",
+      "brandMindmap": {
+        "title": "Brand-Strategy-Mindmap",
+        "description": "Werte, Emotionen und Facilitator-Erwartungen verknüpft, damit jede Design-Entscheidung zweckgebunden bleibt."
+      }
+    },
+    "uxStructure": {
+      "heading": "UX Structure",
+      "intro": "Die Seitenstruktur stützt sich auf Retreat Center UX Design: Jede Navigation beantwortet Fragen zu Kapazität, Logistik, Beispiel-Abläufen und Onsite-Support.",
+      "websiteMindmap": {
+        "title": "Website Mindmap",
+        "description": "User-Flows für Hosts, Facilitator und Gäste definieren, wie die zweisprachige Experience jede Fläche vorstellt."
+      },
+      "wireframe": {
+        "title": "Wireframe (Full Website Structure)",
+        "description": "Das Langformat-Wireframe wurde in gut lesbare Abschnitte geschnitten, sodass Teams die gesamte Struktur sehen und einzelne Bereiche schnell prüfen können."
+      }
+    },
+    "websiteDesign": {
+      "heading": "Website Design",
+      "intro": "High-Fidelity-UI bringt die neue Palette, Typografie und Iconografie in ein responsives Wellness Retreat Website Design. Jeder Scroll-Abschnitt verkauft die Eco-Retreat-Website über Story, Social Proof und klare CTAs.",
+      "after": [
+        "Homepage mit Multi-Device-Hero, Facilitator-Kopie und immersiver Fotografie.",
+        "Facilities-Page mit Hosting-Logistik, Beispiel-Abläufen und lebendigen Amenity-Details."
+      ]
+    },
+    "results": {
+      "heading": "Das Ergebnis",
+      "subtitle": "So hat es Kary & Nhung verändert",
+      "items": [
+        "Die ersten facilitator-geführten Retreats wurden innerhalb eines Monats über die Website gebucht.",
+        "Facilitator nutzen die Angebots-Checkliste und buchen ganze Wochen ohne zusätzliche Decks.",
+        "Das story-first Retreat-Center-Branding fließt in Pitch-Decks, Onboarding-Dokumente und Partnerschaften ein.",
+        "Performance-Optimierungen reduzierten die Initial-Ladezeit über die abgelegene Karibik-Verbindung um 45 %.",
+        "Kary & Nhung haben jetzt einen festen Wellness Web Designer Partner für saisonale Updates."
+      ]
     },
     "testimonial": {
-      "quote": "Jan hat genau verstanden, was wir brauchten. Er hat nicht nur ein Logo gestaltet — er hat uns geholfen, unsere Identität zu finden. Der neue Name, die Marke, die Website — alles fühlt sich jetzt nach uns an. Facilitatoren sagen uns, dass die Website sie überzeugt hat, sich zu melden.",
-      "author": "María & David",
-      "role": "Gründer, Brisa Bahía",
-      "translatorNote": "Übersetzt —",
-      "viewOriginal": "Original anzeigen"
+      "heading": "Testimonial",
+      "quote": "Ein wunderschönes Design, das unser Wesen einfängt: Branding & Website\nWir könnten mit Jans Arbeit für Brisa Bahía nicht glücklicher sein. Vom ersten Logoentwurf bis zur finalen WordPress-Website hat er unsere Vision für unser Boutique Eco Retreat an Kolumbiens Karibikküste verstanden.\n\nDas Logo und die Farbpalette fangen das Wesen unserer Marke perfekt ein: ruhig, natürlich und einladend. Sein Auge für Ästhetik passt genau zur Wellness- und Retreat-Welt. Doch noch wichtiger war die Zusammenarbeit: Er war kollaborativ, offen und wirklich daran interessiert, unsere Vision lebendig zu machen.\n\nDie Website selbst ist außergewöhnlich. Sie zeigt unser Gelände wunderschön und bleibt intuitiv und leicht zu navigieren. Er versteht, was Retreat Center von ihrer Online-Präsenz brauchen: Eine Seite, die nicht nur beeindruckt, sondern auch die transformative Erfahrung transportiert, die wir anbieten.\n\nWir empfehlen Jan wärmstens. Er kennt die Branche, liefert großartige Ergebnisse und macht den gesamten Prozess angenehm.\n\nKary, Founder & Retreat Partner, Brisa Bahía",
+      "originalQuote": "A Beautiful Design That Captures Our Essence: Branding & Website\nWe couldn't be happier with the work Jan did for Brisa Bahía. From the initial logo design to the final WordPress website, he truly understood our vision for our boutique eco-retreat center on Colombia's Caribbean coast.\n\nThe logo and color palette he created perfectly capture the essence of our brand: tranquil, natural, and inviting. He has an exceptional eye for aesthetics that resonate with the wellness and retreat space. But beyond his design skills, what really stood out was working with him as a person. He was collaborative, responsive, and genuinely invested in bringing our vision to life.\n\nThe website itself is exceptional. It beautifully showcases our property while being intuitive and easy to navigate. He clearly understands what retreat centers need from their online presence: a site that not only looks stunning but also effectively communicates the transformational experience we offer.\n\nWe highly recommend Jan. He understands the industry, delivers outstanding results, and made the whole process enjoyable.\n\nKary, Founder & Retreat Partner, Brisa Bahía",
+      "author": "— Kary, Co-Founder of Brisa Bahía",
+      "translatedLabel": "[Translated]",
+      "viewOriginal": "View original",
+      "hideOriginal": "Hide original"
     },
-    "gallery": {
-      "heading": "Finale Präsentation",
-      "subtitle": "Das komplette Markensystem: Website, Guidelines und Marketing-Assets."
+    "finalShowcase": {
+      "heading": "Final Showcase",
+      "subtitle": "Visuelle Artefakte zum Abschluss — Brand-System, Guidelines und die Multi-Device-Experience."
+    },
+    "discoveryCTA": {
+      "heading": "Unsicher, wo du mit Marke oder Website starten sollst?",
+      "paragraph": "Lass uns einen kurzen Discovery Call planen und gemeinsam deine nächsten Schritte festlegen.",
+      "button": "Projekt starten – Discovery Call"
     },
     "cta": {
-      "heading": "Möchtest du dein Retreat oder Öko-Lodge transformieren?",
-      "text": "Wenn du ein Retreat Center, Wellness-Space oder Öko-Lodge aufbaust und eine Marke und Website willst, die die richtigen Gäste anziehen — lass uns sprechen.",
-      "button": "Discovery Call buchen"
+      "heading": "Discovery Call buchen",
+      "text": "Du brauchst Retreat-Center-Branding, einen facilitator-fokussierten UX-Plan oder eine individuelle Seite, die Anfragen in Buchungen verwandelt? Lass uns starten.",
+      "button": "Start your project"
     },
     "backLink": "← Zurück zu allen Projekten"
   }
