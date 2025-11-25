@@ -32,8 +32,8 @@ export const cases: Case[] = [
     color: "#0B4216",
     images: [
       {
-        src: "/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp",
-        alt: "Brisa Bahía retreat center branding mockup across multiple devices",
+        src: "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp",
+        alt: "Brisa Bahía retreat center branding and website displayed on desktop, tablet and mobile devices",
       },
     ],
   },

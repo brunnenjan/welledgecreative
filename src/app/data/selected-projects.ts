@@ -15,7 +15,7 @@ export const selectedProjects: SelectedProject[] = [
     valueProp: "Story-first retreat brand with booking-ready site.",
     tags: ["Branding", "Logo", "Web Design", "WordPress"],
     url: "/case-studies/brisa-bahia",
-    image: "/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp",
+    image: "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp",
   },
   {
     slug: "einfach-schee",

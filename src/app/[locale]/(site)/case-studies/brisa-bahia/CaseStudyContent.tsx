@@ -9,7 +9,7 @@ import ContactSection from "@/components/ContactSection";
 import DiscoveryCTASection from "@/components/DiscoveryCTASection";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-const HERO_IMAGE = "/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp";
+const HERO_IMAGE = "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp";
 const MOODBOARD_IMAGE = "/case-studies/brisa-bahia/gallery/eb2e7ddd-moodboard.webp";
 const BRAND_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp";
 const WEBSITE_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-website.webp";
@@ -73,12 +73,6 @@ const WEBSITE_PROCESS_IMAGES = [
 ];
 
 const FINAL_SHOWCASE_IMAGES = [
-  {
-    src: HERO_IMAGE,
-    alt: "Multi-device mockup showing the Brisa Bahía retreat center branding and website",
-    width: 1920,
-    height: 1080,
-  },
   {
     src: MOODBOARD_IMAGE,
     alt: "Brisa Bahía moodboard with lush textures and facilitator rituals",
@@ -197,6 +191,48 @@ export default function CaseStudyContent() {
                   <p className="mt-2 font-serif text-lg text-black">{item.value}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 py-16">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-8 text-center">
+              <h2 className="text-2xl font-serif font-semibold text-black/90">Logo Transformation</h2>
+            </div>
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="rounded-2xl bg-neutral-50 p-8">
+                <p className="mb-4 text-center text-sm font-medium uppercase tracking-wide text-black/60">
+                  Before — Bahia Lodge Logo
+                </p>
+                <div className="flex items-center justify-center rounded-xl bg-white p-8">
+                  <Image
+                    src="/case-studies/brisa-bahia/before/logo-Bahia-Lodge-capurgana-colombia.webp"
+                    alt="Old Bahia Lodge logo before rebranding"
+                    width={200}
+                    height={160}
+                    className="h-auto w-full max-w-[180px]"
+                    sizes="180px"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div className="rounded-2xl bg-neutral-50 p-8">
+                <p className="mb-4 text-center text-sm font-medium uppercase tracking-wide text-black/60">
+                  After — Brisa Bahía Logo
+                </p>
+                <div className="flex items-center justify-center rounded-xl bg-white p-8">
+                  <Image
+                    src="/case-studies/brisa-bahia/branding/logo-main.webp"
+                    alt="New Brisa Bahía logo after rebranding showing organic retreat center lettering"
+                    width={444}
+                    height={355}
+                    className="h-auto w-full max-w-[220px]"
+                    sizes="220px"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -404,7 +440,7 @@ export default function CaseStudyContent() {
                   {t("caseStudyBrisaBahia.uxStructure.wireframe.title")}
                 </summary>
                 <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.uxStructure.wireframe.description")}</p>
-                <div className="mt-8 space-y-6">
+                <div className="mt-8 max-h-[80vh] space-y-6 overflow-y-auto rounded-xl border border-black/5 bg-neutral-100/50 p-4">
                   {WIRE_FRAME_SLICES.map((slice) => (
                     <div key={slice.src} className="mx-auto max-w-[920px] overflow-hidden rounded-2xl bg-white shadow-lg">
                       <Image
