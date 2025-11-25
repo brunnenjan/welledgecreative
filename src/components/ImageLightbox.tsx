@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
 
 type ImageLightboxProps = {
   images: Array<{ src: string; alt: string; width: number; height: number }>;
@@ -86,18 +85,18 @@ export default function ImageLightbox({
 
       {/* Image */}
       <div
-        className="relative max-h-[90vh] max-w-[90vw]"
+        className="relative flex flex-col items-center justify-center p-4"
         onClick={(e) => e.stopPropagation()}
       >
-        <Image
-          src={currentImage.src}
-          alt={currentImage.alt}
-          width={currentImage.width}
-          height={currentImage.height}
-          className="h-auto max-h-[90vh] w-auto max-w-full object-contain"
-          sizes="90vw"
-          priority
-        />
+        <div className="relative max-h-[85vh] max-w-[90vw]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={currentImage.src}
+            alt={currentImage.alt}
+            className="max-h-[85vh] max-w-full h-auto w-auto object-contain"
+            loading="eager"
+          />
+        </div>
         {images.length > 1 && (
           <p className="mt-4 text-center text-sm text-white/70">
             {currentIndex + 1} / {images.length}

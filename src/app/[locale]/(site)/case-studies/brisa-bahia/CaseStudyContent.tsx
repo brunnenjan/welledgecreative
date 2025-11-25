@@ -647,32 +647,6 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden px-6 py-32">
-          <div className="absolute inset-0">
-            <Image
-              src={HERO_IMAGE}
-              alt="Brisa Bahía retreat center branding hero background"
-              fill
-              className="object-cover"
-              sizes="100vw"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-black/65" />
-          </div>
-          <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
-            <h2 className="text-3xl font-serif font-semibold md:text-4xl">{t("caseStudyBrisaBahia.cta.heading")}</h2>
-            <p className="mt-6 text-lg text-white/80">{t("caseStudyBrisaBahia.cta.text")}</p>
-            <div className="mt-10">
-              <Link
-                href="/contact"
-                className="inline-flex rounded-full bg-white px-10 py-4 text-lg font-semibold text-black transition hover:bg-accent hover:text-white"
-              >
-                {t("caseStudyBrisaBahia.cta.button")}
-              </Link>
-            </div>
-          </div>
-        </section>
-
         <div className="bg-white px-6 py-24">
           <div className="mx-auto max-w-4xl">
             <DiscoveryCTASection
