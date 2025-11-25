@@ -20,6 +20,7 @@ export default function DiscoveryCTASection({
   className,
 }: DiscoveryCTASectionProps) {
   const isLight = variant === "light";
+  const isExternalLink = href.startsWith("http");
 
   const sectionClasses = [
     "relative",
@@ -69,12 +70,23 @@ export default function DiscoveryCTASection({
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
         <h2 className={headingClasses}>{heading}</h2>
         <p className={paragraphClasses}>{paragraph}</p>
-        <Link
-          href={href}
-          className={buttonClasses}
-        >
-          {buttonText}
-        </Link>
+        {isExternalLink ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClasses}
+          >
+            {buttonText}
+          </a>
+        ) : (
+          <Link
+            href={href}
+            className={buttonClasses}
+          >
+            {buttonText}
+          </Link>
+        )}
       </div>
     </section>
   );

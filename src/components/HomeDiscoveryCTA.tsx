@@ -13,7 +13,7 @@ export default function HomeDiscoveryCTA() {
           heading={t("homeDiscoveryCta.heading")}
           paragraph={t("homeDiscoveryCta.paragraph")}
           buttonText={t("homeDiscoveryCta.button")}
-          href="/contact?type=discovery-call"
+          href="https://calendly.com/well-edge-creative/30min"
           variant="dark"
         />
       </div>

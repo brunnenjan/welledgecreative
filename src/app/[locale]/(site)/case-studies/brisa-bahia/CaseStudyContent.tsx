@@ -163,7 +163,7 @@ export default function CaseStudyContent() {
     <>
       <Header />
       <main className="bg-white text-black">
-        <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
+        <section id="case-study-hero" className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src={HERO_IMAGE}
@@ -201,7 +201,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="bg-neutral-50 px-6 py-20">
+        <section id="before-after" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 flex flex-col gap-4 text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.beforeAfter.heading")}</p>
@@ -252,7 +252,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="px-6 py-20">
+        <section id="challenge" className="px-6 py-20">
           <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
             <div>
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.challenge.heading")}</p>
@@ -267,7 +267,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="bg-neutral-50 px-6 py-20">
+        <section id="brand-identity" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.heading")}</p>
@@ -278,7 +278,7 @@ export default function CaseStudyContent() {
             <div className="mb-12 grid gap-10 lg:grid-cols-2">
               <div className="rounded-3xl bg-white p-8 shadow-lg">
                 <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.logo")}</h3>
-                <div className="flex items-center justify-center rounded-2xl bg-neutral-50 p-12 md:p-16">
+                <div className="flex items-center justify-center rounded-2xl bg-neutral-50 p-16 md:p-20">
                   <Image
                     src="/case-studies/brisa-bahia/branding/logo-main.webp"
                     alt="Brisa Bahía logo showing organic retreat center lettering"
@@ -376,7 +376,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="px-6 py-20">
+        <section id="ux-structure" className="px-6 py-20">
           <div className="mx-auto max-w-6xl space-y-16">
             <div className="text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.heading")}</p>
@@ -424,7 +424,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="bg-neutral-50 px-6 py-20">
+        <section id="website-design" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-6xl space-y-16">
             <div className="text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.websiteDesign.heading")}</p>
@@ -484,7 +484,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="px-6 py-20">
+        <section id="results" className="px-6 py-20">
           <div className="mx-auto max-w-4xl">
             <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.results.heading")}</p>
             <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">{t("caseStudyBrisaBahia.results.subtitle")}</h2>
@@ -499,7 +499,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="bg-neutral-50 px-6 py-20">
+        <section id="testimonial" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.testimonial.heading")}</p>
             <div className="mt-8 space-y-6 text-left text-lg leading-relaxed text-black/80">
@@ -527,7 +527,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="px-6 py-20">
+        <section id="final-showcase" className="px-6 py-20">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.finalShowcase.heading")}</p>
@@ -584,7 +584,7 @@ export default function CaseStudyContent() {
               heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}
               paragraph={t("caseStudyBrisaBahia.discoveryCTA.paragraph")}
               buttonText={t("caseStudyBrisaBahia.discoveryCTA.button")}
-              href="/contact?type=discovery-call"
+              href="https://calendly.com/well-edge-creative/30min"
               variant="light"
             />
           </div>
