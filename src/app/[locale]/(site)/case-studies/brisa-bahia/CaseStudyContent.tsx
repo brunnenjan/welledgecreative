@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 import DiscoveryCTASection from "@/components/DiscoveryCTASection";
+import ImageLightbox from "@/components/ImageLightbox";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 const HERO_IMAGE = "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp";
@@ -108,6 +109,23 @@ const FINAL_SHOWCASE_IMAGES = [
 export default function CaseStudyContent() {
   const { t, getValue, locale } = useI18n();
   const [showOriginalTestimonial, setShowOriginalTestimonial] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => setLightboxOpen(false);
+  const nextImage = () =>
+    setLightboxIndex((prev) => (prev + 1) % FINAL_SHOWCASE_IMAGES.length);
+  const prevImage = () =>
+    setLightboxIndex(
+      (prev) =>
+        (prev - 1 + FINAL_SHOWCASE_IMAGES.length) %
+        FINAL_SHOWCASE_IMAGES.length
+    );
 
   const heroIntro = (getValue<string[]>("caseStudyBrisaBahia.hero.intro") ?? []).filter(Boolean);
   const heroMeta = [
@@ -177,66 +195,6 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section className="px-6 pb-20 pt-16">
-          <div className="mx-auto max-w-5xl space-y-10">
-            <div className="space-y-6 text-lg leading-relaxed text-black/80">
-              {heroIntro.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-            <div className="grid gap-6 rounded-2xl border border-black/10 bg-white/60 p-6 backdrop-blur sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-              {heroMeta.map((item, index) => (
-                <div key={index} className="border-t border-black/10 pt-4">
-                  <p className="text-xs uppercase tracking-[0.3em] text-black/50">{item.label}</p>
-                  <p className="mt-2 font-serif text-lg text-black">{item.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 py-16">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-8 text-center">
-              <h2 className="text-2xl font-serif font-semibold text-black/90">Logo Transformation</h2>
-            </div>
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="rounded-2xl bg-neutral-50 p-8">
-                <p className="mb-4 text-center text-sm font-medium uppercase tracking-wide text-black/60">
-                  Before — Bahia Lodge Logo
-                </p>
-                <div className="flex items-center justify-center rounded-xl bg-white p-8">
-                  <Image
-                    src="/case-studies/brisa-bahia/before/logo-Bahia-Lodge-capurgana-colombia.webp"
-                    alt="Old Bahia Lodge logo before rebranding"
-                    width={200}
-                    height={160}
-                    className="h-auto w-full max-w-[180px]"
-                    sizes="180px"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              <div className="rounded-2xl bg-neutral-50 p-8">
-                <p className="mb-4 text-center text-sm font-medium uppercase tracking-wide text-black/60">
-                  After — Brisa Bahía Logo
-                </p>
-                <div className="flex items-center justify-center rounded-xl bg-white p-8">
-                  <Image
-                    src="/case-studies/brisa-bahia/branding/logo-main.webp"
-                    alt="New Brisa Bahía logo after rebranding showing organic retreat center lettering"
-                    width={444}
-                    height={355}
-                    className="h-auto w-full max-w-[220px]"
-                    sizes="220px"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="before-after" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 flex flex-col gap-4 text-center">
@@ -285,6 +243,66 @@ export default function CaseStudyContent() {
               ))}
             </div>
             <p className="mt-10 text-center text-sm text-black/50">{t("caseStudyBrisaBahia.beforeAfter.note")}</p>
+          </div>
+        </section>
+
+        <section className="px-6 pb-20 pt-16">
+          <div className="mx-auto max-w-5xl space-y-10">
+            <div className="space-y-6 text-lg leading-relaxed text-black/80">
+              {heroIntro.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+            <div className="grid gap-6 rounded-2xl border border-black/10 bg-white/60 p-6 backdrop-blur sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+              {heroMeta.map((item, index) => (
+                <div key={index} className="border-t border-black/10 pt-4">
+                  <p className="text-xs uppercase tracking-[0.3em] text-black/50">{item.label}</p>
+                  <p className="mt-2 font-serif text-lg text-black">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 py-16">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-8 text-center">
+              <h2 className="text-2xl font-serif font-semibold text-black/90">Logo Transformation</h2>
+            </div>
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="rounded-2xl bg-neutral-50 p-8">
+                <p className="mb-4 text-center text-sm font-medium uppercase tracking-wide text-black/60">
+                  Before — Bahia Lodge Logo
+                </p>
+                <div className="flex items-center justify-center rounded-xl bg-white p-12 shadow-md">
+                  <Image
+                    src="/case-studies/brisa-bahia/before/logo-Bahia-Lodge-capurgana-colombia.webp"
+                    alt="Old Bahia Lodge logo before rebranding"
+                    width={200}
+                    height={160}
+                    className="h-auto w-full max-w-[180px]"
+                    sizes="180px"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div className="rounded-2xl bg-neutral-50 p-8">
+                <p className="mb-4 text-center text-sm font-medium uppercase tracking-wide text-black/60">
+                  After — Brisa Bahía Logo
+                </p>
+                <div className="flex items-center justify-center rounded-xl bg-white p-12 shadow-md">
+                  <Image
+                    src="/case-studies/brisa-bahia/branding/logo-main.webp"
+                    alt="New Brisa Bahía logo after rebranding showing organic retreat center lettering"
+                    width={444}
+                    height={355}
+                    className="h-auto w-full max-w-[220px]"
+                    sizes="220px"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -571,18 +589,40 @@ export default function CaseStudyContent() {
               <p className="mt-4 text-lg text-black/70">{t("caseStudyBrisaBahia.finalShowcase.subtitle")}</p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {FINAL_SHOWCASE_IMAGES.map((image) => (
-                <div key={image.src} className="overflow-hidden rounded-3xl bg-white shadow-lg">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                    className="h-full w-full object-cover"
-                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 45vw, 100vw"
-                    loading="lazy"
-                  />
-                </div>
+              {FINAL_SHOWCASE_IMAGES.map((image, index) => (
+                <button
+                  key={image.src}
+                  onClick={() => openLightbox(index)}
+                  className="group overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
+                  type="button"
+                >
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                      sizes="(min-width: 1280px) 25vw, (min-width: 768px) 45vw, 100vw"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
+                      <svg
+                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </button>
               ))}
             </div>
           </div>
@@ -614,8 +654,8 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <div className="bg-white px-6 pb-16">
-          <div className="mx-auto max-w-6xl">
+        <div className="bg-white px-6 py-24">
+          <div className="mx-auto max-w-4xl">
             <DiscoveryCTASection
               heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}
               paragraph={t("caseStudyBrisaBahia.discoveryCTA.paragraph")}
@@ -636,6 +676,16 @@ export default function CaseStudyContent() {
       </main>
       <ContactSection />
       <Footer />
+
+      {lightboxOpen && (
+        <ImageLightbox
+          images={FINAL_SHOWCASE_IMAGES}
+          currentIndex={lightboxIndex}
+          onClose={closeLightbox}
+          onNext={nextImage}
+          onPrev={prevImage}
+        />
+      )}
     </>
   );
 }
