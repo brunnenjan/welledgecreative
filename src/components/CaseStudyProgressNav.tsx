@@ -7,23 +7,31 @@ import Link from "next/link";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import { useI18n } from "@/components/providers/I18nProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import type { Locale } from "@/i18n/config";
+
+type LabelSet = Record<Locale, string>;
 
 type SectionItem = {
   id: string;
-  labelKey: string;
-  shortLabelKey?: string;
+  label: LabelSet;
+  shortLabel?: LabelSet;
 };
 
+const createLabelSet = (en: string, de?: string): LabelSet => ({
+  en,
+  de: de ?? en,
+});
+
 const CASE_STUDY_SECTIONS: SectionItem[] = [
-  { id: "intro", labelKey: "caseStudy.nav.intro", shortLabelKey: "caseStudy.nav.introShort" },
-  { id: "brand-identity", labelKey: "caseStudy.nav.brandIdentity", shortLabelKey: "caseStudy.nav.brandIdentityShort" },
-  { id: "brand-applications", labelKey: "caseStudy.nav.brandApplications", shortLabelKey: "caseStudy.nav.brandApplicationsShort" },
-  { id: "website-structure", labelKey: "caseStudy.nav.websiteStructure", shortLabelKey: "caseStudy.nav.websiteStructureShort" },
-  { id: "website-design", labelKey: "caseStudy.nav.websiteDesign", shortLabelKey: "caseStudy.nav.websiteDesignShort" },
-  { id: "mobile-breakpoints", labelKey: "caseStudy.nav.mobileBreakpoints", shortLabelKey: "caseStudy.nav.mobileBreakpointsShort" },
-  { id: "results", labelKey: "caseStudy.nav.results", shortLabelKey: "caseStudy.nav.resultsShort" },
-  { id: "testimonial", labelKey: "caseStudy.nav.testimonial", shortLabelKey: "caseStudy.nav.testimonialShort" },
-  { id: "gallery", labelKey: "caseStudy.nav.gallery", shortLabelKey: "caseStudy.nav.galleryShort" },
+  { id: "intro", label: createLabelSet("Intro"), shortLabel: createLabelSet("Intro") },
+  { id: "brand-identity", label: createLabelSet("Brand Identity"), shortLabel: createLabelSet("Brand Identity") },
+  { id: "brand-applications", label: createLabelSet("Brand Applications"), shortLabel: createLabelSet("Applications") },
+  { id: "website-structure", label: createLabelSet("Website Structure"), shortLabel: createLabelSet("Structure") },
+  { id: "website-design", label: createLabelSet("Website Design"), shortLabel: createLabelSet("Web Design") },
+  { id: "mobile-breakpoints", label: createLabelSet("Mobile Breakpoints"), shortLabel: createLabelSet("Mobile") },
+  { id: "results", label: createLabelSet("Results"), shortLabel: createLabelSet("Results") },
+  { id: "testimonial", label: createLabelSet("Testimonial"), shortLabel: createLabelSet("Testimonial") },
+  { id: "gallery", label: createLabelSet("Gallery"), shortLabel: createLabelSet("Gallery") },
 ];
 
 const INTERSECTION_ROOT_MARGIN = "-45% 0px -45%";
@@ -37,6 +45,10 @@ export default function CaseStudyProgressNav() {
   const ratiosRef = useRef<Record<string, number>>({});
   const hasMountedRef = useRef(false);
   const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
+
+  const getLabel = (section: SectionItem) => section.label[locale] ?? section.label.en;
+  const getShortLabel = (section: SectionItem) =>
+    section.shortLabel?.[locale] ?? section.shortLabel?.en ?? getLabel(section);
 
   const sectionIds = useMemo(() => CASE_STUDY_SECTIONS.map((section) => section.id), []);
   const firstSectionId = sectionIds[0];
@@ -174,11 +186,7 @@ export default function CaseStudyProgressNav() {
   };
 
   const activeSection = CASE_STUDY_SECTIONS.find((s) => s.id === activeId);
-  const activeLabel = activeSection
-    ? activeSection.shortLabelKey
-      ? t(activeSection.shortLabelKey)
-      : t(activeSection.labelKey)
-    : null;
+  const activeLabel = activeSection ? getShortLabel(activeSection) : null;
 
   if (!portalEl) {
     return null;
@@ -198,15 +206,6 @@ export default function CaseStudyProgressNav() {
         className="progress-nav progress-nav--compact"
         aria-label={t("progressNav.ariaLabel")}
       >
-        <Link
-          href={`/${locale}#selected-projects`}
-          className="progress-nav__back"
-          aria-label="Back to projects"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-        </Link>
         <button
           type="button"
           className="progress-nav__home"
@@ -231,7 +230,8 @@ export default function CaseStudyProgressNav() {
           <ul className="progress-nav__list">
             {CASE_STUDY_SECTIONS.map((section, index) => {
               const isActive = section.id === activeId;
-              const label = section.shortLabelKey ? t(section.shortLabelKey) : t(section.labelKey);
+              const label = getShortLabel(section);
+              const ariaLabel = getLabel(section);
               const isVisited = !isActive && activeIndex !== -1 && index < activeIndex;
               const dotClass = `progress-nav__dot${isActive ? " is-active" : isVisited ? " is-visited" : ""}`;
               return (
@@ -239,7 +239,7 @@ export default function CaseStudyProgressNav() {
                   <button
                     type="button"
                     className={dotClass}
-                    aria-label={t(section.labelKey)}
+                    aria-label={ariaLabel}
                     aria-current={isActive ? "true" : undefined}
                     onClick={() => handleDotClick(section.id)}
                   >
@@ -252,6 +252,24 @@ export default function CaseStudyProgressNav() {
               );
             })}
           </ul>
+          <Link
+            href={`/${locale}#selected-projects`}
+            className="progress-nav__back"
+            aria-label={t("progressNav.backLabel")}
+          >
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </Link>
         </div>
       </nav>
 
@@ -266,7 +284,7 @@ export default function CaseStudyProgressNav() {
                 <button
                   type="button"
                   className={dotClass}
-                  aria-label={t(section.labelKey)}
+                  aria-label={getLabel(section)}
                   aria-current={isActive ? "true" : undefined}
                   onClick={() => handleDotClick(section.id)}
                 />

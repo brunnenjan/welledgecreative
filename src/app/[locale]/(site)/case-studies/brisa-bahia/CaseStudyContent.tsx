@@ -22,6 +22,42 @@ const TYPOGRAPHY_IMAGE = "/case-studies/brisa-bahia/process/typography-fancy-moc
 const BRAND_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp";
 const WEBSITE_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-website.webp";
 
+const BRAND_IDENTITY_LIGHTBOX_IMAGES = [
+  {
+    src: MOODBOARD_IMAGE,
+    alt: "Moodboard mixing lush jungle textures, ocean breeze palettes, and facilitator rituals",
+    width: 2464,
+    height: 1668,
+  },
+  {
+    src: TYPOGRAPHY_IMAGE,
+    alt: "Typography pairing for Brisa Bahía retreat center brand",
+    width: 2048,
+    height: 2048,
+  },
+  {
+    src: "/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.webp",
+    alt: "Custom iconography for Brisa Bahía retreat center",
+    width: 2048,
+    height: 2048,
+  },
+];
+
+const WEBSITE_DESIGN_LIGHTBOX_IMAGES = [
+  {
+    src: "/case-studies/brisa-bahia/after/starting-page-brisa-bahia.webp",
+    alt: "Brisa Bahía homepage showcasing retreat center branding",
+    width: 2992,
+    height: 6764,
+  },
+  {
+    src: "/case-studies/brisa-bahia/after/facility-page-brisa-bahia.webp",
+    alt: "Brisa Bahía facilities page detailing the eco retreat website structure",
+    width: 2992,
+    height: 10943,
+  },
+];
+
 const BEFORE_AFTER = [
   {
     id: "hero",
@@ -155,6 +191,11 @@ const FINAL_SHOWCASE_IMAGES = [
   },
 ];
 
+const BRAND_IDENTITY_OFFSET = 0;
+const WEBSITE_DESIGN_OFFSET = BRAND_IDENTITY_OFFSET + BRAND_IDENTITY_LIGHTBOX_IMAGES.length;
+const WEBSITE_PROCESS_OFFSET = WEBSITE_DESIGN_OFFSET + WEBSITE_DESIGN_LIGHTBOX_IMAGES.length;
+const FINAL_SHOWCASE_OFFSET = WEBSITE_PROCESS_OFFSET + WEBSITE_PROCESS_IMAGES.length;
+
 export default function CaseStudyContent() {
   const { t, getValue, locale } = useI18n();
   const [showOriginalTestimonial, setShowOriginalTestimonial] = useState(false);
@@ -170,7 +211,12 @@ export default function CaseStudyContent() {
 
   // Combine all lightbox images
   const allLightboxImages = useMemo(
-    () => [...FINAL_SHOWCASE_IMAGES, ...WEBSITE_PROCESS_IMAGES],
+    () => [
+      ...BRAND_IDENTITY_LIGHTBOX_IMAGES,
+      ...WEBSITE_DESIGN_LIGHTBOX_IMAGES,
+      ...WEBSITE_PROCESS_IMAGES,
+      ...FINAL_SHOWCASE_IMAGES,
+    ],
     []
   );
 
@@ -180,14 +226,6 @@ export default function CaseStudyContent() {
   };
 
   const closeLightbox = () => setLightboxOpen(false);
-  const nextImage = () =>
-    setLightboxIndex((prev) => (prev + 1) % allLightboxImages.length);
-  const prevImage = () =>
-    setLightboxIndex(
-      (prev) =>
-        (prev - 1 + allLightboxImages.length) %
-        allLightboxImages.length
-    );
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -283,7 +321,18 @@ export default function CaseStudyContent() {
     },
   ];
 
-  const websiteDesignCaptions = getValue<string[]>("caseStudyBrisaBahia.websiteDesign.after") ?? [];
+  const websiteDesignCaptions = useMemo(
+    () => getValue<string[]>("caseStudyBrisaBahia.websiteDesign.after") ?? [],
+    [getValue]
+  );
+  const websiteDesignShowcase = useMemo(
+    () =>
+      WEBSITE_DESIGN_LIGHTBOX_IMAGES.map((image, index) => ({
+        ...image,
+        caption: websiteDesignCaptions[index],
+      })),
+    [websiteDesignCaptions]
+  );
   const resultItems = getValue<string[]>("caseStudyBrisaBahia.results.items") ?? [];
 
   const testimonialQuote = t("caseStudyBrisaBahia.testimonial.quote");
@@ -550,7 +599,7 @@ export default function CaseStudyContent() {
               <div id="moodboard" className="rounded-3xl bg-white p-8 shadow-lg">
                 <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.moodboard")}</h3>
                 <button
-                  onClick={() => openLightbox(0)}
+                  onClick={() => openLightbox(BRAND_IDENTITY_OFFSET + 0)}
                   className="group w-full overflow-hidden rounded-2xl transition hover:shadow-xl"
                   type="button"
                 >
@@ -612,7 +661,7 @@ export default function CaseStudyContent() {
             <div className="mb-12 grid gap-8 lg:grid-cols-2">
               <div id="typography" className="rounded-3xl bg-white p-8 shadow-lg">
                 <button
-                  onClick={() => openLightbox(1)}
+                  onClick={() => openLightbox(BRAND_IDENTITY_OFFSET + 1)}
                   className="group w-full overflow-hidden rounded-2xl transition hover:shadow-xl"
                   type="button"
                 >
@@ -645,7 +694,7 @@ export default function CaseStudyContent() {
               </div>
               <div id="iconset" className="rounded-3xl bg-white p-8 shadow-lg">
                 <button
-                  onClick={() => openLightbox(2)}
+                  onClick={() => openLightbox(BRAND_IDENTITY_OFFSET + 2)}
                   className="group w-full overflow-hidden rounded-2xl transition hover:shadow-xl"
                   type="button"
                 >
@@ -761,35 +810,39 @@ export default function CaseStudyContent() {
               <p className="mt-4 text-lg text-black/70">{t("caseStudyBrisaBahia.websiteDesign.intro")}</p>
             </div>
 
-            <div className="space-y-12">
-              {[
-                {
-                  src: "/case-studies/brisa-bahia/after/starting-page-brisa-bahia.webp",
-                  alt: "Brisa Bahía homepage showcasing retreat center branding",
-                  width: 2992,
-                  height: 6764,
-                  caption: websiteDesignCaptions[0],
-                },
-                {
-                  src: "/case-studies/brisa-bahia/after/facility-page-brisa-bahia.webp",
-                  alt: "Brisa Bahía facilities page detailing the eco retreat website structure",
-                  width: 2992,
-                  height: 10943,
-                  caption: websiteDesignCaptions[1],
-                },
-              ].map((image) => (
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+              {websiteDesignShowcase.map((image, index) => (
                 <figure key={image.src} className="space-y-4">
-                  <div className="overflow-hidden rounded-3xl bg-white shadow-xl">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={image.width}
-                      height={image.height}
-                      className="w-full"
-                      sizes="(min-width: 1024px) 80vw, 100vw"
-                      loading="lazy"
-                    />
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => openLightbox(WEBSITE_DESIGN_OFFSET + index)}
+                    className="group block w-full"
+                  >
+                    <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="h-auto w-full transition duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
+                        <svg
+                          className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </button>
                   {image.caption && <figcaption className="text-sm text-black/60">{image.caption}</figcaption>}
                 </figure>
               ))}
@@ -799,7 +852,7 @@ export default function CaseStudyContent() {
               {WEBSITE_PROCESS_IMAGES.map((image, index) => (
                 <button
                   key={image.src}
-                  onClick={() => openLightbox(FINAL_SHOWCASE_IMAGES.length + index)}
+                  onClick={() => openLightbox(WEBSITE_PROCESS_OFFSET + index)}
                   className="group overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
                   type="button"
                 >
@@ -907,7 +960,7 @@ export default function CaseStudyContent() {
               {FINAL_SHOWCASE_IMAGES.map((image, index) => (
                 <button
                   key={image.src}
-                  onClick={() => openLightbox(index)}
+                  onClick={() => openLightbox(FINAL_SHOWCASE_OFFSET + index)}
                   className="group mb-6 inline-block w-full overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
                   type="button"
                 >
@@ -947,7 +1000,7 @@ export default function CaseStudyContent() {
               heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}
               paragraph={t("caseStudyBrisaBahia.discoveryCTA.paragraph")}
               buttonText={t("caseStudyBrisaBahia.discoveryCTA.button")}
-              href="https://calendly.com/well-edge-creative/30min"
+              href="/contact?type=discovery-call"
               variant="hero"
             />
           </div>
@@ -961,8 +1014,6 @@ export default function CaseStudyContent() {
           images={allLightboxImages}
           currentIndex={lightboxIndex}
           onClose={closeLightbox}
-          onNext={nextImage}
-          onPrev={prevImage}
         />
       )}
     </>

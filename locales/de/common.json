@@ -26,7 +26,8 @@
   "progressNav": {
     "currentSection": "Aktueller Abschnitt:",
     "ariaLabel": "Fortschrittsnavigation",
-    "homeLabel": "Start"
+    "homeLabel": "Start",
+    "backLabel": "Zurück zu den Projekten"
   },
   "caseStudy": {
     "nav": {
@@ -124,7 +125,7 @@
   "homeDiscoveryCta": {
     "heading": "Fühlst du dich von all den Möglichkeiten überfordert?",
     "paragraph": "Wenn du ein Retreat Center, einen Wellness-Ort oder einen holistischen Space führst und nicht weißt, wo du mit Branding, Website und Buchungen anfangen sollst — ich begleite dich Schritt für Schritt bis zu deinen ersten Anfragen.",
-    "button": "Kostenlosen Discovery Call buchen"
+    "button": "Discovery Call buchen"
   },
   "selectedProjects": {
     "heading": {

@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type ImageLightboxProps = {
   images: Array<{ src: string; alt: string; width: number; height: number }>;
   currentIndex: number;
   onClose: () => void;
-  onNext: () => void;
-  onPrev: () => void;
 };
 
 export default function ImageLightbox({
@@ -15,6 +14,12 @@ export default function ImageLightbox({
   currentIndex,
   onClose,
 }: ImageLightboxProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -31,64 +36,34 @@ export default function ImageLightbox({
 
   const currentImage = images[currentIndex];
 
-  if (!currentImage) {
+  if (!mounted || !currentImage) {
     return null;
   }
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 flex items-center justify-center"
-      style={{ zIndex: 99999 }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 px-4"
       onClick={onClose}
     >
-      {/* Overlay background */}
-      <div
-        className="absolute inset-0 bg-black/85"
-        aria-hidden="true"
-        style={{ zIndex: 1 }}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={currentImage.src}
+        alt={currentImage.alt}
+        className="max-h-[90vh] max-w-[90vw] object-contain"
+        onClick={(event) => event.stopPropagation()}
       />
-
-      {/* Close button */}
       <button
-        onClick={(e) => {
-          e.stopPropagation();
+        type="button"
+        className="absolute top-6 right-6 z-[10000] rounded-full bg-white/90 px-4 py-2 font-semibold text-black shadow-lg transition hover:bg-white"
+        onClick={(event) => {
+          event.stopPropagation();
           onClose();
         }}
-        className="absolute right-4 top-4 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
-        style={{ zIndex: 3 }}
         aria-label="Close lightbox"
       >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        >
-          <path d="M18 6L6 18M6 6l12 12" />
-        </svg>
+        ×
       </button>
-
-      {/* Image container - centered and scaled to fit viewport */}
-      <div
-        className="relative flex items-center justify-center p-8"
-        style={{ zIndex: 2 }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={currentImage.src}
-          alt={currentImage.alt}
-          className="max-h-[90vh] max-w-[90vw] h-auto w-auto object-contain"
-          style={{
-            display: "block",
-            position: "relative",
-            zIndex: 2
-          }}
-        />
-      </div>
-    </div>
+    </div>,
+    document.body
   );
 }

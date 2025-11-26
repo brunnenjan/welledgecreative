@@ -26,7 +26,8 @@
   "progressNav": {
     "currentSection": "Current section:",
     "ariaLabel": "Page section progress",
-    "homeLabel": "Home"
+    "homeLabel": "Home",
+    "backLabel": "Back to projects"
   },
   "caseStudy": {
     "nav": {
@@ -124,7 +125,7 @@
   "homeDiscoveryCta": {
     "heading": "Feeling overwhelmed by the possibilities?",
     "paragraph": "If you run a retreat center, wellness venue or holistic space and you’re not sure where to start with branding, website and bookings — I’ll guide you step-by-step until your first inquiries arrive.",
-    "button": "Book a Free Discovery Call"
+    "button": "Book a Discovery Call"
   },
   "selectedProjects": {
     "heading": {

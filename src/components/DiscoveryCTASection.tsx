@@ -26,54 +26,70 @@ export default function DiscoveryCTASection({
 
   if (isHero) {
     return (
-      <section className={["relative", "overflow-hidden", "rounded-[32px]", "min-h-[500px]", className].filter(Boolean).join(" ")}>
-        {/* Background layer */}
+      <section
+        className={[
+          "relative",
+          "overflow-hidden",
+          "min-h-[70vh]",
+          "w-full",
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <div className="absolute inset-0">
           <Image
             src="/assets/parallax/section-design/parallax-bg-design.webp"
             alt=""
             fill
-            className="object-cover"
             sizes="100vw"
             priority
+            className="object-cover"
           />
         </div>
-
-        {/* Foreground cutout layer */}
+        <div className="absolute inset-0 bg-black/35" aria-hidden />
         <div className="absolute inset-0 pointer-events-none">
           <Image
             src="/assets/parallax/section-design/parallax-foreground-design.webp"
             alt=""
             fill
-            className="object-cover"
             sizes="100vw"
             priority
+            className="object-cover scale-[1.08]"
           />
         </div>
-
-        {/* Content - positioned to sit inside the cutout */}
-        <div className="relative z-10 flex min-h-[500px] items-center justify-center px-6 py-20">
-          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            <h2 className="text-3xl font-serif font-semibold text-white md:text-4xl">{heading}</h2>
-            <p className="mt-6 text-lg leading-relaxed text-white/90">{paragraph}</p>
-            {isExternalLink ? (
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex rounded-full bg-accent px-8 py-4 text-base font-semibold text-white shadow-[0_12px_28px_rgba(245,130,34,0.22)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(245,130,34,0.28)]"
-              >
-                {buttonText}
-              </a>
-            ) : (
-              <Link
-                href={href}
-                className="mt-8 inline-flex rounded-full bg-accent px-8 py-4 text-base font-semibold text-white shadow-[0_12px_28px_rgba(245,130,34,0.22)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(245,130,34,0.28)]"
-              >
-                {buttonText}
-              </Link>
-            )}
-          </div>
+        <div className="relative z-10 flex min-h-[70vh] flex-col items-center justify-center gap-6 px-6 py-16 text-center text-white">
+          <Image
+            src="/assets/icons/bucket-delivery.svg"
+            alt=""
+            width={96}
+            height={96}
+            className="h-20 w-20 drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
+            priority
+          />
+          <h2 className="max-w-4xl text-3xl font-serif font-semibold leading-tight md:text-5xl">
+            {heading}
+          </h2>
+          <p className="max-w-2xl text-lg leading-relaxed text-white/85">
+            {paragraph}
+          </p>
+          {isExternalLink ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-[#e87d2f] px-10 py-4 text-base font-semibold text-white shadow-lg transition hover:opacity-90"
+            >
+              {buttonText}
+            </a>
+          ) : (
+            <Link
+              href={href}
+              className="rounded-full bg-[#e87d2f] px-10 py-4 text-base font-semibold text-white shadow-lg transition hover:opacity-90"
+            >
+              {buttonText}
+            </Link>
+          )}
         </div>
       </section>
     );
