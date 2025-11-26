@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
@@ -9,6 +11,10 @@ import ContactSection from "@/components/ContactSection";
 import DiscoveryCTASection from "@/components/DiscoveryCTASection";
 import ImageLightbox from "@/components/ImageLightbox";
 import { useI18n } from "@/components/providers/I18nProvider";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const HERO_IMAGE = "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp";
 const MOODBOARD_IMAGE = "/case-studies/brisa-bahia/process/Brisa-Bahia-moodboard-mockup.webp";
@@ -94,10 +100,28 @@ const FINAL_SHOWCASE_IMAGES = [
     height: 2048,
   },
   {
+    src: "/case-studies/brisa-bahia/branding/color-palette.webp",
+    alt: "Brisa Bahía color palette with botanical accents and retreat-inspired tones",
+    width: 2048,
+    height: 2048,
+  },
+  {
     src: HERO_IMAGE,
     alt: "Brisa Bahía retreat center branding and website displayed on desktop, tablet and mobile devices",
     width: 2688,
     height: 1792,
+  },
+  {
+    src: "/case-studies/brisa-bahia/after/starting-page-brisa-bahia.webp",
+    alt: "After: Brisa Bahía homepage with facilitator-focused storytelling",
+    width: 2992,
+    height: 6764,
+  },
+  {
+    src: "/case-studies/brisa-bahia/after/facility-page-brisa-bahia.webp",
+    alt: "After: Brisa Bahía facility page showcasing retreat amenities",
+    width: 2992,
+    height: 6764,
   },
   {
     src: "/case-studies/brisa-bahia/gallery/guidelines-page-3.webp",
@@ -123,6 +147,12 @@ const FINAL_SHOWCASE_IMAGES = [
     width: 2048,
     height: 2048,
   },
+  {
+    src: "/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp",
+    alt: "Brisa Bahía logo mockup with natural leaf shadow overlay",
+    width: 2048,
+    height: 2048,
+  },
 ];
 
 export default function CaseStudyContent() {
@@ -130,6 +160,13 @@ export default function CaseStudyContent() {
   const [showOriginalTestimonial, setShowOriginalTestimonial] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const challengeHeadingRef = useRef<HTMLHeadingElement>(null);
+  const challengeHighlightRef = useRef<HTMLSpanElement>(null);
+  const challengeTextRef = useRef<HTMLSpanElement>(null);
+  const goalHeadingRef = useRef<HTMLHeadingElement>(null);
+  const goalHighlightRef = useRef<HTMLSpanElement>(null);
+  const goalTextRef = useRef<HTMLSpanElement>(null);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -145,6 +182,76 @@ export default function CaseStudyContent() {
         (prev - 1 + FINAL_SHOWCASE_IMAGES.length) %
         FINAL_SHOWCASE_IMAGES.length
     );
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Challenge heading animation
+      if (challengeHeadingRef.current && challengeHighlightRef.current && challengeTextRef.current) {
+        gsap.fromTo(
+          challengeHighlightRef.current,
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            duration: 0.6,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: challengeHeadingRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+        gsap.fromTo(
+          challengeTextRef.current,
+          { color: "#1a1a1a" },
+          {
+            color: "#ffffff",
+            duration: 0.6,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: challengeHeadingRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // Goal heading animation
+      if (goalHeadingRef.current && goalHighlightRef.current && goalTextRef.current) {
+        gsap.fromTo(
+          goalHighlightRef.current,
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            duration: 0.6,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: goalHeadingRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+        gsap.fromTo(
+          goalTextRef.current,
+          { color: "#1a1a1a" },
+          {
+            color: "#ffffff",
+            duration: 0.6,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: goalHeadingRef.current,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const heroIntro = (getValue<string[]>("caseStudyBrisaBahia.hero.intro") ?? []).filter(Boolean);
   const heroMeta = [
@@ -325,17 +432,60 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="challenge" className="px-6 py-20">
-          <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-2">
-            <div>
-              <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.challenge.heading")}</p>
-              <h2 className="mt-3 text-3xl font-serif font-semibold">{t("caseStudyBrisaBahia.challenge.heading")}</h2>
-              <p className="mt-4 text-lg leading-relaxed text-black/70">{t("caseStudyBrisaBahia.challenge.text")}</p>
+        <section id="challenge-goal" className="px-6 py-24">
+          <div className="mx-auto max-w-7xl space-y-20">
+            <div className="mx-auto max-w-[840px] text-center">
+              <h2
+                ref={challengeHeadingRef}
+                className="mb-8 text-4xl font-bold md:text-5xl"
+              >
+                <span className="relative inline-block">
+                  <span ref={challengeTextRef} className="relative z-10">
+                    {t("caseStudyBrisaBahia.challenge.heading")}
+                  </span>
+                  <span
+                    ref={challengeHighlightRef}
+                    className="absolute inset-0 bg-accent"
+                    style={{
+                      transform: "scaleX(0)",
+                      transformOrigin: "left",
+                      zIndex: -1,
+                      margin: "-0.1em -0.15em",
+                      backgroundColor: "#f58222",
+                    }}
+                  />
+                </span>
+              </h2>
+              <p className="text-lg leading-relaxed text-black/70">
+                {t("caseStudyBrisaBahia.challenge.text")}
+              </p>
             </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.goal.heading")}</p>
-              <h2 className="mt-3 text-3xl font-serif font-semibold">{t("caseStudyBrisaBahia.goal.heading")}</h2>
-              <p className="mt-4 text-lg leading-relaxed text-black/70">{t("caseStudyBrisaBahia.goal.text")}</p>
+
+            <div className="mx-auto max-w-[840px] text-center">
+              <h2
+                ref={goalHeadingRef}
+                className="mb-8 text-4xl font-bold md:text-5xl"
+              >
+                <span className="relative inline-block">
+                  <span ref={goalTextRef} className="relative z-10">
+                    {t("caseStudyBrisaBahia.goal.heading")}
+                  </span>
+                  <span
+                    ref={goalHighlightRef}
+                    className="absolute inset-0 bg-accent"
+                    style={{
+                      transform: "scaleX(0)",
+                      transformOrigin: "left",
+                      zIndex: -1,
+                      margin: "-0.1em -0.15em",
+                      backgroundColor: "#f58222",
+                    }}
+                  />
+                </span>
+              </h2>
+              <p className="text-lg leading-relaxed text-black/70">
+                {t("caseStudyBrisaBahia.goal.text")}
+              </p>
             </div>
           </div>
         </section>
@@ -433,18 +583,34 @@ export default function CaseStudyContent() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-[#fff7ef] p-8 shadow-inner">
-              <h3 className="mb-6 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.title")}</h3>
-              <Image
-                src={BRAND_MINDMAP_IMAGE}
-                alt="Brand strategy mindmap for the Brisa Bahía retreat center"
-                width={1956}
-                height={1474}
-                className="w-full rounded-2xl shadow-lg"
-                sizes="(min-width: 1024px) 60vw, 100vw"
-                loading="lazy"
-              />
-              <p className="mt-4 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.description")}</p>
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
+                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.title")}</h3>
+                <Image
+                  src={BRAND_MINDMAP_IMAGE}
+                  alt="Brand strategy mindmap for the Brisa Bahía retreat center"
+                  width={1956}
+                  height={1474}
+                  className="w-full rounded-2xl shadow-lg"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  loading="lazy"
+                />
+                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.description")}</p>
+              </div>
+
+              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
+                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}</h3>
+                <Image
+                  src={WEBSITE_MINDMAP_IMAGE}
+                  alt="Website mindmap for the Brisa Bahía retreat center experience"
+                  width={1956}
+                  height={1474}
+                  className="w-full rounded-2xl shadow-lg"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  loading="lazy"
+                />
+                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.description")}</p>
+              </div>
             </div>
           </div>
         </section>
@@ -455,20 +621,6 @@ export default function CaseStudyContent() {
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.heading")}</p>
               <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">{t("caseStudyBrisaBahia.uxStructure.heading")}</h2>
               <p className="mt-4 text-lg text-black/70">{t("caseStudyBrisaBahia.uxStructure.intro")}</p>
-            </div>
-
-            <div className="rounded-3xl bg-[#fff7ef] p-8 shadow-inner">
-              <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}</h3>
-              <Image
-                src={WEBSITE_MINDMAP_IMAGE}
-                alt="Website mindmap for the Brisa Bahía retreat center experience"
-                width={1956}
-                height={1474}
-                className="w-full rounded-2xl shadow-lg"
-                sizes="(min-width: 1024px) 60vw, 100vw"
-                loading="lazy"
-              />
-              <p className="mt-4 text-sm text-black/60">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.description")}</p>
             </div>
 
             <div className="rounded-3xl bg-neutral-50 p-6">
@@ -661,7 +813,7 @@ export default function CaseStudyContent() {
 
         <section className="bg-neutral-100 px-6 py-12">
           <div className="mx-auto text-center">
-            <Link href="/#selected-projects" className="font-medium text-accent underline-offset-4 hover:underline">
+            <Link href={`/${locale}#selected-projects`} className="font-medium text-accent underline-offset-4 hover:underline">
               {t("caseStudyBrisaBahia.backLink")}
             </Link>
           </div>

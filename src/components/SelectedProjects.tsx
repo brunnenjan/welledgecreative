@@ -368,13 +368,38 @@ export default function SelectedProjects() {
                     ))}
                   </div>
 
-                  <div
-                    data-anim="text"
-                    className="flex items-center gap-3 pt-6 text-sm font-semibold uppercase tracking-wider text-neutral-500"
-                    style={{ opacity: 0 }}
-                  >
-                    <span>{t("selectedProjects.cta.caseStudiesComing")}</span>
-                  </div>
+                  {project.slug === "brisa-bahia" ? (
+                    <div data-anim="text" style={{ opacity: 0 }}>
+                      <Link
+                        href={`/${locale}/case-studies/brisa-bahia`}
+                        className="inline-flex items-center gap-2 text-base font-semibold text-accent underline-offset-4 transition-colors hover:text-accent/80"
+                      >
+                        {t("selectedProjects.cta.brisaBahiaCaseStudy")}
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                        >
+                          <path
+                            d="M5 10h10m-4-4l4 4-4 4"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
+                  ) : (
+                    <div
+                      data-anim="text"
+                      className="flex items-center gap-3 pt-6 text-sm font-semibold uppercase tracking-wider text-neutral-500"
+                      style={{ opacity: 0 }}
+                    >
+                      <span>{t("selectedProjects.cta.caseStudiesComing")}</span>
+                    </div>
+                  )}
 
                   {project.site && (
                     <div data-anim="text" style={{ opacity: 0 }}>
