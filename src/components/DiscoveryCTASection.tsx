@@ -30,7 +30,7 @@ export default function DiscoveryCTASection({
         {/* Background layer */}
         <div className="absolute inset-0">
           <Image
-            src="/assets/hero/hero-background.webp"
+            src="/assets/parallax/section-design/parallax-bg-design.webp"
             alt=""
             fill
             className="object-cover"
@@ -42,7 +42,7 @@ export default function DiscoveryCTASection({
         {/* Foreground cutout layer */}
         <div className="absolute inset-0 pointer-events-none">
           <Image
-            src="/assets/hero/hero-foreground-desktop.webp"
+            src="/assets/parallax/section-design/parallax-foreground-design.webp"
             alt=""
             fill
             className="object-cover"

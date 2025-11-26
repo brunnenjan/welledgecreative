@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import Link from "next/link";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import { useI18n } from "@/components/providers/I18nProvider";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -14,16 +15,15 @@ type SectionItem = {
 };
 
 const CASE_STUDY_SECTIONS: SectionItem[] = [
-  { id: "overview", labelKey: "caseStudy.nav.overview", shortLabelKey: "caseStudy.nav.overviewShort" },
-  { id: "before-after", labelKey: "caseStudy.nav.beforeAfter", shortLabelKey: "caseStudy.nav.beforeAfterShort" },
-  { id: "challenge-goal", labelKey: "caseStudy.nav.challengeGoal", shortLabelKey: "caseStudy.nav.challengeGoalShort" },
-  { id: "moodboard", labelKey: "caseStudy.nav.moodboard", shortLabelKey: "caseStudy.nav.moodboardShort" },
-  { id: "typography", labelKey: "caseStudy.nav.typography", shortLabelKey: "caseStudy.nav.typographyShort" },
-  { id: "iconset", labelKey: "caseStudy.nav.iconset", shortLabelKey: "caseStudy.nav.iconsetShort" },
-  { id: "webdesign", labelKey: "caseStudy.nav.webdesign", shortLabelKey: "caseStudy.nav.webdesignShort" },
+  { id: "intro", labelKey: "caseStudy.nav.intro", shortLabelKey: "caseStudy.nav.introShort" },
+  { id: "brand-identity", labelKey: "caseStudy.nav.brandIdentity", shortLabelKey: "caseStudy.nav.brandIdentityShort" },
+  { id: "brand-applications", labelKey: "caseStudy.nav.brandApplications", shortLabelKey: "caseStudy.nav.brandApplicationsShort" },
+  { id: "website-structure", labelKey: "caseStudy.nav.websiteStructure", shortLabelKey: "caseStudy.nav.websiteStructureShort" },
+  { id: "website-design", labelKey: "caseStudy.nav.websiteDesign", shortLabelKey: "caseStudy.nav.websiteDesignShort" },
+  { id: "mobile-breakpoints", labelKey: "caseStudy.nav.mobileBreakpoints", shortLabelKey: "caseStudy.nav.mobileBreakpointsShort" },
+  { id: "results", labelKey: "caseStudy.nav.results", shortLabelKey: "caseStudy.nav.resultsShort" },
+  { id: "testimonial", labelKey: "caseStudy.nav.testimonial", shortLabelKey: "caseStudy.nav.testimonialShort" },
   { id: "gallery", labelKey: "caseStudy.nav.gallery", shortLabelKey: "caseStudy.nav.galleryShort" },
-  { id: "process", labelKey: "caseStudy.nav.process", shortLabelKey: "caseStudy.nav.processShort" },
-  { id: "cta", labelKey: "caseStudy.nav.cta", shortLabelKey: "caseStudy.nav.ctaShort" },
 ];
 
 const INTERSECTION_ROOT_MARGIN = "-45% 0px -45%";
@@ -31,7 +31,7 @@ const INTERSECTION_THRESHOLDS = [0, 0.15, 0.30, 0.50, 0.70, 1];
 const HOME_SCROLL_RESET = 160;
 
 export default function CaseStudyProgressNav() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [activeId, setActiveId] = useState<string | null>(null);
   const [progressRatio, setProgressRatio] = useState(0);
   const ratiosRef = useRef<Record<string, number>>({});
@@ -195,9 +195,18 @@ export default function CaseStudyProgressNav() {
       </div>
 
       <nav
-        className="progress-nav"
+        className="progress-nav progress-nav--compact"
         aria-label={t("progressNav.ariaLabel")}
       >
+        <Link
+          href={`/${locale}#selected-projects`}
+          className="progress-nav__back"
+          aria-label="Back to projects"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </Link>
         <button
           type="button"
           className="progress-nav__home"

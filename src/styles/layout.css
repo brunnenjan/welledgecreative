@@ -650,6 +650,37 @@
   padding: 0;
 }
 
+.progress-nav--compact .progress-nav__list {
+  gap: 1.25rem;
+}
+
+.progress-nav__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.75rem;
+}
+
+.progress-nav__back:hover {
+  background: #f58222;
+  color: #ffffff;
+  transform: translateX(-2px);
+  box-shadow: 0 4px 12px rgba(245, 130, 34, 0.25);
+}
+
+.progress-nav__back:focus-visible {
+  outline: 2px solid #f58222;
+  outline-offset: 4px;
+}
+
 .progress-nav__home {
   display: inline-flex;
   align-items: center;

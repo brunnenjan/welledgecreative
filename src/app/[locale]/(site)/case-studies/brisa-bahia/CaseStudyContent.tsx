@@ -4,7 +4,6 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
@@ -309,15 +308,7 @@ export default function CaseStudyContent() {
       <Header />
       <CaseStudyProgressNav />
       <main className="bg-white text-black">
-        <div className="mx-auto max-w-7xl px-6 pt-6">
-          <Link
-            href={`/${locale}#selected-projects`}
-            className="inline-flex items-center gap-1.5 text-sm text-black/60 transition hover:text-black"
-          >
-            ← {t("caseStudyBrisaBahia.backToProjects")}
-          </Link>
-        </div>
-        <section id="overview" className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
+        <section id="intro" className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src={HERO_IMAGE}
@@ -533,7 +524,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="branding" className="bg-neutral-50 px-6 py-20">
+        <section id="brand-identity" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.heading")}</p>
@@ -558,17 +549,36 @@ export default function CaseStudyContent() {
               </div>
               <div id="moodboard" className="rounded-3xl bg-white p-8 shadow-lg">
                 <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.moodboard")}</h3>
-                <div className="overflow-hidden rounded-2xl">
-                  <Image
-                    src={MOODBOARD_IMAGE}
-                    alt="Moodboard mixing lush jungle textures, ocean breeze palettes, and facilitator rituals"
-                    width={2464}
-                    height={1668}
-                    className="w-full"
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    loading="lazy"
-                  />
-                </div>
+                <button
+                  onClick={() => openLightbox(0)}
+                  className="group w-full overflow-hidden rounded-2xl transition hover:shadow-xl"
+                  type="button"
+                >
+                  <div className="relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={MOODBOARD_IMAGE}
+                      alt="Moodboard mixing lush jungle textures, ocean breeze palettes, and facilitator rituals"
+                      className="w-full h-auto transition duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
+                      <svg
+                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </button>
               </div>
             </div>
 
@@ -601,27 +611,69 @@ export default function CaseStudyContent() {
 
             <div className="mb-12 grid gap-8 lg:grid-cols-2">
               <div id="typography" className="rounded-3xl bg-white p-8 shadow-lg">
-                <Image
-                  src="/case-studies/brisa-bahia/process/typography-fancy-mockup-brisa-bahia.webp"
-                  alt="Typography pairing for Brisa Bahía retreat center brand"
-                  width={2048}
-                  height={2048}
-                  className="w-full rounded-2xl"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  loading="lazy"
-                />
+                <button
+                  onClick={() => openLightbox(1)}
+                  className="group w-full overflow-hidden rounded-2xl transition hover:shadow-xl"
+                  type="button"
+                >
+                  <div className="relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/case-studies/brisa-bahia/process/typography-fancy-mockup-brisa-bahia.webp"
+                      alt="Typography pairing for Brisa Bahía retreat center brand"
+                      className="w-full h-auto transition duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
+                      <svg
+                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </button>
                 <p className="mt-4 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.typography")}</p>
               </div>
               <div id="iconset" className="rounded-3xl bg-white p-8 shadow-lg">
-                <Image
-                  src="/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.webp"
-                  alt="Custom iconography for Brisa Bahía retreat center"
-                  width={2048}
-                  height={2048}
-                  className="w-full rounded-2xl"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  loading="lazy"
-                />
+                <button
+                  onClick={() => openLightbox(2)}
+                  className="group w-full overflow-hidden rounded-2xl transition hover:shadow-xl"
+                  type="button"
+                >
+                  <div className="relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.webp"
+                      alt="Custom iconography for Brisa Bahía retreat center"
+                      className="w-full h-auto transition duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
+                      <svg
+                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </button>
                 <p className="mt-4 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.iconography")}</p>
               </div>
             </div>
@@ -658,7 +710,16 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="process" className="px-6 py-20">
+        <section id="brand-applications" className="px-6 py-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center">
+              <p className="text-sm uppercase tracking-[0.4em] text-black/50">Brand Applications</p>
+              <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">Real-World Brand Usage</h2>
+            </div>
+          </div>
+        </section>
+
+        <section id="website-structure" className="px-6 py-20">
           <div className="mx-auto max-w-6xl space-y-16">
             <div className="text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.heading")}</p>
@@ -692,7 +753,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="webdesign" className="bg-neutral-50 px-6 py-20">
+        <section id="website-design" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-6xl space-y-16">
             <div className="text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.websiteDesign.heading")}</p>
@@ -768,6 +829,15 @@ export default function CaseStudyContent() {
                   </div>
                 </button>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="mobile-breakpoints" className="bg-neutral-50 px-6 py-20">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center">
+              <p className="text-sm uppercase tracking-[0.4em] text-black/50">Mobile Breakpoints</p>
+              <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">Responsive Design</h2>
             </div>
           </div>
         </section>
