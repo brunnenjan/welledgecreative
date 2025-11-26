@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 type ImageLightboxProps = {
   images: Array<{ src: string; alt: string; width: number; height: number }>;
@@ -14,17 +14,10 @@ export default function ImageLightbox({
   images,
   currentIndex,
   onClose,
-  onNext,
-  onPrev,
 }: ImageLightboxProps) {
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight") onNext();
-      if (e.key === "ArrowLeft") onPrev();
     };
 
     document.body.style.overflow = "hidden";
@@ -34,28 +27,7 @@ export default function ImageLightbox({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose, onNext, onPrev]);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    const swipeThreshold = 50;
-    const diff = touchStartX.current - touchEndX.current;
-
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
-        onNext();
-      } else {
-        onPrev();
-      }
-    }
-  };
+  }, [onClose]);
 
   const currentImage = images[currentIndex];
 
@@ -65,11 +37,8 @@ export default function ImageLightbox({
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90"
       onClick={onClose}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
       {/* Close button */}
       <button
@@ -90,74 +59,19 @@ export default function ImageLightbox({
         </svg>
       </button>
 
-      {/* Previous button */}
-      {images.length > 1 && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }}
-          className="absolute left-4 z-10 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
-          aria-label="Previous image"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-      )}
-
-      {/* Image */}
+      {/* Image - centered and scaled to fit viewport */}
       <div
-        className="relative flex flex-col items-center justify-center p-4"
+        className="flex items-center justify-center p-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative max-h-[85vh] max-w-[90vw]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={currentImage.src}
-            alt={currentImage.alt}
-            className="max-h-[85vh] max-w-full h-auto w-auto object-contain"
-            loading="eager"
-          />
-        </div>
-        {images.length > 1 && (
-          <p className="mt-4 text-center text-sm text-white/70">
-            {currentIndex + 1} / {images.length}
-          </p>
-        )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={currentImage.src}
+          alt={currentImage.alt}
+          className="max-h-[90vh] max-w-[90vw] h-auto w-auto object-contain"
+          style={{ display: "block" }}
+        />
       </div>
-
-      {/* Next button */}
-      {images.length > 1 && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-          className="absolute right-4 z-10 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
-          aria-label="Next image"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-      )}
     </div>
   );
 }
