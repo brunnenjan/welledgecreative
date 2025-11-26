@@ -57,7 +57,11 @@ export default function DiscoveryCTASection({
     "text-base",
     "font-semibold",
     "transition",
-    isLight ? "bg-black text-white hover:bg-accent" : "bg-white text-black hover:bg-accent hover:text-white",
+    "bg-accent",
+    "text-white",
+    "hover:-translate-y-0.5",
+    "shadow-[0_12px_28px_rgba(245,130,34,0.22)]",
+    "hover:shadow-[0_16px_36px_rgba(245,130,34,0.28)]",
   ].join(" ");
 
   return (

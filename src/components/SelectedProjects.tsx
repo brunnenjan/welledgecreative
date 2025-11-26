@@ -23,7 +23,7 @@ const FEATURED_PROJECTS: FeaturedProject[] = [
     year: "2025",
     site: "/case-studies/brisa-bahia",
     images: [
-      { src: "/case-studies/brisa-bahia/gallery/mockup-picture-Logo.webp", altKey: "selectedProjects.projects.brisa-bahia.imageAlt" },
+      { src: "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp", altKey: "selectedProjects.projects.brisa-bahia.imageAlt" },
     ],
   },
   {

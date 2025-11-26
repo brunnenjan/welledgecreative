@@ -433,59 +433,63 @@ export default function CaseStudyContent() {
         </section>
 
         <section id="challenge-goal" className="px-6 py-24">
-          <div className="mx-auto max-w-7xl space-y-20">
-            <div className="mx-auto max-w-[840px] text-center">
-              <h2
-                ref={challengeHeadingRef}
-                className="mb-8 text-4xl font-bold md:text-5xl"
-              >
-                <span className="relative inline-block">
-                  <span ref={challengeTextRef} className="relative z-10">
-                    {t("caseStudyBrisaBahia.challenge.heading")}
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              <div className="flex flex-col items-center justify-center text-center">
+                <h2
+                  ref={challengeHeadingRef}
+                  className="mb-8 text-4xl font-bold md:text-5xl"
+                >
+                  The{" "}
+                  <span className="relative inline-block">
+                    <span ref={challengeTextRef} className="relative z-10">
+                      Challenge
+                    </span>
+                    <span
+                      ref={challengeHighlightRef}
+                      className="absolute inset-0 bg-accent"
+                      style={{
+                        transform: "scaleX(0)",
+                        transformOrigin: "left",
+                        zIndex: -1,
+                        margin: "-0.1em -0.15em",
+                        backgroundColor: "#f58222",
+                      }}
+                    />
                   </span>
-                  <span
-                    ref={challengeHighlightRef}
-                    className="absolute inset-0 bg-accent"
-                    style={{
-                      transform: "scaleX(0)",
-                      transformOrigin: "left",
-                      zIndex: -1,
-                      margin: "-0.1em -0.15em",
-                      backgroundColor: "#f58222",
-                    }}
-                  />
-                </span>
-              </h2>
-              <p className="text-lg leading-relaxed text-black/70">
-                {t("caseStudyBrisaBahia.challenge.text")}
-              </p>
-            </div>
+                </h2>
+                <p className="max-w-[560px] text-lg leading-relaxed text-black/70">
+                  {t("caseStudyBrisaBahia.challenge.text")}
+                </p>
+              </div>
 
-            <div className="mx-auto max-w-[840px] text-center">
-              <h2
-                ref={goalHeadingRef}
-                className="mb-8 text-4xl font-bold md:text-5xl"
-              >
-                <span className="relative inline-block">
-                  <span ref={goalTextRef} className="relative z-10">
-                    {t("caseStudyBrisaBahia.goal.heading")}
+              <div className="flex flex-col items-center justify-center text-center">
+                <h2
+                  ref={goalHeadingRef}
+                  className="mb-8 text-4xl font-bold md:text-5xl"
+                >
+                  The{" "}
+                  <span className="relative inline-block">
+                    <span ref={goalTextRef} className="relative z-10">
+                      Goal
+                    </span>
+                    <span
+                      ref={goalHighlightRef}
+                      className="absolute inset-0 bg-accent"
+                      style={{
+                        transform: "scaleX(0)",
+                        transformOrigin: "left",
+                        zIndex: -1,
+                        margin: "-0.1em -0.15em",
+                        backgroundColor: "#f58222",
+                      }}
+                    />
                   </span>
-                  <span
-                    ref={goalHighlightRef}
-                    className="absolute inset-0 bg-accent"
-                    style={{
-                      transform: "scaleX(0)",
-                      transformOrigin: "left",
-                      zIndex: -1,
-                      margin: "-0.1em -0.15em",
-                      backgroundColor: "#f58222",
-                    }}
-                  />
-                </span>
-              </h2>
-              <p className="text-lg leading-relaxed text-black/70">
-                {t("caseStudyBrisaBahia.goal.text")}
-              </p>
+                </h2>
+                <p className="max-w-[560px] text-lg leading-relaxed text-black/70">
+                  {t("caseStudyBrisaBahia.goal.text")}
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -727,6 +731,17 @@ export default function CaseStudyContent() {
         <section id="testimonial" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.testimonial.heading")}</p>
+
+            <div className="mx-auto mb-8 mt-12 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
+              <Image
+                src="/assets/profile/profile-jan.webp"
+                alt={testimonialAuthor}
+                width={96}
+                height={96}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
             <div className="mt-8 space-y-6 text-left text-lg leading-relaxed text-black/80">
               {testimonialParagraphList.map((paragraph, index) => (
                 <p key={index} className="italic font-serif text-xl text-black/80">
@@ -759,12 +774,12 @@ export default function CaseStudyContent() {
               <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">{t("caseStudyBrisaBahia.finalShowcase.heading")}</h2>
               <p className="mt-4 text-lg text-black/70">{t("caseStudyBrisaBahia.finalShowcase.subtitle")}</p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="columns-1 gap-6 md:columns-2 lg:columns-3">
               {FINAL_SHOWCASE_IMAGES.map((image, index) => (
                 <button
                   key={image.src}
                   onClick={() => openLightbox(index)}
-                  className="group overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
+                  className="group mb-6 inline-block w-full overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
                   type="button"
                 >
                   <div className="relative overflow-hidden">
@@ -773,8 +788,8 @@ export default function CaseStudyContent() {
                       alt={image.alt}
                       width={image.width}
                       height={image.height}
-                      className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                      sizes="(min-width: 1280px) 25vw, (min-width: 768px) 45vw, 100vw"
+                      className="w-full transition duration-300 group-hover:scale-105"
+                      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">

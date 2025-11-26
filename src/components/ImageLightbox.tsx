@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 type ImageLightboxProps = {
   images: Array<{ src: string; alt: string; width: number; height: number }>;
@@ -17,6 +17,9 @@ export default function ImageLightbox({
   onNext,
   onPrev,
 }: ImageLightboxProps) {
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -33,12 +36,40 @@ export default function ImageLightbox({
     };
   }, [onClose, onNext, onPrev]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeThreshold = 50;
+    const diff = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        onNext();
+      } else {
+        onPrev();
+      }
+    }
+  };
+
   const currentImage = images[currentIndex];
+
+  if (!currentImage) {
+    return null;
+  }
 
   return (
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95"
       onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Close button */}
       <button
