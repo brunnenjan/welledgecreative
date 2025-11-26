@@ -300,6 +300,19 @@ export default function CaseStudyContent() {
   return (
     <>
       <Header />
+      <div className="sticky top-[72px] z-40 bg-white/95 backdrop-blur-sm border-b border-black/5">
+        <div className="mx-auto max-w-7xl px-6 py-3">
+          <Link
+            href={`/${locale}#selected-projects`}
+            className="inline-flex items-center gap-2 text-sm text-black/60 transition hover:text-black"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M10 12L6 8l4-4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {t("caseStudyBrisaBahia.backToProjects")}
+          </Link>
+        </div>
+      </div>
       <main className="bg-white text-black">
         <section id="case-study-hero" className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
@@ -387,6 +400,53 @@ export default function CaseStudyContent() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://brisabahia.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-base font-semibold text-accent underline-offset-4 transition-colors hover:text-accent/80"
+              >
+                Visit live site
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M5 15L15 5M9 5h6v6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+              <span className="text-black/30">•</span>
+              <a
+                href="https://brisabahia.com/retreats"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-black/60 underline-offset-4 transition-colors hover:text-black"
+              >
+                See Retreats →
+              </a>
+              <span className="text-black/30">•</span>
+              <a
+                href="https://brisabahia.com/facilities"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-black/60 underline-offset-4 transition-colors hover:text-black"
+              >
+                See Facilities →
+              </a>
+              <span className="text-black/30">•</span>
+              <a
+                href="https://brisabahia.com/host-a-retreat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-black/60 underline-offset-4 transition-colors hover:text-black"
+              >
+                See Hosting Info →
+              </a>
+            </div>
           </div>
         </section>
 
@@ -432,10 +492,10 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="challenge-goal" className="px-6 py-24">
+        <section id="challenge-goal" className="bg-[#fafafa] px-6 py-24">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-              <div className="flex flex-col items-center justify-center text-center">
+              <div className="flex flex-col items-center text-center">
                 <h2
                   ref={challengeHeadingRef}
                   className="mb-8 text-4xl font-bold md:text-5xl"
@@ -463,7 +523,7 @@ export default function CaseStudyContent() {
                 </p>
               </div>
 
-              <div className="flex flex-col items-center justify-center text-center">
+              <div className="flex flex-col items-center text-center">
                 <h2
                   ref={goalHeadingRef}
                   className="mb-8 text-4xl font-bold md:text-5xl"
@@ -732,9 +792,9 @@ export default function CaseStudyContent() {
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.testimonial.heading")}</p>
 
-            <div className="mx-auto mb-8 mt-12 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
+            <div className="mx-auto mb-6 mt-12 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
               <Image
-                src="/assets/profile/profile-jan.webp"
+                src="/assets/misc/testimonials/kary-nhung.webp"
                 alt={testimonialAuthor}
                 width={96}
                 height={96}
