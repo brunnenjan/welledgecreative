@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 import DiscoveryCTASection from "@/components/DiscoveryCTASection";
 import ImageLightbox from "@/components/ImageLightbox";
+import CaseStudyProgressNav from "@/components/CaseStudyProgressNav";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 if (typeof window !== "undefined") {
@@ -168,6 +169,12 @@ export default function CaseStudyContent() {
   const goalHighlightRef = useRef<HTMLSpanElement>(null);
   const goalTextRef = useRef<HTMLSpanElement>(null);
 
+  // Combine all lightbox images
+  const allLightboxImages = useMemo(
+    () => [...FINAL_SHOWCASE_IMAGES, ...WEBSITE_PROCESS_IMAGES],
+    []
+  );
+
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
@@ -175,12 +182,12 @@ export default function CaseStudyContent() {
 
   const closeLightbox = () => setLightboxOpen(false);
   const nextImage = () =>
-    setLightboxIndex((prev) => (prev + 1) % FINAL_SHOWCASE_IMAGES.length);
+    setLightboxIndex((prev) => (prev + 1) % allLightboxImages.length);
   const prevImage = () =>
     setLightboxIndex(
       (prev) =>
-        (prev - 1 + FINAL_SHOWCASE_IMAGES.length) %
-        FINAL_SHOWCASE_IMAGES.length
+        (prev - 1 + allLightboxImages.length) %
+        allLightboxImages.length
     );
 
   useEffect(() => {
@@ -300,6 +307,7 @@ export default function CaseStudyContent() {
   return (
     <>
       <Header />
+      <CaseStudyProgressNav />
       <main className="bg-white text-black">
         <div className="mx-auto max-w-7xl px-6 pt-6">
           <Link
@@ -309,7 +317,7 @@ export default function CaseStudyContent() {
             ← {t("caseStudyBrisaBahia.backToProjects")}
           </Link>
         </div>
-        <section id="case-study-hero" className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
+        <section id="overview" className="relative flex min-h-[70vh] items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src={HERO_IMAGE}
@@ -548,7 +556,7 @@ export default function CaseStudyContent() {
                   />
                 </div>
               </div>
-              <div className="rounded-3xl bg-white p-8 shadow-lg">
+              <div id="moodboard" className="rounded-3xl bg-white p-8 shadow-lg">
                 <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.moodboard")}</h3>
                 <div className="overflow-hidden rounded-2xl">
                   <Image
@@ -592,7 +600,7 @@ export default function CaseStudyContent() {
             </div>
 
             <div className="mb-12 grid gap-8 lg:grid-cols-2">
-              <div className="rounded-3xl bg-white p-8 shadow-lg">
+              <div id="typography" className="rounded-3xl bg-white p-8 shadow-lg">
                 <Image
                   src="/case-studies/brisa-bahia/process/typography-fancy-mockup-brisa-bahia.webp"
                   alt="Typography pairing for Brisa Bahía retreat center brand"
@@ -604,7 +612,7 @@ export default function CaseStudyContent() {
                 />
                 <p className="mt-4 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.typography")}</p>
               </div>
-              <div className="rounded-3xl bg-white p-8 shadow-lg">
+              <div id="iconset" className="rounded-3xl bg-white p-8 shadow-lg">
                 <Image
                   src="/case-studies/brisa-bahia/branding/Iconography-Brisa-Bahia-retreat-center-colombia.webp"
                   alt="Custom iconography for Brisa Bahía retreat center"
@@ -684,7 +692,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="website-design" className="bg-neutral-50 px-6 py-20">
+        <section id="webdesign" className="bg-neutral-50 px-6 py-20">
           <div className="mx-auto max-w-6xl space-y-16">
             <div className="text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.websiteDesign.heading")}</p>
@@ -726,19 +734,39 @@ export default function CaseStudyContent() {
               ))}
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2">
-              {WEBSITE_PROCESS_IMAGES.map((image) => (
-                <div key={image.src} className="rounded-3xl bg-white p-6 shadow-lg">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                    className="w-full rounded-2xl"
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    loading="lazy"
-                  />
-                </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {WEBSITE_PROCESS_IMAGES.map((image, index) => (
+                <button
+                  key={image.src}
+                  onClick={() => openLightbox(FINAL_SHOWCASE_IMAGES.length + index)}
+                  className="group overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
+                  type="button"
+                >
+                  <div className="relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-auto transition duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
+                      <svg
+                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </button>
               ))}
             </div>
           </div>
@@ -798,7 +826,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="final-showcase" className="px-6 py-20">
+        <section id="gallery" className="px-6 py-20">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.finalShowcase.heading")}</p>
@@ -843,14 +871,14 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <div className="bg-white px-6 py-24">
-          <div className="mx-auto max-w-4xl">
+        <div id="cta" className="bg-white px-6 py-24">
+          <div className="mx-auto max-w-6xl">
             <DiscoveryCTASection
               heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}
               paragraph={t("caseStudyBrisaBahia.discoveryCTA.paragraph")}
               buttonText={t("caseStudyBrisaBahia.discoveryCTA.button")}
               href="https://calendly.com/well-edge-creative/30min"
-              variant="light"
+              variant="hero"
             />
           </div>
         </div>
@@ -860,7 +888,7 @@ export default function CaseStudyContent() {
 
       {lightboxOpen && (
         <ImageLightbox
-          images={FINAL_SHOWCASE_IMAGES}
+          images={allLightboxImages}
           currentIndex={lightboxIndex}
           onClose={closeLightbox}
           onNext={nextImage}

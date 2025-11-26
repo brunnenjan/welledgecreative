@@ -37,13 +37,25 @@ export default function ImageLightbox({
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90"
+      className="fixed inset-0 flex items-center justify-center"
+      style={{ zIndex: 99999 }}
       onClick={onClose}
     >
+      {/* Overlay background */}
+      <div
+        className="absolute inset-0 bg-black/85"
+        aria-hidden="true"
+        style={{ zIndex: 1 }}
+      />
+
       {/* Close button */}
       <button
-        onClick={onClose}
-        className="absolute right-4 top-4 z-10 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        className="absolute right-4 top-4 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20"
+        style={{ zIndex: 3 }}
         aria-label="Close lightbox"
       >
         <svg
@@ -59,9 +71,10 @@ export default function ImageLightbox({
         </svg>
       </button>
 
-      {/* Image - centered and scaled to fit viewport */}
+      {/* Image container - centered and scaled to fit viewport */}
       <div
-        className="flex items-center justify-center p-8"
+        className="relative flex items-center justify-center p-8"
+        style={{ zIndex: 2 }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -69,7 +82,11 @@ export default function ImageLightbox({
           src={currentImage.src}
           alt={currentImage.alt}
           className="max-h-[90vh] max-w-[90vw] h-auto w-auto object-contain"
-          style={{ display: "block" }}
+          style={{
+            display: "block",
+            position: "relative",
+            zIndex: 2
+          }}
         />
       </div>
     </div>

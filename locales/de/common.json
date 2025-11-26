@@ -28,6 +28,30 @@
     "ariaLabel": "Fortschrittsnavigation",
     "homeLabel": "Start"
   },
+  "caseStudy": {
+    "nav": {
+      "overview": "Überblick",
+      "overviewShort": "Intro",
+      "beforeAfter": "Vorher & Nachher",
+      "beforeAfterShort": "V/N",
+      "challengeGoal": "Herausforderung & Ziel",
+      "challengeGoalShort": "Challenge",
+      "moodboard": "Moodboard",
+      "moodboardShort": "Mood",
+      "typography": "Typografie",
+      "typographyShort": "Type",
+      "iconset": "Icon Set",
+      "iconsetShort": "Icons",
+      "webdesign": "Webdesign",
+      "webdesignShort": "Web",
+      "gallery": "Galerie",
+      "galleryShort": "Galerie",
+      "process": "Prozess",
+      "processShort": "Prozess",
+      "cta": "Kontakt aufnehmen",
+      "ctaShort": "Kontakt"
+    }
+  },
   "hero": {
     "logoAlt": "Well Edge Creative Wortmarke",
     "headline": {
