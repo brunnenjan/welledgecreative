@@ -188,74 +188,89 @@ main {
 
 /* Case Study CTA (parallax clone) */
 .cs-cta {
+  position: relative;
+  isolation: isolate;
   margin-top: -12vh;
   margin-bottom: -12vh;
+  overflow: hidden;
 }
 
-.cs-cta__layer {
+.cs-cta-layer {
   position: absolute;
   inset: 0;
   will-change: transform;
 }
 
-.cs-cta__bg {
+.cs-cta-bg {
   z-index: 1;
 }
 
-.cs-cta__overlay {
+.cs-cta-overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
   background: linear-gradient(180deg, rgba(3, 4, 8, 0.35) 0%, rgba(3, 4, 8, 0.65) 55%, rgba(5, 7, 12, 0.85) 100%);
 }
 
-.cs-cta__fg {
-  z-index: 4;
-  pointer-events: none;
-}
-
-.cs-cta__bucket {
+.cs-cta-bucket {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 5;
+  z-index: 3;
   pointer-events: none;
   will-change: transform;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.45));
 }
 
-.cs-cta__content {
+.cs-cta-fg {
+  z-index: 4;
+  pointer-events: none;
+  top: -5vh;
+  height: 110%;
+}
+
+.cs-cta-content-wrapper {
   position: relative;
-  z-index: 6;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: clamp(4rem, 10vh, 8rem);
+}
+
+.cs-cta-content {
   max-width: 720px;
   margin: 0 auto;
   text-align: center;
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
-.cs-cta__eyebrow {
+.cs-cta-eyebrow {
   letter-spacing: 0.4em;
   text-transform: uppercase;
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.6);
 }
 
-.cs-cta__heading {
+.cs-cta-heading {
   font-size: clamp(2rem, 3.4vw, 3rem);
   font-weight: 600;
   font-family: "Lora", "Times New Roman", serif;
   line-height: 1.2;
 }
 
-.cs-cta__paragraph {
+.cs-cta-paragraph {
   font-size: clamp(0.95rem, 1.3vw, 1.15rem);
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
 }
 
-.cs-cta__button {
+.cs-cta-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -271,8 +286,8 @@ main {
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-.cs-cta__button:hover,
-.cs-cta__button:focus-visible {
+.cs-cta-button:hover,
+.cs-cta-button:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 18px 36px rgba(232, 125, 47, 0.45);
   opacity: 0.95;
@@ -1147,9 +1162,18 @@ section[id] {
   background-position: center bottom;
   background-repeat: no-repeat;
   margin-top: -12vh;
+  isolation: isolate;
+  overflow: hidden;
 }
 
-.cs-contact-foreground {
+.cs-contact-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cs-contact-fg {
   position: absolute;
   top: 60px;
   left: 0;
@@ -1168,26 +1192,14 @@ section[id] {
   width: clamp(40px, 5vw, 80px);
   pointer-events: none;
   z-index: 4;
-}
-
-.cs-contact-bucket__inner {
-  transform-origin: top center;
-  animation: cs-contact-bucket-swing 5.5s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .cs-contact-bucket img {
   width: 100%;
   height: auto;
   display: block;
-}
-
-@keyframes cs-contact-bucket-swing {
-  0% {
-    transform: rotate(-2.5deg);
-  }
-  100% {
-    transform: rotate(2.5deg);
-  }
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.45));
 }
 
 @media (max-width: 768px) {

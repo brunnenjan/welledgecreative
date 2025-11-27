@@ -181,15 +181,15 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         zIndex: 10,
       }}
     >
-      <div ref={bgRef} className="cs-cta__layer cs-cta__bg" aria-hidden>
+      <div ref={bgRef} className="cs-cta-layer cs-cta-bg" aria-hidden>
         <Image src={bgSrc} alt="" fill sizes="100vw" quality={100} className="object-cover" />
       </div>
-      <div className="cs-cta__overlay" aria-hidden />
+      <div className="cs-cta-overlay" aria-hidden />
       <div
         ref={bucketRef}
-        className="cs-cta__bucket"
+        className="cs-cta-bucket"
         style={{
-          top: bucketInitialTop,
+          top: `calc(${bucketInitialTop} - 6vh)`,
           width: isMobile ? "min(108vw, 720px)" : isTablet ? "min(65vw, 450px)" : "min(90vw, 600px)",
         }}
         aria-hidden
@@ -205,7 +205,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           className="w-full h-auto drop-shadow-2xl"
         />
       </div>
-      <div ref={fgRef} className="cs-cta__layer cs-cta__fg" aria-hidden>
+      <div ref={fgRef} className="cs-cta-layer cs-cta-fg" aria-hidden>
         <Image
           src="/assets/parallax/section-design/parallax-foreground-design.webp"
           alt=""
@@ -215,19 +215,21 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           className="object-cover"
         />
       </div>
-      <div ref={contentRef} className="cs-cta__content">
-        <p className="cs-cta__eyebrow">Discovery Call</p>
-        <h2 className="cs-cta__heading">{heading}</h2>
-        <p className="cs-cta__paragraph">{paragraph}</p>
-        {href.startsWith("http") ? (
-          <a href={href} target="_blank" rel="noopener noreferrer" className="cs-cta__button">
-            {buttonText}
-          </a>
-        ) : (
-          <Link href={href} className="cs-cta__button">
-            {buttonText}
-          </Link>
-        )}
+      <div className="cs-cta-content-wrapper">
+        <div ref={contentRef} className="cs-cta-content">
+          <p className="cs-cta-eyebrow">Discovery Call</p>
+          <h2 className="cs-cta-heading">{heading}</h2>
+          <p className="cs-cta-paragraph">{paragraph}</p>
+          {href.startsWith("http") ? (
+            <a href={href} target="_blank" rel="noopener noreferrer" className="cs-cta-button">
+              {buttonText}
+            </a>
+          ) : (
+            <Link href={href} className="cs-cta-button">
+              {buttonText}
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   );

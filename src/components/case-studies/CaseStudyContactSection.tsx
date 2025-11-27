@@ -13,13 +13,15 @@ export default function CaseStudyContactSection() {
   const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const fgRef = useRef<HTMLDivElement>(null);
+  const bucketRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const ctx = gsap.context(() => {
-      if (!prefersReducedMotion && fgRef.current) {
+      if (prefersReducedMotion) return;
+      if (fgRef.current) {
         gsap.to(fgRef.current, {
           y: "-55%",
           ease: "none",
@@ -30,6 +32,31 @@ export default function CaseStudyContactSection() {
             scrub: 3,
           },
         });
+      }
+      if (bucketRef.current) {
+        gsap.to(bucketRef.current, {
+          y: () => `${window.innerHeight * 0.12}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "+=200%",
+            scrub: 3,
+          },
+        });
+
+        gsap.fromTo(
+          bucketRef.current,
+          { rotation: -2.5 },
+          {
+            rotation: 2.5,
+            transformOrigin: "50% 0%",
+            duration: 5,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+          }
+        );
       }
     }, sectionRef);
 
@@ -44,9 +71,10 @@ export default function CaseStudyContactSection() {
       aria-labelledby="cs-contact-title"
     >
       <span aria-hidden="true" className="sr-only" />
+      <div className="cs-contact-bg" aria-hidden />
       <div
         ref={fgRef}
-        className="cs-contact-foreground"
+        className="cs-contact-fg"
         aria-hidden
         style={{
           backgroundImage: "url('/assets/parallax/section-contact/parallax-foreground-contact.webp')",
@@ -81,16 +109,14 @@ export default function CaseStudyContactSection() {
         </div>
       </div>
 
-      <div className="cs-contact-bucket" aria-hidden>
-        <div className="cs-contact-bucket__inner">
-          <Image
-            src="/assets/parallax/section-contact/parallax-bucket-contact.webp"
-            alt=""
-            width={440}
-            height={520}
-            loading="lazy"
-          />
-        </div>
+      <div ref={bucketRef} className="cs-contact-bucket" aria-hidden>
+        <Image
+          src="/assets/parallax/section-contact/parallax-bucket-contact.webp"
+          alt=""
+          width={440}
+          height={520}
+          loading="lazy"
+        />
       </div>
     </section>
   );
