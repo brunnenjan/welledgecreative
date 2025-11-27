@@ -24,7 +24,7 @@ export default function CaseStudyContactSection() {
       const ctx = gsap.context(() => {
         const fgShift = mobile ? 40 : Math.min(window.innerHeight * 0.25, 160);
         const bucketShift = mobile ? 20 : Math.min(window.innerHeight * 0.12, 140);
-        const bucketRotation = mobile ? 0.5 : 1.2;
+        const bucketRotation = mobile ? 0 : 1.2;
 
         if (fgRef.current) {
           gsap.to(fgRef.current, {
@@ -84,7 +84,6 @@ export default function CaseStudyContactSection() {
 
     return () => {
       cleanups.forEach((cleanup) => cleanup?.());
-      ScrollTrigger.clearMatchMedia();
     };
   }, []);
 
@@ -92,14 +91,14 @@ export default function CaseStudyContactSection() {
     <section
       ref={sectionRef}
       id="contact-section"
-      className="cs-contact-section relative z-[70] scroll-mt-16"
+      className="contact-section-case relative z-[70] scroll-mt-16"
       aria-labelledby="cs-contact-title"
     >
       <span aria-hidden="true" className="sr-only" />
-      <div className="cs-contact-bg" aria-hidden />
+      <div className="contact-bg-case" aria-hidden />
       <div
         ref={fgRef}
-        className="cs-contact-fg"
+        className="contact-fg-case"
         aria-hidden
         style={{
           backgroundImage: "url('/assets/parallax/section-contact/parallax-foreground-contact.webp')",
@@ -134,7 +133,7 @@ export default function CaseStudyContactSection() {
         </div>
       </div>
 
-      <div ref={bucketRef} className="cs-contact-bucket" aria-hidden>
+      <div ref={bucketRef} className="contact-bucket-case" aria-hidden>
         <Image
           src="/assets/parallax/section-contact/parallax-bucket-contact.webp"
           alt=""

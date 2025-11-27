@@ -189,6 +189,7 @@ main {
   isolation: isolate;
   margin-top: -12vh;
   margin-bottom: -12vh;
+  overflow: hidden;
 }
 
 .cs-cta-layer {
@@ -198,14 +199,14 @@ main {
 }
 
 .cs-cta-bg {
-  z-index: 10;
+  z-index: 20;
   will-change: transform;
 }
 
 .cs-cta-overlay {
   position: absolute;
   inset: 0;
-  z-index: 12;
+  z-index: 25;
   background: linear-gradient(180deg, rgba(3, 4, 8, 0.35) 0%, rgba(3, 4, 8, 0.65) 55%, rgba(5, 7, 12, 0.85) 100%);
 }
 
@@ -220,7 +221,7 @@ main {
 }
 
 .cs-cta-fg {
-  z-index: 20;
+  z-index: 40;
   pointer-events: none;
   top: -5vh;
   height: 110%;
@@ -229,7 +230,7 @@ main {
 
 .cs-cta-content-wrapper {
   position: relative;
-  z-index: 40;
+  z-index: 50;
   width: 100%;
   height: 100%;
   display: flex;
@@ -1148,7 +1149,7 @@ section[id] {
 
 /* ========== Case Study Contact Parallax ========== */
 
-.cs-contact-section {
+.contact-section-case {
   position: relative;
   color: #f8fafc;
   margin-bottom: 0 !important;
@@ -1161,9 +1162,10 @@ section[id] {
   background-repeat: no-repeat;
   margin-top: -12vh;
   isolation: isolate;
+  overflow: hidden;
 }
 
-.cs-contact-bg {
+.contact-bg-case {
   position: absolute;
   inset: 0;
   z-index: 10;
@@ -1171,7 +1173,7 @@ section[id] {
   will-change: transform;
 }
 
-.cs-contact-fg {
+.contact-fg-case {
   position: absolute;
   top: 60px;
   left: 0;
@@ -1182,7 +1184,7 @@ section[id] {
   will-change: transform;
 }
 
-.cs-contact-bucket {
+.contact-bucket-case {
   position: absolute;
   top: -260px;
   left: 50%;
@@ -1193,7 +1195,7 @@ section[id] {
   will-change: transform;
 }
 
-.cs-contact-bucket img {
+.contact-bucket-case img {
   width: 100%;
   height: auto;
   display: block;
@@ -1201,7 +1203,7 @@ section[id] {
 }
 
 @media (max-width: 768px) {
-.cs-contact-section {
+  .contact-section-case {
     margin-top: -4rem;
   }
 }

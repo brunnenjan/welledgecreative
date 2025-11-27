@@ -67,8 +67,8 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         const config = mobile ? PARALLAX_CONFIG.caseStudyCta.mobile : getDeviceConfig();
         const scrollRange = "+=200%";
         const fgShift = mobile ? 40 : Math.min(window.innerHeight * Math.abs(config.fgSpeed ?? 0.08), 160);
-        const bucketShift = mobile ? 25 : Math.min(window.innerHeight * (config.bucketSpeed ?? 0.6), 200);
-        const bucketRotation = mobile ? 0.5 : isTabletViewport ? 0.9 : 1.2;
+        const bucketShift = mobile ? 20 : Math.min(window.innerHeight * (config.bucketSpeed ?? 0.6), 200);
+        const bucketRotation = mobile ? 0 : isTabletViewport ? 0.9 : 1.2;
 
         if (fgRef.current) {
           gsap.to(fgRef.current, {
@@ -84,8 +84,9 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         }
 
         if (bucketRef.current) {
+          gsap.set(bucketRef.current, { y: 80 });
           gsap.to(bucketRef.current, {
-            y: bucketShift,
+            y: 80 + bucketShift,
             ease: "none",
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -163,7 +164,6 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
 
     return () => {
       cleanups.forEach((cleanup) => cleanup?.());
-      ScrollTrigger.clearMatchMedia();
     };
   }, []);
 
