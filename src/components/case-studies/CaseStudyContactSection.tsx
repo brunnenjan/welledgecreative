@@ -18,56 +18,81 @@ export default function CaseStudyContactSection() {
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
 
-    const ctx = gsap.context(() => {
-      if (prefersReducedMotion) return;
-      if (fgRef.current) {
-        gsap.to(fgRef.current, {
-          y: "-60%",
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "+=200%",
-            scrub: 3,
-          },
-        });
-      }
-      if (bucketRef.current) {
-        gsap.to(bucketRef.current, {
-          y: () => `${window.innerHeight * 0.1}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "+=200%",
-            scrub: 3,
-          },
-        });
+    const initAnimations = (mobile: boolean) => {
+      const ctx = gsap.context(() => {
+        const fgShift = mobile ? 40 : Math.min(window.innerHeight * 0.25, 160);
+        const bucketShift = mobile ? 20 : Math.min(window.innerHeight * 0.12, 140);
+        const bucketRotation = mobile ? 0.5 : 1.2;
 
-        gsap.fromTo(
-          bucketRef.current,
-          { rotation: -2 },
-          {
-            rotation: 2,
-            transformOrigin: "50% 0%",
-            duration: 4,
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true,
-          }
-        );
-      }
-    }, sectionRef);
+        if (fgRef.current) {
+          gsap.to(fgRef.current, {
+            y: -fgShift,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "+=200%",
+              scrub: 2.5,
+            },
+          });
+        }
+        if (bucketRef.current) {
+          gsap.to(bucketRef.current, {
+            y: bucketShift,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "+=200%",
+              scrub: 2.5,
+            },
+          });
 
-    return () => ctx.revert();
+          gsap.fromTo(
+            bucketRef.current,
+            { rotation: -bucketRotation },
+            {
+              rotation: bucketRotation,
+              transformOrigin: "50% 0%",
+              duration: mobile ? 4.2 : 3.6,
+              ease: "sine.inOut",
+              repeat: -1,
+              yoyo: true,
+            }
+          );
+        }
+      }, sectionRef);
+
+      return () => ctx.revert();
+    };
+
+    const cleanups: Array<(() => void) | undefined> = [];
+    ScrollTrigger.matchMedia({
+      "(max-width: 767px)": () => {
+        const cleanup = initAnimations(true);
+        cleanups.push(cleanup);
+        return () => cleanup?.();
+      },
+      "(min-width: 768px)": () => {
+        const cleanup = initAnimations(false);
+        cleanups.push(cleanup);
+        return () => cleanup?.();
+      },
+    });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup?.());
+      ScrollTrigger.clearMatchMedia();
+    };
   }, []);
 
   return (
     <section
       ref={sectionRef}
       id="contact-section"
-      className="cs-contact-section relative z-[70] overflow-hidden scroll-mt-16"
+      className="cs-contact-section relative z-[70] scroll-mt-16"
       aria-labelledby="cs-contact-title"
     >
       <span aria-hidden="true" className="sr-only" />

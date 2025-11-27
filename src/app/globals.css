@@ -116,24 +116,21 @@
 }
 
 /* ========== Base Styles ========== */
-html {
-  overflow-x: hidden;
-  max-width: 100vw;
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: #ffffff;
-}
-
+html,
 body {
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: #ffffff;
   color: var(--foreground);
-  font-feature-settings: "kern" 1, "liga" 1;
   overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
   min-height: 100%;
+  max-width: 100vw;
+  scroll-behavior: smooth;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 .case-study-fade {
@@ -192,7 +189,6 @@ main {
   isolation: isolate;
   margin-top: -12vh;
   margin-bottom: -12vh;
-  overflow: hidden;
 }
 
 .cs-cta-layer {
@@ -202,13 +198,14 @@ main {
 }
 
 .cs-cta-bg {
-  z-index: 1;
+  z-index: 10;
+  will-change: transform;
 }
 
 .cs-cta-overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 12;
   background: linear-gradient(180deg, rgba(3, 4, 8, 0.35) 0%, rgba(3, 4, 8, 0.65) 55%, rgba(5, 7, 12, 0.85) 100%);
 }
 
@@ -216,22 +213,23 @@ main {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3;
+  z-index: 30;
   pointer-events: none;
   will-change: transform;
   filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.45));
 }
 
 .cs-cta-fg {
-  z-index: 4;
+  z-index: 20;
   pointer-events: none;
   top: -5vh;
   height: 110%;
+  will-change: transform;
 }
 
 .cs-cta-content-wrapper {
   position: relative;
-  z-index: 5;
+  z-index: 40;
   width: 100%;
   height: 100%;
   display: flex;
@@ -1163,14 +1161,14 @@ section[id] {
   background-repeat: no-repeat;
   margin-top: -12vh;
   isolation: isolate;
-  overflow: hidden;
 }
 
 .cs-contact-bg {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 10;
   pointer-events: none;
+  will-change: transform;
 }
 
 .cs-contact-fg {
@@ -1179,7 +1177,7 @@ section[id] {
   left: 0;
   width: 100%;
   height: calc(100vh - 60px);
-  z-index: 5;
+  z-index: 20;
   pointer-events: none;
   will-change: transform;
 }
@@ -1191,7 +1189,7 @@ section[id] {
   transform: translateX(-50%);
   width: clamp(40px, 5vw, 80px);
   pointer-events: none;
-  z-index: 4;
+  z-index: 30;
   will-change: transform;
 }
 
@@ -1203,9 +1201,13 @@ section[id] {
 }
 
 @media (max-width: 768px) {
-  .cs-contact-section {
+.cs-contact-section {
     margin-top: -4rem;
   }
+}
+
+.well-parallax-layer {
+  will-change: transform;
 }
 
 .contact-section {

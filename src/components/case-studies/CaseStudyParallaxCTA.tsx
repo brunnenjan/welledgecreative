@@ -61,91 +61,110 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    const ctx = gsap.context(() => {
-      const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
-      const isTabletViewport = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
-      const config = getDeviceConfig();
-      const scrollRange = "+=200%";
+    const initAnimations = (mobile: boolean) => {
+      const ctx = gsap.context(() => {
+        const isTabletViewport = !mobile && window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+        const config = mobile ? PARALLAX_CONFIG.caseStudyCta.mobile : getDeviceConfig();
+        const scrollRange = "+=200%";
+        const fgShift = mobile ? 40 : Math.min(window.innerHeight * Math.abs(config.fgSpeed ?? 0.08), 160);
+        const bucketShift = mobile ? 25 : Math.min(window.innerHeight * (config.bucketSpeed ?? 0.6), 200);
+        const bucketRotation = mobile ? 0.5 : isTabletViewport ? 0.9 : 1.2;
 
-      if (fgRef.current) {
-        gsap.to(fgRef.current, {
-          y: () => `-${window.innerHeight * Math.abs(config.fgSpeed ?? 0.08)}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: scrollRange,
-            scrub: 3.2,
-          },
-        });
-      }
-
-      if (bucketRef.current) {
-        gsap.to(bucketRef.current, {
-          y: () => `${window.innerHeight * (config.bucketSpeed ?? 0.6)}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: scrollRange,
-            scrub: 3.2,
-          },
-        });
-
-        gsap.fromTo(
-          bucketRef.current,
-          { opacity: 0, scale: 0.68, yPercent: -12 },
-          {
-            opacity: 1,
-            scale: 1,
-            yPercent: 0,
-            ease: "power2.out",
+        if (fgRef.current) {
+          gsap.to(fgRef.current, {
+            y: -fgShift,
+            ease: "none",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 85%",
-              end: "top 45%",
-              scrub: 2.2,
+              start: "top bottom",
+              end: scrollRange,
+              scrub: 2.5,
             },
-          }
-        );
+          });
+        }
 
-        const swingAngle = isMobileViewport ? 1.2 : isTabletViewport ? 1.7 : 2.1;
-        const swingDuration = isMobileViewport ? 4.2 : isTabletViewport ? 3.8 : 3.4;
-
-        gsap.fromTo(
-          bucketRef.current,
-          { rotation: -swingAngle },
-          {
-            rotation: swingAngle,
-            transformOrigin: "50% 0%",
-            duration: swingDuration,
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-          }
-        );
-      }
-
-      if (contentRef.current) {
-        gsap.fromTo(
-          contentRef.current,
-          { opacity: 0, yPercent: 18 },
-          {
-            opacity: 1,
-            yPercent: 0,
-            ease: "power2.out",
+        if (bucketRef.current) {
+          gsap.to(bucketRef.current, {
+            y: bucketShift,
+            ease: "none",
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 85%",
-              end: "center center",
-              scrub: 2.4,
+              start: "top bottom",
+              end: scrollRange,
+              scrub: 2.5,
             },
-          }
-        );
-      }
-    }, sectionRef);
+          });
 
-    return () => ctx.revert();
+          gsap.fromTo(
+            bucketRef.current,
+            { opacity: 0, yPercent: -12 },
+            {
+              opacity: 1,
+              yPercent: 0,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 85%",
+                end: "top 45%",
+                scrub: 2,
+              },
+            }
+          );
+
+          gsap.fromTo(
+            bucketRef.current,
+            { rotation: -bucketRotation },
+            {
+              rotation: bucketRotation,
+              transformOrigin: "50% 0%",
+              duration: mobile ? 4.2 : 3.6,
+              ease: "sine.inOut",
+              yoyo: true,
+              repeat: -1,
+            }
+          );
+        }
+
+        if (contentRef.current) {
+          gsap.fromTo(
+            contentRef.current,
+            { opacity: 0, yPercent: 18 },
+            {
+              opacity: 1,
+              yPercent: 0,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 85%",
+                end: "center center",
+                scrub: 2,
+              },
+            }
+          );
+        }
+      }, sectionRef);
+
+      return () => ctx.revert();
+    };
+
+    const cleanups: Array<(() => void) | undefined> = [];
+    ScrollTrigger.matchMedia({
+      "(max-width: 767px)": () => {
+        const cleanup = initAnimations(true);
+        cleanups.push(cleanup);
+        return () => cleanup?.();
+      },
+      "(min-width: 768px)": () => {
+        const cleanup = initAnimations(false);
+        cleanups.push(cleanup);
+        return () => cleanup?.();
+      },
+    });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup?.());
+      ScrollTrigger.clearMatchMedia();
+    };
   }, []);
 
   useEffect(() => {
@@ -156,7 +175,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
   return (
     <section
       ref={sectionRef}
-      className="cs-cta relative overflow-hidden"
+      className="cs-cta relative"
       style={{
         minHeight: "100vh",
         height: "140vh",
