@@ -22,7 +22,7 @@ const HERO_IMAGE = "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-we
 const MOODBOARD_IMAGE = "/case-studies/brisa-bahia/process/Brisa-Bahia-moodboard-mockup.webp";
 const TYPOGRAPHY_IMAGE = "/case-studies/brisa-bahia/process/typography-fancy-mockup-brisa-bahia.webp";
 const BRAND_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp";
-const WEBSITE_STRUCTURE_MINDMAP_IMAGE = "/assets/case-studies/brisa-bahia/process/website-mindmap.webp";
+const WEBSITE_STRUCTURE_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-website.webp";
 
 const BRAND_IDENTITY_LIGHTBOX_IMAGES: LightboxImage[] = [
   {
@@ -228,10 +228,6 @@ const RESPONSIVE_IMAGE_SOURCES = [
   {
     src: "/assets/case-studies/brisa-bahia/gallery/responsive-brisabahiatablet.webp",
     label: "Tablet responsive overview",
-  },
-  {
-    src: "/assets/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
-    label: "Responsive brand presentation slide",
   },
   {
     src: "/assets/case-studies/brisa-bahia/mobile-brisa-bahia-retreat.webp",
@@ -809,6 +805,60 @@ export default function CaseStudyContent() {
               </div>
             </div>
 
+            <div className="mb-12 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch">
+              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
+                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">
+                  {t("caseStudyBrisaBahia.brandIdentity.brandMindmap.title")}
+                </h3>
+                <button
+                  onClick={() => openLightbox(BRAND_IDENTITY_OFFSET + 3)}
+                  className="group block w-full"
+                  type="button"
+                >
+                  <div className="relative overflow-hidden rounded-2xl bg-white p-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={BRAND_MINDMAP_IMAGE}
+                      alt="Brand strategy mindmap for the Brisa Bahía retreat center"
+                      className="mx-auto h-auto w-full max-w-[720px] transition duration-300 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/10">
+                      <svg
+                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </button>
+                <p className="mt-4 text-sm text-black/60">
+                  {t("caseStudyBrisaBahia.brandIdentity.brandMindmap.description")}
+                </p>
+              </div>
+              <div className="rounded-3xl bg-white/95 p-8 shadow-lg">
+                <div className="flex h-full flex-col justify-center space-y-4 text-black/80">
+                  <p className="text-xs uppercase tracking-[0.35em] text-black/40">
+                    {t("caseStudyBrisaBahia.brandIdentity.heading")}
+                  </p>
+                  <h3 className="text-2xl font-serif font-semibold leading-snug md:text-3xl">
+                    {t("caseStudyBrisaBahia.brandIdentity.brandMindmap.title")}
+                  </h3>
+                  <p className="text-base leading-relaxed">
+                    {t("caseStudyBrisaBahia.brandIdentity.intro")}
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -985,7 +1035,7 @@ export default function CaseStudyContent() {
         </section>
 
         <section id="mobile-breakpoints" className="case-section bg-neutral-50 px-6 py-20">
-          <div className="mx-auto max-w-4xl space-y-12">
+          <div className="mx-auto max-w-5xl space-y-12">
             <div className="text-center">
               <p className="text-sm uppercase tracking-[0.4em] text-black/50">Mobile Breakpoints</p>
               <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">Responsive Design</h2>
@@ -993,9 +1043,9 @@ export default function CaseStudyContent() {
                 {t("caseStudyBrisaBahia.uxStructure.responsiveIntro")}
               </p>
             </div>
-            <div className="flex flex-col">
+            <div className="grid gap-8 md:grid-cols-2">
               {responsiveImages.map((image) => (
-                <div key={image.src} className="mx-auto mt-8 w-full max-w-[800px] space-y-3 first:mt-0">
+                <div key={image.src} className="space-y-3">
                   <button
                     onClick={() => openLightbox(FINAL_SHOWCASE_OFFSET + image.finalIndex)}
                     className="group block overflow-hidden rounded-3xl bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl"
@@ -1132,7 +1182,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <div id="cta" className="case-section px-0">
+        <div id="cta" className="case-section case-section--flush px-0">
           <CaseStudyParallaxCTA
             heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}
             paragraph={t("caseStudyBrisaBahia.discoveryCTA.paragraph")}

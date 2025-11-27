@@ -158,6 +158,13 @@ body {
   transform: translateY(0);
 }
 
+.case-section--flush {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 .body-base {
   margin: 0;
   padding: 0;
@@ -184,10 +191,11 @@ main {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  min-height: clamp(28rem, 62vh, 44rem);
-  padding: clamp(6rem, 18vh, 12rem) clamp(1.5rem, 6vw, 3rem) clamp(8rem, 24vh, 16rem);
+  min-height: clamp(30rem, 65vh, 48rem);
+  padding: clamp(7rem, 20vh, 13rem) clamp(1rem, 5vw, 3rem) clamp(11rem, 28vh, 20rem);
   background: #0f0a07;
-  margin-bottom: -6vh;
+  margin-top: -10vh;
+  margin-bottom: -11vh;
 }
 
 .case-study-cta__bg,
@@ -210,6 +218,12 @@ main {
   z-index: 2;
   pointer-events: none;
   will-change: transform;
+  transform-origin: center top;
+}
+
+.case-study-cta__fg-img {
+  transform: scale(1.12);
+  transform-origin: top center;
 }
 
 .case-study-cta__bucket {
@@ -217,7 +231,7 @@ main {
   top: clamp(1rem, 6vh, 4rem);
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(80px, 12vw, 160px);
+  width: clamp(120px, 18vw, 240px);
   z-index: 3;
   pointer-events: none;
   will-change: transform;
@@ -249,14 +263,14 @@ main {
 }
 
 .case-study-cta__heading {
-  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 3.4vw, 3rem);
   font-weight: 600;
   font-family: "Lora", "Times New Roman", serif;
   line-height: 1.2;
 }
 
 .case-study-cta__paragraph {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
 }
@@ -286,7 +300,10 @@ main {
 
 @media (max-width: 768px) {
   .case-study-cta {
-    margin-bottom: -3rem;
+    margin-top: 0;
+    margin-bottom: -4rem;
+    padding-top: 5rem;
+    padding-bottom: 9rem;
   }
 }
 
@@ -1148,7 +1165,9 @@ section[id] {
   background-size: cover;
   background-position: center bottom;
   overflow: hidden;
-  padding: clamp(6rem, 16vh, 10rem) clamp(1.25rem, 4vw, 2.5rem) clamp(10rem, 26vh, 18rem);
+  padding: clamp(6rem, 18vh, 11rem) clamp(1.25rem, 4vw, 2.5rem) clamp(11rem, 30vh, 20rem);
+  margin-top: -12vh;
+  margin-bottom: 0;
   scroll-margin-top: 4rem;
 }
 
@@ -1165,6 +1184,7 @@ section[id] {
   z-index: 1;
   pointer-events: none;
   will-change: transform;
+  transform-origin: center top;
 }
 
 .case-study-contact__bucket-wrapper {
@@ -1179,8 +1199,14 @@ section[id] {
 }
 
 .case-study-contact__bucket {
-  width: clamp(70px, 9vw, 150px);
+  width: clamp(55px, 7vw, 130px);
   will-change: transform;
+}
+
+.case-study-contact__bucket-img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.35));
 }
 
 .case-study-contact__inner {
@@ -1224,6 +1250,14 @@ section[id] {
 .case-study-contact__email:hover,
 .case-study-contact__email:focus-visible {
   color: #f8bb8c;
+}
+
+@media (max-width: 768px) {
+  .case-study-contact {
+    margin-top: -4rem;
+    padding-top: 5rem;
+    padding-bottom: 12rem;
+  }
 }
 
 .contact-section {

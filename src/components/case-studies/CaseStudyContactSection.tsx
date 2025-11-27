@@ -26,9 +26,9 @@ export default function CaseStudyContactSection() {
       if (fgRef.current) {
         gsap.fromTo(
           fgRef.current,
-          { yPercent: -6, scale: 1.05 },
+          { yPercent: 8, scale: 1.08 },
           {
-            yPercent: 6,
+            yPercent: -4,
             scale: 1,
             ease: "none",
             scrollTrigger: {
@@ -89,9 +89,9 @@ export default function CaseStudyContactSection() {
           <Image
             src="/assets/parallax/section-contact/parallax-bucket-contact.webp"
             alt=""
-            width={320}
-            height={520}
-            className="h-auto w-full"
+            width={240}
+            height={460}
+            className="case-study-contact__bucket-img"
             priority={false}
           />
         </div>

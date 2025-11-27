@@ -34,9 +34,9 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       if (fgRef.current) {
         gsap.fromTo(
           fgRef.current,
-          { yPercent: -4, scale: 1.04 },
+          { yPercent: 6, scale: 1.08 },
           {
-            yPercent: 4,
+            yPercent: -6,
             scale: 1,
             ease: "none",
             scrollTrigger: {
@@ -115,7 +115,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           alt=""
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover case-study-cta__fg-img"
           priority={false}
         />
       </div>
@@ -123,8 +123,8 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         <Image
           src="/assets/parallax/section-design/bucket-delivery.webp"
           alt=""
-          width={220}
-          height={520}
+          width={360}
+          height={580}
           className="case-study-cta__bucket-img"
           priority={false}
         />
