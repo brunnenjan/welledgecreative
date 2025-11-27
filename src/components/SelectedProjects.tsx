@@ -372,7 +372,7 @@ export default function SelectedProjects() {
                     <div data-anim="text" style={{ opacity: 0 }}>
                       <Link
                         href={`/${locale}/case-studies/brisa-bahia`}
-                        className="inline-flex items-center gap-2 text-base font-semibold text-accent underline-offset-4 transition-colors hover:text-accent/80"
+                        className="inline-flex items-center gap-1.5 text-base font-semibold text-accent underline-offset-4 transition-colors hover:text-accent/80"
                       >
                         {t("selectedProjects.cta.brisaBahiaCaseStudy")}
                         <svg

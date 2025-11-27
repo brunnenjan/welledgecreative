@@ -228,11 +228,11 @@ export default function CaseStudyProgressNav() {
               />
             </div>
             <ul className="progress-nav__list">
-            {CASE_STUDY_SECTIONS.map((section, index) => {
-              const isActive = section.id === activeId;
-              const label = getShortLabel(section);
-              const ariaLabel = getLabel(section);
-              const isVisited = !isActive && activeIndex !== -1 && index < activeIndex;
+              {CASE_STUDY_SECTIONS.map((section, index) => {
+                const isActive = section.id === activeId;
+                const label = getShortLabel(section);
+                const ariaLabel = getLabel(section);
+                const isVisited = !isActive && activeIndex !== -1 && index < activeIndex;
               const dotClass = `progress-nav__dot${isActive ? " is-active" : isVisited ? " is-visited" : ""}`;
               return (
                 <li key={section.id} className="progress-nav__item">
@@ -273,7 +273,6 @@ export default function CaseStudyProgressNav() {
           <path d="M19 12H5M12 19l-7-7 7-7" />
         </svg>
       </Link>
-
       <nav className="progress-nav-mobile" aria-label={t("progressNav.ariaLabel")}>
         <ul className="progress-nav-mobile__list">
           {CASE_STUDY_SECTIONS.map((section, index) => {
