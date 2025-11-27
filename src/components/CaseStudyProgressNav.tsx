@@ -251,26 +251,26 @@ export default function CaseStudyProgressNav() {
               );
             })}
           </ul>
-          <Link
-            href={`/${locale}#selected-projects`}
-            className="progress-nav__back"
-            aria-label={t("progressNav.backLabel")}
-          >
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-          </Link>
         </div>
       </nav>
+      <Link
+        href={`/${locale}#selected-projects`}
+        className="progress-nav__back"
+        aria-label={t("progressNav.backLabel")}
+      >
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+      </Link>
 
       <nav className="progress-nav-mobile" aria-label={t("progressNav.ariaLabel")}>
         <ul className="progress-nav-mobile__list">

@@ -1,7 +1,14 @@
 "use client";
 
+import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 type DiscoveryCTASectionProps = {
   heading: string;
@@ -23,14 +30,54 @@ export default function DiscoveryCTASection({
   const isLight = variant === "light";
   const isHero = variant === "hero";
   const isExternalLink = href.startsWith("http");
+  const sectionRef = useRef<HTMLElement>(null);
+  const bucketRef = useRef<HTMLDivElement>(null);
+  const fgRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!isHero || typeof window === "undefined") return;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      if (fgRef.current) {
+        gsap.to(fgRef.current, {
+          y: () => `-${window.innerHeight * 0.04}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "+=180%",
+            scrub: 2,
+          },
+        });
+      }
+
+      if (bucketRef.current) {
+        gsap.to(bucketRef.current, {
+          y: () => `${window.innerHeight * 0.08}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "+=200%",
+            scrub: 3,
+          },
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [isHero]);
 
   if (isHero) {
     return (
       <section
+        ref={sectionRef}
         className={[
           "relative",
           "overflow-hidden",
-          "min-h-[55vh]",
+          "min-h-[65vh]",
           "w-full",
           className,
         ]
@@ -48,25 +95,31 @@ export default function DiscoveryCTASection({
           />
         </div>
         <div className="absolute inset-0 bg-black/35" aria-hidden />
-        <div className="absolute inset-0 pointer-events-none">
+        <div ref={fgRef} className="pointer-events-none absolute inset-0" aria-hidden>
           <Image
             src="/assets/parallax/section-design/parallax-foreground-design.webp"
             alt=""
             fill
             sizes="100vw"
             priority
-            className="object-cover scale-[1.08]"
+            className="object-cover scale-[1.12]"
           />
         </div>
-        <div className="relative z-10 flex min-h-[55vh] flex-col items-center justify-center gap-5 px-6 py-12 text-center text-white md:py-16">
+        <div
+          ref={bucketRef}
+          className="pointer-events-none absolute left-1/2 top-[8%] z-20 w-[clamp(12rem,30vw,18rem)] -translate-x-1/2"
+          aria-hidden
+        >
           <Image
-            src="/assets/icons/bucket-delivery.svg"
+            src="/assets/parallax/section-deliver/parallax-bucket-deliver.webp"
             alt=""
-            width={64}
-            height={64}
-            className="mb-6 h-16 w-16 opacity-90 drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
+            width={600}
+            height={600}
+            className="w-full drop-shadow-2xl"
             priority
           />
+        </div>
+        <div className="relative z-10 flex min-h-[65vh] flex-col items-center justify-center gap-6 px-6 py-16 text-center text-white">
           <h2 className="max-w-4xl text-3xl font-serif font-semibold leading-tight md:text-4xl">
             {heading}
           </h2>

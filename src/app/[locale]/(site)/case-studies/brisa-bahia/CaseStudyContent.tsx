@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import DiscoveryCTASection from "@/components/DiscoveryCTASection";
 import ImageLightbox from "@/components/ImageLightbox";
 import CaseStudyProgressNav from "@/components/CaseStudyProgressNav";
-import ContactFormStatic from "@/components/ContactFormStatic";
+import ContactSection from "@/components/ContactSection";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 if (typeof window !== "undefined") {
@@ -22,7 +22,6 @@ const HERO_IMAGE = "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-we
 const MOODBOARD_IMAGE = "/case-studies/brisa-bahia/process/Brisa-Bahia-moodboard-mockup.webp";
 const TYPOGRAPHY_IMAGE = "/case-studies/brisa-bahia/process/typography-fancy-mockup-brisa-bahia.webp";
 const BRAND_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp";
-const WEBSITE_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-website.webp";
 
 const BRAND_IDENTITY_LIGHTBOX_IMAGES: LightboxImage[] = [
   {
@@ -42,6 +41,12 @@ const BRAND_IDENTITY_LIGHTBOX_IMAGES: LightboxImage[] = [
     alt: "Custom iconography for Brisa Bahía retreat center",
     width: 2048,
     height: 2048,
+  },
+  {
+    src: BRAND_MINDMAP_IMAGE,
+    alt: "Brand strategy mindmap for the Brisa Bahía retreat center",
+    width: 1956,
+    height: 1474,
   },
 ];
 
@@ -796,19 +801,40 @@ export default function CaseStudyContent() {
               <p className="mt-4 text-lg text-black/70">{t("caseStudyBrisaBahia.uxStructure.intro")}</p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-2">
-              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
+              <div className="rounded-3xl bg-white p-6 shadow-lg">
                 <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}</h3>
-                <Image
-                  src={WEBSITE_MINDMAP_IMAGE}
-                  alt="Website mindmap for the Brisa Bahía retreat center experience"
-                  width={1956}
-                  height={1474}
-                  className="w-full rounded-2xl shadow-lg"
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  loading="lazy"
-                />
-                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.description")}</p>
+                <button
+                  onClick={() => openLightbox(BRAND_IDENTITY_OFFSET + 3)}
+                  className="group block w-full"
+                  type="button"
+                >
+                  <div className="relative overflow-hidden rounded-2xl bg-[#fff7ef] p-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={BRAND_MINDMAP_IMAGE}
+                      alt="Website mindmap for the Brisa Bahía retreat center experience"
+                      className="mx-auto h-auto w-full max-w-[700px] transition duration-300 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/10">
+                      <svg
+                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </button>
+                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.description")}</p>
               </div>
               <div className="rounded-3xl bg-white p-8 shadow-lg text-left">
                 <p className="text-base leading-relaxed text-black/70">
@@ -1084,61 +1110,8 @@ export default function CaseStudyContent() {
             />
           </div>
         </section>
-
-        <section
-          id="case-study-contact"
-          className="case-section contact-section relative z-[70] overflow-hidden bg-[#03050a] px-6 pt-32 pb-[28vh] text-center text-white md:pt-40 md:pb-[22vh]"
-        >
-          <div
-            className="pointer-events-none absolute inset-0"
-            aria-hidden
-            style={{
-              backgroundImage: "url('/assets/parallax/section-contact/parallax-bg-contact.webp')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-          <div
-            className="pointer-events-none absolute inset-0"
-            aria-hidden
-            style={{
-              backgroundImage: "url('/assets/parallax/section-contact/parallax-foreground-contact.webp')",
-              backgroundSize: "cover",
-              backgroundPosition: "center top",
-              backgroundRepeat: "no-repeat",
-              opacity: 0.95,
-            }}
-          />
-          <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12">
-            <div className="space-y-4">
-              <h2 className="text-4xl font-semibold leading-tight md:text-5xl">{t("contact.heading")}</h2>
-              <p className="text-lg text-white/80 md:text-xl">{t("contact.paragraph")}</p>
-            </div>
-            <ContactFormStatic />
-            <div className="space-y-3 text-sm text-white/70 md:text-base">
-              <p>
-                {t("contact.emailPrompt")}{" "}
-                <a
-                  href="mailto:info@well-edge-creative.com"
-                  className="underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"
-                >
-                  info@well-edge-creative.com
-                </a>
-              </p>
-            </div>
-          </div>
-          <div className="contact-bucket" aria-hidden>
-            <div className="contact-bucket__inner">
-              <Image
-                src="/assets/parallax/section-contact/parallax-bucket-contact.webp"
-                alt=""
-                width={440}
-                height={520}
-              />
-            </div>
-          </div>
-        </section>
       </main>
+      <ContactSection />
       <Footer />
 
       {lightboxOpen && (
