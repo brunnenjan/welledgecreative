@@ -5,7 +5,6 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 // Register plugins once
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 }
 
 export function getGsap() {

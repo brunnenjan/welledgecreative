@@ -3,10 +3,8 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function DesignContent() {
   const { t } = useI18n();

@@ -8,7 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { logos as logoData } from "@/app/data/logos";
 import { LOGOS_CONFIG } from "@/lib/logosConfig";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const CONFIG = LOGOS_CONFIG;
 

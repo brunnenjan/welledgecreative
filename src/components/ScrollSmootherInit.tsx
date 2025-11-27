@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { isIosChrome, isIosBrowser } from "@/utils/device";
@@ -20,7 +19,6 @@ import { isIosChrome, isIosBrowser } from "@/utils/device";
  * - Call ScrollTrigger.refresh() with a short timeout
  * - Optional: re-init parallax after refresh
  */
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function ScrollSmootherInit() {
   const pathname = usePathname();

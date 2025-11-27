@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FOOTER_PARALLAX_CONFIG } from "@/lib/footerConfig";
 import { getParallaxMultiplier } from "@/lib/responsiveParallaxBudgets";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const CONFIG = FOOTER_PARALLAX_CONFIG;
 

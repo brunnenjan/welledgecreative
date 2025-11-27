@@ -3,12 +3,10 @@
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function DeliverParallax() {
   const { t } = useI18n();

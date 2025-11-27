@@ -8,7 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
-gsap.registerPlugin(ScrollTrigger);
 
 type CaseStudyParallaxCTAProps = {
   heading: string;
@@ -57,113 +56,75 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
   };
 
   useLayoutEffect(() => {
-    if (!sectionRef.current) return;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    if (typeof window === "undefined") return;
+    const section = sectionRef.current;
+    const fg = fgRef.current;
+    const bucket = bucketRef.current;
+    if (!section || !fg || !bucket) return;
 
-    const initAnimations = (mobile: boolean) => {
-      const ctx = gsap.context(() => {
-        const isTabletViewport = !mobile && window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
-        const config = mobile ? PARALLAX_CONFIG.caseStudyCta.mobile : getDeviceConfig();
-        const scrollRange = "+=200%";
-        const fgShift = mobile ? 40 : Math.min(window.innerHeight * Math.abs(config.fgSpeed ?? 0.08), 160);
-        const bucketShift = mobile ? 20 : Math.min(window.innerHeight * (config.bucketSpeed ?? 0.6), 200);
-        const bucketRotation = mobile ? 0 : isTabletViewport ? 0.9 : 1.2;
-
-        if (fgRef.current) {
-          gsap.to(fgRef.current, {
-            y: -fgShift,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: scrollRange,
-              scrub: 2.5,
-            },
-          });
-        }
-
-        if (bucketRef.current) {
-          gsap.set(bucketRef.current, { y: 80 });
-          gsap.to(bucketRef.current, {
-            y: 80 + bucketShift,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: scrollRange,
-              scrub: 2.5,
-            },
-          });
-
-          gsap.fromTo(
-            bucketRef.current,
-            { opacity: 0, yPercent: -12 },
-            {
-              opacity: 1,
-              yPercent: 0,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 85%",
-                end: "top 45%",
-                scrub: 2,
-              },
-            }
-          );
-
-          gsap.fromTo(
-            bucketRef.current,
-            { rotation: -bucketRotation },
-            {
-              rotation: bucketRotation,
-              transformOrigin: "50% 0%",
-              duration: mobile ? 4.2 : 3.6,
-              ease: "sine.inOut",
-              yoyo: true,
-              repeat: -1,
-            }
-          );
-        }
-
-        if (contentRef.current) {
-          gsap.fromTo(
-            contentRef.current,
-            { opacity: 0, yPercent: 18 },
-            {
-              opacity: 1,
-              yPercent: 0,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 85%",
-                end: "center center",
-                scrub: 2,
-              },
-            }
-          );
-        }
-      }, sectionRef);
-
-      return () => ctx.revert();
-    };
-
-    const cleanups: Array<(() => void) | undefined> = [];
-    ScrollTrigger.matchMedia({
-      "(max-width: 767px)": () => {
-        const cleanup = initAnimations(true);
-        cleanups.push(cleanup);
-        return () => cleanup?.();
-      },
-      "(min-width: 768px)": () => {
-        const cleanup = initAnimations(false);
-        cleanups.push(cleanup);
-        return () => cleanup?.();
-      },
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.vars.trigger === section) {
+        trigger.kill();
+      }
     });
 
+    const match = ScrollTrigger.matchMedia({
+      "(max-width: 1023px)": () => {
+        const fgTween = gsap.to(fg, {
+          y: -60,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+        const bucketTween = gsap.to(bucket, {
+          y: -40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+        return () => {
+          fgTween.kill();
+          bucketTween.kill();
+        };
+      },
+      "(min-width: 1024px)": () => {
+        const fgTween = gsap.to(fg, {
+          y: -120,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        });
+        const bucketTween = gsap.to(bucket, {
+          y: -100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        });
+        return () => {
+          fgTween.kill();
+          bucketTween.kill();
+        };
+      },
+    }) as unknown as { revert: () => void };
+
     return () => {
-      cleanups.forEach((cleanup) => cleanup?.());
+      match.revert();
     };
   }, []);
 

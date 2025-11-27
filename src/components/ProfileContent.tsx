@@ -3,11 +3,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ProfileContent() {
   const { t } = useI18n();

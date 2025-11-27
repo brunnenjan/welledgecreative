@@ -3,11 +3,9 @@
 import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactFormStatic from "./ContactFormStatic";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactSection() {
   const { t } = useI18n();

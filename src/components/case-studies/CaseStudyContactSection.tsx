@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactFormStatic from "@/components/ContactFormStatic";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function CaseStudyContactSection() {
   const { t } = useI18n();
@@ -16,74 +15,77 @@ export default function CaseStudyContactSection() {
   const bucketRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    if (!sectionRef.current) return;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    if (typeof window === "undefined") return;
+    const section = sectionRef.current;
+    const fg = fgRef.current;
+    const bucket = bucketRef.current;
+    if (!section || !fg || !bucket) return;
 
-    const initAnimations = (mobile: boolean) => {
-      const ctx = gsap.context(() => {
-        const fgShift = mobile ? 40 : Math.min(window.innerHeight * 0.25, 160);
-        const bucketShift = mobile ? 20 : Math.min(window.innerHeight * 0.12, 140);
-        const bucketRotation = mobile ? 0 : 1.2;
-
-        if (fgRef.current) {
-          gsap.to(fgRef.current, {
-            y: -fgShift,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: "+=200%",
-              scrub: 2.5,
-            },
-          });
-        }
-        if (bucketRef.current) {
-          gsap.to(bucketRef.current, {
-            y: bucketShift,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: "+=200%",
-              scrub: 2.5,
-            },
-          });
-
-          gsap.fromTo(
-            bucketRef.current,
-            { rotation: -bucketRotation },
-            {
-              rotation: bucketRotation,
-              transformOrigin: "50% 0%",
-              duration: mobile ? 4.2 : 3.6,
-              ease: "sine.inOut",
-              repeat: -1,
-              yoyo: true,
-            }
-          );
-        }
-      }, sectionRef);
-
-      return () => ctx.revert();
-    };
-
-    const cleanups: Array<(() => void) | undefined> = [];
-    ScrollTrigger.matchMedia({
-      "(max-width: 767px)": () => {
-        const cleanup = initAnimations(true);
-        cleanups.push(cleanup);
-        return () => cleanup?.();
-      },
-      "(min-width: 768px)": () => {
-        const cleanup = initAnimations(false);
-        cleanups.push(cleanup);
-        return () => cleanup?.();
-      },
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (trigger.vars.trigger === section) {
+        trigger.kill();
+      }
     });
 
+    const match = ScrollTrigger.matchMedia({
+      "(max-width: 1023px)": () => {
+        const fgTween = gsap.to(fg, {
+          y: -60,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+        const bucketTween = gsap.to(bucket, {
+          y: -40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+
+        return () => {
+          fgTween.kill();
+          bucketTween.kill();
+        };
+      },
+      "(min-width: 1024px)": () => {
+        const fgTween = gsap.to(fg, {
+          y: -120,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        });
+        const bucketTween = gsap.to(bucket, {
+          y: -100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        });
+
+        return () => {
+          fgTween.kill();
+          bucketTween.kill();
+        };
+      },
+    }) as unknown as { revert: () => void };
+
     return () => {
-      cleanups.forEach((cleanup) => cleanup?.());
+      match.revert();
     };
   }, []);
 

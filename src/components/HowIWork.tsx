@@ -3,11 +3,9 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROCESS_CONFIG } from "@/lib/processConfig";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const HOW_I_WORK_START_OFFSET = PROCESS_CONFIG.START_OFFSET;
 

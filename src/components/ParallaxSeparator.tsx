@@ -6,7 +6,6 @@ import type { CSSProperties } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const DEFAULT_START = "top 130%";
 const DEFAULT_END = "bottom top";

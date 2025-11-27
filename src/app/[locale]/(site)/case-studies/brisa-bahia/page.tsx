@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function BrisaBahiaCaseStudyPage() {
-  return <CaseStudyContent />;
+  return (
+    <div className="page-fade">
+      <CaseStudyContent />
+    </div>
+  );
 }

@@ -2,7 +2,6 @@
 
 import { useMemo, useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,7 +12,6 @@ import CaseStudyContactSection from "@/components/case-studies/CaseStudyContactS
 import { useI18n } from "@/components/providers/I18nProvider";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
 }
 
 type LightboxImage = { src: string; alt: string; width: number; height: number };
@@ -1182,7 +1180,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <div id="cta" className="case-section case-section--flush px-0">
+        <div id="cta" className="case-section case-section--flush px-0 case-study-cta-wrapper">
           <CaseStudyParallaxCTA
             heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}
             paragraph={t("caseStudyBrisaBahia.discoveryCTA.paragraph")}

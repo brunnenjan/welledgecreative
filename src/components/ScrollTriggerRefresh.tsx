@@ -2,9 +2,7 @@
 
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { gsap } from "gsap";
 
-gsap.registerPlugin(ScrollTrigger);
 
 /**
  * One-time ScrollTrigger refresh after all images/assets load

@@ -3,10 +3,8 @@
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ProfileParallax() {
   const sectionRef = useRef<HTMLElement>(null);

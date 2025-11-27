@@ -11,7 +11,6 @@ import { smoothScrollTo } from "@/lib/smoothScroll";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const CONFIG = HERO_CONFIG;
 

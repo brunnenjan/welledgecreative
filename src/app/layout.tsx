@@ -11,6 +11,7 @@ import Preloader from "@/components/Preloader";
 import LandscapeOverlay from "@/components/LandscapeOverlay";
 import type { Locale } from "@/i18n/config";
 import { i18nConfig } from "@/i18n/config";
+import ParallaxInit from "@/components/ParallaxInit";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -212,6 +213,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="preload" as="image" href="/assets/parallax/section-contact/parallax-bg-contact.webp" media="(min-width: 768px)" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} body-base antialiased`}>
+        <ParallaxInit />
         <LandscapeOverlay />
         <Preloader />
         <a href="#hero" className="skip-link">

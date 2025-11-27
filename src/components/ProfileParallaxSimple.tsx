@@ -5,11 +5,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PROFILE_CONFIG } from "../lib/profileConfig";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const CONFIG = PROFILE_CONFIG;
 

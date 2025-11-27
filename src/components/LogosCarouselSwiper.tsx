@@ -10,7 +10,6 @@ import type { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const CONFIG = LOGOS_CONFIG;
 

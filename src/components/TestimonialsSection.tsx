@@ -7,7 +7,6 @@ import { TESTIMONIALS_CONFIG } from "@/lib/testimonialsConfig";
 import Image from "next/image";
 import { useI18n } from "@/components/providers/I18nProvider";
 
-gsap.registerPlugin(ScrollTrigger);
 
 type TestimonialEntry = {
   id: string;
