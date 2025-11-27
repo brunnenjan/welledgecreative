@@ -58,45 +58,30 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         : isTabletViewport
           ? PARALLAX_CONFIG.deliver.tablet
           : PARALLAX_CONFIG.deliver.desktop;
-      const { bgSpeed, fgSpeed, bucketSpeed } = config;
       const scrollRange = "+=200%";
-      const scrubValue = 3.8;
 
-      if (!isMobileViewport && bgRef.current) {
-        gsap.to(bgRef.current, {
-          y: () => `${window.innerHeight * bgSpeed}px`,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: scrollRange,
-            scrub: scrubValue,
-          },
-        });
-      }
-
-      if (!isMobileViewport && fgRef.current) {
+      if (fgRef.current) {
         gsap.to(fgRef.current, {
-          y: () => `-${window.innerHeight * fgSpeed}px`,
+          y: () => `-${window.innerHeight * Math.abs(config.fgSpeed ?? 0.08)}px`,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top bottom",
             end: scrollRange,
-            scrub: scrubValue,
+            scrub: 3.2,
           },
         });
       }
 
       if (bucketRef.current) {
         gsap.to(bucketRef.current, {
-          y: () => `${window.innerHeight * bucketSpeed}px`,
+          y: () => `${window.innerHeight * (config.bucketSpeed ?? 0.6)}px`,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top bottom",
             end: scrollRange,
-            scrub: scrubValue,
+            scrub: 3.2,
           },
         });
 
@@ -118,7 +103,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         );
 
         const swingAngle = isMobileViewport ? 1.2 : isTabletViewport ? 1.7 : 2.1;
-        const swingDuration = isMobileViewport ? 4 : isTabletViewport ? 3.6 : 3.2;
+        const swingDuration = isMobileViewport ? 4.2 : isTabletViewport ? 3.8 : 3.4;
 
         gsap.fromTo(
           bucketRef.current,
@@ -175,8 +160,8 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       style={{
         minHeight: "100vh",
         height: "140vh",
-        paddingTop: "clamp(3rem, 8vh, 6rem)",
-        paddingBottom: "clamp(3rem, 8vh, 6rem)",
+        paddingTop: "clamp(6rem, 15vh, 10rem)",
+        paddingBottom: "clamp(6rem, 15vh, 10rem)",
         paddingInline: "clamp(1.5rem, 5vw, 3rem)",
         zIndex: 10,
       }}
@@ -189,7 +174,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         ref={bucketRef}
         className="cs-cta-bucket"
         style={{
-          top: `calc(${bucketInitialTop} - 6vh)`,
+          top: `calc(${bucketInitialTop} - 12vh)`,
           width: isMobile ? "min(108vw, 720px)" : isTablet ? "min(65vw, 450px)" : "min(90vw, 600px)",
         }}
         aria-hidden
