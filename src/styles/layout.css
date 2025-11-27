@@ -621,8 +621,8 @@
 
 .progress-nav__spine {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0.5rem;
+  bottom: 4.25rem;
   left: 50%;
   width: 2px;
   transform: translateX(-50%);

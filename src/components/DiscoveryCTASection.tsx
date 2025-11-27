@@ -30,7 +30,7 @@ export default function DiscoveryCTASection({
         className={[
           "relative",
           "overflow-hidden",
-          "min-h-[70vh]",
+          "min-h-[55vh]",
           "w-full",
           className,
         ]
@@ -58,7 +58,7 @@ export default function DiscoveryCTASection({
             className="object-cover scale-[1.08]"
           />
         </div>
-        <div className="relative z-10 flex min-h-[70vh] flex-col items-center justify-center gap-6 px-6 py-16 text-center text-white">
+        <div className="relative z-10 flex min-h-[55vh] flex-col items-center justify-center gap-5 px-6 py-12 text-center text-white md:py-16">
           <Image
             src="/assets/icons/bucket-delivery.svg"
             alt=""
@@ -67,7 +67,7 @@ export default function DiscoveryCTASection({
             className="h-20 w-20 drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
             priority
           />
-          <h2 className="max-w-4xl text-3xl font-serif font-semibold leading-tight md:text-5xl">
+          <h2 className="max-w-4xl text-3xl font-serif font-semibold leading-tight md:text-4xl">
             {heading}
           </h2>
           <p className="max-w-2xl text-lg leading-relaxed text-white/85">

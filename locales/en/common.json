@@ -29,30 +29,6 @@
     "homeLabel": "Home",
     "backLabel": "Back to projects"
   },
-  "caseStudy": {
-    "nav": {
-      "overview": "Overview",
-      "overviewShort": "Intro",
-      "beforeAfter": "Before & After",
-      "beforeAfterShort": "B/A",
-      "challengeGoal": "Challenge & Goal",
-      "challengeGoalShort": "Challenge",
-      "moodboard": "Moodboard",
-      "moodboardShort": "Mood",
-      "typography": "Typography",
-      "typographyShort": "Type",
-      "iconset": "Icon Set",
-      "iconsetShort": "Icons",
-      "webdesign": "Webdesign",
-      "webdesignShort": "Web",
-      "gallery": "Gallery",
-      "galleryShort": "Gallery",
-      "process": "Process",
-      "processShort": "Process",
-      "cta": "Get in Touch",
-      "ctaShort": "Contact"
-    }
-  },
   "hero": {
     "logoAlt": "Well Edge Creative wordmark",
     "headline": {

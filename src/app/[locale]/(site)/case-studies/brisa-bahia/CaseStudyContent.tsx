@@ -6,10 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ContactSection from "@/components/ContactSection";
 import DiscoveryCTASection from "@/components/DiscoveryCTASection";
 import ImageLightbox from "@/components/ImageLightbox";
 import CaseStudyProgressNav from "@/components/CaseStudyProgressNav";
+import ContactFormStatic from "@/components/ContactFormStatic";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 if (typeof window !== "undefined") {
@@ -103,7 +103,7 @@ const WIRE_FRAME_SLICES = Array.from({ length: 6 }).map((_, index) => {
 
 const WEBSITE_PROCESS_IMAGES = [
   {
-    src: "/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
+    src: "/assets/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
     alt: "About us presentation slide for the Brisa Bahía retreat experience",
     width: 696,
     height: 696,
@@ -172,10 +172,16 @@ const FINAL_SHOWCASE_IMAGES = [
     height: 1514,
   },
   {
-    src: "/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
+    src: "/assets/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
     alt: "Brisa Bahía about us presentation slide with facilitator messaging",
     width: 696,
     height: 696,
+  },
+  {
+    src: "/assets/case-studies/brisa-bahia/gallery/mobile-brisa-bahia-retreat.webp",
+    alt: "Brisa Bahía retreat mobile screen showing responsive layouts",
+    width: 2048,
+    height: 2048,
   },
   {
     src: "/case-studies/brisa-bahia/gallery/Logo-gap-guide-brisabahia.webp",
@@ -631,7 +637,50 @@ export default function CaseStudyContent() {
               </div>
             </div>
 
-            <div className="mb-12 grid gap-8 lg:grid-cols-2">
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
+                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.title")}</h3>
+                <Image
+                  src={BRAND_MINDMAP_IMAGE}
+                  alt="Brand strategy mindmap for the Brisa Bahía retreat center"
+                  width={1956}
+                  height={1474}
+                  className="w-full rounded-2xl shadow-lg"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  loading="lazy"
+                />
+                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.description")}</p>
+              </div>
+
+              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
+                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}</h3>
+                <Image
+                  src={WEBSITE_MINDMAP_IMAGE}
+                  alt="Website mindmap for the Brisa Bahía retreat center experience"
+                  width={1956}
+                  height={1474}
+                  className="w-full rounded-2xl shadow-lg"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  loading="lazy"
+                />
+                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.description")}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="brand-applications" className="px-6 py-20">
+          <div className="mx-auto max-w-6xl space-y-12">
+            <div className="text-center">
+              <p className="text-sm uppercase tracking-[0.4em] text-black/50">Brand Applications</p>
+              <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">Guidelines that work on every touchpoint</h2>
+              <p className="mt-4 text-lg text-black/70">
+                Color systems, responsive typography, and iconography were stress-tested on signage, menus, onboarding kits,
+                and digital decks so facilitators experience the same warmth everywhere.
+              </p>
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-2">
               <div className="space-y-4">
                 <Image
                   src="/case-studies/brisa-bahia/branding/colors-before.webp"
@@ -658,7 +707,7 @@ export default function CaseStudyContent() {
               </div>
             </div>
 
-            <div className="mb-12 grid gap-8 lg:grid-cols-2">
+            <div className="grid gap-8 lg:grid-cols-2">
               <div id="typography" className="rounded-3xl bg-white p-8 shadow-lg">
                 <button
                   onClick={() => openLightbox(BRAND_IDENTITY_OFFSET + 1)}
@@ -725,45 +774,6 @@ export default function CaseStudyContent() {
                 </button>
                 <p className="mt-4 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.iconography")}</p>
               </div>
-            </div>
-
-            <div className="grid gap-8 lg:grid-cols-2">
-              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
-                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.title")}</h3>
-                <Image
-                  src={BRAND_MINDMAP_IMAGE}
-                  alt="Brand strategy mindmap for the Brisa Bahía retreat center"
-                  width={1956}
-                  height={1474}
-                  className="w-full rounded-2xl shadow-lg"
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  loading="lazy"
-                />
-                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.description")}</p>
-              </div>
-
-              <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
-                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}</h3>
-                <Image
-                  src={WEBSITE_MINDMAP_IMAGE}
-                  alt="Website mindmap for the Brisa Bahía retreat center experience"
-                  width={1956}
-                  height={1474}
-                  className="w-full rounded-2xl shadow-lg"
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  loading="lazy"
-                />
-                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.description")}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="brand-applications" className="px-6 py-20">
-          <div className="mx-auto max-w-6xl">
-            <div className="text-center">
-              <p className="text-sm uppercase tracking-[0.4em] text-black/50">Brand Applications</p>
-              <h2 className="mt-4 text-3xl font-serif font-semibold md:text-4xl">Real-World Brand Usage</h2>
             </div>
           </div>
         </section>
@@ -999,14 +1009,67 @@ export default function CaseStudyContent() {
             <DiscoveryCTASection
               heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}
               paragraph={t("caseStudyBrisaBahia.discoveryCTA.paragraph")}
-              buttonText={t("caseStudyBrisaBahia.discoveryCTA.button")}
-              href="/contact?type=discovery-call"
+              buttonText="Book a Discovery Call"
+              href="https://calendly.com/well-edge-creative/30min"
               variant="hero"
             />
           </div>
         </div>
+
+        <section
+          id="case-study-contact"
+          className="contact-section relative z-[70] overflow-hidden bg-[#03050a] px-6 pt-32 pb-[28vh] text-center text-white md:pt-40 md:pb-[22vh]"
+        >
+          <div
+            className="pointer-events-none absolute inset-0"
+            aria-hidden
+            style={{
+              backgroundImage: "url('/assets/parallax/section-contact/parallax-bg-contact.webp')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0"
+            aria-hidden
+            style={{
+              backgroundImage: "url('/assets/parallax/section-contact/parallax-foreground-contact.webp')",
+              backgroundSize: "cover",
+              backgroundPosition: "center top",
+              backgroundRepeat: "no-repeat",
+              opacity: 0.95,
+            }}
+          />
+          <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12">
+            <div className="space-y-4">
+              <h2 className="text-4xl font-semibold leading-tight md:text-5xl">{t("contact.heading")}</h2>
+              <p className="text-lg text-white/80 md:text-xl">{t("contact.paragraph")}</p>
+            </div>
+            <ContactFormStatic />
+            <div className="space-y-3 text-sm text-white/70 md:text-base">
+              <p>
+                {t("contact.emailPrompt")}{" "}
+                <a
+                  href="mailto:info@well-edge-creative.com"
+                  className="underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"
+                >
+                  info@well-edge-creative.com
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="contact-bucket" aria-hidden>
+            <div className="contact-bucket__inner">
+              <Image
+                src="/assets/parallax/section-contact/parallax-bucket-contact.webp"
+                alt=""
+                width={440}
+                height={520}
+              />
+            </div>
+          </div>
+        </section>
       </main>
-      <ContactSection />
       <Footer />
 
       {lightboxOpen && (
