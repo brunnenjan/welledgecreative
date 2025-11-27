@@ -356,6 +356,7 @@
         "title": "Website Mindmap",
         "description": "Flows for hosts, facilitators, and guests defined how the bilingual experience should introduce every space and service."
       },
+      "responsiveIntro": "Facilitators review the experience on their phones first, so every section was built with touch interactions, offline reading, and quick-scroll anchors in mind.",
       "wireframe": {
         "title": "Wireframe (Full Website Structure)",
         "description": "The full-length wireframe is sliced into digestible sections so teams can scan each area while still accessing the entire system."

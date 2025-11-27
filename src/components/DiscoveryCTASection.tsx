@@ -62,9 +62,9 @@ export default function DiscoveryCTASection({
           <Image
             src="/assets/icons/bucket-delivery.svg"
             alt=""
-            width={96}
-            height={96}
-            className="h-20 w-20 drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
+            width={64}
+            height={64}
+            className="mb-6 h-16 w-16 opacity-90 drop-shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
             priority
           />
           <h2 className="max-w-4xl text-3xl font-serif font-semibold leading-tight md:text-4xl">

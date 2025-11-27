@@ -25,7 +25,6 @@ const createLabelSet = (en: string, de?: string): LabelSet => ({
 const CASE_STUDY_SECTIONS: SectionItem[] = [
   { id: "intro", label: createLabelSet("Intro"), shortLabel: createLabelSet("Intro") },
   { id: "brand-identity", label: createLabelSet("Brand Identity"), shortLabel: createLabelSet("Brand Identity") },
-  { id: "brand-applications", label: createLabelSet("Brand Applications"), shortLabel: createLabelSet("Applications") },
   { id: "website-structure", label: createLabelSet("Website Structure"), shortLabel: createLabelSet("Structure") },
   { id: "website-design", label: createLabelSet("Website Design"), shortLabel: createLabelSet("Web Design") },
   { id: "mobile-breakpoints", label: createLabelSet("Mobile Breakpoints"), shortLabel: createLabelSet("Mobile") },

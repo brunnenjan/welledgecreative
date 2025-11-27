@@ -356,6 +356,7 @@
         "title": "Website Mindmap",
         "description": "User-Flows für Hosts, Facilitator und Gäste definieren, wie die zweisprachige Experience jede Fläche vorstellt."
       },
+      "responsiveIntro": "Facilitator prüfen das Erlebnis zuerst auf dem Handy – daher wurde jeder Abschnitt für Touch, Offline-Lesen und schnelle Sprunganker optimiert.",
       "wireframe": {
         "title": "Wireframe (Full Website Structure)",
         "description": "Das Langformat-Wireframe wurde in gut lesbare Abschnitte geschnitten, sodass Teams die gesamte Struktur sehen und einzelne Bereiche schnell prüfen können."
