@@ -128,19 +128,19 @@ export const PARALLAX_CONFIG = {
       bgSpeed: 0.1,
       fgSpeed: -0.08,
       bucketSpeed: 0.55,
-      bucketStart: -40,
+      bucketStart: -120,
     },
     tablet: {
       bgSpeed: 0.12,
       fgSpeed: -0.1,
       bucketSpeed: 0.65,
-      bucketStart: -140,
+      bucketStart: -260,
     },
     desktop: {
       bgSpeed: 0.15,
       fgSpeed: -0.12,
       bucketSpeed: 0.85,
-      bucketStart: -220,
+      bucketStart: -380,
     },
   },
 } as const;

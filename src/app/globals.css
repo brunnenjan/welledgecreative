@@ -237,7 +237,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: clamp(2rem, 8vh, 5rem);
+  padding-top: clamp(0.5rem, 4vh, 2rem);
 }
 
 .cs-cta-content {

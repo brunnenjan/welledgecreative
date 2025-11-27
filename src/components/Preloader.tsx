@@ -30,10 +30,6 @@ export default function Preloader() {
 
     // Define all critical images to preload
     const criticalImages = [
-      // Hero section
-      "/assets/parallax/section-hero/parallax-bg-hero.webp",
-      "/assets/parallax/section-hero/parallax-bucket-hero.webp",
-      "/assets/parallax/section-hero/parallax-foreground-hero-only-well.webp",
       // Profile section
       "/assets/parallax/section-profile/parallax-bg-profile-secondary.webp",
       "/assets/parallax/section-profile/parallax-bucket-profile-alt.webp",

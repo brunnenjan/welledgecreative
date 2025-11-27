@@ -23,19 +23,19 @@ export default function CaseStudyContactSection() {
       if (prefersReducedMotion) return;
       if (fgRef.current) {
         gsap.to(fgRef.current, {
-          y: "-55%",
+          y: "-60%",
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top bottom",
-            end: "bottom-=25% top",
+            end: "+=200%",
             scrub: 3,
           },
         });
       }
       if (bucketRef.current) {
         gsap.to(bucketRef.current, {
-          y: () => `${window.innerHeight * 0.12}px`,
+          y: () => `${window.innerHeight * 0.1}px`,
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -47,11 +47,11 @@ export default function CaseStudyContactSection() {
 
         gsap.fromTo(
           bucketRef.current,
-          { rotation: -2.5 },
+          { rotation: -2 },
           {
-            rotation: 2.5,
+            rotation: 2,
             transformOrigin: "50% 0%",
-            duration: 5,
+            duration: 4,
             ease: "sine.inOut",
             repeat: -1,
             yoyo: true,
