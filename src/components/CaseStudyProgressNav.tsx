@@ -220,13 +220,14 @@ export default function CaseStudyProgressNav() {
           />
         </button>
         <div className="progress-nav__body">
-          <div className="progress-nav__spine" aria-hidden>
-            <div
-              className="progress-nav__spine-fill"
-              style={{ height: `${progressRatio * 100}%` }}
-            />
-          </div>
-          <ul className="progress-nav__list">
+          <div className="progress-nav__track">
+            <div className="progress-nav__spine" aria-hidden>
+              <div
+                className="progress-nav__spine-fill"
+                style={{ height: `${progressRatio * 100}%` }}
+              />
+            </div>
+            <ul className="progress-nav__list">
             {CASE_STUDY_SECTIONS.map((section, index) => {
               const isActive = section.id === activeId;
               const label = getShortLabel(section);
@@ -250,7 +251,8 @@ export default function CaseStudyProgressNav() {
                 </li>
               );
             })}
-          </ul>
+            </ul>
+          </div>
         </div>
       </nav>
       <Link

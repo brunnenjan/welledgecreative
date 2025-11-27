@@ -22,6 +22,7 @@ const HERO_IMAGE = "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-we
 const MOODBOARD_IMAGE = "/case-studies/brisa-bahia/process/Brisa-Bahia-moodboard-mockup.webp";
 const TYPOGRAPHY_IMAGE = "/case-studies/brisa-bahia/process/typography-fancy-mockup-brisa-bahia.webp";
 const BRAND_MINDMAP_IMAGE = "/case-studies/brisa-bahia/process/mind-map-stylized-branding.webp";
+const WEBSITE_STRUCTURE_MINDMAP_IMAGE = "/assets/case-studies/brisa-bahia/process/Website-Mindmap.webp";
 
 const BRAND_IDENTITY_LIGHTBOX_IMAGES: LightboxImage[] = [
   {
@@ -185,7 +186,7 @@ const FINAL_SHOWCASE_IMAGES: LightboxImage[] = [
     height: 696,
   },
   {
-    src: "/assets/case-studies/brisa-bahia/gallery/mobile-brisa-bahia-retreat.webp",
+    src: "/assets/case-studies/brisa-bahia/mobile-brisa-bahia-retreat.webp",
     alt: "Brisa Bahía retreat mobile screen showing responsive layouts",
     width: 2048,
     height: 2048,
@@ -207,10 +208,25 @@ const FINAL_SHOWCASE_IMAGES: LightboxImage[] = [
 const BRAND_IDENTITY_OFFSET = 0;
 const WEBSITE_DESIGN_OFFSET = BRAND_IDENTITY_OFFSET + BRAND_IDENTITY_LIGHTBOX_IMAGES.length;
 const WEBSITE_PROCESS_OFFSET = WEBSITE_DESIGN_OFFSET + WEBSITE_DESIGN_LIGHTBOX_IMAGES.length;
-const FINAL_SHOWCASE_OFFSET = WEBSITE_PROCESS_OFFSET + WEBSITE_PROCESS_IMAGES.length;
+const UX_STRUCTURE_LIGHTBOX_IMAGES: LightboxImage[] = [
+  {
+    src: WEBSITE_STRUCTURE_MINDMAP_IMAGE,
+    alt: "Website mindmap showing the complete Brisa Bahía structure",
+    width: 2048,
+    height: 1400,
+  },
+];
+const UX_STRUCTURE_OFFSET = WEBSITE_PROCESS_OFFSET + WEBSITE_PROCESS_IMAGES.length;
+const FINAL_SHOWCASE_OFFSET = UX_STRUCTURE_OFFSET + UX_STRUCTURE_LIGHTBOX_IMAGES.length;
 const RESPONSIVE_IMAGE_SOURCES = [
-  "/assets/case-studies/brisa-bahia/gallery/mobile-brisa-bahia-retreat.webp",
-  "/assets/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
+  {
+    src: "/assets/case-studies/brisa-bahia/gallery/About-us-presentation.webp",
+    label: "Responsive brand presentation slide",
+  },
+  {
+    src: "/assets/case-studies/brisa-bahia/mobile-brisa-bahia-retreat.webp",
+    label: "Mobile retreat homepage UI",
+  },
 ];
 
 export default function CaseStudyContent() {
@@ -232,6 +248,7 @@ export default function CaseStudyContent() {
       ...BRAND_IDENTITY_LIGHTBOX_IMAGES,
       ...WEBSITE_DESIGN_LIGHTBOX_IMAGES,
       ...WEBSITE_PROCESS_IMAGES,
+      ...UX_STRUCTURE_LIGHTBOX_IMAGES,
       ...FINAL_SHOWCASE_IMAGES,
     ],
     []
@@ -369,16 +386,17 @@ export default function CaseStudyContent() {
   );
   const responsiveImages = useMemo(
     () =>
-      RESPONSIVE_IMAGE_SOURCES.map((src) => {
-        const finalIndex = FINAL_SHOWCASE_IMAGES.findIndex((image) => image.src === src);
+      RESPONSIVE_IMAGE_SOURCES.map((item) => {
+        const finalIndex = FINAL_SHOWCASE_IMAGES.findIndex((image) => image.src === item.src);
         if (finalIndex === -1) {
           return null;
         }
         return {
           ...FINAL_SHOWCASE_IMAGES[finalIndex],
           finalIndex,
+          label: item.label,
         };
-      }).filter((image): image is LightboxImage & { finalIndex: number } => Boolean(image)),
+      }).filter((image): image is LightboxImage & { finalIndex: number; label: string } => Boolean(image)),
     []
   );
   const resultItems = getValue<string[]>("caseStudyBrisaBahia.results.items") ?? [];
@@ -801,46 +819,41 @@ export default function CaseStudyContent() {
               <p className="mt-4 text-lg text-black/70">{t("caseStudyBrisaBahia.uxStructure.intro")}</p>
             </div>
 
-            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:items-center">
-              <div className="rounded-3xl bg-white p-6 shadow-lg">
-                <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}</h3>
-                <button
-                  onClick={() => openLightbox(BRAND_IDENTITY_OFFSET + 3)}
-                  className="group block w-full"
-                  type="button"
-                >
-                  <div className="relative overflow-hidden rounded-2xl bg-[#fff7ef] p-4">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={BRAND_MINDMAP_IMAGE}
-                      alt="Website mindmap for the Brisa Bahía retreat center experience"
-                      className="mx-auto h-auto w-full max-w-[700px] transition duration-300 group-hover:scale-[1.02]"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/10">
-                      <svg
-                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-                        />
-                      </svg>
-                    </div>
+            <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
+              <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">{t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}</h3>
+              <button
+                onClick={() => openLightbox(UX_STRUCTURE_OFFSET)}
+                className="group block w-full"
+                type="button"
+              >
+                <div className="relative overflow-hidden rounded-2xl bg-white p-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={WEBSITE_STRUCTURE_MINDMAP_IMAGE}
+                    alt="Website mindmap for the Brisa Bahía retreat center experience"
+                    className="mx-auto h-auto w-full max-w-[760px] transition duration-300 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/10">
+                    <svg
+                      className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                      />
+                    </svg>
                   </div>
-                </button>
-                <p className="mt-3 text-sm text-black/60">{t("caseStudyBrisaBahia.brandIdentity.brandMindmap.description")}</p>
-              </div>
-              <div className="rounded-3xl bg-white p-8 shadow-lg text-left">
-                <p className="text-base leading-relaxed text-black/70">
-                  {t("caseStudyBrisaBahia.uxStructure.intro")}
-                </p>
-              </div>
+                </div>
+              </button>
+              <p className="mt-5 text-base leading-relaxed text-black/70">
+                {t("caseStudyBrisaBahia.uxStructure.websiteMindmap.description")}
+              </p>
             </div>
 
             <div className="rounded-3xl bg-neutral-50 p-6">
@@ -964,37 +977,39 @@ export default function CaseStudyContent() {
             </div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {responsiveImages.map((image) => (
-                <button
-                  key={image.src}
-                  onClick={() => openLightbox(FINAL_SHOWCASE_OFFSET + image.finalIndex)}
-                  className="group overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
-                  type="button"
-                >
-                  <div className="relative overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="h-auto w-full transition duration-300 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
-                      <svg
-                        className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-                        />
-                      </svg>
+                <div key={image.src} className="space-y-3">
+                  <button
+                    onClick={() => openLightbox(FINAL_SHOWCASE_OFFSET + image.finalIndex)}
+                    className="group block overflow-hidden rounded-3xl bg-white shadow-lg transition hover:shadow-xl"
+                    type="button"
+                  >
+                    <div className="relative overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="h-auto w-full transition duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/20">
+                        <svg
+                          className="h-12 w-12 text-white opacity-0 transition group-hover:opacity-100"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                          />
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                </button>
+                  </button>
+                  <p className="text-sm text-black/60">{image.label}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -1099,7 +1114,7 @@ export default function CaseStudyContent() {
           </div>
         </section>
 
-        <section id="cta" className="case-section bg-white px-6 py-24">
+        <section id="cta" className="case-section relative z-[5] bg-white px-6 py-24">
           <div className="mx-auto max-w-6xl">
             <DiscoveryCTASection
               heading={t("caseStudyBrisaBahia.discoveryCTA.heading")}

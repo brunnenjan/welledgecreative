@@ -614,23 +614,30 @@
   flex-direction: column;
   align-items: center;
   margin-top: 0.5rem;
-  padding-top: 1.25rem;
-  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.progress-nav__track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 0 0.5rem;
   gap: 1rem;
-  align-self: stretch;
+  min-height: 0;
 }
 
 .progress-nav__spine {
   position: absolute;
-  top: 0.5rem;
-  bottom: 0.5rem;
+  top: 1rem;
+  bottom: 1rem;
   left: 50%;
   width: 2px;
   transform: translateX(-50%);
   background: rgba(26, 26, 26, 0.18);
   border-radius: 9999px;
   overflow: hidden;
-  align-self: stretch;
+  pointer-events: none;
 }
 
 .progress-nav__spine-fill {
@@ -660,7 +667,7 @@
 
 .progress-nav__back {
   position: fixed;
-  left: var(--progress-nav-left);
+  left: calc(var(--progress-nav-left) + 6px);
   top: calc(50% + 260px);
   transform: translate(-50%, 0);
   display: inline-flex;
