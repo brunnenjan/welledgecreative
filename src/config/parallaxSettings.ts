@@ -123,6 +123,26 @@ export const PARALLAX_CONFIG = {
       bucketStart: -100,
     },
   },
+  caseStudyCta: {
+    mobile: {
+      bgSpeed: 0.1,
+      fgSpeed: -0.08,
+      bucketSpeed: 0.55,
+      bucketStart: -40,
+    },
+    tablet: {
+      bgSpeed: 0.12,
+      fgSpeed: -0.1,
+      bucketSpeed: 0.65,
+      bucketStart: -140,
+    },
+    desktop: {
+      bgSpeed: 0.15,
+      fgSpeed: -0.12,
+      bucketSpeed: 0.85,
+      bucketStart: -220,
+    },
+  },
 } as const;
 
 // Type helper for device detection

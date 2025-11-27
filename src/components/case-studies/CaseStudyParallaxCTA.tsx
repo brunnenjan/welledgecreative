@@ -45,6 +45,17 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const getDeviceConfig = () => {
+    if (typeof window === "undefined") {
+      return PARALLAX_CONFIG.caseStudyCta.desktop;
+    }
+    const mobile = window.matchMedia("(max-width: 768px)").matches;
+    const tablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+    if (mobile) return PARALLAX_CONFIG.caseStudyCta.mobile;
+    if (tablet) return PARALLAX_CONFIG.caseStudyCta.tablet;
+    return PARALLAX_CONFIG.caseStudyCta.desktop;
+  };
+
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -53,11 +64,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
     const ctx = gsap.context(() => {
       const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
       const isTabletViewport = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
-      const config = isMobileViewport
-        ? PARALLAX_CONFIG.deliver.mobile
-        : isTabletViewport
-          ? PARALLAX_CONFIG.deliver.tablet
-          : PARALLAX_CONFIG.deliver.desktop;
+      const config = getDeviceConfig();
       const scrollRange = "+=200%";
 
       if (fgRef.current) {
@@ -142,14 +149,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
   }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mobile = window.matchMedia("(max-width: 768px)").matches;
-    const tablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
-    const config = mobile
-      ? PARALLAX_CONFIG.deliver.mobile
-      : tablet
-        ? PARALLAX_CONFIG.deliver.tablet
-        : PARALLAX_CONFIG.deliver.desktop;
+    const config = getDeviceConfig();
     setBucketInitialTop(`${config.bucketStart}px`);
   }, []);
 
@@ -174,7 +174,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         ref={bucketRef}
         className="cs-cta-bucket"
         style={{
-          top: `calc(${bucketInitialTop} - 12vh)`,
+          top: bucketInitialTop,
           width: isMobile ? "min(108vw, 720px)" : isTablet ? "min(65vw, 450px)" : "min(90vw, 600px)",
         }}
         aria-hidden

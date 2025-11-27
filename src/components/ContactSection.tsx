@@ -61,7 +61,7 @@ export default function ContactSection() {
       />
 
       <div
-        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-32 pb-[30vh] text-center md:gap-16 md:pt-40 lg:pt-48 md:pb-[24vh] lg:pb-[20vh]"
+        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-40 pb-[30vh] text-center md:gap-16 md:pt-48 lg:pt-56 md:pb-[24vh] lg:pb-[20vh]"
       >
         <div className="w-full space-y-8 md:space-y-10">
           <div className="space-y-4 text-center">
