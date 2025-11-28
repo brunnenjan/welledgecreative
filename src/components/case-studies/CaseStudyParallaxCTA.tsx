@@ -140,17 +140,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         });
       }
 
-      // Highlight animation for multiple highlighted words with stagger
-      const highlightTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 70%",
-          end: "top 40%",
-          scrub: 1,
-          toggleActions: "play none none reverse",
-        },
-      });
-
+      // Highlight animation for "retreat" - comes in later during scroll
       highlightRefs.current.forEach((ref, index) => {
         if (ref) {
           gsap.set(ref, {
@@ -159,16 +149,19 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
             backgroundColor: "#f58222",
           });
 
-          // Add each highlight to timeline with stagger
-          highlightTimeline.to(
-            ref,
-            {
-              scaleX: 1,
-              ease: "power2.out",
-              duration: 0.3,
+          gsap.to(ref, {
+            scaleX: 1,
+            ease: "power2.out",
+            duration: 0.6,
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: "top 60%", // Starts later (was 70%)
+              end: "top 30%",   // Ends later (was 40%)
+              scrub: 1.2,       // Slower scrub for smoother animation
+              toggleActions: "play none none reverse",
             },
-            index * 0.15 // Stagger delay in timeline
-          );
+            delay: 0.2, // Additional delay before animation starts
+          });
         }
       });
 
@@ -186,15 +179,30 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       return ctx;
     };
 
-    // Wait for next frame to ensure DOM is ready
+    // Wait for page to be fully loaded before initializing
     let ctx: gsap.Context | null = null;
+    let mounted = true;
 
-    const timeoutId = setTimeout(() => {
+    const init = () => {
+      if (!mounted) return;
+
+      // Double-check elements still exist
+      if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) {
+        console.log('[CaseStudyParallaxCTA] Elements not ready, retrying...');
+        setTimeout(init, 100);
+        return;
+      }
+
+      console.log('[CaseStudyParallaxCTA] Initializing animations');
       ctx = initializeAnimations();
-    }, 50);
+    };
+
+    // Start initialization after a delay to ensure everything is loaded
+    const timeoutId = setTimeout(init, 200);
 
     // Cleanup function
     return () => {
+      mounted = false;
       clearTimeout(timeoutId);
       if (ctx) ctx.revert();
     };
@@ -202,24 +210,46 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
 
   // Refresh on page visibility and on mount to fix frozen state
   useEffect(() => {
-    // Immediate refresh on component mount
-    const refreshOnMount = setTimeout(() => {
-      ScrollTrigger.refresh(true);
-    }, 150);
+    console.log('[CaseStudyParallaxCTA] Setting up refresh timers');
+
+    // Multiple refreshes at different intervals to catch all loading stages
+    const refreshTimers = [
+      setTimeout(() => {
+        console.log('[CaseStudyParallaxCTA] Refresh at 200ms');
+        ScrollTrigger.refresh(true);
+      }, 200),
+      setTimeout(() => {
+        console.log('[CaseStudyParallaxCTA] Refresh at 400ms');
+        ScrollTrigger.refresh(true);
+      }, 400),
+      setTimeout(() => {
+        console.log('[CaseStudyParallaxCTA] Refresh at 800ms');
+        ScrollTrigger.refresh(true);
+      }, 800),
+    ];
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
+        console.log('[CaseStudyParallaxCTA] Page visible - refreshing');
         setTimeout(() => {
           ScrollTrigger.refresh(true);
         }, 100);
       }
     };
 
+    // Refresh on window load as well
+    const handleLoad = () => {
+      console.log('[CaseStudyParallaxCTA] Window loaded - refreshing');
+      ScrollTrigger.refresh(true);
+    };
+
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('load', handleLoad);
 
     return () => {
-      clearTimeout(refreshOnMount);
+      refreshTimers.forEach(timer => clearTimeout(timer));
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('load', handleLoad);
     };
   }, []);
 
