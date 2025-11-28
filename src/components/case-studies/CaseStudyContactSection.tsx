@@ -80,7 +80,7 @@ export default function CaseStudyContactSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-56 pb-[30vh] text-center md:gap-16 md:pt-64 lg:pt-72 md:pb-[24vh] lg:pb-[20vh]">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-64 pb-[30vh] text-center md:gap-16 md:pt-72 lg:pt-80 md:pb-[24vh] lg:pb-[20vh]">
         <div className="w-full space-y-8 md:space-y-10">
           <div className="space-y-4 text-center">
             <h2 id="cs-contact-title" className="text-4xl font-semibold leading-tight text-white md:text-5xl">

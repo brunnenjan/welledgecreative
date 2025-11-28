@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import { useI18n } from "@/components/providers/I18nProvider";
@@ -21,9 +23,13 @@ const SECTIONS = [
 
 export default function Header() {
   const { t } = useI18n();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const portalContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Check if we're on homepage
+  const isHomePage = pathname === "/" || pathname === "/en" || pathname === "/de";
 
   useEffect(() => {
     if (typeof document === "undefined") {
@@ -45,11 +51,22 @@ export default function Header() {
   }, []);
 
   const scrollToTop = () => {
-    smoothScrollToTop();
+    if (isHomePage) {
+      smoothScrollToTop();
+    } else {
+      window.location.href = "/";
+    }
     setIsMenuOpen(false);
   };
 
   const handleNavClick = (sectionId: string) => {
+    if (!isHomePage) {
+      // Navigate to homepage with hash
+      window.location.href = `/#${sectionId}`;
+      setIsMenuOpen(false);
+      return;
+    }
+
     const element = document.getElementById(sectionId);
     if (!element) return;
 
