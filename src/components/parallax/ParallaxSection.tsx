@@ -29,6 +29,11 @@ export default function ParallaxSection({
   const bgWrapRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     if (!gsap || !ScrollTrigger) {
       return;
     }
@@ -65,8 +70,6 @@ export default function ParallaxSection({
       { yPercent: bgTravelValue, ease: "none" },
       0
     );
-
-    ScrollTrigger.refresh();
 
     return () => {
       tl.scrollTrigger?.kill();

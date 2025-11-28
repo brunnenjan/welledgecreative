@@ -13,12 +13,14 @@ export default function ContactSection() {
   const fgRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
     if (!sectionRef.current) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      if (!prefersReducedMotion && fgRef.current) {
+      if (fgRef.current) {
         gsap.to(fgRef.current, {
           y: "-55%",
           ease: "none",
