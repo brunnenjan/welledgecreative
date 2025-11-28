@@ -69,16 +69,18 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
 
     if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) return;
 
-    const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+    // Wait for page to be fully ready before initializing animations
+    const initializeAnimations = () => {
+      const ctx = gsap.context(() => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
 
-      // Get device-specific config
-      const config = isMobile
-        ? PARALLAX_CONFIG.caseStudyCta.mobile
-        : isTablet
-          ? PARALLAX_CONFIG.caseStudyCta.tablet
-          : PARALLAX_CONFIG.caseStudyCta.desktop;
+        // Get device-specific config
+        const config = isMobile
+          ? PARALLAX_CONFIG.caseStudyCta.mobile
+          : isTablet
+            ? PARALLAX_CONFIG.caseStudyCta.tablet
+            : PARALLAX_CONFIG.caseStudyCta.desktop;
 
       const { bgSpeed, fgSpeed, bucketSpeed, swingAngle } = config;
       const scrollRange = "+=200%";
@@ -170,24 +172,41 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         }
       });
 
-      // Force refresh after animations are set up
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh(true);
-      });
+        // Force refresh after animations are set up
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh(true);
+        });
 
-      // Additional refresh after a short delay to catch late-loading elements
-      setTimeout(() => {
-        ScrollTrigger.refresh(true);
-      }, 100);
-    }, sectionRef);
+        // Additional refresh after a short delay to catch late-loading elements
+        setTimeout(() => {
+          ScrollTrigger.refresh(true);
+        }, 100);
+      }, sectionRef);
 
+      return ctx;
+    };
+
+    // Wait for next frame to ensure DOM is ready
+    let ctx: gsap.Context | null = null;
+
+    const timeoutId = setTimeout(() => {
+      ctx = initializeAnimations();
+    }, 50);
+
+    // Cleanup function
     return () => {
-      ctx.revert();
+      clearTimeout(timeoutId);
+      if (ctx) ctx.revert();
     };
   }, []);
 
-  // Refresh on page visibility to fix frozen state
+  // Refresh on page visibility and on mount to fix frozen state
   useEffect(() => {
+    // Immediate refresh on component mount
+    const refreshOnMount = setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    }, 150);
+
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
         setTimeout(() => {
@@ -197,7 +216,11 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      clearTimeout(refreshOnMount);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   useEffect(() => {

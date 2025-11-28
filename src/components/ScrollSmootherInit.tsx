@@ -65,8 +65,18 @@ export default function ScrollSmootherInit() {
     };
   }, [refreshGsap]);
 
+  // Refresh when pathname changes (route navigation)
   useEffect(() => {
-    refreshGsap();
+    // Small delay to ensure new content has rendered
+    const timeoutId = setTimeout(() => {
+      refreshGsap();
+      // Additional refresh to catch any late-loading elements
+      setTimeout(() => {
+        ScrollTrigger.refresh(true);
+      }, 200);
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
   }, [pathname, refreshGsap]);
 
   useEffect(() => {

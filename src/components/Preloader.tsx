@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import Image from "next/image";
 
@@ -12,6 +13,7 @@ const LOADING_PHRASES = [
 ];
 
 export default function Preloader() {
+  const pathname = usePathname();
   const preloaderRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
   const logoTextRef = useRef<HTMLDivElement>(null);
@@ -21,22 +23,37 @@ export default function Preloader() {
 
   const [currentPhrase, setCurrentPhrase] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasShownPreloader, setHasShownPreloader] = useState(false);
+
+  // Check if this is homepage
+  const isHomePage = pathname === '/' || pathname === '/en' || pathname === '/de';
+
+  // Hide preloader immediately on non-homepage routes or if already shown
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Check if preloader was already shown in this session
+    const preloaderShown = sessionStorage.getItem('preloaderShown');
+
+    if (preloaderShown || !isHomePage) {
+      setIsLoading(false);
+      return;
+    }
+
+    // Mark as shown for this session
+    sessionStorage.setItem('preloaderShown', 'true');
+    setHasShownPreloader(true);
+  }, [isHomePage]);
 
   useEffect(() => {
+    if (!hasShownPreloader || !isHomePage) return;
     if (!preloaderRef.current || !iconRef.current) return;
 
-    // Only preload critical images for homepage
-    const isHomePage = typeof window !== 'undefined' &&
-      (window.location.pathname === '/' ||
-       window.location.pathname === '/en' ||
-       window.location.pathname === '/de');
-
-    // Define critical images based on page
-    const criticalImages = isHomePage ? [
-      // Hero section (homepage only)
+    // Define critical images for homepage
+    const criticalImages = [
       "/assets/hero/hero-background.webp",
       "/assets/hero/hero-bucket.webp",
-    ] : [];
+    ];
 
     // Create promises for all image loads
     const imagePromises = criticalImages.map(
@@ -133,7 +150,7 @@ export default function Preloader() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [hasShownPreloader, isHomePage]);
 
   // Fade in/out text animation
   useEffect(() => {
