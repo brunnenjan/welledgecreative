@@ -13,7 +13,6 @@ import LogosAndBranding from "@/sections/LogosAndBranding";
 import DeliverParallax from "@/components/DeliverParallax";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
-import HomeDiscoveryCTA from "@/components/HomeDiscoveryCTA";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -34,7 +33,6 @@ export default function HomePage() {
       <DeliverParallax />
       <TestimonialsSection />
       <ContactSection />
-      <HomeDiscoveryCTA />
       <Footer />
     </>
   );

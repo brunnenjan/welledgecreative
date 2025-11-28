@@ -56,10 +56,9 @@ export default function ContactSection() {
       {/* Foreground Overlay - Scrolls Up */}
       <div
         ref={fgRef}
-        className="absolute left-0 right-0 bottom-0 z-5 pointer-events-none will-change-transform"
+        className="absolute inset-0 z-5 pointer-events-none will-change-transform"
         aria-hidden
         style={{
-          top: "200px",
           backgroundImage: "url('/assets/parallax/section-contact/parallax-foreground-contact.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center top",
@@ -68,7 +67,7 @@ export default function ContactSection() {
       />
 
       <div
-        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-64 pb-[30vh] text-center md:gap-16 md:pt-72 lg:pt-80 md:pb-[24vh] lg:pb-[20vh]"
+        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 px-6 pt-40 pb-[30vh] text-center md:gap-16 md:pt-48 lg:pt-56 md:pb-[24vh] lg:pb-[20vh]"
       >
         <div className="w-full space-y-8 md:space-y-10">
           <div className="space-y-4 text-center">
