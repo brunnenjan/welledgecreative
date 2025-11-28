@@ -30,7 +30,10 @@ export default function Preloader() {
 
   // Hide preloader immediately on non-homepage routes or if already shown
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') {
+      console.log('[Preloader] Server side - skipping');
+      return;
+    }
 
     console.log('[Preloader] Checking conditions:', { pathname, isHomePage });
 
@@ -38,16 +41,36 @@ export default function Preloader() {
     const preloaderShown = sessionStorage.getItem('preloaderShown');
     console.log('[Preloader] Already shown:', preloaderShown);
 
-    if (preloaderShown || !isHomePage) {
-      console.log('[Preloader] Hiding immediately (already shown or not homepage)');
+    // Safety: Always hide on non-homepage
+    if (!isHomePage) {
+      console.log('[Preloader] Not homepage - hiding immediately');
       setIsLoading(false);
+      setHasShownPreloader(false);
+      return;
+    }
+
+    // Hide if already shown this session
+    if (preloaderShown) {
+      console.log('[Preloader] Already shown this session - hiding');
+      setIsLoading(false);
+      setHasShownPreloader(false);
       return;
     }
 
     // Mark as shown for this session
-    console.log('[Preloader] Marking as shown and starting preload');
+    console.log('[Preloader] First homepage visit - showing preloader');
     sessionStorage.setItem('preloaderShown', 'true');
     setHasShownPreloader(true);
+
+    // Safety timeout - force hide after 5 seconds maximum
+    const safetyTimeout = setTimeout(() => {
+      console.log('[Preloader] SAFETY TIMEOUT - force hiding after 5s');
+      setIsLoading(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(safetyTimeout);
+    };
   }, [isHomePage, pathname]);
 
   useEffect(() => {

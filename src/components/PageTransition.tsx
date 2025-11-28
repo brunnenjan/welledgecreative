@@ -1,75 +1,104 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 export default function PageTransition() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
-  const [previousPathname, setPreviousPathname] = useState(pathname);
+  const previousPathnameRef = useRef(pathname);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const safetyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    console.log('[PageTransition] Pathname changed:', { pathname, previousPathname, visible });
+    console.log('[PageTransition] Effect triggered:', {
+      pathname,
+      previous: previousPathnameRef.current,
+      visible
+    });
+
+    // Clear any existing timeouts
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    if (safetyTimeoutRef.current) {
+      clearTimeout(safetyTimeoutRef.current);
+      safetyTimeoutRef.current = null;
+    }
 
     // Only show transition if pathname actually changed
-    if (pathname !== previousPathname) {
-      console.log('[PageTransition] Showing transition overlay');
+    if (pathname !== previousPathnameRef.current) {
+      console.log('[PageTransition] Pathname changed - showing overlay');
       setVisible(true);
-      setPreviousPathname(pathname);
+      previousPathnameRef.current = pathname;
 
-      // Hide after a short delay
-      const timeout = setTimeout(() => {
-        console.log('[PageTransition] Hiding transition overlay');
+      // Hide after animation duration
+      timeoutRef.current = setTimeout(() => {
+        console.log('[PageTransition] Normal hide timeout fired');
         setVisible(false);
-      }, 400);
+        timeoutRef.current = null;
+      }, 300);
 
-      return () => {
-        console.log('[PageTransition] Cleanup timeout');
-        clearTimeout(timeout);
-      };
+      // Safety timeout - force hide after max duration
+      safetyTimeoutRef.current = setTimeout(() => {
+        console.log('[PageTransition] SAFETY timeout fired - force hiding');
+        setVisible(false);
+        safetyTimeoutRef.current = null;
+      }, 1000);
+    } else {
+      console.log('[PageTransition] Pathname unchanged - ensuring hidden');
+      setVisible(false);
     }
-  }, [pathname, previousPathname]);
+
+    return () => {
+      console.log('[PageTransition] Cleanup');
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      if (safetyTimeoutRef.current) {
+        clearTimeout(safetyTimeoutRef.current);
+        safetyTimeoutRef.current = null;
+      }
+    };
+  }, [pathname]);
+
+  console.log('[PageTransition] Render - visible:', visible);
 
   if (!visible) {
-    console.log('[PageTransition] Not visible, returning null');
     return null;
   }
 
-  console.log('[PageTransition] Rendering overlay');
   return (
     <div
-      className={`page-transition-overlay${visible ? " is-active" : ""}`}
-      aria-hidden
       style={{
         position: 'fixed',
         inset: 0,
-        background: 'var(--color-white)',
-        zIndex: 'var(--z-preloader)',
+        background: '#ffffff',
+        zIndex: 9999,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        opacity: visible ? 1 : 0,
-        transition: 'opacity 0.3s ease',
-        pointerEvents: visible ? 'all' : 'none',
+        pointerEvents: 'all',
       }}
     >
       <div
         style={{
-          width: 'clamp(80px, 12vw, 100px)',
-          height: 'clamp(80px, 12vw, 100px)',
-          position: 'relative',
-          animation: 'pulse 2s ease-in-out infinite',
+          width: '80px',
+          height: '80px',
+          border: '4px solid #f0f0f0',
+          borderTop: '4px solid #f58222',
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite',
         }}
-      >
-        <Image
-          src="/assets/logo/Icon-logo-well-edge-creative.svg"
-          alt="Loading"
-          fill
-          priority
-          style={{ objectFit: 'contain' }}
-        />
-      </div>
+      />
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 }

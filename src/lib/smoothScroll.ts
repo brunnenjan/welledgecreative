@@ -27,7 +27,10 @@ const getTargetScroll = (element: HTMLElement, block: ScrollLogicalPosition, off
   const current = window.scrollY;
   const elementTop = current + rect.top;
 
-  let target = elementTop;
+  // Account for fixed header height (approximately 80px)
+  const headerOffset = 80;
+
+  let target = elementTop - headerOffset;
   if (block === "center") {
     target = elementTop - (viewport - height) / 2;
   } else if (block === "end") {

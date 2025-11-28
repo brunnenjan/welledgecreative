@@ -126,16 +126,26 @@ export default function ScrollSmootherInit() {
 
     // Enable ScrollSmoother on desktop only (disable on mobile/tablet to prevent scroll blocking)
     const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
+    // Only create smoother on desktop non-touch devices
+    if (isMobile || isTouch) {
+      console.log('[ScrollSmoother] Skipping on mobile/touch device');
+      return;
+    }
+
+    console.log('[ScrollSmoother] Creating smoother for desktop');
     const smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: isMobile ? 0 : 1.2, // Smooth scroll only on desktop (1024px+)
+      smooth: 1.2,
       effects: true,
-      smoothTouch: 0, // Never smooth on touch devices
+      smoothTouch: 0,
+      normalizeScroll: false, // Prevent interference with native scroll
     });
 
     return () => {
+      console.log('[ScrollSmoother] Killing smoother');
       smoother?.kill();
     };
   }, []);
