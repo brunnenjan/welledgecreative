@@ -1,8 +1,6 @@
 "use client";
 
 import { gsap } from "gsap";
-
-if (typeof window !== "undefined") {
-}
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export { gsap, ScrollTrigger };

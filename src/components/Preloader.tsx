@@ -25,9 +25,6 @@ export default function Preloader() {
   useEffect(() => {
     if (!preloaderRef.current || !iconRef.current) return;
 
-    // Disable scroll during loading
-    document.body.style.overflow = "hidden";
-
     // Define all critical images to preload
     const criticalImages = [
       // Profile section
@@ -126,7 +123,6 @@ export default function Preloader() {
                     ease: "power2.inOut",
                     onComplete: () => {
                       setIsLoading(false);
-                      document.body.style.overflow = "";
                     },
                   });
                 }
@@ -143,7 +139,6 @@ export default function Preloader() {
 
     return () => {
       ctx.revert();
-      document.body.style.overflow = "";
     };
   }, []);
 

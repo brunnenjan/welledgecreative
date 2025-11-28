@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactFormStatic from "@/components/ContactFormStatic";
 import { useI18n } from "@/components/providers/I18nProvider";
 
@@ -56,7 +57,7 @@ export default function CaseStudyContactSection() {
       },
       "(min-width: 1024px)": () => {
         const fgTween = gsap.to(fg, {
-          y: -120,
+          y: -90,
           ease: "none",
           scrollTrigger: {
             trigger: section,
@@ -66,7 +67,7 @@ export default function CaseStudyContactSection() {
           },
         });
         const bucketTween = gsap.to(bucket, {
-          y: -100,
+          y: -50,
           ease: "none",
           scrollTrigger: {
             trigger: section,

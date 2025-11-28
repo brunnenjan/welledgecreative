@@ -4,6 +4,7 @@
 import { useEffect, useRef } from "react";
 import type { CSSProperties } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 const CONFIG = {

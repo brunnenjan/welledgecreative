@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
@@ -96,7 +97,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       },
       "(min-width: 1024px)": () => {
         const fgTween = gsap.to(fg, {
-          y: -120,
+          y: -90,
           ease: "none",
           scrollTrigger: {
             trigger: section,
@@ -106,7 +107,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           },
         });
         const bucketTween = gsap.to(bucket, {
-          y: -100,
+          y: -60,
           ease: "none",
           scrollTrigger: {
             trigger: section,

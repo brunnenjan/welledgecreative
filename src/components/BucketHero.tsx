@@ -4,6 +4,7 @@
 import { useLayoutEffect, useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HERO_CONFIG } from "@/lib/heroConfig";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { smoothScrollTo } from "@/lib/smoothScroll";

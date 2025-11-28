@@ -12,6 +12,7 @@ import LandscapeOverlay from "@/components/LandscapeOverlay";
 import type { Locale } from "@/i18n/config";
 import { i18nConfig } from "@/i18n/config";
 import ParallaxInit from "@/components/ParallaxInit";
+import PageTransition from "@/components/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -214,6 +215,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} body-base antialiased`}>
         <ParallaxInit />
+        <PageTransition />
         <LandscapeOverlay />
         <Preloader />
         <a href="#hero" className="skip-link">
