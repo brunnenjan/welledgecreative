@@ -302,7 +302,7 @@ export default function CaseStudyContent() {
         );
       }
 
-      // Goal heading animation
+      // Goal heading animation (with delay after Challenge)
       if (goalHeadingRef.current && goalHighlightRef.current && goalTextRef.current) {
         gsap.fromTo(
           goalHighlightRef.current,
@@ -311,6 +311,7 @@ export default function CaseStudyContent() {
             scaleX: 1,
             duration: 0.6,
             ease: "power1.out",
+            delay: 0.2,
             scrollTrigger: {
               trigger: goalHeadingRef.current,
               start: "top 80%",
@@ -325,6 +326,7 @@ export default function CaseStudyContent() {
             color: "#ffffff",
             duration: 0.6,
             ease: "power1.out",
+            delay: 0.2,
             scrollTrigger: {
               trigger: goalHeadingRef.current,
               start: "top 80%",

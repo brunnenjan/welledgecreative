@@ -6,20 +6,20 @@ import Image from "next/image";
 
 export default function PageTransition() {
   const pathname = usePathname();
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [previousPathname, setPreviousPathname] = useState(pathname);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setVisible(false), 350);
-    return () => clearTimeout(timeout);
-  }, []);
 
   useEffect(() => {
     // Only show transition if pathname actually changed
     if (pathname !== previousPathname) {
       setVisible(true);
-      const timeout = setTimeout(() => setVisible(false), 600);
       setPreviousPathname(pathname);
+
+      // Hide after a short delay
+      const timeout = setTimeout(() => {
+        setVisible(false);
+      }, 400);
+
       return () => clearTimeout(timeout);
     }
   }, [pathname, previousPathname]);

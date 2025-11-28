@@ -138,7 +138,17 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         });
       }
 
-      // Highlight animation for multiple highlighted words
+      // Highlight animation for multiple highlighted words with stagger
+      const highlightTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 70%",
+          end: "top 40%",
+          scrub: 1,
+          toggleActions: "play none none reverse",
+        },
+      });
+
       highlightRefs.current.forEach((ref, index) => {
         if (ref) {
           gsap.set(ref, {
@@ -147,19 +157,16 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
             backgroundColor: "#f58222",
           });
 
-          gsap.to(ref, {
-            scaleX: 1,
-            ease: "power2.out",
-            duration: 0.6,
-            scrollTrigger: {
-              trigger: contentRef.current,
-              start: "top 70%",
-              end: "top 50%",
-              scrub: 0.5,
-              toggleActions: "play none none reverse",
+          // Add each highlight to timeline with stagger
+          highlightTimeline.to(
+            ref,
+            {
+              scaleX: 1,
+              ease: "power2.out",
+              duration: 0.3,
             },
-            delay: index * 0.1, // Stagger each highlight slightly
-          });
+            index * 0.15 // Stagger delay in timeline
+          );
         }
       });
 
@@ -167,11 +174,30 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       requestAnimationFrame(() => {
         ScrollTrigger.refresh(true);
       });
+
+      // Additional refresh after a short delay to catch late-loading elements
+      setTimeout(() => {
+        ScrollTrigger.refresh(true);
+      }, 100);
     }, sectionRef);
 
     return () => {
       ctx.revert();
     };
+  }, []);
+
+  // Refresh on page visibility to fix frozen state
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setTimeout(() => {
+          ScrollTrigger.refresh(true);
+        }, 100);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, []);
 
   useEffect(() => {
