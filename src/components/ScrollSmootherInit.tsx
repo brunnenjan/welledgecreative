@@ -29,13 +29,22 @@ export default function ScrollSmootherInit() {
     }
     refreshTimeoutRef.current = setTimeout(() => {
       ScrollTrigger.refresh(true);
-    }, 400);
+    }, 100);
   }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     window.addEventListener("load", refreshGsap);
+
+    // Refresh immediately on page visibility change
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        ScrollTrigger.refresh(true);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     const fontReady = document.fonts?.ready;
     if (fontReady) {
       fontReady.then(refreshGsap).catch(() => {
@@ -43,8 +52,12 @@ export default function ScrollSmootherInit() {
       });
     }
 
+    // Initial immediate refresh
+    ScrollTrigger.refresh(true);
+
     return () => {
       window.removeEventListener("load", refreshGsap);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (refreshTimeoutRef.current) {
         clearTimeout(refreshTimeoutRef.current);
         refreshTimeoutRef.current = null;

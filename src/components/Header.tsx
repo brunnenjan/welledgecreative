@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import { useI18n } from "@/components/providers/I18nProvider";
@@ -24,12 +24,25 @@ const SECTIONS = [
 export default function Header() {
   const { t } = useI18n();
   const pathname = usePathname();
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const portalContainerRef = useRef<HTMLDivElement | null>(null);
+  const previousPathnameRef = useRef(pathname);
 
   // Check if we're on homepage
   const isHomePage = pathname === "/" || pathname === "/en" || pathname === "/de";
+
+  // Scroll to top when navigating back to homepage
+  useEffect(() => {
+    if (previousPathnameRef.current !== pathname && isHomePage) {
+      // Delay to ensure page has loaded
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 0);
+    }
+    previousPathnameRef.current = pathname;
+  }, [pathname, isHomePage]);
 
   useEffect(() => {
     if (typeof document === "undefined") {
@@ -54,16 +67,24 @@ export default function Header() {
     if (isHomePage) {
       smoothScrollToTop();
     } else {
-      window.location.href = "/";
+      router.push("/");
     }
     setIsMenuOpen(false);
   };
 
   const handleNavClick = (sectionId: string) => {
+    setIsMenuOpen(false);
+
     if (!isHomePage) {
-      // Navigate to homepage with hash
-      window.location.href = `/#${sectionId}`;
-      setIsMenuOpen(false);
+      // Navigate to homepage, then scroll to section
+      router.push(`/#${sectionId}`);
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          smoothScrollTo(element, { block: "start" });
+        }
+      }, 100);
       return;
     }
 
@@ -71,8 +92,6 @@ export default function Header() {
     if (!element) return;
 
     smoothScrollTo(element, { block: "start" });
-
-    setIsMenuOpen(false);
   };
 
   const headerMarkup = (

@@ -147,22 +147,20 @@ export default function ProfileContent() {
           </p>
         </div>
 
-        {/* "Plan your Project" button - mobile only, no arrows */}
-        {isMobile && (
-          <button
-            type="button"
-            onClick={() => smoothScrollTo("contact-section")}
-            className="mt-12 inline-flex items-center justify-center px-8 py-4 text-base font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105 hover:shadow-lg"
-            style={{
-              backgroundColor: '#f58222',
-              color: '#ffffff',
-              letterSpacing: '0.12em',
-            }}
-            aria-label={t("profile.planProjectAria")}
-          >
-            {t("profile.planProject")}
-          </button>
-        )}
+        {/* "Plan your Project" button - all devices */}
+        <button
+          type="button"
+          onClick={() => smoothScrollTo("contact-section")}
+          className="mt-12 inline-flex items-center justify-center px-8 py-4 text-base font-medium uppercase tracking-wider transition-all rounded-full hover:scale-105 hover:shadow-lg"
+          style={{
+            backgroundColor: '#f58222',
+            color: '#ffffff',
+            letterSpacing: '0.12em',
+          }}
+          aria-label={t("profile.planProjectAria")}
+        >
+          {t("profile.planProject")}
+        </button>
       </div>
     </section>
   );

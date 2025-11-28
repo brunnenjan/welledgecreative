@@ -1,8 +1,9 @@
 /* Custom Swiper Styles for Logo Slider */
 
 .logo-slider {
-  overflow: hidden;
-  padding: 20px 0;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding: 60px 0 80px 0;
   width: 100%;
 }
 
@@ -21,9 +22,9 @@
 }
 
 .logo-slider .logo-slide {
-  --logo-slide-height: clamp(7.5rem, 16vw, 10rem);
-  --logo-slide-width: clamp(11rem, 24vw, 17rem);
-  --logo-slide-padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  --logo-slide-height: clamp(9rem, 18vw, 12rem);
+  --logo-slide-width: clamp(13rem, 26vw, 19rem);
+  --logo-slide-padding: clamp(1.25rem, 2.5vw, 1.75rem);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +39,8 @@
   border: 1px solid rgba(15, 23, 42, 0.12);
   background: #ffffff;
   padding: var(--logo-slide-padding);
-  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  margin-bottom: 48px;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 

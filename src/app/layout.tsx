@@ -85,14 +85,9 @@ export const metadata: Metadata = {
     // yandex: "your-yandex-verification-code",
   },
   icons: {
-    icon: [
-      { url: "/assets/favicon/favicon-16x16.png?v=3", sizes: "16x16", type: "image/png" },
-      { url: "/assets/favicon/favicon-32x32.png?v=3", sizes: "32x32", type: "image/png" },
-      { url: "/icon.png?v=3", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.ico?v=3", type: "image/x-icon" },
-    ],
-    apple: [{ url: "/assets/favicon/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" }],
-    shortcut: ["/favicon.ico?v=3"],
+    icon: "/assets/logo/Icon-logo-well-edge-creative.svg",
+    shortcut: "/assets/logo/Icon-logo-well-edge-creative.svg",
+    apple: "/assets/logo/Icon-logo-well-edge-creative.svg",
   },
   manifest: "/assets/favicon/site.webmanifest",
   alternates: {
@@ -203,15 +198,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        {/* Critical hero images - preload for faster LCP */}
-        <link rel="preload" as="image" href="/assets/hero/hero-background.webp" />
-        <link rel="preload" as="image" href="/assets/hero/hero-foreground-desktop.webp" media="(min-width: 1024px)" />
-        <link rel="preload" as="image" href="/assets/hero/hero-foreground-tablet.webp" media="(min-width: 769px) and (max-width: 1023px)" />
-        <link rel="preload" as="image" href="/assets/hero/hero-foreground-mobile.webp" media="(max-width: 768px)" />
-        <link rel="preload" as="image" href="/assets/hero/hero-bucket.webp" />
-        <link rel="preload" as="image" href="/assets/logo/well-edge-logo-retina.webp" />
-        {/* Parallax section images */}
-        <link rel="preload" as="image" href="/assets/parallax/section-contact/parallax-bg-contact.webp" media="(min-width: 768px)" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} body-base antialiased`}>
         <ParallaxInit />

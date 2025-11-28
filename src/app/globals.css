@@ -749,6 +749,18 @@ section {
   animation: fade-in 0.6s ease-out;
 }
 
+/* Pulse animation for loading icon */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
 /* Elegant section entrance */
 @keyframes section-entrance {
   from {
@@ -1177,10 +1189,10 @@ section[id] {
 
 .contact-fg-case {
   position: absolute;
-  top: -150px;
+  top: -220px;
   left: 0;
   width: 100%;
-  height: calc(100vh + 150px);
+  height: calc(100vh + 220px);
   z-index: 2;
   pointer-events: none;
   will-change: transform;

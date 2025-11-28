@@ -25,25 +25,18 @@ export default function Preloader() {
   useEffect(() => {
     if (!preloaderRef.current || !iconRef.current) return;
 
-    // Define all critical images to preload
-    const criticalImages = [
-      // Profile section
-      "/assets/parallax/section-profile/parallax-bg-profile-secondary.webp",
-      "/assets/parallax/section-profile/parallax-bucket-profile-alt.webp",
-      "/assets/parallax/section-profile/parallax-foreground-profile-secondary.webp",
-      // Discover section
-      "/assets/parallax/section-discover/parallax-bg-discover.webp",
-      "/assets/parallax/section-discover/parallax-bucket-discover.webp",
-      "/assets/parallax/section-discover/parallax-foreground-discover.webp",
-      // Design section
-      "/assets/parallax/section-design/parallax-bg-design.webp",
-      "/assets/parallax/section-design/parallax-bucket-design.webp",
-      "/assets/parallax/section-design/parallax-foreground-design.webp",
-      // Deliver section
-      "/assets/parallax/section-deliver/parallax-bg-deliver.webp",
-      "/assets/parallax/section-deliver/parallax-bucket-deliver.webp",
-      "/assets/parallax/section-deliver/parallax-foreground-deliver.webp",
-    ];
+    // Only preload critical images for homepage
+    const isHomePage = typeof window !== 'undefined' &&
+      (window.location.pathname === '/' ||
+       window.location.pathname === '/en' ||
+       window.location.pathname === '/de');
+
+    // Define critical images based on page
+    const criticalImages = isHomePage ? [
+      // Hero section (homepage only)
+      "/assets/hero/hero-background.webp",
+      "/assets/hero/hero-bucket.webp",
+    ] : [];
 
     // Create promises for all image loads
     const imagePromises = criticalImages.map(

@@ -4,8 +4,14 @@ import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
+
+// Register ScrollTrigger
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 
 type CaseStudyParallaxCTAProps = {
@@ -21,6 +27,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
   const fgRef = useRef<HTMLDivElement>(null);
   const bucketRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const highlightRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [bucketInitialTop, setBucketInitialTop] = useState("clamp(-15vh, -10vh, -8vh)");
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -73,7 +80,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           ? PARALLAX_CONFIG.caseStudyCta.tablet
           : PARALLAX_CONFIG.caseStudyCta.desktop;
 
-      const { bgSpeed, fgSpeed, bucketSpeed } = config;
+      const { bgSpeed, fgSpeed, bucketSpeed, swingAngle } = config;
       const scrollRange = "+=200%";
       const scrubValue = 3.8;
 
@@ -115,6 +122,51 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           scrub: scrubValue,
         },
       });
+
+      // Bucket swing animation
+      if (swingAngle) {
+        gsap.to(bucketRef.current, {
+          rotation: swingAngle,
+          transformOrigin: "center top",
+          ease: "sine.inOut",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: scrollRange,
+            scrub: scrubValue,
+          },
+        });
+      }
+
+      // Highlight animation for multiple highlighted words
+      highlightRefs.current.forEach((ref, index) => {
+        if (ref) {
+          gsap.set(ref, {
+            scaleX: 0,
+            transformOrigin: "left",
+            backgroundColor: "#f58222",
+          });
+
+          gsap.to(ref, {
+            scaleX: 1,
+            ease: "power2.out",
+            duration: 0.6,
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: "top 70%",
+              end: "top 50%",
+              scrub: 0.5,
+              toggleActions: "play none none reverse",
+            },
+            delay: index * 0.1, // Stagger each highlight slightly
+          });
+        }
+      });
+
+      // Force refresh after animations are set up
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh(true);
+      });
     }, sectionRef);
 
     return () => {
@@ -141,7 +193,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       }}
     >
       <div ref={bgRef} className="cs-cta-layer cs-cta-bg" aria-hidden>
-        <Image src={bgSrc} alt="" fill sizes="100vw" quality={100} className="object-cover" />
+        <Image src={bgSrc} alt="" fill sizes="100vw" quality={90} className="object-cover" />
       </div>
       <div className="cs-cta-overlay" aria-hidden />
       <div
@@ -154,12 +206,11 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         aria-hidden
       >
         <Image
-          src="/assets/parallax/section-design/bucket-delivery.webp"
+          src="/assets/parallax/section-discover/parallax-bucket-discover.webp"
           alt=""
           width={600}
           height={600}
-          loading="lazy"
-          quality={100}
+          quality={90}
           sizes="(max-width: 768px) 70vw, 600px"
           className="w-full h-auto drop-shadow-2xl"
         />
@@ -170,14 +221,46 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           alt=""
           fill
           sizes="100vw"
-          quality={100}
+          quality={90}
           className="object-cover"
         />
       </div>
       <div className="cs-cta-content-wrapper">
         <div ref={contentRef} className="cs-cta-content">
           <p className="cs-cta-eyebrow">Discovery Call</p>
-          <h2 className="cs-cta-heading">{heading}</h2>
+          <h2 className="cs-cta-heading">
+            {(() => {
+              // Match "retreat brand", "website", "Marke", or "Website" for highlighting
+              const regex = /(retreat brand|website|Marke|Website)/gi;
+              const parts = heading.split(regex);
+              let highlightIndex = 0;
+
+              return parts.map((part, index) => {
+                if (part && part.match(regex)) {
+                  const currentHighlightIndex = highlightIndex;
+                  highlightIndex++;
+                  return (
+                    <span key={index} className="inline-block relative whitespace-nowrap">
+                      <span className="relative z-10" style={{ color: "#ffffff" }}>{part}</span>
+                      <span
+                        ref={(el) => { highlightRefs.current[currentHighlightIndex] = el; }}
+                        className="absolute inset-0"
+                        style={{
+                          transform: "scaleX(0)",
+                          transformOrigin: "left",
+                          zIndex: -1,
+                          margin: "-0.08em -0.15em",
+                          backgroundColor: "#f58222",
+                        }}
+                        aria-hidden="true"
+                      />
+                    </span>
+                  );
+                }
+                return <span key={index}>{part}</span>;
+              });
+            })()}
+          </h2>
           <p className="cs-cta-paragraph">{paragraph}</p>
           {href.startsWith("http") ? (
             <a href={href} target="_blank" rel="noopener noreferrer" className="cs-cta-button">
