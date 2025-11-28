@@ -148,6 +148,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         paddingTop: "clamp(10rem, 22vh, 14rem)",
         paddingBottom: "clamp(10rem, 22vh, 14rem)",
         paddingInline: "clamp(1.5rem, 5vw, 3rem)",
+        marginBottom: "clamp(8rem, 20vh, 16rem)",
         zIndex: 10,
       }}
     >

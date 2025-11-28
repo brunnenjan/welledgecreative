@@ -1177,10 +1177,10 @@ section[id] {
 
 .contact-fg-case {
   position: absolute;
-  top: 60px;
+  top: 150px;
   left: 0;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 150px);
   z-index: 2;
   pointer-events: none;
   will-change: transform;
