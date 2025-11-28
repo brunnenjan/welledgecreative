@@ -279,8 +279,8 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           <p className="cs-cta-eyebrow">Discovery Call</p>
           <h2 className="cs-cta-heading">
             {(() => {
-              // Match "retreat brand", "website", "Marke", or "Website" for highlighting
-              const regex = /(retreat brand|website|Marke|Website)/gi;
+              // Match "retreat" or "Marke" for highlighting
+              const regex = /(retreat|Marke)/gi;
               const parts = heading.split(regex);
               let highlightIndex = 0;
 

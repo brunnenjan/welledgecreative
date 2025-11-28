@@ -32,18 +32,23 @@ export default function Preloader() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    console.log('[Preloader] Checking conditions:', { pathname, isHomePage });
+
     // Check if preloader was already shown in this session
     const preloaderShown = sessionStorage.getItem('preloaderShown');
+    console.log('[Preloader] Already shown:', preloaderShown);
 
     if (preloaderShown || !isHomePage) {
+      console.log('[Preloader] Hiding immediately (already shown or not homepage)');
       setIsLoading(false);
       return;
     }
 
     // Mark as shown for this session
+    console.log('[Preloader] Marking as shown and starting preload');
     sessionStorage.setItem('preloaderShown', 'true');
     setHasShownPreloader(true);
-  }, [isHomePage]);
+  }, [isHomePage, pathname]);
 
   useEffect(() => {
     if (!hasShownPreloader || !isHomePage) return;
@@ -163,8 +168,12 @@ export default function Preloader() {
     );
   }, [currentPhrase]);
 
-  if (!isLoading) return null;
+  if (!isLoading) {
+    console.log('[Preloader] Not loading, returning null');
+    return null;
+  }
 
+  console.log('[Preloader] Rendering preloader');
   return (
     <div
       ref={preloaderRef}

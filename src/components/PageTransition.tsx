@@ -10,22 +10,33 @@ export default function PageTransition() {
   const [previousPathname, setPreviousPathname] = useState(pathname);
 
   useEffect(() => {
+    console.log('[PageTransition] Pathname changed:', { pathname, previousPathname, visible });
+
     // Only show transition if pathname actually changed
     if (pathname !== previousPathname) {
+      console.log('[PageTransition] Showing transition overlay');
       setVisible(true);
       setPreviousPathname(pathname);
 
       // Hide after a short delay
       const timeout = setTimeout(() => {
+        console.log('[PageTransition] Hiding transition overlay');
         setVisible(false);
       }, 400);
 
-      return () => clearTimeout(timeout);
+      return () => {
+        console.log('[PageTransition] Cleanup timeout');
+        clearTimeout(timeout);
+      };
     }
   }, [pathname, previousPathname]);
 
-  if (!visible) return null;
+  if (!visible) {
+    console.log('[PageTransition] Not visible, returning null');
+    return null;
+  }
 
+  console.log('[PageTransition] Rendering overlay');
   return (
     <div
       className={`page-transition-overlay${visible ? " is-active" : ""}`}
