@@ -163,7 +163,7 @@ export default function LogosCarouselSwiper() {
     <section
       ref={sectionRef}
       id="logos"
-      className="logo-marquee relative z-[80] bg-white pt-12 md:pt-16 pb-20 md:pb-24"
+      className="logo-marquee relative z-[80] bg-white pt-12 md:pt-16 pb-32 md:pb-40"
       aria-labelledby="logos-title"
     >
       <div className="mx-auto max-w-7xl px-6">
