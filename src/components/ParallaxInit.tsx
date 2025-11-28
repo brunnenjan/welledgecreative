@@ -1,7 +1,6 @@
 "use client";
 
 import { useLayoutEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { initParallax } from "@/lib/parallax/initParallax";
 
 export default function ParallaxInit() {

@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TESTIMONIALS_CONFIG } from "@/lib/testimonialsConfig";
 import Image from "next/image";
 import { useI18n } from "@/components/providers/I18nProvider";

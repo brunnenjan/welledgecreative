@@ -3,7 +3,6 @@
 import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactFormStatic from "@/components/ContactFormStatic";
 import { useI18n } from "@/components/providers/I18nProvider";
 

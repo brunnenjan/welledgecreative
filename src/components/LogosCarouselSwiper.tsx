@@ -3,7 +3,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { logos as logoData } from "@/app/data/logos";
 import { LOGOS_CONFIG } from "@/lib/logosConfig";
 import type { Swiper as SwiperType } from "swiper";

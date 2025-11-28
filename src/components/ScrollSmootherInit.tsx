@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { isIosChrome, isIosBrowser } from "@/utils/device";
 
 /**

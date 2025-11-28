@@ -4,7 +4,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { logos as logoData } from "@/app/data/logos";
 import { LOGOS_CONFIG } from "@/lib/logosConfig";
 

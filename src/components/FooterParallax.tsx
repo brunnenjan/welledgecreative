@@ -3,7 +3,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FOOTER_PARALLAX_CONFIG } from "@/lib/footerConfig";
 import { getParallaxMultiplier } from "@/lib/responsiveParallaxBudgets";
 

@@ -4,7 +4,6 @@ import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
