@@ -56,9 +56,10 @@ export default function ContactSection() {
       {/* Foreground Overlay - Scrolls Up */}
       <div
         ref={fgRef}
-        className="absolute inset-0 z-5 pointer-events-none will-change-transform"
+        className="absolute left-0 right-0 bottom-0 z-5 pointer-events-none will-change-transform"
         aria-hidden
         style={{
+          top: "-150px",
           backgroundImage: "url('/assets/parallax/section-contact/parallax-foreground-contact.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center top",
