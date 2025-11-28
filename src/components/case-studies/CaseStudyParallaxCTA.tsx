@@ -140,7 +140,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         });
       }
 
-      // Highlight animation for "retreat" - comes in later during scroll
+      // Highlight animation for "retreat" - comes in even later during scroll
       highlightRefs.current.forEach((ref, index) => {
         if (ref) {
           gsap.set(ref, {
@@ -152,15 +152,15 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           gsap.to(ref, {
             scaleX: 1,
             ease: "power2.out",
-            duration: 0.6,
+            duration: 0.7,
             scrollTrigger: {
               trigger: contentRef.current,
-              start: "top 60%", // Starts later (was 70%)
-              end: "top 30%",   // Ends later (was 40%)
-              scrub: 1.2,       // Slower scrub for smoother animation
+              start: "top 45%", // Starts even later (was 60%)
+              end: "top 15%",   // Ends even later (was 30%)
+              scrub: 1.5,       // Even slower scrub for very gradual animation
               toggleActions: "play none none reverse",
             },
-            delay: 0.2, // Additional delay before animation starts
+            delay: 0.3, // Increased delay before animation starts
           });
         }
       });
