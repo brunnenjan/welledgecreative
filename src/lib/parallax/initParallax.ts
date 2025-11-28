@@ -1,15 +1,14 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 let initialized = false;
 
 export function initParallax() {
-  if (initialized) return;
+  if (typeof window === "undefined" || initialized) return;
   initialized = true;
 
-  if (typeof window === "undefined") return;
-
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
   ScrollTrigger.config({
     ignoreMobileResize: true,
