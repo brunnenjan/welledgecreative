@@ -62,18 +62,40 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
   };
 
   useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined") {
+      console.log('[CaseStudyParallaxCTA] Server-side, skipping');
+      return;
+    }
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      console.log('[CaseStudyParallaxCTA] Reduced motion preferred, skipping');
+      return;
+    }
 
-    if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) return;
+    if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) {
+      console.log('[CaseStudyParallaxCTA] Refs not ready:', {
+        section: !!sectionRef.current,
+        bg: !!bgRef.current,
+        fg: !!fgRef.current,
+        bucket: !!bucketRef.current
+      });
+      return;
+    }
+
+    console.log('[CaseStudyParallaxCTA] All refs ready, preparing initialization');
 
     // Wait for page to be fully ready before initializing animations
     const initializeAnimations = () => {
+      console.log('[CaseStudyParallaxCTA] initializeAnimations called');
+
       const ctx = gsap.context(() => {
+        console.log('[CaseStudyParallaxCTA] Inside gsap.context');
+
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
         const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+
+        console.log('[CaseStudyParallaxCTA] Device:', { isMobile, isTablet });
 
         // Get device-specific config
         const config = isMobile
@@ -82,12 +104,16 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
             ? PARALLAX_CONFIG.caseStudyCta.tablet
             : PARALLAX_CONFIG.caseStudyCta.desktop;
 
+        console.log('[CaseStudyParallaxCTA] Config:', config);
+
       const { bgSpeed, fgSpeed, bucketSpeed, swingAngle } = config;
       const scrollRange = "+=200%";
       const scrubValue = 3.8;
 
       // Background/Foreground parallax (desktop/tablet only)
       if (!isMobile) {
+        console.log('[CaseStudyParallaxCTA] Setting up bg/fg parallax');
+
         // Background parallax (moves down)
         gsap.to(bgRef.current, {
           y: () => `${window.innerHeight * bgSpeed}px`,
@@ -97,6 +123,8 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
             start: "top bottom",
             end: scrollRange,
             scrub: scrubValue,
+            onEnter: () => console.log('[CaseStudyParallaxCTA] BG animation entered'),
+            onUpdate: (self) => console.log('[CaseStudyParallaxCTA] BG progress:', self.progress),
           },
         });
 
@@ -109,11 +137,15 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
             start: "top bottom",
             end: scrollRange,
             scrub: scrubValue,
+            onEnter: () => console.log('[CaseStudyParallaxCTA] FG animation entered'),
           },
         });
+      } else {
+        console.log('[CaseStudyParallaxCTA] Mobile - skipping bg/fg parallax');
       }
 
       // Bucket parallax (descends) - ALL DEVICES
+      console.log('[CaseStudyParallaxCTA] Setting up bucket parallax');
       gsap.to(bucketRef.current, {
         y: () => `${window.innerHeight * bucketSpeed}px`,
         ease: "none",
@@ -122,6 +154,8 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
           start: "top bottom",
           end: scrollRange,
           scrub: scrubValue,
+          onEnter: () => console.log('[CaseStudyParallaxCTA] BUCKET animation entered'),
+          onUpdate: (self) => console.log('[CaseStudyParallaxCTA] BUCKET progress:', self.progress),
         },
       });
 
@@ -165,15 +199,33 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         }
       });
 
+        console.log('[CaseStudyParallaxCTA] All animations configured');
+
         // Force refresh after animations are set up
         requestAnimationFrame(() => {
+          console.log('[CaseStudyParallaxCTA] requestAnimationFrame refresh');
           ScrollTrigger.refresh(true);
         });
 
         // Additional refresh after a short delay to catch late-loading elements
         setTimeout(() => {
+          console.log('[CaseStudyParallaxCTA] 100ms delayed refresh');
           ScrollTrigger.refresh(true);
         }, 100);
+
+        // Log all ScrollTriggers
+        setTimeout(() => {
+          const triggers = ScrollTrigger.getAll();
+          console.log('[CaseStudyParallaxCTA] Active ScrollTriggers:', triggers.length);
+          triggers.forEach((trigger, i) => {
+            console.log(`  Trigger ${i}:`, {
+              trigger: trigger.trigger,
+              start: trigger.start,
+              end: trigger.end,
+              progress: trigger.progress
+            });
+          });
+        }, 200);
       }, sectionRef);
 
       return ctx;
@@ -217,15 +269,36 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       setTimeout(() => {
         console.log('[CaseStudyParallaxCTA] Refresh at 200ms');
         ScrollTrigger.refresh(true);
+
+        // Force a tiny scroll to trigger animations
+        window.scrollBy(0, 1);
+        setTimeout(() => window.scrollBy(0, -1), 10);
       }, 200),
       setTimeout(() => {
         console.log('[CaseStudyParallaxCTA] Refresh at 400ms');
         ScrollTrigger.refresh(true);
+
+        // Another scroll nudge
+        window.scrollBy(0, 1);
+        setTimeout(() => window.scrollBy(0, -1), 10);
       }, 400),
       setTimeout(() => {
         console.log('[CaseStudyParallaxCTA] Refresh at 800ms');
         ScrollTrigger.refresh(true);
+
+        // Final scroll nudge
+        window.scrollBy(0, 1);
+        setTimeout(() => window.scrollBy(0, -1), 10);
       }, 800),
+      setTimeout(() => {
+        console.log('[CaseStudyParallaxCTA] FINAL refresh at 1200ms');
+        ScrollTrigger.refresh(true);
+
+        // Final aggressive scroll nudge
+        const currentScroll = window.scrollY;
+        window.scrollTo(0, currentScroll + 5);
+        setTimeout(() => window.scrollTo(0, currentScroll), 50);
+      }, 1200),
     ];
 
     const handleVisibilityChange = () => {
