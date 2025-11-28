@@ -868,7 +868,20 @@ export default function CaseStudyContent() {
               <p className="mt-4 text-lg text-black/70">{t("caseStudyBrisaBahia.uxStructure.intro")}</p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-stretch">
+              <div className="rounded-3xl bg-white/95 p-8 shadow-lg">
+                <div className="flex h-full flex-col justify-center space-y-4 text-black/80">
+                  <p className="text-xs uppercase tracking-[0.35em] text-black/40">
+                    {t("caseStudyBrisaBahia.uxStructure.heading")}
+                  </p>
+                  <h3 className="text-2xl font-serif font-semibold leading-snug md:text-3xl">
+                    {t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}
+                  </h3>
+                  <p className="text-base leading-relaxed">
+                    {t("caseStudyBrisaBahia.uxStructure.intro")}
+                  </p>
+                </div>
+              </div>
               <div className="rounded-3xl bg-[#fff7ef] p-6 shadow-inner">
                 <h3 className="mb-4 text-sm uppercase tracking-[0.4em] text-black/50">
                   {t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}
@@ -906,19 +919,6 @@ export default function CaseStudyContent() {
                 <p className="mt-4 text-sm text-black/70">
                   {t("caseStudyBrisaBahia.uxStructure.websiteMindmap.description")}
                 </p>
-              </div>
-              <div className="rounded-3xl bg-white/95 p-8 shadow-lg">
-                <div className="flex h-full flex-col justify-center space-y-4 text-black/80">
-                  <p className="text-xs uppercase tracking-[0.35em] text-black/40">
-                    {t("caseStudyBrisaBahia.uxStructure.heading")}
-                  </p>
-                  <h3 className="text-2xl font-serif font-semibold leading-snug md:text-3xl">
-                    {t("caseStudyBrisaBahia.uxStructure.websiteMindmap.title")}
-                  </h3>
-                  <p className="text-base leading-relaxed">
-                    {t("caseStudyBrisaBahia.uxStructure.intro")}
-                  </p>
-                </div>
               </div>
             </div>
 

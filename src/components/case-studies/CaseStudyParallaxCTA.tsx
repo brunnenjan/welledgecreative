@@ -4,7 +4,6 @@ import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
 import { getBackgroundSrc } from "@/utils/getBackgroundSrc";
 
@@ -61,17 +60,7 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    const section = sectionRef.current;
-    const bg = bgRef.current;
-    const fg = fgRef.current;
-    const bucket = bucketRef.current;
-    if (!section || !bg || !fg || !bucket) return;
-
-    ScrollTrigger.getAll().forEach((trigger) => {
-      if (trigger.vars.trigger === section) {
-        trigger.kill();
-      }
-    });
+    if (!sectionRef.current || !bgRef.current || !fgRef.current || !bucketRef.current) return;
 
     const ctx = gsap.context(() => {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -91,11 +80,11 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       // Background/Foreground parallax (desktop/tablet only)
       if (!isMobile) {
         // Background parallax (moves down)
-        gsap.to(bg, {
+        gsap.to(bgRef.current, {
           y: () => `${window.innerHeight * bgSpeed}px`,
           ease: "none",
           scrollTrigger: {
-            trigger: section,
+            trigger: sectionRef.current,
             start: "top bottom",
             end: scrollRange,
             scrub: scrubValue,
@@ -103,11 +92,11 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         });
 
         // Foreground parallax (moves up)
-        gsap.to(fg, {
+        gsap.to(fgRef.current, {
           y: () => `-${window.innerHeight * fgSpeed}px`,
           ease: "none",
           scrollTrigger: {
-            trigger: section,
+            trigger: sectionRef.current,
             start: "top bottom",
             end: scrollRange,
             scrub: scrubValue,
@@ -116,17 +105,17 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       }
 
       // Bucket parallax (descends) - ALL DEVICES
-      gsap.to(bucket, {
+      gsap.to(bucketRef.current, {
         y: () => `${window.innerHeight * bucketSpeed}px`,
         ease: "none",
         scrollTrigger: {
-          trigger: section,
+          trigger: sectionRef.current,
           start: "top bottom",
           end: scrollRange,
           scrub: scrubValue,
         },
       });
-    }, section);
+    }, sectionRef);
 
     return () => {
       ctx.revert();
@@ -148,7 +137,6 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
         paddingTop: "clamp(10rem, 22vh, 14rem)",
         paddingBottom: "clamp(10rem, 22vh, 14rem)",
         paddingInline: "clamp(1.5rem, 5vw, 3rem)",
-        marginBottom: "clamp(8rem, 20vh, 16rem)",
         zIndex: 10,
       }}
     >

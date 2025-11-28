@@ -3,7 +3,6 @@
 import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactFormStatic from "@/components/ContactFormStatic";
 import { useI18n } from "@/components/providers/I18nProvider";
 
@@ -20,16 +19,7 @@ export default function CaseStudyContactSection() {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReducedMotion) return;
 
-    const section = sectionRef.current;
-    const fg = fgRef.current;
-    const bucket = bucketRef.current;
-    if (!section || !fg || !bucket) return;
-
-    ScrollTrigger.getAll().forEach((trigger) => {
-      if (trigger.vars.trigger === section) {
-        trigger.kill();
-      }
-    });
+    if (!sectionRef.current || !fgRef.current || !bucketRef.current) return;
 
     const ctx = gsap.context(() => {
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -39,11 +29,11 @@ export default function CaseStudyContactSection() {
       // Foreground parallax moves UP as you scroll down (like homepage)
       // Desktop/tablet only for stronger effect
       if (!isMobile) {
-        gsap.to(fg, {
+        gsap.to(fgRef.current, {
           y: () => `-${window.innerHeight * 0.12}px`, // Matches homepage fgSpeed
           ease: "none",
           scrollTrigger: {
-            trigger: section,
+            trigger: sectionRef.current,
             start: "top bottom",
             end: scrollRange,
             scrub: scrubValue,
@@ -51,18 +41,18 @@ export default function CaseStudyContactSection() {
         });
 
         // Bucket also moves (lighter than foreground)
-        gsap.to(bucket, {
+        gsap.to(bucketRef.current, {
           y: () => `${window.innerHeight * 0.08}px`,
           ease: "none",
           scrollTrigger: {
-            trigger: section,
+            trigger: sectionRef.current,
             start: "top bottom",
             end: scrollRange,
             scrub: scrubValue,
           },
         });
       }
-    }, section);
+    }, sectionRef);
 
     return () => {
       ctx.revert();
