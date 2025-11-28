@@ -1,6 +1,7 @@
 "use client";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
@@ -95,9 +96,25 @@ export default function ScrollSmootherInit() {
   }, [refreshGsap]);
 
   useLayoutEffect(() => {
-    // ScrollSmoother disabled - it was blocking mobile scroll
-    // Parallax effects work fine with just ScrollTrigger
-    return;
+    if (typeof window === "undefined") return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    // Enable ScrollSmoother on desktop only (disable on mobile/tablet to prevent scroll blocking)
+    const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+
+    const smoother = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: isMobile ? 0 : 1.2, // Smooth scroll only on desktop (1024px+)
+      effects: true,
+      smoothTouch: 0, // Never smooth on touch devices
+    });
+
+    return () => {
+      smoother?.kill();
+    };
   }, []);
 
   useEffect(() => {

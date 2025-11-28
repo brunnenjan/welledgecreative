@@ -31,65 +31,41 @@ export default function CaseStudyContactSection() {
       }
     });
 
-    const match = ScrollTrigger.matchMedia({
-      "(max-width: 1023px)": () => {
-        const fgTween = gsap.to(fg, {
-          y: -60,
+    const ctx = gsap.context(() => {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const scrollRange = "+=200%";
+      const scrubValue = 3.8;
+
+      // Foreground parallax moves UP as you scroll down (like homepage)
+      // Desktop/tablet only for stronger effect
+      if (!isMobile) {
+        gsap.to(fg, {
+          y: () => `-${window.innerHeight * 0.12}px`, // Matches homepage fgSpeed
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
-        const bucketTween = gsap.to(bucket, {
-          y: -40,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
+            end: scrollRange,
+            scrub: scrubValue,
           },
         });
 
-        return () => {
-          fgTween.kill();
-          bucketTween.kill();
-        };
-      },
-      "(min-width: 1024px)": () => {
-        const fgTween = gsap.to(fg, {
-          y: -90,
+        // Bucket also moves (lighter than foreground)
+        gsap.to(bucket, {
+          y: () => `${window.innerHeight * 0.08}px`,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
+            end: scrollRange,
+            scrub: scrubValue,
           },
         });
-        const bucketTween = gsap.to(bucket, {
-          y: -50,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
-          },
-        });
-
-        return () => {
-          fgTween.kill();
-          bucketTween.kill();
-        };
-      },
-    }) as unknown as { revert: () => void };
+      }
+    }, section);
 
     return () => {
-      match.revert();
+      ctx.revert();
     };
   }, []);
 

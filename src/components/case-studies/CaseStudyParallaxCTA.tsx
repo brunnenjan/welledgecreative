@@ -62,9 +62,10 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
     if (prefersReducedMotion) return;
 
     const section = sectionRef.current;
+    const bg = bgRef.current;
     const fg = fgRef.current;
     const bucket = bucketRef.current;
-    if (!section || !fg || !bucket) return;
+    if (!section || !bg || !fg || !bucket) return;
 
     ScrollTrigger.getAll().forEach((trigger) => {
       if (trigger.vars.trigger === section) {
@@ -72,63 +73,63 @@ export default function CaseStudyParallaxCTA({ heading, paragraph, buttonText, h
       }
     });
 
-    const match = ScrollTrigger.matchMedia({
-      "(max-width: 1023px)": () => {
-        const fgTween = gsap.to(fg, {
-          y: -60,
+    const ctx = gsap.context(() => {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const isTablet = window.matchMedia("(min-width: 769px) and (max-width: 1023px)").matches;
+
+      // Get device-specific config
+      const config = isMobile
+        ? PARALLAX_CONFIG.caseStudyCta.mobile
+        : isTablet
+          ? PARALLAX_CONFIG.caseStudyCta.tablet
+          : PARALLAX_CONFIG.caseStudyCta.desktop;
+
+      const { bgSpeed, fgSpeed, bucketSpeed } = config;
+      const scrollRange = "+=200%";
+      const scrubValue = 3.8;
+
+      // Background/Foreground parallax (desktop/tablet only)
+      if (!isMobile) {
+        // Background parallax (moves down)
+        gsap.to(bg, {
+          y: () => `${window.innerHeight * bgSpeed}px`,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
+            end: scrollRange,
+            scrub: scrubValue,
           },
         });
-        const bucketTween = gsap.to(bucket, {
-          y: -40,
+
+        // Foreground parallax (moves up)
+        gsap.to(fg, {
+          y: () => `-${window.innerHeight * fgSpeed}px`,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top bottom",
-            end: "bottom top",
-            scrub: 1,
+            end: scrollRange,
+            scrub: scrubValue,
           },
         });
-        return () => {
-          fgTween.kill();
-          bucketTween.kill();
-        };
-      },
-      "(min-width: 1024px)": () => {
-        const fgTween = gsap.to(fg, {
-          y: -90,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
-          },
-        });
-        const bucketTween = gsap.to(bucket, {
-          y: -60,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
-          },
-        });
-        return () => {
-          fgTween.kill();
-          bucketTween.kill();
-        };
-      },
-    }) as unknown as { revert: () => void };
+      }
+
+      // Bucket parallax (descends) - ALL DEVICES
+      gsap.to(bucket, {
+        y: () => `${window.innerHeight * bucketSpeed}px`,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: scrollRange,
+          scrub: scrubValue,
+        },
+      });
+    }, section);
 
     return () => {
-      match.revert();
+      ctx.revert();
     };
   }, []);
 

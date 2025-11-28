@@ -221,7 +221,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <a href="#hero" className="skip-link">
           Skip to main content
         </a>
-        {children}
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            {children}
+          </div>
+        </div>
         <ScrollSmootherInit />
         <CookieConsent />
       </body>

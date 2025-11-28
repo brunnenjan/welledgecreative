@@ -20,15 +20,21 @@ export default function ContactSection() {
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      if (fgRef.current) {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      const scrollRange = "+=200%";
+      const scrubValue = 3.8;
+
+      // Foreground parallax moves UP as you scroll down (like homepage)
+      // Desktop/tablet only for stronger effect
+      if (!isMobile && fgRef.current) {
         gsap.to(fgRef.current, {
-          y: "-55%",
+          y: () => `-${window.innerHeight * 0.12}px`, // Matches homepage fgSpeed
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top bottom",
-            end: "bottom-=25% top",
-            scrub: 3,
+            end: scrollRange,
+            scrub: scrubValue,
           },
         });
       }
