@@ -1,0 +1,235 @@
+===========================================
+WELL EDGE CREATIVE - GERMAN CONTENT EXPORT
+===========================================
+Extract Date: 2025-11-29
+Instructions: Edit the text on the right side of the → arrows
+After editing, send this file back for import
+===========================================
+
+NAVIGATION
+----------
+Startseite → Start
+Über mich → Über mich
+Profil → Profil
+Wie ich arbeite → Wie ich arbeite
+Projekte → Projekte
+Logos & Brandings → Logos & Brandings
+Kundenstimmen → Stimmen
+Kontakt → Kontakt
+
+HEADER & MENU
+--------------
+Nach oben scrollen → Nach oben scrollen
+Menü öffnen → Menü öffnen
+Menü schließen → Menü schließen
+
+SPRACHE
+-------
+Sprache wechseln → Sprache wechseln
+Englisch → Englisch
+Deutsch → Deutsch
+
+HERO SECTION
+------------
+Headline Highlight → Branding & Webdesign
+Headline Rest → das deine Geschichte erzählt.
+Tagline → Ich helfe Unternehmen, Marken zu bauen, die die richtigen Menschen erreichen.
+Scroll CTA → Scrollen zum Entdecken
+
+CALL-TO-ACTION BUTTONS
+----------------------
+Meine Arbeiten ansehen → Meine Arbeiten
+Call buchen → Call buchen
+
+INTRO SECTION
+-------------
+Headline 1 → Klarheit
+Headline 2 → in deinem Ziel.
+Headline 3 → Richtung
+Headline 4 → in deiner Marke
+Paragraph → Jede erfolgreiche Marke beginnt mit Klarheit. Ich begleite dich durch einen strukturierten Prozess, der deinen Purpose sichtbar macht, deine Botschaft schärft und Gestaltung schafft, die wirklich berührt.
+
+PROFIL SECTION
+--------------
+Überschrift Prefix → Hi, ich bin
+Name → Jan
+Suffix → – Designer, Brand Thinker, Problemlöser.
+Paragraph 1 → Seit 7 Jahren unterstütze ich Selbstständige, Retreat- & Wellness-Zentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, einzigartig aussehen und online hervorragend funktionieren.
+Paragraph 2 → Mein Ansatz verbindet strategisches Denken mit klarer, emotionaler Gestaltung – so versteht dein Publikum sofort, wer du bist und warum du wichtig bist.
+Button → Plane dein Projekt
+
+WIE ICH ARBEITE
+---------------
+Überschrift → So arbeite ich.
+Paragraph → Jedes Projekt folgt einem transparenten, strategischen Prozess, der Klarheit schafft und Ergebnisse liefert, die bleiben.
+
+Phase 1 Titel → Discover
+Phase 1 Text → Wir definieren Purpose, Zielgruppe und Botschaft. Diese Phase legt das strategische Fundament: klare Positionierung, starke Story und Richtung, die dich wirklich voranbringt.
+
+Phase 2 Titel → Design
+Phase 2 Text → Deine Markenidentität nimmt Form an: Logo, Farben, Typografie, visuelles System. Alles wird so gestaltet, dass es deinen Purpose widerspiegelt und sofort wiedererkannt wird.
+
+Phase 3 Titel → Deliver
+Phase 3 Text → Strategie und Design werden zur launchbereiten digitalen Experience. Deine Website wird klar, intuitiv, emotional – und auf langfristige Ziele ausgerichtet.
+
+DESIGN SECTION
+--------------
+Überschrift Highlight → Design
+Überschrift Rest → das für sich spricht.
+Paragraph 1 Start → Jedes Projekt ist eine Chance, etwas zu schaffen, das nicht nur schön aussieht, sondern auch
+Callout 1 → klar kommuniziert
+Callout 2 → tief berührt
+Paragraph 1 End → bei der Zielgruppe.
+Paragraph 2 → Gutes Design braucht keine Erklärung – es spricht durch Klarheit, Purpose und Wirkung.
+
+DISCOVERY CTA (HOMEPAGE)
+------------------------
+Überschrift → Fühlst du dich von all den Möglichkeiten überfordert?
+Paragraph → Wenn du ein Retreat Center, einen Wellness-Ort oder einen holistischen Space führst und nicht weißt, wo du mit Branding, Website und Buchungen anfangen sollst — ich begleite dich Schritt für Schritt bis zu deinen ersten Anfragen.
+Button → Discovery Call buchen
+
+AUSGEWÄHLTE PROJEKTE
+--------------------
+Überschrift Prefix → Ausgewählte
+Überschrift Highlight → Projekte
+Untertitel → Eine Auswahl zielgerichteter Branding- und Webdesign-Arbeiten für Selbstständige, Retreat-Zentren und kleine Unternehmen weltweit.
+
+Block Labels:
+Herausforderung → Herausforderung
+Lösung → Lösung
+Ergebnis → Ergebnis
+
+PROJEKT 1: BRISA BAHÍA
+Kunde → Brisa Bahía
+Titel → Brisa Bahía — Retreat-Brand & Website
+Zusammenfassung → Story-first Brand-System und schnelle, mobile Website.
+Herausforderung → Ein neues Retreat brauchte eine Marke, die warm, professionell und authentisch wirkt – nicht corporate oder generisch.
+Lösung → Entwicklung einer kohärenten visuellen Identität und einer storytelling-basierten Website, die den Charakter des Retreats transportiert.
+Ergebnis → Eine unverwechselbare Marke und performante, barrierearme Site, die die richtigen Gäste anspricht und echte Gastfreundschaft vermittelt.
+
+PROJEKT 2: VIRTUELLES FASTNACHTSMUSEUM
+Kunde → Virtuelles Fastnachtsmuseum
+Titel → Virtuelles Fastnachtsmuseum — digitale Ausstellung
+Zusammenfassung → Digitale Museumserfahrung zur Bewahrung von Kulturerbe.
+Extra Note → Design, Animationen und Content – inklusive einer 20-minütigen interaktiven Bruegel-Erfahrung (auch auf Englisch).
+Herausforderung → Traditionelles Kulturerbe digital zugänglich und spannend für unterschiedliche Zielgruppen machen.
+Lösung → Intuitive, virtuelle Museumsreise mit bedacht gestaltetem UX, die Inhalte würdigt und zugleich auffindbar macht.
+Ergebnis → Ein zugängliches digitales Archiv, das Kulturerbe bewahrt und Menschen über das physische Museum hinaus erreicht.
+Auszeichnung → 🏆 Auszeichnung: Deutscher Medienpreis (Silber)
+
+PROJEKT 3: EINFACH-SCHEE
+Kunde → einfach-schee
+Titel → einfach-schee — komplette Brand & Website
+Zusammenfassung → End-to-End-Brand & Website als Solo-Creator.
+Herausforderung → Eine persönliche Marke von Grund auf mit wenig Ressourcen und ohne Online-Präsenz starten.
+Lösung → Komplette Markenidentität und individuelle Website, die Vertrauen und Persönlichkeit aufbaut.
+Ergebnis → Eine professionelle Präsenz, die Kunden überzeugt und die Positionierung am Markt stärkt.
+
+LOGOS & BRANDING
+----------------
+Überschrift Prefix → Logos &
+Überschrift Highlight → Branding
+Beschreibung → Identitäten, die ich gemeinsam mit meinen Kunden entwickelt habe – jede mit eigener Geschichte.
+
+KUNDENSTIMMEN
+-------------
+Überschrift Prefix → Das sagen
+Überschrift Highlight → Kunden
+Überschrift Suffix → über mich
+Beschreibung → Echte Worte von Menschen, mit denen ich arbeiten durfte.
+
+Buttons:
+Vorheriges Testimonial → Vorheriges Testimonial
+Nächstes Testimonial → Nächstes Testimonial
+Mehr lesen → Mehr lesen
+Modal schließen → Modal schließen
+Website besuchen → Website besuchen
+
+KONTAKT SECTION
+---------------
+Überschrift → Bereit für eine Marke mit Purpose?
+Paragraph → Wenn du Klarheit, eine starke visuelle Identität und eine Website willst, die deine Vision wirklich widerspiegelt – lass uns sprechen.
+E-Mail Prompt → Du schreibst lieber direkt eine Mail?
+
+KONTAKTFORMULAR
+---------------
+Dein Name → Dein Name *
+Deine E-Mail → Deine E-Mail *
+Projekt-Typ Frage → Wobei kann ich dich unterstützen?
+Budget → Budgetrahmen
+Nachricht Label → Erzähl mir von deinem Projekt *
+Nachricht Placeholder → Vision, Ziele, Timeline oder Fragen – alles, was wichtig ist ...
+Button → Nachricht senden
+
+Projekt-Typen:
+Branding & Logo → Branding & Logo-Design
+Website Design → Website Design
+Website Development → Website Development
+Komplettpaket → Komplettes Brand & Web Paket
+Strategie & Beratung → Strategie & Beratung
+Sonstiges → Sonstiges
+
+Budget-Bereiche:
+< 2.000 € → < 2.000 €
+2.000–5.000 € → 2.000–5.000 €
+5.000–10.000 € → 5.000–10.000 €
+10.000 €+ → 10.000 €+
+Noch unsicher → Noch unsicher
+
+Status-Nachrichten:
+Prüfe → Prüfe...
+Sende → Sende...
+Erfolg → ✅ Nachricht versendet! Schau in dein Postfach für die Bestätigung.
+Fehler → ⚠️ Versand fehlgeschlagen – bitte versuch es nochmal.
+
+FOOTER
+------
+Überschrift → Bereit, etwas Sinnvolles gemeinsam zu erschaffen.
+Beschreibung → Ich gestalte Marken und digitale Experiences, die zugleich tief und klar sind. Erzähl mir von deinem Projekt – wir finden gemeinsam den ersten Schritt.
+Remote-Text → Remote unterwegs und mit Kunden weltweit verbunden.
+Rechtliches:
+Impressum → Impressum
+Datenschutz → Datenschutz
+Legal Line → Ich helfe Unternehmen seit 2017, klare und bedeutungsvolle Marken aufzubauen.
+
+CASE STUDY: BRISA BAHÍA (SUBPAGE)
+----------------------------------
+SEO Titel → Brisa Bahía — Retreat Center Branding & Website Transformation
+SEO Beschreibung → Wie ich Brisa Bahía von einer veralteten Lodge-Website zu einer Premium-Retreat-Marke mit individueller Identität, Website und facilitator-fokussierter User Experience geführt habe.
+
+Hero Titel → Brisa Bahía — Retreat Center Branding & Website Transformation
+Hero Tagline → Retreat-Center-Branding und facilitator-orientiertes Wellness-Webdesign für ein kolumbianisches Eco Retreat.
+
+Hero Intro Absatz 1 → Bevor es zu "Brisa Bahía" wurde, existierte das Projekt als Bahia Lodge – eine einfache Strandhütten-Website, die vom vorherigen Besitzer übernommen wurde.
+Hero Intro Absatz 2 → Die neuen Eigentümerinnen brauchten eine komplette Transformation: klares Branding, ein Retreat-taugliches Erlebnis und eine Website, die Facilitator und bewusste Reisende anspricht.
+Hero Intro Absatz 3 → Ich habe das gesamte Projekt neu gebrandet, eine facilitator-freundliche User Journey entworfen und eine zweisprachige WordPress-Website gebaut, die endlich den Dschungelstandort, das holistische Erlebnis und die Retreat-Vision widerspiegelt.
+
+Before & After Überschrift → Before & After
+Before & After Untertitel → Wir haben die Bahia-Lodge-Hostel-Optik in ein facilitator-taugliches Retreat-Erlebnis gehoben.
+Before & After Note → Jeder Touchpoint ist für Facilitator optimiert, die ganze Wochen buchen.
+
+Herausforderung Überschrift → Die Herausforderung
+Herausforderung Text → Bahia Lodge wirkte wie ein Budget-Hostel: uneinheitliche Farben, generische Texte, veraltete Fotos und ein träges WordPress-Theme mit dutzenden nicht gepflegten Plugins. Es gab kein Yoga-Retreat-Website-Design, also fanden Facilitator weder Angebote noch Logistik oder Vertrauen.
+
+Ziel Überschrift → Das Ziel
+Ziel Text → Eine rein digitale Transformation liefern: neuer Name, klare Positionierung, eine verfeinerte Retreat-Center-Brand-Identity und ein leistungsfähiges, zweisprachiges System, damit Facilitator ganze Wochen ohne lange DM-Verläufe buchen.
+
+Brand Identity Überschrift → Brand Identity
+Brand Identity Intro → Wir entwickelten ein taktiles System inspiriert von der kolumbianischen Küste: handgezeichnete Muster, weiche Sonnenlicht-Verläufe und Typografie, die Ritual und Klarheit verbindet.
+
+Discovery CTA Überschrift → Unsicher, wo du mit Marke oder Website starten sollst?
+Discovery CTA Paragraph → Lass uns einen kurzen Discovery Call planen und gemeinsam deine nächsten Schritte festlegen.
+Discovery CTA Button → Projekt starten – Discovery Call
+
+Zurück-Link → ← Zurück zu allen Projekten
+
+===========================================
+END OF EXPORT
+===========================================
+
+NEXT STEPS:
+1. Review and edit the German text
+2. Keep the structure (don't remove the → arrows)
+3. Send the edited file back
+4. I'll import it back into your website
+===========================================
