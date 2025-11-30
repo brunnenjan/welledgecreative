@@ -681,7 +681,7 @@ export default function TestimonialsSection() {
 
                     return (
                       <li
-                        key={`${data.id}-${index}`}
+                        key={`${data.id}-${index}-${showTranslation[data.id] ? 'orig' : 'trans'}`}
                         className={`testimonial-slide ${position}`}
                         data-position={position}
                         aria-hidden={isHidden}
