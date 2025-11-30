@@ -754,7 +754,8 @@ export default function TestimonialsSection() {
                                     <button
                                       type="button"
                                       className="testimonial-toggle"
-                                      onClick={(event) => {
+                                      onClickCapture={(event) => {
+                                        event.stopPropagation();
                                         event.preventDefault();
                                         toggleTranslation(data.id);
                                       }}
@@ -780,7 +781,8 @@ export default function TestimonialsSection() {
                                     <button
                                       type="button"
                                       className="testimonial-toggle"
-                                      onClick={(event) => {
+                                      onClickCapture={(event) => {
+                                        event.stopPropagation();
                                         event.preventDefault();
                                         toggleTranslation(data.id);
                                       }}
@@ -1019,7 +1021,7 @@ export default function TestimonialsSection() {
                         <button
                           type="button"
                           className="testimonial-toggle"
-                          onClick={(event) => {
+                          onClickCapture={(event) => {
                             event.stopPropagation();
                             event.preventDefault();
                             toggleTranslation(modalData.id);
@@ -1046,7 +1048,7 @@ export default function TestimonialsSection() {
                         <button
                           type="button"
                           className="testimonial-toggle"
-                          onClick={(event) => {
+                          onClickCapture={(event) => {
                             event.stopPropagation();
                             event.preventDefault();
                             toggleTranslation(modalData.id);
