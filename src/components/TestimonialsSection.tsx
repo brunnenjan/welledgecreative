@@ -17,6 +17,9 @@ type TestimonialEntry = {
   rating: number;
   avatar: string;
   site?: string;
+  originalLanguage: 'en' | 'de';
+  original: string;
+  translation: string;
 };
 
 const AUTOPLAY_INTERVAL = 6000;
@@ -56,7 +59,7 @@ const getPositionClass = (
 };
 
 export default function TestimonialsSection() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const containerRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
   const pointerState = useRef<{ active: boolean; startX: number }>({ active: false, startX: 0 });
@@ -71,6 +74,7 @@ export default function TestimonialsSection() {
   const [isPaused, setIsPaused] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [modalData, setModalData] = useState<TestimonialEntry | null>(null);
+  const [showTranslation, setShowTranslation] = useState<Record<string, boolean>>({});
   const modalTriggerRef = useRef<HTMLButtonElement | null>(null);
   const modalCloseRef = useRef<HTMLButtonElement | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -79,6 +83,36 @@ export default function TestimonialsSection() {
 
   const total = testimonials.length;
   const hasPeekPositions = total > PER_VIEW;
+
+  // Helper function to get the text to display based on toggle state and locale
+  const getDisplayText = useCallback((entry: TestimonialEntry, isModal: boolean = false) => {
+    const isToggled = showTranslation[entry.id] || false;
+    const uiLanguage = locale as 'en' | 'de';
+
+    // Determine if we should show translation
+    const shouldShowTranslation = isToggled
+      ? (uiLanguage === entry.originalLanguage) // If toggled, show opposite
+      : (uiLanguage !== entry.originalLanguage); // If not toggled, show translation if UI lang differs
+
+    const text = shouldShowTranslation && entry.translation ? entry.translation : entry.original;
+    const isTranslated = shouldShowTranslation && entry.translation !== '';
+    const translatedFromKey = entry.originalLanguage === 'de' ? 'german' : 'english';
+
+    if (isModal) {
+      return { text, isTranslated, translatedFromKey };
+    }
+
+    const excerpt = createExcerpt(text, TESTIMONIALS_CONFIG.EXCERPT_MAX_CHARS, TESTIMONIALS_CONFIG.EXCERPT_SUFFIX);
+    return { text, excerpt, isTranslated, translatedFromKey };
+  }, [showTranslation, locale]);
+
+  // Toggle function
+  const toggleTranslation = useCallback((testimonialId: string) => {
+    setShowTranslation(prev => ({
+      ...prev,
+      [testimonialId]: !prev[testimonialId]
+    }));
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -108,7 +142,9 @@ export default function TestimonialsSection() {
             const id = String(entry.id ?? `testimonial-${index}`);
             const name = (entry.name ?? "").trim();
             const role = (entry.role ?? "").trim();
-            const quote = (entry.quote ?? "").trim();
+            const originalLanguage = (entry.originalLanguage ?? "en") as 'en' | 'de';
+            const original = (entry.original ?? entry.quote ?? "").trim();
+            const translation = (entry.translation ?? "").trim();
             const rawRating = typeof entry.rating === "number" ? entry.rating : Number(entry.rating ?? 0);
             const rating = Number.isFinite(rawRating) ? Math.min(Math.max(rawRating, 0), 5) : 0;
             const avatarPath = (entry.avatar ?? "").trim();
@@ -119,10 +155,12 @@ export default function TestimonialsSection() {
                 : `/${avatarPath.replace(/^\/+/u, "")}`
               : FALLBACK_AVATAR;
 
-            if (!name || !role || !quote) {
+            if (!name || !role || !original) {
               return null;
             }
 
+            // For backward compatibility: if quote exists but not original/translation, use quote
+            const quote = original;
             const excerpt = createExcerpt(
               quote,
               TESTIMONIALS_CONFIG.EXCERPT_MAX_CHARS,
@@ -138,6 +176,9 @@ export default function TestimonialsSection() {
               rating,
               avatar,
               site: site || undefined,
+              originalLanguage,
+              original,
+              translation,
             };
           })
           .filter((item) => Boolean(item)) as TestimonialEntry[];
@@ -559,6 +600,8 @@ export default function TestimonialsSection() {
                     const isSelected = position === "selected";
                     const isFocusable = isSelected;
                     const disableMotion = prefersReducedMotion ? { transition: "none" } : undefined;
+                    const displayData = getDisplayText(data, false) as { excerpt: string; isTranslated: boolean; translatedFromKey: string };
+                    const hasTranslation = data.translation && data.translation.trim() !== '';
 
                     return (
                       <li
@@ -570,7 +613,7 @@ export default function TestimonialsSection() {
                         style={disableMotion}
                         onClick={(event) => {
                           const target = event.target as HTMLElement;
-                          if (target && target.closest(".testimonial-readmore")) {
+                          if (target && (target.closest(".testimonial-readmore") || target.closest(".testimonial-toggle"))) {
                             return;
                           }
                           if (index === currentIndex) return;
@@ -602,8 +645,49 @@ export default function TestimonialsSection() {
                             </div>
 
                             <blockquote className="testimonial-quote">
-                              <p>&ldquo;{data.excerpt}&rdquo;</p>
+                              <p>&ldquo;{displayData.excerpt}&rdquo;</p>
                             </blockquote>
+
+                            {displayData.isTranslated && (
+                              <p className="text-xs text-neutral-400 italic mt-2 text-center">
+                                {t("testimonials.translatedFrom")} {t(`testimonials.language.${displayData.translatedFromKey}`)}
+                              </p>
+                            )}
+
+                            {isSelected && hasTranslation && (
+                              <button
+                                type="button"
+                                className="testimonial-toggle"
+                                onClick={(event) => {
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                  toggleTranslation(data.id);
+                                }}
+                                style={{
+                                  display: 'block',
+                                  margin: '0.5rem auto 0',
+                                  padding: '0.25rem 0.75rem',
+                                  fontSize: '0.75rem',
+                                  color: '#6a6a6a',
+                                  background: 'transparent',
+                                  border: '1px solid #e0e0e0',
+                                  borderRadius: '1rem',
+                                  cursor: 'pointer',
+                                  transition: 'all 0.2s ease',
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.borderColor = '#f58222';
+                                  e.currentTarget.style.color = '#f58222';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.borderColor = '#e0e0e0';
+                                  e.currentTarget.style.color = '#6a6a6a';
+                                }}
+                              >
+                                {showTranslation[data.id] ? t("testimonials.showOriginal") : t("testimonials.showTranslation")}
+                              </button>
+                            )}
+
                             {isSelected && (
                               <button
                                 type="button"
@@ -709,97 +793,141 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Modal/Lightbox */}
-      {modalData && (
-        <div
-          className="testimonial-modal-overlay"
-          onClick={closeModal}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-title"
-        >
+      {modalData && (() => {
+        const modalDisplayData = getDisplayText(modalData, true) as { text: string; isTranslated: boolean; translatedFromKey: string };
+        const hasTranslation = modalData.translation && modalData.translation.trim() !== '';
+
+        return (
           <div
-            ref={modalRef}
-            className="testimonial-modal-content"
-            onClick={(event) => event.stopPropagation()}
-            tabIndex={-1}
+            className="testimonial-modal-overlay"
+            onClick={closeModal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
           >
-            <button
-              type="button"
-              className="testimonial-modal-close"
-              onClick={closeModal}
-              aria-label={t("testimonials.buttons.closeModal")}
-              ref={modalCloseRef}
+            <div
+              ref={modalRef}
+              className="testimonial-modal-content"
+              onClick={(event) => event.stopPropagation()}
+              tabIndex={-1}
             >
-              ×
-            </button>
+              <button
+                type="button"
+                className="testimonial-modal-close"
+                onClick={closeModal}
+                aria-label={t("testimonials.buttons.closeModal")}
+                ref={modalCloseRef}
+              >
+                ×
+              </button>
 
-            {/* Navigation Arrows */}
-            <button
-              type="button"
-              className="testimonial-modal-nav testimonial-modal-nav-prev"
-              onClick={() => navigateModal('prev')}
-              aria-label={t("testimonials.buttons.prev")}
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              className="testimonial-modal-nav testimonial-modal-nav-next"
-              onClick={() => navigateModal('next')}
-              aria-label={t("testimonials.buttons.next")}
-            >
-              ›
-            </button>
+              {/* Navigation Arrows */}
+              <button
+                type="button"
+                className="testimonial-modal-nav testimonial-modal-nav-prev"
+                onClick={() => navigateModal('prev')}
+                aria-label={t("testimonials.buttons.prev")}
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="testimonial-modal-nav testimonial-modal-nav-next"
+                onClick={() => navigateModal('next')}
+                aria-label={t("testimonials.buttons.next")}
+              >
+                ›
+              </button>
 
-            <div className="testimonial-modal-body">
-              <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100">
-                <Image
-                  src={modalData.avatar || FALLBACK_AVATAR}
-                  alt={modalData.name}
-                  width={128}
-                  height={128}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+              <div className="testimonial-modal-body">
+                <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100">
+                  <Image
+                    src={modalData.avatar || FALLBACK_AVATAR}
+                    alt={modalData.name}
+                    width={128}
+                    height={128}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
 
-              <h3 id="modal-title">{modalData.name}</h3>
-              <p>{modalData.role}</p>
+                <h3 id="modal-title">{modalData.name}</h3>
+                <p>{modalData.role}</p>
 
-              <div className="testimonial-modal-rating">
-                {Array.from({ length: 5 }).map((_, starIndex) => (
-                  <svg
-                    key={`modal-star-${starIndex}`}
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill={starIndex < Math.round(modalData.rating) ? "currentColor" : "rgba(246, 166, 93, 0.25)"}
-                    aria-hidden="true"
+                <div className="testimonial-modal-rating">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <svg
+                      key={`modal-star-${starIndex}`}
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill={starIndex < Math.round(modalData.rating) ? "currentColor" : "rgba(246, 166, 93, 0.25)"}
+                      aria-hidden="true"
+                    >
+                      <path d="M12 2.75l2.8 5.68 6.27.91-4.53 4.41 1.07 6.23L12 16.98l-5.61 2.95 1.07-6.23-4.53-4.41 6.27-.91L12 2.75z" />
+                    </svg>
+                  ))}
+                  <span>{modalData.rating.toFixed(1)}</span>
+                </div>
+
+                <blockquote className="testimonial-modal-quote">
+                  "{modalDisplayData.text}"
+                </blockquote>
+
+                {modalDisplayData.isTranslated && (
+                  <p className="text-xs text-neutral-400 italic mt-2 text-center">
+                    {t("testimonials.translatedFrom")} {t(`testimonials.language.${modalDisplayData.translatedFromKey}`)}
+                  </p>
+                )}
+
+                {hasTranslation && (
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      toggleTranslation(modalData.id);
+                    }}
+                    style={{
+                      display: 'block',
+                      margin: '1rem auto 0.5rem',
+                      padding: '0.5rem 1rem',
+                      fontSize: '0.875rem',
+                      color: '#6a6a6a',
+                      background: 'transparent',
+                      border: '1px solid #e0e0e0',
+                      borderRadius: '1.5rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#f58222';
+                      e.currentTarget.style.color = '#f58222';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = '#e0e0e0';
+                      e.currentTarget.style.color = '#6a6a6a';
+                    }}
                   >
-                    <path d="M12 2.75l2.8 5.68 6.27.91-4.53 4.41 1.07 6.23L12 16.98l-5.61 2.95 1.07-6.23-4.53-4.41 6.27-.91L12 2.75z" />
-                  </svg>
-                ))}
-                <span>{modalData.rating.toFixed(1)}</span>
+                    {showTranslation[modalData.id] ? t("testimonials.showOriginal") : t("testimonials.showTranslation")}
+                  </button>
+                )}
+
+                {modalData.site && (
+                  <a
+                    href={modalData.site}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="testimonial-modal-link"
+                  >
+                    {t("testimonials.buttons.visitSite")}
+                  </a>
+                )}
               </div>
-
-              <blockquote className="testimonial-modal-quote">
-                “{modalData.quote}”
-              </blockquote>
-
-              {modalData.site && (
-                <a
-                  href={modalData.site}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="testimonial-modal-link"
-                >
-                  {t("testimonials.buttons.visitSite")}
-                </a>
-              )}
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
     </section>
   );

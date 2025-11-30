@@ -182,6 +182,13 @@
       "closeModal": "Close modal",
       "visitSite": "Visit Website"
     },
+    "showOriginal": "Show original",
+    "showTranslation": "Show translation",
+    "translatedFrom": "Translated from",
+    "language": {
+      "german": "German",
+      "english": "English"
+    },
     "paginationLabel": "Select testimonial",
     "jumpTo": "Jump to testimonial",
     "ratingPrefix": "Rated",
