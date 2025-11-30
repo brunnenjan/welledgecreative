@@ -710,8 +710,17 @@ export default function TestimonialsSection() {
                         <article className="testimonial-card">
                           <figure className="p-8">
                             <div
-                              className="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100"
-                              style={{ aspectRatio: '1/1' }}
+                              className="mx-auto flex items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100"
+                              style={{
+                                width: '96px',
+                                height: '96px',
+                                minWidth: '96px',
+                                minHeight: '96px',
+                                maxWidth: '96px',
+                                maxHeight: '96px',
+                                aspectRatio: '1/1',
+                                flexShrink: 0
+                              }}
                             >
                               <Image
                                 src={data.avatar}
@@ -719,8 +728,13 @@ export default function TestimonialsSection() {
                                 width={96}
                                 height={96}
                                 loading="lazy"
-                                className="h-full w-full object-cover rounded-full"
-                                style={{ aspectRatio: '1/1' }}
+                                className="rounded-full"
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover',
+                                  aspectRatio: '1/1'
+                                }}
                               />
                             </div>
 
@@ -741,7 +755,6 @@ export default function TestimonialsSection() {
                                       type="button"
                                       className="testimonial-toggle"
                                       onClick={(event) => {
-                                        event.stopPropagation();
                                         event.preventDefault();
                                         toggleTranslation(data.id);
                                       }}
@@ -768,7 +781,6 @@ export default function TestimonialsSection() {
                                       type="button"
                                       className="testimonial-toggle"
                                       onClick={(event) => {
-                                        event.stopPropagation();
                                         event.preventDefault();
                                         toggleTranslation(data.id);
                                       }}
@@ -944,8 +956,17 @@ export default function TestimonialsSection() {
 
               <div className="testimonial-modal-body">
                 <div
-                  className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100"
-                  style={{ aspectRatio: '1/1' }}
+                  className="mx-auto flex items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100"
+                  style={{
+                    width: '128px',
+                    height: '128px',
+                    minWidth: '128px',
+                    minHeight: '128px',
+                    maxWidth: '128px',
+                    maxHeight: '128px',
+                    aspectRatio: '1/1',
+                    flexShrink: 0
+                  }}
                 >
                   <Image
                     src={modalData.avatar || FALLBACK_AVATAR}
@@ -953,8 +974,13 @@ export default function TestimonialsSection() {
                     width={128}
                     height={128}
                     loading="lazy"
-                    className="h-full w-full object-cover rounded-full"
-                    style={{ aspectRatio: '1/1' }}
+                    className="rounded-full"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      aspectRatio: '1/1'
+                    }}
                   />
                 </div>
 
