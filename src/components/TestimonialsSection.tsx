@@ -709,7 +709,10 @@ export default function TestimonialsSection() {
                       >
                         <article className="testimonial-card">
                           <figure className="p-8">
-                            <div className="mx-auto flex h-24 w-24 aspect-square items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
+                            <div
+                              className="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100"
+                              style={{ aspectRatio: '1/1' }}
+                            >
                               <Image
                                 src={data.avatar}
                                 alt=""
@@ -717,6 +720,7 @@ export default function TestimonialsSection() {
                                 height={96}
                                 loading="lazy"
                                 className="h-full w-full object-cover rounded-full"
+                                style={{ aspectRatio: '1/1' }}
                               />
                             </div>
 
@@ -737,8 +741,8 @@ export default function TestimonialsSection() {
                                       type="button"
                                       className="testimonial-toggle"
                                       onClick={(event) => {
-                                        event.preventDefault();
                                         event.stopPropagation();
+                                        event.preventDefault();
                                         toggleTranslation(data.id);
                                       }}
                                       style={{
@@ -764,8 +768,8 @@ export default function TestimonialsSection() {
                                       type="button"
                                       className="testimonial-toggle"
                                       onClick={(event) => {
-                                        event.preventDefault();
                                         event.stopPropagation();
+                                        event.preventDefault();
                                         toggleTranslation(data.id);
                                       }}
                                       style={{
@@ -939,7 +943,10 @@ export default function TestimonialsSection() {
               </button>
 
               <div className="testimonial-modal-body">
-                <div className="mx-auto flex h-32 w-32 aspect-square items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100">
+                <div
+                  className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100"
+                  style={{ aspectRatio: '1/1' }}
+                >
                   <Image
                     src={modalData.avatar || FALLBACK_AVATAR}
                     alt={modalData.name}
@@ -947,6 +954,7 @@ export default function TestimonialsSection() {
                     height={128}
                     loading="lazy"
                     className="h-full w-full object-cover rounded-full"
+                    style={{ aspectRatio: '1/1' }}
                   />
                 </div>
 
@@ -986,8 +994,8 @@ export default function TestimonialsSection() {
                           type="button"
                           className="testimonial-toggle"
                           onClick={(event) => {
-                            event.preventDefault();
                             event.stopPropagation();
+                            event.preventDefault();
                             toggleTranslation(modalData.id);
                           }}
                           style={{
@@ -1013,8 +1021,8 @@ export default function TestimonialsSection() {
                           type="button"
                           className="testimonial-toggle"
                           onClick={(event) => {
-                            event.preventDefault();
                             event.stopPropagation();
+                            event.preventDefault();
                             toggleTranslation(modalData.id);
                           }}
                           style={{
