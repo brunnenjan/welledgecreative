@@ -71,15 +71,15 @@
     "paragraph": "Jedes Projekt folgt einem transparenten, strategischen Prozess, der Klarheit schafft und nachhaltige Ergebnisse liefert.",
     "phases": {
       "discover": {
-        "title": "Analyse",
+        "title": "PHASE 1: ANALYSE (Discover)",
         "description": "Wir definieren Sinn, Zielgruppe und Botschaft. Diese Phase bildet das strategische Fundament – mit klarer Positionierung, starker Geschichte und einer Richtung, die dich wirklich voranbringt."
       },
       "design": {
-        "title": "Gestaltung",
+        "title": "PHASE 2: GESTALTUNG (Design)",
         "description": "Deine Markenidentität nimmt Form an. Logo, Farben, Typografie und visuelles System entstehen so, dass dein Sinn sichtbar wird und deine Marke wiedererkannt wird."
       },
       "deliver": {
-        "title": "Umsetzung",
+        "title": "PHASE 3: UMSETZUNG (Deliver)",
         "description": "Strategie und Gestaltung werden zur fertigen digitalen Präsenz. Deine Website wird klar, intuitiv und auf langfristige Ziele ausgerichtet."
       }
     }
