@@ -5,7 +5,7 @@
     "profile": "Profil",
     "howIWork": "Wie ich arbeite",
     "projects": "Projekte",
-    "logos": "Logos & Brandings",
+    "logos": "Logos & Marken",
     "testimonials": "Stimmen",
     "contact": "Kontakt"
   },
@@ -32,54 +32,54 @@
   "hero": {
     "logoAlt": "Well Edge Creative Wortmarke",
     "headline": {
-      "highlight": "Branding & Webdesign",
-      "rest": "das deine Geschichte sichtbar macht."
+      "highlight": "Markenaufbau & Webdesign",
+      "rest": "das deine Geschichte erzählt."
     },
-    "tagline": "Ich helfe Unternehmen dabei, Marken zu entwickeln, die die richtigen Menschen erreichen.",
+    "tagline": "Ich unterstütze Unternehmer:innen, Retreat- und Wellnesszentren sowie kleine Unternehmen dabei, eine starke Marke zu formen – mit klarem Auftritt, durchdachtem Design und Webauftritten, die die richtigen Menschen anziehen.",
     "scrollCta": "Zum Entdecken scrollen",
     "bucketAlt": "Illustrierter Holzeimer, der in den Brunnen des Hero eintaucht"
   },
   "cta": {
-    "seeWork": "Meine Arbeiten",
-    "bookCall": "Call buchen"
+    "seeWork": "Meine Arbeiten ansehen",
+    "bookCall": "Kontakt aufnehmen"
   },
   "intro": {
     "headline": {
       "clarity": "Klarheit",
       "goal": "in deinem Ziel.",
       "direction": "Richtung",
-      "brand": "in deiner Marke"
+      "brand": "für deine Marke"
     },
-    "paragraph": "Jede starke Marke beginnt mit Klarheit. Ich begleite dich durch einen strukturierten Prozess, der deinen Purpose sichtbar macht, deine Botschaft schärft und Gestaltung entstehen lässt, die wirklich berührt."
+    "paragraph": "Jede starke Marke beginnt mit Klarheit. Ich begleite dich Schritt für Schritt – von der Idee bis zur fertigen Gestaltung. Gemeinsam definieren wir deine Werte, schärfen deine Botschaft und entwickeln ein Erscheinungsbild, das Vertrauen schafft und berührt."
   },
   "profile": {
     "headline": {
       "prefix": "Hi, ich bin",
       "name": "Jan",
-      "suffix": "Designer, Markenstratege, Problemlöser."
+      "suffix": "Designer · Markenstratege · Problemlöser"
     },
-    "paragraphOne": "Seit über sieben Jahren unterstütze ich Selbstständige, Retreat und Wellness Zentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, klar positioniert sind und online sichtbar funktionieren.",
-    "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit klarer, emotionaler Gestaltung. So versteht dein Publikum sofort, wer du bist und warum deine Marke relevant ist.",
+    "paragraphOne": "Seit über sieben Jahren unterstütze ich Selbständige, Retreat- und Wellnesszentren sowie kleinere Unternehmen dabei, Marken zu entwickeln, die authentisch wirken, klar positioniert sind und online überzeugen.",
+    "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit ausdrucksstarkem, ehrlichem Design. So erfährt dein Publikum sofort, wer du bist, was dich auszeichnet – und warum deine Marke relevant ist.",
     "planProject": "Projekt planen",
     "planProjectAria": "Projekt planen – scrolle zum Kontaktformular"
   },
   "howIWork": {
     "heading": "So",
     "highlight": "arbeite",
-    "suffix": " ich.",
-    "paragraph": "Jedes Projekt folgt einem transparenten, strategischen Prozess, der Klarheit schafft und nachhaltige Ergebnisse liefert.",
+    "suffix": " ich",
+    "paragraph": "Jedes Projekt folgt einem klaren Ablauf – transparent, strukturiert und Ergebnis-orientiert.",
     "phases": {
       "discover": {
         "title": "Analyse",
-        "description": "Wir definieren Purpose, Zielgruppe und Botschaft. Diese Phase bildet das strategische Fundament. Klare Positionierung, starke Story und eine Richtung, die dich wirklich voranbringt."
+        "description": "Wir definieren Ziel, Zielgruppe und Botschaft. Diese Phase bildet das strategische Fundament: mit klarer Positionierung, starker Geschichte und eindeutiger Richtung."
       },
       "design": {
         "title": "Gestaltung",
-        "description": "Deine Markenidentität nimmt Form an. Logo, Farben, Typografie und visuelles System entstehen so, dass dein Purpose sichtbar wird und deine Marke wiedererkannt wird."
+        "description": "Deine Markenidentität nimmt Gestalt an. Logo, Farben, Typografie und visuelles System werden so gestaltet, dass dein Auftritt authentisch wirkt und Wiedererkennung schafft."
       },
       "deliver": {
         "title": "Umsetzung",
-        "description": "Strategie und Design werden zur fertigen digitalen Präsenz. Deine Website wird klar, intuitiv, emotional und auf langfristige Ziele ausgerichtet."
+        "description": "Strategie und Gestaltung verschmelzen zur fertigen digitalen Präsenz. Deine Website wird klar, intuitiv und auf langfristige Wirkung ausgelegt."
       }
     }
   },
@@ -89,26 +89,26 @@
       "rest": "das für sich spricht."
     },
     "paragraphOne": {
-      "start": "Jedes Projekt ist eine Chance, etwas zu gestalten, das nicht nur schön aussieht, sondern auch",
-      "calloutOne": "klar kommuniziert",
+      "start": "Jedes Projekt ist eine Chance, etwas Wertvolles zu gestalten – etwas, das nicht nur schön aussieht, sondern auch",
+      "calloutOne": "deutlich kommuniziert",
       "middle": "und",
       "calloutTwo": "emotional berührt",
-      "end": "bei der richtigen Zielgruppe."
+      "end": "– bei genau der richtigen Zielgruppe."
     },
     "paragraphTwo": "Gutes Design braucht keine Erklärung. Es wirkt durch Klarheit, Haltung und echte Substanz.",
     "bookCallAria": "Call mit Well Edge Creative buchen"
   },
   "homeDiscoveryCta": {
-    "heading": "Fühlst du dich von all den Möglichkeiten überfordert?",
-    "paragraph": "Wenn du ein Retreat Center, einen Wellness Ort oder einen holistischen Space führst und nicht weißt, wo du mit Branding, Website und Buchungsprozess beginnen sollst, begleite ich dich Schritt für Schritt bis zu deinen ersten Anfragen.",
-    "button": "Discovery Call buchen"
+    "heading": "Fühlst du dich überwältigt von all den Möglichkeiten?",
+    "paragraph": "Wenn du ein Retreat-Zentrum, einen Wellness-Ort oder einen ganzheitlichen Space führst und nicht weißt, wo du mit Markenaufbau, Website oder Buchungssystem anfangen sollst – ich begleite dich Schritt für Schritt bis zu deiner ersten Anfrage.",
+    "button": "Erstgespräch vereinbaren"
   },
   "selectedProjects": {
     "heading": {
       "prefix": "Ausgewählte",
       "highlight": "Projekte"
     },
-    "subtitle": "Eine Auswahl gezielter Branding und Webdesign Arbeiten für Selbstständige, Retreat Zentren und kleine Unternehmen weltweit.",
+    "subtitle": "Eine Auswahl gezielter Branding- und Webdesign-Projekte für Selbständige, Retreat-Zentren und kleine Unternehmen weltweit.",
     "blocks": {
       "challenge": "Herausforderung",
       "solution": "Lösung",
@@ -116,41 +116,41 @@
     },
     "cta": {
       "seeMore": "Weitere Arbeiten ansehen",
-      "caseStudiesComing": "Case Studies — bald verfügbar →",
-      "brisaBahiaCaseStudy": "Brisa Bahía — Case Study",
-      "visitSite": "Live-Website besuchen"
+      "caseStudiesComing": "Case Studies – bald verfügbar →",
+      "brisaBahiaCaseStudy": "Brisa Bahía – Case Study",
+      "visitSite": "Website besuchen"
     },
     "projects": {
       "brisa-bahia": {
         "client": "Brisa Bahía",
-        "title": "Brisa Bahía — Retreat Marke & Website",
-        "summary": "Storybasiertes Markensystem und schnelle, mobile Website.",
-        "challenge": "Ein neues Retreat benötigte eine Marke, die warm, professionell und authentisch wirkt, ohne beliebig oder austauschbar zu erscheinen.",
-        "solution": "Entwicklung einer ganzheitlichen visuellen Identität und einer storytellingbasierten Website, die den Charakter des Retreats klar transportiert.",
-        "result": "Eine unverwechselbare Marke und eine performante, barrierearme Website, die die richtigen Gäste anspricht und echte Gastfreundschaft vermittelt.",
-        "roles": ["Branding", "Logo", "Webdesign", "Webdev (WordPress, PHP)"],
+        "title": "Brisa Bahía — Retreat-Marke & Website",
+        "summary": "Storybasiertes Markensystem und schnelle, mobil optimierte Website.",
+        "challenge": "Ein neues Retreat brauchte eine Identität, die warm, professionell und authentisch wirkt – ohne beliebig oder austauschbar zu erscheinen.",
+        "solution": "Entwicklung einer ganzheitlichen visuellen Identität und einer erzählerisch aufgebauten Website, die den Charakter des Retreats klar vermittelt.",
+        "result": "Eine unverwechselbare Marke und eine leistungsfähige, barrierearme Website, die passende Gäste anspricht und echte Gastfreundschaft ausstrahlt.",
+        "roles": ["Markenaufbau", "Logo-Design", "Webdesign", "Webentwicklung (WordPress, PHP)"],
         "imageAlt": "Brisa Bahía Retreat-Center-Branding als Multi-Device-Mockup"
       },
       "virtuelles-fastnachtsmuseum": {
         "client": "Virtuelles Fastnachtsmuseum",
         "title": "Virtuelles Fastnachtsmuseum — Digitale Ausstellung",
-        "summary": "Digitale Museumserfahrung zur Bewahrung von Kulturerbe.",
-        "extraNote": "Gestaltung, Animationen und Inhalte inklusive einer 20 minütigen interaktiven Bruegel Erfahrung auch auf Englisch.",
-        "challenge": "Traditionelles Kulturerbe digital zugänglich und spannend für unterschiedliche Zielgruppen aufzubereiten.",
-        "solution": "Intuitive, virtuelle Museumsreise mit sorgfältig gestalteter Nutzerführung, die Inhalte würdigt und zugleich leicht zugänglich macht.",
-        "result": "Ein digitales Archiv, das Kulturerbe bewahrt und Menschen weit über das physische Museum hinaus erreicht.",
-        "award": "🏆 Auszeichnung: Deutscher Medienpreis in Silber",
-        "roles": ["UX", "Design", "Content Creation", "Animation"],
+        "summary": "Digitale Museumserfahrung zur Bewahrung lebendiger Traditionen und Kulturerbe.",
+        "extraNote": "Gestaltung, Animation und Inhalte inklusive einer 20-minütigen interaktiven Bruegel-Erfahrung auch in englischer Sprache.",
+        "challenge": "Traditionelles Kulturerbe digital und ansprechend für unterschiedliche Zielgruppen zugänglich machen.",
+        "solution": "Intuitive, virtuelle Museumsreise mit klarer Nutzerführung – Inhalte würdig und zugleich leicht zugänglich.",
+        "result": "Ein digitales Archiv, das Kulturerbe bewahrt und weit über lokale Grenzen hinaus wirksam wird.",
+        "award": "🏆 Deutscher Medienpreis in Silber",
+        "roles": ["Nutzerführung", "Gestaltung", "Inhaltserstellung", "Animation"],
         "imageAlt": "Virtuelles Fastnachtsmuseum Hero"
       },
       "einfach-schee": {
         "client": "einfach schee",
         "title": "einfach schee — Marke & Website",
-        "summary": "Komplette Markenentwicklung und Website als Solo Projekt.",
-        "challenge": "Eine persönliche Marke ohne bestehende Online Präsenz und mit begrenzten Ressourcen aufbauen.",
-        "solution": "Entwicklung einer vollständigen Markenidentität und einer individuellen Website, die Vertrauen aufbaut und Persönlichkeit zeigt.",
-        "result": "Eine professionelle Präsenz, die überzeugt und die Positionierung am Markt klar stärkt.",
-        "roles": ["Branding", "Logo", "Webdesign", "Webdev"],
+        "summary": "Komplette Markenentwicklung und Website als Einzelprojekt.",
+        "challenge": "Eine persönliche Marke ohne bestehende Online-Präsenz und mit begrenzten Ressourcen aufzubauen.",
+        "solution": "Entwicklung einer eigenständigen Markenidentität und einer individuellen Website, die Vertrauen schafft und Persönlichkeit zeigt.",
+        "result": "Eine professionelle Erscheinung, die überzeugt und die Marktposition klar stärkt.",
+        "roles": ["Markenaufbau", "Logo-Design", "Webdesign", "Webentwicklung"],
         "imageAlt": "einfach-schee Hero"
       }
     }
@@ -158,7 +158,7 @@
   "logos": {
     "heading": {
       "prefix": "Logos &",
-      "highlight": "Branding"
+      "highlight": "Marken"
     },
     "description": "Markenidentitäten, die ich gemeinsam mit meinen Kunden entwickelt habe. Jede mit eigener Geschichte und klarer Haltung.",
     "aria": "Kundenlogos"
@@ -186,9 +186,9 @@
     "ratingPrefix": "Bewertung",
     "ratingSuffix": "von 5",
     "status": {
-      "loading": "Stimmen werden geladen...",
-      "empty": "Stimmen von Selbstständigen und Unternehmen, die ich begleiten durfte.",
-      "unavailable": "Testimonials sind gerade nicht verfügbar."
+      "loading": "Stimmen werden geladen …",
+      "empty": "Stimmen von Selbständigen und Unternehmen, die ich begleitet habe.",
+      "unavailable": "Im Moment sind keine Bewertungen verfügbar."
     },
     "announcement": {
       "prefix": "Testimonial",
@@ -197,25 +197,25 @@
   },
   "contact": {
     "heading": "Bereit für eine Marke mit klarer Haltung?",
-    "paragraph": "Wenn du dir Klarheit, eine starke visuelle Identität und eine Website wünschst, die deine Vision wirklich widerspiegelt, lass uns sprechen.",
-    "emailPrompt": "Du möchtest lieber direkt per Mail schreiben?"
+    "paragraph": "Wenn du dir Klarheit, eine starke visuelle Identität und einen Webauftritt wünschst, der deine Vision wirklich widerspiegelt – dann lass uns über dein Projekt sprechen.",
+    "emailPrompt": "Möchtest du lieber direkt per E-Mail schreiben?"
   },
   "contactForm": {
     "labels": {
       "name": "Dein Name *",
-      "email": "Deine E Mail *",
+      "email": "Deine E-Mail *",
       "projectTypes": "Wobei kann ich dich unterstützen?",
       "budget": "Budgetrahmen",
       "budgetPlaceholder": "Budget auswählen",
       "message": "Erzähl mir von deinem Projekt *",
-      "messagePlaceholder": "Vision, Ziele, Zeitplan oder Fragen. Alles, was wichtig ist ...",
+      "messagePlaceholder": "Vision, Ziele, Zeitplan oder Fragen. Alles, was dir wichtig ist …",
       "submit": "Nachricht senden"
     },
     "projectTypes": {
-      "branding": "Branding & Logo Design",
-      "websiteDesign": "Website Design",
-      "websiteDev": "Website Entwicklung",
-      "fullPackage": "Komplettes Marken und Website Paket",
+      "branding": "Branding & Logo-Design",
+      "websiteDesign": "Website-Design",
+      "websiteDev": "Website-Entwicklung",
+      "fullPackage": "Komplettes Marken- und Website-Paket",
       "strategy": "Strategie & Beratung",
       "other": "Sonstiges"
     },
@@ -227,9 +227,9 @@
       "unsure": "Noch unsicher"
     },
     "status": {
-      "verifying": "Wird geprüft ...",
-      "recaptchaError": "⚠️ reCAPTCHA konnte nicht geladen werden. Bitte aktualisiere und versuch es erneut.",
-      "sending": "Wird gesendet ...",
+      "verifying": "Wird geprüft …",
+      "recaptchaError": "⚠️ reCAPTCHA konnte nicht geladen werden. Bitte aktualisieren und erneut versuchen.",
+      "sending": "Wird gesendet …",
       "success": "✅ Nachricht versendet. Bitte prüfe dein Postfach.",
       "failure": "⚠️ Versand fehlgeschlagen. Bitte versuche es erneut.",
       "errorPrefix": "⚠️"
@@ -237,51 +237,51 @@
   },
   "workPage": {
     "heading": "Case Studies",
-    "description": "Ausgewählte Branding- und Webprojekte."
+    "description": "Ausgewählte Branding- und Webprojekte"
   },
   "servicesPage": {
     "heading": "Leistungen",
-    "description": "Strategie, Brand-Systeme und Websites – story-first, mobile-first.",
+    "description": "Strategische Markenbildung, visuelle Identität und Websites – modern, mobil optimiert und zielgerichtet.",
     "cards": [
       {
-        "title": "Strategy Sprint",
-        "items": ["Positionierung & Messaging", "Content-Map + Homepage-Wire", "Roadmap"],
-        "price": "Ab 1.200 €"
+        "title": "Strategie-Sprint",
+        "items": ["Positionierung & Botschaft", "Inhaltsstruktur + Startseiten-Entwurf", "Roadmap"],
+        "price": "ab 1.200 €"
       },
       {
-        "title": "Brand Essentials",
-        "items": ["Logo-Suite, Farben & Typo", "Brand Kit (Social, Docs)", "Key Visuals"],
-        "price": "Ab 2.800 €"
+        "title": "Marken-Basis",
+        "items": ["Logo-Suite, Farben & Typografie", "Markenhandbuch (Social Media, Dokumente)", "Key Visuals"],
+        "price": "ab 2.800 €"
       },
       {
-        "title": "Launch Website",
-        "items": ["3–5 Seiten, Next.js", "GSAP-Animationen", "Mobile-first, Onpage-SEO"],
-        "price": "Ab 4.500 €"
+        "title": "Website-Launch",
+        "items": ["3–5 Seiten, moderne Webtechnologie", "Animationen & Interaktionen", "Mobiloptimierung, Onpage-SEO"],
+        "price": "ab 4.500 €"
       }
     ],
     "cta": {
       "title": "Auch für Startups & KMU",
-      "body": "Gleicher Prozess, angepasst an deine Stage. Erzähl mir deine Ziele – ich schärfe Scope und Timeline mit dir."
+      "body": "Gleicher Ablauf, angepasst an deine Ausgangslage. Erzähle mir deine Ziele – ich definiere gemeinsam mit dir Umfang und Zeitplan."
     }
   },
   "aboutPage": {
-    "heading": "About gerade in Überarbeitung",
-    "description": "Ich aktualisiere diesen Bereich. Bis dahin findest du Profil, Prozess und Kundengeschichten auf der Startseite."
+    "heading": "Über mich (wird demnächst aktualisiert)",
+    "description": "Bis dahin findest du alle Infos zu meinem Profil, Arbeitsweise und bisherigen Projekten auf der Startseite."
   },
   "approachPage": {
-    "heading": "Approach",
-    "description": "Strategie → Story → System → Site. Das Well & Bucket Bild sorgt für Tiefe und Klarheit.",
+    "heading": "Vorgehensweise",
+    "description": "Strategie → Geschichte → System → Seite. Das Eimer-Symbol steht für Tiefe, Klarheit und einen strukturierten Prozess.",
     "steps": [
-      { "title": "Discover", "text": "Ziele, Audience, Rahmen" },
-      { "title": "Define", "text": "Positionierung, Botschaft, Content" },
-      { "title": "Design", "text": "Brand-System & UI" },
-      { "title": "Deliver", "text": "Build, QA, Übergabe" }
+      { "title": "Ziel & Rahmen definieren", "text": "Ziele, Audience, Rahmen" },
+      { "title": "Positionierung festlegen", "text": "Positionierung, Botschaft & Inhalte festlegen" },
+      { "title": "Marken- und Interface-Gestaltung", "text": "Marken- und Interface-Gestaltung" },
+      { "title": "Umsetzung, Fertigstellung, Übergabe", "text": "Umsetzung, Fertigstellung, Übergabe" }
     ]
   },
   "footer": {
     "heading": "Bereit, gemeinsam etwas Sinnvolles zu erschaffen.",
-    "description": "Ich gestalte Marken und digitale Erlebnisse, die zugleich tiefgehend und klar sind. Erzähl mir von deinem Projekt und wir finden gemeinsam den ersten Schritt.",
-    "remote": "Remote unterwegs und mit Kunden auf der ganzen Welt verbunden.",
+    "description": "Ich entwerfe Marken und digitale Erlebnisse, die zugleich tiefgehend und klar sind. Teile mir deine Projektidee mit – und wir finden gemeinsam den ersten Schritt.",
+    "remote": "Remote unterwegs und mit Kund:innen weltweit verbunden.",
     "navAria": "Footer-Navigation",
     "socialAria": "Social Links",
     "social": {
@@ -296,16 +296,16 @@
   },
   "caseStudyBrisaBahia": {
     "seo": {
-      "title": "Brisa Bahía — Retreat Center Branding & Website Transformation",
-      "description": "Wie ich Brisa Bahía von einer veralteten Lodge Website zu einer hochwertigen Retreat Marke mit individueller Identität, Website und facilitatororientierter Nutzerführung geführt habe."
+      "title": "Brisa Bahía — Retreat-Marke & Website: Markenaufbau und Webdesign",
+      "description": "Wie eine einfache Lodge-Website zu einer hochwertigen Retreat-Marke wird – mit eigener Identität, Website und gastgeberfreundlichem Buchungssystem."
     },
     "hero": {
-      "title": "Brisa Bahía — Retreat Center Branding & Website Transformation",
-      "tagline": "Retreat Center Branding und facilitatororientiertes Wellness Webdesign für ein eco Retreat in Kolumbien.",
+      "title": "Brisa Bahía — Retreat-Marke & Website: Wandel & Relaunch",
+      "tagline": "Retreat-Markenaufbau und UX-optimiertes Wellness-Webdesign für ein Eco-Retreat in Kolumbien",
       "intro": [
-        "Vor der Entstehung von Brisa Bahía existierte das Projekt als Bahia Lodge. Eine einfache Strandhütten Website, die vom vorherigen Besitzer übernommen worden war.",
-        "Die neuen Eigentümerinnen benötigten eine vollständige Neuausrichtung. Klares Branding, ein retreatfähiges Erlebnis und eine Website, die Facilitator sowie bewusste Reisende anspricht.",
-        "Ich habe das Projekt komplett neu aufgestellt, eine facilitatorfreundliche Nutzerführung entwickelt und eine zweisprachige WordPress Website umgesetzt, die den Dschungelstandort, das holistische Erlebnis und die Retreat Vision widerspiegelt."
+        "Ursprünglich war Brisa Bahía eine einfache Lodge-Website, übernommen vom Vorbesitzer.",
+        "Die neuen Betreiberinnen wünschten sich eine vollständige Neuausrichtung: eine starke Marke, ein Retreat-taugliches Erlebnis und eine Website, die Gastgeber:innen und bewusste Reisende gleichermaßen anspricht.",
+        "Ich stellte das Projekt neu auf: mit gastgeber-freundlicher Nutzerführung und einer zweisprachigen WordPress-Website, die den Dschungelstandort, das ganzheitliche Erlebnis und die Retreat-Vision visuell und inhaltlich erlebbar macht."
       ],
       "meta": {
         "clientLabel": "Kunde",
@@ -315,94 +315,94 @@
         "locationLabel": "Ort",
         "location": "Capurganá, Kolumbien",
         "servicesLabel": "Leistungen",
-        "services": "Naming, Retreat-Center-Branding, zweisprachiges WordPress",
+        "services": "Namensfindung, Markenaufbau, zweisprachige WordPress-Website",
         "timelineLabel": "Zeitraum",
-        "timeline": "16 Wochen (Strategie → Launch – fortlaufend)"
+        "timeline": "16 Wochen (Strategie bis Launch, fortlaufende Betreuung)"
       }
     },
     "beforeAfter": {
-      "heading": "Vorher und Nachher",
-      "subtitle": "Aus der Bahia Lodge wurde ein facilitatorfähiges Retreat Erlebnis.",
-      "beforeLabel": "Before — old Bahia Lodge website (previous owner)",
-      "afterLabel": "After — New Brisa Bahía retreat website",
-      "note": "Jeder Touchpoint ist auf Facilitator ausgelegt, die ganze Wochen buchen."
+      "heading": "Vorher & Nachher",
+      "subtitle": "Aus einer Lodge wurde ein gastgeberfreundliches Retreat-Erlebnis",
+      "beforeLabel": "Vorher — Alte Bahia Lodge Website (frühere Betreiber:innen)",
+      "afterLabel": "Nachher — Neue Brisa Bahía Retreat-Website",
+      "note": "Jeder Kontaktpunkt wurde auf Gastgeber:innen optimiert, die ganze Retreat-Wochen buchen."
     },
     "challenge": {
       "heading": "Die Herausforderung",
-      "text": "Bahia Lodge wirkte wie ein Budget Hostel. Uneinheitliche Farben, generische Texte, veraltete Bilder und ein schwerfälliges WordPress Theme mit vielen ungepflegten Plugins. Es gab kein klares Retreat Webdesign, wodurch Vertrauen, Orientierung und Buchungsstruktur fehlten."
+      "text": "Die Bahia Lodge wirkte wie ein einfaches Hostel: uneinheitliche Farben, generische Texte, alte Bilder und ein schwerfälliges WordPress-Theme mit ungepflegten Plugins. Es fehlte ein klares Retreat-Design – dadurch mangelte es an Vertrauen, Orientierung und einer verlässlichen Buchungsstruktur."
     },
     "goal": {
       "heading": "Das Ziel",
-      "text": "Eine vollständige digitale Transformation. Neuer Name, klare Positionierung, verfeinerte Markenidentität und ein performantes, zweisprachiges System, mit dem Facilitator ganze Wochen ohne lange Nachrichtenketten buchen können."
+      "text": "Eine vollständige digitale Neuausrichtung: neuer Name, klare Positionierung, starke Markenidentität und ein performantes, zweisprachiges System – damit Gastgeber:innen komfortabel ganze Wochen buchen können, ohne lange Nachrichtenketten."
     },
     "brandIdentity": {
       "heading": "Markenidentität",
-      "intro": "Entwickelt wurde ein haptisch wirkendes System, inspiriert von der kolumbianischen Küste. Handgezeichnete Muster, weiche Lichtverläufe und eine Typografie, die Ritual und Klarheit verbindet.",
-      "logo": "Modularer Schriftzug und Symbol, das auf hellen wie dunklen UI-Flächen funktioniert.",
-      "colorsBefore": "Vorher: inkonsistente Blautöne und generisches Beige wie ein Hostel.",
-      "colorsAfter": "Nachher: geerdete Neutrals mit botanischen Akzenten für ruhige Energie.",
-      "typography": "Editoriale Serif-Headlines kombiniert mit einer humanistischen Sans-Serif für lange Itineraries.",
-      "iconography": "Individuelles Icon-Set für Services, Unterkünfte und Rituale im Experience Guide.",
-      "moodboard": "Moodboard aus Dschungeltexturen, Ozeanlicht und Facilitator-Ritualen.",
+      "intro": "Entstanden ist ein fühlbares Design-System, inspiriert von der kolumbianischen Küste. Handgezeichnete Muster, weiche Lichtverläufe und eine Typografie, die Ritual und Ruhe verbindet.",
+      "logo": "Modularer Schriftzug und Symbol – flexibel einsetzbar auf hellen wie dunklen Oberflächen.",
+      "colorsBefore": "Inkonsistente Blautöne und generisches Beige, wie bei einer einfachen Hostel-Website.",
+      "colorsAfter": "Erdige Neutrals mit botanischen Akzenten – für ruhige, natürliche Energie.",
+      "typography": "Serifenbetonte Überschriften kombiniert mit einer klaren serifenlosen Schrift für längere Texte und Ablaufpläne.",
+      "iconography": "Eigenes Icon-Set für Leistungen, Unterkünfte und Rituale im Experience Guide.",
+      "moodboard": "Texturen aus Dschungel, Ozeanlicht und Retreat-Ritualen.",
       "brandMindmap": {
-        "title": "Brand-Strategy-Mindmap",
-        "description": "Werte, Emotionen und Facilitator-Erwartungen verknüpft, damit jede Design-Entscheidung zweckgebunden bleibt."
+        "title": "Markenstrategie-Skizze",
+        "description": "Markenstrategie-Skizze mit Werten, Emotionen und Erwartungen der Gastgeber:innen – damit jede Design-Entscheidung einem klaren Zweck folgt."
       }
     },
     "uxStructure": {
-      "heading": "UX Structure",
-      "intro": "Die Seitenstruktur stützt sich auf Retreat Center UX Design: Jede Navigation beantwortet Fragen zu Kapazität, Logistik, Beispiel-Abläufen und Onsite-Support.",
+      "heading": "UX-Struktur",
+      "intro": "Die Seitenstruktur folgt der Logik eines Retreat-Centers: Jede Navigation beantwortet Fragen zu Kapazität, Logistik, Ablauf und vor Ort Betreuung.",
       "websiteMindmap": {
-        "title": "Website Mindmap",
-        "description": "User-Flows für Hosts, Facilitator und Gäste definieren, wie die zweisprachige Experience jede Fläche vorstellt."
+        "title": "Website-Mindmap",
+        "description": "Nutzerflüsse für Gastgeber:innen, Gäste und Retreat-Leitende definieren, wie die zweisprachige Erfahrung dargestellt wird."
       },
-      "responsiveIntro": "Facilitator prüfen das Erlebnis zuerst auf dem Handy – daher wurde jeder Abschnitt für Touch, Offline-Lesen und schnelle Sprunganker optimiert.",
+      "responsiveIntro": "Da viele Nutzer mobil zugreifen – wurde jedes Element für Touchbedienung, Offline-Nutzung und einfache Navigation optimiert.",
       "wireframe": {
-        "title": "Wireframe (Full Website Structure)",
-        "description": "Das Langformat-Wireframe wurde in gut lesbare Abschnitte geschnitten, sodass Teams die gesamte Struktur sehen und einzelne Bereiche schnell prüfen können."
+        "title": "Wireframe",
+        "description": "Die Langformat-Struktur wurde in übersichtliche Abschnitte unterteilt, damit Teams gezielt einzelne Bereiche prüfen oder springen können."
       }
     },
     "websiteDesign": {
-      "heading": "Website Design",
-      "intro": "High-Fidelity-UI bringt die neue Palette, Typografie und Iconografie in ein responsives Wellness Retreat Website Design. Jeder Scroll-Abschnitt verkauft die Eco-Retreat-Website über Story, Social Proof und klare CTAs.",
+      "heading": "Website-Design",
+      "intro": "Ein hochwertiges, responsives Webdesign bringt neue Farbpalette, Typografie und Ikonografie in Ihre Retreat-Website. Jeder Abschnitt erzählt die Geschichte des Eco-Retreats – mit Bildern, Erfahrungswerten und klaren Handlungsaufrufen.",
       "after": [
-        "Homepage mit Multi-Device-Hero, Facilitator-Kopie und immersiver Fotografie.",
-        "Facilities-Page mit Hosting-Logistik, Beispiel-Abläufen und lebendigen Amenity-Details."
+        "Startseite mit Mehrgeräte-Hero, Gastgeber-Text und stimmungsvoller Fotografie",
+        "Facilities-Seite mit Unterkunfts-Details, Beispielabläufen und lebendigen Beschreibungen"
       ]
     },
     "results": {
-      "heading": "Das Ergebnis",
-      "subtitle": "So hat es Kary & Nhung verändert",
+      "heading": "Ergebnis",
+      "subtitle": "So veränderte sich Brisa Bahía",
       "items": [
-        "Die ersten facilitator-geführten Retreats wurden innerhalb eines Monats über die Website gebucht.",
-        "Facilitator nutzen die Angebots-Checkliste und buchen ganze Wochen ohne zusätzliche Decks.",
-        "Das story-first Retreat-Center-Branding fließt in Pitch-Decks, Onboarding-Dokumente und Partnerschaften ein.",
-        "Performance-Optimierungen reduzierten die Initial-Ladezeit über die abgelegene Karibik-Verbindung um 45 %.",
-        "Kary & Nhung haben jetzt einen festen Wellness Web Designer Partner für saisonale Updates."
+        "Innerhalb eines Monats wurden die ersten Retreats über die neue Website gebucht.",
+        "Gastgeber:innen nutzen die Angebots-Checkliste und buchen ganze Wochen ohne weitere Dokumente.",
+        "Das erzählerische Retreat-Markenbild findet Verwendung in Präsentationen, Onboarding-Dokus und Partnerschaften.",
+        "Technische Optimierungen reduzierten die Ladezeit über die entfernte Karibik-Anbindung um 45 %.",
+        "Kary & Nhung haben einen verlässlichen Webdesign-Partner für saisonale Pflege und Updates gewonnen."
       ]
     },
     "testimonial": {
       "heading": "Testimonial",
-      "quote": "Ein wunderschönes Design, das unser Wesen einfängt: Branding & Website\nWir könnten mit Jans Arbeit für Brisa Bahía nicht glücklicher sein. Vom ersten Logoentwurf bis zur finalen WordPress-Website hat er unsere Vision für unser Boutique Eco Retreat an Kolumbiens Karibikküste verstanden.\n\nDas Logo und die Farbpalette fangen das Wesen unserer Marke perfekt ein: ruhig, natürlich und einladend. Sein Auge für Ästhetik passt genau zur Wellness- und Retreat-Welt. Doch noch wichtiger war die Zusammenarbeit: Er war kollaborativ, offen und wirklich daran interessiert, unsere Vision lebendig zu machen.\n\nDie Website selbst ist außergewöhnlich. Sie zeigt unser Gelände wunderschön und bleibt intuitiv und leicht zu navigieren. Er versteht, was Retreat Center von ihrer Online-Präsenz brauchen: Eine Seite, die nicht nur beeindruckt, sondern auch die transformative Erfahrung transportiert, die wir anbieten.\n\nWir empfehlen Jan wärmstens. Er kennt die Branche, liefert großartige Ergebnisse und macht den gesamten Prozess angenehm.\n\nKary, Founder & Retreat Partner, Brisa Bahía",
+      "quote": "Ein wunderschönes Design, das unser Wesen einfängt: Marke & Website\n\nWir könnten mit Jans Arbeit für Brisa Bahía nicht glücklicher sein. Vom ersten Logo-Entwurf bis zur fertigen WordPress-Website hat er unsere Vision für unser Boutique-Eco-Retreat an Kolumbiens Karibikküste verstanden.\n\nDas Logo und die Farbpalette spiegeln unsere Marke perfekt wider: ruhig, natürlich, einladend. Sein Gespür für Ästhetik passt ideal zur Wellness- und Retreat-Welt. Doch was uns besonders beeindruckt, war seine Zusammenarbeit: offen, empathisch und wirklich engagiert, unsere Vision zum Leben zu erwecken.\n\nDie Website ist außergewöhnlich: Sie präsentiert unser Gelände wunderschön und bleibt dabei verständlich und benutzerfreundlich. Er weiß genau, was Retreat-Zentren von ihrer Online-Präsenz brauchen: Eine Seite, die nicht nur beeindruckt, sondern auch das Erlebnis vermittelt, das wir anbieten.\n\nWir empfehlen Jan von Herzen. Er kennt unsere Branche, liefert großartige Ergebnisse und macht den gesamten Prozess angenehm.\n\nKary, Gründerin & Retreat-Partnerin, Brisa Bahía",
       "originalQuote": "A Beautiful Design That Captures Our Essence: Branding & Website\nWe couldn't be happier with the work Jan did for Brisa Bahía. From the initial logo design to the final WordPress website, he truly understood our vision for our boutique eco-retreat center on Colombia's Caribbean coast.\n\nThe logo and color palette he created perfectly capture the essence of our brand: tranquil, natural, and inviting. He has an exceptional eye for aesthetics that resonate with the wellness and retreat space. But beyond his design skills, what really stood out was working with him as a person. He was collaborative, responsive, and genuinely invested in bringing our vision to life.\n\nThe website itself is exceptional. It beautifully showcases our property while being intuitive and easy to navigate. He clearly understands what retreat centers need from their online presence: a site that not only looks stunning but also effectively communicates the transformational experience we offer.\n\nWe highly recommend Jan. He understands the industry, delivers outstanding results, and made the whole process enjoyable.\n\nKary, Founder & Retreat Partner, Brisa Bahía",
-      "author": "— Kary, Co-Founder of Brisa Bahía",
-      "translatedLabel": "[Translated]",
-      "viewOriginal": "View original",
-      "hideOriginal": "Hide original"
+      "author": "— Kary, Mitgründerin von Brisa Bahía",
+      "translatedLabel": "[Übersetzt]",
+      "viewOriginal": "Original anzeigen",
+      "hideOriginal": "Original verbergen"
     },
     "finalShowcase": {
       "heading": "Final Showcase",
-      "subtitle": "Visuelle Artefakte zum Abschluss — Brand-System, Guidelines und die Multi-Device-Experience."
+      "subtitle": "Visuelle Artefakte zum Abschluss – Marken-System, Guidelines und die Mehrgeräte-Darstellung."
     },
     "discoveryCTA": {
-      "heading": "Unsicher, wo du mit Marke oder Website beginnen sollst?",
-      "paragraph": "Lass uns einen kurzen Discovery Call planen und gemeinsam deine nächsten Schritte festlegen.",
-      "button": "Projekt starten und Discovery Call buchen"
+      "heading": "Unsicher, wo du mit Marke oder Website starten sollst?",
+      "paragraph": "Lass uns ein kurzes Kennenlerngespräch planen und gemeinsam deine nächsten Schritte definieren.",
+      "button": "Projekt starten"
     },
     "cta": {
-      "heading": "Discovery Call buchen",
-      "text": "Du brauchst Retreat-Center-Branding, einen facilitator-fokussierten UX-Plan oder eine individuelle Seite, die Anfragen in Buchungen verwandelt? Lass uns starten.",
-      "button": "Start your project"
+      "heading": "Kennenlerngespräch vereinbaren",
+      "text": "Du brauchst Markenaufbau für dein Retreat-Center, eine nutzerfreundliche UX-Struktur oder eine individuelle Website, die Anfragen in Buchungen verwandelt? Lass uns loslegen.",
+      "button": "Projekt starten"
     },
     "backLink": "← Zurück zu allen Projekten",
     "backToProjects": "Zurück zu Projekten"
