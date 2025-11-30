@@ -5,7 +5,7 @@
     "profile": "Profil",
     "howIWork": "Wie ich arbeite",
     "projects": "Projekte",
-    "logos": "Logos & Marken",
+    "logos": "Logos & Brandings",
     "testimonials": "Stimmen",
     "contact": "Kontakt"
   },
@@ -33,33 +33,33 @@
     "logoAlt": "Well Edge Creative Wortmarke",
     "headline": {
       "highlight": "Branding & Webdesign",
-      "rest": "das deine Geschichte erzählt."
+      "rest": "das deine Geschichte sichtbar macht."
     },
-    "tagline": "Ich unterstütze Unternehmen, Retreat- und Wellnesszentren sowie kleine Betriebe dabei, starke Marken zu formen – mit klarer Identität, durchdachtem Design und Webauftritten, die genau die richtigen Menschen anziehen.",
+    "tagline": "Ich helfe Unternehmen dabei, Marken zu entwickeln, die die richtigen Menschen erreichen.",
     "scrollCta": "Zum Entdecken scrollen",
     "bucketAlt": "Illustrierter Holzeimer, der in den Brunnen des Hero eintaucht"
   },
   "cta": {
     "seeWork": "Meine Arbeiten",
-    "bookCall": "Kontakt aufnehmen"
+    "bookCall": "Call buchen"
   },
   "intro": {
     "headline": {
       "clarity": "Klarheit",
       "goal": "in deinem Ziel.",
       "direction": "Richtung",
-      "brand": "für deine Marke"
+      "brand": "in deiner Marke"
     },
-    "paragraph": "Jede kraftvolle Marke beginnt mit Klarheit. Ich begleite dich Schritt für Schritt – von der ersten Idee bis zur fertigen Gestaltung. Gemeinsam definieren wir deine Werte, schärfen deine Botschaft und entwickeln ein Erscheinungsbild, das Wirkung zeigt und Vertrauen schafft."
+    "paragraph": "Jede starke Marke beginnt mit Klarheit. Ich begleite dich durch einen strukturierten Prozess, der deinen Sinn sichtbar macht, deine Botschaft schärft und Gestaltung entstehen lässt, die wirklich berührt."
   },
   "profile": {
     "headline": {
       "prefix": "Hi, ich bin",
       "name": "Jan",
-      "suffix": "Designer · Markenstratege · Problemlöser"
+      "suffix": "Designer, Markenstratege, Problemlöser."
     },
-    "paragraphOne": "Seit über sieben Jahren unterstütze ich Selbständige, Retreat- und Wellnesszentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, klar positioniert sind und online überzeugen.",
-    "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit ehrlicher, ausdrucksstarker Gestaltung. So versteht dein Publikum sofort, wer du bist und was deine Marke einzigartig macht.",
+    "paragraphOne": "Seit über sieben Jahren unterstütze ich Selbstständige, Retreat- und Wellness-Zentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, klar positioniert sind und online überzeugen.",
+    "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit klarer, gefühlvoller Gestaltung. So versteht dein Publikum sofort, wer du bist und warum deine Marke relevant ist.",
     "planProject": "Projekt planen",
     "planProjectAria": "Projekt planen – scrolle zum Kontaktformular"
   },
@@ -67,19 +67,19 @@
     "heading": "So",
     "highlight": "arbeite",
     "suffix": " ich.",
-    "paragraph": "Jedes Projekt folgt einem klaren Ablauf – transparent, strukturiert und fokussiert auf dein Ziel.",
+    "paragraph": "Jedes Projekt folgt einem transparenten, strategischen Prozess, der Klarheit schafft und nachhaltige Ergebnisse liefert.",
     "phases": {
       "discover": {
         "title": "Analyse",
-        "description": "Wir definieren Ziel, Zielgruppe und Botschaft. Diese Phase legt das strategische Fundament: mit deutlicher Positionierung, starker Geschichte und klarer Richtung."
+        "description": "Wir definieren Sinn, Zielgruppe und Botschaft. Diese Phase bildet das strategische Fundament. Klare Positionierung, starke Geschichte und eine Richtung, die dich wirklich voranbringt."
       },
       "design": {
         "title": "Gestaltung",
-        "description": "Deine Markenidentität nimmt Form an. Logo, Farben, Typografie und visuelles System werden so entwickelt, dass dein Auftritt echt wirkt und Wiedererkennung entsteht."
+        "description": "Deine Markenidentität nimmt Form an. Logo, Farben, Typografie und visuelles System entstehen so, dass dein Sinn sichtbar wird und deine Marke wiedererkannt wird."
       },
       "deliver": {
         "title": "Umsetzung",
-        "description": "Strategie und Gestaltung verbinden sich zur fertigen digitalen Präsenz. Deine Website wird klar, intuitiv und auf langfristigen Erfolg ausgerichtet."
+        "description": "Strategie und Gestaltung werden zur fertigen digitalen Präsenz. Deine Website wird klar, intuitiv und auf langfristige Ziele ausgerichtet."
       }
     }
   },
@@ -89,26 +89,26 @@
       "rest": "das für sich spricht."
     },
     "paragraphOne": {
-      "start": "Jedes Projekt ist eine Chance, etwas zu erschaffen, das nicht nur schön wirkt, sondern auch",
+      "start": "Jedes Projekt ist eine Chance, etwas zu gestalten, das nicht nur schön aussieht, sondern auch",
       "calloutOne": "klar kommuniziert",
       "middle": "und",
       "calloutTwo": "emotional berührt",
-      "end": "– bei genau der richtigen Zielgruppe."
+      "end": "bei der richtigen Zielgruppe."
     },
-    "paragraphTwo": "Gutes Design braucht keine Rechtfertigung. Es überzeugt durch Klarheit, Haltung und echte Substanz.",
+    "paragraphTwo": "Gutes Design braucht keine Erklärung. Es wirkt durch Klarheit, Haltung und echte Substanz.",
     "bookCallAria": "Call mit Well Edge Creative buchen"
   },
   "homeDiscoveryCta": {
-    "heading": "Fühlst du dich überwältigt von all den Möglichkeiten?",
-    "paragraph": "Wenn du ein Retreat-Zentrum, einen Wellness-Ort oder einen holistischen Space führst und nicht weißt, wo du mit Markenaufbau, Website oder Buchungsprozess beginnen sollst – ich begleite dich Schritt für Schritt bis zu deiner ersten Anfrage.",
-    "button": "Erstgespräch vereinbaren"
+    "heading": "Fühlst du dich von all den Möglichkeiten überfordert?",
+    "paragraph": "Wenn du ein Retreat-Center, einen Wellness-Ort oder einen ganzheitlichen Raum führst und nicht weißt, wo du mit Branding, Website und Buchungsprozess beginnen sollst, begleite ich dich Schritt für Schritt bis zu deinen ersten Anfragen.",
+    "button": "Discovery Call buchen"
   },
   "selectedProjects": {
     "heading": {
       "prefix": "Ausgewählte",
       "highlight": "Projekte"
     },
-    "subtitle": "Eine Auswahl gezielter Branding- und Webdesign-Projekte für Selbständige, Retreat-Zentren und kleine Unternehmen weltweit.",
+    "subtitle": "Eine Auswahl gezielter Branding- und Webdesign-Arbeiten für Selbstständige, Retreat-Zentren und kleine Unternehmen weltweit.",
     "blocks": {
       "challenge": "Herausforderung",
       "solution": "Lösung",
@@ -123,34 +123,34 @@
     "projects": {
       "brisa-bahia": {
         "client": "Brisa Bahía",
-        "title": "Brisa Bahía — Retreat-Marke & Website",
-        "summary": "Storybasiertes Markensystem und mobil optimierte Website.",
-        "challenge": "Ein neues Retreat brauchte eine Marke, die warm, professionell und authentisch wirkt – nicht generisch oder austauschbar.",
+        "title": "Brisa Bahía — Retreat Marke & Website",
+        "summary": "Storybasiertes Markensystem und schnelle, mobile Website.",
+        "challenge": "Ein neues Retreat benötigte eine Marke, die warm, professionell und authentisch wirkt, ohne beliebig oder austauschbar zu erscheinen.",
         "solution": "Entwicklung einer ganzheitlichen visuellen Identität und einer erzählerisch aufgebauten Website, die den Charakter des Retreats klar transportiert.",
-        "result": "Eine unverwechselbare Marke und eine funktionale, barrierearme Website, die passende Gäste anspricht und echte Gastfreundschaft vermittelt.",
-        "roles": ["Markenaufbau", "Logo-Design", "Webdesign", "Webentwicklung (WordPress, PHP)"],
+        "result": "Eine unverwechselbare Marke und eine performante, barrierearme Website, die die richtigen Gäste anspricht und echte Gastfreundschaft vermittelt.",
+        "roles": ["Branding", "Logo", "Webdesign", "Webdev (WordPress, PHP)"],
         "imageAlt": "Brisa Bahía Retreat-Center-Branding als Multi-Device-Mockup"
       },
       "virtuelles-fastnachtsmuseum": {
         "client": "Virtuelles Fastnachtsmuseum",
         "title": "Virtuelles Fastnachtsmuseum — Digitale Ausstellung",
-        "summary": "Digitale Museumserfahrung zur Bewahrung von lebendigem Kulturerbe.",
-        "extraNote": "Gestaltung, Animation und Inhalte inklusive einer 20-minütigen interaktiven Bruegel-Erfahrung – auch in englischer Sprache verfügbar.",
-        "challenge": "Traditionelles Kulturerbe digital und ansprechend für verschiedenste Zielgruppen zugänglich zu machen.",
-        "solution": "Intuitive, virtuelle Museumsreise mit klarer Nutzerführung – Inhalte würdig aufbereitet und gleichzeitig leicht zugänglich.",
-        "result": "Ein digitales Archiv, das Kulturerbe bewahrt und weit über lokale Grenzen hinaus Wirkung entfaltet.",
-        "award": "🏆 Deutscher Medienpreis in Silber",
-        "roles": ["Nutzerführung", "Gestaltung", "Inhaltserstellung", "Animation"],
+        "summary": "Digitale Museumserfahrung zur Bewahrung von Kulturerbe.",
+        "extraNote": "Gestaltung, Animation und Inhalte inklusive einer 20 minütigen interaktiven Bruegel-Erfahrung (auch auf Englisch verfügbar).",
+        "challenge": "Traditionelles Kulturerbe digital zugänglich und spannend für unterschiedliche Zielgruppen aufzubereiten.",
+        "solution": "Intuitive, virtuelle Museumsreise mit sorgfältig gestalteter Nutzerführung, die Inhalte würdigt und zugleich leicht zugänglich macht.",
+        "result": "Ein digitales Archiv, das Kulturerbe bewahrt und Menschen weit über das physische Museum hinaus erreicht.",
+        "award": "🏆 Auszeichnung: Deutscher Medienpreis in Silber",
+        "roles": ["UX", "Design", "Content Creation", "Animation"],
         "imageAlt": "Virtuelles Fastnachtsmuseum Hero"
       },
       "einfach-schee": {
         "client": "einfach schee",
         "title": "einfach schee — Marke & Website",
-        "summary": "Vollständige Markenentwicklung und Website als Einzelprojekt.",
-        "challenge": "Eine persönliche Marke ohne bestehende Online-Präsenz und mit begrenzten Mitteln aufzubauen.",
-        "solution": "Entwicklung einer eigenständigen Markenidentität und einer individuellen Website, die Vertrauen schafft und Persönlichkeit zeigt.",
-        "result": "Eine professionelle Online-Präsenz, die überzeugt und deine Position im Markt klar stärkt.",
-        "roles": ["Markenaufbau", "Logo-Design", "Webdesign", "Webentwicklung"],
+        "summary": "Komplette Markenentwicklung und Website als Solo-Projekt.",
+        "challenge": "Eine persönliche Marke ohne bestehende Online-Präsenz und mit begrenzten Ressourcen aufbauen.",
+        "solution": "Entwicklung einer vollständigen Markenidentität und einer individuellen Website, die Vertrauen aufbaut und Persönlichkeit zeigt.",
+        "result": "Eine professionelle Präsenz, die überzeugt und die Marktposition klar stärkt.",
+        "roles": ["Branding", "Logo", "Webdesign", "Webdev"],
         "imageAlt": "einfach-schee Hero"
       }
     }
@@ -158,9 +158,9 @@
   "logos": {
     "heading": {
       "prefix": "Logos &",
-      "highlight": "Marken"
+      "highlight": "Brandings"
     },
-    "description": "Markenidentitäten, die ich mit meinen Kund:innen gemeinsam entwickelt habe. Jede mit eigener Geschichte und klarer Haltung.",
+    "description": "Markenidentitäten, die ich gemeinsam mit meinen Kunden entwickelt habe. Jede mit eigener Geschichte und klarer Haltung.",
     "aria": "Kundenlogos"
   },
   "deliverParallax": {
@@ -186,9 +186,9 @@
     "ratingPrefix": "Bewertung",
     "ratingSuffix": "von 5",
     "status": {
-      "loading": "Stimmen werden geladen …",
-      "empty": "Stimmen von Selbständigen und Unternehmen, die ich begleitet habe.",
-      "unavailable": "Im Moment sind keine Bewertungen verfügbar."
+      "loading": "Stimmen werden geladen...",
+      "empty": "Stimmen von Selbstständigen und Unternehmen, die ich begleiten durfte.",
+      "unavailable": "Testimonials sind gerade nicht verfügbar."
     },
     "announcement": {
       "prefix": "Testimonial",
@@ -197,8 +197,8 @@
   },
   "contact": {
     "heading": "Bereit für eine Marke mit klarer Haltung?",
-    "paragraph": "Wenn du dir Klarheit, eine starke visuelle Identität und einen Webauftritt wünschst, der deine Vision wirklich widerspiegelt – dann lass uns sprechen.",
-    "emailPrompt": "Möchtest du lieber direkt per E-Mail schreiben?"
+    "paragraph": "Wenn du dir Klarheit, eine starke visuelle Identität und eine Website wünschst, die deine Vision wirklich widerspiegelt, lass uns sprechen.",
+    "emailPrompt": "Du möchtest lieber direkt per Mail schreiben?"
   },
   "contactForm": {
     "labels": {
@@ -206,16 +206,16 @@
       "email": "Deine E-Mail *",
       "projectTypes": "Wobei kann ich dich unterstützen?",
       "budget": "Budget (frei eintragbar)",
-      "budgetPlaceholder": "Budget eingeben",
+      "budgetPlaceholder": "Budget eintragen",
       "message": "Erzähl mir von deinem Projekt *",
-      "messagePlaceholder": "Vision, Ziele, Zeitplan oder Fragen. Alles, was dir wichtig ist …",
+      "messagePlaceholder": "Vision, Ziele, Zeitplan oder Fragen. Alles, was wichtig ist …",
       "submit": "Nachricht senden"
     },
     "projectTypes": {
       "branding": "Branding & Logo Design",
       "websiteDesign": "Website Design",
       "websiteDev": "Website Entwicklung",
-      "fullPackage": "Komplettes Marken- und Website Paket",
+      "fullPackage": "Komplettes Marken und Website Paket",
       "strategy": "Strategie & Beratung",
       "other": "Sonstiges"
     },
@@ -227,9 +227,9 @@
       "unsure": "Noch unsicher"
     },
     "status": {
-      "verifying": "Wird geprüft …",
-      "recaptchaError": "⚠️ reCAPTCHA konnte nicht geladen werden. Bitte aktualisieren und erneut versuchen.",
-      "sending": "Senden …",
+      "verifying": "Wird geprüft ...",
+      "recaptchaError": "⚠️ reCAPTCHA konnte nicht geladen werden. Bitte aktualisiere und versuch es erneut.",
+      "sending": "Wird gesendet ...",
       "success": "✅ Nachricht versendet. Bitte prüfe dein Postfach.",
       "failure": "⚠️ Versand fehlgeschlagen. Bitte versuche es erneut.",
       "errorPrefix": "⚠️"
@@ -280,8 +280,8 @@
   },
   "footer": {
     "heading": "Bereit, gemeinsam etwas Sinnvolles zu erschaffen.",
-    "description": "Ich entwerfe Marken und digitale Erlebnisse, die zugleich tiefgehend und klar sind. Teile mir deine Projektidee mit – und wir finden gemeinsam den ersten Schritt.",
-    "remote": "Remote unterwegs und mit Kund:innen weltweit verbunden.",
+    "description": "Ich gestalte Marken und digitale Erlebnisse, die zugleich tiefgehend und klar sind. Erzähl mir von deinem Projekt und wir finden gemeinsam den ersten Schritt.",
+    "remote": "Remote unterwegs und mit Kunden auf der ganzen Welt verbunden.",
     "navAria": "Footer-Navigation",
     "socialAria": "Social Links",
     "social": {
@@ -292,7 +292,7 @@
       "imprint": "Impressum",
       "privacy": "Datenschutz"
     },
-    "legalLine": "Ich unterstütze Unternehmen seit 2017 beim Aufbau klarer und bedeutsamer Marken."
+    "legalLine": "Ich unterstütze Unternehmen seit 2017 beim Aufbau klarer und bedeutungsvoller Marken."
   },
   "caseStudyBrisaBahia": {
     "seo": {
