@@ -12,6 +12,8 @@ type TestimonialEntry = {
   id: string;
   name: string;
   role: string;
+  role_translated_to_de?: string;
+  role_translated_to_en?: string;
   quote: string;
   excerpt: string;
   rating: number;
@@ -139,6 +141,42 @@ export default function TestimonialsSection() {
     };
   }, [showTranslation, locale]);
 
+  // Helper function to get the role to display based on toggle state and locale
+  const getDisplayRole = useCallback((entry: TestimonialEntry) => {
+    const isToggled = showTranslation[entry.id] || false;
+    const uiLanguage = locale as 'en' | 'de';
+    const isSameLanguage = uiLanguage === entry.originalLanguage;
+
+    // Get the translated role based on UI language
+    const translatedRole = uiLanguage === 'de' ? entry.role_translated_to_de : entry.role_translated_to_en;
+
+    let role: string;
+    let roleShowingOriginal: boolean;
+
+    if (isSameLanguage) {
+      // Website lang = Original lang → Always show original
+      role = entry.role;
+      roleShowingOriginal = true;
+    } else {
+      // Website lang ≠ Original lang → Show translation by default, allow toggle
+      if (isToggled) {
+        // User toggled to see original
+        role = entry.role;
+        roleShowingOriginal = true;
+      } else {
+        // Show translation (fallback to original if no translation available)
+        role = translatedRole || entry.role;
+        roleShowingOriginal = !translatedRole;
+      }
+    }
+
+    return {
+      role,
+      roleShowingOriginal,
+      hasRoleTranslation: !!translatedRole
+    };
+  }, [showTranslation, locale]);
+
   // Toggle function
   const toggleTranslation = useCallback((testimonialId: string) => {
     setShowTranslation(prev => ({
@@ -175,6 +213,8 @@ export default function TestimonialsSection() {
             const id = String(entry.id ?? `testimonial-${index}`);
             const name = (entry.name ?? "").trim();
             const role = (entry.role ?? "").trim();
+            const role_translated_to_de = entry.role_translated_to_de ? entry.role_translated_to_de.trim() : undefined;
+            const role_translated_to_en = entry.role_translated_to_en ? entry.role_translated_to_en.trim() : undefined;
             const originalLanguage = (entry.originalLanguage ?? "en") as 'en' | 'de';
             const text_original = (entry.text_original ?? "").trim();
             const text_translated_to_de = entry.text_translated_to_de ? entry.text_translated_to_de.trim() : undefined;
@@ -204,6 +244,8 @@ export default function TestimonialsSection() {
               id,
               name,
               role,
+              role_translated_to_de,
+              role_translated_to_en,
               quote,
               excerpt,
               rating,
@@ -635,6 +677,7 @@ export default function TestimonialsSection() {
                     const isFocusable = isSelected;
                     const disableMotion = prefersReducedMotion ? { transition: "none" } : undefined;
                     const displayData = getDisplayText(data, false) as { excerpt: string; showingOriginal: boolean; showTranslationToggle: boolean; originalLanguage: 'en' | 'de' };
+                    const displayRole = getDisplayRole(data);
 
                     return (
                       <li
@@ -666,14 +709,14 @@ export default function TestimonialsSection() {
                       >
                         <article className="testimonial-card">
                           <figure className="p-8">
-                            <div className="mx-auto flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
+                            <div className="mx-auto flex h-24 w-24 aspect-square items-center justify-center overflow-hidden rounded-full border border-neutral-200 bg-neutral-100">
                               <Image
                                 src={data.avatar}
                                 alt=""
                                 width={96}
                                 height={96}
                                 loading="lazy"
-                                className="h-full w-full object-cover"
+                                className="h-full w-full object-cover rounded-full"
                               />
                             </div>
 
@@ -681,7 +724,7 @@ export default function TestimonialsSection() {
                               <p>&ldquo;{displayData.excerpt}&rdquo;</p>
                             </blockquote>
 
-                            {isSelected && displayData.showTranslationToggle && (
+                            {isSelected && (displayData.showTranslationToggle || displayRole.hasRoleTranslation) && (
                               <p
                                 className="text-xs text-center mt-2"
                                 style={{ color: '#999' }}
@@ -762,7 +805,7 @@ export default function TestimonialsSection() {
                                   {data.name}
                                 </span>
                                 <span className="text-sm text-[#6a6a6a]">
-                                  {data.role}
+                                  {displayRole.role}
                                 </span>
                               </div>
 
@@ -849,6 +892,7 @@ export default function TestimonialsSection() {
       {/* Modal/Lightbox */}
       {modalData && (() => {
         const modalDisplayData = getDisplayText(modalData, true) as { text: string; showingOriginal: boolean; showTranslationToggle: boolean; originalLanguage: 'en' | 'de' };
+        const modalDisplayRole = getDisplayRole(modalData);
 
         return (
           <div
@@ -893,19 +937,19 @@ export default function TestimonialsSection() {
               </button>
 
               <div className="testimonial-modal-body">
-                <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100">
+                <div className="mx-auto flex h-32 w-32 aspect-square items-center justify-center overflow-hidden rounded-full border-2 border-neutral-200 bg-neutral-100">
                   <Image
                     src={modalData.avatar || FALLBACK_AVATAR}
                     alt={modalData.name}
                     width={128}
                     height={128}
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover rounded-full"
                   />
                 </div>
 
                 <h3 id="modal-title">{modalData.name}</h3>
-                <p>{modalData.role}</p>
+                <p>{modalDisplayRole.role}</p>
 
                 <div className="testimonial-modal-rating">
                   {Array.from({ length: 5 }).map((_, starIndex) => (
@@ -927,7 +971,7 @@ export default function TestimonialsSection() {
                   &ldquo;{modalDisplayData.text}&rdquo;
                 </blockquote>
 
-                {modalDisplayData.showTranslationToggle && (
+                {(modalDisplayData.showTranslationToggle || modalDisplayRole.hasRoleTranslation) && (
                   <p
                     className="text-xs text-center mt-3"
                     style={{ color: '#999' }}
