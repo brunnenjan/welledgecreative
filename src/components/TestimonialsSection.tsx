@@ -871,7 +871,7 @@ export default function TestimonialsSection() {
                 </div>
 
                 <blockquote className="testimonial-modal-quote">
-                  "{modalDisplayData.text}"
+                  &ldquo;{modalDisplayData.text}&rdquo;
                 </blockquote>
 
                 {modalDisplayData.isTranslated && (
