@@ -135,7 +135,7 @@ export default function ProfileContent() {
             />
           </span>
           <br />
-          <span className="whitespace-nowrap">{t("profile.headline.suffix")}</span>
+          {t("profile.headline.suffix")}
         </h1>
         <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto">
           <p>
