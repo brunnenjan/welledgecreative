@@ -213,8 +213,8 @@
       "name": "Dein Name *",
       "email": "Deine E-Mail *",
       "projectTypes": "Wobei kann ich dich unterstützen?",
-      "budget": "Budget (frei eintragbar)",
-      "budgetPlaceholder": "Budget eintragen",
+      "budget": "Budgetvorstellung (optional)",
+      "budgetPlaceholder": "z.B. 5.000 € oder 'flexibel'",
       "message": "Erzähl mir von deinem Projekt *",
       "messagePlaceholder": "Vision, Ziele, Zeitplan oder Fragen. Alles, was wichtig ist …",
       "submit": "Nachricht senden"

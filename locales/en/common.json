@@ -213,8 +213,8 @@
       "name": "Your Name *",
       "email": "Your Email *",
       "projectTypes": "What can I help you with?",
-      "budget": "Budget Range",
-      "budgetPlaceholder": "Select budget range",
+      "budget": "Budget Estimate (optional)",
+      "budgetPlaceholder": "e.g. €5,000 or 'flexible'",
       "message": "Tell me about your project *",
       "messagePlaceholder": "Share your vision, goals, timeline, or any questions...",
       "submit": "Send Message"

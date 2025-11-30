@@ -13,13 +13,6 @@ const PROJECT_TYPE_KEYS = [
   "contactForm.projectTypes.other",
 ] as const;
 
-const BUDGET_RANGE_KEYS = [
-  "contactForm.budgetRanges.under2k",
-  "contactForm.budgetRanges.twoToFive",
-  "contactForm.budgetRanges.fiveToTen",
-  "contactForm.budgetRanges.aboveTen",
-  "contactForm.budgetRanges.unsure",
-] as const;
 const RECAPTCHA_SITE_KEY = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
 
 export default function ContactFormStatic() {
@@ -179,24 +172,16 @@ export default function ContactFormStatic() {
           <label htmlFor="budget" style={{ display: "block", marginBottom: "0.5rem", color: "#fff", fontWeight: "600" }}>
             {t("contactForm.labels.budget")}
           </label>
-          <select
+          <input
+            type="text"
             id="budget"
             name="budget"
             value={formData.budget}
             onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
             disabled={isSubmitting}
-            style={{ width: "100%", padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff", cursor: "pointer" }}
-          >
-            <option value="">{t("contactForm.labels.budgetPlaceholder")}</option>
-            {BUDGET_RANGE_KEYS.map((key) => {
-              const label = t(key);
-              return (
-                <option key={key} value={label} style={{ background: "#1a1a1a", color: "#fff" }}>
-                  {label}
-              </option>
-              );
-            })}
-          </select>
+            placeholder={t("contactForm.labels.budgetPlaceholder")}
+            style={{ width: "100%", padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.1)", color: "#fff" }}
+          />
         </div>
 
         {/* Message */}
