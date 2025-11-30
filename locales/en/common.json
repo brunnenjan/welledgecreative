@@ -185,6 +185,7 @@
     "showOriginal": "Show original",
     "showTranslation": "Show translation",
     "translatedFrom": "Translated from",
+    "originalText": "Original text",
     "language": {
       "german": "German",
       "english": "English"

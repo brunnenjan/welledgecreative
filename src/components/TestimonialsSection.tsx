@@ -18,8 +18,9 @@ type TestimonialEntry = {
   avatar: string;
   site?: string;
   originalLanguage: 'en' | 'de';
-  original: string;
-  translation: string;
+  text_original: string;
+  text_translated_to_de?: string;
+  text_translated_to_en?: string;
 };
 
 const AUTOPLAY_INTERVAL = 6000;
@@ -89,21 +90,53 @@ export default function TestimonialsSection() {
     const isToggled = showTranslation[entry.id] || false;
     const uiLanguage = locale as 'en' | 'de';
 
-    // Determine if we should show translation
-    const shouldShowTranslation = isToggled
-      ? (uiLanguage === entry.originalLanguage) // If toggled, show opposite
-      : (uiLanguage !== entry.originalLanguage); // If not toggled, show translation if UI lang differs
+    // Determine if website language matches original language
+    const isSameLanguage = uiLanguage === entry.originalLanguage;
 
-    const text = shouldShowTranslation && entry.translation ? entry.translation : entry.original;
-    const isTranslated = shouldShowTranslation && entry.translation !== '';
-    const translatedFromKey = entry.originalLanguage === 'de' ? 'german' : 'english';
+    // Get the translation based on UI language
+    const translatedText = uiLanguage === 'de' ? entry.text_translated_to_de : entry.text_translated_to_en;
+
+    // Decide what to show
+    let text: string;
+    let showingOriginal: boolean;
+    let showTranslationToggle: boolean;
+
+    if (isSameLanguage) {
+      // Website lang = Original lang → Always show original, no toggle
+      text = entry.text_original;
+      showingOriginal = true;
+      showTranslationToggle = false;
+    } else {
+      // Website lang ≠ Original lang → Show translation by default, allow toggle
+      if (isToggled) {
+        // User toggled to see original
+        text = entry.text_original;
+        showingOriginal = true;
+      } else {
+        // Show translation
+        text = translatedText || entry.text_original;
+        showingOriginal = false;
+      }
+      showTranslationToggle = !!translatedText;
+    }
 
     if (isModal) {
-      return { text, isTranslated, translatedFromKey };
+      return {
+        text,
+        showingOriginal,
+        showTranslationToggle,
+        originalLanguage: entry.originalLanguage
+      };
     }
 
     const excerpt = createExcerpt(text, TESTIMONIALS_CONFIG.EXCERPT_MAX_CHARS, TESTIMONIALS_CONFIG.EXCERPT_SUFFIX);
-    return { text, excerpt, isTranslated, translatedFromKey };
+    return {
+      text,
+      excerpt,
+      showingOriginal,
+      showTranslationToggle,
+      originalLanguage: entry.originalLanguage
+    };
   }, [showTranslation, locale]);
 
   // Toggle function
@@ -143,8 +176,9 @@ export default function TestimonialsSection() {
             const name = (entry.name ?? "").trim();
             const role = (entry.role ?? "").trim();
             const originalLanguage = (entry.originalLanguage ?? "en") as 'en' | 'de';
-            const original = (entry.original ?? entry.quote ?? "").trim();
-            const translation = (entry.translation ?? "").trim();
+            const text_original = (entry.text_original ?? "").trim();
+            const text_translated_to_de = entry.text_translated_to_de ? entry.text_translated_to_de.trim() : undefined;
+            const text_translated_to_en = entry.text_translated_to_en ? entry.text_translated_to_en.trim() : undefined;
             const rawRating = typeof entry.rating === "number" ? entry.rating : Number(entry.rating ?? 0);
             const rating = Number.isFinite(rawRating) ? Math.min(Math.max(rawRating, 0), 5) : 0;
             const avatarPath = (entry.avatar ?? "").trim();
@@ -155,12 +189,11 @@ export default function TestimonialsSection() {
                 : `/${avatarPath.replace(/^\/+/u, "")}`
               : FALLBACK_AVATAR;
 
-            if (!name || !role || !original) {
+            if (!name || !role || !text_original) {
               return null;
             }
 
-            // For backward compatibility: if quote exists but not original/translation, use quote
-            const quote = original;
+            const quote = text_original;
             const excerpt = createExcerpt(
               quote,
               TESTIMONIALS_CONFIG.EXCERPT_MAX_CHARS,
@@ -177,8 +210,9 @@ export default function TestimonialsSection() {
               avatar,
               site: site || undefined,
               originalLanguage,
-              original,
-              translation,
+              text_original,
+              text_translated_to_de,
+              text_translated_to_en,
             };
           })
           .filter((item) => Boolean(item)) as TestimonialEntry[];
@@ -600,8 +634,7 @@ export default function TestimonialsSection() {
                     const isSelected = position === "selected";
                     const isFocusable = isSelected;
                     const disableMotion = prefersReducedMotion ? { transition: "none" } : undefined;
-                    const displayData = getDisplayText(data, false) as { excerpt: string; isTranslated: boolean; translatedFromKey: string };
-                    const hasTranslation = data.translation && data.translation.trim() !== '';
+                    const displayData = getDisplayText(data, false) as { excerpt: string; showingOriginal: boolean; showTranslationToggle: boolean; originalLanguage: 'en' | 'de' };
 
                     return (
                       <li
@@ -648,44 +681,65 @@ export default function TestimonialsSection() {
                               <p>&ldquo;{displayData.excerpt}&rdquo;</p>
                             </blockquote>
 
-                            {displayData.isTranslated && (
-                              <p className="text-xs text-neutral-400 italic mt-2 text-center">
-                                {t("testimonials.translatedFrom")} {t(`testimonials.language.${displayData.translatedFromKey}`)}
-                              </p>
-                            )}
-
-                            {isSelected && hasTranslation && (
-                              <button
-                                type="button"
-                                className="testimonial-toggle"
-                                onClick={(event) => {
-                                  event.preventDefault();
-                                  event.stopPropagation();
-                                  toggleTranslation(data.id);
-                                }}
-                                style={{
-                                  display: 'block',
-                                  margin: '0.5rem auto 0',
-                                  padding: '0.25rem 0.75rem',
-                                  fontSize: '0.75rem',
-                                  color: '#6a6a6a',
-                                  background: 'transparent',
-                                  border: '1px solid #e0e0e0',
-                                  borderRadius: '1rem',
-                                  cursor: 'pointer',
-                                  transition: 'all 0.2s ease',
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.currentTarget.style.borderColor = '#f58222';
-                                  e.currentTarget.style.color = '#f58222';
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.currentTarget.style.borderColor = '#e0e0e0';
-                                  e.currentTarget.style.color = '#6a6a6a';
-                                }}
+                            {isSelected && displayData.showTranslationToggle && (
+                              <p
+                                className="text-xs text-center mt-2"
+                                style={{ color: '#999' }}
                               >
-                                {showTranslation[data.id] ? t("testimonials.showOriginal") : t("testimonials.showTranslation")}
-                              </button>
+                                {displayData.showingOriginal ? (
+                                  <>
+                                    {t("testimonials.originalText")} ({displayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")})
+                                    {' · '}
+                                    <button
+                                      type="button"
+                                      onClick={(event) => {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                        toggleTranslation(data.id);
+                                      }}
+                                      style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        color: '#999',
+                                        textDecoration: 'underline',
+                                        cursor: 'pointer',
+                                        padding: 0,
+                                        font: 'inherit',
+                                      }}
+                                      onMouseEnter={(e) => { e.currentTarget.style.color = '#f58222'; }}
+                                      onMouseLeave={(e) => { e.currentTarget.style.color = '#999'; }}
+                                    >
+                                      {t("testimonials.showTranslation")}
+                                    </button>
+                                  </>
+                                ) : (
+                                  <>
+                                    {t("testimonials.translatedFrom")} {displayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}
+                                    {' · '}
+                                    <button
+                                      type="button"
+                                      onClick={(event) => {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                        toggleTranslation(data.id);
+                                      }}
+                                      style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        color: '#999',
+                                        textDecoration: 'underline',
+                                        cursor: 'pointer',
+                                        padding: 0,
+                                        font: 'inherit',
+                                      }}
+                                      onMouseEnter={(e) => { e.currentTarget.style.color = '#f58222'; }}
+                                      onMouseLeave={(e) => { e.currentTarget.style.color = '#999'; }}
+                                    >
+                                      {t("testimonials.showOriginal")}
+                                    </button>
+                                  </>
+                                )}
+                              </p>
                             )}
 
                             {isSelected && (
@@ -794,8 +848,7 @@ export default function TestimonialsSection() {
 
       {/* Modal/Lightbox */}
       {modalData && (() => {
-        const modalDisplayData = getDisplayText(modalData, true) as { text: string; isTranslated: boolean; translatedFromKey: string };
-        const hasTranslation = modalData.translation && modalData.translation.trim() !== '';
+        const modalDisplayData = getDisplayText(modalData, true) as { text: string; showingOriginal: boolean; showTranslationToggle: boolean; originalLanguage: 'en' | 'de' };
 
         return (
           <div
@@ -874,43 +927,65 @@ export default function TestimonialsSection() {
                   &ldquo;{modalDisplayData.text}&rdquo;
                 </blockquote>
 
-                {modalDisplayData.isTranslated && (
-                  <p className="text-xs text-neutral-400 italic mt-2 text-center">
-                    {t("testimonials.translatedFrom")} {t(`testimonials.language.${modalDisplayData.translatedFromKey}`)}
-                  </p>
-                )}
-
-                {hasTranslation && (
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      toggleTranslation(modalData.id);
-                    }}
-                    style={{
-                      display: 'block',
-                      margin: '1rem auto 0.5rem',
-                      padding: '0.5rem 1rem',
-                      fontSize: '0.875rem',
-                      color: '#6a6a6a',
-                      background: 'transparent',
-                      border: '1px solid #e0e0e0',
-                      borderRadius: '1.5rem',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = '#f58222';
-                      e.currentTarget.style.color = '#f58222';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = '#e0e0e0';
-                      e.currentTarget.style.color = '#6a6a6a';
-                    }}
+                {modalDisplayData.showTranslationToggle && (
+                  <p
+                    className="text-xs text-center mt-3"
+                    style={{ color: '#999' }}
                   >
-                    {showTranslation[modalData.id] ? t("testimonials.showOriginal") : t("testimonials.showTranslation")}
-                  </button>
+                    {modalDisplayData.showingOriginal ? (
+                      <>
+                        {t("testimonials.originalText")} ({modalDisplayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")})
+                        {' · '}
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            toggleTranslation(modalData.id);
+                          }}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            color: '#999',
+                            textDecoration: 'underline',
+                            cursor: 'pointer',
+                            padding: 0,
+                            font: 'inherit',
+                          }}
+                          onMouseEnter={(e) => { e.currentTarget.style.color = '#f58222'; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.color = '#999'; }}
+                        >
+                          {t("testimonials.showTranslation")}
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        {t("testimonials.translatedFrom")} {modalDisplayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}
+                        {' · '}
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            toggleTranslation(modalData.id);
+                          }}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            color: '#999',
+                            textDecoration: 'underline',
+                            cursor: 'pointer',
+                            padding: 0,
+                            font: 'inherit',
+                          }}
+                          onMouseEnter={(e) => { e.currentTarget.style.color = '#f58222'; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.color = '#999'; }}
+                        >
+                          {t("testimonials.showOriginal")}
+                        </button>
+                      </>
+                    )}
+                  </p>
                 )}
 
                 {modalData.site && (
