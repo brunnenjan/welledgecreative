@@ -56,12 +56,13 @@
     "headline": {
       "prefix": "Hi, ich bin",
       "name": "Jan",
-      "suffix": "Designer, Markenstratege, Problemlöser."
+      "suffix": "Designer · Markenstratege · Problemlöser."
     },
-    "paragraphOne": "Seit über sieben Jahren unterstütze ich Selbstständige, Retreat- und Wellness-Zentren sowie kleine Unternehmen dabei, Marken aufzubauen, die authentisch wirken, klar positioniert sind und online überzeugen.",
-    "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit klarer, gefühlvoller Gestaltung. So versteht dein Publikum sofort, wer du bist und warum deine Marke relevant ist.",
+    "paragraphOne": "Seit über sieben Jahren helfe ich Selbständigen, Retreat- und Wellnesszentren sowie kleinen Unternehmen, Marken zu formen, die echt wirken, klar positioniert sind und online überzeugen.",
+    "paragraphTwo": "Mein Ansatz verbindet strategisches Denken mit klarer, gefühlvoller Gestaltung – so weiß dein Publikum sofort, wer du bist und warum deine Marke zählt.",
     "planProject": "Projekt planen",
-    "planProjectAria": "Projekt planen – scrolle zum Kontaktformular"
+    "planProjectAria": "Projekt planen – scrolle zum Kontaktformular",
+    "arrowLabel": "Das bin ich"
   },
   "howIWork": {
     "heading": "So",

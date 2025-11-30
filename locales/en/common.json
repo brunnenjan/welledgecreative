@@ -58,10 +58,11 @@
       "name": "Jan",
       "suffix": "– Designer, Brand Thinker, Problem-Solver."
     },
-    "paragraphOne": "For the past 7 years I’ve been helping entrepreneurs, retreat & wellness centers, and small businesses build brands that feel authentic, look distinctive, and work beautifully online.",
+    "paragraphOne": "For the past 7 years I've been helping entrepreneurs, retreat & wellness centers, and small businesses build brands that feel authentic, look distinctive, and work beautifully online.",
     "paragraphTwo": "My approach combines strategic thinking with clean, emotional design — so your audience instantly understands who you are and why you matter.",
     "planProject": "Plan your Project",
-    "planProjectAria": "Plan your project – scroll to contact form"
+    "planProjectAria": "Plan your project – scroll to contact form",
+    "arrowLabel": "That's Me!"
   },
   "howIWork": {
     "heading": "That’s how I",

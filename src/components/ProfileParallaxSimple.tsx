@@ -7,11 +7,13 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { PROFILE_CONFIG } from "../lib/profileConfig";
 import { PARALLAX_CONFIG } from "@/config/parallaxSettings";
+import { useI18n } from "@/components/providers/I18nProvider";
 
 
 const CONFIG = PROFILE_CONFIG;
 
 export default function ProfileParallaxSimple() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
   const mobileArrowRef = useRef<HTMLDivElement>(null);
@@ -340,7 +342,7 @@ export default function ProfileParallaxSimple() {
           >
             <div className="flex items-center gap-4">
               <div className="text-[#f58222] text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg">
-                That&rsquo;s Me!
+                {t("profile.arrowLabel")}
               </div>
               <svg
                 width="120"
@@ -401,7 +403,7 @@ export default function ProfileParallaxSimple() {
                 />
               </svg>
               <div className="text-[#f58222] text-2xl font-bold tracking-wide drop-shadow-lg">
-                That&rsquo;s Me!
+                {t("profile.arrowLabel")}
               </div>
             </div>
           </div>
