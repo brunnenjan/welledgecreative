@@ -735,6 +735,7 @@ export default function TestimonialsSection() {
                                     {' · '}
                                     <button
                                       type="button"
+                                      className="testimonial-toggle"
                                       onClick={(event) => {
                                         event.preventDefault();
                                         event.stopPropagation();
@@ -761,6 +762,7 @@ export default function TestimonialsSection() {
                                     {' · '}
                                     <button
                                       type="button"
+                                      className="testimonial-toggle"
                                       onClick={(event) => {
                                         event.preventDefault();
                                         event.stopPropagation();
@@ -973,7 +975,7 @@ export default function TestimonialsSection() {
 
                 {(modalDisplayData.showTranslationToggle || modalDisplayRole.hasRoleTranslation) && (
                   <p
-                    className="text-xs text-center mt-3"
+                    className="text-xs text-center mt-1"
                     style={{ color: '#999' }}
                   >
                     {modalDisplayData.showingOriginal ? (
@@ -982,6 +984,7 @@ export default function TestimonialsSection() {
                         {' · '}
                         <button
                           type="button"
+                          className="testimonial-toggle"
                           onClick={(event) => {
                             event.preventDefault();
                             event.stopPropagation();
@@ -1008,6 +1011,7 @@ export default function TestimonialsSection() {
                         {' · '}
                         <button
                           type="button"
+                          className="testimonial-toggle"
                           onClick={(event) => {
                             event.preventDefault();
                             event.stopPropagation();
