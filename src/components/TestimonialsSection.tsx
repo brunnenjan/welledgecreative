@@ -749,12 +749,10 @@ export default function TestimonialsSection() {
                               >
                                 {displayData.showingOriginal ? (
                                   <>
-                                    {t("testimonials.originalText")} ({displayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")})
-                                    {' · '}
-                                    <button
+                                    {t("testimonials.originalText")} ({displayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}) · <button
                                       type="button"
                                       className="testimonial-toggle"
-                                      onClickCapture={(event) => {
+                                      onMouseDown={(event) => {
                                         event.stopPropagation();
                                         event.preventDefault();
                                         toggleTranslation(data.id);
@@ -776,12 +774,10 @@ export default function TestimonialsSection() {
                                   </>
                                 ) : (
                                   <>
-                                    {t("testimonials.translatedFrom")} {displayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}
-                                    {' · '}
-                                    <button
+                                    {t("testimonials.translatedFrom")} ({displayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}) · <button
                                       type="button"
                                       className="testimonial-toggle"
-                                      onClickCapture={(event) => {
+                                      onMouseDown={(event) => {
                                         event.stopPropagation();
                                         event.preventDefault();
                                         toggleTranslation(data.id);
@@ -1016,12 +1012,10 @@ export default function TestimonialsSection() {
                   >
                     {modalDisplayData.showingOriginal ? (
                       <>
-                        {t("testimonials.originalText")} ({modalDisplayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")})
-                        {' · '}
-                        <button
+                        {t("testimonials.originalText")} ({modalDisplayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}) · <button
                           type="button"
                           className="testimonial-toggle"
-                          onClickCapture={(event) => {
+                          onClick={(event) => {
                             event.stopPropagation();
                             event.preventDefault();
                             toggleTranslation(modalData.id);
@@ -1043,12 +1037,10 @@ export default function TestimonialsSection() {
                       </>
                     ) : (
                       <>
-                        {t("testimonials.translatedFrom")} {modalDisplayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}
-                        {' · '}
-                        <button
+                        {t("testimonials.translatedFrom")} ({modalDisplayData.originalLanguage === 'de' ? t("testimonials.language.german") : t("testimonials.language.english")}) · <button
                           type="button"
                           className="testimonial-toggle"
-                          onClickCapture={(event) => {
+                          onClick={(event) => {
                             event.stopPropagation();
                             event.preventDefault();
                             toggleTranslation(modalData.id);

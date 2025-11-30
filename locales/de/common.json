@@ -184,11 +184,11 @@
     },
     "showOriginal": "Original anzeigen",
     "showTranslation": "Übersetzung anzeigen",
-    "translatedFrom": "Übersetzt aus dem",
-    "originalText": "Originaltext",
+    "translatedFrom": "Übersetzt",
+    "originalText": "Original",
     "language": {
-      "german": "Deutschen",
-      "english": "Englischen"
+      "german": "Deutsch",
+      "english": "Englisch"
     },
     "paginationLabel": "Testimonial auswählen",
     "jumpTo": "Wechsel zu Testimonial",

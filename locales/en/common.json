@@ -184,8 +184,8 @@
     },
     "showOriginal": "Show original",
     "showTranslation": "Show translation",
-    "translatedFrom": "Translated from",
-    "originalText": "Original text",
+    "translatedFrom": "Translated",
+    "originalText": "Original",
     "language": {
       "german": "German",
       "english": "English"
