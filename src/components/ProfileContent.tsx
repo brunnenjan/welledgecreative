@@ -135,7 +135,7 @@ export default function ProfileContent() {
             />
           </span>
           <br />
-          {t("profile.headline.suffix")}
+          <span className="inline-block" style={{ fontSize: '0.618em' }}>{t("profile.headline.suffix")}</span>
         </h1>
         <div ref={textRef} className="space-y-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl mx-auto">
           <p>
