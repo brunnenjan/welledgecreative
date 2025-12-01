@@ -31,6 +31,34 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // German domains → /de
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: '(welledgecreative\\.de|welledgecreative\\.com|well-edge-creative\\.de)',
+          },
+        ],
+        destination: '/de',
+        permanent: false,
+      },
+      // English domain → /en
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: '(well-edge-creative\\.com)',
+          },
+        ],
+        destination: '/en',
+        permanent: false,
+      },
+    ];
+  },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },

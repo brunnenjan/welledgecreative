@@ -6,6 +6,7 @@ const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const host = request.headers.get('host') || '';
 
   if (
     pathname.startsWith("/_next") ||
@@ -16,6 +17,30 @@ export function middleware(request: NextRequest) {
     PUBLIC_FILE.test(pathname)
   ) {
     return;
+  }
+
+  // Domain-based routing for root path
+  if (pathname === '/') {
+    const germanHosts = [
+      'welledgecreative.de',
+      'www.welledgecreative.de',
+      'welledgecreative.com',
+      'www.welledgecreative.com',
+      'well-edge-creative.de',
+      'www.well-edge-creative.de',
+    ];
+
+    const englishHosts = [
+      'well-edge-creative.com',
+      'www.well-edge-creative.com',
+    ];
+
+    if (germanHosts.includes(host)) {
+      return NextResponse.redirect(new URL('/de', request.url));
+    }
+    if (englishHosts.includes(host)) {
+      return NextResponse.redirect(new URL('/en', request.url));
+    }
   }
 
   const missingLocale = i18nConfig.locales.every((locale) => {
