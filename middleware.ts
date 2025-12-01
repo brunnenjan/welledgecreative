@@ -19,30 +19,7 @@ export function middleware(request: NextRequest) {
     return;
   }
 
-  // Domain-based routing for root path
-  if (pathname === '/') {
-    const germanHosts = [
-      'welledgecreative.de',
-      'www.welledgecreative.de',
-      'welledgecreative.com',
-      'www.welledgecreative.com',
-      'well-edge-creative.de',
-      'www.well-edge-creative.de',
-    ];
-
-    const englishHosts = [
-      'well-edge-creative.com',
-      'www.well-edge-creative.com',
-    ];
-
-    if (germanHosts.includes(host)) {
-      return NextResponse.redirect(new URL('/de', request.url));
-    }
-    if (englishHosts.includes(host)) {
-      return NextResponse.redirect(new URL('/en', request.url));
-    }
-  }
-
+  // Check if path already has a locale
   const missingLocale = i18nConfig.locales.every((locale) => {
     return !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`;
   });
@@ -51,7 +28,32 @@ export function middleware(request: NextRequest) {
     return;
   }
 
-  const locale = getPreferredLocale(request);
+  // Domain-based routing for all paths without locale
+  const germanHosts = [
+    'welledgecreative.de',
+    'www.welledgecreative.de',
+    'welledgecreative.com',
+    'www.welledgecreative.com',
+    'well-edge-creative.de',
+    'www.well-edge-creative.de',
+  ];
+
+  const englishHosts = [
+    'well-edge-creative.com',
+    'www.well-edge-creative.com',
+  ];
+
+  let locale: string;
+
+  if (germanHosts.includes(host)) {
+    locale = 'de';
+  } else if (englishHosts.includes(host)) {
+    locale = 'en';
+  } else {
+    // Fallback to preferred locale from cookie/accept-language
+    locale = getPreferredLocale(request);
+  }
+
   const localizedPath = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
   return NextResponse.redirect(new URL(localizedPath, request.url));
 }
