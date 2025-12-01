@@ -6,7 +6,8 @@ const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const host = request.headers.get('host') || '';
+  // Remove port from host if present (e.g., "example.com:443" -> "example.com")
+  const host = (request.headers.get('host') || '').split(':')[0] || '';
 
   if (
     pathname.startsWith("/_next") ||
@@ -29,28 +30,23 @@ export function middleware(request: NextRequest) {
   }
 
   // Domain-based routing for all paths without locale
-  const germanHosts = [
-    'welledgecreative.de',
-    'www.welledgecreative.de',
-    'welledgecreative.com',
-    'www.welledgecreative.com',
-    'well-edge-creative.de',
-    'www.well-edge-creative.de',
-  ];
-
-  const englishHosts = [
-    'well-edge-creative.com',
-    'www.well-edge-creative.com',
-  ];
-
+  // Determine locale based on domain
   let locale: string;
 
-  if (germanHosts.includes(host)) {
-    locale = 'de';
-  } else if (englishHosts.includes(host)) {
+  // Check for English domain first (most specific)
+  if (host === 'well-edge-creative.com' || host === 'www.well-edge-creative.com') {
     locale = 'en';
-  } else {
-    // Fallback to preferred locale from cookie/accept-language
+  }
+  // All other domains should use German
+  else if (
+    host === 'welledgecreative.de' || host === 'www.welledgecreative.de' ||
+    host === 'welledgecreative.com' || host === 'www.welledgecreative.com' ||
+    host === 'well-edge-creative.de' || host === 'www.well-edge-creative.de'
+  ) {
+    locale = 'de';
+  }
+  // Fallback to preferred locale from cookie/accept-language for unknown domains
+  else {
     locale = getPreferredLocale(request);
   }
 
