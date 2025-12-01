@@ -1,84 +1,47 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { i18nConfig, isLocale } from "./src/i18n/config";
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-const PUBLIC_FILE = /\.(.*)$/;
+export function middleware(req: NextRequest) {
+  const url = req.nextUrl.clone();
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  // Remove port from host if present (e.g., "example.com:443" -> "example.com")
-  const host = (request.headers.get('host') || '').split(':')[0] || '';
+  // Vercel proxies -> always use x-forwarded-host first
+  const host =
+    req.headers.get('x-forwarded-host') ||
+    req.headers.get('host') ||
+    '';
 
-  if (
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/assets") ||
-    pathname.startsWith("/phpmailer") ||
-    pathname === "/contact-simple.php" ||
-    PUBLIC_FILE.test(pathname)
-  ) {
-    return;
-  }
+  console.log("Middleware host:", host);
 
-  // Check if path already has a locale
-  const missingLocale = i18nConfig.locales.every((locale) => {
-    return !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`;
-  });
+  // COM domains = EN
+  const isCom =
+    host === 'well-edge-creative.com' ||
+    host === 'www.well-edge-creative.com' ||
+    host === 'welledgecreative.com' ||
+    host === 'www.welledgecreative.com';
 
-  if (!missingLocale) {
-    return;
-  }
+  // DE domains = DE
+  const isDe =
+    host === 'well-edge-creative.de' ||
+    host === 'www.well-edge-creative.de' ||
+    host === 'welledgecreative.de' ||
+    host === 'www.welledgecreative.de';
 
-  // Domain-based routing for all paths without locale
-  // Determine locale based on domain
-  let locale: string;
+  // Only redirect the root path
+  if (url.pathname === '/') {
+    if (isCom) {
+      url.pathname = '/en';
+      return NextResponse.redirect(url);
+    }
 
-  // Check for English domain first (most specific)
-  if (host === 'well-edge-creative.com' || host === 'www.well-edge-creative.com') {
-    locale = 'en';
-  }
-  // All other domains should use German
-  else if (
-    host === 'welledgecreative.de' || host === 'www.welledgecreative.de' ||
-    host === 'welledgecreative.com' || host === 'www.welledgecreative.com' ||
-    host === 'well-edge-creative.de' || host === 'www.well-edge-creative.de'
-  ) {
-    locale = 'de';
-  }
-  // Fallback to preferred locale from cookie/accept-language for unknown domains
-  else {
-    locale = getPreferredLocale(request);
-  }
-
-  const localizedPath = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
-  return NextResponse.redirect(new URL(localizedPath, request.url));
-}
-
-function getPreferredLocale(request: NextRequest) {
-  const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
-  if (cookieLocale && isLocale(cookieLocale)) {
-    return cookieLocale;
-  }
-
-  const acceptLanguage = request.headers.get("accept-language");
-  if (acceptLanguage) {
-    const languages = acceptLanguage.split(",").map((entry) => entry.split(";")[0]?.trim());
-    for (const language of languages) {
-      if (!language) continue;
-      const normalized = language.toLowerCase();
-      if (isLocale(normalized)) {
-        return normalized;
-      }
-      const base = normalized.split("-")[0];
-      if (base && isLocale(base)) {
-        return base;
-      }
+    if (isDe) {
+      url.pathname = '/de';
+      return NextResponse.redirect(url);
     }
   }
 
-  return i18nConfig.defaultLocale;
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|api|assets|favicon.ico|contact-simple\\.php|phpmailer).*)"],
+  matcher: ['/'], // apply only on homepage
 };
