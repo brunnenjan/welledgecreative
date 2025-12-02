@@ -28,7 +28,14 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
   url.pathname = `/${locale}${pathname === '/' ? '' : pathname}`;
 
-  return NextResponse.redirect(url);
+  const response = NextResponse.redirect(url);
+
+  // Debug headers (visible in Network tab)
+  response.headers.set('X-Middleware-Host', host);
+  response.headers.set('X-Middleware-Locale', locale);
+  response.headers.set('X-Middleware-IsDe', isDeDomain.toString());
+
+  return response;
 }
 
 export const config = {
