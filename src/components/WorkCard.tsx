@@ -6,7 +6,7 @@ export default function WorkCard({ item }: { item: Case }) {
   const cover = item.images?.[0];
   return (
     <Link
-      href={`/work/${item.slug}`}
+      href={item.site || `/work/${item.slug}`}
       className="group rounded-2xl border border-white/10 overflow-hidden hover:border-white/20 transition"
     >
       {cover && (

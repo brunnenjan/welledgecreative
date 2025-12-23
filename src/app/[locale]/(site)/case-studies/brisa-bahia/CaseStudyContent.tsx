@@ -527,7 +527,7 @@ export default function CaseStudyContent() {
             <div className="mt-8 space-y-4">
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
-                  href="https://brisabahia.com"
+                  href="http://brisabahia.welledgecreative.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-base font-semibold text-accent underline-offset-4 transition-colors hover:text-accent/80"

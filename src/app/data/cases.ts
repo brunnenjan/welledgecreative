@@ -28,7 +28,7 @@ export const cases: Case[] = [
     problem: "Needed a premium presence and a clear path to booking across devices.",
     approach: "Defined positioning and story, created logo suite & visual system, rebuilt existing WordPress site with smooth scroll depth.",
     result: "Visitors grasp the offer quickly and move confidently toward contact/booking.",
-    site: "http://brisabahia.welledgecreative.com/",
+    site: "/case-studies/brisa-bahia",
     color: "#0B4216",
     images: [
       {
