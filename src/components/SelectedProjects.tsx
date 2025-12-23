@@ -19,7 +19,7 @@ const FEATURED_PROJECTS: FeaturedProject[] = [
   {
     slug: "brisa-bahia",
     year: "2025",
-    site: "/case-studies/brisa-bahia",
+    site: "http://brisabahia.welledgecreative.com/",
     images: [
       { src: "/case-studies/brisa-bahia/mockup-big-screen-tablet-mobile-webiste.webp", altKey: "selectedProjects.projects.brisa-bahia.imageAlt" },
     ],
