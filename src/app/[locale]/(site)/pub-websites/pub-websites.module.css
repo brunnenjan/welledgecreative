@@ -95,9 +95,7 @@
 .plus { color: #a94a00; font-size: 1.5rem; font-weight: 400; transition: transform .2s; }
 .questions details[open] .plus { transform: rotate(45deg); }
 .questions details p { padding: 0 35px 24px 0; color: #616161; }
-.about { display: grid; grid-template-columns: 300px 1fr; gap: 84px; align-items: center; padding-block: 32px 104px; max-width: 1000px; }
-.portrait { overflow: hidden; border-radius: 20px; background: #f5f5f5; aspect-ratio: 1; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; }
+.about { padding-block: 32px 104px; max-width: 800px; }
 .about .lead { margin-top: 24px; }
 .page .signature { margin-top: 24px; font-size: 1.5rem; font-weight: 600; }
 .signature span { display: inline-block; margin-left: 14px; font-size: .875rem; font-weight: 400; color: #737373; }
@@ -123,7 +121,6 @@
   .sectionHead, .promiseGrid { gap: 32px; }
   .packageGrid { gap: 28px; }
   .baseCard { padding: 28px; }
-  .about { grid-template-columns: 230px 1fr; gap: 40px; }
   .referenceNote { align-items: flex-start; flex-direction: column; gap: 24px; }
 }
 @media (max-width: 700px) {
@@ -147,7 +144,6 @@
   .benefits p { margin-top: 10px; }
   .steps li { gap: 20px; }
   .about { padding-block: 10px 60px; }
-  .portrait { width: min(100%, 300px); }
   .closing { padding-bottom: 24px; }
   .closingCard { padding: 40px 22px; border-radius: 18px; }
   .actions { align-items: stretch; flex-direction: column; gap: 22px; }
@@ -162,7 +158,7 @@
 .jumpNav a { display: inline-flex; align-items: center; gap: 14px; padding-block: 10px; color: #525252; font-size: .9375rem; font-weight: 600; border-bottom: 1px solid #ddd; transition: color .2s, border-color .2s; }
 .jumpNav a:hover { color: #a94a00; border-color: var(--color-accent); }
 .page section[id] { scroll-margin-top: 100px; }
-.mockupLink { display: block; position: relative; overflow: hidden; border-radius: 20px; }
+.mockupLink { display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in; background: transparent; position: relative; overflow: hidden; border-radius: 20px; }
 .mockupLink img { transition: transform .4s ease; }
 .mockupLink:hover img { transform: scale(1.035); }
 .mockupCta { position: absolute; bottom: 16px; right: 16px; display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; background: #fff; color: #1a1a1a; font-size: .875rem; box-shadow: 0 4px 20px #00000012; }

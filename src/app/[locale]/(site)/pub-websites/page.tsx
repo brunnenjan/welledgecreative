@@ -23,8 +23,12 @@ export default function PubWebsitesPage() {
   const shots = list<Shot>("showcase.items");
   const galleryRef = useRef<HTMLDialogElement>(null);
   const [activeShot, setActiveShot] = useState(0);
-  const currentShot = shots[activeShot];
-  const moveShot = (direction: number) => setActiveShot(index => (index + direction + shots.length) % shots.length);
+  const galleryImages = [
+    { src: "/assets/misc/projects/irish-pub-websites-mockup.webp", title: text("reference.title"), alt: text("interactive.mockupAlt"), width: 1440, height: 1080 },
+    ...shots.map(shot => ({ src: `/assets/misc/pub-websites/${shot.file}`, title: shot.title, alt: shot.alt, width: 1280, height: 800 })),
+  ];
+  const currentShot = galleryImages[activeShot];
+  const moveShot = (direction: number) => setActiveShot(index => (index + direction + galleryImages.length) % galleryImages.length);
   const openShot = (index: number) => {
     setActiveShot(index);
     galleryRef.current?.showModal();
@@ -50,10 +54,10 @@ export default function PubWebsitesPage() {
           <div className={styles.heroPrice}><strong>{text("package.price")}</strong><span>{text("labels.onePage")}</span></div>
         </div>
         <div className={styles.heroVisual}>
-          <a href="https://rocklore.de" target="_blank" rel="noopener noreferrer" className={styles.mockupLink}>
+          <button type="button" onClick={() => openShot(0)} aria-label={`${text("interactive.enlarge")}: ${text("interactive.mockupAlt")}`} aria-haspopup="dialog" className={styles.mockupLink}>
             <Image src="/assets/misc/projects/irish-pub-websites-mockup.webp" alt={text("interactive.mockupAlt")} width={1600} height={1200} priority sizes="(max-width: 900px) 100vw, 55vw" className={styles.heroImage} />
-            <span className={styles.mockupCta}>{text("liveCta")}<Arrow /></span>
-          </a>
+            <span className={styles.mockupCta}>{text("interactive.enlarge")}<Arrow /></span>
+          </button>
           <div className={styles.proof}><span className={styles.dot} /><p>{text("proof")}</p></div>
         </div>
       </section>
@@ -74,7 +78,7 @@ export default function PubWebsitesPage() {
         <div className={styles.sectionHead}><div>{label("reference")}<h2 id="showcase-title">{text("showcase.title")}</h2></div><p>{text("showcase.body")}</p></div>
         <div className={styles.showcaseGrid}>{shots.map((shot, index) => (
           <figure key={shot.file} className={styles.shot}>
-            <button type="button" onClick={() => openShot(index)} aria-label={`${text("interactive.enlarge")}: ${shot.title}`} aria-haspopup="dialog" className={styles.shotImage}>
+            <button type="button" onClick={() => openShot(index + 1)} aria-label={`${text("interactive.enlarge")}: ${shot.title}`} aria-haspopup="dialog" className={styles.shotImage}>
               <Image src={`/assets/misc/pub-websites/${shot.file}`} alt={shot.alt} width={1280} height={800} sizes="(max-width: 700px) 100vw, 50vw" />
               <span className={styles.zoomHint}>{text("interactive.enlarge")}<Arrow /></span>
             </button>
@@ -124,7 +128,6 @@ export default function PubWebsitesPage() {
       </section>
 
       <section className={`${styles.wrap} ${styles.about}`}>
-        <div className={styles.portrait}><Image src="/assets/profile/profile-jan.webp" alt={text("labels.portraitAlt")} width={640} height={640} sizes="(max-width: 700px) 80vw, 340px" /></div>
         <div>{label("about")}<h2>{text("about.title")}</h2><p className={styles.lead}>{text("about.body")}</p><p className={styles.signature}>Jan <span>Well Edge Creative</span></p></div>
       </section>
 
@@ -137,10 +140,10 @@ export default function PubWebsitesPage() {
       }}>
         {currentShot && <div className={styles.galleryContent}>
           <div className={styles.galleryTop}><h2 id="pub-gallery-title">{currentShot.title}</h2><button type="button" onClick={() => galleryRef.current?.close()} aria-label={text("interactive.close")} autoFocus>×</button></div>
-          <Image src={`/assets/misc/pub-websites/${currentShot.file}`} alt={currentShot.alt} width={1280} height={800} sizes="95vw" />
+          <Image src={currentShot.src} alt={currentShot.alt} width={currentShot.width} height={currentShot.height} sizes="95vw" />
           <div className={styles.galleryControls}>
             <button type="button" onClick={() => moveShot(-1)}>{text("interactive.previous")}</button>
-            <span aria-live="polite">{activeShot + 1} / {shots.length}</span>
+            <span aria-live="polite">{activeShot + 1} / {galleryImages.length}</span>
             <button type="button" onClick={() => moveShot(1)}>{text("interactive.next")}</button>
           </div>
         </div>}
