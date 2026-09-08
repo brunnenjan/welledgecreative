@@ -3,90 +3,113 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/components/providers/I18nProvider";
+import styles from "./pub-websites.module.css";
 
 type Card = { title: string; body: string; price?: string };
 type Shot = { file: string; title: string; alt: string };
 type FAQ = { question: string; answer: string };
 
+function Arrow() {
+  return <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+}
+
 export default function PubWebsitesPage() {
   const { t, getValue, locale } = useI18n();
   const text = (key: string) => t(`pubWebsitesPage.${key}`);
   const list = <T,>(key: string) => getValue<T[]>(`pubWebsitesPage.${key}`) ?? [];
+  const shots = list<Shot>("showcase.items");
   const actions = (
-    <div className="mt-8 flex flex-wrap gap-4">
-      <a href="mailto:info@well-edge-creative.com" className="btn btn-primary">{text("emailCta")}</a>
-      <Link href={`/${locale}/contact`} className="btn btn-secondary">{text("contactCta")}</Link>
+    <div className={styles.actions}>
+      <a href="mailto:info@well-edge-creative.com" className="btn btn-primary">{text("emailCta")}<Arrow /></a>
+      <Link href={`/${locale}/contact`} className={styles.textLink}>{text("contactCta")}<Arrow /></Link>
     </div>
   );
+  const label = (key: string) => <p className={styles.eyebrow}>{text(`labels.${key}`)}</p>;
+
   return (
-    <main className="bg-white text-black">
-      <section id="hero" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">{text("eyebrow")}</p>
-        <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">{text("heading")}</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-black/70">{text("intro")}</p>
-        <p className="mt-5 max-w-2xl font-semibold">{text("proof")}</p>
-        {actions}
+    <main className={styles.page}>
+      <section id="hero" className={`${styles.wrap} ${styles.hero}`}>
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}><span className={styles.dot} />{text("eyebrow")}</p>
+          <h1>{text("headingStart")} <span>{text("headingAccent")}</span></h1>
+          <p className={styles.lead}>{text("intro")}</p>
+          {actions}
+          <div className={styles.heroPrice}><strong>{text("package.price")}</strong><span>{text("labels.onePage")}</span></div>
+        </div>
+        <div className={styles.heroVisual}>
+          <div className={styles.previewBar}><span aria-hidden="true">● ● ●</span><span>rocklore.de</span><Arrow /></div>
+          {shots[0] && <Image src={`/assets/misc/pub-websites/${shots[0].file}`} alt={shots[0].alt} width={1280} height={800} priority sizes="(max-width: 900px) 100vw, 55vw" className={styles.heroImage} />}
+          <div className={styles.proof}><span className={styles.dot} /><p>{text("proof")}</p></div>
+        </div>
       </section>
-      <div className="mx-auto max-w-6xl space-y-20 px-6 pb-20">
-        <section aria-labelledby="showcase-title">
-          <h2 id="showcase-title" className="text-3xl font-bold">{text("showcase.title")}</h2>
-          <p className="mt-4 max-w-3xl text-black/70">{text("showcase.body")}</p>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {list<Shot>("showcase.items").map((shot) => (
-              <figure key={shot.file} className="overflow-hidden rounded-2xl border">
-                <a href={`/assets/misc/pub-websites/${shot.file}`} target="_blank" rel="noopener noreferrer">
-                  <Image src={`/assets/misc/pub-websites/${shot.file}`} alt={shot.alt} width={1600} height={1000} sizes="(max-width: 768px) 100vw, 560px" className="h-auto w-full" />
-                </a>
-                <figcaption className="p-5 font-semibold">{shot.title}</figcaption>
-              </figure>
-            ))}
+
+      <section className={styles.promiseBand}>
+        <div className={`${styles.wrap} ${styles.promiseGrid}`}>
+          <div>{label("what")}<h2>{text("what.title")}</h2></div>
+          <div><p className={styles.lead}>{text("what.body")}</p><ul className={styles.checkList}>{list<string>("what.items").map(item => <li key={item}>{item}</li>)}</ul></div>
+        </div>
+      </section>
+
+      <section className={`${styles.wrap} ${styles.section}`} aria-labelledby="showcase-title">
+        <div className={styles.sectionHead}><div>{label("reference")}<h2 id="showcase-title">{text("showcase.title")}</h2></div><p>{text("showcase.body")}</p></div>
+        <div className={styles.showcaseGrid}>{shots.map((shot, index) => (
+          <figure key={shot.file} className={styles.shot}>
+            <a href={`/assets/misc/pub-websites/${shot.file}`} target="_blank" rel="noopener noreferrer" className={styles.shotImage}>
+              <Image src={`/assets/misc/pub-websites/${shot.file}`} alt={shot.alt} width={1280} height={800} sizes="(max-width: 700px) 100vw, 50vw" />
+            </a>
+            <figcaption><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><h3>{shot.title}</h3><Arrow /></figcaption>
+          </figure>
+        ))}</div>
+        <div className={styles.referenceNote}><div><h3>{text("reference.title")}</h3><p>{text("reference.body")}</p><p className={styles.small}>{text("reference.note")}</p></div><a href="https://rocklore.de" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">{text("liveCta")}<Arrow /></a></div>
+      </section>
+
+      <section className={styles.softBand}>
+        <div className={`${styles.wrap} ${styles.section}`}>
+          <div className={styles.sectionHead}><div>{label("package")}<h2>{text("package.title")}</h2></div><p>{text("package.body")}</p></div>
+          <div className={styles.packageGrid}>
+            <div className={styles.baseCard}>
+              <p className={styles.eyebrow}>{text("labels.base")}</p><p className={styles.price}>{text("package.price")}</p>
+              <ul className={styles.checkList}>{list<string>("package.items").map(item => <li key={item}>{item}</li>)}</ul>
+              <p className={styles.small}>{text("package.note")}</p>
+              <a href="mailto:info@well-edge-creative.com" className="btn btn-primary">{text("labels.packageCta")}<Arrow /></a>
+            </div>
+            <div className={styles.extras}><h3>{text("package.extrasTitle")}</h3><p className={styles.small}>{text("labels.extras")}</p><dl>{list<{title: string; price: string}>("package.extras").map(extra => <div key={extra.title}><dt>{extra.title}</dt><dd>{extra.price}</dd></div>)}</dl></div>
           </div>
-        </section>
-        <section>
-          <h2 className="text-3xl font-bold">{text("what.title")}</h2>
-          <p className="mt-4 max-w-3xl text-black/70">{text("what.body")}</p>
-          <ul className="mt-6 grid gap-4 md:grid-cols-3">{list<string>("what.items").map(item => <li key={item} className="rounded-2xl border p-6">{item}</li>)}</ul>
-        </section>
-        <section className="rounded-2xl border p-6 md:p-10">
-          <h2 className="text-3xl font-bold">{text("package.title")}</h2>
-          <p className="mt-4 max-w-3xl text-black/70">{text("package.body")}</p>
-          <p className="mt-6 text-4xl font-extrabold text-accent">{text("package.price")}</p>
-          <ul className="mt-6 list-disc space-y-2 pl-5">{list<string>("package.items").map(item => <li key={item}>{item}</li>)}</ul>
-          <p className="mt-6 text-black/70">{text("package.note")}</p>
-          <h3 className="mt-10 text-xl font-bold">{text("package.extrasTitle")}</h3>
-          <dl className="mt-4 grid gap-4 sm:grid-cols-2">{list<{title: string; price: string}>("package.extras").map(extra => <div key={extra.title} className="flex flex-wrap justify-between gap-3 rounded-2xl border p-4"><dt>{extra.title}</dt><dd className="font-bold">{extra.price}</dd></div>)}</dl>
-        </section>
-        <section>
-          <h2 className="text-3xl font-bold">{text("care.title")}</h2>
-          <p className="mt-4 max-w-3xl text-black/70">{text("care.body")}</p>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">{list<Card>("care.plans").map((plan, index) => <div key={plan.title} className={`rounded-2xl border p-6 ${index === 1 ? "border-accent" : ""}`}>
-            {index === 1 && <p className="mb-3 text-sm font-semibold text-accent">{text("care.recommended")}</p>}
-            <h3 className="text-xl font-bold">{plan.title}</h3><p className="mt-3 text-3xl font-bold">{plan.price}</p><p className="mt-4 text-black/70">{plan.body}</p>
-          </div>)}</div>
-          <p className="mt-6 text-sm text-black/70">{text("care.note")}</p>
-        </section>
-        <section>
-          <h2 className="text-3xl font-bold">{text("why.title")}</h2><p className="mt-4 max-w-3xl text-black/70">{text("why.body")}</p>
-          <ul className="mt-6 list-disc space-y-3 pl-5">{list<string>("why.items").map(item => <li key={item}>{item}</li>)}</ul>
-        </section>
-        <section className="rounded-2xl border p-6 md:p-10">
-          <h2 className="text-3xl font-bold">{text("reference.title")}</h2><p className="mt-4 max-w-3xl text-black/70">{text("reference.body")}</p><p className="mt-4 text-sm text-black/70">{text("reference.note")}</p>
-          <a href="https://rocklore.de" target="_blank" rel="noopener noreferrer" className="btn btn-secondary mt-6">{text("liveCta")}</a>
-        </section>
-        <section>
-          <h2 className="text-3xl font-bold">{text("process.title")}</h2>
-          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">{list<Card>("process.steps").map((step, index) => <li key={step.title} className="rounded-2xl border p-5"><span className="text-3xl font-extrabold text-accent">{String(index + 1).padStart(2, "0")}</span><h3 className="mt-4 font-bold">{step.title}</h3><p className="mt-3 text-sm leading-relaxed text-black/70">{step.body}</p></li>)}</ol>
-        </section>
-        <section className="rounded-2xl border p-6 md:p-10">
-          <h2 className="text-3xl font-bold">{text("investment.title")}</h2><p className="mt-4 text-black/70">{text("investment.body")}</p><p className="mt-6 font-semibold">{text("investment.example")}</p><p className="mt-4 text-sm text-black/70">{text("investment.note")}</p>
-        </section>
-        <section>
-          <h2 className="text-3xl font-bold">{text("faq.title")}</h2>
-          <div className="mt-8 space-y-3">{list<FAQ>("faq.items").map(faq => <details key={faq.question} className="rounded-2xl border p-5"><summary className="cursor-pointer font-semibold">{faq.question}</summary><p className="mt-4 max-w-3xl leading-relaxed text-black/70">{faq.answer}</p></details>)}</div>
-        </section>
-        <section><h2 className="text-3xl font-bold">{text("about.title")}</h2><p className="mt-4 max-w-3xl leading-relaxed text-black/70">{text("about.body")}</p></section>
-        <section className="rounded-2xl border border-accent p-6 md:p-10"><h2 className="max-w-3xl text-3xl font-bold md:text-4xl">{text("closing.title")}</h2><p className="mt-4 max-w-2xl text-black/70">{text("closing.body")}</p>{actions}</section>
-      </div>
+          <div className={styles.investment}><h3>{text("investment.title")}</h3><div><p>{text("investment.body")}</p><p className={styles.example}>{text("investment.example")}</p><p className={styles.small}>{text("investment.note")}</p></div></div>
+        </div>
+      </section>
+
+      <section className={`${styles.wrap} ${styles.section} ${styles.careLayout}`}>
+        <div>{label("care")}<h2>{text("care.title")}</h2><p className={styles.lead}>{text("care.body")}</p><p className={styles.small}>{text("care.note")}</p></div>
+        <div className={styles.careGrid}>{list<Card>("care.plans").map((plan, index) => <div key={plan.title} className={`${styles.careCard} ${index === 1 ? styles.recommended : ""}`}>
+          <p className={styles.planLabel}>{index === 1 ? text("care.recommended") : text("labels.essential")}</p>
+          <h3>{plan.title}</h3><p className={styles.carePrice}>{plan.price}</p><p>{plan.body}</p>
+        </div>)}</div>
+      </section>
+
+      <section className={styles.whyBand}><div className={`${styles.wrap} ${styles.section}`}>
+        <div className={styles.sectionHead}><div>{label("why")}<h2>{text("why.title")}</h2></div><p>{text("why.body")}</p></div>
+        <ul className={styles.benefits}>{list<string>("why.items").map((item, index) => <li key={item}><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ul>
+      </div></section>
+
+      <section className={`${styles.wrap} ${styles.section} ${styles.processLayout}`}>
+        <div>{label("process")}<h2>{text("process.title")}</h2></div>
+        <ol className={styles.steps}>{list<Card>("process.steps").map((step, index) => <li key={step.title}><span className={styles.stepNumber}>{String(index + 1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.body}</p></div></li>)}</ol>
+      </section>
+
+      <section className={`${styles.wrap} ${styles.section} ${styles.faqLayout}`}>
+        <div>{label("faq")}<h2>{text("faq.title")}</h2></div>
+        <div className={styles.questions}>{list<FAQ>("faq.items").map(faq => <details key={faq.question}><summary>{faq.question}<span aria-hidden="true" className={styles.plus}>+</span></summary><p>{faq.answer}</p></details>)}</div>
+      </section>
+
+      <section className={`${styles.wrap} ${styles.about}`}>
+        <div className={styles.portrait}><Image src="/assets/profile/profile-jan.webp" alt={text("labels.portraitAlt")} width={640} height={640} sizes="(max-width: 700px) 80vw, 340px" /></div>
+        <div>{label("about")}<h2>{text("about.title")}</h2><p className={styles.lead}>{text("about.body")}</p><p className={styles.signature}>Jan <span>Well Edge Creative</span></p></div>
+      </section>
+
+      <section className={`${styles.wrap} ${styles.closing}`}><div className={styles.closingCard}>
+        <p className={styles.eyebrow}>{text("labels.closing")}</p><h2>{text("closing.title")}</h2><p className={styles.lead}>{text("closing.body")}</p>{actions}
+      </div></section>
     </main>
   );
 }

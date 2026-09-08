@@ -451,7 +451,7 @@
     "contactCta": "Zum Kontaktformular",
     "liveCta": "rocklore.de ansehen",
     "showcase": {
-      "title": "So sieht das im Alltag aus",
+      "title": "Echter Pub. Echte Website.",
       "body": "Vier echte Screenshots von Rocklore. Die Referenz zeigt auch optionale Funktionen, die separat zum Basispaket berechnet werden.",
       "items": [
         {
@@ -486,7 +486,7 @@
       ]
     },
     "package": {
-      "title": "Das Paket: eine Seite, alles an seinem Platz",
+      "title": "Eine Seite. Alles für deine Gäste.",
       "body": "Eine Startseite mit allen vereinbarten Abschnitten. Dein Pub, Atmosphäre, Speisen und Getränke, Öffnungszeiten und Kontakt finden auf einer Seite zusammen.",
       "price": "Ab 600 € einmalig",
       "items": [
@@ -557,7 +557,7 @@
       "note": "Deine Website wird an deinen eigenen Pub angepasst. Die Referenz zeigt Möglichkeiten, einschließlich optionaler Extras."
     },
     "process": {
-      "title": "Der Ablauf: in fünf Schritten online",
+      "title": "In fünf Schritten zu deiner Website.",
       "steps": [
         {
           "title": "Deinen Pub kennenlernen",
@@ -631,6 +631,25 @@
     "closing": {
       "title": "Bereit für ein richtiges Online-Zuhause für deinen Pub?",
       "body": "Erzähl mir von deinem Pub und deinen Wünschen. Daraus machen wir einen klaren Umfang und ein passendes Angebot."
+    },
+    "headingStart": "Dein Irish Pub verdient eine Website,",
+    "headingAccent": "die genauso hart arbeitet wie du.",
+    "labels": {
+      "onePage": "Eine Seite. Für deinen Pub.",
+      "what": "Dein Pub, online",
+      "reference": "Live bei Rocklore",
+      "package": "Klarer Umfang. Fairer Preis.",
+      "base": "Das Ein-Seiten-Paket",
+      "extras": "Optionale Ergänzungen, separat berechnet.",
+      "packageCta": "Deine Website anfragen",
+      "care": "Nach dem Start",
+      "essential": "Das Wesentliche",
+      "why": "Für deine Gäste gemacht",
+      "process": "Von der Idee zur Website",
+      "faq": "Gut zu wissen",
+      "about": "Dein Designer & Entwickler",
+      "portraitAlt": "Jan, Designer und Entwickler bei Well Edge Creative",
+      "closing": "Bringen wir deinen Pub online"
     }
   }
 }

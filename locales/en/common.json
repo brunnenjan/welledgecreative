@@ -451,7 +451,7 @@
     "contactCta": "Use the contact form",
     "liveCta": "Visit rocklore.de",
     "showcase": {
-      "title": "See it in action",
+      "title": "Real pub. Real website.",
       "body": "Four real screenshots from Rocklore. This reference includes optional features that are priced separately from the base package.",
       "items": [
         {
@@ -486,7 +486,7 @@
       ]
     },
     "package": {
-      "title": "The package: one page, everything in place",
+      "title": "One page. Everything your guests need.",
       "body": "A single homepage with all agreed sections. Your pub, atmosphere, food and drinks, opening hours and contact live together on one page.",
       "price": "From €600 once",
       "items": [
@@ -557,7 +557,7 @@
       "note": "Your website will be adapted to your own pub. The reference shows possibilities, including optional extras."
     },
     "process": {
-      "title": "From first chat to opening online",
+      "title": "Five steps to your new website.",
       "steps": [
         {
           "title": "Tell me about your pub",
@@ -631,6 +631,25 @@
     "closing": {
       "title": "Ready to give your pub a proper online home?",
       "body": "Tell me about your pub and what you need. I’ll help you put together a clear scope and quote."
+    },
+    "headingStart": "Your Irish Pub deserves a website",
+    "headingAccent": "that works as hard as you do.",
+    "labels": {
+      "onePage": "One page. Built for your pub.",
+      "what": "Your pub, online",
+      "reference": "Live at Rocklore",
+      "package": "Clear scope. Fair price.",
+      "base": "The one-page package",
+      "extras": "Optional additions, priced separately.",
+      "packageCta": "Enquire about your website",
+      "care": "After the launch",
+      "essential": "The essentials",
+      "why": "Made for your guests",
+      "process": "From idea to live website",
+      "faq": "Good to know",
+      "about": "Your designer & developer",
+      "portraitAlt": "Jan, designer and developer at Well Edge Creative",
+      "closing": "Let’s get your pub online"
     }
   }
 }
