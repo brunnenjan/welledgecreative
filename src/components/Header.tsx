@@ -21,8 +21,8 @@ const SECTIONS = [
   { id: "contact-section", labelKey: "navigation.contact" },
 ];
 
-export default function Header() {
-  const { t } = useI18n();
+export default function Header({ className = "" }: { className?: string }) {
+  const { t, locale } = useI18n();
   const pathname = usePathname();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,11 +63,36 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const menu = portalContainerRef.current?.querySelector<HTMLElement>(".mobile-menu");
+    const focusable = () => Array.from(menu?.querySelectorAll<HTMLElement>("button, a[href]") ?? []);
+    focusable()[0]?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+      if (event.key !== "Tab") return;
+      const items = focusable();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      previouslyFocused?.focus();
+    };
+  }, [isMenuOpen]);
+
   const scrollToTop = () => {
     if (isHomePage) {
       smoothScrollToTop();
     } else {
-      router.push("/");
+      router.push(`/${locale}`);
     }
     setIsMenuOpen(false);
   };
@@ -77,7 +102,7 @@ export default function Header() {
 
     if (!isHomePage) {
       // Navigate to homepage, then scroll to section
-      router.push(`/#${sectionId}`);
+      router.push(`/${locale}#${sectionId}`);
       // Wait for navigation to complete, then scroll
       setTimeout(() => {
         const element = document.getElementById(sectionId);
@@ -95,7 +120,7 @@ export default function Header() {
   };
 
   const headerMarkup = (
-    <>
+    <div className={className}>
       <header className="mobile-header">
         <button
           type="button"
@@ -181,7 +206,7 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </>
+    </div>
   );
 
   if (portalTarget) {

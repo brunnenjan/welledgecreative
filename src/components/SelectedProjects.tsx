@@ -19,7 +19,7 @@ const FEATURED_PROJECTS: FeaturedProject[] = [
   {
     slug: "irish-pub-websites",
     year: "2026",
-    images: [{ src: "/assets/misc/projects/irish-pub-websites.webp", altKey: "selectedProjects.projects.irish-pub-websites.imageAlt" }],
+    images: [{ src: "/assets/misc/projects/irish-pub-websites-mockup.webp", altKey: "selectedProjects.projects.irish-pub-websites.imageAlt" }],
   },
   {
     slug: "brisa-bahia",

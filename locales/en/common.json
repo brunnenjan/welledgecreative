@@ -166,7 +166,7 @@
           "Web design",
           "Development"
         ],
-        "imageAlt": "Rocklore Irish Pub website with opening status"
+        "imageAlt": "Rocklore website device mockup on laptop, tablet and smartphone"
       }
     }
   },
@@ -650,6 +650,17 @@
       "about": "Your designer & developer",
       "portraitAlt": "Jan, designer and developer at Well Edge Creative",
       "closing": "Let’s get your pub online"
+    },
+    "interactive": {
+      "navLabel": "On this page",
+      "reference": "Explore the reference",
+      "package": "Package & pricing",
+      "faq": "Common questions",
+      "mockupAlt": "Rocklore website device mockup on laptop, tablet and smartphone",
+      "enlarge": "Enlarge",
+      "close": "Close gallery",
+      "previous": "Previous",
+      "next": "Next"
     }
   }
 }

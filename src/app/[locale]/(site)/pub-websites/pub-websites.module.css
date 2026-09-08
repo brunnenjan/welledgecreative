@@ -14,7 +14,7 @@
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; }
 .lead { font-size: 1.0625rem; color: #616161; }
 .page .small { font-size: .875rem; line-height: 1.7; color: #6a6a6a; }
-.hero { display: grid; grid-template-columns: 1fr 1.08fr; align-items: center; gap: 64px; padding-block: 104px 96px; }
+.hero { display: grid; grid-template-columns: 1fr 1.08fr; align-items: center; gap: 64px; padding-block: 156px 70px; }
 .hero h1 { font-size: clamp(2.75rem, 4.4vw, 4.5rem); line-height: 1.06; letter-spacing: -.055em; font-weight: 750; }
 .hero h1 span { color: var(--color-accent); }
 .heroCopy > .lead { margin-top: 28px; max-width: 34rem; }
@@ -24,11 +24,11 @@
 .textLink:hover { color: #b34d00; }
 .heroPrice { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; margin-top: 30px; font-size: .875rem; }
 .heroPrice span { color: #737373; }
-.heroVisual { min-width: 0; padding: 22px; background: #f2f2f2; border-radius: 24px; transform: rotate(2deg); }
+.heroVisual { min-width: 0; padding: 0; background: #f5f5f5; border-radius: 24px; transform: none; }
 .previewBar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 18px; background: #fff; border-radius: 10px 10px 0 0; color: #737373; font-size: .75rem; }
 .previewBar > span:first-child { color: #d4d4d4; letter-spacing: 2px; }
-.heroImage { width: 100%; height: auto; display: block; border-radius: 0 0 10px 10px; box-shadow: 0 18px 36px #00000012; }
-.proof { display: flex; align-items: flex-start; gap: 12px; padding: 20px 8px 2px; }
+.heroImage { width: 100%; height: auto; display: block; border-radius: 20px; }
+.proof { display: flex; align-items: flex-start; gap: 12px; padding: 20px 24px 24px; }
 .proof .dot { margin-top: 7px; }
 .proof p { font-size: .875rem; color: #525252; }
 .promiseBand { border-block: 1px solid var(--pub-line); }
@@ -116,7 +116,7 @@
   .careCard { padding: 30px; }
 }
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding-block: 64px; gap: 48px; }
+  .hero { grid-template-columns: 1fr; padding-block: 120px 48px; gap: 48px; }
   .hero h1 { font-size: clamp(2.75rem, 7vw, 4rem); max-width: 700px; }
   .heroVisual { transform: none; }
   .section { padding-block: 76px; }
@@ -128,7 +128,7 @@
 }
 @media (max-width: 700px) {
   .wrap { width: calc(100% - 40px); }
-  .hero { padding-top: 48px; }
+  .hero { padding-top: 116px; }
   .hero h1 { font-size: clamp(2.5rem, 9.5vw, 3.5rem); }
   .heroVisual { padding: 12px; border-radius: 16px; }
   .heroPrice { gap: 6px 14px; }
@@ -154,4 +154,33 @@
   .actions .textLink { justify-content: center; }
   .extras dl > div { gap: 15px; }
 }
+@media (prefers-reduced-motion: reduce) { .page *, .page *::before { transition: none !important; } }
+
+.header :global(.mobile-header) { display: flex; align-items: center; justify-content: space-between; padding-inline: max(24px, calc((100vw - 1280px) / 2)); }
+.header :global(.mobile-menu-overlay) { display: block; }
+.jumpNav { display: flex; flex-wrap: wrap; gap: 16px 36px; padding-bottom: 34px; }
+.jumpNav a { display: inline-flex; align-items: center; gap: 14px; padding-block: 10px; color: #525252; font-size: .9375rem; font-weight: 600; border-bottom: 1px solid #ddd; transition: color .2s, border-color .2s; }
+.jumpNav a:hover { color: #a94a00; border-color: var(--color-accent); }
+.page section[id] { scroll-margin-top: 100px; }
+.mockupLink { display: block; position: relative; overflow: hidden; border-radius: 20px; }
+.mockupLink img { transition: transform .4s ease; }
+.mockupLink:hover img { transform: scale(1.035); }
+.mockupCta { position: absolute; bottom: 16px; right: 16px; display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; background: #fff; color: #1a1a1a; font-size: .875rem; box-shadow: 0 4px 20px #00000012; }
+.shotImage { position: relative; width: 100%; cursor: zoom-in; text-align: left; }
+.zoomHint { position: absolute; bottom: 28px; right: 28px; display: flex; align-items: center; gap: 8px; background: #fff; color: #1a1a1a; padding: 8px 12px; font-size: .875rem; border-radius: 999px; box-shadow: 0 3px 16px #00000015; }
+.baseCard, .careCard { transition: transform .25s ease, box-shadow .25s ease; }
+@media (hover: hover) { .baseCard:hover, .careCard:hover { transform: translateY(-4px); box-shadow: 0 18px 35px #00000009; } }
+.page button:focus-visible { outline: 3px solid #c55b09; outline-offset: 5px; }
+.gallery { position: fixed; inset: 0; width: min(1100px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 0; border-radius: 18px; background: #fff; color: #1a1a1a; box-shadow: 0 30px 100px #0005; overscroll-behavior: contain; }
+.gallery::backdrop { background: #111d; backdrop-filter: blur(8px); }
+.galleryContent { padding: 20px; }
+.galleryTop { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 16px; }
+.galleryTop h2 { font-size: 1.125rem; letter-spacing: -.02em; }
+.galleryTop button { font-size: 2rem; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid #ddd; border-radius: 50%; cursor: pointer; }
+.galleryContent > img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 210px); object-fit: contain; border-radius: 8px; }
+.galleryControls { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 18px; }
+.galleryControls button { min-height: 44px; padding: 8px 18px; border: 1px solid #ddd; border-radius: 999px; font-weight: 600; cursor: pointer; }
+.galleryControls button:hover { background: #fff5ec; border-color: var(--color-accent); }
+.galleryControls span { color: #737373; font-size: .875rem; }
+@media (max-width: 700px) { .heroVisual { padding: 0; } .proof { padding: 16px 20px 20px; } .jumpNav { gap: 12px 20px; } .jumpNav a { font-size: .875rem; gap: 6px; } .zoomHint { bottom: 20px; right: 20px; } .galleryContent { padding: 12px; } .galleryControls button { padding-inline: 12px; font-size: .875rem; } }
 @media (prefers-reduced-motion: reduce) { .page *, .page *::before { transition: none !important; } }

@@ -1,6 +1,9 @@
 "use client";
 
+import { useRef, useState } from "react";
 import Image from "next/image";
+import Header from "@/components/Header";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 import Link from "next/link";
 import { useI18n } from "@/components/providers/I18nProvider";
 import styles from "./pub-websites.module.css";
@@ -18,6 +21,14 @@ export default function PubWebsitesPage() {
   const text = (key: string) => t(`pubWebsitesPage.${key}`);
   const list = <T,>(key: string) => getValue<T[]>(`pubWebsitesPage.${key}`) ?? [];
   const shots = list<Shot>("showcase.items");
+  const galleryRef = useRef<HTMLDialogElement>(null);
+  const [activeShot, setActiveShot] = useState(0);
+  const currentShot = shots[activeShot];
+  const moveShot = (direction: number) => setActiveShot(index => (index + direction + shots.length) % shots.length);
+  const openShot = (index: number) => {
+    setActiveShot(index);
+    galleryRef.current?.showModal();
+  };
   const actions = (
     <div className={styles.actions}>
       <a href="mailto:info@well-edge-creative.com" className="btn btn-primary">{text("emailCta")}<Arrow /></a>
@@ -27,6 +38,8 @@ export default function PubWebsitesPage() {
   const label = (key: string) => <p className={styles.eyebrow}>{text(`labels.${key}`)}</p>;
 
   return (
+    <>
+    <Header className={styles.header} />
     <main className={styles.page}>
       <section id="hero" className={`${styles.wrap} ${styles.hero}`}>
         <div className={styles.heroCopy}>
@@ -37,12 +50,19 @@ export default function PubWebsitesPage() {
           <div className={styles.heroPrice}><strong>{text("package.price")}</strong><span>{text("labels.onePage")}</span></div>
         </div>
         <div className={styles.heroVisual}>
-          <div className={styles.previewBar}><span aria-hidden="true">● ● ●</span><span>rocklore.de</span><Arrow /></div>
-          {shots[0] && <Image src={`/assets/misc/pub-websites/${shots[0].file}`} alt={shots[0].alt} width={1280} height={800} priority sizes="(max-width: 900px) 100vw, 55vw" className={styles.heroImage} />}
+          <a href="https://rocklore.de" target="_blank" rel="noopener noreferrer" className={styles.mockupLink}>
+            <Image src="/assets/misc/projects/irish-pub-websites-mockup.webp" alt={text("interactive.mockupAlt")} width={1600} height={1200} priority sizes="(max-width: 900px) 100vw, 55vw" className={styles.heroImage} />
+            <span className={styles.mockupCta}>{text("liveCta")}<Arrow /></span>
+          </a>
           <div className={styles.proof}><span className={styles.dot} /><p>{text("proof")}</p></div>
         </div>
       </section>
 
+      <nav className={`${styles.wrap} ${styles.jumpNav}`} aria-label={text("interactive.navLabel")}>
+        {[{id: "pub-showcase", key: "reference"}, {id: "pub-package", key: "package"}, {id: "pub-faq", key: "faq"}].map(item => (
+          <a key={item.id} href={`#${item.id}`} onClick={event => { event.preventDefault(); smoothScrollTo(item.id); }}>{text(`interactive.${item.key}`)}<Arrow /></a>
+        ))}
+      </nav>
       <section className={styles.promiseBand}>
         <div className={`${styles.wrap} ${styles.promiseGrid}`}>
           <div>{label("what")}<h2>{text("what.title")}</h2></div>
@@ -50,20 +70,21 @@ export default function PubWebsitesPage() {
         </div>
       </section>
 
-      <section className={`${styles.wrap} ${styles.section}`} aria-labelledby="showcase-title">
+      <section id="pub-showcase" className={`${styles.wrap} ${styles.section}`} aria-labelledby="showcase-title">
         <div className={styles.sectionHead}><div>{label("reference")}<h2 id="showcase-title">{text("showcase.title")}</h2></div><p>{text("showcase.body")}</p></div>
         <div className={styles.showcaseGrid}>{shots.map((shot, index) => (
           <figure key={shot.file} className={styles.shot}>
-            <a href={`/assets/misc/pub-websites/${shot.file}`} target="_blank" rel="noopener noreferrer" className={styles.shotImage}>
+            <button type="button" onClick={() => openShot(index)} aria-label={`${text("interactive.enlarge")}: ${shot.title}`} aria-haspopup="dialog" className={styles.shotImage}>
               <Image src={`/assets/misc/pub-websites/${shot.file}`} alt={shot.alt} width={1280} height={800} sizes="(max-width: 700px) 100vw, 50vw" />
-            </a>
+              <span className={styles.zoomHint}>{text("interactive.enlarge")}<Arrow /></span>
+            </button>
             <figcaption><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><h3>{shot.title}</h3><Arrow /></figcaption>
           </figure>
         ))}</div>
         <div className={styles.referenceNote}><div><h3>{text("reference.title")}</h3><p>{text("reference.body")}</p><p className={styles.small}>{text("reference.note")}</p></div><a href="https://rocklore.de" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">{text("liveCta")}<Arrow /></a></div>
       </section>
 
-      <section className={styles.softBand}>
+      <section id="pub-package" className={styles.softBand}>
         <div className={`${styles.wrap} ${styles.section}`}>
           <div className={styles.sectionHead}><div>{label("package")}<h2>{text("package.title")}</h2></div><p>{text("package.body")}</p></div>
           <div className={styles.packageGrid}>
@@ -97,7 +118,7 @@ export default function PubWebsitesPage() {
         <ol className={styles.steps}>{list<Card>("process.steps").map((step, index) => <li key={step.title}><span className={styles.stepNumber}>{String(index + 1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.body}</p></div></li>)}</ol>
       </section>
 
-      <section className={`${styles.wrap} ${styles.section} ${styles.faqLayout}`}>
+      <section id="pub-faq" className={`${styles.wrap} ${styles.section} ${styles.faqLayout}`}>
         <div>{label("faq")}<h2>{text("faq.title")}</h2></div>
         <div className={styles.questions}>{list<FAQ>("faq.items").map(faq => <details key={faq.question}><summary>{faq.question}<span aria-hidden="true" className={styles.plus}>+</span></summary><p>{faq.answer}</p></details>)}</div>
       </section>
@@ -110,6 +131,21 @@ export default function PubWebsitesPage() {
       <section className={`${styles.wrap} ${styles.closing}`}><div className={styles.closingCard}>
         <p className={styles.eyebrow}>{text("labels.closing")}</p><h2>{text("closing.title")}</h2><p className={styles.lead}>{text("closing.body")}</p>{actions}
       </div></section>
+      <dialog ref={galleryRef} className={styles.gallery} aria-labelledby="pub-gallery-title" onClick={event => { if (event.target === event.currentTarget) galleryRef.current?.close(); }} onKeyDown={event => {
+        if (event.key === "ArrowRight") { event.preventDefault(); moveShot(1); }
+        if (event.key === "ArrowLeft") { event.preventDefault(); moveShot(-1); }
+      }}>
+        {currentShot && <div className={styles.galleryContent}>
+          <div className={styles.galleryTop}><h2 id="pub-gallery-title">{currentShot.title}</h2><button type="button" onClick={() => galleryRef.current?.close()} aria-label={text("interactive.close")} autoFocus>×</button></div>
+          <Image src={`/assets/misc/pub-websites/${currentShot.file}`} alt={currentShot.alt} width={1280} height={800} sizes="95vw" />
+          <div className={styles.galleryControls}>
+            <button type="button" onClick={() => moveShot(-1)}>{text("interactive.previous")}</button>
+            <span aria-live="polite">{activeShot + 1} / {shots.length}</span>
+            <button type="button" onClick={() => moveShot(1)}>{text("interactive.next")}</button>
+          </div>
+        </div>}
+      </dialog>
     </main>
+    </>
   );
 }
