@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
+import PubInquiryForm from "./PubInquiryForm";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 import Link from "next/link";
 import { useI18n } from "@/components/providers/I18nProvider";
@@ -22,6 +23,12 @@ export default function PubWebsitesPage() {
   const list = <T,>(key: string) => getValue<T[]>(`pubWebsitesPage.${key}`) ?? [];
   const shots = list<Shot>("showcase.items");
   const galleryRef = useRef<HTMLDialogElement>(null);
+  const inquiryRef = useRef<HTMLDialogElement>(null);
+  const [loadInquiry, setLoadInquiry] = useState(false);
+  const openInquiry = () => {
+    setLoadInquiry(true);
+    inquiryRef.current?.showModal();
+  };
   const [activeShot, setActiveShot] = useState(0);
   const galleryImages = [
     { src: "/assets/misc/projects/irish-pub-websites-mockup.webp", title: text("reference.title"), alt: text("interactive.mockupAlt"), width: 1440, height: 1080 },
@@ -35,7 +42,7 @@ export default function PubWebsitesPage() {
   };
   const actions = (
     <div className={styles.actions}>
-      <a href="mailto:info@well-edge-creative.com" className="btn btn-primary">{text("emailCta")}<Arrow /></a>
+      <button type="button" onClick={openInquiry} aria-haspopup="dialog" className="btn btn-primary">{text("form.open")}<Arrow /></button>
       <Link href={`/${locale}/contact`} className={styles.textLink}>{text("contactCta")}<Arrow /></Link>
     </div>
   );
@@ -96,7 +103,7 @@ export default function PubWebsitesPage() {
               <p className={styles.eyebrow}>{text("labels.base")}</p><p className={styles.price}>{text("package.price")}</p>
               <ul className={styles.checkList}>{list<string>("package.items").map(item => <li key={item}>{item}</li>)}</ul>
               <p className={styles.small}>{text("package.note")}</p>
-              <a href="mailto:info@well-edge-creative.com" className="btn btn-primary">{text("labels.packageCta")}<Arrow /></a>
+              <button type="button" onClick={openInquiry} aria-haspopup="dialog" className="btn btn-primary">{text("labels.packageCta")}<Arrow /></button>
             </div>
             <div className={styles.extras}><h3>{text("package.extrasTitle")}</h3><p className={styles.small}>{text("labels.extras")}</p><dl>{list<{title: string; price: string}>("package.extras").map(extra => <div key={extra.title}><dt>{extra.title}</dt><dd>{extra.price}</dd></div>)}</dl></div>
           </div>
@@ -134,6 +141,12 @@ export default function PubWebsitesPage() {
       <section className={`${styles.wrap} ${styles.closing}`}><div className={styles.closingCard}>
         <p className={styles.eyebrow}>{text("labels.closing")}</p><h2>{text("closing.title")}</h2><p className={styles.lead}>{text("closing.body")}</p>{actions}
       </div></section>
+      <dialog ref={inquiryRef} className={`${styles.gallery} ${styles.inquiryDialog}`} aria-labelledby="pub-inquiry-title" onClick={event => { if (event.target === event.currentTarget) inquiryRef.current?.close(); }}>
+        <div className={styles.inquiryContent}>
+          <div className={styles.galleryTop}><h2 id="pub-inquiry-title">{text("form.title")}</h2><button type="button" onClick={() => inquiryRef.current?.close()} aria-label={text("form.close")} autoFocus>×</button></div>
+          {loadInquiry && <PubInquiryForm />}
+        </div>
+      </dialog>
       <dialog ref={galleryRef} className={styles.gallery} aria-labelledby="pub-gallery-title" onClick={event => { if (event.target === event.currentTarget) galleryRef.current?.close(); }} onKeyDown={event => {
         if (event.key === "ArrowRight") { event.preventDefault(); moveShot(1); }
         if (event.key === "ArrowLeft") { event.preventDefault(); moveShot(-1); }

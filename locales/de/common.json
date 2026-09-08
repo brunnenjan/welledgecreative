@@ -661,6 +661,26 @@
       "close": "Galerie schließen",
       "previous": "Zurück",
       "next": "Weiter"
+    },
+    "form": {
+      "open": "Pub-Website anfragen",
+      "title": "Deine Irish Pub Website",
+      "close": "Formular schließen",
+      "intro": "Erzähl mir kurz von deinem Pub und deinen Wünschen. Deine Anfrage geht direkt an Jan. Du erhältst eine Bestätigung per E-Mail.",
+      "name": "Dein Name *",
+      "email": "Deine E-Mail *",
+      "message": "Deine Nachricht *",
+      "placeholder": "Wie heißt dein Pub und was wünschst du dir für die Website?",
+      "privacy": "Ich verwende deine Angaben, um deine Anfrage zu beantworten. Mehr dazu in der",
+      "privacyLink": "Datenschutzerklärung.",
+      "captcha": "Dieses Formular ist durch reCAPTCHA geschützt. Es gelten Googles",
+      "captchaPrivacy": "Datenschutzerklärung",
+      "captchaTerms": "Nutzungsbedingungen",
+      "submit": "Anfrage senden",
+      "sending": "Deine Anfrage wird gesendet …",
+      "success": "Danke! Deine Anfrage ist angekommen. Eine Bestätigung ist per E-Mail unterwegs.",
+      "confirmationFailed": "Danke! Deine Anfrage ist angekommen. Die Bestätigungsmail konnte leider nicht versendet werden. Du musst die Anfrage nicht erneut senden.",
+      "error": "Das Senden hat leider nicht geklappt. Bitte versuche es noch einmal oder schreibe an jan@well-edge-creative.de."
     }
   }
 }

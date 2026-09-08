@@ -180,3 +180,19 @@
 .galleryControls span { color: #737373; font-size: .875rem; }
 @media (max-width: 700px) { .heroVisual { padding: 0; } .proof { padding: 16px 20px 20px; } .jumpNav { gap: 12px 20px; } .jumpNav a { font-size: .875rem; gap: 6px; } .zoomHint { bottom: 20px; right: 20px; } .galleryContent { padding: 12px; } .galleryControls button { padding-inline: 12px; font-size: .875rem; } }
 @media (prefers-reduced-motion: reduce) { .page *, .page *::before { transition: none !important; } }
+
+.inquiryDialog { width: min(640px, calc(100vw - 32px)); }
+.inquiryContent { padding: 32px; }
+.inquiryContent .galleryTop h2 { font-size: 1.5rem; }
+.formIntro { color: #616161; margin-bottom: 24px !important; }
+.inquiryForm { display: grid; gap: 16px; }
+.inquiryForm fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.inquiryForm label { display: grid; gap: 8px; font-size: .9375rem; font-weight: 600; }
+.inquiryForm input, .inquiryForm textarea { width: 100%; min-width: 0; padding: 12px; border: 1px solid #d4d4d4; background: #fafafa; border-radius: 8px; color: #1a1a1a; font-size: 1rem; font-weight: 400; }
+.inquiryForm textarea { resize: vertical; }
+.inquiryForm input:focus-visible, .inquiryForm textarea:focus-visible { outline: 2px solid #c55b09; outline-offset: 2px; }
+.inquiryForm :disabled { opacity: .6; }
+.formStatus { padding: 14px; border-radius: 8px; background: #fff5ec; color: #804000; font-size: .9375rem; }
+.formSuccess { background: #eff8f0; color: #245c30; }
+@media (max-width: 700px) { .inquiryContent { padding: 20px; } .formRow { grid-template-columns: 1fr; } }

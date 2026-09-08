@@ -661,6 +661,26 @@
       "close": "Close gallery",
       "previous": "Previous",
       "next": "Next"
+    },
+    "form": {
+      "open": "Enquire about your pub website",
+      "title": "Your Irish Pub website",
+      "close": "Close enquiry form",
+      "intro": "Tell me a little about your pub and what you need. Your enquiry goes directly to Jan, with a confirmation email to you.",
+      "name": "Your name *",
+      "email": "Your email *",
+      "message": "Your message *",
+      "placeholder": "What is your pub called and what would you like from your website?",
+      "privacy": "I use your details to respond to your enquiry. Read the",
+      "privacyLink": "privacy policy.",
+      "captcha": "This form is protected by reCAPTCHA. Google’s policies apply:",
+      "captchaPrivacy": "Privacy Policy",
+      "captchaTerms": "Terms of Service",
+      "submit": "Send enquiry",
+      "sending": "Sending your enquiry …",
+      "success": "Thank you! Your enquiry has arrived. A confirmation email is on its way.",
+      "confirmationFailed": "Thank you! Your enquiry has arrived, but the confirmation email could not be sent. You do not need to submit again.",
+      "error": "Your enquiry could not be sent. Please try again or email jan@well-edge-creative.de."
     }
   }
 }

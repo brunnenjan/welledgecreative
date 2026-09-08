@@ -25,6 +25,11 @@ export async function POST(request: NextRequest) {
     const projectType = formData.get("projectType")?.toString().trim() || "";
     const budget = formData.get("budget")?.toString().trim() || "";
     const message = formData.get("message")?.toString().trim() || "";
+    const isPubInquiry = formData.get("inquiryType") === "irish-pub-website";
+    const german = formData.get("locale") === "de";
+    if (isPubInquiry && (name.length > 120 || email.length > 254 || message.length > 5000 || /[\r\n]/.test(email))) {
+      return NextResponse.json({ error: "Invalid enquiry" }, { status: 400, headers: corsHeaders });
+    }
     const captchaToken = formData.get("g-recaptcha-response")?.toString() || "";
 
     // Validate required fields
@@ -161,6 +166,24 @@ Jan Brunnenkant
 Well Edge Creative
 https://well-edge-creative.com`,
     };
+
+    if (isPubInquiry) {
+      adminMailOptions.subject = "Irish Pub Website: neue Anfrage";
+      adminMailOptions.text = `Irish Pub Website Anfrage\n\nName: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`;
+      clientMailOptions.subject = german ? "Deine Anfrage zur Irish Pub Website" : "Your Irish Pub website enquiry";
+      clientMailOptions.text = german
+        ? `Hallo ${name},\n\nvielen Dank für deine Anfrage zur Irish Pub Website. Deine Nachricht ist bei mir angekommen. Ich melde mich persönlich bei dir.\n\nDeine Nachricht:\n${message}\n\nViele Grüße\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`
+        : `Hi ${name},\n\nThank you for your Irish Pub website enquiry. I have received your message and will get back to you personally.\n\nYour message:\n${message}\n\nBest regards,\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`;
+      await transporter.sendMail(adminMailOptions);
+      let confirmationSent = true;
+      try {
+        await transporter.sendMail(clientMailOptions);
+      } catch {
+        confirmationSent = false;
+        console.error("Pub enquiry received, confirmation delivery failed");
+      }
+      return NextResponse.json({ message: "OK", confirmationSent }, { status: 200, headers: corsHeaders });
+    }
 
     // Send both emails
     await Promise.all([
