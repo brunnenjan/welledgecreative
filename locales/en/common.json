@@ -119,7 +119,8 @@
       "seeMore": "See more of my work",
       "caseStudiesComing": "Case studies — Coming soon →",
       "brisaBahiaCaseStudy": "Brisa Bahía — Case Study",
-      "visitSite": "Visit live site"
+      "visitSite": "Visit live site",
+      "irishPubWebsites": "Explore the pub website offer"
     },
     "projects": {
       "brisa-bahia": {
@@ -153,6 +154,19 @@
         "result": "A professional online presence that successfully attracted clients and established market position.",
         "roles": ["Branding", "Logo", "Webdesign", "Webdev"],
         "imageAlt": "einfach-schee hero"
+      },
+      "irish-pub-websites": {
+        "client": "Rocklore Irish Pub",
+        "title": "A website with Irish soul",
+        "summary": "Pub atmosphere, menus and visitor information on one clear website.",
+        "challenge": "Make the pub’s character tangible online and practical details easy to find.",
+        "solution": "A mobile-first website connecting atmosphere, food, events and contact.",
+        "result": "Live at rocklore.de, with a dedicated website offer for other Irish pubs.",
+        "roles": [
+          "Web design",
+          "Development"
+        ],
+        "imageAlt": "Rocklore Irish Pub website with opening status"
       }
     }
   },
@@ -281,10 +295,22 @@
     "heading": "Approach",
     "description": "Strategy → Story → System → Site. The “well & bucket” metaphor guides depth and clarity.",
     "steps": [
-      { "title": "Discover", "text": "Goals, audience, constraints" },
-      { "title": "Define", "text": "Positioning, message, content" },
-      { "title": "Design", "text": "Brand system & UI" },
-      { "title": "Deliver", "text": "Build, QA, handover" }
+      {
+        "title": "Discover",
+        "text": "Goals, audience, constraints"
+      },
+      {
+        "title": "Define",
+        "text": "Positioning, message, content"
+      },
+      {
+        "title": "Design",
+        "text": "Brand system & UI"
+      },
+      {
+        "title": "Deliver",
+        "text": "Build, QA, handover"
+      }
     ]
   },
   "footer": {
@@ -415,5 +441,196 @@
     },
     "backLink": "← Back to all projects",
     "backToProjects": "Back to Projects"
+  },
+  "pubWebsitesPage": {
+    "eyebrow": "Websites for Irish pubs",
+    "heading": "Your Irish Pub deserves a website that works as hard as you do.",
+    "intro": "Give guests a feel for your pub before they walk through the door. A clear, mobile-first website with your atmosphere, menu and opening hours in one place.",
+    "proof": "Already live at Rocklore. This is a working pub website, not a concept.",
+    "emailCta": "Let’s talk about your pub",
+    "contactCta": "Use the contact form",
+    "liveCta": "Visit rocklore.de",
+    "showcase": {
+      "title": "See it in action",
+      "body": "Four real screenshots from Rocklore. This reference includes optional features that are priced separately from the base package.",
+      "items": [
+        {
+          "file": "screenshot-hero.webp",
+          "title": "First impression and live status",
+          "alt": "Rocklore homepage with pub atmosphere and opening status"
+        },
+        {
+          "file": "screenshot-menu-slider.webp",
+          "title": "A menu worth exploring",
+          "alt": "Rocklore food and menu slider"
+        },
+        {
+          "file": "screenshot-events-slider.webp",
+          "title": "Your next night out",
+          "alt": "Rocklore event slider showing upcoming pub events"
+        },
+        {
+          "file": "screenshot-contact.webp",
+          "title": "All the practical details",
+          "alt": "Rocklore contact section with opening hours"
+        }
+      ]
+    },
+    "what": {
+      "title": "What I do",
+      "body": "I design and build a website around your pub’s character. Guests can find what matters quickly, whether they are planning dinner, checking your hours or getting in touch.",
+      "items": [
+        "Design that feels like your pub, with your colours, photos and story.",
+        "A clear page structure that guides guests from a first impression to an enquiry.",
+        "One point of contact for design, development and launch."
+      ]
+    },
+    "package": {
+      "title": "The package: one page, everything in place",
+      "body": "A single homepage with all agreed sections. Your pub, atmosphere, food and drinks, opening hours and contact live together on one page.",
+      "price": "From €600 once",
+      "items": [
+        "One homepage with all agreed sections",
+        "Mobile-first design for phones, tablets and desktops",
+        "Basic SEO: page structure, titles and descriptions",
+        "Contact form for enquiries"
+      ],
+      "note": "The base package uses the content and images you provide. Extra pages, additional languages and the features below are quoted separately.",
+      "extrasTitle": "Add only what you need",
+      "extras": [
+        {
+          "title": "Custom menu design",
+          "price": "from +€120"
+        },
+        {
+          "title": "Additional page",
+          "price": "+€150"
+        },
+        {
+          "title": "Bilingual website",
+          "price": "+€200"
+        },
+        {
+          "title": "Event calendar",
+          "price": "+€150"
+        },
+        {
+          "title": "Photo editing",
+          "price": "+€100"
+        },
+        {
+          "title": "Social media integration",
+          "price": "+€100"
+        }
+      ]
+    },
+    "care": {
+      "title": "Monthly care",
+      "body": "Keep your website useful after launch. We agree the exact scope and update allowance before you choose a plan.",
+      "recommended": "Recommended",
+      "plans": [
+        {
+          "title": "Mini Care",
+          "price": "from €39 / month",
+          "body": "For a pub with occasional changes and basic ongoing website care."
+        },
+        {
+          "title": "Standard Care",
+          "price": "from €69 / month",
+          "body": "For a pub with regular updates to menus, events and seasonal information."
+        }
+      ],
+      "note": "Additional work: €70 per hour, agreed with you in advance. Hosting, domain costs and any third-party fees are clarified in your quote."
+    },
+    "why": {
+      "title": "Why this works",
+      "body": "A pub website should make a visit easier to plan. Clear information and a recognisable atmosphere help guests decide whether your pub is their kind of place.",
+      "items": [
+        "Opening hours and contact details are easy to find.",
+        "A mobile-first layout works when guests are out and about.",
+        "Your own website gives your pub a home beyond social media."
+      ]
+    },
+    "reference": {
+      "title": "Reference project: Rocklore",
+      "body": "Rocklore is an Irish pub in Schramberg. Its live website brings together pub atmosphere, food, events and practical visitor information. Explore it to see how these sections work together.",
+      "note": "Your website will be adapted to your own pub. The reference shows possibilities, including optional extras."
+    },
+    "process": {
+      "title": "From first chat to opening online",
+      "steps": [
+        {
+          "title": "Tell me about your pub",
+          "body": "We talk about your guests, your style and what the website needs to do."
+        },
+        {
+          "title": "Agree the scope",
+          "body": "You receive a quote covering the one-page package and your chosen extras."
+        },
+        {
+          "title": "Gather your content",
+          "body": "You send your logo, photos, menu, opening hours and contact details."
+        },
+        {
+          "title": "Design and review",
+          "body": "I build your page and we review the content and layout together."
+        },
+        {
+          "title": "Launch and handover",
+          "body": "After your approval, we publish the site and agree any ongoing care."
+        }
+      ]
+    },
+    "investment": {
+      "title": "Your investment, clearly planned",
+      "body": "Start with a single-page website from €600 once. Add the features your pub needs and choose monthly care if you want ongoing support.",
+      "example": "Example: €600 base scope + €200 for a second language = €800 once. With Standard Care from €69 per month, ongoing care is charged separately.",
+      "note": "The final quote confirms your scope, total price, applicable taxes and any recurring costs before work begins."
+    },
+    "faq": {
+      "title": "Questions before the first round",
+      "items": [
+        {
+          "question": "Why from €600 instead of a fixed price?",
+          "answer": "€600 is the starting price for the defined one-page base scope. Content preparation, individual requirements and optional features can change the workload. You receive a clear quote before we start."
+        },
+        {
+          "question": "Is this a multi-page website?",
+          "answer": "The base package is one homepage with all agreed sections. An additional page costs +€150."
+        },
+        {
+          "question": "Can my website be bilingual?",
+          "answer": "Yes. A bilingual website is available for +€200. We agree how translated content will be supplied as part of the quote."
+        },
+        {
+          "question": "Are all Rocklore features included?",
+          "answer": "No. Rocklore shows what is possible. Custom menu design, an event calendar, photo editing and social media integration are optional extras."
+        },
+        {
+          "question": "What do you need from me?",
+          "answer": "Your logo if available, photos you have permission to use, menu, opening hours, contact details and a short introduction to your pub. We discuss any missing material before starting."
+        },
+        {
+          "question": "How long does it take?",
+          "answer": "We agree a realistic schedule after reviewing your scope and available content. Launch depends on receiving the required material and your feedback."
+        },
+        {
+          "question": "Do I have to book monthly care?",
+          "answer": "Monthly care is optional. Mini Care starts at €39 per month and Standard Care at €69. We agree what is included; extra work is €70 per hour."
+        },
+        {
+          "question": "Can I keep my domain?",
+          "answer": "Usually, yes. We check access and hosting requirements together. Domain, hosting and any third-party costs are clarified in advance."
+        }
+      ]
+    },
+    "about": {
+      "title": "Hi, I’m Jan.",
+      "body": "I’m the designer and developer behind Well Edge Creative. I bring your pub’s character to the screen and keep the practical details easy to use. You work directly with me, from our first conversation through to launch."
+    },
+    "closing": {
+      "title": "Ready to give your pub a proper online home?",
+      "body": "Tell me about your pub and what you need. I’ll help you put together a clear scope and quote."
+    }
   }
 }

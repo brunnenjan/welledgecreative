@@ -119,7 +119,8 @@
       "seeMore": "Weitere Arbeiten ansehen",
       "caseStudiesComing": "Case Studies — bald verfügbar →",
       "brisaBahiaCaseStudy": "Brisa Bahía — Case Study",
-      "visitSite": "Live-Website besuchen"
+      "visitSite": "Live-Website besuchen",
+      "irishPubWebsites": "Zum Website-Angebot für Pubs"
     },
     "projects": {
       "brisa-bahia": {
@@ -153,6 +154,19 @@
         "result": "Eine professionelle Präsenz, die überzeugt und die Marktposition klar stärkt.",
         "roles": ["Branding", "Logo", "Webdesign", "Webdev"],
         "imageAlt": "einfach-schee Hero"
+      },
+      "irish-pub-websites": {
+        "client": "Rocklore Irish Pub",
+        "title": "Eine Website mit irischer Seele",
+        "summary": "Pub-Atmosphäre, Speisekarte und Besucherinfos auf einer übersichtlichen Website.",
+        "challenge": "Den Charakter des Pubs online spürbar machen und wichtige Infos schnell zugänglich halten.",
+        "solution": "Eine mobile Website verbindet Atmosphäre, Essen, Veranstaltungen und Kontakt.",
+        "result": "Live auf rocklore.de, mit einem eigenen Website-Angebot für weitere Irish Pubs.",
+        "roles": [
+          "Webdesign",
+          "Entwicklung"
+        ],
+        "imageAlt": "Rocklore Irish Pub Website mit Öffnungsstatus"
       }
     }
   },
@@ -281,10 +295,22 @@
     "heading": "Vorgehensweise",
     "description": "Strategie → Geschichte → System → Seite. Das Eimer-Symbol steht für Tiefe, Klarheit und einen strukturierten Prozess.",
     "steps": [
-      { "title": "Ziel & Rahmen definieren", "text": "Ziele, Audience, Rahmen" },
-      { "title": "Positionierung festlegen", "text": "Positionierung, Botschaft & Inhalte festlegen" },
-      { "title": "Marken- und Interface-Gestaltung", "text": "Marken- und Interface-Gestaltung" },
-      { "title": "Umsetzung, Fertigstellung, Übergabe", "text": "Umsetzung, Fertigstellung, Übergabe" }
+      {
+        "title": "Ziel & Rahmen definieren",
+        "text": "Ziele, Audience, Rahmen"
+      },
+      {
+        "title": "Positionierung festlegen",
+        "text": "Positionierung, Botschaft & Inhalte festlegen"
+      },
+      {
+        "title": "Marken- und Interface-Gestaltung",
+        "text": "Marken- und Interface-Gestaltung"
+      },
+      {
+        "title": "Umsetzung, Fertigstellung, Übergabe",
+        "text": "Umsetzung, Fertigstellung, Übergabe"
+      }
     ]
   },
   "footer": {
@@ -415,5 +441,196 @@
     },
     "backLink": "← Zurück zu allen Projekten",
     "backToProjects": "Zurück zu Projekten"
+  },
+  "pubWebsitesPage": {
+    "eyebrow": "Websites für Irish Pubs",
+    "heading": "Dein Irish Pub verdient eine Website, die genauso hart arbeitet wie du.",
+    "intro": "Zeig deinen Gästen schon vor dem ersten Besuch, was deinen Pub ausmacht. Mit einer übersichtlichen Website, die Atmosphäre, Speisekarte und Öffnungszeiten auch auf dem Smartphone zusammenbringt.",
+    "proof": "Bereits live bei Rocklore. Eine Website im echten Pub-Alltag, kein Konzept.",
+    "emailCta": "Lass uns über deinen Pub sprechen",
+    "contactCta": "Zum Kontaktformular",
+    "liveCta": "rocklore.de ansehen",
+    "showcase": {
+      "title": "So sieht das im Alltag aus",
+      "body": "Vier echte Screenshots von Rocklore. Die Referenz zeigt auch optionale Funktionen, die separat zum Basispaket berechnet werden.",
+      "items": [
+        {
+          "file": "screenshot-hero.webp",
+          "title": "Erster Eindruck und Live-Status",
+          "alt": "Rocklore Startseite mit Pub-Atmosphäre und aktuellem Öffnungsstatus"
+        },
+        {
+          "file": "screenshot-menu-slider.webp",
+          "title": "Appetit auf die Speisekarte",
+          "alt": "Speisen und Speisekarten-Slider auf der Rocklore Website"
+        },
+        {
+          "file": "screenshot-events-slider.webp",
+          "title": "Vorfreude auf den nächsten Abend",
+          "alt": "Event-Slider mit kommenden Veranstaltungen im Rocklore"
+        },
+        {
+          "file": "screenshot-contact.webp",
+          "title": "Alle wichtigen Infos griffbereit",
+          "alt": "Kontaktbereich der Rocklore Website mit Öffnungszeiten"
+        }
+      ]
+    },
+    "what": {
+      "title": "Was ich mache",
+      "body": "Ich gestalte und entwickle eine Website, die den Charakter deines Pubs zeigt. Gäste finden schnell, was sie brauchen: Essen, Öffnungszeiten und einen direkten Weg zur Anfrage.",
+      "items": [
+        "Ein Design mit deinen Farben, Fotos und deiner Geschichte.",
+        "Eine klare Seitenstruktur vom ersten Eindruck bis zur Kontaktaufnahme.",
+        "Ein Ansprechpartner für Gestaltung, Entwicklung und Veröffentlichung."
+      ]
+    },
+    "package": {
+      "title": "Das Paket: eine Seite, alles an seinem Platz",
+      "body": "Eine Startseite mit allen vereinbarten Abschnitten. Dein Pub, Atmosphäre, Speisen und Getränke, Öffnungszeiten und Kontakt finden auf einer Seite zusammen.",
+      "price": "Ab 600 € einmalig",
+      "items": [
+        "Eine Startseite mit allen vereinbarten Abschnitten",
+        "Mobile-first für Smartphone, Tablet und Desktop",
+        "Basis-SEO: Seitenstruktur, Titel und Beschreibungen",
+        "Kontaktformular für Anfragen"
+      ],
+      "note": "Das Basispaket arbeitet mit deinen bereitgestellten Inhalten und Bildern. Weitere Seiten, zusätzliche Sprachen und die folgenden Funktionen werden separat angeboten.",
+      "extrasTitle": "Ergänze, was dein Pub braucht",
+      "extras": [
+        {
+          "title": "Individuelles Speisekarten-Design",
+          "price": "ab +120 €"
+        },
+        {
+          "title": "Eigene Unterseite",
+          "price": "+150 €"
+        },
+        {
+          "title": "Zweisprachige Website",
+          "price": "+200 €"
+        },
+        {
+          "title": "Eventkalender",
+          "price": "+150 €"
+        },
+        {
+          "title": "Fotobearbeitung",
+          "price": "+100 €"
+        },
+        {
+          "title": "Social-Media-Integration",
+          "price": "+100 €"
+        }
+      ]
+    },
+    "care": {
+      "title": "Monatliche Betreuung",
+      "body": "Damit deine Website auch nach dem Start hilfreich bleibt. Den genauen Umfang und das Kontingent für Änderungen vereinbaren wir vor der Auswahl.",
+      "recommended": "Empfohlen",
+      "plans": [
+        {
+          "title": "Mini Care",
+          "price": "ab 39 € / Monat",
+          "body": "Für Pubs mit gelegentlichen Änderungen und grundlegender laufender Website-Betreuung."
+        },
+        {
+          "title": "Standard Care",
+          "price": "ab 69 € / Monat",
+          "body": "Für Pubs mit regelmäßigen Aktualisierungen von Speisekarte, Veranstaltungen und saisonalen Informationen."
+        }
+      ],
+      "note": "Zusatzarbeit: 70 € pro Stunde, vorher mit dir abgestimmt. Hosting, Domainkosten und mögliche Gebühren externer Anbieter klären wir im Angebot."
+    },
+    "why": {
+      "title": "Warum das funktioniert",
+      "body": "Eine Pub-Website soll die Planung eines Besuchs erleichtern. Klare Informationen und eine wiedererkennbare Atmosphäre helfen Gästen einzuschätzen, ob dein Pub zu ihrem Abend passt.",
+      "items": [
+        "Öffnungszeiten und Kontaktdaten sind schnell auffindbar.",
+        "Das mobile Layout funktioniert auch unterwegs.",
+        "Deine eigene Website gibt deinem Pub einen festen Platz neben Social Media."
+      ]
+    },
+    "reference": {
+      "title": "Referenzprojekt Rocklore",
+      "body": "Rocklore ist ein Irish Pub in Schramberg. Die live geschaltete Website verbindet Pub-Atmosphäre, Essen, Veranstaltungen und praktische Besucherinfos. Schau dir an, wie die Abschnitte zusammenspielen.",
+      "note": "Deine Website wird an deinen eigenen Pub angepasst. Die Referenz zeigt Möglichkeiten, einschließlich optionaler Extras."
+    },
+    "process": {
+      "title": "Der Ablauf: in fünf Schritten online",
+      "steps": [
+        {
+          "title": "Deinen Pub kennenlernen",
+          "body": "Wir sprechen über deine Gäste, deinen Stil und die Aufgaben der Website."
+        },
+        {
+          "title": "Umfang vereinbaren",
+          "body": "Du bekommst ein Angebot für das Ein-Seiten-Paket und deine gewünschten Extras."
+        },
+        {
+          "title": "Inhalte sammeln",
+          "body": "Du lieferst Logo, Fotos, Speisekarte, Öffnungszeiten und Kontaktdaten."
+        },
+        {
+          "title": "Gestalten und abstimmen",
+          "body": "Ich baue deine Seite und wir prüfen Inhalte und Gestaltung gemeinsam."
+        },
+        {
+          "title": "Veröffentlichen und übergeben",
+          "body": "Nach deiner Freigabe geht die Website online. Bei Bedarf vereinbaren wir die weitere Betreuung."
+        }
+      ]
+    },
+    "investment": {
+      "title": "Deine Investition, klar geplant",
+      "body": "Die Ein-Seiten-Website startet ab 600 € einmalig. Ergänze die Funktionen, die dein Pub braucht, und wähle auf Wunsch eine monatliche Betreuung.",
+      "example": "Beispiel: 600 € Basisumfang + 200 € für eine zweite Sprache = 800 € einmalig. Standard Care ab 69 € monatlich wird separat berechnet.",
+      "note": "Das endgültige Angebot bestätigt Umfang, Gesamtpreis, anfallende Steuern und laufende Kosten, bevor die Arbeit beginnt."
+    },
+    "faq": {
+      "title": "Fragen vor der ersten Runde",
+      "items": [
+        {
+          "question": "Warum ab 600 € statt Festpreis?",
+          "answer": "600 € ist der Einstiegspreis für den definierten Basisumfang einer Ein-Seiten-Website. Die Aufbereitung von Inhalten, individuelle Anforderungen und Extras können den Aufwand verändern. Du erhältst vor dem Start ein klares Angebot."
+        },
+        {
+          "question": "Ist das eine Website mit mehreren Seiten?",
+          "answer": "Das Basispaket enthält eine Startseite mit allen vereinbarten Abschnitten. Eine zusätzliche Unterseite kostet +150 €."
+        },
+        {
+          "question": "Kann meine Website zweisprachig sein?",
+          "answer": "Ja. Eine zweisprachige Website ist für +200 € möglich. Wie die übersetzten Inhalte bereitgestellt werden, klären wir im Angebot."
+        },
+        {
+          "question": "Sind alle Rocklore-Funktionen enthalten?",
+          "answer": "Nein. Rocklore zeigt die Möglichkeiten. Individuelles Speisekarten-Design, Eventkalender, Fotobearbeitung und Social-Media-Integration sind optionale Extras."
+        },
+        {
+          "question": "Was brauchst du von mir?",
+          "answer": "Dein Logo, falls vorhanden, Fotos mit entsprechenden Nutzungsrechten, Speisekarte, Öffnungszeiten, Kontaktdaten und eine kurze Vorstellung deines Pubs. Fehlendes Material besprechen wir vor dem Start."
+        },
+        {
+          "question": "Wie lange dauert die Umsetzung?",
+          "answer": "Nach Sichtung des Umfangs und deiner Inhalte vereinbaren wir einen realistischen Zeitplan. Der Starttermin hängt auch davon ab, wann Material und Rückmeldungen vorliegen."
+        },
+        {
+          "question": "Muss ich eine monatliche Betreuung buchen?",
+          "answer": "Die Betreuung ist optional. Mini Care startet ab 39 € monatlich, Standard Care ab 69 €. Den enthaltenen Umfang vereinbaren wir vorab. Zusatzarbeit kostet 70 € pro Stunde."
+        },
+        {
+          "question": "Kann ich meine Domain behalten?",
+          "answer": "In der Regel ja. Wir prüfen gemeinsam Zugänge und Hosting-Anforderungen. Domain, Hosting und mögliche Kosten externer Anbieter klären wir vorab."
+        }
+      ]
+    },
+    "about": {
+      "title": "Hi, ich bin Jan.",
+      "body": "Ich bin der Designer und Entwickler hinter Well Edge Creative. Ich bringe den Charakter deines Pubs auf den Bildschirm und mache die wichtigen Informationen einfach zugänglich. Du arbeitest direkt mit mir, vom ersten Gespräch bis zur Veröffentlichung."
+    },
+    "closing": {
+      "title": "Bereit für ein richtiges Online-Zuhause für deinen Pub?",
+      "body": "Erzähl mir von deinem Pub und deinen Wünschen. Daraus machen wir einen klaren Umfang und ein passendes Angebot."
+    }
   }
 }

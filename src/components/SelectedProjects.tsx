@@ -17,6 +17,11 @@ type FeaturedProject = {
 
 const FEATURED_PROJECTS: FeaturedProject[] = [
   {
+    slug: "irish-pub-websites",
+    year: "2026",
+    images: [{ src: "/assets/misc/projects/irish-pub-websites.webp", altKey: "selectedProjects.projects.irish-pub-websites.imageAlt" }],
+  },
+  {
     slug: "brisa-bahia",
     year: "2025",
     site: "http://brisabahia.welledgecreative.com/",
@@ -366,13 +371,13 @@ export default function SelectedProjects() {
                     ))}
                   </div>
 
-                  {project.slug === "brisa-bahia" ? (
+                  {project.slug === "brisa-bahia" || project.slug === "irish-pub-websites" ? (
                     <div data-anim="text" style={{ opacity: 0 }}>
                       <Link
-                        href={`/${locale}/case-studies/brisa-bahia`}
+                        href={project.slug === "irish-pub-websites" ? `/${locale}/pub-websites` : `/${locale}/case-studies/brisa-bahia`}
                         className="inline-flex items-center gap-1.5 text-base font-semibold text-accent underline-offset-4 transition-colors hover:text-accent/80"
                       >
-                        {t("selectedProjects.cta.brisaBahiaCaseStudy")}
+                        {t(project.slug === "irish-pub-websites" ? "selectedProjects.cta.irishPubWebsites" : "selectedProjects.cta.brisaBahiaCaseStudy")}
                         <svg
                           width="18"
                           height="18"
