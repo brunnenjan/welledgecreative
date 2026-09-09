@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
 
     // Check if token is valid
     if (!recaptchaResult.tokenProperties?.valid || recaptchaResult.tokenProperties?.action !== "submit") {
-      console.error("Invalid reCAPTCHA token", { reason: recaptchaResult.tokenProperties?.invalidReason, actionMismatch: recaptchaResult.tokenProperties?.action !== "submit" });
+      console.error("Contact security verification rejected", { code: "CAPTCHA_INVALID_TOKEN", reason: recaptchaResult.tokenProperties?.invalidReason, actionMismatch: recaptchaResult.tokenProperties?.action !== "submit" });
       return NextResponse.json(
         { error: "Captcha verification failed", code: "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
     // Check score
     const score = recaptchaResult.riskAnalysis?.score || 0;
     if (score < 0.3) {
-      console.error(`Low reCAPTCHA score: ${score}`);
+      console.error("Contact security verification rejected", { code: "CAPTCHA_LOW_SCORE", score });
       return NextResponse.json(
         { error: "Security check failed. Please try again.", code: "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }
