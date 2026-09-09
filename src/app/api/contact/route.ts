@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
     if (!recaptchaResult.tokenProperties?.valid || recaptchaResult.tokenProperties?.action !== "submit") {
       console.error("Contact security verification rejected", { code: "CAPTCHA_INVALID_TOKEN", reason: recaptchaResult.tokenProperties?.invalidReason, actionMismatch: recaptchaResult.tokenProperties?.action !== "submit" });
       return NextResponse.json(
-        { error: "Captcha verification failed", code: "CAPTCHA_FAILED" },
+        { error: "Captcha verification failed", code: recaptchaResult.tokenProperties?.invalidReason === "BROWSER_ERROR" ? "CAPTCHA_BROWSER_ERROR" : "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }
       );
     }

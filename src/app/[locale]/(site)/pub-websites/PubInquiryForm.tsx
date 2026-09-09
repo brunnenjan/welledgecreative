@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { CaptchaUnavailable, getInquiryCaptchaToken, loadInquiryCaptcha } from "@/lib/pub-inquiry-client";
+import { CaptchaUnavailable, postPubInquiry, loadInquiryCaptcha } from "@/lib/pub-inquiry-client";
 import Link from "next/link";
 import { useI18n } from "@/components/providers/I18nProvider";
 import styles from "./pub-websites.module.css";
@@ -40,14 +40,11 @@ export default function PubInquiryForm() {
     submitting.current = true;
     setStatus("sending");
     try {
-      const token = await getInquiryCaptchaToken();
       data.set("inquiryType", "irish-pub-website");
       data.set("locale", locale);
-      data.set("g-recaptcha-response", token);
-      const response = await fetch("/api/contact", { method: "POST", body: data, signal: AbortSignal.timeout(65000) });
-      const result = await response.json().catch(() => null);
+      const { response, result } = await postPubInquiry(data);
       if (!response.ok || result?.message !== "OK") {
-        setStatus(result?.code === "CAPTCHA_UNAVAILABLE" ? "securityServiceError" : result?.code === "CAPTCHA_FAILED" ? "securityError" : response.status >= 500 ? "serverError" : "error");
+        setStatus(result?.code === "CAPTCHA_UNAVAILABLE" ? "securityServiceError" : ["CAPTCHA_FAILED", "CAPTCHA_BROWSER_ERROR"].includes(result?.code) ? "securityError" : response.status >= 500 ? "serverError" : "error");
         return;
       }
       setStatus(result.confirmationSent === false ? "confirmationFailed" : "success");

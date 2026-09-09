@@ -65,3 +65,21 @@ export async function getInquiryCaptchaToken(): Promise<string> {
     } catch { failed(); }
   });
 }
+
+// Retry only a confirmed browser verification failure, before any email is sent.
+// Never retry an ambiguous network failure or a mail delivery response.
+export async function postPubInquiry(data: FormData) {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    data.set("g-recaptcha-response", await getInquiryCaptchaToken());
+    const response = await fetch("/api/contact", {
+      method: "POST", body: data, signal: AbortSignal.timeout(65000),
+    });
+    const result = await response.json().catch(() => null);
+    if (attempt === 0 && response.status === 400 && result?.code === "CAPTCHA_BROWSER_ERROR") {
+      await new Promise(resolve => setTimeout(resolve, 800));
+      continue;
+    }
+    return { response, result };
+  }
+  throw new CaptchaUnavailable("token");
+}
