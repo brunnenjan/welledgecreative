@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
 
     // Check if token is valid
     if (!recaptchaResult.tokenProperties?.valid || recaptchaResult.tokenProperties?.action !== "submit") {
-      console.error("Invalid reCAPTCHA token");
+      console.error("Invalid reCAPTCHA token", { reason: recaptchaResult.tokenProperties?.invalidReason, actionMismatch: recaptchaResult.tokenProperties?.action !== "submit" });
       return NextResponse.json(
         { error: "Captcha verification failed", code: "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }

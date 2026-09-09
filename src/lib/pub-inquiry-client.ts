@@ -3,7 +3,7 @@ const SCRIPT_ID = "pub-inquiry-recaptcha";
 let pending: Promise<void> | undefined;
 
 export class CaptchaUnavailable extends Error {
-  constructor() { super("Captcha unavailable"); }
+  constructor(readonly stage: "load" | "token" = "load") { super("Captcha unavailable"); }
 }
 
 export function loadInquiryCaptcha(): Promise<void> {
@@ -53,8 +53,8 @@ export function loadInquiryCaptcha(): Promise<void> {
 export async function getInquiryCaptchaToken(): Promise<string> {
   await loadInquiryCaptcha();
   return new Promise<string>((resolve, reject) => {
-    const timeout = setTimeout(() => reject(new CaptchaUnavailable()), 15000);
-    const failed = () => { clearTimeout(timeout); reject(new CaptchaUnavailable()); };
+    const timeout = setTimeout(() => reject(new CaptchaUnavailable("token")), 15000);
+    const failed = () => { clearTimeout(timeout); reject(new CaptchaUnavailable("token")); };
     try {
       const captcha = window.grecaptcha?.enterprise;
       if (!captcha) { failed(); return; }

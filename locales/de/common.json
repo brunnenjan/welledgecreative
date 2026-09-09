@@ -702,12 +702,14 @@
       "success": "Danke! Deine Anfrage ist angekommen. Eine Bestätigung ist per E-Mail unterwegs.",
       "confirmationFailed": "Danke! Deine Anfrage ist angekommen. Die Bestätigungsmail konnte leider nicht versendet werden. Du musst die Anfrage nicht erneut senden.",
       "error": "Das Senden hat leider nicht geklappt. Bitte versuche es noch einmal oder schreibe an jan@well-edge-creative.de.",
-      "securityError": "Die Sicherheitsprüfung konnte nicht abgeschlossen werden. Lade sie bitte erneut. Falls du einen Inhaltsblocker verwendest, erlaube reCAPTCHA für diese Seite. Deine Angaben bleiben erhalten.",
+      "securityError": "Die Sicherheitsprüfung wurde nicht erfolgreich bestätigt. Bitte versuche es erneut. Falls du die lokale Vorschau nutzt, teste das Formular auf der Live-Website. Deine Angaben bleiben erhalten.",
       "serverError": "Der Mailserver konnte die Anfrage gerade nicht annehmen. Bitte versuche es später erneut oder schreibe an jan@well-edge-creative.de.",
       "networkError": "Die Verbindung wurde unterbrochen. Bitte prüfe zuerst, ob eine Bestätigungsmail angekommen ist, bevor du erneut sendest.",
       "liveForm": "Formular auf der Live-Website öffnen",
       "loading": "Die Sicherheitsprüfung wird geladen …",
-      "retrySecurity": "Sicherheitsprüfung erneut laden"
+      "retrySecurity": "Sicherheitsprüfung erneut laden",
+      "securityLoadError": "Die Google-Sicherheitsprüfung konnte im Browser nicht geladen werden. Bitte lade sie erneut. Deine Angaben bleiben erhalten. Falls du einen Inhaltsblocker nutzt, prüfe, ob er reCAPTCHA blockiert.",
+      "securityServiceError": "Der Server kann die Google-Sicherheitsprüfung gerade nicht abschließen. Deine Anfrage wurde noch nicht versendet. Bitte versuche es später erneut oder schreibe an jan@well-edge-creative.de."
     }
   }
 }

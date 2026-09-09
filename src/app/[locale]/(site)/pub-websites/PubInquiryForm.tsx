@@ -13,8 +13,9 @@ export default function PubInquiryForm() {
   const [ready, setReady] = useState(false);
   const [loadingCaptcha, setLoadingCaptcha] = useState(true);
   const [loadAttempt, setLoadAttempt] = useState(0);
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "confirmationFailed" | "error" | "securityError" | "serverError" | "networkError">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "confirmationFailed" | "error" | "securityError" | "securityLoadError" | "securityServiceError" | "serverError" | "networkError">("idle");
   const submitting = useRef(false);
+  const securityProblem = ["securityError", "securityLoadError", "securityServiceError"].includes(status);
   const complete = status === "success" || status === "confirmationFailed";
 
   useEffect(() => {
@@ -24,9 +25,9 @@ export default function PubInquiryForm() {
     loadInquiryCaptcha().then(() => {
       if (active) {
         setReady(true);
-        setStatus(current => current === "securityError" ? "idle" : current);
+        setStatus(current => ["securityError", "securityLoadError", "securityServiceError"].includes(current) ? "idle" : current);
       }
-    }).catch(() => { if (active) setStatus("securityError"); })
+    }).catch(() => { if (active) setStatus("securityLoadError"); })
       .finally(() => { if (active) setLoadingCaptcha(false); });
     return () => { active = false; };
   }, [loadAttempt]);
@@ -46,13 +47,13 @@ export default function PubInquiryForm() {
       const response = await fetch("/api/contact", { method: "POST", body: data, signal: AbortSignal.timeout(65000) });
       const result = await response.json().catch(() => null);
       if (!response.ok || result?.message !== "OK") {
-        setStatus(["CAPTCHA_FAILED", "CAPTCHA_UNAVAILABLE"].includes(result?.code) ? "securityError" : response.status >= 500 ? "serverError" : "error");
+        setStatus(result?.code === "CAPTCHA_UNAVAILABLE" ? "securityServiceError" : result?.code === "CAPTCHA_FAILED" ? "securityError" : response.status >= 500 ? "serverError" : "error");
         return;
       }
       setStatus(result.confirmationSent === false ? "confirmationFailed" : "success");
       form.reset();
     } catch (error) {
-      setStatus(error instanceof CaptchaUnavailable ? "securityError" : "networkError");
+      setStatus(error instanceof CaptchaUnavailable ? (error.stage === "load" ? "securityLoadError" : "securityError") : "networkError");
     } finally {
       submitting.current = false;
     }
@@ -60,7 +61,7 @@ export default function PubInquiryForm() {
 
   return <>
     <p className={styles.formIntro}>{text("intro")}</p>
-    {status === "securityError" && <p className={styles.small}><a href={`https://www.welledgecreative.${locale === "de" ? "de" : "com"}/${locale}/pub-websites`}>{text("liveForm")}</a></p>}
+    {securityProblem && <p className={styles.small}><a href={`https://www.welledgecreative.${locale === "de" ? "de" : "com"}/${locale}/pub-websites`}>{text("liveForm")}</a></p>}
     <form onSubmit={submit} className={styles.inquiryForm} aria-busy={status === "sending"}>
       <fieldset disabled={status === "sending" || complete}>
         <div className={styles.formRow}>
@@ -72,7 +73,7 @@ export default function PubInquiryForm() {
       <p className={styles.small}>{text("privacy")} <Link href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer">{text("privacyLink")}</Link></p>
       <p className={styles.small}>{text("captcha")} <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">{text("captchaPrivacy")}</a> · <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">{text("captchaTerms")}</a></p>
       {loadingCaptcha && <p role="status" className={styles.small}>{text("loading")}</p>}
-      {status === "securityError" && !loadingCaptcha && <button type="button" className="btn btn-secondary" onClick={() => setLoadAttempt(attempt => attempt + 1)}>{text("retrySecurity")}</button>}
+      {securityProblem && !loadingCaptcha && <button type="button" className="btn btn-secondary" onClick={() => setLoadAttempt(attempt => attempt + 1)}>{text("retrySecurity")}</button>}
       <button type="submit" className="btn btn-primary" disabled={!ready || status === "sending" || complete}>{status === "sending" ? text("sending") : text("submit")}</button>
       <div role="status" aria-live="polite" aria-atomic="true">{status !== "idle" && <p className={`${styles.formStatus} ${complete ? styles.formSuccess : ""}`}>{text(status)}</p>}</div>
     </form>
