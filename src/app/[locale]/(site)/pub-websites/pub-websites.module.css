@@ -16,7 +16,24 @@
 .page .small { font-size: .875rem; line-height: 1.7; color: #6a6a6a; }
 .hero { display: grid; grid-template-columns: 1fr 1.08fr; align-items: center; gap: 64px; padding-block: 156px 70px; }
 .hero h1 { font-size: clamp(2.75rem, 4.4vw, 4.5rem); line-height: 1.06; letter-spacing: -.055em; font-weight: 750; }
-.hero h1 span { color: var(--color-accent); }
+.heroHighlight {
+  color: #1a1a1a;
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  padding-inline: .08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: pub-highlight-reveal .7s ease-out .4s both;
+}
+@keyframes pub-highlight-reveal {
+  from { background-size: 0% 100%; color: #1a1a1a; }
+  to { background-size: 100% 100%; color: #fff; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroHighlight { animation: none; background-size: 100% 100%; color: #fff; }
+}
 .heroCopy > .lead { margin-top: 28px; max-width: 34rem; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 26px; margin-top: 32px; }
 .actions :global(.btn) { min-height: 52px; font-size: .9375rem; gap: 14px; }
