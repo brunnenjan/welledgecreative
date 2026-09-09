@@ -24,11 +24,10 @@ export default function PubWebsitesPage() {
   const list = <T,>(key: string) => getValue<T[]>(`pubWebsitesPage.${key}`) ?? [];
   const shots = list<Shot>("showcase.items");
   const highlightRef = useRef<HTMLSpanElement>(null);
-  const highlightBarRef = useRef<HTMLSpanElement>(null);
   const highlightTextRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!highlightRef.current || !highlightBarRef.current || !highlightTextRef.current) return;
+    if (!highlightRef.current || !highlightTextRef.current) return;
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
       const timeline = gsap.timeline({
@@ -39,7 +38,7 @@ export default function PubWebsitesPage() {
           toggleActions: "play reverse play reverse",
         },
       });
-      timeline.fromTo(highlightBarRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power1.out" }, 0)
+      timeline.fromTo(highlightRef.current, { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: 0.6, ease: "power1.out" }, 0)
         .fromTo(highlightTextRef.current, { color: "#1a1a1a" }, { color: "#ffffff", duration: 0.6, ease: "power1.out" }, 0);
     });
     return () => media.revert();
@@ -78,7 +77,7 @@ export default function PubWebsitesPage() {
       <section id="hero" className={`${styles.wrap} ${styles.hero}`}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}><span className={styles.dot} />{text("eyebrow")}</p>
-          <h1>{text("headingStart")} <span key={locale} ref={highlightRef} className={styles.heroHighlight}><span ref={highlightTextRef} className={styles.highlightText}>{text("headingAccent")}</span><span ref={highlightBarRef} aria-hidden="true" className={styles.highlightBar} /></span></h1>
+          <h1>{text("headingStart")} <span key={locale} ref={highlightRef} className={styles.heroHighlight}><span ref={highlightTextRef} className={styles.highlightText}>{text("headingAccent")}</span></span></h1>
           <p className={styles.lead}>{text("intro")}</p>
           {actions}
           <div className={styles.heroPrice}><strong>{text("package.price")}</strong><span>{text("labels.onePage")}</span></div>

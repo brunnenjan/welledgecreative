@@ -16,8 +16,7 @@
 .page .small { font-size: .875rem; line-height: 1.7; color: #6a6a6a; }
 .hero { display: grid; grid-template-columns: 1fr 1.08fr; align-items: center; gap: 64px; padding-block: 156px 70px; }
 .hero h1 { font-size: clamp(2.75rem, 4.4vw, 4.5rem); line-height: 1.06; letter-spacing: -.055em; font-weight: 750; }
-.heroHighlight { display: inline-block; position: relative; isolation: isolate; max-width: 100%; line-height: 1.16; }
-.highlightBar { position: absolute; inset: -.02em -.06em; z-index: -1; background: var(--color-accent); transform-origin: left center; }
+.heroHighlight { display: inline; position: relative; isolation: isolate; line-height: 1.22; padding-inline: .04em; background-image: linear-gradient(var(--color-accent), var(--color-accent)); background-repeat: no-repeat; background-position: left center; background-size: 100% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .highlightText { position: relative; z-index: 1; color: #fff; }
 .heroCopy > .lead { margin-top: 28px; max-width: 34rem; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 26px; margin-top: 32px; }
