@@ -16,15 +16,9 @@
 .page .small { font-size: .875rem; line-height: 1.7; color: #6a6a6a; }
 .hero { display: grid; grid-template-columns: 1fr 1.08fr; align-items: center; gap: 64px; padding-block: 156px 70px; }
 .hero h1 { font-size: clamp(2.75rem, 4.4vw, 4.5rem); line-height: 1.06; letter-spacing: -.055em; font-weight: 750; }
-.heroHighlight { display: inline-block; position: relative; isolation: isolate; max-width: 100%; margin-top: .1em; padding: .04em .09em .1em; color: #1a1a1a; line-height: 1.16; }
-.heroHighlight::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--color-accent); transform-origin: left; animation: pub-highlight-bar .7s ease-out .4s both; }
-.highlightText { position: relative; z-index: 1; animation: pub-highlight-text .7s ease-out .4s both; }
-@keyframes pub-highlight-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes pub-highlight-text { from { color: #1a1a1a; } to { color: #fff; } }
-@media (prefers-reduced-motion: reduce) {
-  .heroHighlight::before { animation: none; transform: scaleX(1); }
-  .highlightText { animation: none; color: #fff; }
-}
+.heroHighlight { display: inline-block; position: relative; isolation: isolate; max-width: 100%; line-height: 1.16; }
+.highlightBar { position: absolute; inset: -.02em -.06em; z-index: -1; background: var(--color-accent); transform-origin: left center; }
+.highlightText { position: relative; z-index: 1; color: #fff; }
 .heroCopy > .lead { margin-top: 28px; max-width: 34rem; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 26px; margin-top: 32px; }
 .actions :global(.btn) { min-height: 52px; font-size: .9375rem; gap: 14px; }
