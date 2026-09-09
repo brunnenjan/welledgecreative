@@ -452,27 +452,42 @@
     "liveCta": "rocklore.de ansehen",
     "showcase": {
       "title": "Echter Pub. Echte Website.",
-      "body": "Vier echte Screenshots von Rocklore. Die Referenz zeigt auch optionale Funktionen, die separat zum Basispaket berechnet werden.",
+      "body": "Fünf echte Screenshots von Rocklore. Die Referenz zeigt auch optionale Funktionen, die separat zum Basispaket berechnet werden.",
       "items": [
         {
           "file": "screenshot-hero.webp",
           "title": "Erster Eindruck und Live-Status",
-          "alt": "Rocklore Startseite mit Pub-Atmosphäre und aktuellem Öffnungsstatus"
+          "alt": "Rocklore Startseite mit Pub-Atmosphäre und aktuellem Öffnungsstatus",
+          "width": 1280,
+          "height": 800
         },
         {
-          "file": "screenshot-menu-slider.webp",
-          "title": "Appetit auf die Speisekarte",
-          "alt": "Speisen und Speisekarten-Slider auf der Rocklore Website"
+          "file": "screenshot-food-slider-v2.webp",
+          "title": "Appetit auf deinen Pub",
+          "alt": "Rocklore Speisen-Slider mit Chips und Dips",
+          "width": 2000,
+          "height": 1551
+        },
+        {
+          "file": "screenshot-menu-v2.webp",
+          "width": 2000,
+          "height": 1013,
+          "title": "Die Speisekarte entdecken",
+          "alt": "Rocklore Speisekarte mit grünem Menübuch"
         },
         {
           "file": "screenshot-events-slider.webp",
           "title": "Vorfreude auf den nächsten Abend",
-          "alt": "Event-Slider mit kommenden Veranstaltungen im Rocklore"
+          "alt": "Event-Slider mit kommenden Veranstaltungen im Rocklore",
+          "width": 1280,
+          "height": 800
         },
         {
-          "file": "screenshot-contact.webp",
+          "file": "screenshot-contact-v2.webp",
           "title": "Alle wichtigen Infos griffbereit",
-          "alt": "Kontaktbereich der Rocklore Website mit Öffnungszeiten"
+          "alt": "Kontaktbereich der Rocklore Website mit Öffnungszeiten",
+          "width": 2000,
+          "height": 1081
         }
       ]
     },

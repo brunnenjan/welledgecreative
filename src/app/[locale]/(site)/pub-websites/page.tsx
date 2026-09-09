@@ -10,7 +10,7 @@ import { useI18n } from "@/components/providers/I18nProvider";
 import styles from "./pub-websites.module.css";
 
 type Card = { title: string; body: string; price?: string };
-type Shot = { file: string; title: string; alt: string };
+type Shot = { file: string; title: string; alt: string; width: number; height: number };
 type FAQ = { question: string; answer: string };
 
 function Arrow() {
@@ -32,7 +32,7 @@ export default function PubWebsitesPage() {
   const [activeShot, setActiveShot] = useState(0);
   const galleryImages = [
     { src: "/assets/misc/projects/irish-pub-websites-mockup.webp", title: text("reference.title"), alt: text("interactive.mockupAlt"), width: 1440, height: 1080 },
-    ...shots.map(shot => ({ src: `/assets/misc/pub-websites/${shot.file}`, title: shot.title, alt: shot.alt, width: 1280, height: 800 })),
+    ...shots.map(shot => ({ src: `/assets/misc/pub-websites/${shot.file}`, title: shot.title, alt: shot.alt, width: shot.width, height: shot.height })),
   ];
   const currentShot = galleryImages[activeShot];
   const moveShot = (direction: number) => setActiveShot(index => (index + direction + galleryImages.length) % galleryImages.length);
@@ -86,7 +86,7 @@ export default function PubWebsitesPage() {
         <div className={styles.showcaseGrid}>{shots.map((shot, index) => (
           <figure key={shot.file} className={styles.shot}>
             <button type="button" onClick={() => openShot(index + 1)} aria-label={`${text("interactive.enlarge")}: ${shot.title}`} aria-haspopup="dialog" className={styles.shotImage}>
-              <Image src={`/assets/misc/pub-websites/${shot.file}`} alt={shot.alt} width={1280} height={800} sizes="(max-width: 700px) 100vw, 50vw" />
+              <Image src={`/assets/misc/pub-websites/${shot.file}`} alt={shot.alt} width={shot.width} height={shot.height} sizes="(max-width: 700px) 100vw, 50vw" />
               <span className={styles.zoomHint}>{text("interactive.enlarge")}<Arrow /></span>
             </button>
             <figcaption><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><h3>{shot.title}</h3><Arrow /></figcaption>

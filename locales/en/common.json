@@ -452,27 +452,42 @@
     "liveCta": "Visit rocklore.de",
     "showcase": {
       "title": "Real pub. Real website.",
-      "body": "Four real screenshots from Rocklore. This reference includes optional features that are priced separately from the base package.",
+      "body": "Five real screenshots from Rocklore. This reference includes optional features that are priced separately from the base package.",
       "items": [
         {
           "file": "screenshot-hero.webp",
           "title": "First impression and live status",
-          "alt": "Rocklore homepage with pub atmosphere and opening status"
+          "alt": "Rocklore homepage with pub atmosphere and opening status",
+          "width": 1280,
+          "height": 800
         },
         {
-          "file": "screenshot-menu-slider.webp",
-          "title": "A menu worth exploring",
-          "alt": "Rocklore food and menu slider"
+          "file": "screenshot-food-slider-v2.webp",
+          "title": "A taste of your pub",
+          "alt": "Rocklore food slider featuring chips and dips",
+          "width": 2000,
+          "height": 1551
+        },
+        {
+          "file": "screenshot-menu-v2.webp",
+          "width": 2000,
+          "height": 1013,
+          "title": "Explore the menu",
+          "alt": "Rocklore menu section with a green menu book"
         },
         {
           "file": "screenshot-events-slider.webp",
           "title": "Your next night out",
-          "alt": "Rocklore event slider showing upcoming pub events"
+          "alt": "Rocklore event slider showing upcoming pub events",
+          "width": 1280,
+          "height": 800
         },
         {
-          "file": "screenshot-contact.webp",
+          "file": "screenshot-contact-v2.webp",
           "title": "All the practical details",
-          "alt": "Rocklore contact section with opening hours"
+          "alt": "Rocklore contact section with opening hours",
+          "width": 2000,
+          "height": 1081
         }
       ]
     },
