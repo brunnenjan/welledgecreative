@@ -73,21 +73,23 @@ export async function POST(request: NextRequest) {
 
     const recaptchaUrl = `https://recaptchaenterprise.googleapis.com/v1/projects/${recaptchaProjectId}/assessments?key=${recaptchaApiKey}`;
 
-    const recaptchaResponse = await fetch(recaptchaUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(recaptchaData),
-    });
-
-    if (!recaptchaResponse.ok) {
-      console.error("reCAPTCHA assessment service failed", recaptchaResponse.status);
+    let recaptchaResult;
+    try {
+      const recaptchaResponse = await fetch(recaptchaUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(recaptchaData),
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!recaptchaResponse.ok) throw new Error("Assessment unavailable");
+      recaptchaResult = await recaptchaResponse.json();
+    } catch {
+      console.error("reCAPTCHA assessment service unavailable");
       return NextResponse.json(
-        { error: "Captcha verification failed", code: "CAPTCHA_FAILED" },
-        { status: 400, headers: corsHeaders }
+        { error: "Security service unavailable", code: "CAPTCHA_UNAVAILABLE" },
+        { status: 503, headers: corsHeaders }
       );
     }
-
-    const recaptchaResult = await recaptchaResponse.json();
 
     // Check if token is valid
     if (!recaptchaResult.tokenProperties?.valid || recaptchaResult.tokenProperties?.action !== "submit") {

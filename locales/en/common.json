@@ -702,10 +702,12 @@
       "success": "Thank you! Your enquiry has arrived. A confirmation email is on its way.",
       "confirmationFailed": "Thank you! Your enquiry has arrived, but the confirmation email could not be sent. You do not need to submit again.",
       "error": "Your enquiry could not be sent. Please try again or email jan@well-edge-creative.de.",
-      "securityError": "The security check could not complete. Please open the form on the live website. If a blocker is active there, allow reCAPTCHA and reload the page.",
+      "securityError": "The security check could not complete. Please reload it. If you use a content blocker, allow reCAPTCHA for this page. Your details are kept.",
       "serverError": "The mail server could not accept your enquiry right now. Please try again later or email jan@well-edge-creative.de.",
       "networkError": "The connection was interrupted. Please check for a confirmation email before submitting again.",
-      "liveForm": "Open the form on the live website"
+      "liveForm": "Open the form on the live website",
+      "loading": "Loading the security check …",
+      "retrySecurity": "Reload security check"
     }
   }
 }
