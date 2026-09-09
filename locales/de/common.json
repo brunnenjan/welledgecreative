@@ -159,6 +159,7 @@
         "client": "Rocklore Irish Pub",
         "title": "Eine Website mit irischer Seele",
         "summary": "Pub-Atmosphäre, Speisekarte und Besucherinfos auf einer übersichtlichen Website.",
+        "extraNote": "Eine Seite ab 800 € einmalig. Speisekarte, Öffnungszeiten und Kontakt klar präsentiert. Betreuung auf Wunsch ab 39 € monatlich.",
         "challenge": "Den Charakter des Pubs online spürbar machen und wichtige Infos schnell zugänglich halten.",
         "solution": "Eine mobile Website verbindet Atmosphäre, Essen, Veranstaltungen und Kontakt.",
         "result": "Live auf rocklore.de, mit einem eigenen Website-Angebot für weitere Irish Pubs.",
@@ -700,7 +701,11 @@
       "sending": "Deine Anfrage wird gesendet …",
       "success": "Danke! Deine Anfrage ist angekommen. Eine Bestätigung ist per E-Mail unterwegs.",
       "confirmationFailed": "Danke! Deine Anfrage ist angekommen. Die Bestätigungsmail konnte leider nicht versendet werden. Du musst die Anfrage nicht erneut senden.",
-      "error": "Das Senden hat leider nicht geklappt. Bitte versuche es noch einmal oder schreibe an jan@well-edge-creative.de."
+      "error": "Das Senden hat leider nicht geklappt. Bitte versuche es noch einmal oder schreibe an jan@well-edge-creative.de.",
+      "securityError": "Die Sicherheitsprüfung konnte nicht abgeschlossen werden. Bitte öffne das Formular auf der Live-Website. Falls dort ein Blocker aktiv ist, erlaube reCAPTCHA und lade die Seite neu.",
+      "serverError": "Der Mailserver konnte die Anfrage gerade nicht annehmen. Bitte versuche es später erneut oder schreibe an jan@well-edge-creative.de.",
+      "networkError": "Die Verbindung wurde unterbrochen. Bitte prüfe zuerst, ob eine Bestätigungsmail angekommen ist, bevor du erneut sendest.",
+      "liveForm": "Formular auf der Live-Website öffnen"
     }
   }
 }

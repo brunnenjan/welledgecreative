@@ -12,7 +12,7 @@ export default function PubInquiryForm() {
   const { t, locale } = useI18n();
   const text = (key: string) => t(`pubWebsitesPage.form.${key}`);
   const [ready, setReady] = useState(false);
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "confirmationFailed" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "confirmationFailed" | "error" | "securityError" | "serverError" | "networkError">("idle");
   const submitting = useRef(false);
   const complete = status === "success" || status === "confirmationFailed";
 
@@ -25,26 +25,40 @@ export default function PubInquiryForm() {
     setStatus("sending");
     try {
       if (!window.grecaptcha?.enterprise) throw new Error("Captcha unavailable");
-      const token = await window.grecaptcha.enterprise.execute(SITE_KEY, { action: "submit" });
+      await new Promise<void>((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error("Captcha unavailable")), 10000);
+        window.grecaptcha!.enterprise!.ready(() => { clearTimeout(timer); resolve(); });
+      });
+      const token = await new Promise<string>((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error("Captcha unavailable")), 15000);
+        window.grecaptcha!.enterprise!.execute(SITE_KEY, { action: "submit" }).then(
+          value => { clearTimeout(timer); resolve(value); },
+          () => { clearTimeout(timer); reject(new Error("Captcha unavailable")); }
+        );
+      });
       if (!token) throw new Error("Captcha unavailable");
       data.set("inquiryType", "irish-pub-website");
       data.set("locale", locale);
       data.set("g-recaptcha-response", token);
-      const response = await fetch("/api/contact", { method: "POST", body: data });
-      const result = await response.json();
-      if (!response.ok || result.message !== "OK") throw new Error("Send failed");
+      const response = await fetch("/api/contact", { method: "POST", body: data, signal: AbortSignal.timeout(65000) });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.message !== "OK") {
+        setStatus(result?.code === "CAPTCHA_FAILED" ? "securityError" : response.status >= 500 ? "serverError" : "error");
+        return;
+      }
       setStatus(result.confirmationSent === false ? "confirmationFailed" : "success");
       form.reset();
-    } catch {
-      setStatus("error");
+    } catch (error) {
+      setStatus(error instanceof Error && error.message === "Captcha unavailable" ? "securityError" : "networkError");
     } finally {
       submitting.current = false;
     }
   }
 
   return <>
-    <Script src={`https://www.google.com/recaptcha/enterprise.js?render=${SITE_KEY}`} strategy="afterInteractive" onReady={() => setReady(true)} onError={() => setStatus("error")} />
+    <Script src={`https://www.google.com/recaptcha/enterprise.js?render=${SITE_KEY}`} strategy="afterInteractive" onReady={() => { window.grecaptcha?.enterprise?.ready(() => setReady(true)); }} onError={() => { setReady(false); setStatus("securityError"); }} />
     <p className={styles.formIntro}>{text("intro")}</p>
+    {status === "securityError" && <p className={styles.small}><a href={`https://www.welledgecreative.${locale === "de" ? "de" : "com"}/${locale}/pub-websites`}>{text("liveForm")}</a></p>}
     <form onSubmit={submit} className={styles.inquiryForm}>
       <fieldset disabled={status === "sending" || complete}>
         <div className={styles.formRow}>

@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 
 // Force Node.js runtime (required for nodemailer)
 export const runtime = 'nodejs';
+export const maxDuration = 60;
 
 // CORS headers
 const corsHeaders = {
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
     // Validate reCAPTCHA token
     if (!captchaToken) {
       return NextResponse.json(
-        { error: "No reCAPTCHA token found" },
+        { error: "No reCAPTCHA token found", code: "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }
       );
     }
@@ -79,9 +80,9 @@ export async function POST(request: NextRequest) {
     });
 
     if (!recaptchaResponse.ok) {
-      console.error("reCAPTCHA verification failed:", await recaptchaResponse.text());
+      console.error("reCAPTCHA assessment service failed", recaptchaResponse.status);
       return NextResponse.json(
-        { error: "Captcha verification failed" },
+        { error: "Captcha verification failed", code: "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }
       );
     }
@@ -89,10 +90,10 @@ export async function POST(request: NextRequest) {
     const recaptchaResult = await recaptchaResponse.json();
 
     // Check if token is valid
-    if (!recaptchaResult.tokenProperties?.valid) {
+    if (!recaptchaResult.tokenProperties?.valid || recaptchaResult.tokenProperties?.action !== "submit") {
       console.error("Invalid reCAPTCHA token");
       return NextResponse.json(
-        { error: "Captcha verification failed" },
+        { error: "Captcha verification failed", code: "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }
       );
     }
@@ -102,7 +103,7 @@ export async function POST(request: NextRequest) {
     if (score < 0.3) {
       console.error(`Low reCAPTCHA score: ${score}`);
       return NextResponse.json(
-        { error: "Security check failed. Please try again." },
+        { error: "Security check failed. Please try again.", code: "CAPTCHA_FAILED" },
         { status: 400, headers: corsHeaders }
       );
     }
@@ -112,6 +113,10 @@ export async function POST(request: NextRequest) {
       host: "smtp.strato.de",
       port: 587,
       secure: false,
+      requireTLS: true,
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
       auth: {
         user: "noreply@well-edge-creative.com",
         pass: "FiuPP_3#MJ*xYwX",
@@ -174,10 +179,12 @@ https://well-edge-creative.com`,
       clientMailOptions.text = german
         ? `Hallo ${name},\n\nvielen Dank für deine Anfrage zur Irish Pub Website. Deine Nachricht ist bei mir angekommen. Ich melde mich persönlich bei dir.\n\nDeine Nachricht:\n${message}\n\nViele Grüße\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`
         : `Hi ${name},\n\nThank you for your Irish Pub website enquiry. I have received your message and will get back to you personally.\n\nYour message:\n${message}\n\nBest regards,\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`;
-      await transporter.sendMail(adminMailOptions);
+      const delivery = await transporter.sendMail(adminMailOptions);
+      if (!delivery.accepted?.length) throw new Error("Enquiry recipient rejected");
       let confirmationSent = true;
       try {
-        await transporter.sendMail(clientMailOptions);
+        const confirmation = await transporter.sendMail(clientMailOptions);
+        if (!confirmation.accepted?.length) throw new Error("Confirmation recipient rejected");
       } catch {
         confirmationSent = false;
         console.error("Pub enquiry received, confirmation delivery failed");
@@ -193,9 +200,10 @@ https://well-edge-creative.com`,
 
     return NextResponse.json({ message: "OK" }, { status: 200, headers: corsHeaders });
   } catch (error) {
-    console.error("Contact form error:", error);
+    const mailError = error as { code?: string; responseCode?: number; command?: string };
+    console.error("Contact form delivery failed", { code: mailError.code, responseCode: mailError.responseCode, command: mailError.command });
     return NextResponse.json(
-      { error: "Failed to send email" },
+      { error: "Failed to send email", code: "DELIVERY_FAILED" },
       { status: 500, headers: corsHeaders }
     );
   }
