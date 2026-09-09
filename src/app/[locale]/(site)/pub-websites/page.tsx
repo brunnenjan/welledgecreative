@@ -10,7 +10,7 @@ import { useI18n } from "@/components/providers/I18nProvider";
 import styles from "./pub-websites.module.css";
 
 type Card = { title: string; body: string; price?: string };
-type Shot = { file: string; title: string; alt: string; width: number; height: number };
+type Shot = { file: string; title: string; description: string; alt: string; width: number; height: number };
 type FAQ = { question: string; answer: string };
 
 function Arrow() {
@@ -89,7 +89,10 @@ export default function PubWebsitesPage() {
               <Image src={`/assets/misc/pub-websites/${shot.file}`} alt={shot.alt} width={shot.width} height={shot.height} sizes="(max-width: 700px) 100vw, 50vw" />
               <span className={styles.zoomHint}>{text("interactive.enlarge")}<Arrow /></span>
             </button>
-            <figcaption><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><h3>{shot.title}</h3><Arrow /></figcaption>
+            <figcaption>
+              <div className={styles.shotHeading}><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><h3>{shot.title}</h3></div>
+              <p>{shot.description}</p>
+            </figcaption>
           </figure>
         ))}</div>
         <div className={styles.referenceNote}><div><h3>{text("reference.title")}</h3><p>{text("reference.body")}</p><p className={styles.small}>{text("reference.note")}</p></div><a href="https://rocklore.de" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">{text("liveCta")}<Arrow /></a></div>

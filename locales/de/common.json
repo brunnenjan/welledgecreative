@@ -456,38 +456,43 @@
       "items": [
         {
           "file": "screenshot-hero.webp",
-          "title": "Erster Eindruck und Live-Status",
+          "title": "Startseite mit Öffnungsstatus",
           "alt": "Rocklore Startseite mit Pub-Atmosphäre und aktuellem Öffnungsstatus",
           "width": 1280,
-          "height": 800
+          "height": 800,
+          "description": "Atmosphäre, wichtigste Infos und aktueller Öffnungsstatus auf einen Blick. Gäste bekommen ein Gefühl für deinen Pub und sehen direkt, ob ein Besuch gerade passt."
         },
         {
           "file": "screenshot-food-slider-v2.webp",
-          "title": "Appetit auf deinen Pub",
+          "title": "Food-Slider",
           "alt": "Rocklore Speisen-Slider mit Chips und Dips",
           "width": 2000,
-          "height": 1551
+          "height": 1551,
+          "description": "Einzelne Gerichte werden mit großen Bildern und kurzen Beschreibungen vorgestellt. Das macht Appetit und hilft Gästen, schon vor dem Besuch etwas Passendes zu entdecken."
         },
         {
           "file": "screenshot-menu-v2.webp",
           "width": 2000,
           "height": 1013,
-          "title": "Die Speisekarte entdecken",
-          "alt": "Rocklore Speisekarte mit grünem Menübuch"
+          "title": "Digitale Menükarte",
+          "alt": "Rocklore Speisekarte mit grünem Menübuch",
+          "description": "Speisen und Getränke übersichtlich an einem Ort, direkt von der Website aus erreichbar. Gäste können das Angebot in Ruhe ansehen und ihren Besuch besser planen."
         },
         {
           "file": "screenshot-events-slider.webp",
-          "title": "Vorfreude auf den nächsten Abend",
+          "title": "Event-Slider",
           "alt": "Event-Slider mit kommenden Veranstaltungen im Rocklore",
           "width": 1280,
-          "height": 800
+          "height": 800,
+          "description": "Kommende Veranstaltungen lassen sich bequem durchblättern. So werden Livemusik, Pub-Abende und besondere Termine sichtbar und geben Gästen einen Anlass wiederzukommen."
         },
         {
           "file": "screenshot-contact-v2.webp",
-          "title": "Alle wichtigen Infos griffbereit",
+          "title": "Kontakt & Google Maps",
           "alt": "Kontaktbereich der Rocklore Website mit Öffnungszeiten",
           "width": 2000,
-          "height": 1081
+          "height": 1081,
+          "description": "Öffnungszeiten, Kontaktdaten, Anfrageformular und Google Maps stehen zusammen in einem Bereich. Gäste finden den Weg zum Pub und können direkt eine Frage oder Reservierungsanfrage senden."
         }
       ]
     },

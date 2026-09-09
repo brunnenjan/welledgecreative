@@ -456,38 +456,43 @@
       "items": [
         {
           "file": "screenshot-hero.webp",
-          "title": "First impression and live status",
+          "title": "Homepage & opening status",
           "alt": "Rocklore homepage with pub atmosphere and opening status",
           "width": 1280,
-          "height": 800
+          "height": 800,
+          "description": "Atmosphere, essential details and current opening status at a glance. Guests get a feel for your pub and can quickly decide whether to drop by."
         },
         {
           "file": "screenshot-food-slider-v2.webp",
-          "title": "A taste of your pub",
+          "title": "Food slider",
           "alt": "Rocklore food slider featuring chips and dips",
           "width": 2000,
-          "height": 1551
+          "height": 1551,
+          "description": "Large photographs and short descriptions put individual dishes in the spotlight. They build an appetite and help guests discover something they would like before visiting."
         },
         {
           "file": "screenshot-menu-v2.webp",
           "width": 2000,
           "height": 1013,
-          "title": "Explore the menu",
-          "alt": "Rocklore menu section with a green menu book"
+          "title": "Digital menu",
+          "alt": "Rocklore menu section with a green menu book",
+          "description": "Food and drinks in one clear place, accessible directly from the website. Guests can browse your offering at their own pace and plan their visit."
         },
         {
           "file": "screenshot-events-slider.webp",
-          "title": "Your next night out",
+          "title": "Event slider",
           "alt": "Rocklore event slider showing upcoming pub events",
           "width": 1280,
-          "height": 800
+          "height": 800,
+          "description": "Guests can browse upcoming events with ease. Live music, pub nights and special dates get noticed and give people a reason to come back."
         },
         {
           "file": "screenshot-contact-v2.webp",
-          "title": "All the practical details",
+          "title": "Contact & Google Maps",
           "alt": "Rocklore contact section with opening hours",
           "width": 2000,
-          "height": 1081
+          "height": 1081,
+          "description": "Opening hours, contact details, an enquiry form and Google Maps together in one section. Guests can find their way to the pub and send a question or reservation enquiry directly."
         }
       ]
     },
