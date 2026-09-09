@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
 import PubInquiryForm from "./PubInquiryForm";
@@ -55,7 +55,7 @@ export default function PubWebsitesPage() {
       <section id="hero" className={`${styles.wrap} ${styles.hero}`}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}><span className={styles.dot} />{text("eyebrow")}</p>
-          <h1>{text("headingStart")} <span key={locale} className={styles.heroHighlight}>{text("headingAccent").split(" ").map((word, index) => <Fragment key={`${index}-${word}`}><span className={styles.highlightWord}><span className={styles.highlightText}>{word}</span></span>{" "}</Fragment>)}</span></h1>
+          <h1>{text("headingStart")} <span key={locale} className={styles.heroHighlight}><span className={styles.highlightText}>{text("headingAccent")}</span></span></h1>
           <p className={styles.lead}>{text("intro")}</p>
           {actions}
           <div className={styles.heroPrice}><strong>{text("package.price")}</strong><span>{text("labels.onePage")}</span></div>
