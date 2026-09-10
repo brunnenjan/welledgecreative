@@ -446,7 +446,7 @@
   "pubWebsitesPage": {
     "eyebrow": "Websites für Irish Pubs",
     "heading": "Dein Irish Pub verdient eine Website, die genauso hart arbeitet wie du.",
-    "intro": "Zeig deinen Gästen schon vor dem ersten Besuch, was deinen Pub ausmacht. Mit einer übersichtlichen Website, die Atmosphäre, Speisekarte und Öffnungszeiten auch auf dem Smartphone zusammenbringt.",
+    "intro": "Mach aus neugierigen Besuchern deine nächsten Gäste. Eine eigene Website zeigt die Atmosphäre deines Pubs, macht Speisekarte und Events leicht auffindbar und führt direkt zur Anfrage. Auch für Menschen, die dir noch nicht auf Social Media folgen.",
     "proof": "Bereits live bei Rocklore. Eine Website im echten Pub-Alltag, kein Konzept.",
     "emailCta": "Lass uns über deinen Pub sprechen",
     "contactCta": "Zum Kontaktformular",
@@ -532,7 +532,7 @@
         },
         {
           "title": "Eventkalender",
-          "body": "Macht kommende Pub-Abende und Livemusik sichtbar."
+          "body": "Aktuelle Termine übersichtlich präsentieren. Auf Wunsch mit eigenen Eventseiten, die Gäste teilen und über Google finden können."
         },
         {
           "title": "Fotobearbeitung",
@@ -541,6 +541,10 @@
         {
           "title": "Social-Media-Integration",
           "body": "Verbindet deine Website mit deinen Social-Media-Kanälen."
+        },
+        {
+          "title": "Private Feiern & geschlossene Gesellschaften",
+          "body": "Ein eigener Bereich zeigt Räume, Möglichkeiten und den direkten Weg zur Veranstaltungsanfrage."
         }
       ],
       "headline": "Dein Pub. Klar präsentiert."
@@ -562,13 +566,35 @@
       "note": "Wir besprechen, wie viel Unterstützung du brauchst, und stimmen Umfang und Kosten individuell ab."
     },
     "why": {
-      "title": "Warum das funktioniert",
-      "body": "Eine Pub-Website soll die Planung eines Besuchs erleichtern. Klare Informationen und eine wiedererkennbare Atmosphäre helfen Gästen einzuschätzen, ob dein Pub zu ihrem Abend passt.",
+      "title": "Dein Pub verdient mehr als einen Platz im Feed.",
+      "body": "Social Media macht Lust auf deinen Pub. Deine Website gibt diesem Interesse ein Ziel: mit verlässlichen Informationen, aktuellen Veranstaltungen und einem direkten Weg zur Anfrage. Beides zusammen kann aus Aufmerksamkeit echte Besuche machen.",
       "items": [
-        "Öffnungszeiten und Kontaktdaten sind schnell auffindbar.",
-        "Das mobile Layout funktioniert auch unterwegs.",
-        "Deine eigene Website gibt deinem Pub einen festen Platz neben Social Media."
-      ]
+        {
+          "title": "Erreichbar, auch ohne Social-Media-Konto",
+          "body": "Speisekarte, Anfahrt und Öffnungszeiten sind direkt zugänglich. Gäste müssen weder einen Account anlegen noch alte Beiträge durchsuchen."
+        },
+        {
+          "title": "Dein Auftritt. Deine Regeln.",
+          "body": "Auf deiner Website bestimmst du, welche Informationen im Mittelpunkt stehen. Wichtige Inhalte bleiben an ihrem Platz, statt im nächsten Feed-Update unterzugehen."
+        },
+        {
+          "title": "Gefunden werden, wenn der Abend geplant wird",
+          "body": "Wer nach einem Irish Pub, Livemusik oder einem Veranstaltungsort in deiner Stadt sucht, braucht konkrete Antworten. Eigene Inhalte zu Ort und Angebot können helfen, passende neue Gäste über Google zu erreichen."
+        },
+        {
+          "title": "Eine gute Grundlage für KI-Suchen",
+          "body": "Klare, öffentlich zugängliche Angaben zu deinem Pub, deinem Angebot und häufigen Fragen helfen Suchsystemen, deine Inhalte einzuordnen. Das kann auch die Auffindbarkeit in Googles KI-Suche unterstützen und neue Gäste auf dich aufmerksam machen."
+        },
+        {
+          "title": "Events mit einem festen Platz",
+          "body": "Livemusik, Pub-Quiz oder St. Patrick’s Day: Gäste finden Datum, Uhrzeit und alle Details an einem Ort. Eigene öffentliche Eventseiten können gezielt über Google gefunden und aus Social Media verlinkt werden."
+        },
+        {
+          "title": "Mehr Anfragen für private Feiern",
+          "body": "Zeig, was bei dir möglich ist: Geburtstag, Firmenabend oder geschlossene Gesellschaft. Fotos, Gruppengrößen und Informationen zum Ablauf helfen Interessierten, eine passende Anfrage zu stellen."
+        }
+      ],
+      "note": "Sichtbarkeit entsteht durch hilfreiche, aktuelle Inhalte und eine technisch zugängliche Website. Platzierungen in Google, Nennungen in KI-Antworten und zusätzliche Buchungen lassen sich nicht garantieren."
     },
     "reference": {
       "title": "Referenzprojekt Rocklore",
@@ -639,6 +665,18 @@
         {
           "question": "Kann ich meine Domain behalten?",
           "answer": "In der Regel ja. Wir prüfen gemeinsam Zugänge und Hosting-Anforderungen. Domain, Hosting und mögliche Kosten externer Anbieter klären wir vorab."
+        },
+        {
+          "question": "Reichen Instagram und Facebook nicht aus?",
+          "answer": "Sie sind wertvoll, um Stimmung und Neuigkeiten zu teilen. Eine Website ergänzt sie um einen festen Ort für alle wichtigen Informationen, auch ohne Social-Media-Konto. Du kannst aus jedem Beitrag direkt auf die passende Speisekarte, Veranstaltung oder Anfrage verlinken."
+        },
+        {
+          "question": "Kann meine Website bei Google und in KI-Antworten auftauchen?",
+          "answer": "Hilfreiche Texte, klare Angaben zu deinem Pub und eine technisch zugängliche Website schaffen dafür eine gute Grundlage. Für Googles KI-Suche gelten die üblichen SEO-Grundlagen. Eine Aufnahme oder bestimmte Position kann ich nicht versprechen."
+        },
+        {
+          "question": "Können meine Events direkt bei Google gefunden werden?",
+          "answer": "Wir können öffentliche Veranstaltungen mit eigenen Seiten und klaren Angaben zu Datum, Ort und Programm präsentieren. Passende strukturierte Veranstaltungsdaten können Google beim Verstehen helfen. Eine besondere Event-Anzeige ist nicht garantiert; ein Slider allein genügt dafür nicht. Private Feiern bewerben wir separat als buchbares Angebot."
         }
       ]
     },
@@ -647,8 +685,8 @@
       "body": "Ich bin der Designer und Entwickler hinter Well Edge Creative. Ich bringe den Charakter deines Pubs auf den Bildschirm und mache die wichtigen Informationen einfach zugänglich. Du arbeitest direkt mit mir, vom ersten Gespräch bis zur Veröffentlichung."
     },
     "closing": {
-      "title": "Bereit für ein richtiges Online-Zuhause für deinen Pub?",
-      "body": "Lass uns unverbindlich über deinen Pub sprechen. Für jedes Budget gibt es vernünftige Lösungen. Gemeinsam finden wir einen passenden Einstieg."
+      "title": "Mach deinen Pub zur nächsten guten Entscheidung.",
+      "body": "Mehr Klarheit für deine Gäste, mehr Raum für Events und private Feiern. Lass uns unverbindlich besprechen, was deine Website leisten soll. Für jedes Budget gibt es vernünftige Lösungen."
     },
     "headingStart": "Dein Irish Pub verdient eine Website,",
     "headingAccent": "die genauso hart arbeitet wie du.",
@@ -688,7 +726,7 @@
       "name": "Dein Name *",
       "email": "Deine E-Mail *",
       "message": "Deine Nachricht *",
-      "placeholder": "Wie heißt dein Pub und was wünschst du dir für die Website?",
+      "placeholder": "Was ist dir wichtig: neue Gäste, Events oder private Feiern? Für ein Gespräch kannst du auch passende Zeiten nennen.",
       "privacy": "Ich verwende deine Angaben, um deine Anfrage zu beantworten. Mehr dazu in der",
       "privacyLink": "Datenschutzerklärung.",
       "captcha": "Dieses Formular ist durch reCAPTCHA geschützt. Es gelten Googles",
@@ -710,6 +748,7 @@
       "pubName": "Name deines Pubs (optional)",
       "website": "Bestehende Website (optional)"
     },
-    "budgetHint": "Für jedes Budget gibt es vernünftige Lösungen."
+    "budgetHint": "Für jedes Budget gibt es vernünftige Lösungen.",
+    "bookingCta": "Termin auswählen"
   }
 }

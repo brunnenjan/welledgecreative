@@ -202,3 +202,7 @@
 .formStatus { padding: 14px; border-radius: 8px; background: #fff5ec; color: #804000; font-size: .9375rem; }
 .formSuccess { background: #eff8f0; color: #245c30; }
 @media (max-width: 700px) { .inquiryContent { padding: 20px; } .formRow { grid-template-columns: 1fr; } }
+
+.benefits h3 { margin-top: 18px; font-size: 1.35rem; line-height: 1.3; }
+.benefits h3 + p { margin-top: 12px; font-size: 1rem; line-height: 1.65; }
+.visibilityNote { margin-top: 32px; max-width: 850px; color: #ccc; font-size: .875rem; line-height: 1.6; }

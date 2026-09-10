@@ -446,7 +446,7 @@
   "pubWebsitesPage": {
     "eyebrow": "Websites for Irish pubs",
     "heading": "Your Irish Pub deserves a website that works as hard as you do.",
-    "intro": "Give guests a feel for your pub before they walk through the door. A clear, mobile-first website with your atmosphere, menu and opening hours in one place.",
+    "intro": "Turn curious visitors into your next guests. Your own website shows your pub’s atmosphere, makes menus and events easy to find and leads directly to an enquiry. Including from people who do not follow you on social media yet.",
     "proof": "Already live at Rocklore. This is a working pub website, not a concept.",
     "emailCta": "Let’s talk about your pub",
     "contactCta": "Use the contact form",
@@ -532,7 +532,7 @@
         },
         {
           "title": "Event calendar",
-          "body": "Brings upcoming pub nights and live music into view."
+          "body": "Present upcoming dates clearly, with optional dedicated event pages that guests can share and find through Google."
         },
         {
           "title": "Photo editing",
@@ -541,6 +541,10 @@
         {
           "title": "Social media integration",
           "body": "Connects your website with your social media channels."
+        },
+        {
+          "title": "Private parties & exclusive hire",
+          "body": "A dedicated section presents your space, the possibilities and a direct way to enquire about an event."
         }
       ],
       "headline": "Your pub. Clearly presented."
@@ -562,13 +566,35 @@
       "note": "We discuss how much support you need and agree the scope and costs individually."
     },
     "why": {
-      "title": "Why this works",
-      "body": "A pub website should make a visit easier to plan. Clear information and a recognisable atmosphere help guests decide whether your pub is their kind of place.",
+      "title": "Your pub deserves more than a place in the feed.",
+      "body": "Social media sparks interest in your pub. Your website gives that interest somewhere to go: reliable information, upcoming events and a direct way to enquire. Together they can turn attention into visits.",
       "items": [
-        "Opening hours and contact details are easy to find.",
-        "A mobile-first layout works when guests are out and about.",
-        "Your own website gives your pub a home beyond social media."
-      ]
+        {
+          "title": "Accessible without a social media account",
+          "body": "Menus, directions and opening hours are directly accessible. Guests do not need an account or have to search through old posts."
+        },
+        {
+          "title": "Your website. Your priorities.",
+          "body": "You decide which information takes centre stage. Important details stay where guests can find them instead of disappearing into the feed."
+        },
+        {
+          "title": "Be found when people plan their evening",
+          "body": "People searching for an Irish pub, live music or a venue in your town need specific answers. Content about your location and offering can help bring relevant new guests to you through Google."
+        },
+        {
+          "title": "A sound foundation for AI search",
+          "body": "Clear, publicly accessible details about your pub, your offering and common questions help search systems understand your content. This can also support visibility in Google’s AI search and introduce your pub to new guests."
+        },
+        {
+          "title": "A lasting home for your events",
+          "body": "Live music, pub quizzes or St Patrick’s Day: guests find the date, time and details in one place. Dedicated public event pages can be found through Google and linked from social media."
+        },
+        {
+          "title": "More opportunities for private bookings",
+          "body": "Show what you can host: birthdays, team evenings or exclusive private hire. Photos, group sizes and practical information help people send a relevant enquiry."
+        }
+      ],
+      "note": "Visibility depends on useful, current content and a technically accessible website. Google rankings, mentions in AI answers and additional bookings cannot be guaranteed."
     },
     "reference": {
       "title": "Reference project: Rocklore",
@@ -639,6 +665,18 @@
         {
           "question": "Can I keep my domain?",
           "answer": "Usually, yes. We check access and hosting requirements together. Domain, hosting and any third-party costs are clarified in advance."
+        },
+        {
+          "question": "Are Instagram and Facebook enough?",
+          "answer": "They are valuable for sharing atmosphere and news. A website adds a lasting home for essential information, accessible without a social media account. Each post can link directly to the relevant menu, event or enquiry."
+        },
+        {
+          "question": "Can my website appear on Google and in AI answers?",
+          "answer": "Useful text, clear information about your pub and a technically accessible website provide a sound foundation. Google’s AI search uses the usual SEO fundamentals. Inclusion or a specific position cannot be promised."
+        },
+        {
+          "question": "Can my events be found directly on Google?",
+          "answer": "We can present public events on dedicated pages with clear dates, locations and programme details. Appropriate structured event data can help Google understand them. A special event listing is not guaranteed; a slider alone is not enough. Private hire is promoted separately as a service guests can enquire about."
         }
       ]
     },
@@ -647,8 +685,8 @@
       "body": "I’m the designer and developer behind Well Edge Creative. I bring your pub’s character to the screen and keep the practical details easy to use. You work directly with me, from our first conversation through to launch."
     },
     "closing": {
-      "title": "Ready to give your pub a proper online home?",
-      "body": "Let’s have a no-obligation conversation about your pub. There are sensible solutions for every budget. Together we find the right starting point."
+      "title": "Make your pub their next great choice.",
+      "body": "Clearer information for guests and more room for events and private hire. Let’s discuss what your website should do, with no obligation. There are sensible solutions for every budget."
     },
     "headingStart": "Your Irish Pub deserves a website",
     "headingAccent": "that works as hard as you do.",
@@ -688,7 +726,7 @@
       "name": "Your name *",
       "email": "Your email *",
       "message": "Your message *",
-      "placeholder": "What is your pub called and what would you like from your website?",
+      "placeholder": "What matters most: new guests, events or private hire? You can also suggest suitable times for a conversation.",
       "privacy": "I use your details to respond to your enquiry. Read the",
       "privacyLink": "privacy policy.",
       "captcha": "This form is protected by reCAPTCHA. Google’s policies apply:",
@@ -710,6 +748,7 @@
       "pubName": "Pub name (optional)",
       "website": "Existing website (optional)"
     },
-    "budgetHint": "There are sensible solutions for every budget."
+    "budgetHint": "There are sensible solutions for every budget.",
+    "bookingCta": "Choose a meeting time"
   }
 }

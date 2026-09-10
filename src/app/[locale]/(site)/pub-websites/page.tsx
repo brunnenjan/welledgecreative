@@ -7,7 +7,6 @@ import { gsap } from "@/lib/gsap";
 import Header from "@/components/Header";
 import PubInquiryForm from "./PubInquiryForm";
 import { smoothScrollTo } from "@/lib/smoothScroll";
-import Link from "next/link";
 import { useI18n } from "@/components/providers/I18nProvider";
 import styles from "./pub-websites.module.css";
 
@@ -90,7 +89,7 @@ export default function PubWebsitesPage() {
   const actions = (
     <div className={styles.actions}>
       <button type="button" onClick={openInquiry} aria-haspopup="dialog" className="btn btn-primary">{text("form.open")}<Arrow /></button>
-      <Link href={`/${locale}/contact`} className={styles.textLink}>{text("contactCta")}<Arrow /></Link>
+      <a href="https://calendly.com/well-edge-creative/30min" target="_blank" rel="noopener noreferrer" className={styles.textLink}>{text("bookingCta")}<Arrow /></a>
     </div>
   );
   const label = (key: string) => <p className={styles.eyebrow}>{text(`labels.${key}`)}</p>;
@@ -171,7 +170,8 @@ export default function PubWebsitesPage() {
 
       <section className={styles.whyBand}><div className={`${styles.wrap} ${styles.section}`}>
         <div className={styles.sectionHead}><div>{label("why")}<h2>{text("why.title")}</h2></div><p>{text("why.body")}</p></div>
-        <ul className={styles.benefits}>{list<string>("why.items").map((item, index) => <li key={item}><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ul>
+        <ul className={styles.benefits}>{list<Card>("why.items").map((item, index) => <li key={item.title}><span className={styles.number}>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.body}</p></li>)}</ul>
+        <p className={styles.visibilityNote}>{text("why.note")}</p>
       </div></section>
 
       <section className={`${styles.wrap} ${styles.section} ${styles.processLayout}`}>
