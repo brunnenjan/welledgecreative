@@ -150,10 +150,40 @@ export default function ScrollSmootherInit() {
     };
   }, []);
 
-  useEffect(() => {
-    // normalizeScroll disabled - was interfering with native scroll
-    return;
+  useLayoutEffect(() => {
+    const previousRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => { window.history.scrollRestoration = previousRestoration; };
   }, []);
+
+  useLayoutEffect(() => {
+    let firstFrame = 0;
+    let secondFrame = 0;
+    const resetPosition = () => {
+      // Explicit section links keep their destination, including homepage navigation.
+      if (window.location.hash) return;
+      ScrollSmoother.get()?.scrollTop(0);
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    };
+    const resetAfterNavigation = () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+      resetPosition();
+      // Reapply after Next's focus/scroll handling and the smoother's render pass.
+      firstFrame = requestAnimationFrame(() => {
+        resetPosition();
+        secondFrame = requestAnimationFrame(resetPosition);
+      });
+    };
+    resetAfterNavigation();
+    // Also cover documents restored from the browser's back/forward cache.
+    window.addEventListener("pageshow", resetAfterNavigation);
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+      window.removeEventListener("pageshow", resetAfterNavigation);
+    };
+  }, [pathname]);
 
   return null;
 }
