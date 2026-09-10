@@ -709,7 +709,9 @@
       "loading": "Loading the security check …",
       "retrySecurity": "Reload security check",
       "securityLoadError": "The Google security check could not load in your browser. Please reload it. Your details are kept. If you use a content blocker, check whether it blocks reCAPTCHA.",
-      "securityServiceError": "The server cannot complete the Google security check right now. Your enquiry has not been sent. Please try again later or email jan@well-edge-creative.de."
+      "securityServiceError": "The server cannot complete the Google security check right now. Your enquiry has not been sent. Please try again later or email jan@well-edge-creative.de.",
+      "pubName": "Pub name (optional)",
+      "website": "Existing website (optional)"
     }
   }
 }

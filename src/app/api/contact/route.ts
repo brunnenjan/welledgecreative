@@ -26,9 +26,11 @@ export async function POST(request: NextRequest) {
     const projectType = formData.get("projectType")?.toString().trim() || "";
     const budget = formData.get("budget")?.toString().trim() || "";
     const message = formData.get("message")?.toString().trim() || "";
+    const pubName = formData.get("pubName")?.toString().trim() || "";
+    const website = formData.get("website")?.toString().trim() || "";
     const isPubInquiry = formData.get("inquiryType") === "irish-pub-website";
     const german = formData.get("locale") === "de";
-    if (isPubInquiry && (name.length > 120 || email.length > 254 || message.length > 5000 || /[\r\n]/.test(email))) {
+    if (isPubInquiry && (pubName.length > 120 || website.length > 500 || name.length > 120 || email.length > 254 || message.length > 5000 || /[\r\n]/.test(email))) {
       return NextResponse.json({ error: "Invalid enquiry" }, { status: 400, headers: corsHeaders });
     }
     const captchaToken = formData.get("g-recaptcha-response")?.toString() || "";
@@ -175,12 +177,17 @@ https://well-edge-creative.com`,
     };
 
     if (isPubInquiry) {
+      const pubDetails = [pubName && `Pub: ${pubName}`, website && `Website: ${website}`].filter(Boolean).join("\n");
       adminMailOptions.subject = "Irish Pub Website: neue Anfrage";
-      adminMailOptions.text = `Irish Pub Website Anfrage\n\nName: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`;
+      adminMailOptions.text = `Irish Pub Website Anfrage\n\nName: ${name}\nE-Mail: ${email}\n${pubDetails ? `\n${pubDetails}\n` : ""}\nNachricht:\n${message}`;
       clientMailOptions.subject = german ? "Deine Anfrage zur Irish Pub Website" : "Your Irish Pub website enquiry";
       clientMailOptions.text = german
-        ? `Hallo ${name},\n\nvielen Dank für deine Anfrage zur Irish Pub Website. Deine Nachricht ist bei mir angekommen. Ich melde mich persönlich bei dir.\n\nDeine Nachricht:\n${message}\n\nViele Grüße\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`
-        : `Hi ${name},\n\nThank you for your Irish Pub website enquiry. I have received your message and will get back to you personally.\n\nYour message:\n${message}\n\nBest regards,\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`;
+        ? `Hallo ${name},\n\nvielen Dank für deine Anfrage zur Irish Pub Website. Deine Nachricht ist bei mir angekommen. Ich melde mich persönlich bei dir.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Deine Nachricht:\n${message}\n\nViele Grüße\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`
+        : `Hi ${name},\n\nThank you for your Irish Pub website enquiry. I have received your message and will get back to you personally.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Your message:\n${message}\n\nBest regards,\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`;
+      const escapeHtml = (value: string) => value.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]!);
+      // Keep the plain-text alternative and escape every visitor-supplied value.
+      const paragraphs = clientMailOptions.text.split("\n\n").map(paragraph => `<p style="margin:0 0 20px;line-height:1.65;overflow-wrap:anywhere">${escapeHtml(paragraph).replace(/\n/g, "<br>")}</p>`).join("");
+      Object.assign(clientMailOptions, { html: `<!doctype html><html lang="${german ? "de" : "en"}"><body style="margin:0;background:#f5f5f5;color:#171717;font-family:Arial,Helvetica,sans-serif"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border:1px solid #e5e5e5;border-top:5px solid #f58222;border-radius:12px"><tr><td style="padding:32px 24px"><p style="margin:0 0 28px;font-size:14px;font-weight:bold;letter-spacing:1px">WELL EDGE CREATIVE</p><h1 style="margin:0 0 24px;font-size:24px;line-height:1.3">${escapeHtml(clientMailOptions.subject)}</h1>${paragraphs}</td></tr></table></td></tr></table></body></html>` });
       const delivery = await transporter.sendMail(adminMailOptions);
       if (!delivery.accepted?.length) throw new Error("Enquiry recipient rejected");
       let confirmationSent = true;

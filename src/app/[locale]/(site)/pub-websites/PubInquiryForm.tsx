@@ -65,6 +65,10 @@ export default function PubInquiryForm() {
           <label htmlFor="pub-inquiry-name">{text("name")}<input id="pub-inquiry-name" name="name" autoComplete="name" required maxLength={120} /></label>
           <label htmlFor="pub-inquiry-email">{text("email")}<input id="pub-inquiry-email" name="email" type="email" autoComplete="email" required maxLength={254} /></label>
         </div>
+        <div className={styles.formRow}>
+          <label htmlFor="pub-inquiry-pub">{text("pubName")}<input id="pub-inquiry-pub" name="pubName" autoComplete="organization" maxLength={120} /></label>
+          <label htmlFor="pub-inquiry-website">{text("website")}<input id="pub-inquiry-website" name="website" type="text" inputMode="url" autoComplete="url" maxLength={500} placeholder="www.example.com" /></label>
+        </div>
         <label htmlFor="pub-inquiry-message">{text("message")}<textarea id="pub-inquiry-message" name="message" rows={4} required maxLength={5000} placeholder={text("placeholder")} /></label>
       </fieldset>
       <p className={styles.small}>{text("privacy")} <Link href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer">{text("privacyLink")}</Link></p>
