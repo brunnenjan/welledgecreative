@@ -159,7 +159,7 @@
         "client": "Rocklore Irish Pub",
         "title": "Eine Website mit irischer Seele",
         "summary": "Pub-Atmosphäre, Speisekarte und Besucherinfos auf einer übersichtlichen Website.",
-        "extraNote": "Eine Seite ab 800 € einmalig. Speisekarte, Öffnungszeiten und Kontakt klar präsentiert. Betreuung auf Wunsch ab 39 € monatlich.",
+        "extraNote": "Speisekarte, Öffnungszeiten und Kontakt klar präsentiert. Individuelle Lösungen für jedes Budget. Lass uns unverbindlich über deinen Pub sprechen.",
         "challenge": "Den Charakter des Pubs online spürbar machen und wichtige Infos schnell zugänglich halten.",
         "solution": "Eine mobile Website verbindet Atmosphäre, Essen, Veranstaltungen und Kontakt.",
         "result": "Live auf rocklore.de, mit einem eigenen Website-Angebot für weitere Irish Pubs.",
@@ -453,7 +453,7 @@
     "liveCta": "rocklore.de ansehen",
     "showcase": {
       "title": "Echter Pub. Echte Website.",
-      "body": "Fünf echte Screenshots von Rocklore. Die Referenz zeigt auch optionale Funktionen, die separat zum Basispaket berechnet werden.",
+      "body": "Fünf echte Einblicke in Rocklore. Gemeinsam wählen wir die Funktionen aus, die deinen Gästen helfen und zu deinem Pub passen.",
       "items": [
         {
           "file": "screenshot-hero.webp",
@@ -509,59 +509,57 @@
     "package": {
       "title": "Eine Seite. Alles für deine Gäste.",
       "body": "Eine Startseite mit allen vereinbarten Abschnitten. Dein Pub, Atmosphäre, Speisen und Getränke, Öffnungszeiten und Kontakt finden auf einer Seite zusammen.",
-      "price": "Ab 800 € einmalig",
       "items": [
-        "Eine Startseite mit allen vereinbarten Abschnitten",
-        "Mobile-first für Smartphone, Tablet und Desktop",
-        "Basis-SEO: Seitenstruktur, Titel und Beschreibungen",
-        "Kontaktformular für Anfragen"
+        "Alle wichtigen Infos auf einer übersichtlichen Seite",
+        "Auf Smartphone, Tablet und Desktop einfach zu bedienen",
+        "Klare Struktur und Basis-SEO für einen guten Start",
+        "Ein direkter Weg zu Fragen und Reservierungsanfragen"
       ],
-      "note": "Das Basispaket arbeitet mit deinen bereitgestellten Inhalten und Bildern. Weitere Seiten, zusätzliche Sprachen und die folgenden Funktionen werden separat angeboten.",
+      "note": "Wir starten mit dem, was dein Pub wirklich braucht. Inhalte, Bilder und gewünschte Funktionen stimmen wir gemeinsam ab.",
       "extrasTitle": "Ergänze, was dein Pub braucht",
       "extras": [
         {
           "title": "Individuelles Speisekarten-Design",
-          "price": "ab +120 €"
+          "body": "Macht dein Angebot übersichtlich und Appetit auf einen Besuch."
         },
         {
           "title": "Eigene Unterseite",
-          "price": "+150 €"
+          "body": "Mehr Raum für Inhalte, die eine eigene Seite verdienen."
         },
         {
           "title": "Zweisprachige Website",
-          "price": "+200 €"
+          "body": "Hilft auch internationalen Gästen, ihren Besuch zu planen."
         },
         {
           "title": "Eventkalender",
-          "price": "+150 €"
+          "body": "Macht kommende Pub-Abende und Livemusik sichtbar."
         },
         {
           "title": "Fotobearbeitung",
-          "price": "+100 €"
+          "body": "Zeigt deinen Pub und deine Gerichte von ihrer besten Seite."
         },
         {
           "title": "Social-Media-Integration",
-          "price": "+100 €"
+          "body": "Verbindet deine Website mit deinen Social-Media-Kanälen."
         }
-      ]
+      ],
+      "headline": "Dein Pub. Klar präsentiert."
     },
     "care": {
       "title": "Monatliche Betreuung",
-      "body": "Damit deine Website auch nach dem Start hilfreich bleibt. Den genauen Umfang und das Kontingent für Änderungen vereinbaren wir vor der Auswahl.",
+      "body": "Aktuelle Speisekarten, Öffnungszeiten und Veranstaltungen helfen deinen Gästen weiter. Auf Wunsch kümmere ich mich auch nach dem Start um deine Website.",
       "recommended": "Empfohlen",
       "plans": [
         {
           "title": "Mini Care",
-          "price": "ab 39 € / Monat",
           "body": "Für Pubs mit gelegentlichen Änderungen und grundlegender laufender Website-Betreuung."
         },
         {
           "title": "Standard Care",
-          "price": "ab 69 € / Monat",
           "body": "Für Pubs mit regelmäßigen Aktualisierungen von Speisekarte, Veranstaltungen und saisonalen Informationen."
         }
       ],
-      "note": "Zusatzarbeit: 70 € pro Stunde, vorher mit dir abgestimmt. Hosting, Domainkosten und mögliche Gebühren externer Anbieter klären wir im Angebot."
+      "note": "Wir besprechen, wie viel Unterstützung du brauchst, und stimmen Umfang und Kosten individuell ab."
     },
     "why": {
       "title": "Warum das funktioniert",
@@ -582,11 +580,11 @@
       "steps": [
         {
           "title": "Deinen Pub kennenlernen",
-          "body": "Wir sprechen über deine Gäste, deinen Stil und die Aufgaben der Website."
+          "body": "Wir sprechen unverbindlich über deinen Pub, deine Wünsche und dein Budget."
         },
         {
           "title": "Umfang vereinbaren",
-          "body": "Du bekommst ein Angebot für das Ein-Seiten-Paket und deine gewünschten Extras."
+          "body": "Du erhältst ein individuelles Angebot mit den Leistungen, die wir gemeinsam ausgewählt haben."
         },
         {
           "title": "Inhalte sammeln",
@@ -603,25 +601,24 @@
       ]
     },
     "investment": {
-      "title": "Deine Investition, klar geplant",
-      "body": "Die Ein-Seiten-Website startet ab 800 € einmalig. Ergänze die Funktionen, die dein Pub braucht, und wähle auf Wunsch eine monatliche Betreuung.",
-      "example": "Beispiel: 800 € Basisumfang + 200 € für eine zweite Sprache = 1.000 € einmalig. Standard Care ab 69 € monatlich wird separat berechnet.",
-      "note": "Das endgültige Angebot bestätigt Umfang, Gesamtpreis, anfallende Steuern und laufende Kosten, bevor die Arbeit beginnt."
+      "title": "Deine Wünsche. Dein Budget. Unser Gespräch.",
+      "body": "Für jedes Budget gibt es vernünftige Lösungen. Erzähl mir, was deinem Pub wichtig ist. Gemeinsam finden wir heraus, welcher Umfang sinnvoll ist und wo wir anfangen.",
+      "note": "Den Preis besprechen wir persönlich. Du erhältst ein individuelles Angebot, bevor du dich entscheidest."
     },
     "faq": {
       "title": "Fragen vor der ersten Runde",
       "items": [
         {
-          "question": "Warum ab 800 € statt Festpreis?",
-          "answer": "800 € ist der Einstiegspreis für den definierten Basisumfang einer Ein-Seiten-Website. Die Aufbereitung von Inhalten, individuelle Anforderungen und Extras können den Aufwand verändern. Du erhältst vor dem Start ein klares Angebot."
+          "question": "Was kostet eine Website für meinen Pub?",
+          "answer": "Das hängt von deinen Wünschen und dem passenden Umfang ab. Für jedes Budget gibt es vernünftige Lösungen. In einem unverbindlichen Gespräch klären wir, was dir wichtig ist. Danach erhältst du ein individuelles Angebot."
         },
         {
           "question": "Ist das eine Website mit mehreren Seiten?",
-          "answer": "Das Basispaket enthält eine Startseite mit allen vereinbarten Abschnitten. Eine zusätzliche Unterseite kostet +150 €."
+          "answer": "Der Ausgangspunkt ist eine übersichtliche Seite mit allen wichtigen Abschnitten. Wenn dein Pub mehr Raum für einzelne Themen braucht, können wir passende Unterseiten ergänzen."
         },
         {
           "question": "Kann meine Website zweisprachig sein?",
-          "answer": "Ja. Eine zweisprachige Website ist für +200 € möglich. Wie die übersetzten Inhalte bereitgestellt werden, klären wir im Angebot."
+          "answer": "Ja. So können sich auch internationale Gäste leicht informieren. Die Sprachen und die Bereitstellung der Übersetzungen besprechen wir gemeinsam."
         },
         {
           "question": "Sind alle Rocklore-Funktionen enthalten?",
@@ -637,7 +634,7 @@
         },
         {
           "question": "Muss ich eine monatliche Betreuung buchen?",
-          "answer": "Die Betreuung ist optional. Mini Care startet ab 39 € monatlich, Standard Care ab 69 €. Den enthaltenen Umfang vereinbaren wir vorab. Zusatzarbeit kostet 70 € pro Stunde."
+          "answer": "Nein, die Betreuung ist optional. Wir besprechen, ob du nur gelegentlich Hilfe oder regelmäßige Aktualisierungen brauchst, und vereinbaren dafür ein passendes Angebot."
         },
         {
           "question": "Kann ich meine Domain behalten?",
@@ -651,7 +648,7 @@
     },
     "closing": {
       "title": "Bereit für ein richtiges Online-Zuhause für deinen Pub?",
-      "body": "Erzähl mir von deinem Pub und deinen Wünschen. Daraus machen wir einen klaren Umfang und ein passendes Angebot."
+      "body": "Lass uns unverbindlich über deinen Pub sprechen. Für jedes Budget gibt es vernünftige Lösungen. Gemeinsam finden wir einen passenden Einstieg."
     },
     "headingStart": "Dein Irish Pub verdient eine Website,",
     "headingAccent": "die genauso hart arbeitet wie du.",
@@ -659,10 +656,10 @@
       "onePage": "Eine Seite. Für deinen Pub.",
       "what": "Dein Pub, online",
       "reference": "Live bei Rocklore",
-      "package": "Klarer Umfang. Fairer Preis.",
+      "package": "Das bringt deine Website mit",
       "base": "Das Ein-Seiten-Paket",
-      "extras": "Optionale Ergänzungen, separat berechnet.",
-      "packageCta": "Deine Website anfragen",
+      "extras": "Wähle, was deinen Gästen weiterhilft.",
+      "packageCta": "Unverbindlich sprechen",
       "care": "Nach dem Start",
       "essential": "Das Wesentliche",
       "why": "Für deine Gäste gemacht",
@@ -675,7 +672,7 @@
     "interactive": {
       "navLabel": "Auf dieser Seite",
       "reference": "Die Referenz ansehen",
-      "package": "Paket & Preise",
+      "package": "Angebot & Vorteile",
       "faq": "Häufige Fragen",
       "mockupAlt": "Rocklore Website als Geräte-Mockup auf Laptop, Tablet und Smartphone",
       "enlarge": "Vergrößern",
@@ -684,10 +681,10 @@
       "next": "Weiter"
     },
     "form": {
-      "open": "Pub-Website anfragen",
+      "open": "Unverbindliches Gespräch anfragen",
       "title": "Deine Irish Pub Website",
       "close": "Formular schließen",
-      "intro": "Erzähl mir kurz von deinem Pub und deinen Wünschen. Deine Anfrage geht direkt an Jan. Du erhältst eine Bestätigung per E-Mail.",
+      "intro": "Erzähl mir kurz von deinem Pub und deinen Wünschen. Wir besprechen unverbindlich, was zu dir und deinem Budget passt. Du erhältst eine Bestätigung per E-Mail.",
       "name": "Dein Name *",
       "email": "Deine E-Mail *",
       "message": "Deine Nachricht *",
@@ -712,6 +709,7 @@
       "securityServiceError": "Der Server kann die Google-Sicherheitsprüfung gerade nicht abschließen. Deine Anfrage wurde noch nicht versendet. Bitte versuche es später erneut oder schreibe an jan@well-edge-creative.de.",
       "pubName": "Name deines Pubs (optional)",
       "website": "Bestehende Website (optional)"
-    }
+    },
+    "budgetHint": "Für jedes Budget gibt es vernünftige Lösungen."
   }
 }

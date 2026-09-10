@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useI18n } from "@/components/providers/I18nProvider";
 import styles from "./pub-websites.module.css";
 
-type Card = { title: string; body: string; price?: string };
+type Card = { title: string; body: string };
 type Shot = { file: string; title: string; description: string; alt: string; width: number; height: number };
 type FAQ = { question: string; answer: string };
 
@@ -105,7 +105,7 @@ export default function PubWebsitesPage() {
           <h1>{text("headingStart")} <span key={locale} ref={highlightRef} className={styles.heroHighlight}><span ref={highlightTextRef} className={styles.highlightText}>{text("headingAccent")}</span></span></h1>
           <p className={styles.lead}>{text("intro")}</p>
           {actions}
-          <div className={styles.heroPrice}><strong>{text("package.price")}</strong><span>{text("labels.onePage")}</span></div>
+          <div className={styles.heroNote}><strong>{text("budgetHint")}</strong><span>{text("labels.onePage")}</span></div>
         </div>
         <div className={styles.heroVisual}>
           <button type="button" onClick={() => openShot(0)} aria-label={`${text("interactive.enlarge")}: ${text("interactive.mockupAlt")}`} aria-haspopup="dialog" className={styles.mockupLink}>
@@ -150,14 +150,14 @@ export default function PubWebsitesPage() {
           <div className={styles.sectionHead}><div>{label("package")}<h2>{text("package.title")}</h2></div><p>{text("package.body")}</p></div>
           <div className={styles.packageGrid}>
             <div className={styles.baseCard}>
-              <p className={styles.eyebrow}>{text("labels.base")}</p><p className={styles.price}>{text("package.price")}</p>
+              <p className={styles.eyebrow}>{text("labels.base")}</p><h3 className={styles.offerHeadline}>{text("package.headline")}</h3>
               <ul className={styles.checkList}>{list<string>("package.items").map(item => <li key={item}>{item}</li>)}</ul>
               <p className={styles.small}>{text("package.note")}</p>
               <button type="button" onClick={openInquiry} aria-haspopup="dialog" className="btn btn-primary">{text("labels.packageCta")}<Arrow /></button>
             </div>
-            <div className={styles.extras}><h3>{text("package.extrasTitle")}</h3><p className={styles.small}>{text("labels.extras")}</p><dl>{list<{title: string; price: string}>("package.extras").map(extra => <div key={extra.title}><dt>{extra.title}</dt><dd>{extra.price}</dd></div>)}</dl></div>
+            <div className={styles.extras}><h3>{text("package.extrasTitle")}</h3><p className={styles.small}>{text("labels.extras")}</p><dl>{list<Card>("package.extras").map(extra => <div key={extra.title}><dt>{extra.title}</dt><dd>{extra.body}</dd></div>)}</dl></div>
           </div>
-          <div className={styles.investment}><h3>{text("investment.title")}</h3><div><p>{text("investment.body")}</p><p className={styles.example}>{text("investment.example")}</p><p className={styles.small}>{text("investment.note")}</p></div></div>
+          <div className={styles.investment}><h3>{text("investment.title")}</h3><div><p>{text("investment.body")}</p><p className={styles.small}>{text("investment.note")}</p></div></div>
         </div>
       </section>
 
@@ -165,7 +165,7 @@ export default function PubWebsitesPage() {
         <div>{label("care")}<h2>{text("care.title")}</h2><p className={styles.lead}>{text("care.body")}</p><p className={styles.small}>{text("care.note")}</p></div>
         <div className={styles.careGrid}>{list<Card>("care.plans").map((plan, index) => <div key={plan.title} className={`${styles.careCard} ${index === 1 ? styles.recommended : ""}`}>
           <p className={styles.planLabel}>{index === 1 ? text("care.recommended") : text("labels.essential")}</p>
-          <h3>{plan.title}</h3><p className={styles.carePrice}>{plan.price}</p><p>{plan.body}</p>
+          <h3>{plan.title}</h3><p>{plan.body}</p>
         </div>)}</div>
       </section>
 

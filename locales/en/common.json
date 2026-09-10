@@ -159,7 +159,7 @@
         "client": "Rocklore Irish Pub",
         "title": "A website with Irish soul",
         "summary": "Pub atmosphere, menus and visitor information on one clear website.",
-        "extraNote": "One page from €800 once. Menus, opening hours and contact clearly presented. Optional care from €39 per month.",
+        "extraNote": "Menus, opening hours and contact clearly presented. Individual solutions for every budget. Let’s talk about your pub, with no obligation.",
         "challenge": "Make the pub’s character tangible online and practical details easy to find.",
         "solution": "A mobile-first website connecting atmosphere, food, events and contact.",
         "result": "Live at rocklore.de, with a dedicated website offer for other Irish pubs.",
@@ -453,7 +453,7 @@
     "liveCta": "Visit rocklore.de",
     "showcase": {
       "title": "Real pub. Real website.",
-      "body": "Five real screenshots from Rocklore. This reference includes optional features that are priced separately from the base package.",
+      "body": "Five real views of Rocklore. Together we choose the features that help your guests and suit your pub.",
       "items": [
         {
           "file": "screenshot-hero.webp",
@@ -509,59 +509,57 @@
     "package": {
       "title": "One page. Everything your guests need.",
       "body": "A single homepage with all agreed sections. Your pub, atmosphere, food and drinks, opening hours and contact live together on one page.",
-      "price": "From €800 once",
       "items": [
-        "One homepage with all agreed sections",
-        "Mobile-first design for phones, tablets and desktops",
-        "Basic SEO: page structure, titles and descriptions",
-        "Contact form for enquiries"
+        "All essential information on one clear page",
+        "Easy to use on phones, tablets and desktops",
+        "Clear structure and basic SEO for a good start",
+        "A direct way to send questions and reservation enquiries"
       ],
-      "note": "The base package uses the content and images you provide. Extra pages, additional languages and the features below are quoted separately.",
+      "note": "We start with what your pub really needs. We agree the content, images and features together.",
       "extrasTitle": "Add only what you need",
       "extras": [
         {
           "title": "Custom menu design",
-          "price": "from +€120"
+          "body": "Makes your menu easy to browse and builds an appetite for a visit."
         },
         {
           "title": "Additional page",
-          "price": "+€150"
+          "body": "More room for content that deserves a page of its own."
         },
         {
           "title": "Bilingual website",
-          "price": "+€200"
+          "body": "Helps international guests plan their visit too."
         },
         {
           "title": "Event calendar",
-          "price": "+€150"
+          "body": "Brings upcoming pub nights and live music into view."
         },
         {
           "title": "Photo editing",
-          "price": "+€100"
+          "body": "Shows your pub and dishes at their best."
         },
         {
           "title": "Social media integration",
-          "price": "+€100"
+          "body": "Connects your website with your social media channels."
         }
-      ]
+      ],
+      "headline": "Your pub. Clearly presented."
     },
     "care": {
       "title": "Monthly care",
-      "body": "Keep your website useful after launch. We agree the exact scope and update allowance before you choose a plan.",
+      "body": "Up-to-date menus, opening hours and events help your guests. If you wish, I can look after your website after launch too.",
       "recommended": "Recommended",
       "plans": [
         {
           "title": "Mini Care",
-          "price": "from €39 / month",
           "body": "For a pub with occasional changes and basic ongoing website care."
         },
         {
           "title": "Standard Care",
-          "price": "from €69 / month",
           "body": "For a pub with regular updates to menus, events and seasonal information."
         }
       ],
-      "note": "Additional work: €70 per hour, agreed with you in advance. Hosting, domain costs and any third-party fees are clarified in your quote."
+      "note": "We discuss how much support you need and agree the scope and costs individually."
     },
     "why": {
       "title": "Why this works",
@@ -582,11 +580,11 @@
       "steps": [
         {
           "title": "Tell me about your pub",
-          "body": "We talk about your guests, your style and what the website needs to do."
+          "body": "We have a no-obligation conversation about your pub, your ideas and your budget."
         },
         {
           "title": "Agree the scope",
-          "body": "You receive a quote covering the one-page package and your chosen extras."
+          "body": "You receive an individual quote for the services we selected together."
         },
         {
           "title": "Gather your content",
@@ -603,25 +601,24 @@
       ]
     },
     "investment": {
-      "title": "Your investment, clearly planned",
-      "body": "Start with a single-page website from €800 once. Add the features your pub needs and choose monthly care if you want ongoing support.",
-      "example": "Example: €800 base scope + €200 for a second language = €1,000 once. With Standard Care from €69 per month, ongoing care is charged separately.",
-      "note": "The final quote confirms your scope, total price, applicable taxes and any recurring costs before work begins."
+      "title": "Your ideas. Your budget. Let’s talk.",
+      "body": "There are sensible solutions for every budget. Tell me what matters to your pub. Together we work out a useful scope and where to start.",
+      "note": "We discuss the price personally. You receive an individual quote before deciding."
     },
     "faq": {
       "title": "Questions before the first round",
       "items": [
         {
-          "question": "Why from €800 instead of a fixed price?",
-          "answer": "€800 is the starting price for the defined one-page base scope. Content preparation, individual requirements and optional features can change the workload. You receive a clear quote before we start."
+          "question": "What does a website for my pub cost?",
+          "answer": "That depends on your needs and the right scope. There are sensible solutions for every budget. We discuss your priorities in a no-obligation conversation, then you receive an individual quote."
         },
         {
           "question": "Is this a multi-page website?",
-          "answer": "The base package is one homepage with all agreed sections. An additional page costs +€150."
+          "answer": "We start with one clear page containing all essential sections. If your pub needs more room for specific topics, we can add suitable pages."
         },
         {
           "question": "Can my website be bilingual?",
-          "answer": "Yes. A bilingual website is available for +€200. We agree how translated content will be supplied as part of the quote."
+          "answer": "Yes. This helps international guests find the information they need. We discuss languages and how translations will be provided together."
         },
         {
           "question": "Are all Rocklore features included?",
@@ -637,7 +634,7 @@
         },
         {
           "question": "Do I have to book monthly care?",
-          "answer": "Monthly care is optional. Mini Care starts at €39 per month and Standard Care at €69. We agree what is included; extra work is €70 per hour."
+          "answer": "No, ongoing care is optional. We discuss whether you need occasional help or regular updates and agree a suitable quote."
         },
         {
           "question": "Can I keep my domain?",
@@ -651,7 +648,7 @@
     },
     "closing": {
       "title": "Ready to give your pub a proper online home?",
-      "body": "Tell me about your pub and what you need. I’ll help you put together a clear scope and quote."
+      "body": "Let’s have a no-obligation conversation about your pub. There are sensible solutions for every budget. Together we find the right starting point."
     },
     "headingStart": "Your Irish Pub deserves a website",
     "headingAccent": "that works as hard as you do.",
@@ -659,10 +656,10 @@
       "onePage": "One page. Built for your pub.",
       "what": "Your pub, online",
       "reference": "Live at Rocklore",
-      "package": "Clear scope. Fair price.",
+      "package": "What your website offers",
       "base": "The one-page package",
-      "extras": "Optional additions, priced separately.",
-      "packageCta": "Enquire about your website",
+      "extras": "Choose what helps your guests.",
+      "packageCta": "Let’s talk, no obligation",
       "care": "After the launch",
       "essential": "The essentials",
       "why": "Made for your guests",
@@ -675,7 +672,7 @@
     "interactive": {
       "navLabel": "On this page",
       "reference": "Explore the reference",
-      "package": "Package & pricing",
+      "package": "Offer & benefits",
       "faq": "Common questions",
       "mockupAlt": "Rocklore website device mockup on laptop, tablet and smartphone",
       "enlarge": "Enlarge",
@@ -684,10 +681,10 @@
       "next": "Next"
     },
     "form": {
-      "open": "Enquire about your pub website",
+      "open": "Request a no-obligation conversation",
       "title": "Your Irish Pub website",
       "close": "Close enquiry form",
-      "intro": "Tell me a little about your pub and what you need. Your enquiry goes directly to Jan, with a confirmation email to you.",
+      "intro": "Tell me a little about your pub and your ideas. We can discuss what suits you and your budget, with no obligation. You will receive a confirmation email.",
       "name": "Your name *",
       "email": "Your email *",
       "message": "Your message *",
@@ -712,6 +709,7 @@
       "securityServiceError": "The server cannot complete the Google security check right now. Your enquiry has not been sent. Please try again later or email jan@well-edge-creative.de.",
       "pubName": "Pub name (optional)",
       "website": "Existing website (optional)"
-    }
+    },
+    "budgetHint": "There are sensible solutions for every budget."
   }
 }

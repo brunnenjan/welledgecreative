@@ -23,8 +23,8 @@
 .actions :global(.btn) { min-height: 52px; font-size: .9375rem; gap: 14px; }
 .textLink { display: inline-flex; align-items: center; gap: 12px; color: #1a1a1a; font-size: .9375rem; font-weight: 600; }
 .textLink:hover { color: #b34d00; }
-.heroPrice { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; margin-top: 30px; font-size: .875rem; }
-.heroPrice span { color: #737373; }
+.heroNote { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; margin-top: 30px; font-size: .875rem; }
+.heroNote span { color: #737373; }
 .heroVisual { min-width: 0; padding: 0; background: #f5f5f5; border-radius: 24px; transform: none; }
 .previewBar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 18px; background: #fff; border-radius: 10px 10px 0 0; color: #737373; font-size: .75rem; }
 .previewBar > span:first-child { color: #d4d4d4; letter-spacing: 2px; }
@@ -57,14 +57,15 @@
 .softBand { background: #f7f7f7; }
 .packageGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
 .baseCard { background: #fff; border: 1px solid var(--color-accent); border-radius: 20px; padding: 40px; box-shadow: 0 12px 35px #00000004; }
-.page .price { font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 700; line-height: 1.2; letter-spacing: -.045em; }
+.page .offerHeadline { font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 700; line-height: 1.2; letter-spacing: -.045em; }
 .baseCard .small { margin-block: 28px; }
 .baseCard :global(.btn) { width: 100%; gap: 14px; }
 .extras { padding-block: 20px; }
 .extras > .small { margin-top: 12px; }
 .extras dl { margin-top: 28px; }
-.extras dl > div { display: flex; justify-content: space-between; gap: 24px; border-bottom: 1px solid #dedede; padding-block: 19px; line-height: 1.5; }
-.extras dd { margin: 0; font-weight: 600; white-space: nowrap; }
+.extras dl > div { display: grid; gap: 6px; border-bottom: 1px solid #dedede; padding-block: 19px; line-height: 1.5; }
+.extras dt { font-weight: 600; }
+.extras dd { margin: 0; color: #616161; font-size: .9375rem; }
 .investment { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; border-top: 1px solid #dedede; padding-top: 36px; margin-top: 48px; }
 .investment p { color: #616161; }
 .investment .example { margin-block: 16px; color: #1a1a1a; font-weight: 500; }
@@ -133,7 +134,7 @@
   .hero { padding-top: 116px; }
   .hero h1 { font-size: clamp(2.5rem, 9.5vw, 3.5rem); }
   .heroVisual { padding: 12px; border-radius: 16px; }
-  .heroPrice { gap: 6px 14px; }
+  .heroNote { gap: 6px 14px; }
   .section { padding-block: 60px; }
   .page .eyebrow { font-size: .75rem; margin-bottom: 16px; }
   .sectionHead, .promiseGrid, .packageGrid, .investment, .processLayout, .faqLayout, .about { grid-template-columns: 1fr; gap: 28px; }
