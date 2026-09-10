@@ -305,9 +305,10 @@ main {
   overflow: visible;
 }
 
-/* Smooth scrolling for anchor links */
+/* JavaScript owns smooth scrolling; CSS smoothing conflicts with ScrollSmoother. */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  scrollbar-gutter: stable;
 }
 
 /* Smoother section transitions */

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { gsap } from "@/lib/gsap";
 import Header from "@/components/Header";
 import PubInquiryForm from "./PubInquiryForm";
@@ -47,6 +48,30 @@ export default function PubWebsitesPage() {
   const galleryRef = useRef<HTMLDialogElement>(null);
   const inquiryRef = useRef<HTMLDialogElement>(null);
   const [loadInquiry, setLoadInquiry] = useState(false);
+  useEffect(() => {
+    const dialogs = [inquiryRef.current, galleryRef.current].filter((dialog): dialog is HTMLDialogElement => Boolean(dialog));
+    let restore: (() => void) | undefined;
+    const sync = () => {
+      const open = dialogs.some(dialog => dialog.open);
+      if (open && !restore) {
+        const smoother = ScrollSmoother.get();
+        const wasPaused = smoother?.paused();
+        const overflow = document.documentElement.style.overflow;
+        smoother?.paused(true);
+        document.documentElement.style.overflow = "hidden";
+        restore = () => {
+          document.documentElement.style.overflow = overflow;
+          smoother?.paused(Boolean(wasPaused));
+        };
+      } else if (!open && restore) {
+        restore();
+        restore = undefined;
+      }
+    };
+    const observer = new MutationObserver(sync);
+    dialogs.forEach(dialog => observer.observe(dialog, { attributes: true, attributeFilter: ["open"] }));
+    return () => { observer.disconnect(); restore?.(); };
+  }, []);
   const openInquiry = () => {
     setLoadInquiry(true);
     inquiryRef.current?.showModal();
@@ -166,7 +191,7 @@ export default function PubWebsitesPage() {
       <section className={`${styles.wrap} ${styles.closing}`}><div className={styles.closingCard}>
         <p className={styles.eyebrow}>{text("labels.closing")}</p><h2>{text("closing.title")}</h2><p className={styles.lead}>{text("closing.body")}</p>{actions}
       </div></section>
-      <dialog ref={inquiryRef} className={`${styles.gallery} ${styles.inquiryDialog}`} aria-labelledby="pub-inquiry-title" onClick={event => { if (event.target === event.currentTarget) inquiryRef.current?.close(); }}>
+      <dialog ref={inquiryRef} className={`${styles.gallery} ${styles.inquiryDialog}`} aria-labelledby="pub-inquiry-title">
         <div className={styles.inquiryContent}>
           <div className={styles.galleryTop}><h2 id="pub-inquiry-title">{text("form.title")}</h2><button type="button" onClick={() => inquiryRef.current?.close()} aria-label={text("form.close")} autoFocus>×</button></div>
           {loadInquiry && <PubInquiryForm />}
