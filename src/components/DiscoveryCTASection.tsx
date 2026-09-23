@@ -158,11 +158,11 @@ export default function DiscoveryCTASection({
           aria-hidden
         >
           <Image
-            src="/assets/icons/bucket-delivery.svg"
+            src="/assets/parallax/section-design/bucket-delivery.webp"
             alt=""
-            width={120}
-            height={120}
-            className="h-24 w-24 opacity-90 drop-shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
+            width={1920}
+            height={1294}
+            className="h-24 w-auto opacity-90 drop-shadow-[0_12px_25px_rgba(0,0,0,0.35)]"
             priority
           />
         </div>
@@ -215,7 +215,7 @@ export default function DiscoveryCTASection({
     "h-full",
     "w-full",
     "bg-gradient-to-tr",
-    isLight ? "from-white via-[#f5f0eb] to-[#efe9e2]" : "from-accent/20 via-transparent to-white/10",
+    isLight ? "from-white via-[#f5f0eb] to-[#efe9e2]" : "from-[#f58222]/20 via-transparent to-white/10",
   ].join(" ");
 
   const headingClasses = ["text-3xl", "font-serif", "font-semibold", "md:text-4xl", isLight ? "text-black" : "text-white"].join(
@@ -233,7 +233,7 @@ export default function DiscoveryCTASection({
     "text-base",
     "font-semibold",
     "transition",
-    "bg-accent",
+    "bg-[#f58222]",
     "text-white",
     "hover:-translate-y-0.5",
     "shadow-[0_12px_28px_rgba(245,130,34,0.22)]",

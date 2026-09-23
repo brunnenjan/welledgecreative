@@ -12,7 +12,8 @@ export default function HomeDiscoveryCTA() {
       paragraph={t("homeDiscoveryCta.paragraph")}
       buttonText={t("homeDiscoveryCta.button")}
       href={`/${locale}/retreats`}
-      variant="hero"
+      variant="dark"
+      className="mx-4 my-16 md:mx-10 md:my-24"
     />
   );
 }
