@@ -16,8 +16,9 @@ const FOOTER_LINKS = [
 ];
 
 const LEGAL_LINKS = [
-  { href: "/imprint", labelKey: "footer.legal.imprint" },
-  { href: "/privacy", labelKey: "footer.legal.privacy" },
+  { href: "/retreats", labelKey: "footer.legal.retreats", newTab: false },
+  { href: "/imprint", labelKey: "footer.legal.imprint", newTab: true },
+  { href: "/privacy", labelKey: "footer.legal.privacy", newTab: true },
 ];
 
 const SOCIAL_LINKS = [
@@ -128,8 +129,7 @@ export default function Footer() {
               <span key={link.href} className="flex items-center gap-2">
                 <Link
                   href={`/${locale}${link.href}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(link.newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="hover:text-white/90 transition-colors underline-offset-4 hover:underline"
                 >
                   {t(link.labelKey)}

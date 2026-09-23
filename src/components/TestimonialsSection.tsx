@@ -27,7 +27,7 @@ type TestimonialEntry = {
 
 const AUTOPLAY_INTERVAL = 6000;
 const REVIEWS_SOURCE = "/reviews.json";
-const FALLBACK_AVATAR = "/assets/profile/profile-jan.webp";
+const FALLBACK_AVATAR = "/assets/profile/profile-jan-2026-v2.webp";
 const PER_VIEW = 3;
 
 const createExcerpt = (quote: string, maxChars: number, suffix: string) => {

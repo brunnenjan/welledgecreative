@@ -101,8 +101,12 @@
 .plus { color: #a94a00; font-size: 1.5rem; font-weight: 400; transition: transform .2s; }
 .questions details[open] .plus { transform: rotate(45deg); }
 .questions details p { padding: 0 35px 24px 0; color: #616161; }
-.about { padding-block: 32px 104px; max-width: 800px; }
-.about .lead { margin-top: 24px; }
+.about { padding-block: 32px 104px; max-width: 640px; margin-inline: auto; text-align: center; }
+.about .eyebrow { justify-content: center; }
+.about .lead { margin: 24px auto 0; }
+.aboutRow { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.aboutPhoto { width: 260px; height: 260px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 18px 40px rgba(26,20,16,0.14)); }
+@media (max-width: 700px) { .aboutPhoto { width: 200px; height: 200px; } }
 .page .signature { margin-top: 24px; font-size: 1.5rem; font-weight: 600; }
 .signature span { display: inline-block; margin-left: 14px; font-size: .875rem; font-weight: 400; color: #737373; }
 .closing { padding-bottom: 64px; }

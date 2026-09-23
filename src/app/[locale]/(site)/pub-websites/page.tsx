@@ -185,7 +185,17 @@ export default function PubWebsitesPage() {
       </section>
 
       <section className={`${styles.wrap} ${styles.about}`}>
-        <div>{label("about")}<h2>{text("about.title")}</h2><p className={styles.lead}>{text("about.body")}</p><p className={styles.signature}>Jan <span>Well Edge Creative</span></p></div>
+        <div className={styles.aboutRow}>
+          <Image
+            src="/assets/profile/profile-jan-2026-v2.webp"
+            alt="Jan, founder of Well Edge Creative"
+            width={280}
+            height={315}
+            className={styles.aboutPhoto}
+            priority
+          />
+          <div>{label("about")}<h2>{text("about.title")}</h2><p className={styles.lead}>{text("about.body")}</p><p className={styles.signature}>Jan <span>Well Edge Creative</span></p></div>
+        </div>
       </section>
 
       <section className={`${styles.wrap} ${styles.closing}`}><div className={styles.closingCard}>

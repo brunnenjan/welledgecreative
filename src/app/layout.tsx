@@ -112,7 +112,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         "@id": "https://www.well-edge-creative.de/#person",
         name: "Jan Brunnenkant",
         url: "https://www.well-edge-creative.de",
-        image: "https://www.well-edge-creative.de/assets/profile/profile-jan.webp",
+        image: "https://www.well-edge-creative.de/assets/profile/profile-jan-2026-v2.webp",
         jobTitle: "Brand & Web Designer",
         description: "Designer, strategist, and storyteller specializing in branding and web design that connects deeply.",
         email: "info@well-edge-creative.com",

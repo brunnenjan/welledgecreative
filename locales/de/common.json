@@ -130,7 +130,12 @@
         "challenge": "Ein neues Retreat benötigte eine Marke, die warm, professionell und authentisch wirkt, ohne beliebig oder austauschbar zu erscheinen.",
         "solution": "Entwicklung einer ganzheitlichen visuellen Identität und einer erzählerisch aufgebauten Website, die den Charakter des Retreats klar transportiert.",
         "result": "Eine unverwechselbare Marke und eine performante, barrierearme Website, die die richtigen Gäste anspricht und echte Gastfreundschaft vermittelt.",
-        "roles": ["Branding", "Logo", "Webdesign", "Webdev (WordPress, PHP)"],
+        "roles": [
+          "Branding",
+          "Logo",
+          "Webdesign",
+          "Webdev (WordPress, PHP)"
+        ],
         "imageAlt": "Brisa Bahía Retreat-Center-Branding als Multi-Device-Mockup"
       },
       "virtuelles-fastnachtsmuseum": {
@@ -142,7 +147,12 @@
         "solution": "Intuitive, virtuelle Museumsreise mit sorgfältig gestalteter Nutzerführung, die Inhalte würdigt und zugleich leicht zugänglich macht.",
         "result": "Ein digitales Archiv, das Kulturerbe bewahrt und Menschen weit über das physische Museum hinaus erreicht.",
         "award": "🏆 Auszeichnung: Deutscher Medienpreis in Silber",
-        "roles": ["UX", "Design", "Content Creation", "Animation"],
+        "roles": [
+          "UX",
+          "Design",
+          "Content Creation",
+          "Animation"
+        ],
         "imageAlt": "Virtuelles Fastnachtsmuseum Hero"
       },
       "einfach-schee": {
@@ -152,7 +162,12 @@
         "challenge": "Eine persönliche Marke ohne bestehende Online-Präsenz und mit begrenzten Ressourcen aufbauen.",
         "solution": "Entwicklung einer vollständigen Markenidentität und einer individuellen Website, die Vertrauen aufbaut und Persönlichkeit zeigt.",
         "result": "Eine professionelle Präsenz, die überzeugt und die Marktposition klar stärkt.",
-        "roles": ["Branding", "Logo", "Webdesign", "Webdev"],
+        "roles": [
+          "Branding",
+          "Logo",
+          "Webdesign",
+          "Webdev"
+        ],
         "imageAlt": "einfach-schee Hero"
       },
       "irish-pub-websites": {
@@ -269,17 +284,29 @@
     "cards": [
       {
         "title": "Strategie-Sprint",
-        "items": ["Positionierung & Botschaft", "Inhaltsstruktur + Startseiten-Entwurf", "Roadmap"],
+        "items": [
+          "Positionierung & Botschaft",
+          "Inhaltsstruktur + Startseiten-Entwurf",
+          "Roadmap"
+        ],
         "price": "ab 1.200 €"
       },
       {
         "title": "Marken-Basis",
-        "items": ["Logo-Suite, Farben & Typografie", "Markenhandbuch (Social Media, Dokumente)", "Key Visuals"],
+        "items": [
+          "Logo-Suite, Farben & Typografie",
+          "Markenhandbuch (Social Media, Dokumente)",
+          "Key Visuals"
+        ],
         "price": "ab 2.800 €"
       },
       {
         "title": "Website-Launch",
-        "items": ["3–5 Seiten, moderne Webtechnologie", "Animationen & Interaktionen", "Mobiloptimierung, Onpage-SEO"],
+        "items": [
+          "3–5 Seiten, moderne Webtechnologie",
+          "Animationen & Interaktionen",
+          "Mobiloptimierung, Onpage-SEO"
+        ],
         "price": "ab 4.500 €"
       }
     ],
@@ -326,7 +353,8 @@
     },
     "legal": {
       "imprint": "Impressum",
-      "privacy": "Datenschutz"
+      "privacy": "Datenschutz",
+      "retreats": "Für Retreat-Center"
     },
     "legalLine": "Ich unterstütze Unternehmen seit 2017 beim Aufbau klarer und bedeutungsvoller Marken."
   },
@@ -750,5 +778,222 @@
     },
     "budgetHint": "Für jedes Budget gibt es vernünftige Lösungen.",
     "bookingCta": "Termin auswählen"
+  },
+  "retreatsPage": {
+    "meta": {
+      "title": "Website & Branding für Retreat-Center | Well Edge Creative",
+      "description": "Website-Design, Redesigns und Logo- & Markenentwicklung für Retreat-Center, Wellness-Destinationen und Retreat-Gründer. Case Studies aus Kolumbien und Vietnam."
+    },
+    "hero": {
+      "eyebrow": "Website-Design & Branding für Retreat-Center",
+      "headline": {
+        "prefix": "Die Erfahrung gibt es schon.",
+        "highlight": "Machen wir sie sichtbar."
+      },
+      "subheadline": "Ich gestalte und baue Websites, gestalte veraltete neu und entwickle Logos und Markenidentitäten für Retreat-Center, Wellness-Destinationen und Retreat-Gründer, damit Gäste verstehen, vertrauen und buchen, was ihr längst aufgebaut habt.",
+      "primaryCta": "Discovery Call buchen",
+      "secondaryCta": "Das baue ich",
+      "proof": "Retreat-Projekte in Kolumbien und Vietnam, von neuen Marken bis zu etablierten Betrieben."
+    },
+    "struggle": {
+      "eyebrow": "Die Herausforderung",
+      "heading": "Ihr habt etwas Echtes aufgebaut. Eure Website sagt das nicht.",
+      "intro": "Das spricht kaum ein Retreat-Gründer laut aus, aber fast alle kennen es.",
+      "items": [
+        "Ihr wisst, euer Retreat ist besonders, aber eure Website liest sich wie jede andere.",
+        "Ihr habt wunderschöne Fotos, dutzende davon, und trotzdem keine Geschichte, die sie verbindet.",
+        "Gäste landen auf eurer Seite und können eure Programme kaum unterscheiden.",
+        "Euer Angebot ist über Jahre gewachsen. Die Struktur eurer Website ist von damals.",
+        "Buchungen laufen über eine Mischung aus Formularen, E-Mails und Tabellen, und irgendetwas rutscht immer durch.",
+        "Ihr wollt mehr internationale Gäste, aber eure Marke wirkt noch lokal oder uneinheitlich.",
+        "Ihr braucht Facilitators, die bei euch veranstalten wollen, nicht nur Gäste, die teilnehmen.",
+        "Eure Startseite listet auf, was ihr anbietet. Sie erklärt nie, warum es wichtig ist."
+      ],
+      "outro": "Nichts davon heißt, dass das Retreat das Problem ist. Es heißt meistens nur, dass die Website gebaut wurde, bevor das Retreat zu dem wurde, was es heute ist."
+    },
+    "packages": {
+      "heading": "Das baue ich",
+      "intro": "Je nachdem, wo euer Retreat gerade steht: eine neue Website, ein Redesign des Bestehenden, oder eine Marke und ein Logo, die endlich zur Erfahrung passen.",
+      "items": [
+        {
+          "tag": "Website-Design & Entwicklung",
+          "title": "Neue Retreat-Website",
+          "description": "Für ein Retreat, eine Wellness-Destination oder einen Facilitator-Betrieb ohne Website, oder mit einer Ein-Seiten-Lösung von vor Jahren.",
+          "items": [
+            "Retreat-Übersicht plus einzelne Programm- und Unterkunftsseiten",
+            "Gäste- und Facilitator-Journey, nebeneinander aufgebaut",
+            "Buchungsbereite Kontaktformulare und Anfrageprozess",
+            "Mobile-first, schnell und von Anfang an suchmaschinenfreundlich strukturiert",
+            "WordPress oder individuelle Next.js-Entwicklung, je nachdem, was zu euch passt"
+          ],
+          "cta": "Neue Website starten"
+        },
+        {
+          "tag": "Modernisieren & Konvertieren",
+          "title": "Retreat-Website-Redesign",
+          "description": "Für ein etabliertes Retreat mit echter Gästehistorie und gutem Feedback, dessen Website all das noch immer unter Wert verkauft.",
+          "items": [
+            "Eine Struktur, die zu dem passt, was euer Retreat tatsächlich geworden ist",
+            "Ein zerstückelter Buchungsweg, zusammengeführt in einen klaren Pfad",
+            "Fotografie, Story und Positionierung auf den aktuellen Stand gebracht",
+            "Mehrsprachiges Setup (WPML), wenn ihr internationale Gäste habt",
+            "Sorgfältige, nicht überziehende Sprache bei Gesundheits- und Wellness-Themen"
+          ],
+          "cta": "Website neu gestalten"
+        },
+        {
+          "tag": "Branding",
+          "title": "Logo & Markenidentität",
+          "description": "Für ein Retreat, das aus seinem ersten Logo herausgewachsen ist, oder ein neues Konzept, das erst eine Marke braucht, bevor irgendetwas anderes entsteht.",
+          "items": [
+            "Naming oder Markenweiterentwicklung",
+            "Logo, Farbpalette, Typografie und Icons",
+            "Brand Guidelines, damit es auf jedem Kanal konsistent bleibt",
+            "Print: Visitenkarten, Broschüren, Beschilderung, Geschäftsausstattung"
+          ],
+          "cta": "Meine Marke aufbauen"
+        }
+      ]
+    },
+    "philosophy": {
+      "heading": "Eine Retreat-Website ist keine Datenbank",
+      "intro": "Zimmer, Behandlungen und Zeitpläne sind wichtig, aber sie sind nicht der Grund, warum jemand bucht. Eine Retreat-Website muss Ort, Erfahrung, Transformation und Vertrauen verbinden, bevor es überhaupt zur Buchung kommt.",
+      "questionsIntro": "Bevor jemand bucht, fragt er oder sie sich still:",
+      "questions": [
+        "Was wird dort tatsächlich mit mir passieren?",
+        "Für wen ist das gedacht, und bin das ich?",
+        "Warum sollte ich diesen Menschen meine Zeit und mein Geld anvertrauen?",
+        "Was unterscheidet das vom Retreat nebenan?",
+        "Wo wohne ich, was ist inklusive, was nicht?",
+        "Wie sieht ein typischer Tag aus?",
+        "Was passiert zwischen Buchung und Ankunft?",
+        "Wen frage ich bei Fragen oder gesundheitlichen Bedenken?"
+      ],
+      "outro": "Die Aufgabe der Website ist es, diese Fragen der Reihe nach zu beantworten, ohne sich je wie ein Formular anzufühlen."
+    },
+    "caseStudies": {
+      "heading": "Retreat-Projekte",
+      "intro": "Zwei sehr unterschiedliche Ausgangspunkte: ein Ort, der zur Retreat-Marke wird, und ein etablierter Retreat-Betrieb, der zu einem stimmigen digitalen Ökosystem wird.",
+      "brisaBahia": {
+        "tag": "Hospitality → Retreat-Marke",
+        "client": "Brisa Bahía",
+        "location": "Capurganá, Kolumbien",
+        "title": "Aus einem Gästehaus wurde eine Retreat-Destination",
+        "challenge": "Kary & Nhung hatten einen wunderschönen, abgelegenen Ort an der karibischen Küste und ein echtes Gastgeber-Angebot, aber keine klare Retreat-Identität. Die Marke musste zwei Zielgruppen gleichzeitig ansprechen: Gäste, die ein Retreat in Betracht ziehen, und Facilitators, die einen Ort für ihr eigenes Retreat suchen.",
+        "work": "Markenentwicklung und Naming, Retreat-Positionierung, eine vollständige visuelle Identität, die in der Küstenlandschaft verwurzelt ist, sowie eine Website, die Facilitator- und Gäste-Journey nebeneinander aufbaut.",
+        "result": "Ein deutlich professionellerer Auftritt, die ersten Retreat-Buchungen und Facilitator-Anfragen, sowie ein wiederverwendbares Markensystem, das inzwischen auch Verkaufsgespräche unterstützt, nicht nur die Website.",
+        "cta": "Zur Brisa-Bahía-Case-Study"
+      },
+      "vietnamDetox": {
+        "tag": "Etablierter Betrieb → digitales Ökosystem",
+        "client": "Vietnam Detox",
+        "location": "Vietnam",
+        "title": "Drei Retreat-Produkte, eine stimmige Marke und ein Buchungssystem",
+        "challenge": "Vietnam Detox veranstaltet seit über zehn Jahren geführte Buchinger-Fastenretreats in Vietnam, mit echten Stammgästen und starkem Feedback, aber Marke und Website vermittelten diese Tiefe einem internationalen Publikum nicht. Drei eigenständige Retreat-Produkte brauchten jeweils eine klare Identität innerhalb eines Systems.",
+        "work": "Eine geschärfte, hochwertige Markenrichtung (dunkles Waldgrün, Ivory, Ember-Akzente, eine eigene Flammen-Bildmarke) sowie ein kompletter Website-Neuaufbau: eigene Seiten für das Yên Retreat im Alba Wellness Valley Huế, das An Retreat im Legacy Yên Tử MGallery und das Hồi Retreat im Fusion Resort Da Nang, dazu ein Private-Retreat-Format (5 bis 14 Tage). Jede Retreat-Seite zeigt echte Termine, Verfügbarkeit und Preise pro Person. Die Seite läuft auf Englisch, Vietnamesisch und Deutsch.",
+        "result": "Eine stimmige, hochwertige Marke über alle Retreat-Produkte hinweg, kleine Gruppen (max. 14 Gäste) mit der Klarheit und dem Vertrauen präsentiert, das ein geführtes Fastenretreat braucht, sowie eine buchungsbereite, dreisprachige Website, die Vietnam Detox neben den Wellness-Hotelmarken positioniert, mit denen sie zusammenarbeiten, nicht darunter."
+      }
+    },
+    "process": {
+      "heading": "So könnten wir zusammenarbeiten",
+      "steps": [
+        {
+          "title": "Verstehen",
+          "text": "Dein Retreat-Konzept, deine Gäste, Facilitators, Ziele und was aktuell noch nicht funktioniert."
+        },
+        {
+          "title": "Positionieren",
+          "text": "Markengeschichte, Zielgruppe, Angebot, Botschaft und die Customer Journey drumherum."
+        },
+        {
+          "title": "Gestalten",
+          "text": "Identität, visuelles System, Website und Content-Struktur, gebaut, um damit zu leben."
+        },
+        {
+          "title": "Verbinden",
+          "text": "Buchungsprozess, Formulare, CRM-Denken, mehrsprachige Struktur, die digitalen Berührungspunkte rund um dein Retreat."
+        },
+        {
+          "title": "Verfeinern",
+          "text": "QA, Gästefeedback, Conversion-Verbesserungen und Unterstützung, wenn neue Retreat-Produkte dazukommen."
+        }
+      ]
+    },
+    "differentiators": {
+      "heading": "Was die Zusammenarbeit mit mir anders macht",
+      "items": [
+        {
+          "title": "Nicht Template-first",
+          "text": "Die Arbeit beginnt damit, dein Retreat, deine Zielgruppe und dein Angebot zu verstehen, nicht damit, ein Theme auszusuchen."
+        },
+        {
+          "title": "Strategie und Umsetzung zusammen",
+          "text": "Ich begleite den Weg von Positionierung und Informationsarchitektur über Design bis zu tatsächlich funktionierendem Code."
+        },
+        {
+          "title": "Retreat-spezifische Journeys",
+          "text": "Retreat-Gäste brauchen mehr Vertrauen und Information als bei einem einfachen Online-Kauf. Die Website muss sich das verdienen."
+        },
+        {
+          "title": "Hospitality und Transformation zugleich",
+          "text": "Eine Retreat-Website muss gleichzeitig den physischen Ort und die persönliche Erfahrung verkaufen."
+        },
+        {
+          "title": "Operatives Verständnis",
+          "text": "Echte Erfahrung mit Buchungen, Anzahlungen, Gesundheitsfragebögen, mehrsprachigen Systemen und Retreat-Logistik, nicht nur mit Seitendesign."
+        },
+        {
+          "title": "Gründergeführt",
+          "text": "Du arbeitest vom ersten Gespräch bis zum Launch direkt mit mir, nicht mit einem Account Manager."
+        }
+      ]
+    },
+    "about": {
+      "heading": "Wer dahintersteckt",
+      "text": "Ich bin Jan, Gründer von Well Edge Creative. Ich habe Online- und Digitale Medien an der Hochschule Furtwangen studiert und arbeite seit sieben Jahren an der Schnittstelle von Branding, Webdesign und Entwicklung. Meine Retreat-Erfahrung reicht von einer karibischen Retreat-Destination in Kolumbien bis zu einem etablierten Wellness-Betrieb in Vietnam. Das heißt, ich habe eine Retreat-Marke von Grund auf mit aufgebaut und einem erfahrenen Betreiber geholfen, jahrelanges Gästevertrauen in einen modernen digitalen Auftritt zu übersetzen. Ich war außerdem lange international unterwegs, was prägt, wie ich über Retreats denke, die Gäste aus mehr als einer Kultur ansprechen müssen."
+    },
+    "finalCta": {
+      "heading": "Dein Retreat ist vielleicht schon außergewöhnlich.",
+      "paragraph": "Die Herausforderung ist, das für andere sichtbar zu machen, bevor sie ankommen. Lass uns über deins sprechen, ganz unverbindlich, einfach ein Gespräch darüber, wo du stehst und wo du hinwillst.",
+      "button": "Kostenloses Erstgespräch buchen"
+    },
+    "capabilities": {
+      "heading": "Alles aus einer Hand",
+      "intro": "Eine Person, ein Ansprechpartner, für alles davon, damit nichts zwischen Designer, Entwickler und Agentur verloren geht.",
+      "items": [
+        "Naming",
+        "Markenstrategie & Positionierung",
+        "Logo & visuelle Identität",
+        "Brand Guidelines",
+        "Print & Geschäftsausstattung",
+        "Website-Design (UX/UI)",
+        "WordPress & Elementor",
+        "Next.js & React-Entwicklung",
+        "Mehrsprachige Seiten (WPML)",
+        "Buchungs- & Anfrageprozesse",
+        "Anzahlungs- & Zahlungsabläufe",
+        "Gesundheitsfragebögen",
+        "Facilitator-Journeys",
+        "Gäste-Journeys",
+        "CRM- & Gästedaten-Denken",
+        "Content & Storytelling",
+        "Foto-Regie",
+        "SEO-Grundlagen",
+        "Performance- & Mobile-QA",
+        "Laufender Support"
+      ]
+    },
+    "crm": {
+      "tag": "In Entwicklung",
+      "title": "Ein Retreat-CRM, gebaut danach, wie Retreats wirklich laufen",
+      "description": "Neben der Kundenarbeit baue ich gerade ein schlankes CRM speziell für Retreat-Betreiber: Gästedaten, Retreat-Auswahl, Gesundheitsfragebögen, Anzahlungen und Zahlungen sowie Nachbetreuung an einem Ort, statt verteilt über Formulare, Postfächer und Tabellen.",
+      "items": [
+        "Gästedaten an eine Retreat-ID gebunden, nicht an eine Tabellenzeile",
+        "Anzahlungs- und Zahlungsstatus auf einen Blick",
+        "Gesundheitsfragebögen und Vorbereitungsgespräche in derselben Ansicht",
+        "Entstanden aus echter operativer Arbeit mit einem bestehenden Retreat-Betrieb"
+      ],
+      "note": "Es ist noch nicht verkäuflich. Wenn das für dein Retreat interessant klingt, erwähne es im Gespräch, dann fließt es in die Roadmap ein."
+    }
   }
 }

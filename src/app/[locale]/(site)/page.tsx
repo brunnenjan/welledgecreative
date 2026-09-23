@@ -9,6 +9,7 @@ import HowIWork from "@/sections/HowIWork";
 import DesignParallax from "@/components/DesignParallax";
 import DesignContent from "@/components/DesignContent";
 import MyWork from "@/sections/MyWork";
+import HomeDiscoveryCTA from "@/components/HomeDiscoveryCTA";
 import LogosAndBranding from "@/sections/LogosAndBranding";
 import DeliverParallax from "@/components/DeliverParallax";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <DesignParallax />
       <DesignContent />
       <MyWork />
+      <HomeDiscoveryCTA />
       <LogosAndBranding />
       <DeliverParallax />
       <TestimonialsSection />
