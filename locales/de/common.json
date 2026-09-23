@@ -892,6 +892,24 @@
         "challenge": "Vietnam Detox veranstaltet seit über zehn Jahren geführte Buchinger-Fastenretreats in Vietnam, mit echten Stammgästen und starkem Feedback, aber Marke und Website vermittelten diese Tiefe einem internationalen Publikum nicht. Drei eigenständige Retreat-Produkte brauchten jeweils eine klare Identität innerhalb eines Systems.",
         "work": "Eine geschärfte, hochwertige Markenrichtung (dunkles Waldgrün, Ivory, Ember-Akzente, eine eigene Flammen-Bildmarke) sowie ein kompletter Website-Neuaufbau: eigene Seiten für das Yên Retreat im Alba Wellness Valley Huế, das An Retreat im Legacy Yên Tử MGallery und das Hồi Retreat im Fusion Resort Da Nang, dazu ein Private-Retreat-Format (5 bis 14 Tage). Jede Retreat-Seite zeigt echte Termine, Verfügbarkeit und Preise pro Person. Die Seite läuft auf Englisch, Vietnamesisch und Deutsch.",
         "result": "Eine stimmige, hochwertige Marke über alle Retreat-Produkte hinweg, kleine Gruppen (max. 14 Gäste) mit der Klarheit und dem Vertrauen präsentiert, das ein geführtes Fastenretreat braucht, sowie eine buchungsbereite, dreisprachige Website, die Vietnam Detox neben den Wellness-Hotelmarken positioniert, mit denen sie zusammenarbeiten, nicht darunter."
+      },
+      "vietnamDetoxGallery": {
+        "heading": "Ein genauerer Blick auf den Vietnam-Detox-Relaunch",
+        "intro": "Drei Ansichten aus dem echten Neuaufbau: die neue Marke auf der Startseite, echte Verfügbarkeit auf der Retreat-Übersicht, und die An-Retreat-Seite im Legacy Yên Tử MGallery.",
+        "items": [
+          {
+            "label": "Startseite",
+            "caption": "Die neue Marke: „German Buchinger Fasting. Vietnamese Healing Wisdom.“"
+          },
+          {
+            "label": "Retreat-Übersicht",
+            "caption": "Echte Termine und Verfügbarkeit, die Gäste vor der Anfrage einsehen können."
+          },
+          {
+            "label": "An Retreat",
+            "caption": "Die einzelne Retreat-Seite, im Legacy Yên Tử MGallery."
+          }
+        ]
       }
     },
     "process": {

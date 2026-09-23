@@ -288,7 +288,7 @@ export default function ProfileParallaxSimple() {
         aria-hidden
       >
         <Image
-          src="/assets/parallax/section-profile/parallax-bucket-profile-alt-2026.webp"
+          src="/assets/parallax/section-profile/parallax-bucket-profile-alt-2026-v2.webp"
           alt="Profile bucket"
           className="profile-bucket-img w-full h-auto"
           width={1920}

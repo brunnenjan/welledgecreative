@@ -94,11 +94,6 @@
 .caseCard.noImage { grid-template-columns: 1fr; }
 .caseImage { position: relative; min-height: 340px; background: #111; }
 .caseImage img { object-fit: cover; object-position: top; }
-.caseImage.logoTile { background: #fefaf2; }
-.caseImage.logoTile img { object-fit: contain; object-position: center; padding: 48px; }
-.caseImageStack { display: flex; flex-direction: column; min-height: 340px; }
-.caseImageStack .caseImage { flex: 1; min-height: 0; }
-.caseImageStack .logoTile { flex: 0 0 42%; }
 .caseBody { padding: 44px 44px; }
 .caseBody.wide { max-width: 900px; }
 .caseTag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a94a00; }
@@ -108,6 +103,18 @@
 .caseResult { font-weight: 600; color: #1a1a1a !important; }
 .caseCta { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; font-weight: 600; color: var(--color-accent); }
 .caseCta:hover { color: #b34d00; }
+
+/* Relaunch gallery */
+.relaunchGallery { margin-top: 56px; padding-top: 48px; border-top: 1px solid var(--line); }
+.relaunchGallery h3 { font-size: 1.3rem; }
+.relaunchGallery > p { margin-top: 12px; max-width: 46rem; color: #616161; }
+.relaunchGrid { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.relaunchShot { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; }
+.relaunchImage { position: relative; aspect-ratio: 16/11.25; background: #f3f0e9; }
+.relaunchImage img { object-fit: cover; object-position: top; }
+.relaunchShot figcaption { padding: 18px 20px 22px; }
+.relaunchLabel { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); }
+.relaunchShot p { margin-top: 8px; font-size: 0.9rem; color: #4a4a4a; }
 
 /* Process */
 .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
@@ -149,7 +156,7 @@
   .diffGrid { grid-template-columns: repeat(2, 1fr); }
   .caseCard { grid-template-columns: 1fr; }
   .caseImage { min-height: 260px; }
-  .caseImageStack { min-height: 400px; }
+  .relaunchGrid { grid-template-columns: 1fr; }
 }
 @media (max-width: 900px) {
   .hero { padding-block: 120px 56px; }

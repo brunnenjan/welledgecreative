@@ -22,6 +22,14 @@ type CaseStudy = {
   result: string;
   cta?: string;
 };
+type GalleryItem = { label: string; caption: string };
+type Gallery = { heading: string; intro: string; items: GalleryItem[] };
+
+const RELAUNCH_SHOTS = [
+  { src: "/assets/misc/projects/vietnam-detox-relaunch-hero.webp", alt: "Vietnam Detox relaunch homepage hero: German Buchinger Fasting, Vietnamese Healing Wisdom" },
+  { src: "/assets/misc/projects/vietnam-detox-relaunch-booking.webp", alt: "Vietnam Detox retreat overview page showing real availability by month" },
+  { src: "/assets/misc/projects/vietnam-detox-relaunch-an-retreat.webp", alt: "An Retreat page at Legacy Yen Tu MGallery" },
+];
 
 function Arrow() {
   return (
@@ -45,6 +53,7 @@ export default function RetreatsContent() {
   const differentiators = list<Differentiator>("differentiators.items");
   const brisaBahia = getValue<CaseStudy>("retreatsPage.caseStudies.brisaBahia");
   const vietnamDetox = getValue<CaseStudy>("retreatsPage.caseStudies.vietnamDetox");
+  const vietnamDetoxGallery = getValue<Gallery>("retreatsPage.caseStudies.vietnamDetoxGallery");
 
   const discoveryHref = `/${locale}/contact?type=discovery-call`;
 
@@ -261,23 +270,13 @@ export default function RetreatsContent() {
 
               {vietnamDetox && (
                 <div className={styles.caseCard}>
-                  <div className={styles.caseImageStack}>
-                    <div className={`${styles.caseImage} ${styles.logoTile}`}>
-                      <Image
-                        src="/assets/misc/projects/vietnam-detox-logo-2026.webp"
-                        alt="The current Vietnam Detox logo: a gradient flame mark with the vietnam detox fasting retreats wordmark"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                      />
-                    </div>
-                    <div className={styles.caseImage}>
-                      <Image
-                        src="/assets/misc/projects/vietnam-detox-mountain-2026.webp"
-                        alt="A guest resting on a mountain ridge during the An Retreat in Yên Tử, Vietnam"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 45vw"
-                      />
-                    </div>
+                  <div className={styles.caseImage}>
+                    <Image
+                      src="/assets/misc/projects/vietnam-detox-device-mockup-2026.webp"
+                      alt="The relaunched Vietnam Detox homepage shown on desktop, tablet and mobile devices"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 45vw"
+                    />
                   </div>
                   <div className={styles.caseBody}>
                     <span className={styles.caseTag}>{vietnamDetox.tag}</span>
@@ -292,6 +291,29 @@ export default function RetreatsContent() {
                 </div>
               )}
             </div>
+
+            {vietnamDetoxGallery && (
+              <div className={styles.relaunchGallery}>
+                <h3>{vietnamDetoxGallery.heading}</h3>
+                <p>{vietnamDetoxGallery.intro}</p>
+                <div className={styles.relaunchGrid}>
+                  {RELAUNCH_SHOTS.map((shot, i) => {
+                    const item = vietnamDetoxGallery.items[i];
+                    return (
+                      <figure key={shot.src} className={styles.relaunchShot}>
+                        <div className={styles.relaunchImage}>
+                          <Image src={shot.src} alt={shot.alt} fill sizes="(max-width: 900px) 100vw, 33vw" />
+                        </div>
+                        <figcaption>
+                          <div className={styles.relaunchLabel}>{item?.label}</div>
+                          <p>{item?.caption}</p>
+                        </figcaption>
+                      </figure>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 

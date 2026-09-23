@@ -892,6 +892,24 @@
         "challenge": "Vietnam Detox has run guided Buchinger fasting retreats in Vietnam for over ten years, with genuinely loyal guests and strong feedback, but the brand and website weren't communicating that depth to an international audience, and three separate retreat products needed their own clear identity within one system.",
         "work": "A refined premium brand direction (deep forest green, ivory, ember accents, a custom flame mark), and a full site rebuild: individual pages for Yên Retreat at Alba Wellness Valley Huế, An Retreat at Legacy Yên Tử MGallery and Hồi Retreat at Fusion Resort Da Nang, plus a Private Retreat format (5 to 14 days). Each retreat page carries real dates, live availability and per-person pricing. The site runs in English, Vietnamese and German.",
         "result": "A coherent, premium brand across every retreat product, small groups (max. 14 guests) presented with the trust and clarity a guided fasting retreat needs, and a booking-ready, trilingual website that positions Vietnam Detox alongside the wellness hotel brands it partners with, not underneath them."
+      },
+      "vietnamDetoxGallery": {
+        "heading": "A closer look at the Vietnam Detox relaunch",
+        "intro": "Three screens from the live rebuild: the new brand on the homepage, real availability on the retreat overview, and the An Retreat page at Legacy Yên Tử MGallery.",
+        "items": [
+          {
+            "label": "Homepage",
+            "caption": "The new brand: “German Buchinger Fasting. Vietnamese Healing Wisdom.”"
+          },
+          {
+            "label": "Retreat overview",
+            "caption": "Real dates and availability guests can check before they inquire."
+          },
+          {
+            "label": "An Retreat",
+            "caption": "The individual retreat page, hosted at Legacy Yên Tử MGallery."
+          }
+        ]
       }
     },
     "process": {
