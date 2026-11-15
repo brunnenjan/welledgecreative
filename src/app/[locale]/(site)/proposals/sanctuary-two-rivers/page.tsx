@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ProposalScroll from "../ProposalScroll";
 import ProposalContent from "./ProposalContent";
 
 // A proposal for one client: reachable by link only, never listed or indexed.
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function SanctuaryTwoRiversProposalPage() {
   return (
     <div className="page-fade">
+      <ProposalScroll />
       <ProposalContent />
     </div>
   );
