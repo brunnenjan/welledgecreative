@@ -211,7 +211,7 @@
 @media (max-width: 900px) {
   .wrap { width: calc(100% - 40px); }
   .section { padding-block: 72px; }
-  .hero { padding-block: 128px 48px; }
+  .hero { padding-block: 152px 48px; }
   .hero .dot { display: none; }
   .hero .eyebrow { text-align: center; }
   .grid2, .grid3, .gapList, .cases, .packages, .steps, .mockPoints, .short, .brandBoard, .apps, .includes, .tileType { grid-template-columns: 1fr; }

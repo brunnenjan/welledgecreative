@@ -180,6 +180,7 @@
 
   /* Hero: the jungle is bright, so the text gets a darker ground. */
   .heroShade { background: linear-gradient(180deg, #0d171299 0%, #0d171240 22%, #0d1712b3 48%, #0d1712f2 78%, #0d1712 100%); }
+  .hero { padding-top: 132px; }
   .hero h1 { font-size: 2.9rem; font-weight: 400; text-shadow: 0 2px 24px #0d171299; }
   .hero .kicker { color: #f3d6bb; text-shadow: 0 1px 10px #0d1712; }
   .heroLead { font-size: 1.05rem; }
