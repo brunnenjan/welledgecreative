@@ -11,6 +11,7 @@ import styles from "./proposal.module.css";
  */
 
 const CHECKED = "15 November 2026";
+const MOCKUP = "/en/proposals/sanctuary-two-rivers/homepage";
 
 const STRENGTHS = [
   {
@@ -37,69 +38,67 @@ const GAPS = [
     text: "Retreat leaders who want to host and guests who want to join land on the same homepage, which asks them to click 37 different links. Neither gets one clear next step.",
   },
   {
-    title: "The first screen shows the coast",
-    text: "Your hero film opens on the coastline near Uvita. What makes you rare, the meeting of two rivers in the jungle, only appears further down.",
+    title: "The first screen doesn't say what makes you rare",
+    text: "Your hero film opens high above the coast. The meeting of two rivers inside the jungle, the thing nobody else has, only appears further down.",
   },
   {
     title: "Hosts can't size you up quickly",
     text: "The hosting page has no rates, no availability and no venue sheet. Capacity reads 18 to 22 guests on the homepage and up to 26 on the hosting page. Leaders comparing venues need these facts in one place.",
   },
   {
+    title: "The calendar looks empty",
+    text: "The retreat calendar lists one retreat, Respira from 7 to 12 November 2026, which has already taken place. A guest who checks it sees nothing to book.",
+  },
+  {
     title: "The brand feels assembled",
-    text: "The site uses six different typefaces and a lavender accent that says little about river, teak or jungle. The place looks more premium in person than online.",
+    text: "Six different typefaces and a lavender accent that says little about river, teak or jungle. Press from The New York Times and Yoga Journal sits in a row of logos. The place looks more premium in person than online.",
   },
   {
     title: "Heavy and hard to read for Google",
     text: "The main heading sits in the page code eight times, the homepage loads 91 images and runs to more than 10,000 characters. Search engines and visitors both lose the thread.",
   },
-  {
-    title: "English only",
-    text: "A second language, for example Spanish or German, would let you reach retreat leaders who market to their groups in their own language.",
-  },
 ];
 
-const HELP = [
+const CHANGES = [
   {
-    tag: "Brand",
-    title: "An identity as calm as the place",
-    text: "We keep the spirit of your current mark and simplify it so it works from a sign at the gate to a browser tab. One palette taken from river, teak and jungle, two typefaces instead of six, and a short brand guide your team can actually use.",
+    today: "One homepage for leaders and guests, 37 links",
+    change: "Two doors on the first screen: Host your retreat and Join a retreat, each with its own path and one button at the end",
+    effect: "Every visitor knows in seconds where to go. More inquiries reach Kathryn, fewer get lost on the way.",
   },
   {
-    tag: "Website",
-    title: "Two clear doors: Host and Join",
-    text: "A structure built around your two audiences. Retreat leaders follow one path to a qualified inquiry, guests follow another to the retreat calendar and registration. Every page ends in one button, not ten.",
+    today: "No rates, availability or venue sheet for hosts",
+    change: "A venue kit: capacity, spaces, what's included, rates from, a downloadable venue sheet and a form that asks for dates and group size",
+    effect: "Leaders can put you on their shortlist without emailing first. Inquiries arrive qualified, so Kathryn spends her time on groups that fit.",
   },
   {
-    tag: "Retreat leaders",
-    title: "A venue kit that answers before they ask",
-    text: "Capacity, room types, what's included, sample rates or ranges, and a downloadable venue sheet. The inquiry form asks for dates and group size, so Kathryn starts every conversation with what she needs.",
+    today: "A calendar with one past retreat",
+    change: "A retreat calendar with dates, leader, price from and a register button, easy for your team to keep current",
+    effect: "Guests can book the moment they decide, instead of writing and waiting.",
   },
   {
-    tag: "Guests",
-    title: "A retreat calendar people trust",
-    text: "Upcoming retreats with dates, the leader, the price from and a clear register button, kept easy to update for your team.",
+    today: "Coastline first, the two rivers later",
+    change: "The story told in the order it happens: the meeting of two rivers, then forty acres, two waterfalls, the walk in",
+    effect: "People remember you after one visit, and you stop competing on price with every jungle retreat.",
   },
   {
-    tag: "Reach",
-    title: "Multilingual from the start",
-    text: "Built so a second language can be added without rebuilding anything, the way I set up Vietnam Detox in English, Vietnamese and German.",
+    today: "Six typefaces, a lavender accent, press hidden",
+    change: "A calm identity: a simplified mark, one palette from river, teak and jungle, two typefaces, press and the 4.9 rating up front",
+    effect: "The site feels as premium as a stay with you, which supports your rates and the leaders who bring groups.",
   },
   {
-    tag: "Speed",
-    title: "Fast and findable",
-    text: "One main heading per page, compressed images, clean page titles and descriptions, so Google understands what you offer and visitors on a jungle-strength connection still see it quickly.",
+    today: "Eight main headings, 91 images, English only",
+    change: "One heading per page, compressed images, clean titles, and a site prepared for a second language",
+    effect: "Faster pages, better chances on searches like yoga retreat center Costa Rica, and a door to leaders in new markets.",
   },
 ];
 
 const HOMEPAGE = [
-  { title: "First screen", text: "The confluence of the two rivers from above, your name, one line and two doors: Host a retreat, Join a retreat." },
-  { title: "The place in three facts", text: "Forty acres, two rivers, two waterfalls. Short, visual, unforgettable." },
-  { title: "Host your retreat here", text: "Why leaders choose you, capacity, what's included, rates from, and the venue sheet." },
-  { title: "Join a retreat", text: "The next three retreats with dates and price from, and the full calendar." },
-  { title: "The spaces", text: "Pagoda, decks, lofts, pool and spa in large photos with one line each." },
-  { title: "Voices", text: "Retreat leaders and guests, with the 4.9 rating up front." },
-  { title: "The people", text: "Tamara, Perrey and Kathryn, so a group knows who will look after them." },
-  { title: "Getting here and one form", text: "The 15-minute nature walk in, how to arrive, and a single inquiry form." },
+  { title: "First screen", text: "The river, one sentence about what happens here, and two doors: Host or Join. Rating and press right below." },
+  { title: "The place", text: "Rio Lajas and Rio Cacao, the sangama, and three numbers people remember: 40 acres, 2 rivers, 2 waterfalls." },
+  { title: "For retreat leaders", text: "Capacity, spaces, meals, three steps to a quote, the venue sheet, and Robert's words as proof." },
+  { title: "For guests", text: "The next retreats with dates, price from and a register button." },
+  { title: "Spaces and stay", text: "Pagoda, decks, lofts, pool and spa in large photos with one line each." },
+  { title: "Rituals, voices and hosts", text: "Food and ceremonies, guest voices, the team, and one form that asks the right questions." },
 ];
 
 type Package = {
@@ -192,7 +191,8 @@ export default function ProposalContent() {
           <p className={styles.byline}>Jan Brunnenkant · Well Edge Creative · November 2026</p>
           <nav className={styles.jumpNav} aria-label="Sections">
             <a href="#see">What I see</a>
-            <a href="#help">What I would do</a>
+            <a href="#help">What I would change</a>
+            <a href="#mockup">Your new homepage</a>
             <a href="#work">Retreat work</a>
             <a href="#options">Options</a>
             <a href="#next">Next steps</a>
@@ -243,41 +243,78 @@ export default function ProposalContent() {
           </div>
         </section>
 
-        {/* Help */}
+        {/* Changes and effects */}
         <section id="help" className={`${styles.wrap} ${styles.section}`}>
           <div className={styles.sectionHead}>
             <p className={styles.eyebrow}>
               <span className={styles.dot} />
-              What I would do
+              What I would change
             </p>
-            <h2>One calm brand, two clear paths, and every visitor led to a booking or an inquiry.</h2>
+            <h2>Each change has one job: more of the right people booking with you.</h2>
           </div>
-          <div className={styles.grid3}>
-            {HELP.map((h) => (
-              <article key={h.title} className={styles.card}>
-                <span className={styles.tag}>{h.tag}</span>
-                <h3>{h.title}</h3>
-                <p>{h.text}</p>
-              </article>
+          <div className={styles.changeTable} role="table" aria-label="What changes and what it does">
+            <div className={styles.changeHead} role="row">
+              <span role="columnheader">Today</span>
+              <span role="columnheader">What I would change</span>
+              <span role="columnheader">What it does for you</span>
+            </div>
+            {CHANGES.map((c) => (
+              <div key={c.today} className={styles.changeRow} role="row">
+                <p role="cell" className={styles.today}>
+                  <span className={styles.cellLabel}>Today</span>
+                  {c.today}
+                </p>
+                <p role="cell">
+                  <span className={styles.cellLabel}>What I would change</span>
+                  {c.change}
+                </p>
+                <p role="cell" className={styles.effect}>
+                  <span className={styles.cellLabel}>What it does for you</span>
+                  {c.effect}
+                </p>
+              </div>
             ))}
           </div>
         </section>
 
-        {/* Homepage blueprint */}
-        <section className={styles.softBand}>
-          <div className={`${styles.wrap} ${styles.section} ${styles.blueprint}`}>
+        {/* Homepage mockup */}
+        <section id="mockup" className={styles.softBand}>
+          <div className={`${styles.wrap} ${styles.section}`}>
             <div className={styles.sectionHead}>
               <p className={styles.eyebrow}>
                 <span className={styles.dot} />
-                Your new homepage
+                A first look · homepage only
               </p>
-              <h2>Eight sections, each with one job.</h2>
+              <h2>Your new homepage</h2>
               <p>
-                Big photos, few words, and every section pointing to Host or Join. The other pages, the
-                copy and the photos would be finalised together with you.
+                Built with your own photos, facts and guest voices, in the new structure and brand
+                direction. Scroll inside it, or open it full screen.
               </p>
             </div>
-            <ol className={styles.blueprintList}>
+            <div className={styles.browser}>
+              <div className={styles.browserBar}>
+                <span className={styles.lights}>
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span className={styles.address}>thesanctuarycostarica.com</span>
+                <a href={MOCKUP} target="_blank" rel="noopener" className={styles.fullscreen}>
+                  Open full screen ↗
+                </a>
+              </div>
+              <iframe
+                src={MOCKUP}
+                title="Homepage mockup for The Sanctuary at Two Rivers"
+                className={styles.frame}
+                loading="lazy"
+              />
+            </div>
+            <p className={styles.mockNote}>
+              Homepage mockup only. Retreat dates and prices are examples. The other pages, the copy
+              and the photo selection would be finalised together with you.
+            </p>
+            <ol className={styles.mockPoints}>
               {HOMEPAGE.map((s, i) => (
                 <li key={s.title}>
                   <span className={styles.blueprintNum}>{i + 1}</span>
@@ -302,13 +339,42 @@ export default function ProposalContent() {
           </div>
           <div className={styles.cases}>
             <article className={styles.caseCard}>
-              <div className={styles.caseImage}>
-                <Image
-                  src="/assets/misc/projects/vietnam-detox-device-mockup-2026.webp"
-                  alt="The relaunched Vietnam Detox website on desktop, tablet and mobile"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                />
+              <div className={styles.vdVisual}>
+                <div className={`${styles.miniBrowser} ${styles.vdMain}`}>
+                  <div className={styles.miniBar}>
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                  <div className={styles.miniShot}>
+                    <Image
+                      src="/assets/misc/projects/vietnam-detox-relaunch-hero.webp"
+                      alt="The Vietnam Detox homepage: German Buchinger Fasting, Vietnamese Healing Wisdom"
+                      fill
+                      sizes="(max-width: 900px) 90vw, 40vw"
+                    />
+                  </div>
+                </div>
+                <div className={`${styles.miniBrowser} ${styles.vdSide}`}>
+                  <div className={styles.miniBar}>
+                    <i />
+                    <i />
+                    <i />
+                  </div>
+                  <div className={`${styles.miniShot} ${styles.miniShotWide}`}>
+                    <Image
+                      src="/assets/misc/projects/vietnam-detox-relaunch-booking.webp"
+                      alt="Vietnam Detox retreat dates shown by month"
+                      fill
+                      sizes="(max-width: 900px) 70vw, 28vw"
+                    />
+                  </div>
+                </div>
+                <div className={styles.langs} aria-label="Languages">
+                  <span>EN</span>
+                  <span>VI</span>
+                  <span>DE</span>
+                </div>
               </div>
               <span className={styles.tag}>Vietnam · Asian market</span>
               <h3>Vietnam Detox: one brand, three retreats, three languages</h3>
