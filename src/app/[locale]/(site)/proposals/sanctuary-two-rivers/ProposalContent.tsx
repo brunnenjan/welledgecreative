@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Cormorant_Garamond } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
 import Header from "@/components/Header";
 import ProposalMotion from "./ProposalMotion";
 import SanctuaryMark from "./SanctuaryMark";
@@ -13,7 +13,8 @@ import styles from "./proposal.module.css";
  * confirmed in writing.
  */
 
-const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], style: ["normal", "italic"] });
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"] });
+const sans = Manrope({ subsets: ["latin"], weight: ["400", "500"] });
 
 const CHECKED = "15 November 2026";
 const MOCKUP = "/en/proposals/sanctuary-two-rivers/homepage";
@@ -410,14 +411,14 @@ export default function ProposalContent() {
                 <p className={`${styles.typeSample} ${serif.className}`}>
                   Where Two Rivers Meet, <em>Nature Heals</em>
                 </p>
-                <p className={styles.typeMeta}>Cormorant Garamond · headlines and quotes</p>
+                <p className={styles.typeMeta}>Instrument Serif · headlines and quotes</p>
               </div>
               <div>
-                <p className={styles.typeBody}>
+                <p className={`${styles.typeBody} ${sans.className}`}>
                   Daily plant-based meals crafted fresh, with gluten-free and vegetarian options always
                   included.
                 </p>
-                <p className={styles.typeMeta}>Inter · text, buttons and forms</p>
+                <p className={styles.typeMeta}>Manrope · text, buttons and forms</p>
               </div>
             </div>
           </div>

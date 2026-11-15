@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
 import ProposalScroll from "../../ProposalScroll";
 import HomepageMockup from "./HomepageMockup";
 
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
-const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], style: ["normal", "italic"] });
-const sans = Inter({ subsets: ["latin"], weight: ["400", "500", "600"] });
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"] });
+const sans = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export default function SanctuaryHomepageMockupPage() {
   return (
