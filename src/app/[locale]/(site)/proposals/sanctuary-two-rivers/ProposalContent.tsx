@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fraunces, Manrope } from "next/font/google";
 import Header from "@/components/Header";
-import ProposalMotion from "./ProposalMotion";
+import ProposalMotion from "../ProposalMotion";
 import SanctuaryMark from "./SanctuaryMark";
-import styles from "./proposal.module.css";
+import styles from "../proposal.module.css";
 
 /**
  * Proposal for The Sanctuary at Two Rivers (Uvita, Costa Rica). English only, like the

@@ -1,0 +1,211 @@
+/* Around the unchanged Sonora logo: mint from the mandala, driftwood from the wordmark,
+   jungle, Caribbean and sand. Two typefaces: Lora and Mulish. */
+.site {
+  --mint: #a9e2cb;
+  --mint-soft: #e6f5ee;
+  --drift: #857b73;
+  --jungle: #1e2f2a;
+  --sea: #2d7f7b;
+  --sand: #f6f1ea;
+  --ink: #1e2f2a;
+  --soft: #5c6662;
+  background: var(--sand);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 16px;
+  overflow-x: clip;
+}
+.site * { box-sizing: border-box; }
+.site h1, .site h2, .site h3, .site p, .site ul, .site ol, .site figure, .site fieldset { margin: 0; }
+.site a { color: inherit; text-decoration: none; }
+.site h2 { font-size: clamp(2rem, 3.8vw, 3.1rem); line-height: 1.12; font-weight: 400; letter-spacing: -0.01em; }
+.site p { line-height: 1.7; }
+.wrap { width: min(1180px, 100% - 64px); margin-inline: auto; }
+.kicker, .kickerLight { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sea); margin-bottom: 16px !important; }
+.kickerLight { color: var(--mint); }
+.small { font-size: 0.9rem; color: var(--soft); }
+
+/* Navigation */
+.nav { position: absolute; z-index: 5; inset: 0 0 auto; display: flex; align-items: center; gap: 30px; padding: 14px max(32px, calc((100% - 1180px) / 2)) 40px; color: #fff; background: linear-gradient(180deg, #0f1a17d9 0%, #0f1a1780 60%, #0f1a1700 100%); text-shadow: 0 1px 10px #0f1a17cc; }
+.brand img { display: block; width: 74px; height: auto; }
+.links { display: flex; gap: 26px; margin-left: auto; font-size: 0.9rem; font-weight: 600; }
+.lang { font-size: 0.78rem; letter-spacing: 0.1em; opacity: 0.85; }
+.navCta { padding: 11px 20px; border-radius: 999px; background: var(--sea); font-size: 0.86rem; font-weight: 700; text-shadow: none; }
+@media (max-width: 1100px) {
+  .links { display: none; }
+  .lang { margin-left: auto; }
+}
+
+/* 1. Hero */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; overflow: hidden; }
+.heroImg { position: absolute; inset: 0; transform-origin: center 40%; }
+.heroImg img { object-fit: cover; }
+.heroShade { position: absolute; inset: 0; background: linear-gradient(180deg, #0f1a1780 0%, #0f1a1700 30%, #0f1a17b3 70%, #0f1a17f0 100%); }
+.heroText { position: relative; width: min(1180px, 100% - 64px); margin: 0 auto 72px; }
+.hero .kicker { color: var(--mint); }
+.hero h1 { font-size: clamp(3rem, 6.8vw, 6rem); line-height: 1; font-weight: 400; letter-spacing: -0.02em; text-shadow: 0 2px 30px #0f1a1766; }
+.hero h1 em { color: var(--mint); }
+.heroLead { max-width: 32rem; margin-top: 22px !important; font-size: 1.15rem; color: #eef2ef; }
+.doors { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.door, .doorPrimary { display: flex; flex-direction: column; gap: 4px; min-width: 230px; padding: 16px 22px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; border: 1px solid #ffffffa6; backdrop-filter: blur(6px); transition: transform 0.25s ease; }
+.door:hover, .doorPrimary:hover { transform: translateY(-2px); }
+.door span, .doorPrimary span { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; opacity: 0.85; }
+.doorPrimary { background: var(--sea); border-color: var(--sea); }
+.slotNote { position: absolute; right: 24px; top: 104px; padding: 7px 12px; border-radius: 999px; background: #ffffffe6; color: var(--jungle); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* 2. The walk in */
+.arrival { position: relative; display: grid; grid-template-columns: 1.25fr 1fr; background: var(--jungle); color: #fff; }
+.arrivalPics { position: relative; min-height: 70vh; }
+.arrivalImg { position: absolute; inset: 0; }
+.arrivalImg img { object-fit: cover; }
+.arrivalCopy { display: flex; flex-direction: column; justify-content: center; padding: 72px 56px; }
+.arrivalCopy .kicker { color: var(--mint); }
+.arrivalSteps { display: grid; gap: 34px; }
+.arrivalStep p { font-size: clamp(1.3rem, 2vw, 1.7rem); line-height: 1.42; }
+.stepLabel { display: block; margin-bottom: 12px; font-size: 1rem; font-style: italic; color: var(--mint); }
+.arrivalDots { display: none; gap: 8px; margin-top: 40px; }
+.arrivalDots span { width: 28px; height: 2px; background: #fff; }
+.animated .arrivalScroll { height: 420vh; }
+.animated .arrival { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.animated .arrivalPics { height: 100%; }
+.animated .arrivalSteps { position: relative; display: block; min-height: 15rem; }
+.animated .arrivalStep { position: absolute; inset: 0 0 auto; }
+.animated .arrivalDots { display: flex; }
+.site:not(.animated) .arrivalImg:not(:first-child) { display: none; }
+
+/* 3. Numbers */
+.numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; padding-block: 96px; border-bottom: 1px solid #e3dccf; }
+.number { display: block; font-size: clamp(3rem, 5.4vw, 4.4rem); line-height: 1; color: var(--sea); }
+.number small { font-size: 0.32em; font-style: italic; margin-right: 4px; color: var(--soft); }
+.number .unit { margin: 0 0 0 4px; font-style: normal; }
+.numberLabel { display: block; margin-top: 10px; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); line-height: 1.5; }
+
+/* 4. Host */
+.hostBand { background: var(--jungle); color: #fff; }
+.host { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; padding-block: 120px; align-items: start; }
+.hostLead { margin-top: 20px !important; color: #d3dcd8; font-size: 1.05rem; }
+.hostImage { position: relative; aspect-ratio: 4 / 3.4; margin-top: 36px; border-radius: 18px; overflow: hidden; }
+.hostImage img, .lifeImg img, .roomImg img, .oasisImg img { object-fit: cover; }
+.slotBadge { position: absolute; left: 14px; bottom: 14px; padding: 7px 12px; border-radius: 999px; background: var(--mint); color: var(--jungle); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.hostGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #ffffff1f; border: 1px solid #ffffff1f; border-radius: 16px; overflow: hidden; }
+.hostGrid > div { padding: 22px; background: var(--jungle); }
+.hostGrid strong { display: block; color: var(--mint); }
+.hostGrid p { margin-top: 6px !important; font-size: 0.9rem; color: #c9d3cf; line-height: 1.6; }
+.subhead { margin: 40px 0 16px !important; font-size: 1.5rem; font-weight: 400; }
+.activities { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.activities li { padding: 8px 14px; border: 1px solid #ffffff3d; border-radius: 999px; font-size: 0.86rem; color: #e3ebe7; }
+.hostCtas { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 36px; }
+.btnLight { padding: 14px 24px; border-radius: 999px; background: var(--mint); color: var(--jungle) !important; font-weight: 700; font-size: 0.92rem; }
+.linkLight { border-bottom: 1px solid #ffffff66; font-size: 0.92rem; }
+
+/* 5. Life at Sonora */
+.lifeScroll { background: var(--mint-soft); }
+.lifeBand { padding-block: 96px; overflow: hidden; }
+@media (min-width: 861px) {
+  .animated .lifeScroll { height: 260vh; }
+  .animated .lifeBand { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-block: 0; }
+  .animated .lifeTrack { will-change: transform; }
+}
+.lifeHead { width: min(1180px, 100% - 64px); margin: 0 auto 36px; }
+.lifeTrack { display: flex; gap: 22px; padding-inline: max(32px, calc((100% - 1180px) / 2)); width: max-content; }
+.lifeCard { width: min(360px, 78vw); flex-shrink: 0; }
+.lifeImg, .lifeSlot { position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; }
+.lifeSlot { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; padding: 24px; text-align: center; border: 2px dashed #8fcfb6; background: repeating-linear-gradient(135deg, #f2faf6 0 14px, #e6f5ee 14px 28px); color: var(--jungle); }
+.lifeSlot span { padding: 6px 12px; border-radius: 999px; background: var(--jungle); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.lifeSlot p { font-size: 0.95rem; color: var(--soft); }
+.lifeCard figcaption { margin-top: 12px; font-size: 0.9rem; color: var(--soft); line-height: 1.5; }
+.swipeHint { display: none; }
+
+/* 6. Stay */
+.stay { padding-block: 120px; }
+.stayHead { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 36px; }
+.stayHead .small { max-width: 24rem; }
+.rooms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.room { padding: 14px 14px 22px; border-radius: 20px; background: #fff; border: 1px solid #e6dfd3; }
+.roomImg { position: relative; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; margin-bottom: 16px; }
+.room h3 { font-size: 1.5rem; font-weight: 400; padding-inline: 6px; }
+.room .small { padding-inline: 6px; margin-top: 6px !important; font-style: italic; }
+.roomLink { display: inline-block; margin: 14px 6px 0; font-weight: 700; font-size: 0.9rem; color: var(--sea) !important; }
+
+/* 7. Oasis */
+.oasisBand { background: #fff; }
+.oasis { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; padding-block: 112px; }
+.oasisImg { position: relative; aspect-ratio: 4 / 3.2; border-radius: 18px; overflow: hidden; }
+.oasis p:not(.kicker) { margin-top: 18px !important; color: var(--soft); font-size: 1.05rem; }
+.oasisLine { font-size: 0.8rem !important; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sea) !important; font-weight: 700; }
+
+/* 8. Form */
+.plan { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding-block: 120px; align-items: start; }
+.planText { margin: 16px 0 18px !important; color: var(--soft); font-size: 1.05rem; }
+.form { display: grid; gap: 16px; padding: 34px; border-radius: 20px; background: #fff; border: 1px solid #e6dfd3; }
+.form h3 { font-size: 1.8rem; font-weight: 400; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; border: 0; }
+.chips legend { width: 100%; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; color: var(--soft); }
+.chips span { padding: 7px 13px; border-radius: 999px; border: 1px solid #ddd6ca; font-size: 0.82rem; color: var(--soft); }
+.chips .chipOn { background: var(--sea); border-color: var(--sea); color: #fff; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form label { display: grid; gap: 6px; font-size: 0.8rem; font-weight: 700; color: var(--soft); }
+.form input { padding: 12px 14px; border: 1px solid #ddd6ca; border-radius: 10px; background: #fdfbf7; font: inherit; font-weight: 400; color: var(--ink); }
+.form button { margin-top: 6px; padding: 15px; border: 0; border-radius: 999px; background: var(--sea); color: #fff; font: inherit; font-weight: 700; cursor: default; }
+
+/* Footer */
+.footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 32px max(32px, calc((100% - 1180px) / 2)); background: var(--jungle); color: #c9d3cf; font-size: 0.85rem; }
+.footer img { width: 64px; height: auto; }
+.draftLabel { width: 100%; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8fa199; }
+
+@media (max-width: 860px) {
+  .wrap, .heroText, .lifeHead { width: calc(100% - 40px); }
+  .nav { padding: 12px 20px 30px; }
+  .brand img { width: 62px; }
+  .navCta { display: none; }
+  .site h2 { font-size: 2.05rem; }
+
+  .hero { padding-top: 132px; }
+  .heroShade { background: linear-gradient(180deg, #0f1a1799 0%, #0f1a1740 22%, #0f1a17b3 48%, #0f1a17f2 78%, #0f1a17 100%); }
+  .heroText { margin-bottom: 48px; }
+  .hero h1 { font-size: 3rem; }
+  .heroLead { font-size: 1.05rem; }
+  .slotNote { top: 96px; right: auto; left: 20px; max-width: calc(100% - 40px); font-size: 0.62rem; letter-spacing: 0.04em; }
+
+  .arrival { grid-template-columns: 1fr; grid-template-rows: 42% 58%; }
+  .arrivalPics { min-height: 0; }
+  .arrivalCopy { padding: 28px 22px 24px; justify-content: flex-start; }
+  .arrivalStep p { font-size: 1.12rem; line-height: 1.5; }
+  .stepLabel { margin-bottom: 8px; }
+  .arrivalDots { margin-top: auto; padding-top: 20px; }
+  .animated .arrivalScroll { height: 340vh; }
+
+  .numbers { grid-template-columns: 1fr 1fr; padding-block: 64px; }
+  .host, .oasis, .plan { grid-template-columns: 1fr; gap: 44px; padding-block: 80px; }
+  .hostGrid, .rooms, .formRow { grid-template-columns: 1fr; }
+  .stay { padding-block: 80px; }
+  .stayHead { flex-direction: column; align-items: start; gap: 12px; }
+  .door, .doorPrimary { min-width: 0; flex: 1 1 100%; }
+
+  /* Life at Sonora: a plain swipe row, one card at a time with the next one peeking in. */
+  .lifeBand { overflow: visible; padding-block: 80px; }
+  .lifeHead { margin-bottom: 28px; }
+  .lifeTrack { width: auto; gap: 14px; padding: 0 20px 6px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .lifeTrack::-webkit-scrollbar { display: none; }
+  .lifeCard { width: 82vw; scroll-snap-align: start; }
+  .swipeHint { display: flex; align-items: center; gap: 14px; width: calc(100% - 40px); margin: 22px auto 0 !important; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+  .swipeDots { display: flex; gap: 6px; margin-left: auto; }
+  .swipeDots span { width: 7px; height: 7px; border-radius: 50%; background: #b5ccc3; transition: background 0.25s, width 0.25s; }
+  .swipeDots .dotOn { width: 20px; border-radius: 4px; background: var(--sea); }
+}
+
+/* Back to the proposal when the mockup is open on its own (never inside the proposal frame). */
+.back { position: fixed; z-index: 20; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 16px; border-radius: 999px; background: #1e2f2ae6; color: #fff !important; font-size: 0.82rem; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 30px #0000004d; backdrop-filter: blur(8px); }
+
+/* The people */
+.peopleBand { background: var(--mint-soft); }
+.people { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding-block: 112px; }
+.peopleImg { position: relative; aspect-ratio: 4 / 4.6; border-radius: 18px; overflow: hidden; }
+.peopleImg img, .peopleSmall img { object-fit: cover; }
+.people blockquote { margin: 0; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.3; font-style: italic; color: var(--jungle); }
+.people p:not(.kicker) { margin-top: 18px !important; color: var(--soft); font-size: 1.05rem; }
+.peopleSmall { position: relative; width: 160px; aspect-ratio: 4 / 5; margin-top: 28px; border-radius: 14px; overflow: hidden; }
+@media (max-width: 860px) {
+  .people { grid-template-columns: 1fr; gap: 36px; padding-block: 80px; }
+  .peopleSmall { display: none; }
+}

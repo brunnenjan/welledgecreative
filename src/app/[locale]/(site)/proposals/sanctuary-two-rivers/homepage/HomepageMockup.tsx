@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import SanctuaryMark from "../SanctuaryMark";
 import styles from "./homepage.module.css";
@@ -636,9 +637,9 @@ export default function HomepageMockup({
         <p className={styles.draftLabel}>First mockup by Well Edge Creative · not a finished design</p>
       </footer>
       {standalone && (
-        <a className={styles.back} href="/en/proposals/sanctuary-two-rivers#mockup">
+        <Link className={styles.back} href="/en/proposals/sanctuary-two-rivers#mockup">
           ← Proposal
-        </a>
+        </Link>
       )}
     </div>
   );
