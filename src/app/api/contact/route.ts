@@ -144,7 +144,7 @@ Message:
 ${message}
 
 ---
-Sent from: well-edge-creative.com
+Sent from: welledgecreative.com
 reCAPTCHA Score: ${score}`,
     };
 
@@ -173,7 +173,7 @@ Looking forward to discussing your project!
 Best regards,
 Jan Brunnenkant
 Well Edge Creative
-https://well-edge-creative.com`,
+https://www.welledgecreative.com`,
     };
 
     if (isPubInquiry) {

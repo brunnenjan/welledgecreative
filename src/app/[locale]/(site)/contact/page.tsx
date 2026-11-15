@@ -35,31 +35,33 @@ export default function Contact() {
         throw new Error("Failed to get reCAPTCHA token");
       }
 
-      // Prepare form data
+      // Same endpoint as the contact forms on the home page (src/app/api/contact/route.ts).
+      const details = [
+        `Segment: ${segment}`,
+        form.website && `Website: ${form.website}`,
+        form.timeline && `Timeline: ${form.timeline}`,
+        form.goals && `Goals: ${form.goals}`,
+        form.extra && `More: ${form.extra}`,
+      ].filter(Boolean);
       const formData = new FormData();
       formData.append("name", form.name);
       formData.append("email", form.email);
-      formData.append("website", form.website);
-      formData.append("segment", segment);
+      formData.append("projectType", segment);
       formData.append("budget", form.budget);
-      formData.append("timeline", form.timeline);
-      formData.append("goals", form.goals);
-      formData.append("extra", form.extra);
+      formData.append("message", details.join("\n\n"));
+      formData.append("locale", window.location.pathname.startsWith("/de") ? "de" : "en");
       formData.append("g-recaptcha-response", token);
 
-      // Send to backend (PHP on Strato)
-      const response = await fetch("https://well-edge-creative.com/contact.php", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
-
-      const responseText = await response.text();
 
       if (response.ok) {
         setMessage({ type: "success", text: "Nachricht erfolgreich gesendet!" });
         setForm({ name:"", email:"", website:"", budget:"", timeline:"", goals:"", extra:"" });
       } else {
-        setMessage({ type: "error", text: `Fehler: ${responseText}` });
+        setMessage({ type: "error", text: "Die Nachricht konnte nicht gesendet werden. Bitte schreib direkt an info@well-edge-creative.com." });
       }
     } catch (error) {
       setMessage({ type: "error", text: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut." });

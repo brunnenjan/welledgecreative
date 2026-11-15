@@ -197,6 +197,13 @@ export default function ProposalContent() {
       <main className={styles.page}>
         {/* Hero */}
         <section className={`${styles.wrap} ${styles.hero}`}>
+          <nav className={styles.crumbs} aria-label="Breadcrumb">
+            <Link href="/en">Well Edge Creative</Link>
+            <span aria-hidden="true">/</span>
+            <span>Proposals</span>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">The Sanctuary at Two Rivers</span>
+          </nav>
           <p className={styles.eyebrow}>
             <span className={styles.dot} />
             Proposal for The Sanctuary at Two Rivers
