@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { STARTED_FIELD, TRAP_FIELD, checkSubmission } from "@/lib/contact-guard";
+
+// Recent enquiries per sender, for the rate limit. Lives as long as the server instance.
+const recentSenders = new Map<string, number[]>();
 
 // Force Node.js runtime (required for nodemailer)
 export const runtime = 'nodejs';
@@ -33,7 +37,6 @@ export async function POST(request: NextRequest) {
     if (isPubInquiry && (pubName.length > 120 || website.length > 500 || name.length > 120 || email.length > 254 || message.length > 5000 || /[\r\n]/.test(email))) {
       return NextResponse.json({ error: "Invalid enquiry" }, { status: 400, headers: corsHeaders });
     }
-    const captchaToken = formData.get("g-recaptcha-response")?.toString() || "";
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -52,64 +55,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate reCAPTCHA token
-    if (!captchaToken) {
-      return NextResponse.json(
-        { error: "No reCAPTCHA token found", code: "CAPTCHA_FAILED" },
-        { status: 400, headers: corsHeaders }
-      );
+    // General length limits, so no field can carry a flood of text.
+    if (name.length > 120 || email.length > 254 || projectType.length > 200 || budget.length > 100 || message.length > 6000 || /[\r\n]/.test(email)) {
+      return NextResponse.json({ error: "Invalid enquiry" }, { status: 400, headers: corsHeaders });
     }
 
-    // === reCAPTCHA Enterprise Verification ===
-    const recaptchaSiteKey = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
-    const recaptchaApiKey = "AIzaSyDQrkFXCJAK2Z623a-_Z8UOrEJmWjlB9M4";
-    const recaptchaProjectId = "welledgecreative-1761883050337";
-
-    const recaptchaData = {
-      event: {
-        token: captchaToken,
-        expectedAction: "submit",
-        siteKey: recaptchaSiteKey,
+    // Spam protection on our own server (src/lib/contact-guard.ts), no outside service.
+    const guard = checkSubmission(
+      {
+        trap: formData.get(TRAP_FIELD)?.toString() || "",
+        startedAt: formData.get(STARTED_FIELD)?.toString() || "",
+        sender: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || email.toLowerCase(),
+        now: Date.now(),
       },
-    };
-
-    const recaptchaUrl = `https://recaptchaenterprise.googleapis.com/v1/projects/${recaptchaProjectId}/assessments?key=${recaptchaApiKey}`;
-
-    let recaptchaResult;
-    try {
-      const recaptchaResponse = await fetch(recaptchaUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(recaptchaData),
-        signal: AbortSignal.timeout(10000),
-      });
-      if (!recaptchaResponse.ok) throw new Error("Assessment unavailable");
-      recaptchaResult = await recaptchaResponse.json();
-    } catch {
-      console.error("reCAPTCHA assessment service unavailable");
-      return NextResponse.json(
-        { error: "Security service unavailable", code: "CAPTCHA_UNAVAILABLE" },
-        { status: 503, headers: corsHeaders }
-      );
-    }
-
-    // Check if token is valid
-    if (!recaptchaResult.tokenProperties?.valid || recaptchaResult.tokenProperties?.action !== "submit") {
-      console.error("Contact security verification rejected", { code: "CAPTCHA_INVALID_TOKEN", reason: recaptchaResult.tokenProperties?.invalidReason, actionMismatch: recaptchaResult.tokenProperties?.action !== "submit" });
-      return NextResponse.json(
-        { error: "Captcha verification failed", code: recaptchaResult.tokenProperties?.invalidReason === "BROWSER_ERROR" ? "CAPTCHA_BROWSER_ERROR" : "CAPTCHA_FAILED" },
-        { status: 400, headers: corsHeaders }
-      );
-    }
-
-    // Check score
-    const score = recaptchaResult.riskAnalysis?.score || 0;
-    if (score < 0.3) {
-      console.error("Contact security verification rejected", { code: "CAPTCHA_LOW_SCORE", score });
-      return NextResponse.json(
-        { error: "Security check failed. Please try again.", code: "CAPTCHA_FAILED" },
-        { status: 400, headers: corsHeaders }
-      );
+      recentSenders,
+    );
+    if (!guard.ok) {
+      // A bot that filled the hidden field gets a normal answer, so it does not try again.
+      if (guard.code === "SPAM") return NextResponse.json({ message: "OK" }, { status: 200, headers: corsHeaders });
+      console.error("Contact form rejected", { code: guard.code });
+      return NextResponse.json({ error: "Please try again in a moment.", code: guard.code }, { status: 429, headers: corsHeaders });
     }
 
     // === Send Emails with nodemailer ===
@@ -144,8 +109,7 @@ Message:
 ${message}
 
 ---
-Sent from: welledgecreative.com
-reCAPTCHA Score: ${score}`,
+Sent from: welledgecreative.com`,
     };
 
     // 2) Confirmation email to client

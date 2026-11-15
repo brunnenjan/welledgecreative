@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
-import Script from "next/script";
+import { useState, FormEvent, useEffect, useRef } from "react";
+import { postContact } from "@/lib/contact-client";
+import { TRAP_FIELD } from "@/lib/contact-guard";
+import ContactTrap from "@/components/ContactTrap";
 import { useI18n } from "@/components/providers/I18nProvider";
 
 const PROJECT_TYPE_KEYS = [
@@ -13,7 +15,6 @@ const PROJECT_TYPE_KEYS = [
   "contactForm.projectTypes.other",
 ] as const;
 
-const RECAPTCHA_SITE_KEY = "6LfO5_wrAAAAABZZztKHdyxOpMYuJjayfy08yw_t";
 
 export default function ContactFormStatic() {
   const { t } = useI18n();
@@ -26,23 +27,10 @@ export default function ContactFormStatic() {
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [loadRecaptcha, setLoadRecaptcha] = useState(false);
+  const startedAt = useRef(0);
 
-  // Lazy load reCAPTCHA when contact section is visible
   useEffect(() => {
-    const contactEl = document.getElementById("contact-section");
-    if (!contactEl) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setLoadRecaptcha(true);
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(contactEl);
-
-    return () => observer.disconnect();
+    startedAt.current = Date.now();
   }, []);
 
   const handleProjectTypeChange = (type: string) => {
@@ -58,45 +46,23 @@ export default function ContactFormStatic() {
     e.preventDefault();
 
     setIsSubmitting(true);
-    setStatus(t("contactForm.status.verifying"));
+    setStatus(t("contactForm.status.sending"));
 
     try {
-      // Get reCAPTCHA token
-      if (!window.grecaptcha?.enterprise) {
-        console.error("reCAPTCHA not loaded");
-        setStatus(t("contactForm.status.recaptchaError"));
-        setIsSubmitting(false);
-        return;
-      }
-
-      const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: "submit" });
-
-      if (!token) {
-        throw new Error("Failed to get reCAPTCHA token");
-      }
-
-      setStatus(t("contactForm.status.sending"));
-
       const data = new FormData();
       data.append("name", formData.name);
       data.append("email", formData.email);
       data.append("projectType", formData.projectType.join(", "));
       data.append("budget", formData.budget);
       data.append("message", formData.message);
-      data.append("g-recaptcha-response", token);
+      data.append(TRAP_FIELD, String(new FormData(e.currentTarget as HTMLFormElement).get(TRAP_FIELD) ?? ""));
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        body: data
-      });
-
-      const text = await response.text();
-
-      if (text.includes("OK")) {
+      const { ok } = await postContact(data, startedAt.current);
+      if (ok) {
         setStatus(t("contactForm.status.success"));
         setFormData({ name: "", email: "", projectType: [], budget: "", message: "" });
       } else {
-        setStatus(`${t("contactForm.status.errorPrefix")} ${text}`);
+        setStatus(t("contactForm.status.failure"));
       }
     } catch (error) {
       console.error("Error:", error);
@@ -108,16 +74,9 @@ export default function ContactFormStatic() {
 
   return (
     <>
-      {/* Load reCAPTCHA Enterprise Script only when contact section is visible */}
-      {loadRecaptcha && (
-        <Script
-          src={`https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`}
-          strategy="afterInteractive"
-        />
-      )}
-
       <div className="contact-form-container" style={{ maxWidth: "600px", margin: "0 auto" }}>
-        <form onSubmit={handleSubmit} className="contact-form" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        <form onSubmit={handleSubmit} className="contact-form" style={{ display: "flex", flexDirection: "column", gap: "1.5rem", position: "relative" }}>
+          <ContactTrap />
 
         {/* Name & Email */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>

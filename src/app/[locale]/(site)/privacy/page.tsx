@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
               <li>Kommunikation über das Kontaktformular (Name, E-Mail-Adresse, Projektinformationen).</li>
               <li>Terminvereinbarung über Calendly.</li>
               <li>Reichweitenmessung und Marketing durch Google Analytics (sofern Sie zuvor eingewilligt haben).</li>
-              <li>Sicherheitsmaßnahmen (z.&nbsp;B. Google reCAPTCHA) zur Abwehr missbräuchlicher Nutzung.</li>
+              <li>Sicherheitsmaßnahmen auf unserem eigenen Server zur Abwehr missbräuchlicher Nutzung der Formulare.</li>
             </ul>
           </section>
 
@@ -75,9 +75,9 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-slate-900">7. Google reCAPTCHA</h2>
+            <h2 className="text-xl font-semibold text-slate-900">7. Schutz der Kontaktformulare</h2>
             <p className="mt-3">
-              Zum Schutz vor missbräuchlicher Nutzung unserer Formulare verwenden wir reCAPTCHA v3 von Google. Der Dienst analysiert das Verhalten des Besuchers und erhebt dabei Nutzungsdaten. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO), Missbrauch vorzubeugen. Weitere Informationen: <a className="underline decoration-slate-400 underline-offset-4 hover:text-slate-900" href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">https://policies.google.com/privacy</a>.
+              Zum Schutz vor Spam prüfen wir Anfragen über unsere Formulare auf unserem eigenen Server: mit einem für Menschen unsichtbaren Feld, der Zeit zwischen Öffnen und Absenden des Formulars und einer Begrenzung der Anfragen pro IP-Adresse in kurzer Zeit. Dafür wird die IP-Adresse höchstens zehn Minuten im Arbeitsspeicher gehalten und nicht gespeichert. Es werden keine Daten an Dritte übermittelt. Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO), Missbrauch vorzubeugen.
             </p>
           </section>
 
