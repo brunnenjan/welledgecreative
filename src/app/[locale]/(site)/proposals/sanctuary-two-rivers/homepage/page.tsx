@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import ProposalScroll from "../../ProposalScroll";
 import HomepageMockup from "./HomepageMockup";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
-const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"] });
+const serif = Fraunces({ subsets: ["latin"], style: ["normal", "italic"], axes: ["opsz", "SOFT"] });
 const sans = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export default function SanctuaryHomepageMockupPage() {

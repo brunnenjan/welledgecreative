@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import Header from "@/components/Header";
 import ProposalMotion from "./ProposalMotion";
 import SanctuaryMark from "./SanctuaryMark";
@@ -13,7 +13,7 @@ import styles from "./proposal.module.css";
  * confirmed in writing.
  */
 
-const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"] });
+const serif = Fraunces({ subsets: ["latin"], style: ["normal", "italic"], axes: ["opsz", "SOFT"] });
 const sans = Manrope({ subsets: ["latin"], weight: ["400", "500"] });
 
 const CHECKED = "15 November 2026";
@@ -411,7 +411,7 @@ export default function ProposalContent() {
                 <p className={`${styles.typeSample} ${serif.className}`}>
                   Where Two Rivers Meet, <em>Nature Heals</em>
                 </p>
-                <p className={styles.typeMeta}>Instrument Serif · headlines and quotes</p>
+                <p className={styles.typeMeta}>Fraunces · headlines and quotes</p>
               </div>
               <div>
                 <p className={`${styles.typeBody} ${sans.className}`}>
@@ -545,9 +545,14 @@ export default function ProposalContent() {
                 availability, in English, Vietnamese and German, so it speaks to guests in Asia and in
                 Europe alike.
               </p>
-              <Link href="/en/retreats#case-studies" className={styles.textLink}>
-                More on the retreat page <Arrow />
-              </Link>
+              <a
+                href="https://vietnamdetox.com"
+                target="_blank"
+                rel="noopener"
+                className={styles.textLink}
+              >
+                Visit vietnamdetox.com <Arrow />
+              </a>
             </article>
             <article className={styles.caseCard}>
               <div className={styles.caseImage}>

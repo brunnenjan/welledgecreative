@@ -1,4 +1,4 @@
-/* Brand direction: river, teak, jungle and stone. Two typefaces: Instrument Serif and Manrope. */
+/* Brand direction: river, teak, jungle and stone. Two typefaces: Fraunces and Manrope. */
 .site {
   --river: #2f5d58;
   --jungle: #17241c;
@@ -16,7 +16,7 @@
 .site * { box-sizing: border-box; }
 .site h1, .site h2, .site h3, .site p, .site ul, .site ol, .site dl, .site dd, .site figure, .site blockquote, .site fieldset { margin: 0; }
 .site a { color: inherit; text-decoration: none; }
-.site h2 { font-size: clamp(2.2rem, 4.4vw, 3.6rem); line-height: 1.04; font-weight: 400; letter-spacing: -0.01em; }
+.site h2 { font-size: clamp(2rem, 3.9vw, 3.2rem); line-height: 1.08; font-weight: 300; letter-spacing: -0.02em; font-variation-settings: "SOFT" 50; }
 .site p { line-height: 1.7; }
 .wrap { width: min(1180px, 100% - 64px); margin-inline: auto; }
 .kicker, .kickerLight { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teak); margin-bottom: 18px !important; }
@@ -28,7 +28,7 @@
 .nav { position: absolute; z-index: 5; inset: 0 0 auto; display: flex; align-items: center; gap: 32px; padding: 22px max(32px, calc((100% - 1180px) / 2)) 40px; color: #fff; background: linear-gradient(180deg, #0b1410e6 0%, #0b1410a6 55%, #0b141000 100%); text-shadow: 0 1px 12px #0b1410cc; }
 .nav a { text-shadow: inherit; }
 .links a { font-weight: 500; }
-.brand { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 400; line-height: 1; }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 400; line-height: 1; }
 .brand small { display: block; margin-top: 4px; font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 500; }
 .links { display: flex; gap: 26px; margin-left: auto; font-size: 0.86rem; }
 .navCta { padding: 11px 18px; border: 1px solid #ffffffcc; border-radius: 999px; font-size: 0.84rem; font-weight: 600; background: #0b141066; backdrop-filter: blur(6px); }
@@ -40,7 +40,7 @@
 .heroShade { position: absolute; inset: 0; background: linear-gradient(180deg, #0d171299 0%, #0d171200 32%, #0d1712cc 78%, #0d1712f2 100%); }
 .heroText { position: relative; width: min(1180px, 100% - 64px); margin: 0 auto; }
 .hero .kicker { color: #e8c3a2; }
-.hero h1 { font-size: clamp(3.1rem, 7.6vw, 6.8rem); line-height: 0.98; font-weight: 400; letter-spacing: -0.015em; }
+.hero h1 { font-size: clamp(2.8rem, 6.6vw, 5.8rem); line-height: 1.02; font-weight: 300; letter-spacing: -0.025em; font-variation-settings: "SOFT" 50; }
 .hero h1 em { font-style: italic; color: #f1dcc6; }
 .heroLead { max-width: 30rem; margin-top: 22px !important; font-size: 1.12rem; color: #e9ece7; }
 .doors { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
@@ -59,7 +59,7 @@
 .arrivalCopy { display: flex; flex-direction: column; justify-content: center; padding: 72px 56px; }
 .arrivalCopy .kicker { color: #e2b48d; }
 .arrivalSteps { display: grid; gap: 34px; }
-.arrivalStep p { font-size: clamp(1.4rem, 2.3vw, 2rem); line-height: 1.28; }
+.arrivalStep p { font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.38; font-weight: 300; }
 .stepLabel { display: block; margin-bottom: 12px; font-size: 1rem; font-style: italic; color: #e2b48d; }
 .arrivalDots { display: none; gap: 8px; margin-top: 40px; }
 .arrivalDots span { width: 28px; height: 2px; background: #fff; }
@@ -73,7 +73,7 @@
 
 /* 3. Numbers */
 .numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; padding-block: 96px; border-bottom: 1px solid #e0d9cc; }
-.number { display: block; font-size: clamp(3.2rem, 6vw, 5rem); line-height: 1; color: var(--river); }
+.number { display: block; font-size: clamp(3rem, 5.4vw, 4.4rem); line-height: 1; color: var(--river); font-weight: 300; }
 .number small { font-size: 0.32em; font-style: italic; margin-right: 4px; color: var(--soft); }
 .numberLabel { display: block; margin-top: 10px; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--soft); line-height: 1.5; }
 
@@ -83,7 +83,7 @@
 .hostIntro > p:not(.kickerLight) { margin-top: 20px !important; color: #d4dad3; font-size: 1.05rem; }
 .hostImage { position: relative; aspect-ratio: 4 / 4.4; margin-top: 36px; border-radius: 18px; overflow: hidden; }
 .hostImage img, .retreatImg img, .spaceImg img, .ritualImg img, .peopleImg img { object-fit: cover; }
-.subhead { font-size: 1.8rem; font-weight: 400; margin-bottom: 18px; }
+.subhead { font-size: 1.6rem; font-weight: 300; margin-bottom: 18px; }
 .subhead + .whyGrid, .subhead + .hostSteps { margin-bottom: 44px !important; }
 .whyGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #ffffff1f; border: 1px solid #ffffff1f; border-radius: 16px; overflow: hidden; }
 .whyGrid > div { padding: 22px; background: var(--jungle); }
@@ -96,7 +96,7 @@
 .hostCtas { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
 .btnLight { padding: 14px 24px; border-radius: 999px; background: var(--teak); color: #fff; font-weight: 600; font-size: 0.92rem; }
 .linkLight { border-bottom: 1px solid #ffffff66; font-size: 0.92rem; }
-.hostQuote { margin-top: 44px !important; padding-left: 20px; border-left: 2px solid var(--teak); color: #eef1ec; font-size: 1.4rem; line-height: 1.35; font-style: italic; }
+.hostQuote { margin-top: 44px !important; padding-left: 20px; border-left: 2px solid var(--teak); color: #eef1ec; font-size: 1.25rem; line-height: 1.45; font-style: italic; font-weight: 300; }
 .hostQuote cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #aab3ab; }
 
 /* 5. Join */
@@ -106,7 +106,7 @@
 .retreat { display: grid; grid-template-columns: 1fr 1.2fr; gap: 36px; align-items: center; padding: 18px; border-radius: 20px; background: #fff; border: 1px solid #e3ddd2; }
 .retreatImg { position: relative; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; }
 .date { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teak); font-weight: 600; }
-.retreat h3 { margin-top: 10px; font-size: 2.7rem; font-weight: 400; line-height: 1; }
+.retreat h3 { margin-top: 10px; font-size: 2.4rem; font-weight: 300; line-height: 1; }
 .retreat p { margin-top: 12px !important; color: var(--soft); font-size: 0.95rem; max-width: 26rem; }
 .register { display: inline-block; margin-top: 20px; padding: 11px 20px; border-radius: 999px; background: var(--river); color: #fff !important; font-weight: 600; font-size: 0.86rem; }
 
@@ -124,7 +124,7 @@
 .spaceImg { position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; }
 .space figcaption { margin-top: 14px; font-size: 0.9rem; color: var(--soft); line-height: 1.55; }
 .space figcaption span { display: block; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teak); font-weight: 600; }
-.space figcaption strong { display: block; margin: 4px 0 6px; font-size: 1.55rem; font-weight: 400; color: var(--ink); line-height: 1.15; }
+.space figcaption strong { display: block; margin: 4px 0 6px; font-size: 1.35rem; font-weight: 400; color: var(--ink); line-height: 1.15; }
 
 /* 7. Rituals */
 .rituals { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; padding-block: 120px; }
@@ -135,7 +135,7 @@
 /* 8. Voices */
 .voicesBand { background: var(--river); color: #fff; }
 .voices { padding-block: 112px; text-align: center; }
-.voices blockquote { max-width: 48rem; margin: 0 auto !important; font-size: clamp(2rem, 4.2vw, 3.3rem); line-height: 1.12; font-style: italic; }
+.voices blockquote { max-width: 48rem; margin: 0 auto !important; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.18; font-style: italic; font-weight: 300; }
 .voices cite { display: block; margin-top: 20px; font-size: 0.8rem; font-style: normal; letter-spacing: 0.12em; text-transform: uppercase; color: #cfe0dc; }
 .voiceRow { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 56rem; margin: 52px auto 0; text-align: left; }
 .voiceRow p { padding: 24px 26px; border-radius: 16px; background: #ffffff14; font-size: 0.95rem; color: #eef3f1; }
@@ -146,7 +146,7 @@
 .peopleImg { position: relative; aspect-ratio: 16 / 12; border-radius: 18px; overflow: hidden; margin-bottom: 30px; }
 .people p:not(.kicker) { margin-top: 16px !important; color: var(--soft); }
 .form { display: grid; gap: 16px; padding: 34px; border-radius: 20px; background: #fff; border: 1px solid #e3ddd2; }
-.form h3 { font-size: 2.2rem; font-weight: 400; }
+.form h3 { font-size: 1.9rem; font-weight: 300; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; border: 0; }
 .chips legend { width: 100%; margin-bottom: 8px; font-size: 0.8rem; font-weight: 600; color: var(--soft); }
 .chips span { padding: 7px 13px; border-radius: 999px; border: 1px solid #ddd6ca; font-size: 0.8rem; color: var(--soft); }
