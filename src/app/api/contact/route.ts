@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { STARTED_FIELD, TRAP_FIELD, checkSubmission } from "@/lib/contact-guard";
+import { confirmationMail, enquiryMail, type Enquiry } from "@/lib/contact-mail";
 
 // Recent enquiries per sender, for the rate limit. Lives as long as the server instance.
 const recentSenders = new Map<string, number[]>();
@@ -92,66 +93,13 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // 1) Email to admin
-    const adminMailOptions = {
-      from: "noreply@well-edge-creative.com",
-      to: "jan@welledgecreative.com",
-      replyTo: email,
-      subject: "New Contact Form - Well Edge Creative",
-      text: `New contact form submission:
-
-Name: ${name}
-Email: ${email}
-Project Type: ${projectType || "Not specified"}
-Budget Range: ${budget || "Not specified"}
-
-Message:
-${message}
-
----
-Sent from: welledgecreative.com`,
-    };
-
-    // 2) Confirmation email to client
-    const clientMailOptions = {
-      from: "Jan Brunnenkant <noreply@well-edge-creative.com>",
-      to: email,
-      replyTo: "jan@welledgecreative.com",
-      subject: "Thank you for reaching out - Well Edge Creative",
-      text: `Hi ${name},
-
-Thank you for reaching out! I received your message and will get back to you within 24 hours.
-
-Here's a summary of what you sent:
-
-Project Type: ${projectType || "Not specified"}
-Budget Range: ${budget || "Not specified"}
-
-Your Message:
-${message}
-
----
-
-Looking forward to discussing your project!
-
-Best regards,
-Jan Brunnenkant
-Well Edge Creative
-https://www.welledgecreative.com`,
-    };
+    const enquiry: Enquiry = { name, email, topic: projectType, budget, message, pubName, website, isPub: isPubInquiry, german };
+    const toJan = enquiryMail(enquiry);
+    const toSender = confirmationMail(enquiry);
+    const adminMailOptions = { from: "Well Edge Creative <noreply@well-edge-creative.com>", to: "jan@welledgecreative.com", replyTo: email, ...toJan };
+    const clientMailOptions = { from: "Jan Brunnenkant <noreply@well-edge-creative.com>", to: email, replyTo: "jan@welledgecreative.com", ...toSender };
 
     if (isPubInquiry) {
-      const pubDetails = [pubName && `Pub: ${pubName}`, website && `Website: ${website}`].filter(Boolean).join("\n");
-      adminMailOptions.subject = "Irish Pub Website: neue Anfrage";
-      adminMailOptions.text = `Irish Pub Website Anfrage\n\nName: ${name}\nE-Mail: ${email}\n${pubDetails ? `\n${pubDetails}\n` : ""}\nNachricht:\n${message}`;
-      clientMailOptions.subject = german ? "Deine Anfrage zur Irish Pub Website" : "Your Irish Pub website enquiry";
-      clientMailOptions.text = german
-        ? `Hallo ${name},\n\nvielen Dank für deine Anfrage zur Irish Pub Website. Deine Nachricht ist bei mir angekommen. Ich melde mich persönlich bei dir.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Deine Nachricht:\n${message}\n\nViele Grüße\nJan Brunnenkant\nWell Edge Creative\njan@welledgecreative.com`
-        : `Hi ${name},\n\nThank you for your Irish Pub website enquiry. I have received your message and will get back to you personally.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Your message:\n${message}\n\nBest regards,\nJan Brunnenkant\nWell Edge Creative\njan@welledgecreative.com`;
-      const escapeHtml = (value: string) => value.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]!);
-      // Keep the plain-text alternative and escape every visitor-supplied value.
-      const paragraphs = clientMailOptions.text.split("\n\n").map(paragraph => `<p style="margin:0 0 20px;line-height:1.65;overflow-wrap:anywhere">${escapeHtml(paragraph).replace(/\n/g, "<br>")}</p>`).join("");
-      Object.assign(clientMailOptions, { html: `<!doctype html><html lang="${german ? "de" : "en"}"><body style="margin:0;background:#f5f5f5;color:#171717;font-family:Arial,Helvetica,sans-serif"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border:1px solid #e5e5e5;border-top:5px solid #f58222;border-radius:12px"><tr><td style="padding:32px 24px"><p style="margin:0 0 28px;font-size:14px;font-weight:bold;letter-spacing:1px">WELL EDGE CREATIVE</p><h1 style="margin:0 0 24px;font-size:24px;line-height:1.3">${escapeHtml(clientMailOptions.subject)}</h1>${paragraphs}</td></tr></table></td></tr></table></body></html>` });
       const delivery = await transporter.sendMail(adminMailOptions);
       if (!delivery.accepted?.length) throw new Error("Enquiry recipient rejected");
       let confirmationSent = true;

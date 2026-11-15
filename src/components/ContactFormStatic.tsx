@@ -17,7 +17,7 @@ const PROJECT_TYPE_KEYS = [
 
 
 export default function ContactFormStatic() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,6 +55,7 @@ export default function ContactFormStatic() {
       data.append("projectType", formData.projectType.join(", "));
       data.append("budget", formData.budget);
       data.append("message", formData.message);
+      data.append("locale", locale);
       data.append(TRAP_FIELD, String(new FormData(e.currentTarget as HTMLFormElement).get(TRAP_FIELD) ?? ""));
 
       const { ok } = await postContact(data, startedAt.current);
