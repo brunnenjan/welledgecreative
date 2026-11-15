@@ -10,6 +10,7 @@ import CookieConsent from "@/components/CookieConsent";
 import Preloader from "@/components/Preloader";
 import LandscapeOverlay from "@/components/LandscapeOverlay";
 import type { Locale } from "@/i18n/config";
+import { SITE_URL } from "@/lib/site";
 import { i18nConfig } from "@/i18n/config";
 import ParallaxInit from "@/components/ParallaxInit";
 import PageTransition from "@/components/PageTransition";
@@ -29,7 +30,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.well-edge-creative.de"),
+  metadataBase: new URL(SITE_URL),
   title: "Well Edge Creative | Branding & Web Design by Jan Brunnenkant",
   description: "Well Edge Creative – Branding & Web Design by Jan Brunnenkant. Purpose-driven brand strategy, clean visual identities, and websites that create clarity and emotional connection.",
   keywords: [
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://www.well-edge-creative.de",
+    url: "https://www.welledgecreative.com",
     title: "Well Edge Creative | Branding & Web Design by Jan Brunnenkant",
     description: "Strategy with depth, design with clarity. I craft brands and websites that tell your story and connect with your audience.",
     siteName: "Well Edge Creative",
@@ -90,12 +91,6 @@ export const metadata: Metadata = {
     apple: "/assets/logo/Icon-logo-well-edge-creative.svg",
   },
   manifest: "/assets/favicon/site.webmanifest",
-  alternates: {
-    languages: {
-      en: "https://www.well-edge-creative.de/en",
-      de: "https://www.well-edge-creative.de/de",
-    },
-  },
 };
 
 type RootLayoutProps = {
@@ -109,13 +104,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://www.well-edge-creative.de/#person",
+        "@id": "https://www.welledgecreative.com/#person",
         name: "Jan Brunnenkant",
-        url: "https://www.well-edge-creative.de",
-        image: "https://www.well-edge-creative.de/assets/profile/profile-jan-2026-v2.webp",
+        url: "https://www.welledgecreative.com",
+        image: "https://www.welledgecreative.com/assets/profile/profile-jan-2026-v3.webp",
         jobTitle: "Brand & Web Designer",
         description: "Designer, strategist, and storyteller specializing in branding and web design that connects deeply.",
-        email: "info@well-edge-creative.com",
+        email: "info@welledgecreative.com",
         sameAs: [
           "https://www.behance.net/welledgecreative",
           "https://www.linkedin.com/in/jan-well-edge-creative",
@@ -124,39 +119,39 @@ export default function RootLayout({ children }: RootLayoutProps) {
       },
       {
         "@type": "Organization",
-        "@id": "https://www.well-edge-creative.de/#organization",
+        "@id": "https://www.welledgecreative.com/#organization",
         name: "Well Edge Creative",
-        url: "https://www.well-edge-creative.de",
-        logo: "https://www.well-edge-creative.de/assets/logo/well-edge-logo-retina.webp",
+        url: "https://www.welledgecreative.com",
+        logo: "https://www.welledgecreative.com/assets/logo/well-edge-logo-retina.webp",
         description: "Branding and web design agency that helps founders turn ideas into brands that connect deeply and perform beautifully online.",
         founder: {
-          "@id": "https://www.well-edge-creative.de/#person",
+          "@id": "https://www.welledgecreative.com/#person",
         },
         contactPoint: {
           "@type": "ContactPoint",
-          email: "info@well-edge-creative.com",
+          email: "info@welledgecreative.com",
           contactType: "Customer Service",
           availableLanguage: ["German", "English"],
         },
       },
       {
         "@type": "WebSite",
-        "@id": "https://www.well-edge-creative.de/#website",
-        url: "https://www.well-edge-creative.de",
+        "@id": "https://www.welledgecreative.com/#website",
+        url: "https://www.welledgecreative.com",
         name: "Well Edge Creative",
         description: "Branding & Web Design That Tells Your Story",
         publisher: {
-          "@id": "https://www.well-edge-creative.de/#organization",
+          "@id": "https://www.welledgecreative.com/#organization",
         },
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://www.well-edge-creative.de/#service",
+        "@id": "https://www.welledgecreative.com/#service",
         name: "Well Edge Creative",
-        image: "https://www.well-edge-creative.de/assets/logo/well-edge-logo-retina.webp",
-        url: "https://www.well-edge-creative.de",
+        image: "https://www.welledgecreative.com/assets/logo/well-edge-logo-retina.webp",
+        url: "https://www.welledgecreative.com",
         telephone: "",
-        email: "info@well-edge-creative.com",
+        email: "info@welledgecreative.com",
         priceRange: "€€€",
         address: {
           "@type": "PostalAddress",
@@ -171,7 +166,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       },
       {
         "@type": "Review",
-        "@id": "https://www.well-edge-creative.de/#review-reutter",
+        "@id": "https://www.welledgecreative.com/#review-reutter",
         reviewRating: {
           "@type": "Rating",
           ratingValue: "5",
@@ -185,7 +180,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           "Jan was doing a great job designing our company’s logo. Starting our strawberry farm in Saskatchewan Canada, we had a lot of ideas what our logo should represent. Jan was taking all our business values into consideration and creating a comprehensive and beautiful logo. Never being left out of the work progress, it was always great to work with Jan, reliable, on time and always available. Even after the project was finished, he was there for small adjustments for business cards etc.",
         datePublished: "2025-01-01",
         itemReviewed: {
-          "@id": "https://www.well-edge-creative.de/#organization",
+          "@id": "https://www.welledgecreative.com/#organization",
         },
       },
     ],

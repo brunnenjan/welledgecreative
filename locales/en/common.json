@@ -100,8 +100,11 @@
     "bookCallAria": "Book a call with Well Edge Creative"
   },
   "homeDiscoveryCta": {
+    "eyebrow": "Discovery Call",
+    "highlight": "overwhelmed",
+    "secondary": "How I work with retreats",
     "heading": "Feeling overwhelmed by the possibilities?",
-    "paragraph": "If you run a retreat center, wellness venue or holistic space and you’re not sure where to start with branding, website and bookings — I’ll guide you step-by-step until your first inquiries arrive.",
+    "paragraph": "If you run a retreat center, wellness venue or holistic space and you’re not sure where to start with branding, website and bookings, I’ll guide you step-by-step until your first inquiries arrive.",
     "button": "Book a Discovery Call"
   },
   "selectedProjects": {
@@ -764,15 +767,15 @@
       "sending": "Sending your enquiry …",
       "success": "Thank you! Your enquiry has arrived. A confirmation email is on its way.",
       "confirmationFailed": "Thank you! Your enquiry has arrived, but the confirmation email could not be sent. You do not need to submit again.",
-      "error": "Your enquiry could not be sent. Please try again or email jan@well-edge-creative.de.",
+      "error": "Your enquiry could not be sent. Please try again or email jan@welledgecreative.com.",
       "securityError": "The security check was not successfully confirmed. Please try again. If you are using the local preview, try the form on the live website. Your details are kept.",
-      "serverError": "The mail server could not accept your enquiry right now. Please try again later or email jan@well-edge-creative.de.",
+      "serverError": "The mail server could not accept your enquiry right now. Please try again later or email jan@welledgecreative.com.",
       "networkError": "The connection was interrupted. Please check for a confirmation email before submitting again.",
       "liveForm": "Open the form on the live website",
       "loading": "Loading the security check …",
       "retrySecurity": "Reload security check",
       "securityLoadError": "The Google security check could not load in your browser. Please reload it. Your details are kept. If you use a content blocker, check whether it blocks reCAPTCHA.",
-      "securityServiceError": "The server cannot complete the Google security check right now. Your enquiry has not been sent. Please try again later or email jan@well-edge-creative.de.",
+      "securityServiceError": "The server cannot complete the Google security check right now. Your enquiry has not been sent. Please try again later or email jan@welledgecreative.com.",
       "pubName": "Pub name (optional)",
       "website": "Existing website (optional)"
     },

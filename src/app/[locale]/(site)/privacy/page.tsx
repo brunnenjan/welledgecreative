@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "Privacy policy and data protection information for Well Edge Creative.",
 };
 
-const MAIL = "jan@well-edge-creative.de";
+const MAIL = "jan@welledgecreative.com";
 
 export default function PrivacyPolicyPage() {
   return (

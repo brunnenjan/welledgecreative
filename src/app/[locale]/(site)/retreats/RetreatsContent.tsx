@@ -358,10 +358,10 @@ export default function RetreatsContent() {
             <div className={styles.about}>
               <div className={styles.aboutRow}>
                 <Image
-                  src="/assets/profile/profile-jan-2026-v2.webp"
+                  src="/assets/profile/profile-jan-2026-v3.webp"
                   alt="Jan, founder of Well Edge Creative"
-                  width={280}
-                  height={315}
+                  width={1254}
+                  height={1254}
                   className={styles.aboutPhoto}
                 />
                 <div>
@@ -389,7 +389,7 @@ export default function RetreatsContent() {
               </Link>
             </div>
             <span className={styles.closingEmail}>
-              <a href="mailto:info@well-edge-creative.com">info@well-edge-creative.com</a>
+              <a href="mailto:info@welledgecreative.com">info@welledgecreative.com</a>
             </span>
           </div>
         </section>

@@ -76,10 +76,10 @@ export default function Footer() {
               {t("cta.bookCall")}
             </a>
             <a
-              href="mailto:info@well-edge-creative.com"
+              href="mailto:info@welledgecreative.com"
               className="mt-3 text-sm text-white/70 underline decoration-white/40 underline-offset-4 hover:text-white sm:mt-0"
             >
-              info@well-edge-creative.com
+              info@welledgecreative.com
             </a>
           </div>
         </div>
