@@ -21,6 +21,8 @@ import { usePathname } from "next/navigation";
 
 export default function ScrollSmootherInit() {
   const pathname = usePathname();
+  // Proposal pages pin their own scroll stories, which the smoother would move out of place.
+  const isProposal = pathname?.includes("/proposals/") ?? false;
   const refreshTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const refreshGsap = useCallback(() => {
@@ -128,8 +130,8 @@ export default function ScrollSmootherInit() {
     const isMobile = window.matchMedia("(max-width: 1023px)").matches;
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // Only create smoother on desktop non-touch devices
-    if (isMobile || isTouch) {
+    // Only create smoother on desktop non-touch devices, and never on proposal pages
+    if (isMobile || isTouch || isProposal) {
       console.log('[ScrollSmoother] Skipping on mobile/touch device');
       return;
     }
@@ -148,7 +150,7 @@ export default function ScrollSmootherInit() {
       console.log('[ScrollSmoother] Killing smoother');
       smoother?.kill();
     };
-  }, []);
+  }, [isProposal]);
 
   useLayoutEffect(() => {
     const previousRestoration = window.history.scrollRestoration;

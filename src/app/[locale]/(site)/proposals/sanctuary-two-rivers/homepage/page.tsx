@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import HomepageMockup from "./HomepageMockup";
 
 // The homepage mockup shown inside the proposal, and on its own when opened full screen.
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
+const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], style: ["normal", "italic"] });
+const sans = Inter({ subsets: ["latin"], weight: ["400", "500", "600"] });
+
 export default function SanctuaryHomepageMockupPage() {
-  return <HomepageMockup />;
+  return <HomepageMockup serif={serif.className} sans={sans.className} />;
 }

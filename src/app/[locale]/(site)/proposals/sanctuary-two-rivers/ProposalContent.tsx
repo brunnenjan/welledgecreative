@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Cormorant_Garamond } from "next/font/google";
 import Header from "@/components/Header";
+import ProposalMotion from "./ProposalMotion";
+import SanctuaryMark from "./SanctuaryMark";
 import styles from "./proposal.module.css";
 
 /**
@@ -9,6 +12,8 @@ import styles from "./proposal.module.css";
  * Prices: set `price` on a package to show it; without one the card says the fixed price is
  * confirmed in writing.
  */
+
+const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], style: ["normal", "italic"] });
 
 const CHECKED = "15 November 2026";
 const MOCKUP = "/en/proposals/sanctuary-two-rivers/homepage";
@@ -93,12 +98,28 @@ const CHANGES = [
 ];
 
 const HOMEPAGE = [
-  { title: "First screen", text: "The river, one sentence about what happens here, and two doors: Host or Join. Rating and press right below." },
-  { title: "The place", text: "Rio Lajas and Rio Cacao, the sangama, and three numbers people remember: 40 acres, 2 rivers, 2 waterfalls." },
-  { title: "For retreat leaders", text: "Capacity, spaces, meals, three steps to a quote, the venue sheet, and Robert's words as proof." },
-  { title: "For guests", text: "The next retreats with dates, price from and a register button." },
-  { title: "Spaces and stay", text: "Pagoda, decks, lofts, pool and spa in large photos with one line each." },
-  { title: "Rituals, voices and hosts", text: "Food and ceremonies, guest voices, the team, and one form that asks the right questions." },
+  { title: "Where Two Rivers Meet, Nature Heals", text: "Your own headline moves to the first screen, with the river behind it, the rating and your press, and two doors: Host or Join." },
+  { title: "The arrival, like a film", text: "The picture holds while the story moves on: the walk in, the two rivers, forty acres, home. People feel the place before they read about it." },
+  { title: "Numbers that stay", text: "40 acres, 2 rivers and 2 waterfalls, up to 26 guests, over 10 years of hosting. Counted up as you scroll." },
+  { title: "A door for retreat leaders", text: "Why hosts choose you, your three hosting steps, Jessica's words and one clear inquiry button." },
+  { title: "A door for guests", text: "One card per retreat with dates, leader, price from and register." },
+  { title: "Spaces, rituals, voices, people", text: "The spaces drift past sideways, then food and ceremonies, guest voices, Tamara and Perrey, and your real inquiry form." },
+];
+
+const PALETTE = [
+  { name: "River", hex: "#2F5D58", role: "Main colour, links, calm surfaces", ink: "#fff" },
+  { name: "Jungle", hex: "#17241C", role: "Deep backgrounds, the host world", ink: "#fff" },
+  { name: "Teak", hex: "#A8643A", role: "The one accent: every main button", ink: "#fff" },
+  { name: "Stone", hex: "#F4EFE6", role: "Paper, pages, light backgrounds", ink: "#1f2420" },
+  { name: "Mist", hex: "#E7ECE4", role: "Quiet sections and cards", ink: "#1f2420" },
+];
+
+const BRAND_INCLUDES = [
+  "Logo refined with you, in a full set: horizontal, stacked, mark only, light and dark",
+  "Colour and type system with clear rules",
+  "A photo style guide, so new pictures feel like the place",
+  "Templates: venue sheet, retreat flyer, Instagram posts and stories",
+  "A short brand guide (PDF) your team and retreat leaders can use",
 ];
 
 type Package = {
@@ -193,10 +214,27 @@ export default function ProposalContent() {
             <a href="#see">What I see</a>
             <a href="#help">What I would change</a>
             <a href="#mockup">Your new homepage</a>
+            <a href="#brand">Your brand</a>
             <a href="#work">Retreat work</a>
             <a href="#options">Options</a>
             <a href="#next">Next steps</a>
           </nav>
+        </section>
+
+        {/* In short */}
+        <section className={`${styles.wrap} ${styles.short}`} aria-label="In short">
+          <div className={styles.shortItem}>
+            <span>What I see</span>
+            <p>A place nobody can copy, and a website that hides it behind 37 links and six typefaces.</p>
+          </div>
+          <div className={styles.shortItem}>
+            <span>What I would do</span>
+            <p>A calm brand from river, teak and jungle, and a homepage with two doors: Host and Join.</p>
+          </div>
+          <div className={styles.shortItem}>
+            <span>What it brings</span>
+            <p>More qualified inquiries from retreat leaders, and guests who can book the moment they decide.</p>
+          </div>
         </section>
 
         {/* Strengths */}
@@ -325,6 +363,128 @@ export default function ProposalContent() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        {/* Brand */}
+        <section id="brand" className={`${styles.wrap} ${styles.section}`}>
+          <div className={styles.sectionHead}>
+            <p className={styles.eyebrow}>
+              <span className={styles.dot} />
+              Your brand · a first direction
+            </p>
+            <h2>A mark for the place where two rivers become one.</h2>
+            <p>
+              Two lines flow together and continue as one, the way Rio Lajas and Rio Cacao meet on your
+              land. This is the sketch from the mockup taken one step further. In the Brand package we
+              develop it with you into a complete identity.
+            </p>
+          </div>
+
+          <div className={styles.brandBoard}>
+            <div className={`${styles.brandTile} ${styles.tileLogo}`}>
+              <div className={`${styles.lockup} ${serif.className}`}>
+                <SanctuaryMark size={64} stroke={1.6} />
+                <span>
+                  The Sanctuary
+                  <small>at Two Rivers</small>
+                </span>
+              </div>
+              <span className={styles.tileLabel}>Primary logo</span>
+            </div>
+            <div className={`${styles.brandTile} ${styles.tileDark}`}>
+              <div className={`${styles.stacked} ${serif.className}`}>
+                <SanctuaryMark size={58} stroke={1.6} />
+                <span>The Sanctuary</span>
+                <small>at Two Rivers</small>
+              </div>
+              <span className={styles.tileLabel}>Stacked, on Jungle</span>
+            </div>
+            <div className={`${styles.brandTile} ${styles.tileTeak}`}>
+              <SanctuaryMark size={88} stroke={1.4} />
+              <span className={styles.tileLabel}>Mark only: favicon, signage, stamps</span>
+            </div>
+            <div className={`${styles.brandTile} ${styles.tileType}`}>
+              <div>
+                <span className={`${styles.typeBig} ${serif.className}`}>Aa</span>
+                <p className={`${styles.typeSample} ${serif.className}`}>
+                  Where Two Rivers Meet, <em>Nature Heals</em>
+                </p>
+                <p className={styles.typeMeta}>Cormorant Garamond · headlines and quotes</p>
+              </div>
+              <div>
+                <p className={styles.typeBody}>
+                  Daily plant-based meals crafted fresh, with gluten-free and vegetarian options always
+                  included.
+                </p>
+                <p className={styles.typeMeta}>Inter · text, buttons and forms</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.palette}>
+            {PALETTE.map((c) => (
+              <div key={c.name} className={styles.swatch} style={{ background: c.hex, color: c.ink }}>
+                <strong className={serif.className}>{c.name}</strong>
+                <span>{c.hex}</span>
+                <small>{c.role}</small>
+              </div>
+            ))}
+          </div>
+
+          <h3 className={styles.appsHead}>In use</h3>
+          <div className={styles.apps}>
+            <figure className={styles.app}>
+              <div className={styles.sheet}>
+                <div className={`${styles.sheetTop} ${serif.className}`}>
+                  <SanctuaryMark size={26} stroke={1.6} />
+                  <span>The Sanctuary<small>at Two Rivers</small></span>
+                </div>
+                <div className={styles.sheetPhoto}>
+                  <Image src="/proposals/sanctuary-two-rivers/pagoda.webp" alt="" fill sizes="260px" />
+                </div>
+                <p className={`${styles.sheetTitle} ${serif.className}`}>Venue sheet for retreat leaders</p>
+                <ul className={styles.sheetFacts}>
+                  <li>40 acres</li>
+                  <li>Up to 26 guests</li>
+                  <li>1,200 sq ft Pagoda</li>
+                </ul>
+              </div>
+              <figcaption>Venue sheet (PDF) for retreat leaders</figcaption>
+            </figure>
+            <figure className={styles.app}>
+              <div className={styles.post}>
+                <Image src="/proposals/sanctuary-two-rivers/river.webp" alt="" fill sizes="300px" />
+                <div className={styles.postShade} />
+                <p className={serif.className}>“A space where transformation flows as freely as the rivers.”</p>
+                <span className={styles.postMark}>
+                  <SanctuaryMark size={22} stroke={1.8} />
+                </span>
+              </div>
+              <figcaption>Instagram post with a guest voice</figcaption>
+            </figure>
+            <figure className={styles.app}>
+              <div className={styles.cards}>
+                <div className={`${styles.bizFront} ${serif.className}`}>
+                  <SanctuaryMark size={40} stroke={1.6} />
+                </div>
+                <div className={styles.bizBack}>
+                  <strong className={serif.className}>Kathryn Page</strong>
+                  <span>Retreat Booking Guide</span>
+                  <small>retreats@thesanctuarycostarica.com</small>
+                </div>
+              </div>
+              <figcaption>Business card, front and back</figcaption>
+            </figure>
+          </div>
+
+          <div className={styles.includes}>
+            <h3>What the full brand includes</h3>
+            <ul>
+              {BRAND_INCLUDES.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -500,6 +660,11 @@ export default function ProposalContent() {
           </div>
         </section>
       </main>
+      <ProposalMotion
+        selector={[styles.shortItem, styles.card, styles.changeRow, styles.browser, styles.brandTile, styles.swatch, styles.app, styles.caseCard, styles.package, styles.extra]
+          .map((c) => `.${c}`)
+          .join(",")}
+      />
     </>
   );
 }

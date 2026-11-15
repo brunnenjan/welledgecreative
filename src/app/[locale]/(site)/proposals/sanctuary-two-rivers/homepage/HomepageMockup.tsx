@@ -1,286 +1,466 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import SanctuaryMark from "../SanctuaryMark";
 import styles from "./homepage.module.css";
 
 /**
- * Homepage mockup for The Sanctuary at Two Rivers: their photos, facts and guest voices from
- * thesanctuarycostarica.com (15 November 2026), in a new structure and brand direction. Two
- * typefaces, one palette from river, teak and jungle, and every section leading to Host or Join.
- * Retreat dates are examples: their calendar only listed a retreat that had already taken place.
+ * Homepage mockup for The Sanctuary at Two Rivers. Every text, number, quote and photo comes from
+ * thesanctuarycostarica.com (checked 15 November 2026); only the order, the design and the
+ * scroll story are new. Retreat leaders and guests each get their own door.
  */
-
-const serif = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], style: ["normal", "italic"] });
-const sans = Inter({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 const IMG = "/proposals/sanctuary-two-rivers";
 
-function Mark({ size = 34 }: { size?: number }) {
-  // Two rivers flowing into one: a sketch of a simplified mark for the mockup only.
-  return (
-    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <path d="M8 4c0 12 12 14 12 24v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <path d="M32 4c0 12-12 14-12 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="20" cy="36" r="1.6" fill="currentColor" />
-    </svg>
-  );
-}
+const ARRIVAL = [
+  {
+    img: "garden",
+    label: "Arrive",
+    text: "From the moment you arrive, after a serene 15-minute nature walk along the jungle and river paths, you’ll be enveloped in a world where countless species of vibrant flora and diverse fauna thrive.",
+  },
+  {
+    img: "river",
+    label: "Two rivers",
+    text: "Nestled at the confluence of two rivers, Rio Lajas and Rio Cacao, is a revered Sangama location.",
+  },
+  {
+    img: "waterfall",
+    label: "Forty acres",
+    text: "A secluded 40-acre paradise offering manicured tropical gardens, Jurassic jungle, and cascading waterfalls.",
+  },
+  {
+    img: "sunset-deck",
+    label: "Home",
+    text: "A place to slow down, reconnect with your true self, and remember what it means to be home.",
+  },
+];
+
+const NUMBERS = [
+  { value: 40, label: "secluded acres" },
+  { value: 2, label: "rivers and two waterfalls on site" },
+  { value: 26, label: "guests in Jungle Lofts and Studio Houses", prefix: "up to " },
+  { value: 10, label: "years of hosting retreats", suffix: "+" },
+];
+
+const WHY_HOSTS = [
+  { title: "Private & Exclusive", text: "Exclusive 40-acre estate, nestled between two rivers in pristine rainforest, just for your group." },
+  { title: "Spacious Accommodations", text: "Up to 26 guests in Jungle Lofts and Studio Houses with canopy views and rainwater showers." },
+  { title: "Nourishing Food", text: "Daily plant-based meals crafted fresh, with gluten-free and vegetarian options always included." },
+  { title: "Full Host Support", text: "Our on-site crew manages all logistics so you can focus entirely on guiding your group." },
+];
+
+const HOSTING_STEPS = [
+  { title: "Share Your Vision", text: "Tell us about your group, goals, and the experience you want to create." },
+  { title: "Plan With Our Team", text: "We collaborate on every detail, including schedule, meals, accommodations, and more." },
+  { title: "Lead Your Retreat", text: "Arrive, exhale, and lead. We handle everything behind the scenes." },
+];
 
 const SPACES = [
-  { img: "pagoda", title: "The Yoga Pagoda", text: "1,200 sq ft of teak floor, screened and open to the jungle." },
-  { img: "sunset-deck", title: "Open-air decks", text: "360° jungle views for sunrise practice and breathwork." },
-  { img: "loft", title: "Zen Jungle Lofts", text: "Screened walls and observation decks, built from eco-harvested teak." },
-  { img: "pool", title: "Pool and spa", text: "Massage and treatments to integrate the work of the day." },
+  { img: "pagoda", name: "The Yoga Pagoda", line: "Your Tropical Zen Hub", text: "Our 1200 sq ft screened-in Pagoda features a rich teak floor & open design inviting jungle views." },
+  { img: "sunset-deck", name: "Open-Air Decks", line: "Your Retreat’s Natural Centerpiece", text: "Offering 360° jungle views, they are perfect for yoga, meditation, and breathwork." },
+  { img: "loft", name: "Accommodations", line: "Dwellings for Deep Connection", text: "Zen Jungle Lofts or private Studio Houses with screened walls, observation decks, and solar amenities." },
+  { img: "pool", name: "Pool & Spa", line: "Unwind, Rejuvenate, and Deeply Integrate", text: "Guests enjoy therapeutic massages and tailored treatments throughout their retreat." },
+  { img: "loft-deck", name: "Architecture", line: "Zen Design Meets Rainforest", text: "Crafted by local artisans from eco-harvested teak, guided by Vastu principles." },
 ];
 
-const RETREATS = [
-  { date: "Example · Feb 2027", title: "Respira", kind: "Breathwork and yoga", price: "from US$ ···" },
-  { date: "Example · Mar 2027", title: "Heart Meditation", kind: "Meditation retreat", price: "from US$ ···" },
-  { date: "Example · Apr 2027", title: "Jungle Yoga Week", kind: "Yoga for all levels", price: "from US$ ···" },
-];
+const JOURNEYS = ["Yoga", "Wellness", "Meditation", "Corporate", "Creative", "Coaching or Personal Development", "Other"];
 
-export default function HomepageMockup() {
+export default function HomepageMockup({ serif, sans }: { serif: string; sans: string }) {
+  const root = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        el.classList.add(styles.animated);
+
+        // Hero: the river slowly settles as you scroll, the words rise in.
+        gsap.fromTo(
+          `.${styles.heroImg}`,
+          { scale: 1.15 },
+          {
+            scale: 1,
+            ease: "none",
+            scrollTrigger: { trigger: `.${styles.hero}`, start: "top top", end: "bottom top", scrub: true },
+          },
+        );
+        gsap.from(`.${styles.heroText} > *`, { y: 28, opacity: 0, duration: 1, stagger: 0.12, ease: "power2.out", delay: 0.2 });
+
+        // The arrival, like a film: the picture holds while the story moves on.
+        const stage = el.querySelector(`.${styles.arrival}`);
+        const pics = gsap.utils.toArray<HTMLElement>(`.${styles.arrivalImg}`);
+        const texts = gsap.utils.toArray<HTMLElement>(`.${styles.arrivalStep}`);
+        const dots = gsap.utils.toArray<HTMLElement>(`.${styles.arrivalDots} span`);
+        gsap.set(pics.slice(1), { opacity: 0 });
+        gsap.set(texts.slice(1), { opacity: 0, y: 40 });
+        const film = gsap.timeline({
+          scrollTrigger: { trigger: stage, start: "top top", end: `+=${ARRIVAL.length * 90}%`, pin: true, scrub: 0.6 },
+        });
+        for (let i = 1; i < ARRIVAL.length; i++) {
+          film
+            .to(pics[i - 1], { opacity: 0, duration: 1 })
+            .to(pics[i], { opacity: 1, duration: 1 }, "<")
+            .to(texts[i - 1], { opacity: 0, y: -40, duration: 0.6 }, "<")
+            .to(texts[i], { opacity: 1, y: 0, duration: 0.6 }, "<0.4")
+            .to(dots[i - 1], { opacity: 0.35, duration: 0.2 }, "<")
+            .to(dots[i], { opacity: 1, duration: 0.2 }, "<")
+            .to({}, { duration: 0.6 });
+        }
+
+        // Numbers count up once they come into view.
+        gsap.utils.toArray<HTMLElement>(`.${styles.count}`).forEach((n) => {
+          const target = Number(n.dataset.value);
+          const state = { v: 0 };
+          gsap.to(state, {
+            v: target,
+            duration: 1.6,
+            ease: "power2.out",
+            scrollTrigger: { trigger: n, start: "top 85%", once: true },
+            onUpdate: () => {
+              n.textContent = String(Math.round(state.v));
+            },
+          });
+        });
+
+        // The spaces drift past sideways on wide screens.
+        const wide = window.matchMedia("(min-width: 861px)").matches;
+        const track = el.querySelector<HTMLElement>(`.${styles.spaceTrack}`);
+        if (wide && track) {
+          gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth + 64),
+            ease: "none",
+            scrollTrigger: {
+              trigger: `.${styles.spacesBand}`,
+              start: "top top",
+              end: () => `+=${track.scrollWidth}`,
+              pin: true,
+              scrub: 0.6,
+              invalidateOnRefresh: true,
+            },
+          });
+        }
+
+        // Everything else rises in gently.
+        gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((r) =>
+          gsap.from(r, {
+            y: 36,
+            opacity: 0,
+            duration: 0.9,
+            ease: "power2.out",
+            scrollTrigger: { trigger: r, start: "top 88%", once: true },
+          }),
+        );
+      });
+    }, el);
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    const t = window.setTimeout(refresh, 600);
+    return () => {
+      window.removeEventListener("load", refresh);
+      window.clearTimeout(t);
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <div className={`${styles.site} ${sans.className}`}>
+    <div ref={root} className={`${styles.site} ${sans}`}>
       {/* The site's cookie banner is not part of this mockup. */}
       <style>{".cookie-banner{display:none!important}"}</style>
 
       <header className={styles.nav}>
-        <a className={`${styles.brand} ${serif.className}`} href="#top">
-          <Mark />
+        <a className={`${styles.brand} ${serif}`} href="#top">
+          <SanctuaryMark />
           <span>
             The Sanctuary
             <small>at Two Rivers</small>
           </span>
         </a>
         <nav className={styles.links} aria-label="Mockup navigation">
-          <a href="#host">Host a retreat</a>
-          <a href="#join">Join a retreat</a>
-          <a href="#place">The place</a>
-          <a href="#stay">Stay</a>
+          <a href="#host">Host a Retreat</a>
+          <a href="#join">Join a Retreat</a>
+          <a href="#place">Retreat Center</a>
+          <a href="#spaces">Accommodations</a>
         </nav>
-        <a className={styles.navCta} href="#plan">
-          Plan your retreat
+        <a className={styles.navCta} href="#inquire">
+          Inquire now
         </a>
       </header>
 
-      {/* 1. First screen: the place and two doors */}
+      {/* 1. First screen */}
       <section id="top" className={styles.hero}>
-        <Image src={`${IMG}/river.webp`} alt="Rio Lajas running through the jungle at The Sanctuary" fill priority sizes="100vw" />
+        <div className={styles.heroImg}>
+          <Image src={`${IMG}/river.webp`} alt="Rio Lajas running through the jungle at The Sanctuary" fill priority sizes="100vw" />
+        </div>
         <div className={styles.heroShade} />
         <div className={styles.heroText}>
-          <p className={styles.kicker}>Yoga & meditation retreat center · Uvita, Costa Rica</p>
-          <h1 className={serif.className}>
-            Where two rivers meet,
+          <p className={styles.kicker}>Yoga & Meditation Retreat Center in Costa Rica</p>
+          <h1 className={serif}>
+            Where Two Rivers Meet,
             <br />
-            <em>people come back to themselves.</em>
+            <em>Nature Heals</em>
           </h1>
-          <p className={styles.heroLead}>
-            Forty secluded acres of jungle, gardens and waterfalls, a 15-minute nature walk from the
-            nearest road. No traffic, no crowds, no cities.
-          </p>
+          <p className={styles.heroLead}>Far away from the noise of the world. No traffic, no crowds, no cities.</p>
           <div className={styles.doors}>
             <a href="#host" className={styles.doorPrimary}>
               <span>For retreat leaders</span>
-              Host your retreat
+              Host a Retreat
             </a>
             <a href="#join" className={styles.door}>
               <span>For guests</span>
-              Join a retreat
+              Join a Retreat
             </a>
           </div>
         </div>
         <p className={styles.trust}>
-          ★ 4.9 / 5 traveller rating · Featured in The New York Times, Yoga Journal and USA Today
+          <strong>★ 4.9/5</strong> Traveller rating
+          <span>Featured in The New York Times · Yoga Journal · USA Today · Glamour</span>
         </p>
       </section>
 
-      {/* 2. The place in three facts */}
-      <section id="place" className={`${styles.wrap} ${styles.story}`}>
-        <div>
-          <p className={styles.kicker}>The place</p>
-          <h2 className={serif.className}>Rio Lajas and Rio Cacao meet on our land.</h2>
-          <p>
-            In Vedic tradition the meeting of two rivers is a <em>sangama</em>, a place of power. Here
-            it comes with year-round waterfalls, Jurassic jungle and a mild climate with cool breezes,
-            made for deep inner work and real rest.
-          </p>
-          <dl className={styles.facts}>
-            <div>
-              <dt className={serif.className}>40</dt>
-              <dd>secluded acres</dd>
+      {/* 2. The arrival, told like a film */}
+      <section id="place" className={styles.arrival}>
+        <div className={styles.arrivalPics}>
+          {ARRIVAL.map((a) => (
+            <div key={a.img} className={styles.arrivalImg}>
+              <Image src={`${IMG}/${a.img}.webp`} alt="" fill sizes="(max-width: 860px) 100vw, 60vw" />
             </div>
-            <div>
-              <dt className={serif.className}>2</dt>
-              <dd>rivers on site</dd>
-            </div>
-            <div>
-              <dt className={serif.className}>2</dt>
-              <dd>waterfalls to swim in</dd>
-            </div>
-          </dl>
-        </div>
-        <div className={styles.storyImages}>
-          <div className={styles.imgTall}>
-            <Image src={`${IMG}/waterfall.webp`} alt="One of the two waterfalls at The Sanctuary" fill sizes="(max-width: 800px) 100vw, 30vw" />
-          </div>
-          <div className={styles.imgSmall}>
-            <Image src={`${IMG}/garden.webp`} alt="Tropical gardens and a jungle loft" fill sizes="(max-width: 800px) 100vw, 25vw" />
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Host: the door for retreat leaders */}
-      <section id="host" className={styles.hostBand}>
-        <div className={`${styles.wrap} ${styles.host}`}>
-          <div className={styles.hostImage}>
-            <Image src={`${IMG}/session.webp`} alt="A workshop on the teak floor of the Yoga Pagoda" fill sizes="(max-width: 800px) 100vw, 45vw" />
-          </div>
-          <div>
-            <p className={styles.kickerLight}>For retreat leaders</p>
-            <h2 className={serif.className}>Bring your group. We take care of everything else.</h2>
-            <ul className={styles.hostFacts}>
-              <li><strong>Up to 26 guests</strong> in Zen Jungle Lofts and Studio Houses</li>
-              <li><strong>Yoga Pagoda</strong> of 1,200 sq ft plus open-air decks</li>
-              <li><strong>Plant-based meals</strong> from ingredients grown steps from the table</li>
-              <li><strong>Every detail handled</strong>, from logistics to curated excursions</li>
-            </ul>
-            <ol className={styles.hostSteps}>
-              <li><span>1</span>Tell us your dates and group size</li>
-              <li><span>2</span>Get availability and a clear quote</li>
-              <li><span>3</span>Arrive. Focus on your group.</li>
-            </ol>
-            <div className={styles.hostCtas}>
-              <a href="#plan" className={styles.btnLight}>Check dates for your group</a>
-              <a href="#host" className={styles.linkLight}>Download the venue sheet (PDF)</a>
-            </div>
-            <blockquote className={styles.hostQuote}>
-              “Leading my workshop here was seamless. The staff’s support and the land’s energy made it
-              unforgettable for my participants.”
-              <cite>Robert, retreat leader</cite>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Join: the door for guests */}
-      <section id="join" className={`${styles.wrap} ${styles.join}`}>
-        <div className={styles.joinHead}>
-          <div>
-            <p className={styles.kicker}>For guests</p>
-            <h2 className={serif.className}>Join a retreat</h2>
-          </div>
-          <a href="#join" className={styles.link}>See the full calendar →</a>
-        </div>
-        <div className={styles.retreats}>
-          {RETREATS.map((r) => (
-            <article key={r.title} className={styles.retreat}>
-              <span className={styles.date}>{r.date}</span>
-              <h3 className={serif.className}>{r.title}</h3>
-              <p>{r.kind}</p>
-              <div className={styles.retreatFoot}>
-                <span>{r.price}</span>
-                <a href="#join">Register</a>
-              </div>
-            </article>
           ))}
         </div>
-      </section>
-
-      {/* 5. The spaces */}
-      <section id="stay" className={styles.spacesBand}>
-        <div className={styles.wrap}>
-          <p className={styles.kicker}>Spaces and stay</p>
-          <h2 className={serif.className}>Tropical modern, built by hand from teak.</h2>
-          <div className={styles.spaces}>
-            {SPACES.map((s) => (
-              <figure key={s.title} className={styles.space}>
-                <div className={styles.spaceImg}>
-                  <Image src={`${IMG}/${s.img}.webp`} alt={s.title} fill sizes="(max-width: 800px) 100vw, 25vw" />
-                </div>
-                <figcaption>
-                  <strong>{s.title}</strong>
-                  {s.text}
-                </figcaption>
-              </figure>
+        <div className={styles.arrivalCopy}>
+          <p className={styles.kicker}>A Place of Power & Transformation</p>
+          <div className={styles.arrivalSteps}>
+            {ARRIVAL.map((a, i) => (
+              <div key={a.label} className={styles.arrivalStep}>
+                <span className={`${styles.stepLabel} ${serif}`}>
+                  {String(i + 1).padStart(2, "0")} · {a.label}
+                </span>
+                <p className={serif}>{a.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className={styles.arrivalDots} aria-hidden="true">
+            {ARRIVAL.map((a, i) => (
+              <span key={a.label} style={{ opacity: i === 0 ? 1 : 0.35 }} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6. Rituals and food */}
-      <section className={`${styles.wrap} ${styles.rituals}`}>
-        <div className={styles.ritualImg}>
-          <Image src={`${IMG}/loft-deck.webp`} alt="A loft deck with a hammock above the jungle" fill sizes="(max-width: 800px) 100vw, 50vw" />
-        </div>
-        <div>
-          <p className={styles.kicker}>Rituals</p>
-          <h2 className={serif.className}>Every meal is a ritual. Every day ends at the water.</h2>
-          <p>
-            Plant-based, farm-to-table food in the open-air dining space. Sound healing, waterfall
-            rituals and cacao ceremonies on site, and the river pools a few steps away.
-          </p>
+      {/* 3. The facts that matter, counting up */}
+      <section className={`${styles.wrap} ${styles.numbers}`}>
+        {NUMBERS.map((n) => (
+          <div key={n.label} data-reveal>
+            <span className={`${styles.number} ${serif}`}>
+              {n.prefix && <small>{n.prefix}</small>}
+              <span className={styles.count} data-value={n.value}>
+                {n.value}
+              </span>
+              {n.suffix}
+            </span>
+            <span className={styles.numberLabel}>{n.label}</span>
+          </div>
+        ))}
+      </section>
+
+      {/* 4. Door one: retreat leaders */}
+      <section id="host" className={styles.hostBand}>
+        <div className={`${styles.wrap} ${styles.host}`}>
+          <div className={styles.hostIntro} data-reveal>
+            <p className={styles.kickerLight}>Host a Retreat</p>
+            <h2 className={serif}>A Retreat Setting Designed Around Your Vision</h2>
+            <p>
+              A private eco-retreat center on 40 acres, with over 10 years of experience hosting
+              retreats across wellness, yoga, connection, and more. Every detail is cared for, so you
+              can focus on what matters most: your retreat.
+            </p>
+            <div className={styles.hostImage}>
+              <Image src={`${IMG}/session.webp`} alt="A workshop on the teak floor of the Yoga Pagoda" fill sizes="(max-width: 860px) 100vw, 40vw" />
+            </div>
+          </div>
+          <div>
+            <h3 className={`${styles.subhead} ${serif}`}>Why Hosts Choose The Sanctuary</h3>
+            <div className={styles.whyGrid}>
+              {WHY_HOSTS.map((w) => (
+                <div key={w.title} data-reveal>
+                  <strong>{w.title}</strong>
+                  <p>{w.text}</p>
+                </div>
+              ))}
+            </div>
+            <h3 className={`${styles.subhead} ${serif}`}>How Hosting Works</h3>
+            <ol className={styles.hostSteps}>
+              {HOSTING_STEPS.map((s, i) => (
+                <li key={s.title} data-reveal>
+                  <span className={serif}>0{i + 1}</span>
+                  <strong>{s.title}</strong>
+                  {s.text}
+                </li>
+              ))}
+            </ol>
+            <div className={styles.hostCtas}>
+              <a href="#inquire" className={styles.btnLight}>
+                Inquire now
+              </a>
+              <a href="#host" className={styles.linkLight}>
+                Venue sheet (PDF)
+              </a>
+            </div>
+            <blockquote className={`${styles.hostQuote} ${serif}`} data-reveal>
+              “The Sanctuary totally exceeded our expectations. The space is magical, and the team is
+              incredible. Our guests left transformed.”
+              <cite className={sans}>Jessica T., Yoga Retreat Leader</cite>
+            </blockquote>
+          </div>
         </div>
       </section>
 
-      {/* 7. Voices */}
+      {/* 5. Door two: guests */}
+      <section id="join" className={`${styles.wrap} ${styles.join}`}>
+        <div className={styles.joinHead} data-reveal>
+          <div>
+            <p className={styles.kicker}>Join a Retreat</p>
+            <h2 className={serif}>Retreats Calendar</h2>
+          </div>
+          <a href="#join" className={styles.link}>
+            See all retreats →
+          </a>
+        </div>
+        <article className={styles.retreat} data-reveal>
+          <div className={styles.retreatImg}>
+            <Image src={`${IMG}/pagoda.webp`} alt="" fill sizes="(max-width: 860px) 100vw, 40vw" />
+          </div>
+          <div>
+            <span className={styles.date}>Nov 07, 2026 to Nov 12, 2026</span>
+            <h3 className={serif}>Respira</h3>
+            <p>One card per retreat: dates, the retreat leader, price from and a button to register.</p>
+            <a href="#join" className={styles.register}>
+              Details & register
+            </a>
+          </div>
+        </article>
+        <p className={styles.note}>Layout shown with the last retreat listed on your calendar.</p>
+      </section>
+
+      {/* 6. The spaces drift past */}
+      <section id="spaces" className={styles.spacesBand}>
+        <div className={styles.spacesHead}>
+          <p className={styles.kicker}>Retreat Center & Accommodations</p>
+          <h2 className={serif}>Tropical Modern Zen Eco-Chic</h2>
+        </div>
+        <div className={styles.spaceTrack}>
+          {SPACES.map((s) => (
+            <figure key={s.name} className={styles.space}>
+              <div className={styles.spaceImg}>
+                <Image src={`${IMG}/${s.img}.webp`} alt={s.name} fill sizes="(max-width: 860px) 80vw, 30vw" />
+              </div>
+              <figcaption>
+                <span>{s.name}</span>
+                <strong className={serif}>{s.line}</strong>
+                {s.text}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* 7. Food and rituals */}
+      <section className={`${styles.wrap} ${styles.rituals}`}>
+        <div className={styles.ritualImg} data-reveal>
+          <Image src={`${IMG}/loft-deck.webp`} alt="A loft deck with a hammock above the jungle" fill sizes="(max-width: 860px) 100vw, 50vw" />
+        </div>
+        <div data-reveal>
+          <p className={styles.kicker}>Nourish Your Soul</p>
+          <h2 className={serif}>Every meal at the Sanctuary is a ritual.</h2>
+          <p>
+            We prepare plant-based, farm-to-table dishes using ingredients grown steps from your plate,
+            food that restores as much as it nourishes.
+          </p>
+          <p className={styles.ritualList}>Sound Healing · Waterfall Rituals · Cacao Ceremonies</p>
+        </div>
+      </section>
+
+      {/* 8. Voices */}
       <section className={styles.voicesBand}>
         <div className={`${styles.wrap} ${styles.voices}`}>
-          <blockquote className={serif.className}>
+          <blockquote className={serif} data-reveal>
             “A space where transformation flows as freely as the rivers.”
-            <cite className={sans.className}>Radha Rita, Heart Meditation facilitator</cite>
+            <cite className={sans}>Radha Rita, Heart Meditation Facilitator</cite>
           </blockquote>
           <div className={styles.voiceRow}>
-            <p>
-              “I’ve been to many retreats, but none compare. The food was incredible, the staff were
-              angels.”<span>Mayra, guest</span>
+            <p data-reveal>
+              “Our guests still talk about the magic of this place. It allowed us to go deeper as a
+              group and create something truly special.”<span>Daniel B., Breathwork Facilitator</span>
             </p>
-            <p>
-              “The yoga, the tranquility, the connection to nature. It’s everything I needed.”
-              <span>Emily, guest</span>
+            <p data-reveal>
+              “I’ve been to many retreats, but none compare to this yoga and meditation retreat center in
+              Costa Rica. The food was incredible, the staff were angels.”
+              <span>Mayra, Yoga & Meditation Practitioner</span>
             </p>
           </div>
         </div>
       </section>
 
-      {/* 8. The people, getting here and one form */}
-      <section id="plan" className={`${styles.wrap} ${styles.plan}`}>
-        <div className={styles.people}>
+      {/* 9. The people and one form */}
+      <section id="inquire" className={`${styles.wrap} ${styles.plan}`}>
+        <div className={styles.people} data-reveal>
           <div className={styles.peopleImg}>
-            <Image src={`${IMG}/team.webp`} alt="The Sanctuary team in the gardens" fill sizes="(max-width: 800px) 100vw, 35vw" />
+            <Image src={`${IMG}/team.webp`} alt="The Sanctuary team in the gardens" fill sizes="(max-width: 860px) 100vw, 40vw" />
           </div>
-          <p className={styles.kicker}>Your hosts</p>
-          <h2 className={serif.className}>People who know every corner of the land</h2>
+          <p className={styles.kicker}>Dedicated Hearts</p>
+          <h2 className={serif}>Bring Your Retreat to Life in Costa Rica</h2>
           <p>
-            Tamara, the resident host, Perrey, owner and founder, and Kathryn, your booking guide. You
-            talk to the people who will welcome you.
-          </p>
-          <p className={styles.small}>
-            Getting here: arrive in Uvita, then a 15-minute nature walk along the jungle and river
-            paths.
+            Meet Tamara (resident host) and Perrey (owner & founder), dedicated to crafting
+            transformative retreats with mindful intention, nourishing both hosts & guests.
           </p>
         </div>
-        <form className={styles.form} aria-label="Retreat inquiry (mockup)">
-          <h3 className={serif.className}>Plan your retreat</h3>
-          <div className={styles.toggle}>
-            <span className={styles.on}>I want to host a group</span>
-            <span>I want to join</span>
+        <form className={styles.form} aria-label="Retreat inquiry (mockup)" data-reveal>
+          <h3 className={serif}>Your Retreat Begins Here</h3>
+          <p className={styles.small}>
+            Share your dates and group size and our team will follow up with availability and next
+            steps.
+          </p>
+          <fieldset className={styles.chips}>
+            <legend>What kind of journey are you called to lead?</legend>
+            {JOURNEYS.map((j, i) => (
+              <span key={j} className={i === 0 ? styles.chipOn : undefined}>
+                {j}
+              </span>
+            ))}
+          </fieldset>
+          <label>
+            Dates you’re looking to host
+            <input placeholder="Dates" readOnly />
+          </label>
+          <div className={styles.formRow}>
+            <label>
+              Are your dates flexible?
+              <input placeholder="Yes · No · Somewhat" readOnly />
+            </label>
+            <label>
+              How many people will you be guiding?
+              <input placeholder="Group size" readOnly />
+            </label>
           </div>
-          <label>Dates<input placeholder="e.g. 12 to 18 March 2027" readOnly /></label>
-          <label>Group size<input placeholder="e.g. 16" readOnly /></label>
-          <label>Email<input placeholder="you@example.com" readOnly /></label>
-          <button type="button">Check availability</button>
-          <p className={styles.small}>Your inquiry goes straight to Kathryn.</p>
+          <label>
+            Email address
+            <input placeholder="Email" readOnly />
+          </label>
+          <button type="button">Inquire now</button>
         </form>
       </section>
 
       <footer className={styles.footer}>
-        <div className={`${styles.brand} ${serif.className}`}>
-          <Mark size={28} />
+        <div className={`${styles.brand} ${serif}`}>
+          <SanctuaryMark size={28} />
           <span>
             The Sanctuary<small>at Two Rivers</small>
           </span>
         </div>
-        <p>Uvita, Puntarenas, Costa Rica · retreats@thesanctuarycostarica.com</p>
+        <p>Costa Rica · retreats@thesanctuarycostarica.com</p>
       </footer>
     </div>
   );

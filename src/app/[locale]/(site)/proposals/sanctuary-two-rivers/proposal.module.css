@@ -93,6 +93,63 @@
 .langs { position: absolute; left: 7%; bottom: 8%; display: flex; gap: 6px; }
 .langs span { padding: 5px 10px; border-radius: 999px; background: #ffffffe6; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #1d2a22; }
 
+/* In short */
+.short { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.shortItem { padding: 36px 32px; }
+.shortItem + .shortItem { border-left: 1px solid var(--line); }
+.shortItem span { display: block; margin-bottom: 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #a94a00; }
+.shortItem p { font-size: 1.08rem; line-height: 1.55; color: #2a2825; }
+
+/* Brand board */
+.brandBoard { display: grid; grid-template-columns: 1.4fr 1fr 0.8fr; grid-template-rows: auto auto; gap: 18px; }
+.brandTile { position: relative; display: grid; place-items: center; min-height: 260px; padding: 40px 28px 52px; border-radius: 20px; overflow: hidden; }
+.tileLabel { position: absolute; left: 22px; bottom: 18px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+.tileLogo { background: #f4efe6; color: #2f5d58; }
+.tileDark { background: #17241c; color: #f1dcc6; }
+.tileTeak { background: #a8643a; color: #fff; }
+.tileType { grid-column: 1 / -1; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: end; place-items: stretch; background: #fff; border: 1px solid var(--line); min-height: 0; }
+.lockup { display: flex; align-items: center; gap: 18px; font-size: clamp(2rem, 3.4vw, 2.9rem); font-weight: 600; line-height: 1; }
+.lockup small, .stacked small { display: block; margin-top: 8px; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 500; font-family: inherit; }
+.stacked { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 2rem; font-weight: 600; line-height: 1; text-align: center; }
+.stacked small { margin-top: 0; }
+.typeBig { display: block; font-size: 6rem; line-height: 0.9; color: #2f5d58; }
+.typeSample { margin-top: 12px !important; font-size: 2rem; line-height: 1.1; color: #17241c; }
+.typeSample em { color: #a8643a; }
+.typeBody { font-size: 1.05rem; color: #2a2825; }
+.typeMeta { margin-top: 10px !important; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8b8780; }
+.palette { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 18px; }
+.swatch { display: flex; flex-direction: column; gap: 2px; min-height: 150px; padding: 18px; border-radius: 16px; justify-content: flex-end; border: 1px solid #0000000d; }
+.swatch strong { font-size: 1.5rem; font-weight: 600; }
+.swatch span { font-size: 0.78rem; letter-spacing: 0.06em; opacity: 0.8; }
+.swatch small { margin-top: 6px; font-size: 0.78rem; line-height: 1.4; opacity: 0.85; }
+.appsHead { margin: 56px 0 18px; }
+.apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.app { margin: 0; display: flex; flex-direction: column; align-items: center; padding: 34px 20px 20px; border-radius: 20px; background: #efe9df; }
+.app figcaption { margin-top: 18px; font-size: 0.85rem; color: var(--ink-soft); }
+.sheet { width: 210px; aspect-ratio: 1 / 1.414; padding: 16px; background: #f4efe6; border-radius: 4px; box-shadow: 0 18px 36px #00000024; display: flex; flex-direction: column; gap: 10px; color: #17241c; }
+.sheetTop { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 600; line-height: 1; color: #2f5d58; }
+.sheetTop small { display: block; margin-top: 3px; font-size: 0.42rem; letter-spacing: 0.24em; text-transform: uppercase; }
+.sheetPhoto { position: relative; flex: 1; border-radius: 3px; overflow: hidden; }
+.sheetPhoto img, .post img { object-fit: cover; }
+.sheetTitle { font-size: 1.05rem; line-height: 1.1; }
+.sheetFacts { list-style: none; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
+.sheetFacts li { font-size: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 6px; border-radius: 99px; background: #2f5d58; color: #fff; }
+.post { position: relative; width: 240px; aspect-ratio: 1; border-radius: 6px; overflow: hidden; box-shadow: 0 18px 36px #00000024; color: #fff; }
+.postShade { position: absolute; inset: 0; background: linear-gradient(180deg, #17241c33, #17241ccc); }
+.post p { position: absolute; left: 18px; right: 18px; bottom: 44px; font-size: 1.3rem; line-height: 1.15; font-style: italic; }
+.postMark { position: absolute; left: 18px; bottom: 14px; color: #f1dcc6; }
+.cards { position: relative; width: 250px; height: 200px; }
+.bizFront, .bizBack { position: absolute; width: 190px; aspect-ratio: 85 / 55; border-radius: 8px; box-shadow: 0 14px 30px #00000026; }
+.bizFront { left: 0; top: 0; display: grid; place-items: center; background: #17241c; color: #f1dcc6; transform: rotate(-6deg); }
+.bizBack { right: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 0 16px; background: #f4efe6; color: #17241c; transform: rotate(4deg); }
+.bizBack strong { font-size: 1.15rem; font-weight: 600; }
+.bizBack span { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: #a8643a; }
+.bizBack small { margin-top: 8px; font-size: 0.55rem; color: #5d6660; }
+.includes { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; margin-top: 56px; padding: 36px; border-radius: 20px; border: 1px solid var(--line); }
+.includes ul { list-style: none; padding: 0; display: grid; gap: 10px; }
+.includes li { position: relative; padding-left: 26px; font-size: 0.97rem; line-height: 1.55; }
+.includes li::before { content: "✓"; position: absolute; left: 0; color: #b54f00; font-weight: 700; }
+
 /* Cases */
 .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
 .caseCard { display: flex; flex-direction: column; gap: 12px; }
@@ -138,7 +195,11 @@
   .wrap { width: calc(100% - 40px); }
   .section { padding-block: 72px; }
   .hero { padding-block: 128px 48px; }
-  .grid2, .grid3, .gapList, .cases, .packages, .steps, .mockPoints { grid-template-columns: 1fr; }
+  .grid2, .grid3, .gapList, .cases, .packages, .steps, .mockPoints, .short, .brandBoard, .apps, .includes, .tileType { grid-template-columns: 1fr; }
+  .shortItem + .shortItem { border-left: 0; border-top: 1px solid var(--line); }
+  .shortItem { padding: 26px 4px; }
+  .palette { grid-template-columns: 1fr 1fr; }
+  .brandTile { min-height: 200px; }
   .changeHead { display: none; }
   .changeRow { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
   .cellLabel { display: block; margin-bottom: 4px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #a94a00; }
