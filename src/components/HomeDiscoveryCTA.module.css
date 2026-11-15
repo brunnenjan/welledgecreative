@@ -1,0 +1,155 @@
+.section {
+  padding: 96px 24px;
+  background: #ffffff;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: stretch;
+  max-width: 1180px;
+  margin: 0 auto;
+  min-height: 460px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fbf7f2 0%, #f6efe6 100%);
+  border: 1px solid #efe5d8;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 56px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a4a12;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.heading {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: #1a1a1a;
+  text-wrap: balance;
+}
+
+.mark {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.markText {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+}
+
+.markBar {
+  position: absolute;
+  inset: -0.04em -0.14em -0.06em;
+  z-index: 0;
+  background: #f58222;
+  transform-origin: left center;
+}
+
+.lead {
+  margin: 24px 0 0;
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: #5c5852;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-top: 34px;
+}
+
+.actions :global(.btn) {
+  min-height: 52px;
+  gap: 12px;
+  font-size: 0.9375rem;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.textLink:hover {
+  color: #b34d00;
+}
+
+.visual {
+  position: relative;
+  min-height: 100%;
+}
+
+/* The bucket hangs into the card from its top edge and sways a little. */
+.bucket {
+  position: absolute;
+  inset: 0 -10% 0 -10%;
+  transform-origin: 50% 0;
+  animation: discovery-swing 4.2s ease-in-out infinite;
+}
+
+.bucketImg {
+  object-fit: cover;
+  object-position: 50% 0;
+}
+
+@keyframes discovery-swing {
+  0%, 100% { transform: rotate(-1.4deg); }
+  50% { transform: rotate(1.4deg); }
+}
+
+/* Keep clear of the section spine on the left edge of the page. */
+@media (min-width: 901px) and (max-width: 1400px) {
+  .section { padding-left: 96px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bucket { animation: none; }
+}
+
+@media (max-width: 900px) {
+  .section { padding: 64px 16px; }
+  .card { grid-template-columns: 1fr; min-height: 0; }
+  .copy { padding: 40px 28px 8px; }
+  .visual { height: 300px; order: 2; }
+  .bucket { inset: 0 0 -20% 0; }
+}

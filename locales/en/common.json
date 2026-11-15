@@ -100,8 +100,11 @@
     "bookCallAria": "Book a call with Well Edge Creative"
   },
   "homeDiscoveryCta": {
+    "eyebrow": "Discovery Call",
+    "highlight": "overwhelmed",
+    "secondary": "How I work with retreats",
     "heading": "Feeling overwhelmed by the possibilities?",
-    "paragraph": "If you run a retreat center, wellness venue or holistic space and you’re not sure where to start with branding, website and bookings — I’ll guide you step-by-step until your first inquiries arrive.",
+    "paragraph": "If you run a retreat center, wellness venue or holistic space and you’re not sure where to start with branding, website and bookings, I’ll guide you step-by-step until your first inquiries arrive.",
     "button": "Book a Discovery Call"
   },
   "selectedProjects": {
