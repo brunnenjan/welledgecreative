@@ -95,10 +95,10 @@ export default function CaseStudyContactSection() {
             <p>
               {t("contact.emailPrompt")}{" "}
               <a
-                href="mailto:info@well-edge-creative.com"
+                href="mailto:info@welledgecreative.com"
                 className="underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"
               >
-                info@well-edge-creative.com
+                info@welledgecreative.com
               </a>
             </p>
           </div>

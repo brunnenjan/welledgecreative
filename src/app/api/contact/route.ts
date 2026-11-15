@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
     // 1) Email to admin
     const adminMailOptions = {
       from: "noreply@well-edge-creative.com",
-      to: "jan@well-edge-creative.de",
+      to: "jan@welledgecreative.com",
       replyTo: email,
       subject: "New Contact Form - Well Edge Creative",
       text: `New contact form submission:
@@ -152,7 +152,7 @@ reCAPTCHA Score: ${score}`,
     const clientMailOptions = {
       from: "Jan Brunnenkant <noreply@well-edge-creative.com>",
       to: email,
-      replyTo: "jan@well-edge-creative.de",
+      replyTo: "jan@welledgecreative.com",
       subject: "Thank you for reaching out - Well Edge Creative",
       text: `Hi ${name},
 
@@ -182,8 +182,8 @@ https://www.welledgecreative.com`,
       adminMailOptions.text = `Irish Pub Website Anfrage\n\nName: ${name}\nE-Mail: ${email}\n${pubDetails ? `\n${pubDetails}\n` : ""}\nNachricht:\n${message}`;
       clientMailOptions.subject = german ? "Deine Anfrage zur Irish Pub Website" : "Your Irish Pub website enquiry";
       clientMailOptions.text = german
-        ? `Hallo ${name},\n\nvielen Dank für deine Anfrage zur Irish Pub Website. Deine Nachricht ist bei mir angekommen. Ich melde mich persönlich bei dir.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Deine Nachricht:\n${message}\n\nViele Grüße\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`
-        : `Hi ${name},\n\nThank you for your Irish Pub website enquiry. I have received your message and will get back to you personally.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Your message:\n${message}\n\nBest regards,\nJan Brunnenkant\nWell Edge Creative\njan@well-edge-creative.de`;
+        ? `Hallo ${name},\n\nvielen Dank für deine Anfrage zur Irish Pub Website. Deine Nachricht ist bei mir angekommen. Ich melde mich persönlich bei dir.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Deine Nachricht:\n${message}\n\nViele Grüße\nJan Brunnenkant\nWell Edge Creative\njan@welledgecreative.com`
+        : `Hi ${name},\n\nThank you for your Irish Pub website enquiry. I have received your message and will get back to you personally.\n\n${pubDetails ? `${pubDetails}\n\n` : ""}Your message:\n${message}\n\nBest regards,\nJan Brunnenkant\nWell Edge Creative\njan@welledgecreative.com`;
       const escapeHtml = (value: string) => value.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]!);
       // Keep the plain-text alternative and escape every visitor-supplied value.
       const paragraphs = clientMailOptions.text.split("\n\n").map(paragraph => `<p style="margin:0 0 20px;line-height:1.65;overflow-wrap:anywhere">${escapeHtml(paragraph).replace(/\n/g, "<br>")}</p>`).join("");

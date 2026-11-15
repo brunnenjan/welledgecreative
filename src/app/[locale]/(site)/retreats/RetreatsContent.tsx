@@ -389,7 +389,7 @@ export default function RetreatsContent() {
               </Link>
             </div>
             <span className={styles.closingEmail}>
-              <a href="mailto:info@well-edge-creative.com">info@well-edge-creative.com</a>
+              <a href="mailto:info@welledgecreative.com">info@welledgecreative.com</a>
             </span>
           </div>
         </section>

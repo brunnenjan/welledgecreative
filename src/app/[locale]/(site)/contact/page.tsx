@@ -61,7 +61,7 @@ export default function Contact() {
         setMessage({ type: "success", text: "Nachricht erfolgreich gesendet!" });
         setForm({ name:"", email:"", website:"", budget:"", timeline:"", goals:"", extra:"" });
       } else {
-        setMessage({ type: "error", text: "Die Nachricht konnte nicht gesendet werden. Bitte schreib direkt an info@well-edge-creative.com." });
+        setMessage({ type: "error", text: "Die Nachricht konnte nicht gesendet werden. Bitte schreib direkt an info@welledgecreative.com." });
       }
     } catch (error) {
       setMessage({ type: "error", text: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut." });

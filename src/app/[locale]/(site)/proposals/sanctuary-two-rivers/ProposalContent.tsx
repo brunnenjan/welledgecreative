@@ -672,8 +672,8 @@ export default function ProposalContent() {
               <Link href="/en/contact?type=discovery-call" className="btn btn-primary">
                 Book a 30-minute call <Arrow />
               </Link>
-              <a href="mailto:jan@well-edge-creative.com" className={styles.lightLink}>
-                jan@well-edge-creative.com
+              <a href="mailto:jan@welledgecreative.com" className={styles.lightLink}>
+                jan@welledgecreative.com
               </a>
               <a href="https://wa.me/4915789150323" className={styles.lightLink}>
                 WhatsApp

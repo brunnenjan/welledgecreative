@@ -110,7 +110,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         image: "https://www.welledgecreative.com/assets/profile/profile-jan-2026-v2.webp",
         jobTitle: "Brand & Web Designer",
         description: "Designer, strategist, and storyteller specializing in branding and web design that connects deeply.",
-        email: "info@well-edge-creative.com",
+        email: "info@welledgecreative.com",
         sameAs: [
           "https://www.behance.net/welledgecreative",
           "https://www.linkedin.com/in/jan-well-edge-creative",
@@ -129,7 +129,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         },
         contactPoint: {
           "@type": "ContactPoint",
-          email: "info@well-edge-creative.com",
+          email: "info@welledgecreative.com",
           contactType: "Customer Service",
           availableLanguage: ["German", "English"],
         },
@@ -151,7 +151,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         image: "https://www.welledgecreative.com/assets/logo/well-edge-logo-retina.webp",
         url: "https://www.welledgecreative.com",
         telephone: "",
-        email: "info@well-edge-creative.com",
+        email: "info@welledgecreative.com",
         priceRange: "€€€",
         address: {
           "@type": "PostalAddress",

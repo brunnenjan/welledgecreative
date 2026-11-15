@@ -381,8 +381,8 @@ export default function ContactForm() {
             {errorMessage && <p>{errorMessage}</p>}
             <p className="pt-1">
               Prefer email? Reach me at{" "}
-              <a href="mailto:info@well-edge-creative.com" className="form-link">
-                info@well-edge-creative.com
+              <a href="mailto:info@welledgecreative.com" className="form-link">
+                info@welledgecreative.com
               </a>
             </p>
           </div>
