@@ -612,6 +612,7 @@ export default function HomepageMockup({
           </span>
         </div>
         <p>Costa Rica · retreats@thesanctuarycostarica.com</p>
+        <p className={styles.draftLabel}>First mockup by Well Edge Creative · not a finished design</p>
       </footer>
     </div>
   );

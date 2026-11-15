@@ -330,6 +330,11 @@ export default function ProposalContent() {
                 direction. Scroll inside it, or open it full screen.
               </p>
             </div>
+            <p className={styles.draftNote}>
+              <strong>A first mockup, not a finished design.</strong> It shows the direction: the
+              structure, the story and the feel. Layout, copy and photos are shaped together with
+              you before anything is built.
+            </p>
             <div className={styles.browser}>
               <div className={styles.browserBar}>
                 <span className={styles.lights}>
@@ -350,8 +355,8 @@ export default function ProposalContent() {
               />
             </div>
             <p className={styles.mockNote}>
-              Homepage mockup only. Retreat dates and prices are examples. The other pages, the copy
-              and the photo selection would be finalised together with you.
+              First mockup of the homepage only. The retreat card uses your last listed retreat as an
+              example. The other pages follow once the direction is agreed.
             </p>
             <ol className={styles.mockPoints}>
               {HOMEPAGE.map((s, i) => (
@@ -381,6 +386,11 @@ export default function ProposalContent() {
               develop it with you into a complete identity.
             </p>
           </div>
+          <p className={styles.draftNote}>
+            <strong>First sketches, not final designs.</strong> The mark, colours, typefaces and the
+            examples below, like the business cards, show the direction we would take. Every detail
+            is developed and refined together with you in the Brand phase.
+          </p>
 
           <div className={styles.brandBoard}>
             <div className={`${styles.brandTile} ${styles.tileLogo}`}>
@@ -433,7 +443,7 @@ export default function ProposalContent() {
             ))}
           </div>
 
-          <h3 className={styles.appsHead}>In use</h3>
+          <h3 className={styles.appsHead}>In use · first sketches</h3>
           <div className={styles.apps}>
             <figure className={styles.app}>
               <div className={styles.sheet}>
@@ -451,7 +461,7 @@ export default function ProposalContent() {
                   <li>1,200 sq ft Pagoda</li>
                 </ul>
               </div>
-              <figcaption>Venue sheet (PDF) for retreat leaders</figcaption>
+              <figcaption>Venue sheet for retreat leaders · sketch</figcaption>
             </figure>
             <figure className={styles.app}>
               <div className={styles.post}>
@@ -462,7 +472,7 @@ export default function ProposalContent() {
                   <SanctuaryMark size={22} stroke={1.8} />
                 </span>
               </div>
-              <figcaption>Instagram post with a guest voice</figcaption>
+              <figcaption>Instagram post with a guest voice · sketch</figcaption>
             </figure>
             <figure className={styles.app}>
               <div className={styles.cards}>
@@ -475,7 +485,7 @@ export default function ProposalContent() {
                   <small>retreats@thesanctuarycostarica.com</small>
                 </div>
               </div>
-              <figcaption>Business card, front and back</figcaption>
+              <figcaption>Business card, front and back · sketch</figcaption>
             </figure>
           </div>
 

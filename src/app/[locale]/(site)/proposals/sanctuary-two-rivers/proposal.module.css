@@ -56,6 +56,10 @@
 /* Soft band */
 .softBand { background: #f7f4ee; }
 
+/* First drafts */
+.draftNote { display: block; max-width: 46rem; margin: -20px 0 40px !important; padding: 16px 20px 16px 22px; border-left: 3px solid var(--color-accent); background: #fff7ef; border-radius: 0 12px 12px 0; font-size: 0.95rem; color: #4f4c47; }
+.draftNote strong { color: #1a1a1a; }
+
 /* Change and effect table */
 .changeTable { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
 .changeHead, .changeRow { display: grid; grid-template-columns: 0.8fr 1.2fr 1.1fr; gap: 28px; padding: 22px 28px; }
