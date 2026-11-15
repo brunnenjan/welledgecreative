@@ -166,19 +166,53 @@
 .footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 36px max(32px, calc((100% - 1180px) / 2)); background: var(--jungle); color: #c9d0c9; font-size: 0.85rem; }
 .footer .brand { color: #fff; font-size: 1.2rem; }
 
+.swipeHint { display: none; }
+
 @media (max-width: 860px) {
   .wrap, .heroText, .trust, .spacesHead { width: calc(100% - 40px); }
-  .nav { padding: 18px 20px; }
+  .nav { padding: 18px 20px 32px; }
   .links, .navCta { display: none; }
-  .arrival { grid-template-columns: 1fr; grid-template-rows: 52% 48%; }
-  .arrivalCopy { padding: 32px 24px; justify-content: flex-start; }
-  .arrivalStep p { font-size: 1.25rem; }
+
+  /* Thin Fraunces on a small screen reads too light: a step heavier, a touch larger. */
+  .site h2 { font-size: 2.05rem; line-height: 1.12; font-weight: 400; letter-spacing: -0.015em; }
+  .subhead, .retreat h3, .form h3 { font-weight: 400; }
+  .kicker, .kickerLight { font-size: 0.74rem; letter-spacing: 0.16em; }
+
+  /* Hero: the jungle is bright, so the text gets a darker ground. */
+  .heroShade { background: linear-gradient(180deg, #0d171299 0%, #0d171240 22%, #0d1712b3 48%, #0d1712f2 78%, #0d1712 100%); }
+  .hero h1 { font-size: 2.9rem; font-weight: 400; text-shadow: 0 2px 24px #0d171299; }
+  .hero .kicker { color: #f3d6bb; text-shadow: 0 1px 10px #0d1712; }
+  .heroLead { font-size: 1.05rem; }
+
+  /* Arrival: picture on top, words below on the dark ground, never on top of each other. */
+  .arrival { grid-template-columns: 1fr; grid-template-rows: 42% 58%; }
+  .arrivalPics { min-height: 0; }
+  .arrivalCopy { padding: 28px 22px 24px; justify-content: flex-start; }
+  .arrivalStep p { font-size: 1.1rem; line-height: 1.5; font-weight: 400; }
+  .stepLabel { margin-bottom: 8px; font-size: 1rem; }
+  .arrivalDots { margin-top: auto; padding-top: 20px; }
+  .animated .arrivalScroll { height: 340vh; }
+
   .numbers { grid-template-columns: 1fr 1fr; padding-block: 64px; }
   .host, .rituals, .plan { grid-template-columns: 1fr; gap: 44px; padding-block: 80px; }
   .whyGrid, .hostSteps, .voiceRow, .retreat, .formRow { grid-template-columns: 1fr; }
   .join, .spacesBand { padding-block: 80px; }
-  .spaceTrack { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
-  .space { scroll-snap-align: start; }
+  .voices blockquote { font-size: 1.7rem; font-weight: 400; }
+
+  /* Spaces: a plain swipe row, one card at a time with the next one peeking in. */
+  .spacesBand { overflow: visible; }
+  .spacesHead { margin-bottom: 28px; }
+  .spaceTrack { width: auto; gap: 14px; padding: 0 20px 6px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .spaceTrack::-webkit-scrollbar { display: none; }
+  .space { width: 82vw; scroll-snap-align: start; }
+  .swipeHint { display: flex; align-items: center; gap: 14px; width: calc(100% - 40px); margin: 22px auto 0 !important; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+  .swipeDots { display: flex; gap: 6px; margin-left: auto; }
+  .swipeDots span { width: 7px; height: 7px; border-radius: 50%; background: #b9c2bb; transition: background 0.25s, width 0.25s; }
+  .swipeDots .dotOn { width: 20px; border-radius: 4px; background: var(--river); }
+
   .joinHead { flex-direction: column; align-items: start; }
   .door, .doorPrimary { min-width: 0; flex: 1 1 100%; }
 }
+
+/* Back to the proposal when the mockup is open on its own (never inside the proposal frame). */
+.back { position: fixed; z-index: 20; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 16px; border-radius: 999px; background: #17241ce6; color: #fff !important; font-size: 0.82rem; font-weight: 600; white-space: nowrap; box-shadow: 0 10px 30px #0000004d; backdrop-filter: blur(8px); }

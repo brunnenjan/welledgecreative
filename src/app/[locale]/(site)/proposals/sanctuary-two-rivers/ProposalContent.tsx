@@ -360,6 +360,17 @@ export default function ProposalContent() {
                 className={styles.frame}
                 loading="lazy"
               />
+              {/* On phones a page inside a page cannot be scrolled well, so it opens on its own. */}
+              <a href={MOCKUP} className={styles.phonePoster}>
+                <Image src="/proposals/sanctuary-two-rivers/river.webp" alt="" fill sizes="100vw" />
+                <span className={styles.posterShade} />
+                <span className={styles.posterText}>
+                  <span className={`${styles.posterTitle} ${serif.className}`}>
+                    Where Two Rivers Meet, <em>Nature Heals</em>
+                  </span>
+                  <span className={styles.posterButton}>Open the homepage mockup →</span>
+                </span>
+              </a>
             </div>
             <p className={styles.mockNote}>
               First mockup of the homepage only. The retreat card uses your last listed retreat as an

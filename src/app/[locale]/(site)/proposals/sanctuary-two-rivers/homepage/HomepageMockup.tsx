@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import SanctuaryMark from "../SanctuaryMark";
@@ -133,6 +133,19 @@ export default function HomepageMockup({
   sans: string;
 }) {
   const root = useRef<HTMLDivElement>(null);
+  const track = useRef<HTMLDivElement>(null);
+  const [space, setSpace] = useState(0);
+  const [standalone, setStandalone] = useState(false);
+
+  useEffect(() => setStandalone(window.self === window.top), []);
+
+  // On phones the spaces are a swipe row; the dots follow the card in view.
+  function onSwipe() {
+    const t = track.current;
+    const first = t?.firstElementChild as HTMLElement | null;
+    if (!t || !first) return;
+    setSpace(Math.min(SPACES.length - 1, Math.round(t.scrollLeft / (first.offsetWidth + 14))));
+  }
 
   useEffect(() => {
     const el = root.current;
@@ -189,7 +202,7 @@ export default function HomepageMockup({
             .to(pics[i - 1], { opacity: 0, duration: 1 })
             .to(pics[i], { opacity: 1, duration: 1 }, "<")
             .to(texts[i - 1], { opacity: 0, y: -40, duration: 0.6 }, "<")
-            .to(texts[i], { opacity: 1, y: 0, duration: 0.6 }, "<0.4")
+            .to(texts[i], { opacity: 1, y: 0, duration: 0.6 }, "<0.6")
             .to(dots[i - 1], { opacity: 0.35, duration: 0.2 }, "<")
             .to(dots[i], { opacity: 1, duration: 0.2 }, "<")
             .to({}, { duration: 0.6 });
@@ -475,7 +488,7 @@ export default function HomepageMockup({
             <p className={styles.kicker}>Retreat Center & Accommodations</p>
             <h2 className={serif}>Tropical Modern Zen Eco-Chic</h2>
           </div>
-          <div className={styles.spaceTrack}>
+          <div ref={track} className={styles.spaceTrack} onScroll={onSwipe}>
             {SPACES.map((s) => (
               <figure key={s.name} className={styles.space}>
                 <div className={styles.spaceImg}>
@@ -494,6 +507,14 @@ export default function HomepageMockup({
               </figure>
             ))}
           </div>
+          <p className={styles.swipeHint} aria-hidden="true">
+            Swipe to explore →
+            <span className={styles.swipeDots}>
+              {SPACES.map((s, i) => (
+                <span key={s.name} className={i === space ? styles.dotOn : undefined} />
+              ))}
+            </span>
+          </p>
         </div>
       </section>
 
@@ -614,6 +635,11 @@ export default function HomepageMockup({
         <p>Costa Rica · retreats@thesanctuarycostarica.com</p>
         <p className={styles.draftLabel}>First mockup by Well Edge Creative · not a finished design</p>
       </footer>
+      {standalone && (
+        <a className={styles.back} href="/en/proposals/sanctuary-two-rivers#mockup">
+          ← Proposal
+        </a>
+      )}
     </div>
   );
 }
