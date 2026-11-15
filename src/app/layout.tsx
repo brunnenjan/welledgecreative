@@ -107,7 +107,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         "@id": "https://www.welledgecreative.com/#person",
         name: "Jan Brunnenkant",
         url: "https://www.welledgecreative.com",
-        image: "https://www.welledgecreative.com/assets/profile/profile-jan-2026-v2.webp",
+        image: "https://www.welledgecreative.com/assets/profile/profile-jan-2026-v3.webp",
         jobTitle: "Brand & Web Designer",
         description: "Designer, strategist, and storyteller specializing in branding and web design that connects deeply.",
         email: "info@welledgecreative.com",

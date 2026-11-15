@@ -358,10 +358,10 @@ export default function RetreatsContent() {
             <div className={styles.about}>
               <div className={styles.aboutRow}>
                 <Image
-                  src="/assets/profile/profile-jan-2026-v2.webp"
+                  src="/assets/profile/profile-jan-2026-v3.webp"
                   alt="Jan, founder of Well Edge Creative"
-                  width={280}
-                  height={315}
+                  width={1254}
+                  height={1254}
                   className={styles.aboutPhoto}
                 />
                 <div>
