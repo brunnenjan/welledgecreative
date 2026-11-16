@@ -29,8 +29,8 @@ const STRENGTHS = [
     text: "Kirby Yoga Retreats calls Sonora Kirby's favorite place to host retreats and consistently a favorite among guests. Three retreats are already listed for 2027.",
   },
   {
-    title: "The whole place, for one group",
-    text: "Exclusive to one group at a time, for up to 30 guests. The pool, the terrace and the common areas belong to the group for the whole stay.",
+    title: "Guests already vouch for you",
+    text: "734 reviews on Booking.com and 157 on Google (December 2025), and most guests come through personal recommendations. The trust is there.",
   },
   {
     title: "Everything a retreat needs, on site",
@@ -40,6 +40,15 @@ const STRENGTHS = [
     title: "Guests leave in love",
     text: "Sonora was incredible, walking distance to the beach, and completely immersed in the jungle. I felt extremely safe and at home. Olivia Yarrow, retreat guest",
   },
+];
+
+// From the discovery call (22 December 2025) and the proposal call (23 January 2026).
+const HEARD = [
+  { title: "Contacts are not the problem", text: "Alessandra hears from new retreat leaders every day. Bookings and returning retreats are there." },
+  { title: "Leaders find it hard to fill their retreats", text: "Some run half full or get cancelled. Not every leader is good at marketing, so Sonora's website should help them sell." },
+  { title: "The first questions are answered too late", text: "Food, group size and price are what people ask first, and the website hides them." },
+  { title: "It feels lifeless", text: "Clean and calm, but like a template. You don't feel anything, and the strong real-world experience doesn't come through." },
+  { title: "Two sites should become one", text: "With room for every kind of retreat and all your amenities, not only yoga." },
 ];
 
 const FACTS = [
@@ -107,8 +116,13 @@ const CHANGES = [
     effect: "People see the real Sonora before they arrive: groups, food, faces. The website finally looks like the place.",
   },
   {
-    today: "A homepage for holidaymakers",
-    change: "Two doors on the first screen: Host your retreat and Stay with us, each with its own path",
+    today: "Leaders sell Sonora on their own",
+    change: "A page for every retreat at Sonora that leaders send to their guests: the place, the rooms, the food, the shala and real guest voices",
+    effect: "Guests fall in love before they book, so leaders fill their retreats more easily and fewer run half full.",
+  },
+  {
+    today: "A homepage for holidaymakers, only yoga",
+    change: "Two doors on the first screen, Host your retreat and Stay with us, and room for every kind of retreat: yoga, meditation, dance, training, ceremonies",
     effect: "Retreat leaders and travellers each find their Sonora in seconds.",
   },
   {
@@ -117,9 +131,9 @@ const CHANGES = [
     effect: "The calendar you already have becomes visible, so the place looks as alive online as it is.",
   },
   {
-    today: "Facts in a paragraph, experiences missing",
-    change: "A venue page with capacity, spaces, meals, experiences, a venue sheet, and the words of Kirby and her guests",
-    effect: "Leaders and guests understand the whole Sonora at a glance, and Claire answers fewer basic questions.",
+    today: "Food, group size and price answered too late",
+    change: "The first questions answered first: capacity, meals, rates from, experiences and a venue sheet, plus the words of Kirby and her guests",
+    effect: "A leader understands in 50 seconds what they get with Sonora, and Claire answers fewer basic questions.",
   },
   {
     today: "WordPress 5.4, no main heading",
@@ -172,57 +186,52 @@ const PALETTE = [
   { name: "Sand", hex: "#F6F1EA", role: "Paper and light pages", ink: "#1e2f2a" },
 ];
 
-type Package = { name: string; tag: string; intro: string; items: string[]; featured?: boolean };
+// One project with one checkpoint: simpler to say yes to than two separate phases.
+const OFFER = {
+  name: "The new Sonora website",
+  intro: "One project, about 5 to 6 weeks, built from this proposal and what you already have.",
+  steps: [
+    {
+      title: "Shape it together",
+      time: "about 2 weeks",
+      items: [
+        "Kickoff with Claire and Alessandra",
+        "Final structure for leaders and guests, from this mockup",
+        "Homepage and key pages designed, text written with you",
+        "Review call: you approve before anything is built",
+      ],
+    },
+    {
+      title: "Build and launch",
+      time: "about 3 to 4 weeks",
+      items: [
+        "Both sites merged into sonoracostarica.com",
+        "A page for every retreat that leaders can share",
+        "Rooms with your KrossBooking engine, English and Spanish",
+        "Fast and up to date, launched and handed over to your team",
+      ],
+    },
+  ],
+};
 
-const PACKAGES: Package[] = [
-  {
-    name: "Website",
-    tag: "One home for Sonora",
-    intro: "Everything you already have, brought together on one site that shows Sonora as it is.",
-    items: [
-      "Both sites merged into sonoracostarica.com",
-      "Host and Stay paths, upcoming retreats, experiences",
-      "Venue page with an inquiry form for dates and group size",
-      "Room pages with your Booking.com engine",
-      "English and Spanish, fast and up to date",
-    ],
-  },
-  {
-    name: "Everything",
-    tag: "Recommended",
-    intro: "The new website plus a content routine and fresh pictures, so Sonora stays alive online.",
-    items: [
-      "Everything in Website",
-      "Your photos from both sites and Instagram, selected and edited",
-      "Retreat leader pictures, with permission and credit",
-      "Optional: a photo day during a retreat",
-      "Designed venue sheet (PDF) and a brand system around your logo",
-    ],
-    featured: true,
-  },
-  {
-    name: "Content",
-    tag: "Pictures only",
-    intro: "If you want to keep the current sites for now and only refresh what people see.",
-    items: [
-      "Best photos from your yoga site and Instagram, edited",
-      "Optional: a photo day during a retreat",
-      "Ready to use on the website and Instagram",
-    ],
-  },
+const EXTRAS = [
+  "A photo day during a retreat",
+  "Fresh drone aerials",
+  "Designed venue sheet (PDF) for leaders",
+  "Monthly care: new retreats and small changes",
 ];
 
 const OWNERS = [
-  { q: "What is it?", a: "One website for all of Sonora, filled with the pictures, retreats and guest voices you already have, so people see the place as it really is." },
-  { q: "Why now?", a: "Your best content sits on a second site most people never see, while the main site runs on 2020 technology and shows empty rooms. The place has moved on, the website hasn't." },
-  { q: "Isn't this a big project?", a: "Less than it looks. No photo shoot is needed to launch, because the pictures already exist. You need one kick-off call, a few approvals, and access to both sites." },
-  { q: "What if we don't like it?", a: "You see the structure and the first pages before anything is built, and nothing goes live without your yes. Every package is a fixed price, confirmed in writing." },
+  { q: "What is it?", a: "One website for all of Sonora that shows the place as it really is and helps your retreat leaders fill their groups. One project, one fixed price." },
+  { q: "Why now?", a: "Your best content sits on a second site most people never see, while the main site runs on 2020 technology and feels empty. The place has moved on, the website hasn't." },
+  { q: "Isn't this a big project?", a: "About 5 to 6 weeks in total, and most of the work is mine. No photo shoot is needed, because the pictures already exist. You need a kickoff, a review call and access to both sites." },
+  { q: "What if we don't like it?", a: "Nothing is built before you approve the design in the review call. If you stop there, you keep the structure and designs and pay only for that first step." },
 ];
 
 const STEPS = [
   { title: "Talk it through", text: "A 30-minute call with Claire, Alessandra and Francis, where we go through this page and you tell me what matters most." },
-  { title: "Shape the package", text: "You pick a package or we adjust one. I confirm scope, timeline and a fixed price in writing." },
-  { title: "Start", text: "I gather everything from both sites and Instagram, then you review the new structure and first pages." },
+  { title: "Confirm", text: "I send one fixed price in writing, and we pick a start date." },
+  { title: "Start", text: "Kickoff with Claire and Alessandra. About two weeks later you review and approve the design, then I build." },
 ];
 
 function Arrow() {
@@ -258,8 +267,8 @@ export default function ProposalContent() {
             Let&apos;s show it in one place.
           </h1>
           <p className={styles.lead}>
-            For Claire, Alessandra and Francis: you already have the groups, the pictures and the
-            guests who love you. Here is how one website shows Sonora as it really is: alive, full of
+            For Claire, Alessandra and Francis, building on our calls in December and January: you
+            already have the groups, the pictures and the guests who love you. Here is how one website shows Sonora as it really is: alive, full of
             people, and all in one place.
           </p>
           <p className={styles.byline}>Jan Brunnenkant · Well Edge Creative · November 2026</p>
@@ -292,7 +301,7 @@ export default function ProposalContent() {
           </div>
           <div className={styles.shortItem}>
             <span>What I would do</span>
-            <p>One home under your mandala, full of your own pictures, with two doors: Host and Stay.</p>
+            <p>One new website under your mandala, full of your own pictures, that helps your leaders sell.</p>
           </div>
           <div className={styles.shortItem}>
             <span>What it brings</span>
@@ -319,6 +328,29 @@ export default function ProposalContent() {
             ))}
           </dl>
         </div>
+
+        {/* What we heard */}
+        <section className={`${styles.wrap} ${styles.section}`}>
+          <div className={styles.sectionHead}>
+            <p className={styles.eyebrow}>
+              <span className={styles.dot} />
+              What we heard from you
+            </p>
+            <h2>The website&apos;s real job: help your leaders fill their retreats.</h2>
+            <p>From our calls on 22 December and 23 January.</p>
+          </div>
+          <ol className={own.heard}>
+            {HEARD.map((h, i) => (
+              <li key={h.title}>
+                <span className={serif.className}>{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{h.title}</h3>
+                  <p>{h.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
 
         {/* Strengths */}
         <section id="see" className={`${styles.wrap} ${styles.section}`}>
@@ -719,27 +751,44 @@ export default function ProposalContent() {
             <div className={`${styles.sectionHead} ${styles.center}`}>
               <p className={`${styles.eyebrow} ${styles.centerEyebrow}`}>
                 <span className={styles.dot} />
-                Your options
+                The offer
               </p>
-              <h2>Start with one home for Sonora, or do it all at once.</h2>
+              <h2>One project. One price. You approve before I build.</h2>
             </div>
-            <div className={styles.packages}>
-              {PACKAGES.map((p) => (
-                <article key={p.name} className={`${styles.package} ${p.featured ? styles.featured : ""}`}>
-                  <span className={styles.tag}>{p.tag}</span>
-                  <h3>{p.name}</h3>
-                  <p className={styles.packageIntro}>{p.intro}</p>
-                  <ul>
-                    {p.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+            <div className={own.offer}>
+              <article className={`${styles.package} ${styles.featured}`}>
+                <span className={styles.tag}>Recommended</span>
+                <h3>{OFFER.name}</h3>
+                <p className={styles.packageIntro}>{OFFER.intro}</p>
+                <div className={own.offerSteps}>
+                  {OFFER.steps.map((st, i) => (
+                    <div key={st.title}>
+                      <span className={own.offerNum}>{i + 1}</span>
+                      <h4>{st.title}</h4>
+                      <p className={own.offerTime}>{st.time}</p>
+                      <ul>
+                        {st.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </article>
+              <article className={styles.package}>
+                <span className={styles.tag}>Optional, any time</span>
+                <h3>Extras</h3>
+                <p className={styles.packageIntro}>Nice to have, not needed to launch.</p>
+                <ul>
+                  {EXTRAS.map((e) => (
+                    <li key={e}>{e}</li>
+                  ))}
+                </ul>
+              </article>
             </div>
             <p className={styles.priceNote}>
-              Every package is a fixed price, confirmed in writing before we start. No hourly
-              surprises.
+              One fixed price, confirmed in writing before we start, paid in two parts: at the start
+              and at launch.
             </p>
           </div>
         </section>

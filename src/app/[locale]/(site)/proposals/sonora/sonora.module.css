@@ -116,3 +116,25 @@
   .voices { grid-template-columns: 1fr; gap: 32px; justify-items: center; padding-bottom: 64px; }
   .phone { width: min(280px, 80vw); }
 }
+
+/* What we heard */
+.heard { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 48px; }
+.heard li { display: flex; gap: 20px; padding: 24px 0; border-top: 1px solid var(--line); }
+.heard li:last-child { grid-column: 1 / -1; }
+.heard span { font-size: 1.6rem; line-height: 1; color: #2d7f7b; min-width: 2ch; }
+.heard h3 { font-size: 1.1rem; }
+.heard p { margin-top: 6px !important; color: var(--ink-soft); font-size: 0.97rem; }
+@media (max-width: 900px) {
+  .heard { grid-template-columns: 1fr; }
+}
+
+/* The offer: one project, two steps */
+.offer { display: grid; grid-template-columns: 1.6fr 0.8fr; gap: 24px; align-items: stretch; }
+.offerSteps { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.offerNum { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #1e2f2a; color: #fff; font-size: 0.85rem; font-weight: 700; }
+.offerSteps h4 { margin: 12px 0 0; font-size: 1.15rem; }
+.offerTime { margin-top: 2px !important; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a94a00; font-weight: 700; }
+.offerSteps ul { margin-top: 10px !important; }
+@media (max-width: 900px) {
+  .offer, .offerSteps { grid-template-columns: 1fr; }
+}
