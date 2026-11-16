@@ -8,131 +8,160 @@ import own from "./sonora.module.css";
 
 /**
  * Proposal for Sonora Caribbean Jungle Retreat (Playa Negra, Puerto Viejo, Costa Rica). English,
- * like the conversation with Claire. Facts about their site were checked on 15 November 2026;
- * every photo is their own. The logo stays as it is. Claire likes the idea, the owners have not
+ * like the conversation with Claire. Facts were checked on 15 and 16 November 2026 on their two
+ * websites and Instagram; every photo is their own, the quotes are attributed. The logo stays as it is. Claire likes the idea, the owners have not
  * been spoken to yet, so the page also has to work when she forwards it to them.
  */
 
 const serif = Lora({ subsets: ["latin"], style: ["normal", "italic"] });
 const sans = Mulish({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
-const CHECKED = "15 November 2026";
+const CHECKED = "15 and 16 November 2026";
 const IMG = "/proposals/sonora";
 const MOCKUP = "/en/proposals/sonora/homepage";
 
+// People first: the hero strip shows life at Sonora before a single word of analysis.
+const STRIP = ["ys-yoga-group", "ys-chef", "ig-guest-terrace", "ys-shala-pair", "ig-team", "ys-food-plate"];
+
 const STRENGTHS = [
   {
-    title: "The whole place, for one group",
-    text: "Sonora is exclusive to one group at a time, for up to 30 guests. The pool, the terrace and the common areas belong to the group for the whole stay. Many retreat leaders look for exactly that.",
+    title: "Leaders love it and come back",
+    text: "Kirby Yoga Retreats calls Sonora Kirby's favorite place to host retreats and consistently a favorite among guests. Three retreats are already listed for 2027.",
   },
   {
-    title: "Jungle, stream and a quiet beach",
-    text: "Playa Negra, much less crowded than other beaches on the Caribbean, hundred-year-old trees and a stream running through the land. A setting that feels far away and is easy to reach.",
+    title: "The whole place, for one group",
+    text: "Exclusive to one group at a time, for up to 30 guests. The pool, the terrace and the common areas belong to the group for the whole stay.",
   },
   {
     title: "Everything a retreat needs, on site",
-    text: "A 100 m² Yoga Shala in the middle of the garden, a saltwater pool, chefs cooking with organic ingredients from local farms, and resident teachers for yoga, meditation and dance.",
+    text: "A 100 m² Yoga Shala in the garden, a saltwater pool, chefs cooking with organic ingredients from local farms, resident teachers, sound baths and healing massage.",
   },
   {
-    title: "Days that fill themselves",
-    text: "Surf lessons, horseback rides, bee tours, waterfall hikes, kayak trips and cacao ceremonies can be added to every package, and the Oasis restaurant welcomes guests with dinner under the stars.",
+    title: "Guests leave in love",
+    text: "Sonora was incredible, walking distance to the beach, and completely immersed in the jungle. I felt extremely safe and at home. Olivia Yarrow, retreat guest",
+  },
+];
+
+const FACTS = [
+  { value: "3", label: "retreats already listed for 2027" },
+  { value: "30", label: "guests, one group at a time" },
+  { value: "100 m²", label: "open-air Yoga Shala" },
+  { value: "1", label: "home for all of it, under your mandala" },
+];
+
+// Everything Sonora already owns, spread over three places.
+const SCATTERED = [
+  {
+    where: "sonoracostarica.com",
+    what: "The hotel site that comes up first: rooms, Oasis restaurant, Host Your Retreat as text, a gallery from 2023.",
+    img: "shala.webp",
+  },
+  {
+    where: "puertoviejoyogaretreat.com",
+    what: "Your second site, as Yoga Sonora with its own logo: group yoga, sound baths, food, a drone film, testimonials and three retreats for 2027. Not linked from the hotel site.",
+    img: "ys-yoga-group.webp",
+  },
+  {
+    where: "@sonora.jungleretreat",
+    what: "Instagram, fresh every week: daily yoga, guests on their terraces, your team, the beach.",
+    img: "ig-team.webp",
   },
 ];
 
 const GAPS = [
   {
-    title: "The retreat page has no pictures",
-    text: "Host Your Retreat is text with three small icons. The Yoga Shala appears once on the whole site, in the gallery, with mats laid out and nobody on them. A leader can't picture their own group there.",
+    title: "Your best content lives on a second website",
+    text: "Group yoga, sound baths, the food, the drone film, guest testimonials and your 2027 retreats are on puertoviejoyogaretreat.com, under a second name and logo. The hotel site doesn't link to it, so most people never see it.",
+  },
+  {
+    title: "The main site shows no retreat",
+    text: "On sonoracostarica.com, Host Your Retreat is text with three small icons, and the Yoga Shala appears once, in the gallery, with nobody on the mats. A leader can't picture their group there.",
   },
   {
     title: "The gallery stops in 2023",
-    text: "Fifteen photos, all uploaded in July 2023: rooms, garden, pool and a few single guests. Meanwhile your Instagram shows daily yoga, guests and your team in 2026, and none of it reaches the website.",
+    text: "Fifteen photos, all uploaded in July 2023: rooms, garden, pool and a few single guests. Your Instagram shows daily yoga, guests and your team in 2026, and none of it reaches the website.",
   },
   {
     title: "The homepage speaks to holidaymakers",
-    text: "The first screen says Beautiful beach, relaxing vacation, delicious food. Host Your Retreat is one of seven menu items, and the strongest facts (one group at a time, up to 30 guests) sit inside a paragraph on a subpage.",
+    text: "The first screen says Beautiful beach, relaxing vacation, delicious food. The strongest facts for leaders (one group at a time, up to 30 guests) sit inside a paragraph on a subpage.",
   },
   {
-    title: "Leaders have to ask for everything",
-    text: "No rates from, no available dates, no venue sheet to share with a co-teacher. The page ends with For more information, click here and an empty contact form.",
-  },
-  {
-    title: "Room pages say almost nothing",
-    text: "Standard Room, Tropical Bungalow and Caribbean Studio each show a gallery and one line: The rate is based on double occupancy including breakfast. Size, beds and views are missing.",
+    title: "Most of Sonora is missing from the page",
+    text: "Sound baths, healing massage, the chef's food, your team and your guests' words appear nowhere on the main site. The rooms get one line each, and Host Your Retreat ends with For more information, click here.",
   },
   {
     title: "Old technology under the surface",
-    text: "The site runs on WordPress 5.4 from 2020, several major versions behind, the homepage has no main heading for Google, and the film at the top is a WhatsApp video. The English reads like a translation.",
+    text: "WordPress 5.4 from 2020, several major versions behind, no main heading on the homepage for Google, and a WhatsApp video at the top while a real drone film sits on the other site.",
   },
 ];
 
 const CHANGES = [
   {
-    today: "A retreat page without pictures, a gallery from 2023",
-    change: "Real retreat pictures: groups practicing, eating and resting at Sonora, from the leaders' own Instagram with their permission, plus a drone flight over jungle, pool and Playa Negra",
-    effect: "Leaders see their group here before they write. Every picture is proof that Sonora works for retreats.",
+    today: "Two websites, two names, two logos",
+    change: "One home on sonoracostarica.com under your mandala logo: hotel, retreats, food and experiences together",
+    effect: "Every leader and every guest sees all of Sonora in one place. Google sees one strong site instead of two weak ones.",
+  },
+  {
+    today: "A main site with no people on it",
+    change: "Your group yoga, sound baths, food, team and Instagram pictures on the homepage, with your drone film as the first moving picture",
+    effect: "People see the real Sonora before they arrive: groups, food, faces. The website finally looks like the place.",
   },
   {
     today: "A homepage for holidaymakers",
     change: "Two doors on the first screen: Host your retreat and Stay with us, each with its own path",
-    effect: "Retreat leaders, who bring 30 guests at once, find their way in seconds. Couples still find the rooms.",
+    effect: "Retreat leaders and travellers each find their Sonora in seconds.",
   },
   {
-    today: "Facts hidden in a paragraph, no rates",
-    change: "A venue page with capacity, spaces, meals, activities, rates from, a downloadable venue sheet and a form that asks for dates and group size",
-    effect: "Leaders can put Sonora on their shortlist without emailing first. Claire gets inquiries that already fit.",
+    today: "2027 retreats hidden on the second site",
+    change: "Upcoming retreats on the homepage, with leader, dates and a link to book",
+    effect: "The calendar you already have becomes visible, so the place looks as alive online as it is.",
   },
   {
-    today: "No sign of the retreats that happen here",
-    change: "A section for upcoming retreats at Sonora, with the leader's name, dates and a link to their booking",
-    effect: "Guests can join a retreat, leaders get visibility for theirs, and the place looks alive all year.",
+    today: "Facts in a paragraph, experiences missing",
+    change: "A venue page with capacity, spaces, meals, experiences, a venue sheet, and the words of Kirby and her guests",
+    effect: "Leaders and guests understand the whole Sonora at a glance, and Claire answers fewer basic questions.",
   },
   {
-    today: "Room pages with one line",
-    change: "Each room with size, beds, view, what's included and the Booking.com engine you already use",
-    effect: "Fewer questions by mail, more direct bookings.",
-  },
-  {
-    today: "WordPress 5.4, no main heading, a phone video",
-    change: "An up-to-date, fast site with clean headings, short film loops from the drone and the retreats, and natural English and Spanish",
+    today: "WordPress 5.4, no main heading",
+    change: "An up-to-date, fast site with clean headings and natural English and Spanish",
     effect: "Safer, faster, easier to find on searches like yoga retreat venue Costa Rica Caribbean.",
   },
 ];
 
 const CONTENT = [
   {
-    img: "ig-yoga-class.webp",
-    tag: "Already there",
-    title: "Your own Instagram",
-    text: "Daily yoga, guests on their terraces, your team, the beach: your account already shows the life the website is missing. These pictures go straight onto the new site, next to your best website photos.",
+    img: "ys-yoga-stretch.webp",
+    tag: "Already yours",
+    title: "Your yoga site",
+    text: "Group classes, sound baths, massage, the chef and the food. Beautifully shot, it only needs to move to the main site where people actually look.",
   },
   {
-    img: "lounge.webp",
-    tag: "From your groups",
-    title: "Retreat pictures from Instagram",
-    text: "The leaders who host at Sonora post their retreats too. We ask them for permission, pick the best group moments and credit them on the site. They get visibility, you get real pictures of whole groups at Sonora.",
+    img: "ig-guest-terrace.webp",
+    tag: "Already yours",
+    title: "Your Instagram",
+    text: "Fresh every week: daily yoga, guests on their terraces, your team, the beach. A simple routine brings the best posts onto the website too.",
   },
   {
-    img: "grounds.webp",
-    tag: "New",
-    title: "A drone flight",
-    text: "A drone pilot I know is in the area. Jungle, stream, pool and Playa Negra from above, as photos and short film loops for the first screen.",
+    img: "ys-shala-pair.webp",
+    tag: "From your leaders",
+    title: "Your retreat leaders",
+    text: "Kirby and the other leaders post their retreats at Sonora. With their permission we add group moments and credit them, so they get visibility and you get proof.",
   },
   {
-    img: "yoga-guest.webp",
-    tag: "New",
-    title: "A day with a group",
-    text: "With a leader's consent, one session, one meal and one evening photographed during a real retreat. After that, a simple routine so new pictures keep coming in.",
+    img: "ys-drone-grounds.webp",
+    tag: "Already yours",
+    title: "Your drone film",
+    text: "The aerials on your yoga site open the new homepage, jungle and pool from above. If you ever want fresh ones or a photo day during a retreat, that's an option, not a must.",
   },
 ];
 
 const HOMEPAGE = [
-  { title: "Your Caribbean Jungle Retreat", text: "Your own words on the first screen, with the garden behind them and two doors: Host your retreat or Stay with us." },
-  { title: "The walk in, like a film", text: "The picture holds while the story moves on: the path, the stream, the shala, the pool. People feel the place before they read about it." },
-  { title: "The facts leaders look for", text: "One group at a time, up to 30 guests, a 100 m² Yoga Shala, a saltwater pool. Counted up as you scroll." },
-  { title: "Life at Sonora", text: "Daily yoga, guests, your team and the beach, straight from your Instagram, with one place marked for the drone flight." },
-  { title: "Rooms, the Oasis and your team", text: "Three rooms with what's included, the restaurant with dinner under the stars, and the people who bring Sonora to life." },
-  { title: "One inquiry form", text: "Dates, group size and the kind of retreat, so Claire can answer with availability right away." },
+  { title: "A group in the shala, first", text: "Your own group yoga photo on the first screen, with your words and two doors: Host your retreat or Stay with us." },
+  { title: "The walk in, like a film", text: "The path, the stream from above, Playa Negra, a guest on her terrace. People feel the place before they read about it." },
+  { title: "Leaders, with proof", text: "Everything a host needs, the activities to add, and Kirby's words about Sonora." },
+  { title: "Your 2027 retreats", text: "Here & Now, UPLIFT and Mommy + Me, with dates and leaders, so the place looks alive all year." },
+  { title: "Life, food and experiences", text: "Group practice, the chef, your food, sound baths and massage, and a guest's own words." },
+  { title: "Rooms, your team, one form", text: "Three rooms, the people who bring Sonora to life, and one inquiry form with dates and group size." },
 ];
 
 const PALETTE = [
@@ -147,53 +176,53 @@ type Package = { name: string; tag: string; intro: string; items: string[]; feat
 
 const PACKAGES: Package[] = [
   {
-    name: "Content",
-    tag: "Pictures and film",
-    intro: "For a site that finally shows retreats happening at Sonora, usable everywhere from day one.",
+    name: "Website",
+    tag: "One home for Sonora",
+    intro: "Everything you already have, brought together on one site that shows Sonora as it is.",
     items: [
-      "Retreat pictures gathered from your groups, with permission",
-      "Drone flight: photos and short film loops",
-      "A photo day during a retreat",
-      "Selection and editing of your existing photos",
+      "Both sites merged into sonoracostarica.com",
+      "Host and Stay paths, upcoming retreats, experiences",
+      "Venue page with an inquiry form for dates and group size",
+      "Room pages with your Booking.com engine",
+      "English and Spanish, fast and up to date",
     ],
   },
   {
     name: "Everything",
     tag: "Recommended",
-    intro: "New pictures and a new website together, so the site launches full of life.",
+    intro: "The new website plus a content routine and fresh pictures, so Sonora stays alive online.",
     items: [
-      "Everything in Content and Website",
-      "Designed venue sheet (PDF) for retreat leaders",
-      "Brand system around your existing logo",
-      "Launch support and a review of the first inquiries",
+      "Everything in Website",
+      "Your photos from both sites and Instagram, selected and edited",
+      "Retreat leader pictures, with permission and credit",
+      "Optional: a photo day during a retreat",
+      "Designed venue sheet (PDF) and a brand system around your logo",
     ],
     featured: true,
   },
   {
-    name: "Website",
-    tag: "New structure and build",
-    intro: "For more inquiries from retreat leaders and more direct room bookings.",
+    name: "Content",
+    tag: "Pictures only",
+    intro: "If you want to keep the current sites for now and only refresh what people see.",
     items: [
-      "Host and Stay paths with their own pages",
-      "Venue page with an inquiry form for dates and group size",
-      "Upcoming retreats your team can update",
-      "Room pages with your Booking.com engine",
-      "English and Spanish, fast and up to date",
+      "Best photos from your yoga site and Instagram, edited",
+      "Optional: a photo day during a retreat",
+      "Ready to use on the website and Instagram",
     ],
   },
 ];
 
 const OWNERS = [
-  { q: "What is it?", a: "New pictures of retreats at Sonora and a new website built around them, so retreat leaders choose Sonora more often." },
-  { q: "Why now?", a: "The site still runs on 2020 technology and shows none of the retreats that happen here. Every month it stays that way, leaders compare Sonora on photos of empty rooms." },
-  { q: "What does it ask of you?", a: "One kick-off call, a few approvals along the way, and access to the current site. Claire and I handle the rest." },
-  { q: "Can we start small?", a: "Yes. Content and Website work on their own. Each package is a fixed price, confirmed in writing before anything starts." },
+  { q: "What is it?", a: "One website for all of Sonora, filled with the pictures, retreats and guest voices you already have, so people see the place as it really is." },
+  { q: "Why now?", a: "Your best content sits on a second site most people never see, while the main site runs on 2020 technology and shows empty rooms. The place has moved on, the website hasn't." },
+  { q: "Isn't this a big project?", a: "Less than it looks. No photo shoot is needed to launch, because the pictures already exist. You need one kick-off call, a few approvals, and access to both sites." },
+  { q: "What if we don't like it?", a: "You see the structure and the first pages before anything is built, and nothing goes live without your yes. Every package is a fixed price, confirmed in writing." },
 ];
 
 const STEPS = [
-  { title: "Talk it through", text: "A 30-minute call with Claire and the owners, where we go through this page and you tell me what matters most." },
+  { title: "Talk it through", text: "A 30-minute call with Claire, Alessandra and Francis, where we go through this page and you tell me what matters most." },
   { title: "Shape the package", text: "You pick a package or we adjust one. I confirm scope, timeline and a fixed price in writing." },
-  { title: "Start", text: "Permissions from your retreat leaders, the drone flight, then the new site structure to review." },
+  { title: "Start", text: "I gather everything from both sites and Instagram, then you review the new structure and first pages." },
 ];
 
 function Arrow() {
@@ -224,50 +253,62 @@ export default function ProposalContent() {
             Proposal for Sonora Caribbean Jungle Retreat
           </p>
           <h1>
-            Retreats happen at Sonora
+            Sonora is full of life.
             <br />
-            all year. Let&apos;s show them.
+            Let&apos;s show it in one place.
           </h1>
           <p className={styles.lead}>
-            For Claire and the owners of Sonora: what I see today, what I would change, and how new
-            pictures and a new website bring more retreat leaders to Playa Negra.
+            For Claire, Alessandra and Francis: you already have the groups, the pictures and the
+            guests who love you. Here is how one website shows Sonora as it really is: alive, full of
+            people, and all in one place.
           </p>
           <p className={styles.byline}>Jan Brunnenkant · Well Edge Creative · November 2026</p>
           <nav className={styles.jumpNav} aria-label="Sections">
             <a href="#owners">In one minute</a>
             <a href="#see">What I see</a>
             <a href="#help">What I would change</a>
-            <a href="#content">New pictures</a>
+            <a href="#scattered">Already yours</a>
             <a href="#mockup">Your new homepage</a>
             <a href="#brand">Your brand</a>
             <a href="#options">Options</a>
           </nav>
         </section>
 
+        {/* Life at Sonora, before any analysis */}
+        <div className={own.strip} aria-label="Life at Sonora">
+          {STRIP.map((img) => (
+            <div key={img} className={own.stripImg}>
+              <Image src={`${IMG}/${img}.webp`} alt="" fill sizes="(max-width: 900px) 50vw, 17vw" />
+            </div>
+          ))}
+        </div>
+        <p className={own.stripNote}>All from Sonora&apos;s own websites and Instagram.</p>
+
         {/* In short */}
         <section className={`${styles.wrap} ${styles.short}`} aria-label="In short">
           <div className={styles.shortItem}>
             <span>What I see</span>
-            <p>A place made for retreats, and a website with no picture of a retreat on it.</p>
+            <p>Groups, food, guests and a full 2027 calendar, spread over two websites and Instagram.</p>
           </div>
           <div className={styles.shortItem}>
             <span>What I would do</span>
-            <p>Real retreat pictures and a drone flight, then a homepage with two doors: Host and Stay.</p>
+            <p>One home under your mandala, full of your own pictures, with two doors: Host and Stay.</p>
           </div>
           <div className={styles.shortItem}>
             <span>What it brings</span>
-            <p>Leaders who see their group at Sonora before they write, and inquiries that already fit.</p>
+            <p>A website that feels like a day at Sonora, so what people see online matches what they find when they arrive.</p>
           </div>
         </section>
 
         {/* For the owners */}
-        <section id="owners" className={`${styles.wrap} ${own.owners}`}>
+        {/* A div, not a section: the site's global section padding would flatten the box. */}
+        <div id="owners" className={`${styles.wrap} ${own.owners}`}>
           <div>
             <p className={styles.eyebrow}>
               <span className={styles.dot} />
-              For the owners · in one minute
+              For Alessandra and Francis · in one minute
             </p>
-            <h2>The short version, if this page was forwarded to you.</h2>
+            <h2>The short version, for the two of you.</h2>
           </div>
           <dl className={own.ownerList}>
             {OWNERS.map((o) => (
@@ -277,7 +318,7 @@ export default function ProposalContent() {
               </div>
             ))}
           </dl>
-        </section>
+        </div>
 
         {/* Strengths */}
         <section id="see" className={`${styles.wrap} ${styles.section}`}>
@@ -303,6 +344,76 @@ export default function ProposalContent() {
           </div>
         </section>
 
+        {/* The facts, at a glance */}
+        <div className={`${styles.wrap} ${own.facts}`}>
+          {FACTS.map((f) => (
+            <div key={f.label}>
+              <strong className={serif.className}>{f.value}</strong>
+              <span>{f.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* In their own words */}
+        <section className={`${styles.wrap} ${own.voices}`}>
+          <div className={own.phone}>
+            <video
+              src={`${IMG}/voices.mp4`}
+              poster={`${IMG}/voices-poster.webp`}
+              controls
+              playsInline
+              preload="none"
+              aria-label="Gabrielle, a retreat leader, talks about Sonora"
+            />
+          </div>
+          <div>
+            <p className={styles.eyebrow}>
+              <span className={styles.dot} />
+              In their own words
+            </p>
+            <h2>“When a place inspires the people you guide, you just keep coming back.”</h2>
+            <p className={own.voicesText}>
+              Gabrielle, a retreat leader who keeps returning, in a reel on your own Instagram. It is
+              exactly the kind of proof a new leader looks for, and today it lives only on Instagram.
+            </p>
+            <blockquote className={own.voicesQuote}>
+              “Kirby&apos;s favorite place to host retreats and consistently a favorite among guests.”
+              <cite>Kirby Yoga Retreats</cite>
+            </blockquote>
+          </div>
+        </section>
+
+        {/* Already yours, in three places */}
+        <section id="scattered" className={styles.softBand}>
+          <div className={`${styles.wrap} ${styles.section}`}>
+            <div className={styles.sectionHead}>
+              <p className={styles.eyebrow}>
+                <span className={styles.dot} />
+                The good news
+              </p>
+              <h2>You already have everything. It&apos;s just in three places.</h2>
+              <p>
+                Most retreat centers would need a photo shoot to look like you. You only need to bring
+                together what you already own.
+              </p>
+            </div>
+            <div className={own.scattered}>
+              {SCATTERED.map((x) => (
+                <article key={x.where} className={own.scatterCard}>
+                  <div className={own.scatterImg}>
+                    <Image src={`${IMG}/${x.img}`} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" />
+                  </div>
+                  <span className={own.scatterWhere}>{x.where}</span>
+                  <p>{x.what}</p>
+                </article>
+              ))}
+            </div>
+            <p className={own.scatterArrow}>
+              <span>Three places</span> → <strong>one home on sonoracostarica.com</strong>
+            </p>
+          </div>
+        </section>
+
         {/* Gaps */}
         <section className={styles.darkBand}>
           <div className={`${styles.wrap} ${styles.section}`}>
@@ -311,8 +422,8 @@ export default function ProposalContent() {
                 <span className={styles.dot} />
                 What holds it back online
               </p>
-              <h2>Your website shows the rooms. It doesn&apos;t show the retreats.</h2>
-              <p>Checked on {CHECKED}, on your homepage, the Host Your Retreat page, the rooms and the gallery.</p>
+              <h2>Your main website shows the rooms. It doesn&apos;t show the retreats.</h2>
+              <p>Checked on {CHECKED}, on sonoracostarica.com, puertoviejoyogaretreat.com and Instagram.</p>
             </div>
             <div className={own.compare}>
               <figure>
@@ -320,17 +431,18 @@ export default function ProposalContent() {
                   <Image src={`${IMG}/shala.webp`} alt="The Yoga Shala at Sonora with mats laid out and nobody on them" fill sizes="(max-width: 900px) 100vw, 40vw" />
                 </div>
                 <figcaption>
-                  <span>On your website</span>
+                  <span>On sonoracostarica.com</span>
                   The only picture of the Yoga Shala, in the gallery. Beautiful, and empty.
                 </figcaption>
               </figure>
               <figure>
                 <div className={own.compareImg}>
-                  <Image src={`${IMG}/ig-yoga-class.webp`} alt="A class in the Yoga Shala, posted on Sonora's Instagram" fill sizes="(max-width: 900px) 100vw, 40vw" />
+                  <Image src={`${IMG}/ys-yoga-group.webp`} alt="A group class in the Yoga Shala, from Sonora's yoga site" fill sizes="(max-width: 900px) 100vw, 40vw" />
                 </div>
                 <figcaption>
-                  <span className={own.live}>On your Instagram</span>
-                  Daily yoga at Sonora. The same shala, alive. This is what leaders need to see.
+                  <span className={own.live}>On your yoga site</span>
+                  The same shala, full of people. This is what leaders need to see, on the site they
+                  actually find.
                 </figcaption>
               </figure>
             </div>
@@ -355,7 +467,7 @@ export default function ProposalContent() {
               <span className={styles.dot} />
               What I would change
             </p>
-            <h2>Each change has one job: more retreat leaders choosing Sonora.</h2>
+            <h2>Each change has one job: the website shows Sonora as it really is.</h2>
           </div>
           <div className={styles.changeTable} role="table" aria-label="What changes and what it does">
             <div className={styles.changeHead} role="row">
@@ -388,13 +500,12 @@ export default function ProposalContent() {
             <div className={styles.sectionHead}>
               <p className={styles.eyebrow}>
                 <span className={styles.dot} />
-                The full program · new pictures
+                The full program · pictures
               </p>
-              <h2>A site full of life, without waiting for a photo shoot.</h2>
+              <h2>No photo shoot needed to launch.</h2>
               <p>
-                The pictures that make leaders say yes already exist: on your own Instagram and on
-                the accounts of the groups you host. Together with a drone flight, the new site
-                launches full.
+                The pictures that show Sonora as it is already exist. We bring them together, add your
+                retreat leaders&apos; moments with permission, and keep it fresh with a simple routine.
               </p>
             </div>
             <div className={own.contentGrid}>
@@ -410,9 +521,8 @@ export default function ProposalContent() {
               ))}
             </div>
             <p className={own.contentNote}>
-              Every photo in this proposal is yours: from your current website and your own
-              Instagram, @sonora.jungleretreat. Pictures from retreat leaders and the drone are
-              planned and only used with permission.
+              Every photo in this proposal is yours: from sonoracostarica.com, puertoviejoyogaretreat.com
+              and @sonora.jungleretreat. Quotes are from your yoga site and Kirby Yoga Retreats.
             </p>
           </div>
         </section>
@@ -432,9 +542,8 @@ export default function ProposalContent() {
           </div>
           <p className={styles.draftNote}>
             <strong>A first mockup, not a finished design.</strong> It shows the direction: the
-            structure, the story and the feel. Many pictures come from your own Instagram; where
-            drone footage will go, the mockup says so. Layout, copy and photos are shaped together
-            with you.
+            structure, the story and the feel. Every picture comes from your own websites and
+            Instagram. Layout, copy and photos are shaped together with you.
           </p>
           <div className={styles.browser}>
             <div className={styles.browserBar}>
@@ -451,7 +560,7 @@ export default function ProposalContent() {
             <iframe src={MOCKUP} title="Homepage mockup for Sonora Caribbean Jungle Retreat" className={styles.frame} loading="lazy" />
             {/* On phones a page inside a page cannot be scrolled well, so it opens on its own. */}
             <a href={MOCKUP} className={styles.phonePoster}>
-              <Image src={`${IMG}/path-bridge.webp`} alt="" fill sizes="100vw" />
+              <Image src={`${IMG}/ys-yoga-group.webp`} alt="" fill sizes="100vw" />
               <span className={styles.posterShade} />
               <span className={styles.posterText}>
                 <span className={`${styles.posterTitle} ${serif.className}`}>
@@ -489,7 +598,8 @@ export default function ProposalContent() {
               <p>
                 The Sonora logo is already recognisable, so it stays exactly as it is. What changes is
                 the system around it: colours taken from the logo itself, two typefaces and clear
-                rules, so website, Instagram and the venue sheet look like one place.
+                rules, so website, Instagram and the venue sheet look like one place. Yoga Sonora,
+                today with its own gold logo, becomes part of Sonora under the mandala.
               </p>
             </div>
             <p className={styles.draftNote}>
@@ -542,8 +652,8 @@ export default function ProposalContent() {
                 <h3>A venue sheet leaders can forward</h3>
                 <p>
                   One designed page with capacity, spaces, meals, activities and rates from, in your
-                  colours and with your logo. Retreat leaders share it with co-teachers and put Sonora
-                  on their shortlist without writing first. Sketch.
+                  colours and with your logo. Retreat leaders share it with their co-teachers and guests,
+                  so everyone arrives knowing what to expect. Sketch.
                 </p>
               </div>
             </div>
@@ -611,7 +721,7 @@ export default function ProposalContent() {
                 <span className={styles.dot} />
                 Your options
               </p>
-              <h2>Start with the pictures, or do it all at once.</h2>
+              <h2>Start with one home for Sonora, or do it all at once.</h2>
             </div>
             <div className={styles.packages}>
               {PACKAGES.map((p) => (
@@ -659,8 +769,8 @@ export default function ProposalContent() {
           <div className={`${styles.wrap} ${styles.section} ${styles.close}`}>
             <h2>Let&apos;s show the world what happens at Sonora.</h2>
             <p>
-              Thank you, Claire, for our conversation. I&apos;d love to walk you and the owners
-              through this in a short call.
+              Thank you, Claire, for our conversation. I&apos;d love to walk you, Alessandra and
+              Francis through this in a short call.
             </p>
             <div className={styles.actions}>
               <Link href="/en/contact?type=discovery-call" className="btn btn-primary">

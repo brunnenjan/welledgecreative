@@ -209,3 +209,74 @@
   .people { grid-template-columns: 1fr; gap: 36px; padding-block: 80px; }
   .peopleSmall { display: none; }
 }
+
+/* Leader voice */
+.leaderQuote { margin: 40px 0 0; padding-left: 20px; border-left: 2px solid var(--mint); font-size: 1.3rem; line-height: 1.45; font-style: italic; color: #eef3f0; }
+.leaderQuote cite, .foodQuote cite, .voice cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9fb3ab; }
+
+/* Upcoming retreats */
+.retreats { padding-block: 112px 40px; }
+.retreatGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.retreatCard { padding: 14px 14px 22px; border-radius: 20px; background: #fff; border: 1px solid #e6dfd3; }
+.retreatCard h3 { font-size: 1.35rem; font-weight: 400; padding-inline: 6px; line-height: 1.25; }
+.retreatCard .small { padding-inline: 6px; margin-top: 6px !important; }
+.retreatImg { position: relative; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; margin-bottom: 16px; }
+.retreatImg img, .foodImg img, .foodChef img, .expImg img, .voiceImg img { object-fit: cover; }
+.retreatDate { position: absolute; left: 12px; top: 12px; padding: 6px 12px; border-radius: 999px; background: #fffffff0; color: var(--jungle); font-size: 0.74rem; font-weight: 700; }
+
+/* Food */
+.foodGrid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 10px; aspect-ratio: 4 / 3.2; }
+.foodChef { position: relative; grid-row: 1 / 3; border-radius: 16px; overflow: hidden; }
+.foodImg { position: relative; border-radius: 14px; overflow: hidden; }
+.foodQuote { margin: 26px 0 0; padding-left: 18px; border-left: 2px solid var(--sea); font-size: 1.15rem; line-height: 1.5; font-style: italic; color: var(--jungle); }
+.foodQuote cite { color: var(--soft); }
+
+/* Experiences */
+.experiences { padding-block: 40px 112px; }
+.expGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.expImg { position: relative; aspect-ratio: 16 / 11; border-radius: 16px; overflow: hidden; margin-bottom: 14px; }
+.expCard h3 { font-size: 1.4rem; font-weight: 400; }
+.expCard .small { margin-top: 4px !important; }
+
+/* A guest's words */
+.voiceBand { background: var(--jungle); color: #fff; }
+.voice { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; padding-block: 104px; }
+.voiceImg { position: relative; aspect-ratio: 4 / 5; border-radius: 18px; overflow: hidden; }
+.voice blockquote { margin: 0; font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.35; font-style: italic; }
+
+@media (max-width: 860px) {
+  .retreats { padding-block: 80px 24px; }
+  .retreatGrid, .expGrid, .voice { grid-template-columns: 1fr; }
+  .experiences { padding-block: 24px 80px; }
+  .voice { gap: 32px; padding-block: 72px; }
+  .voiceImg { aspect-ratio: 4 / 3.4; }
+  .foodGrid { aspect-ratio: 1 / 1; }
+}
+
+.heroTall { display: none; }
+@media (max-width: 860px) {
+  .heroWide { display: none; }
+  .heroTall { display: block; object-position: center 30%; }
+}
+
+/* Voices: video and words */
+.voicePhone { justify-self: center; width: 300px; padding: 10px; border-radius: 36px; background: #0f1a17; box-shadow: 0 30px 60px #00000055; }
+.voicePhone video { display: block; width: 100%; aspect-ratio: 9 / 16; border-radius: 28px; background: #000; object-fit: cover; }
+.voiceLead { font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.25; font-style: italic; color: var(--mint); }
+.voiceBy { margin-top: 12px !important; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9fb3ab; }
+.voice blockquote { margin-top: 36px; padding-top: 28px; border-top: 1px solid #ffffff26; font-size: clamp(1.1rem, 1.6vw, 1.35rem) !important; }
+
+/* The hosts */
+.hostsBand { background: var(--sand); }
+.hostsWrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 72px; align-items: center; padding-block: 112px 40px; }
+.hostsPhoto { position: relative; aspect-ratio: 3 / 2; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 60px #1e2f2a1f; }
+.hostsPhoto img { object-fit: cover; object-position: center 35%; }
+.hostsPhoto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #f6f1ea00 60%, #f6f1ea40 100%); }
+.hostsText { margin-top: 18px !important; color: var(--soft); font-size: 1.05rem; }
+.hostsLine { margin-top: 20px !important; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sea); font-weight: 700; line-height: 1.7; }
+@media (max-width: 860px) {
+  .hostsWrap { grid-template-columns: 1fr; gap: 32px; padding-block: 80px 24px; }
+}
+@media (max-width: 860px) {
+  .voicePhone { width: min(280px, 80vw); }
+}

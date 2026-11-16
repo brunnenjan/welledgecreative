@@ -8,9 +8,10 @@ import styles from "./homepage.module.css";
 
 /**
  * Homepage mockup for Sonora Caribbean Jungle Retreat. Every text, fact and photo comes from
- * sonoracostarica.com (checked 15 November 2026) and the logo is theirs, unchanged; only the
- * order, the design and the scroll story are new. Where planned retreat and drone pictures go,
- * the mockup says so instead of inventing them.
+ * Sonora's own channels (checked 15 and 16 November 2026): sonoracostarica.com, their yoga site
+ * puertoviejoyogaretreat.com and Instagram @sonora.jungleretreat. The two quotes come from the
+ * yoga site and from Kirby Gordon's retreat listing. The logo is theirs, unchanged; only the
+ * order, the design and the scroll story are new.
  */
 
 const IMG = "/proposals/sonora";
@@ -22,7 +23,7 @@ const ARRIVAL = [
     text: "Sonora was born from a unique land, with the jungle, with the aroma of nature that surrounds you.",
   },
   {
-    img: "bridge",
+    img: "ys-drone",
     label: "The stream",
     text: "A land divided by a stream, a beautiful place surrounded by the silence of the jungle.",
   },
@@ -54,16 +55,31 @@ const HOST = [
 
 const ACTIVITIES = ["Surf lessons", "Horseback rides", "Bee tours", "Waterfall hikes", "Kayak trips", "Cacao ceremonies"];
 
-const LIFE: { img?: string; slot?: string; caption: string }[] = [
-  { img: "ig-yoga-class", caption: "Daily yoga at Sonora" },
-  { img: "ig-guest-terrace", caption: "Ready for sunny days" },
+const LIFE: { img: string; caption: string }[] = [
+  { img: "ys-yoga-stretch", caption: "Group practice in the shala" },
+  { img: "ys-teacher", caption: "Classes in the garden" },
+  { img: "ys-shala-pair", caption: "Meditation in the open-air shala" },
   { img: "lounge", caption: "Common areas, exclusively yours" },
-  { img: "ig-team", caption: "The beloved people who bring Sonora to life" },
-  { img: "ig-heliconia", caption: "A little burst of red, blooming under the Sonora sun" },
-  { img: "breakfast", caption: "Breakfast in the garden" },
+  { img: "ys-daybed", caption: "Afternoons on your own terrace" },
+  { img: "ys-chef", caption: "Cooking with ingredients from local farms" },
+  { img: "ys-morning-coffee", caption: "Slow mornings in the jungle" },
   { img: "ig-beach", caption: "The colors of the Caribbean" },
-  { slot: "Drone flight", caption: "Jungle, stream and Playa Negra from above" },
 ];
+
+// Listed on Sonora's yoga site, puertoviejoyogaretreat.com.
+const RETREATS = [
+  { img: "ys-shala-pair", date: "Jan 16 to 21, 2027", name: "Here & Now: Costa Rica Yoga Retreat", by: "Kirby Gordon and Iva Drtina-Hall" },
+  { img: "ys-yoga-group", date: "Jan 23 to 28, 2027", name: "UPLIFT", by: "Six days in the jungle" },
+  { img: "ys-coconuts", date: "Jul 31 to Aug 5, 2027", name: "Mommy + Me Retreat", by: "Erica and Jamilah, Good Moms Bad Choices" },
+];
+
+const EXPERIENCES = [
+  { img: "ys-sound", title: "Sound Bath", text: "With live music and vocals." },
+  { img: "ys-massage", title: "Percussion and Touch", text: "A 75-minute healing experience with music." },
+  { img: "ys-handpan", title: "In the shala", text: "Dance seminars, cacao ceremonies and group meditation." },
+];
+
+const FOOD = ["ys-food-plate", "ys-breakfast", "ys-bowl", "ys-fruit"];
 
 const ROOMS = [
   { img: "room", name: "Standard Room" },
@@ -175,8 +191,9 @@ export default function HomepageMockup({ serif, sans }: { serif: string; sans: s
         <nav className={styles.links} aria-label="Mockup navigation">
           <a href="#host">Host your retreat</a>
           <a href="#stay">Rooms</a>
+          <a href="#retreats">Retreats</a>
           <a href="#life">Life at Sonora</a>
-          <a href="#oasis">Oasis restaurant</a>
+          <a href="#oasis">Food</a>
         </nav>
         <span className={styles.lang}>EN · ES</span>
         <a className={styles.navCta} href="#inquire">
@@ -187,7 +204,9 @@ export default function HomepageMockup({ serif, sans }: { serif: string; sans: s
       {/* 1. First screen */}
       <section id="top" className={styles.hero}>
         <div className={styles.heroImg}>
-          <Image src={`${IMG}/pool-hut.webp`} alt="The saltwater pool and garden at Sonora" fill priority sizes="100vw" />
+          <Image src={`${IMG}/ys-yoga-group.webp`} alt="A group practicing yoga in the shala at Sonora" fill priority sizes="100vw" className={styles.heroWide} />
+          {/* Phones get the upright group photo, so people stay in the frame. */}
+          <Image src={`${IMG}/ys-yoga-stretch.webp`} alt="" fill priority sizes="100vw" className={styles.heroTall} />
         </div>
         <div className={styles.heroShade} />
         <div className={styles.heroText}>
@@ -211,7 +230,6 @@ export default function HomepageMockup({ serif, sans }: { serif: string; sans: s
             </a>
           </div>
         </div>
-        <p className={styles.slotNote}>Planned: a short drone film loop of the grounds here</p>
       </section>
 
       {/* 2. The walk in */}
@@ -298,30 +316,53 @@ export default function HomepageMockup({ serif, sans }: { serif: string; sans: s
                 Venue sheet (PDF)
               </a>
             </div>
+            <blockquote className={`${styles.leaderQuote} ${serif}`} data-reveal>
+              “Kirby&apos;s favorite place to host retreats and consistently a favorite among guests.”
+              <cite className={sans}>Kirby Yoga Retreats, on Sonora</cite>
+            </blockquote>
           </div>
         </div>
       </section>
 
-      {/* 5. Life at Sonora */}
+      {/* 5. Retreats already coming */}
+      <section id="retreats" className={`${styles.wrap} ${styles.retreats}`}>
+        <div className={styles.stayHead} data-reveal>
+          <div>
+            <p className={styles.kicker}>Upcoming retreats at Sonora</p>
+            <h2 className={serif}>Join a retreat</h2>
+          </div>
+          <p className={styles.small}>Already listed for 2027. Book your place directly with the retreat leader.</p>
+        </div>
+        <div className={styles.retreatGrid}>
+          {RETREATS.map((r) => (
+            <article key={r.name} className={styles.retreatCard} data-reveal>
+              <div className={styles.retreatImg}>
+                <Image src={`${IMG}/${r.img}.webp`} alt="" fill sizes="(max-width: 860px) 100vw, 33vw" />
+                <span className={styles.retreatDate}>{r.date}</span>
+              </div>
+              <h3 className={serif}>{r.name}</h3>
+              <p className={styles.small}>{r.by}</p>
+              <a href="#retreats" className={styles.roomLink}>
+                Details and booking →
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. Life at Sonora */}
       <section id="life" className={styles.lifeScroll}>
         <div className={styles.lifeBand}>
           <div className={styles.lifeHead}>
             <p className={styles.kicker}>Life at Sonora</p>
-            <h2 className={serif}>Retreats happen here all year.</h2>
+            <h2 className={serif}>Breathing. Jungle lifestyle.</h2>
           </div>
           <div ref={track} className={styles.lifeTrack} onScroll={onSwipe}>
             {LIFE.map((l, i) => (
               <figure key={i} className={styles.lifeCard}>
-                {l.img ? (
-                  <div className={styles.lifeImg}>
-                    <Image src={`${IMG}/${l.img}.webp`} alt={l.caption} fill sizes="(max-width: 860px) 80vw, 30vw" />
-                  </div>
-                ) : (
-                  <div className={styles.lifeSlot}>
-                    <span>{l.slot}</span>
-                    <p>New picture goes here</p>
-                  </div>
-                )}
+                <div className={styles.lifeImg}>
+                  <Image src={`${IMG}/${l.img}.webp`} alt={l.caption} fill sizes="(max-width: 860px) 80vw, 30vw" />
+                </div>
                 <figcaption>{l.caption}</figcaption>
               </figure>
             ))}
@@ -337,7 +378,7 @@ export default function HomepageMockup({ serif, sans }: { serif: string; sans: s
         </div>
       </section>
 
-      {/* 6. Door two: stay */}
+      {/* 7. Door two: stay */}
       <section id="stay" className={`${styles.wrap} ${styles.stay}`}>
         <div className={styles.stayHead} data-reveal>
           <div>
@@ -365,25 +406,104 @@ export default function HomepageMockup({ serif, sans }: { serif: string; sans: s
         </div>
       </section>
 
-      {/* 7. Oasis */}
+      {/* 8. Food */}
       <section id="oasis" className={styles.oasisBand}>
         <div className={`${styles.wrap} ${styles.oasis}`}>
-          <div className={styles.oasisImg} data-reveal>
-            <Image src={`${IMG}/restaurant.webp`} alt="The Oasis restaurant at Sonora" fill sizes="(max-width: 860px) 100vw, 50vw" />
+          <div className={styles.foodGrid} data-reveal>
+            <div className={styles.foodChef}>
+              <Image src={`${IMG}/ys-chef.webp`} alt="Cooking at Sonora" fill sizes="(max-width: 860px) 100vw, 25vw" />
+            </div>
+            {FOOD.map((f) => (
+              <div key={f} className={styles.foodImg}>
+                <Image src={`${IMG}/${f}.webp`} alt="" fill sizes="(max-width: 860px) 50vw, 15vw" />
+              </div>
+            ))}
           </div>
           <div data-reveal>
-            <p className={styles.kicker}>Oasis restaurant</p>
-            <h2 className={serif}>A fusion of culture and nature.</h2>
+            <p className={styles.kicker}>Soul-nourishing food</p>
+            <h2 className={serif}>Cooked with color.</h2>
             <p>
-              Enjoy a dinner under the stars or a panoramic lunch in our garden, where each dish becomes
-              a multisensory experience.
+              Ingredients come from local farms that use organic and sustainable farming methods. Enjoy a
+              dinner under the stars or a panoramic lunch in our garden.
             </p>
-            <p className={styles.oasisLine}>Soul-nourishing food · Local organic farms · International cuisine</p>
+            <blockquote className={`${styles.foodQuote} ${serif}`}>
+              “Alessandra cooks with color, and her food was amazing. It is a true art form with a
+              focused attention to detail. You can feel the love with each bite.”
+              <cite className={sans}>Olivia Yarrow, retreat guest</cite>
+            </blockquote>
           </div>
         </div>
       </section>
 
-      {/* 8. The people */}
+      {/* 9. Experiences */}
+      <section className={`${styles.wrap} ${styles.experiences}`}>
+        <div className={styles.stayHead} data-reveal>
+          <div>
+            <p className={styles.kicker}>Sonora experiences</p>
+            <h2 className={serif}>Add something to remember</h2>
+          </div>
+        </div>
+        <div className={styles.expGrid}>
+          {EXPERIENCES.map((e) => (
+            <article key={e.title} className={styles.expCard} data-reveal>
+              <div className={styles.expImg}>
+                <Image src={`${IMG}/${e.img}.webp`} alt={e.title} fill sizes="(max-width: 860px) 100vw, 33vw" />
+              </div>
+              <h3 className={serif}>{e.title}</h3>
+              <p className={styles.small}>{e.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* 10. Voices: a retreat leader on video, a guest in words */}
+      <section className={styles.voiceBand}>
+        <div className={`${styles.wrap} ${styles.voice}`}>
+          <div className={styles.voicePhone} data-reveal>
+            <video
+              src={`${IMG}/voices.mp4`}
+              poster={`${IMG}/voices-poster.webp`}
+              controls
+              playsInline
+              preload="none"
+              aria-label="Gabrielle, a retreat leader, talks about Sonora"
+            />
+          </div>
+          <div data-reveal>
+            <p className={styles.kickerLight}>Voices from Sonora</p>
+            <p className={`${styles.voiceLead} ${serif}`}>
+              “When a place inspires the people you guide, you just keep coming back.”
+            </p>
+            <p className={styles.voiceBy}>Gabrielle, retreat leader</p>
+          <blockquote className={serif}>
+            “Sonora was incredible, walking distance to the beach, and completely immersed in the jungle.
+            … I felt extremely safe and at home. … If you&apos;re looking to yoga in a new place, this
+            is it.”
+            <cite className={sans}>Olivia Yarrow, retreat guest</cite>
+          </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. The hosts */}
+      <section className={styles.hostsBand}>
+        <div className={`${styles.wrap} ${styles.hostsWrap}`}>
+          <div className={styles.hostsPhoto} data-reveal>
+            <Image src={`${IMG}/ys-hosts.webp`} alt="Alessandra and Francis, the owners of Sonora" fill sizes="(max-width: 860px) 100vw, 50vw" />
+          </div>
+          <div data-reveal>
+            <p className={styles.kicker}>Your hosts</p>
+            <h2 className={serif}>Alessandra &amp; Francis</h2>
+            <p className={styles.hostsText}>
+              The owners of Sonora. They also share their own experiences with guests: Percussion and
+              Touch, a healing massage carried by music, and live percussion and vocals.
+            </p>
+            <p className={styles.hostsLine}>Shared in Bali · Thailand · India · Italy · Switzerland · Spain</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 12. The people */}
       <section className={styles.peopleBand}>
         <div className={`${styles.wrap} ${styles.people}`}>
           <div className={styles.peopleImg} data-reveal>
@@ -399,14 +519,11 @@ export default function HomepageMockup({ serif, sans }: { serif: string; sans: s
               They&apos;re a key part of Sonora&apos;s daily life, its energy, its rhythm, and the
               experience we create together.
             </p>
-            <div className={styles.peopleSmall}>
-              <Image src={`${IMG}/ig-host.webp`} alt="A member of the Sonora team in the garden" fill sizes="160px" />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* 9. One form */}
+      {/* 13. One form */}
       <section id="inquire" className={`${styles.wrap} ${styles.plan}`}>
         <div data-reveal>
           <p className={styles.kicker}>Pura Vida</p>
