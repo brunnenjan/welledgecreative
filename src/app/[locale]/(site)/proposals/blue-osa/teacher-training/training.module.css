@@ -1,0 +1,181 @@
+/* Blue Osa's own brand: the cyan of the logo and site (#3abce3), their greys, Roboto Light for
+   headings and Open Sans for text, on calm white and sand. */
+.site {
+  --cyan: #3abce3;
+  --ocean: #14324a;
+  --deep: #1e9cc4;
+  --grey: #6d6e70;
+  --sand: #f7f3ec;
+  --ink: #3a3f44;
+  --soft: #4f4f4f;
+  background: #fff;
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 16px;
+  overflow-x: clip;
+}
+.site * { box-sizing: border-box; }
+.site h1, .site h2, .site h3, .site p, .site ul, .site ol, .site blockquote { margin: 0; }
+.site a { color: inherit; text-decoration: none; }
+.site h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.15; font-weight: 300; letter-spacing: 0; color: #2f3337; }
+.site h3 { font-weight: 600; }
+.site p { line-height: 1.7; }
+.wrap { width: min(1180px, 100% - 64px); margin-inline: auto; }
+.kicker, .kickerLight, .label { display: block; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--deep); margin-bottom: 14px !important; }
+.kickerLight { color: var(--cyan); }
+.small { margin-top: 6px !important; font-size: 0.9rem; color: var(--soft); }
+.head { margin-bottom: 40px; }
+
+/* Navigation */
+.nav { position: absolute; z-index: 5; inset: 0 0 auto; display: flex; align-items: center; gap: 30px; padding: 16px max(32px, calc((100% - 1180px) / 2)) 40px; color: #fff; background: linear-gradient(180deg, #0b1a26d9 0%, #0b1a2600 100%); }
+.brand img { display: block; width: 120px; height: auto; }
+.links { display: flex; gap: 26px; margin-left: auto; font-size: 0.92rem; font-weight: 600; }
+.navCta { padding: 11px 20px; border-radius: 999px; background: var(--cyan); color: #fff !important; font-weight: 700; font-size: 0.88rem; }
+@media (max-width: 1000px) {
+  .links { display: none; }
+  .navCta { margin-left: auto; }
+}
+
+/* 1. Hero */
+.hero { position: relative; min-height: 92vh; min-height: 92svh; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; overflow: hidden; }
+.heroImg { position: absolute; inset: 0; }
+.heroImg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.heroShade { position: absolute; inset: 0; background: linear-gradient(180deg, #0b1a2680 0%, #0b1a2620 35%, #0b1a26cc 75%, #0b1a26f2 100%); }
+.heroText { position: relative; width: min(1180px, 100% - 64px); margin: 0 auto 64px; }
+.hero .kicker { color: #fff; text-shadow: 0 1px 14px #0b1a26; }
+.hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 1.08; font-weight: 300; letter-spacing: 0; }
+.hero h1 strong { font-weight: 400; color: #fff; }
+.heroLead { max-width: 34rem; margin-top: 20px !important; font-size: 1.15rem; color: #e6eef3; }
+.heroCtas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.btn, .btnGhost, .btnDark { display: inline-flex; align-items: center; justify-content: center; padding: 15px 26px; border-radius: 999px; font-weight: 700; font-size: 0.98rem; }
+.btn { background: var(--cyan); color: #fff !important; }
+.btnGhost { border: 1px solid #ffffffb3; color: #fff; }
+.btnDark { background: var(--ocean); color: #fff !important; text-align: center; }
+
+/* 2. Decision bar */
+.decision { position: relative; z-index: 2; margin-top: -40px; }
+.decisionGrid { display: grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap: 28px; align-items: center; padding: 26px 30px; border-radius: 22px; background: #fff; box-shadow: 0 24px 60px #0b1a2626; }
+.decisionDates { display: grid; gap: 6px; }
+.date, .dateOn { display: flex; justify-content: space-between; gap: 14px; width: 100%; padding: 8px 14px; border-radius: 12px; border: 1px solid #dde5ea; background: #fff; font: inherit; color: var(--ink); cursor: pointer; text-align: left; }
+.date span, .dateOn span { font-size: 0.8rem; color: var(--deep); font-weight: 600; white-space: nowrap; }
+.dateOn { border-color: var(--deep); background: #eaf8fc; }
+.big { font-size: 1.9rem; line-height: 1.1; font-weight: 300; color: #2f3337; }
+
+/* 3. Aaron */
+.aaron { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 72px; align-items: center; padding-block: 112px; }
+.aaronImg { position: relative; aspect-ratio: 4 / 4.4; border-radius: 22px; overflow: hidden; }
+.aaronImg img, .voicePhoto img { object-fit: cover; }
+.aaron blockquote { margin: 22px 0 16px; padding-left: 18px; border-left: 3px solid var(--cyan); font-size: 1.35rem; line-height: 1.45; font-weight: 300; font-style: italic; color: #2f3337; }
+.aaron p:not(.kicker) { color: var(--soft); font-size: 1.05rem; }
+.badges { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px !important; }
+.badges li { padding: 8px 14px; border-radius: 999px; background: var(--sand); font-size: 0.84rem; font-weight: 600; color: var(--ocean); }
+
+/* 4. Training */
+.trainingBand { background: var(--ocean); color: #fff; padding-block: 104px; }
+.curriculum { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #ffffff22; border: 1px solid #ffffff22; border-radius: 18px; overflow: hidden; }
+.curriculum article { padding: 26px 22px; background: var(--ocean); }
+.curriculum span { font-size: 3rem; line-height: 1; font-weight: 300; color: var(--cyan); }
+.curriculum small { margin-left: 6px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9fb6c6; }
+.curriculum h3 { margin-top: 14px; font-size: 1.05rem; }
+.curriculum p { margin-top: 8px !important; font-size: 0.92rem; color: #c3d2dc; line-height: 1.6; }
+.day { margin-top: 48px; }
+.day h3 { font-size: 1.6rem; font-weight: 300; margin-bottom: 18px; }
+.day ol { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.day li { padding: 16px 14px; border-radius: 14px; background: #ffffff10; font-size: 0.9rem; color: #dbe6ee; line-height: 1.45; }
+.day li span { display: block; margin-bottom: 6px; font-weight: 700; color: var(--cyan); }
+
+/* 5. Voices */
+.voices { padding-block: 112px; }
+.voiceGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.voicePhoto { position: sticky; top: 24px; aspect-ratio: 4 / 4.6; border-radius: 22px; overflow: hidden; }
+.quotes { display: grid; gap: 18px; }
+.quotes blockquote { padding: 24px 26px; border-radius: 18px; background: var(--sand); }
+.quotes p { font-size: 1.15rem; line-height: 1.55; font-weight: 300; font-style: italic; color: #2f3337; }
+.quotes cite { display: block; margin-top: 12px; font-style: normal; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); }
+
+/* 6. Price */
+.priceBand { background: var(--sand); }
+.price { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; padding-block: 104px; align-items: start; }
+.priceTable { display: grid; gap: 10px; margin: 28px 0 10px; }
+.priceTable div { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 22px; border-radius: 14px; background: #fff; }
+.priceTable span { font-weight: 600; color: var(--soft); }
+.priceTable strong { font-size: 1.9rem; font-weight: 300; color: #2f3337; }
+.includes { padding: 30px; border-radius: 20px; background: #fff; }
+.includes h3 { font-size: 1rem; margin-bottom: 12px; }
+.includes h3 + ul + h3 { margin-top: 24px; }
+.yes, .no { list-style: none; padding: 0; display: grid; gap: 10px; }
+.yes li, .no li { position: relative; padding-left: 26px; font-size: 0.95rem; line-height: 1.5; color: var(--soft); }
+.yes li::before { content: "✓"; position: absolute; left: 0; color: var(--deep); font-weight: 700; }
+.no li::before { content: "–"; position: absolute; left: 2px; color: var(--grey); }
+
+/* Films: their own, never autoplaying with sound */
+.film { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #0b1a26; box-shadow: 0 24px 60px #0b1a2626; }
+.film video, .film iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+.film button { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.film button img { object-fit: cover; }
+.play { position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--cyan); box-shadow: 0 12px 30px #0b1a2666; }
+.play::after { content: ""; position: absolute; left: 34px; top: 26px; border-left: 24px solid #fff; border-top: 16px solid transparent; border-bottom: 16px solid transparent; }
+.filmRow { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 48px; align-items: center; margin-top: 64px; }
+.filmRow h3 { font-size: 1.9rem; font-weight: 300; }
+.filmRow p { margin-top: 10px !important; color: #c3d2dc; }
+.filmNote { margin-top: 12px !important; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); }
+
+/* 7. Place */
+.place { padding-block: 104px; }
+.place .head h2 { max-width: 24ch; }
+.stay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+.stayImg { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; margin-bottom: 14px; }
+.stayImg img { object-fit: cover; }
+.stay h3 { font-size: 1.1rem; color: #2f3337; }
+.stay p { margin-top: 4px !important; font-size: 0.95rem; color: var(--soft); }
+
+/* Headings on dark bands stay white */
+.trainingBand h2, .trainingBand h3, .applyBand h2 { color: #fff; }
+
+/* 8. FAQ */
+.faq { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; padding-block: 104px; }
+.faq details { padding: 20px 0; border-top: 1px solid #e3e8ec; }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 1.05rem; list-style: none; }
+.faq summary::after { content: "+"; float: right; color: var(--deep); font-weight: 400; font-size: 1.3rem; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin-top: 10px !important; color: var(--soft); }
+
+/* 9. Apply */
+.applyBand { background: var(--ocean); color: #fff; }
+.apply { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding-block: 104px; }
+.apply p { margin-top: 16px !important; color: #c3d2dc; font-size: 1.05rem; }
+.form { display: grid; gap: 14px; padding: 30px; border-radius: 22px; background: #fff; color: var(--ink); }
+.form label { display: grid; gap: 6px; font-size: 0.82rem; font-weight: 700; color: var(--soft); }
+.form input, .form select { padding: 13px 14px; border: 1px solid #dde5ea; border-radius: 12px; background: #fbfcfd; font: inherit; font-weight: 400; color: var(--ink); }
+.form button { margin-top: 6px; padding: 16px; border: 0; border-radius: 999px; background: var(--cyan); color: #fff; font: inherit; font-weight: 700; cursor: default; }
+.callLink { text-align: center; font-weight: 600; font-size: 0.92rem; color: var(--deep) !important; }
+
+/* Footer */
+.footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 32px max(32px, calc((100% - 1180px) / 2)); background: #0b1a26; color: #9fb6c6; font-size: 0.85rem; }
+.footer img { width: 110px; height: auto; }
+.draftLabel { width: 100%; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #6f8898; }
+
+@media (max-width: 860px) {
+  .wrap, .heroText { width: calc(100% - 40px); }
+  .nav { padding: 12px 20px 30px; }
+  .brand img { width: 96px; }
+  .hero { padding-top: 120px; }
+  .hero h1 { font-size: 2.6rem; }
+  .heroText { margin-bottom: 64px; }
+  .decision { margin-top: -32px; }
+  .decisionGrid { grid-template-columns: 1fr; gap: 20px; padding: 22px 18px; }
+  .aaron, .voiceGrid, .price, .faq, .apply { grid-template-columns: 1fr; gap: 36px; padding-block: 72px; }
+  .voices, .place { padding-block: 72px; }
+  .filmRow, .stay { grid-template-columns: 1fr; gap: 24px; }
+  .filmRow { margin-top: 48px; }
+  .play { width: 64px; height: 64px; }
+  .play::after { left: 26px; top: 20px; border-left-width: 18px; border-top-width: 12px; border-bottom-width: 12px; }
+  .voicePhoto { position: relative; top: 0; aspect-ratio: 4 / 3; }
+  .trainingBand { padding-block: 72px; }
+  .curriculum { grid-template-columns: 1fr 1fr; }
+  .day ol { grid-template-columns: 1fr 1fr; }
+  .site h2 { font-size: 2rem; }
+}
+
+/* Back to the proposal when the mockup is open on its own (never inside the proposal frame). */
+.back { position: fixed; z-index: 20; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 16px; border-radius: 999px; background: #14324ae6; color: #fff !important; font-size: 0.82rem; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 30px #0000004d; backdrop-filter: blur(8px); }

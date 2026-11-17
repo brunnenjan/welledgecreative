@@ -1,0 +1,58 @@
+/* What only the Blue Osa proposal needs; the rest comes from ../proposal.module.css. */
+.heroLogo { width: 170px; height: auto; margin-bottom: 18px; }
+
+/* Hero strip: life before analysis */
+.strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding-inline: 8px; }
+.stripImg { position: relative; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; }
+.stripImg img, .strengthPhoto img { object-fit: cover; }
+.stripNote { margin: 12px 0 0 !important; text-align: center; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8b8780; }
+
+/* Strengths with a photo */
+.strengths { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 24px; align-items: stretch; }
+.strengthPhoto { position: relative; min-height: 420px; border-radius: 20px; overflow: hidden; }
+.strengthList { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* The facts, at a glance */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-block: 8px 72px; border-block: 1px solid var(--line); }
+.facts > div { padding: 28px 24px; }
+.facts > div + div { border-left: 1px solid var(--line); }
+.facts strong { display: block; font-size: 2.6rem; font-weight: 400; line-height: 1; color: #0e8fb0; }
+.facts span { display: block; margin-top: 10px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6d6961; line-height: 1.5; }
+
+/* The offer: one project, two steps */
+.offer { display: grid; grid-template-columns: 1.6fr 0.8fr; gap: 24px; align-items: stretch; }
+.offerSteps { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.offerNum { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #14324a; color: #fff; font-size: 0.85rem; font-weight: 700; }
+.offerSteps h4 { margin: 12px 0 0; font-size: 1.15rem; }
+.offerTime { margin-top: 2px !important; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a94a00; font-weight: 700; }
+.offerSteps ul { margin-top: 10px !important; }
+
+.posterButton { background: #0e8fb0 !important; }
+
+@media (max-width: 900px) {
+  .strip { grid-template-columns: repeat(3, 1fr); gap: 6px; padding-inline: 6px; }
+  .strengths, .strengthList, .offer, .offerSteps { grid-template-columns: 1fr; }
+  .strengthPhoto { min-height: 260px; }
+  .facts { grid-template-columns: 1fr 1fr; margin-block: 0 48px; }
+  .facts > div { padding: 22px 14px; }
+  .facts > div:nth-child(3) { border-left: 0; }
+  .facts > div:nth-child(n + 3) { border-top: 1px solid var(--line); }
+}
+
+/* Order: today against new */
+.order { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: start; }
+.orderCol { padding: 28px; border-radius: 20px; border: 1px solid var(--line); background: #fff; }
+.orderNew { background: #eef9fd; border-color: #c9ecf7; }
+.orderHead { display: block; margin-bottom: 16px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6d6961; }
+.order ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.orderCol:not(.orderNew) li { font-size: 0.95rem; color: #4f4c47; line-height: 1.5; }
+.order .repeat { color: #a94a00; background: #fff3e8; border-radius: 6px; padding: 1px 6px; margin-left: -6px; }
+.orderNote { margin-top: 14px !important; font-size: 0.8rem; color: #a94a00; }
+.orderNew ol { gap: 14px; }
+.orderNew li strong { display: block; font-size: 1.05rem; color: #14232e; }
+.orderNew li span { display: block; font-size: 0.9rem; color: #586470; line-height: 1.5; }
+.orderArrow { align-self: center; font-size: 2rem; color: #12bce3; }
+@media (max-width: 900px) {
+  .order { grid-template-columns: 1fr; }
+  .orderArrow { justify-self: center; transform: rotate(90deg); }
+}
