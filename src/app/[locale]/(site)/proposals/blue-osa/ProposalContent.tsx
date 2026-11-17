@@ -139,7 +139,7 @@ const PAGE = [
 
 const OFFER = {
   name: "Your teacher training pages",
-  intro: "One project, about 6 weeks with time for your feedback, built on the WordPress site you already have.",
+  intro: "One project, about 6 weeks with time for your feedback. Built on your current site or handed to your team, decided together once I've seen your setup.",
   steps: [
     {
       title: "Shape it together",
@@ -159,7 +159,7 @@ const OFFER = {
         "The 200-hour page rebuilt, designed for phones first",
         "The same system applied to the 300-hour page and the training overview",
         "Apply and Book a call connected to the systems you already use",
-        "Launched on your site, with a handover for your team",
+        "Launched with you or your team, the way that fits your setup",
       ],
     },
   ],
