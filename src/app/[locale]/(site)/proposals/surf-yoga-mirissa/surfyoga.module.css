@@ -1,0 +1,42 @@
+/* What only the Surf & Yoga proposal needs; the rest comes from ../proposal.module.css. */
+.heroLogo { width: 240px; height: auto; margin-bottom: 20px; }
+
+/* Photo strip */
+.strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding-inline: 8px; }
+.stripImg { position: relative; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; }
+.stripImg img, .ideaImg img { object-fit: cover; }
+.stripNote { margin: 12px 0 0 !important; text-align: center; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8b8780; }
+
+/* Three ideas */
+.ideas { display: grid; gap: 22px; }
+.idea { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 0; border-radius: 20px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+.ideaImg { position: relative; min-height: 260px; }
+.ideaImg span { position: absolute; left: 18px; top: 18px; padding: 6px 12px; border-radius: 999px; background: #1a6c7a; color: #fff; font-weight: 700; font-size: 0.9rem; }
+.ideaText { padding: 30px 32px; }
+.ideaText h3 { font-size: 1.35rem; }
+.today, .idealine { margin-top: 14px !important; font-size: 0.97rem; line-height: 1.65; color: var(--ink-soft); }
+.today strong, .idealine strong { display: block; margin-bottom: 2px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.today strong { color: #8b8780; }
+.idealine { padding-left: 14px; border-left: 3px solid #7fc8c9; color: #1a1a1a; }
+.idealine strong { color: #1a6c7a; }
+.small { margin-top: 40px; padding: 26px 28px; border-radius: 16px; border: 1px dashed #c9d9db; background: #fff; }
+.small h3 { font-size: 1.05rem; }
+.small ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
+
+/* The offer: one project, two steps */
+.offer { display: grid; grid-template-columns: 1.6fr 0.8fr; gap: 24px; align-items: stretch; }
+.offerSteps { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.offerNum { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #1a6c7a; color: #fff; font-size: 0.85rem; font-weight: 700; }
+.offerSteps h4 { margin: 12px 0 0; font-size: 1.15rem; }
+.offerTime { margin-top: 2px !important; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a94a00; font-weight: 700; }
+.offerSteps ul { margin-top: 10px !important; }
+
+.posterButton { background: #1a6c7a !important; }
+
+@media (max-width: 900px) {
+  .heroLogo { width: 200px; }
+  .strip { grid-template-columns: repeat(3, 1fr); gap: 6px; padding-inline: 6px; }
+  .idea, .offer, .offerSteps { grid-template-columns: 1fr; }
+  .ideaImg { min-height: 200px; }
+  .ideaText { padding: 22px 20px; }
+}

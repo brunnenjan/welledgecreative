@@ -1,0 +1,135 @@
+/* Surf & Yoga Mirissa's own brand: their teal (#1a6c7a), the light teal of the logo circle
+   (#7fc8c9), dark grey text and Montserrat. */
+.site {
+  --teal: #1a6c7a;
+  --sea: #349393;
+  --mint: #7fc8c9;
+  --mist: #eef7f7;
+  --ink: #2f3a3d;
+  --soft: #5b6a6e;
+  background: #fff;
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 16px;
+  overflow-x: clip;
+}
+.site * { box-sizing: border-box; }
+.site h1, .site h2, .site h3, .site p, .site ul, .site figure { margin: 0; }
+.site a { color: inherit; text-decoration: none; }
+.site h2 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.2; font-weight: 600; color: var(--teal); }
+.site p { line-height: 1.65; }
+.wrap { width: min(1180px, 100% - 64px); margin-inline: auto; }
+.kicker { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sea); margin-bottom: 12px !important; }
+.small { margin-top: 8px !important; font-size: 0.8rem; color: var(--soft); text-align: center; }
+.text { margin-top: 12px !important; color: var(--soft); }
+
+/* Navigation */
+.nav { position: absolute; z-index: 5; inset: 0 0 auto; display: flex; align-items: center; gap: 28px; padding: 18px max(32px, calc((100% - 1180px) / 2)) 36px; color: #fff; background: linear-gradient(180deg, #0e3d45cc, #0e3d4500); }
+.brand img { display: block; width: 200px; height: auto; }
+.links { display: flex; gap: 24px; margin-left: auto; font-size: 0.9rem; font-weight: 600; }
+.navCta { padding: 11px 20px; border-radius: 6px; background: #fff; color: var(--teal) !important; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+@media (max-width: 900px) {
+  .links { display: none; }
+  .navCta { margin-left: auto; }
+}
+
+/* 1. Hero: short, the page is about choosing */
+.hero { position: relative; min-height: 56vh; display: flex; align-items: flex-end; color: #fff; overflow: hidden; }
+.hero img { object-fit: cover; object-position: center 60%; }
+.heroShade { position: absolute; inset: 0; background: linear-gradient(180deg, #0e3d4566 0%, #0e3d4520 40%, #0e3d45d9 100%); }
+.heroText { position: relative; width: min(1180px, 100% - 64px); margin: 0 auto 48px; }
+.hero .kicker { color: #fff; }
+.hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.08; font-weight: 700; }
+.heroText p:not(.kicker) { margin-top: 12px !important; font-size: 1.05rem; color: #e6f2f3; }
+
+/* 2. Finder */
+.finder { background: var(--mist); padding-block: 56px 72px; }
+.finder > .wrap { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; }
+.steps { display: grid; gap: 22px; }
+.step { position: relative; padding: 26px 26px 26px 72px; border-radius: 14px; background: #fff; }
+.stepNum { position: absolute; left: 24px; top: 24px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 700; font-size: 0.9rem; }
+.step h2 { font-size: 1.15rem; color: var(--ink); margin-bottom: 16px; }
+.pkgGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.pkg, .pkgOn { display: grid; gap: 8px; padding: 16px; border-radius: 12px; border: 2px solid #dbe8ea; background: #fff; font: inherit; color: var(--ink); text-align: left; cursor: pointer; }
+.pkgOn { border-color: var(--teal); background: #f3fafa; }
+.pkg strong, .pkgOn strong { font-size: 1.05rem; color: var(--teal); }
+.pkg p, .pkgOn p { font-size: 0.85rem; color: var(--soft); line-height: 1.5; }
+.bar { position: relative; display: block; height: 6px; border-radius: 3px; background: var(--mint); overflow: hidden; }
+.bar i { position: absolute; inset: 0 auto 0 0; background: var(--teal); }
+.barLabels { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 600; color: var(--soft); text-transform: uppercase; letter-spacing: 0.08em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip, .chipOn { min-width: 56px; padding: 12px 16px; border-radius: 10px; border: 2px solid #dbe8ea; background: #fff; font: inherit; font-weight: 700; color: var(--ink); cursor: pointer; }
+.chipOn { border-color: var(--teal); background: var(--teal); color: #fff; }
+.hint { margin-top: 10px !important; font-size: 0.82rem; color: var(--soft); }
+.rooms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.room, .roomOn { display: grid; gap: 2px; padding: 14px 16px; border-radius: 10px; border: 2px solid #dbe8ea; background: #fff; font: inherit; color: var(--ink); text-align: left; cursor: pointer; }
+.roomOn { border-color: var(--teal); background: #f3fafa; }
+.room span, .roomOn span { font-size: 0.82rem; color: var(--soft); }
+
+.result { position: sticky; top: 20px; padding: 28px; border-radius: 16px; background: var(--teal); color: #fff; }
+.resultLabel { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mint); }
+.result h3 { margin-top: 6px; font-size: 1.4rem; }
+.resultRoom { margin-top: 4px !important; font-size: 0.9rem; color: #d6ecee; }
+.price { margin-top: 18px !important; font-size: 2.6rem; font-weight: 700; line-height: 1; }
+.price small { font-size: 0.9rem; font-weight: 500; color: #d6ecee; }
+.perNight { margin-top: 6px !important; font-size: 0.85rem; color: #d6ecee; }
+.result ul { list-style: none; padding: 0; display: grid; gap: 8px; margin: 20px 0 22px; padding-top: 18px; border-top: 1px solid #ffffff33; }
+.result li { position: relative; padding-left: 24px; font-size: 0.9rem; line-height: 1.45; }
+.result li::before { content: "✓"; position: absolute; left: 0; color: var(--mint); font-weight: 700; }
+.book { display: block; padding: 15px; border-radius: 8px; background: #fff; color: var(--teal) !important; font-weight: 700; text-align: center; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.9rem; }
+.result .small { color: #d6ecee; }
+
+/* 3. Included in every package */
+.every { padding-block: 64px 24px; }
+.every ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+.every li { padding: 18px; border-radius: 12px; background: var(--mist); font-weight: 600; font-size: 0.92rem; line-height: 1.45; color: var(--ink); }
+
+/* 4. Rooms */
+.roomsBand { padding-block: 56px 72px; }
+.roomsWrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.roomPhoto { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; }
+.roomPhoto img, .lifeImg img { object-fit: cover; }
+.roomTable { width: 100%; margin-top: 22px; border-collapse: collapse; }
+.roomTable th { text-align: left; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); padding: 0 0 8px; }
+.roomTable th:last-child, .roomTable td:last-child { text-align: right; }
+.roomTable td { padding: 12px 0; border-top: 1px solid #e2ecee; vertical-align: top; }
+.roomTable td strong { display: block; font-size: 0.95rem; }
+.roomTable td span { font-size: 0.82rem; color: var(--soft); }
+.roomTable td:last-child { font-weight: 700; color: var(--teal); }
+
+/* 5. Life */
+.life { padding-block: 24px 72px; }
+.lifeGrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 20px; padding-inline: 8px; }
+.lifeImg { position: relative; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; }
+.lifeGrid figcaption { margin-top: 6px; font-size: 0.8rem; color: var(--soft); }
+
+/* 6. Not sure */
+.unsure { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 72px; padding: 32px; border-radius: 16px; background: var(--mist); }
+.unsure p { margin-top: 8px !important; max-width: 36rem; color: var(--soft); }
+.unsureCtas { display: flex; flex-wrap: wrap; gap: 12px; }
+.unsure .book { background: var(--teal); color: #fff !important; padding-inline: 22px; }
+.ghost { padding: 15px 22px; border-radius: 8px; border: 2px solid var(--teal); color: var(--teal) !important; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Footer */
+.footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 32px max(32px, calc((100% - 1180px) / 2)); background: var(--teal); color: #d6ecee; font-size: 0.85rem; }
+.footer img { width: 180px; height: auto; }
+.draftLabel { width: 100%; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #a9d2d6; }
+
+@media (max-width: 900px) {
+  .wrap, .heroText { width: calc(100% - 32px); }
+  .nav { padding: 14px 16px 28px; }
+  .brand img { width: 150px; }
+  .hero { min-height: 52vh; padding-top: 100px; }
+  .heroText { margin-bottom: 32px; }
+  .finder > .wrap { grid-template-columns: 1fr; }
+  .step { padding: 22px 18px 22px 18px; }
+  .stepNum { position: static; margin-bottom: 12px; }
+  .pkgGrid, .rooms { grid-template-columns: 1fr; }
+  .result { position: static; }
+  .every ul { grid-template-columns: 1fr 1fr; }
+  .roomsWrap { grid-template-columns: 1fr; gap: 28px; }
+  .lifeGrid { grid-template-columns: repeat(3, 1fr); padding-inline: 6px; }
+}
+
+/* Back to the proposal when the mockup is open on its own (never inside the proposal frame). */
+.back { position: fixed; z-index: 20; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 16px; border-radius: 999px; background: #1a6c7ae6; color: #fff !important; font-size: 0.82rem; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 30px #0000004d; backdrop-filter: blur(8px); }
