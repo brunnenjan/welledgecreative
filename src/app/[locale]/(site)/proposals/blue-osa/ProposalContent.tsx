@@ -441,7 +441,7 @@ export default function ProposalContent() {
               <span className={styles.dot} />
               Retreat work
             </p>
-            <h2>I build retreat pages that lead to a booking.</h2>
+            <h2>I build retreat pages that show a retreat the way it deserves to be shown.</h2>
           </div>
           <div className={styles.cases}>
             <article className={styles.caseCard}>
@@ -449,10 +449,10 @@ export default function ProposalContent() {
                 <Image src="/assets/misc/projects/vietnam-detox-relaunch-hero.webp" alt="The Vietnam Detox homepage" fill sizes="(max-width: 900px) 100vw, 50vw" />
               </div>
               <span className={styles.tag}>Vietnam · three languages</span>
-              <h3>Vietnam Detox: one page per retreat, real dates, clear booking</h3>
+              <h3>Vietnam Detox: one clear page for every retreat</h3>
               <p>
-                Guided Buchinger fasting retreats in Vietnam. Each retreat got its own page with real
-                dates, availability and one clear way to book, in English, Vietnamese and German.
+                Guided Buchinger fasting retreats in Vietnam. Each retreat got its own page that
+                shows what it is, who it is for and when it runs, in English, Vietnamese and German.
               </p>
               <a href="https://vietnamdetox.com" target="_blank" rel="noopener" className={styles.textLink}>
                 Visit vietnamdetox.com <Arrow />
