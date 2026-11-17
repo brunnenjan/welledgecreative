@@ -347,7 +347,7 @@ export default function TeacherTrainingMockup({ heading, body }: { heading: stri
             aria-label="The Blue Osa film: the place, the rooms, the food and the Osa Peninsula"
           />
         </div>
-        <p className={styles.filmNote}>The Blue Osa film · 2:32</p>
+        <p className={styles.filmNote}>The Blue Osa film</p>
         <div className={styles.stay}>
           {STAY.map((c) => (
             <article key={c.title} data-reveal>

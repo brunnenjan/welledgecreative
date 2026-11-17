@@ -36,7 +36,7 @@ const STRENGTHS = [
   },
   {
     title: "What already works on the page",
-    text: "Five 2027 trainings with free spots sit right at the top, a menu lets people jump to each part, and you have real films: one about the place, one about what to expect in a training. All of that stays.",
+    text: "Five 2027 trainings with free spots sit right at the top, a menu lets people jump to each part, and your photos show real groups, real rooms and real food. All of that stays.",
   },
 ];
 
@@ -50,7 +50,7 @@ const FACTS = [
 const GAPS = [
   {
     title: "Walls of text, bold everywhere",
-    text: "The 200-hour page runs to about 8,400 words in 276 paragraphs, with 92 phrases set in bold. When almost every sentence stresses something, nothing stands out.",
+    text: "The 200-hour page is very long, well over 8,000 words, and a lot of it is set in bold. When almost every sentence is stressed, nothing stands out.",
   },
   {
     title: "Three sections say the same thing",
@@ -61,16 +61,16 @@ const GAPS = [
     text: "Yogi Aaron and AYAMA™, the reason to choose Blue Osa, come after the accommodations. The price comes after the meals, the graduates near the very end.",
   },
   {
-    title: "Your best film isn't on this page",
-    text: "The film about the place, two and a half minutes that make people want to come, lives only on the homepage. On the training page, words have to do its job.",
+    title: "The place gets lost in the text",
+    text: "Blue Osa is beautiful, and you have the pictures to prove it. On the training page, long paragraphs try to describe what a few of them would show at a glance.",
   },
   {
     title: "Buttons everywhere",
-    text: "Apply Now appears 16 times and Book Now 11 times, plus Book your call and a floating discovery call. When every section asks for a decision, none feels like the moment.",
+    text: "Apply Now and Book Now show up in almost every section, next to Book your call and a floating discovery call. When every section asks for a decision, none feels like the moment.",
   },
   {
     title: "Written for Google more than for people",
-    text: "The phrase 200 hour yoga teacher training Costa Rica appears 14 times. Readers notice the repetition, and it hides the warmth of your graduates' voices.",
+    text: "The phrase 200 hour yoga teacher training Costa Rica comes up again and again. Readers notice it, and it hides the warmth of your graduates' voices.",
   },
 ];
 
@@ -95,12 +95,12 @@ const ORDER_TODAY = [
 const REPEATS = ["Why choose our training", "You belong here", "Is this program right for you?", "Begin your journey today"];
 
 const ORDER_NEW = [
-  { title: "Film, dates, price", text: "Everything needed to decide, on the first screen" },
+  { title: "Dates, price, deposit", text: "Everything needed to decide, on the first screen" },
   { title: "Yogi Aaron and AYAMA™", text: "Why Blue Osa, in his words" },
-  { title: "Fourteen days at a glance", text: "Curriculum, the daily schedule, and your training film" },
+  { title: "Fourteen days at a glance", text: "Curriculum and the daily schedule" },
   { title: "Graduates", text: "Faces, names, what they do now" },
   { title: "Price and what's included", text: "One table, one guarantee" },
-  { title: "The place", text: "Your film about Blue Osa, then rooms, meals and free time" },
+  { title: "The place", text: "Rooms, meals and free time, in pictures" },
   { title: "Questions and apply", text: "A short FAQ and one form" },
 ];
 
@@ -117,24 +117,24 @@ const CHANGES = [
     effect: "Future teachers get the four answers they need before a single paragraph.",
   },
   {
-    today: "Films missing or between text",
-    change: "Your films carry the page: the place as a silent loop on the first screen, the training film with the curriculum, the full film where the place is introduced",
+    today: "Paragraphs describing the place",
+    change: "Pictures before paragraphs: your own photos of the groups, the rooms and the food lead each section",
     effect: "People feel Blue Osa in seconds. Words only have to confirm what they already saw.",
   },
   {
-    today: "27 buttons with two labels",
+    today: "Buttons in almost every section",
     change: "One action, Apply now, only where a decision makes sense, with Book a call as the gentle second door",
     effect: "More people take the step, and your calls are with people who are already close to yes.",
   },
 ];
 
 const PAGE = [
-  { title: "Your film on the first screen", text: "A silent loop from your film about the place, then all five 2027 dates with price, deposit and refund." },
+  { title: "Dates and price first", text: "All five 2027 dates with free spots, price, deposit and refund on the first screen." },
   { title: "Aaron and AYAMA™ early", text: "Why this training is different, in his words and with his portrait." },
-  { title: "Fourteen days, at a glance", text: "The curriculum in four blocks, the real daily schedule, and your film on what to expect." },
+  { title: "Fourteen days, at a glance", text: "The curriculum in four blocks and the real daily schedule." },
   { title: "Graduates, with faces", text: "Your own testimonials, with name and year, next to photos of the groups." },
   { title: "Price, simply", text: "Triple, double and single in one table, what's included and what isn't." },
-  { title: "The place, in your film", text: "The full two and a half minutes, then rooms, meals and free time in three pictures." },
+  { title: "The place, in pictures", text: "Rooms, meals and free time, shown instead of described." },
 ];
 
 const OFFER = {
@@ -148,7 +148,7 @@ const OFFER = {
         "Kickoff with Aaron and the team",
         "Final structure for the 200-hour page, from this mockup",
         "Text shortened and sharpened with you, your voice kept",
-        "Your logo stays: clean white and transparent versions for films and dark backgrounds",
+        "Your logo stays: clean white and transparent versions for photos and dark backgrounds",
         "Review call: you approve before anything is built",
       ],
     },
@@ -167,7 +167,6 @@ const OFFER = {
 
 const EXTRAS = [
   "Retreat and group pages in the same style",
-  "A short video portrait of Aaron and AYAMA™",
   "Monthly care: new dates and small changes",
 ];
 
@@ -210,8 +209,8 @@ export default function ProposalContent() {
             Let the pages say less.
           </h1>
           <p className={styles.lead}>
-            For Aaron: you asked me for more information last December. Here it is. Your films, your
-            photos and your method are strong. What holds the pages back is the amount of text and the
+            For Aaron: you asked me for more information last December. Here it is. Your place,
+            your photos and your method are strong. What holds the pages back is the amount of text and the
             order. Here is what I would change, with a first mockup of the 200-hour page.
           </p>
           <p className={styles.byline}>Jan Brunnenkant · Well Edge Creative · November 2026</p>
@@ -238,11 +237,11 @@ export default function ProposalContent() {
         <section className={`${styles.wrap} ${styles.short}`} aria-label="In short">
           <div className={styles.shortItem}>
             <span>What I see</span>
-            <p>A beautiful place, real films and a strong method, under 8,400 words and 92 bold phrases.</p>
+            <p>A beautiful place and a strong method, hidden under far too much text.</p>
           </div>
           <div className={styles.shortItem}>
             <span>What I would do</span>
-            <p>Keep your brand, your films and your best words. Cut the rest, and put it in the order people decide.</p>
+            <p>Keep your brand and your best words. Cut the rest, and put it in the order people decide.</p>
           </div>
           <div className={styles.shortItem}>
             <span>What it brings</span>
@@ -388,12 +387,13 @@ export default function ProposalContent() {
                 A first look · the 200-hour page
               </p>
               <h2>Your new teacher training page</h2>
-              <p>In your own fonts and colours, with your films, photos, dates, prices and graduates&apos; words. Scroll inside it, or open it full screen.</p>
+              <p>In your own fonts and colours, with your photos, dates, prices and graduates&apos; words. Scroll inside it, or open it full screen.</p>
             </div>
             <p className={styles.draftNote}>
               <strong>A first mockup, not a finished design.</strong> It keeps your brand and your
-              content, and shows the new order and feel. Your logo stays exactly as it is. Every
-              detail is shaped together with you.
+              content, and shows the new order and feel. Your logo stays exactly as it is. The
+              videos in it are your own, placed only to show the idea. Every detail is shaped together
+              with you.
             </p>
             <div className={styles.browser}>
               <div className={styles.browserBar}>
