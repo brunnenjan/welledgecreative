@@ -172,7 +172,7 @@ const EXTRAS = [
 
 const STEPS = [
   { title: "Talk it through", text: "A 30-minute call where we go through this page and you tell me what matters most for the trainings." },
-  { title: "Confirm", text: "I send one fixed price in writing, and we pick a start date." },
+  { title: "Confirm", text: "I send a written offer with a price range, and we pick a start date. The fixed price follows after the kickoff, once I've seen your setup." },
   { title: "Start", text: "Kickoff with you. About two weeks later you review and approve the design, then I build." },
 ];
 
@@ -517,8 +517,8 @@ export default function ProposalContent() {
               </article>
             </div>
             <p className={styles.priceNote}>
-              One fixed price, confirmed in writing before we start, paid in two parts: at the start
-              and at launch.
+              A fixed price, confirmed in writing after the kickoff once I&apos;ve seen your setup, paid
+              in two parts: at the start and at launch.
             </p>
           </div>
         </section>
