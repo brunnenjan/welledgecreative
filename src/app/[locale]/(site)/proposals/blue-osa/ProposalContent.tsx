@@ -32,7 +32,7 @@ const STRENGTHS = [
   },
   {
     title: "Graduates who say it changed their lives",
-    text: "“I never imagined I would find my life purpose in my retirement years!” Your graduates write like that, and they now teach weekly classes.",
+    text: "“I never imagined I would find my life purpose in my retirement years!” Your graduates write like that.",
   },
   {
     title: "What already works on the page",
@@ -98,7 +98,7 @@ const ORDER_NEW = [
   { title: "Dates, price, deposit", text: "Everything needed to decide, on the first screen" },
   { title: "Yogi Aaron and AYAMA™", text: "Why Blue Osa, in his words" },
   { title: "Fourteen days at a glance", text: "Curriculum and the daily schedule" },
-  { title: "Graduates", text: "Faces, names, what they do now" },
+  { title: "Graduates", text: "Their own words, with name and year" },
   { title: "Price and what's included", text: "One table, one guarantee" },
   { title: "The place", text: "Rooms, meals and free time, in pictures" },
   { title: "Questions and apply", text: "A short FAQ and one form" },
@@ -108,8 +108,8 @@ const ORDER_NEW = [
 const CHANGES = [
   {
     today: "Walls of text, bold everywhere",
-    change: "One idea per section, one highlight at most, and the long texts moved into an FAQ so search keeps working",
-    effect: "The page looks as calm and premium as the place, and people actually read it.",
+    change: "One idea per section, one highlight at most, and the longer texts kept further down in an FAQ, so nothing useful is lost",
+    effect: "The page looks as calm and premium as the place, and it becomes easy to read.",
   },
   {
     today: "Dates on top, price far below",
@@ -124,7 +124,7 @@ const CHANGES = [
   {
     today: "Buttons in almost every section",
     change: "One action, Apply now, only where a decision makes sense, with Book a call as the gentle second door",
-    effect: "More people take the step, and your calls are with people who are already close to yes.",
+    effect: "The next step is always clear, without the page pushing for it in every section.",
   },
 ];
 
@@ -132,14 +132,14 @@ const PAGE = [
   { title: "Dates and price first", text: "All five 2027 dates with free spots, price, deposit and refund on the first screen." },
   { title: "Aaron and AYAMA™ early", text: "Why this training is different, in his words and with his portrait." },
   { title: "Fourteen days, at a glance", text: "The curriculum in four blocks and the real daily schedule." },
-  { title: "Graduates, with faces", text: "Your own testimonials, with name and year, next to photos of the groups." },
+  { title: "Graduates, in their words", text: "Your own testimonials, with name and year, next to photos of the groups." },
   { title: "Price, simply", text: "Triple, double and single in one table, what's included and what isn't." },
   { title: "The place, in pictures", text: "Rooms, meals and free time, shown instead of described." },
 ];
 
 const OFFER = {
   name: "Your teacher training pages",
-  intro: "One project, about 6 weeks with time for your feedback, built in your WordPress so your team keeps editing the way it does today.",
+  intro: "One project, about 6 weeks with time for your feedback, built on the WordPress site you already have.",
   steps: [
     {
       title: "Shape it together",
@@ -156,10 +156,10 @@ const OFFER = {
       title: "Build and launch",
       time: "about 4 weeks",
       items: [
-        "The 200-hour page rebuilt, fast on mobile",
+        "The 200-hour page rebuilt, designed for phones first",
         "The same system applied to the 300-hour page and the training overview",
-        "One apply flow, one call booking, fresh reviews",
-        "Launched in your WordPress and handed over",
+        "Apply and Book a call connected to the systems you already use",
+        "Launched on your site, with a handover for your team",
       ],
     },
   ],
@@ -245,7 +245,7 @@ export default function ProposalContent() {
           </div>
           <div className={styles.shortItem}>
             <span>What it brings</span>
-            <p>Future teachers who decide faster, and calls with people who are already close to yes.</p>
+            <p>A page that is easy to read, shows Blue Osa at its best and makes the next step obvious.</p>
           </div>
         </section>
 
