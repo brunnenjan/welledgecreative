@@ -1,7 +1,7 @@
 /**
  * Facts for the homepage mockup, all from Brisa Bahía's own material: brisabahia.com
  * (checked 18 November 2026), the Brand Foundation, the Property and Seasons sheets, and Kary's
- * answers of 22 August 2026. The $135 rate stays out on purpose: Kary shares pricing only after
+ * answers of 22 August 2026. The nightly rate stays out on purpose: Kary shares pricing only after
  * an inquiry.
  */
 
