@@ -184,7 +184,7 @@ export default function ProposalContent() {
             </div>
             <p className={styles.draftNote}>
               <strong>A first draft, not a finished design.</strong> Every fact comes from your site, your
-              sheets or your mails to me. Your $135 rate stays out, as you asked. Two answers, flight delays
+              sheets or your mails to me. Your nightly rate stays out, as you asked. Two answers, flight delays
               and extra costs, I drafted from your FAQ; please check them.
             </p>
             <div className={styles.browser}>
