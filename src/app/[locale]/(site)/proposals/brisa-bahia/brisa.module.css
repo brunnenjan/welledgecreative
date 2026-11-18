@@ -1,0 +1,45 @@
+/* What only the Brisa Bahía proposal needs; the rest comes from ../proposal.module.css. */
+.heroLogo { width: 230px; height: auto; margin-bottom: 26px; }
+
+/* Photo strip */
+.strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding-inline: 8px; }
+.stripImg { position: relative; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; }
+.stripImg img, .onSiteImg img, .changeImg img { object-fit: cover; }
+.stripNote { margin: 12px 0 0 !important; text-align: center; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8b8780; }
+
+/* What changes, and why */
+.changes { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.changeItem { display: grid; grid-template-columns: 150px 1fr; gap: 22px; align-items: start; padding: 20px; border-radius: 18px; border: 1px solid var(--line); background: #fff; }
+.changeImg { position: relative; aspect-ratio: 1; border-radius: 12px; overflow: hidden; }
+.changeNum { font-size: 0.8rem; font-weight: 700; color: #a94a00; font-variant-numeric: tabular-nums; }
+.changeItem h3 { margin-top: 4px; font-size: 1.12rem; line-height: 1.35; }
+.changeItem p { margin-top: 8px !important; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
+.align { margin-top: 36px; padding: 26px 28px; border-radius: 16px; background: #f7f4ee; }
+.align h3 { font-size: 1.05rem; }
+.align ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 6px; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
+
+/* Coming back */
+.onSite { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.onSiteImg { position: relative; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; }
+.onSiteText { margin-top: 18px !important; color: var(--ink-soft); font-size: 1.05rem; }
+
+/* The offer */
+.offer { display: grid; grid-template-columns: 1.6fr 0.8fr; gap: 24px; align-items: stretch; }
+.offerSteps { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.offerNum { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #193f35; color: #f1cd7e; font-size: 0.85rem; font-weight: 700; }
+.offerSteps h4 { margin: 12px 0 0; font-size: 1.15rem; }
+.offerTime { margin-top: 2px !important; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a94a00; font-weight: 700; }
+.offerSteps ul { margin-top: 10px !important; }
+
+.posterButton { background: #f1cd7e !important; color: #0a1f16; }
+.closeBand { background: #193f35; }
+
+@media (max-width: 900px) {
+  .heroLogo { width: 190px; }
+  .strip { grid-template-columns: repeat(3, 1fr); gap: 6px; padding-inline: 6px; }
+  .changes, .onSite, .offer, .offerSteps { grid-template-columns: 1fr; }
+  .changeItem { grid-template-columns: 96px 1fr; gap: 16px; padding: 16px; }
+  .align { padding: 22px 20px; }
+  .onSite { gap: 28px; }
+  .onSiteImg { aspect-ratio: 4 / 3; }
+}
