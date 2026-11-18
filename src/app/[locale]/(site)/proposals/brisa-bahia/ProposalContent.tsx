@@ -7,10 +7,10 @@ import own from "./brisa.module.css";
 
 /**
  * Next steps for Brisa Bahía, written to Kary as a friend: Jan built their brand and website in
- * 2025 and spent two months at Brisa. After the August 2026 strategy workshop and the renovation by
+ * 2025 and spent two months at Brisa Bahía. After the August 2026 strategy workshop and the renovation by
  * another developer, this page shows in plain words what Jan would change, what each change does
  * for Kary, and a homepage mockup. Sources: brisabahia.com (checked 18 November 2026), Kary's mails
- * of August and September 2026, the Brand Foundation, the Property and Seasons sheets, Brisa's
+ * of August and September 2026, the Brand Foundation, the Property and Seasons sheets, Brisa Bahía's
  * Instagram and their own photo and video folder.
  */
 
@@ -24,7 +24,7 @@ const CHANGES = [
   {
     img: "beach-aerial",
     change: "The homepage opens with the bay itself.",
-    why: "A facilitator feels how private and remote Brisa is before reading a single line. That is what makes you different from every other venue.",
+    why: "A facilitator feels how private and remote Brisa Bahía is before reading a single line. That is what makes you different from every other venue.",
   },
   {
     img: "dock",
@@ -38,7 +38,7 @@ const CHANGES = [
   },
   {
     img: "yoga-deck",
-    change: "Six clear blocks: what Brisa holds, and what stays with the facilitator.",
+    change: "Six clear blocks: what Brisa Bahía holds, and what stays with the facilitator.",
     why: "Today that lives in your calls and your hosting guide. On the site, a facilitator sees at a glance how much you take off their plate.",
   },
   {
@@ -66,7 +66,7 @@ const OFFER = {
   steps: [
     {
       title: "Shape it together",
-      time: "about 3 weeks · ideally at Brisa",
+      time: "about 3 weeks · ideally at Brisa Bahía",
       items: ["Sit down with you and Nhung", "Final homepage, from this mockup", "Host a Retreat page and the fit check", "The honest answers, in your words", "You approve before I build"],
     },
     {
@@ -226,7 +226,7 @@ export default function ProposalContent() {
               </p>
               <h2>I&apos;d happily come back for this.</h2>
               <p className={own.onSiteText}>
-                After my two months with you, I know how much of Brisa only makes sense on the ground. If it
+                After my two months with you, I know how much of Brisa Bahía only makes sense on the ground. If it
                 works for you, I&apos;d come back for the first step and work on it with you and Nhung at the
                 table: the answers, the pictures, the details that only you know.
               </p>
@@ -289,7 +289,7 @@ export default function ProposalContent() {
         {/* Close */}
         <section className={`${styles.darkBand} ${own.closeBand}`}>
           <div className={`${styles.wrap} ${styles.section} ${styles.close}`}>
-            <h2>Let&apos;s make hosting at Brisa feel easy before anyone books a flight.</h2>
+            <h2>Let&apos;s make hosting at Brisa Bahía feel easy before anyone books a flight.</h2>
             <p>Have a look, scroll through the homepage, and tell me what you think. Happy to walk you and Nhung through it on a call.</p>
             <div className={styles.actions}>
               <Link href="/en/contact?type=discovery-call" className="btn btn-primary">

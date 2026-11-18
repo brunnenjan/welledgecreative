@@ -10,7 +10,7 @@ import styles from "./home.module.css";
  * Homepage mockup for Brisa Bahía. The place leads: a quiet opening, the journey in told while
  * you scroll, then the stay, the kitchen, the seasons and the honest answers facilitators need,
  * before the two paths (host or guest) split. Logo (the current one), colours
- * and type are Brisa's own (Brand Foundation, Sheet 3); photos are from brisabahia.com and stills
+ * and type are Brisa Bahía's own (Brand Foundation, Sheet 3); photos are from brisabahia.com and stills
  * from the 2025 header film.
  */
 
@@ -120,7 +120,7 @@ export default function HomeMockup({ fonts }: { fonts: string }) {
   const answered = Object.values(fit).filter((v) => v !== null).length;
   const season = INTENTS[intent];
 
-  // No backend in a mockup: the answers open as an email draft to Brisa.
+  // No backend in a mockup: the answers open as an email draft to Brisa Bahía.
   const sendFit = (form: HTMLFormElement) => {
     const data = new FormData(form);
     const lines = [
@@ -464,7 +464,7 @@ export default function HomeMockup({ fonts }: { fonts: string }) {
               </div>
             </div>
             <form className={styles.fitCard} aria-live="polite" onSubmit={(e) => { e.preventDefault(); sendFit(e.currentTarget); }}>
-              <p className={styles.script}>Your retreat at Brisa</p>
+              <p className={styles.script}>Your retreat at Brisa Bahía</p>
               {notes.length === 0 ? (
                 <p className={styles.fitEmpty}>Pick an answer on the left to see how your retreat fits.</p>
               ) : (
