@@ -1,0 +1,146 @@
+/* Vietnam Detox case study. Their palette carries the page: forest, ivory, sand and ember.
+   One layout rule everywhere: a 1120px column, a section head (label, headline), then the
+   content 56px below it. Sections are plain blocks with an inner .wrap, because the global
+   section rule removes side padding from sections on wide screens. */
+.page {
+  --forest: #1e3d20;
+  --ivory: #fefaf2;
+  --sand: #f5e8d0;
+  --ember: #e06420;
+  --ink: #1f2a20;
+  --soft: #5f665c;
+  --line: #e6dcc8;
+  --gap: 56px;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-vd-body), sans-serif;
+}
+.page * { box-sizing: border-box; }
+.page h1, .page h2, .page h3, .page p, .page ul, .page ol, .page dd, .page figure { margin: 0; }
+.page ul, .page ol { list-style: none; padding: 0; }
+.page h1, .page h2 { font-family: var(--font-vd-title), Georgia, serif; font-weight: 500; text-wrap: balance; color: var(--forest); }
+.page h1 { font-size: clamp(2.7rem, 5.6vw, 4.8rem); line-height: 1.04; max-width: 16ch; }
+.page h2 { font-size: clamp(2rem, 3.6vw, 3.1rem); line-height: 1.1; max-width: 20ch; }
+.page h3 { font-size: 1.1rem; line-height: 1.35; font-weight: 600; }
+.page p { line-height: 1.7; }
+.page a { text-decoration: none; }
+.page a:focus-visible { outline: 3px solid var(--ember); outline-offset: 5px; }
+.page img { display: block; width: 100%; height: auto; }
+
+.header :global(.mobile-header) { display: flex; align-items: center; justify-content: space-between; padding-inline: max(24px, calc((100vw - 1280px) / 2)); }
+.header :global(.mobile-menu-overlay) { display: block; }
+
+.wrap { width: min(1120px, 100% - 96px); margin-inline: auto; }
+.section, .band, .forest, .close { padding-block: 120px; }
+.band { background: var(--sand); }
+.eyebrow { margin-bottom: 18px !important; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ember); }
+
+/* Hero */
+.hero { padding-block: 160px 120px; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 6px 10px; margin-bottom: 40px; font-size: 0.82rem; color: #8b8676; }
+.crumbs a { color: var(--soft); font-weight: 600; border-bottom: 1px solid var(--line); }
+.crumbs a:hover { color: var(--ember); border-color: var(--ember); }
+.lead { margin-top: 26px !important; max-width: 38rem; font-size: 1.2rem; color: var(--soft); }
+.visit { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; padding: 14px 24px; border-radius: 999px; background: var(--forest); color: var(--ivory); font-weight: 600; transition: background 0.2s; }
+.visit:hover { background: var(--ember); }
+
+/* The live homepage in plain frames */
+.stage { position: relative; margin-top: 72px; padding: 64px 64px 64px; border-radius: 20px; background: var(--sand); }
+.stage .browser { width: 84%; }
+.stagePhone { position: absolute; right: 64px; bottom: 40px; width: 19%; }
+.browser { border-radius: 12px; overflow: hidden; border: 1px solid #d8c090; background: #fff; box-shadow: 0 30px 60px #1e3d201f; }
+.browserBar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #fbf3e2; border-bottom: 1px solid var(--line); }
+.browserBar i { width: 9px; height: 9px; border-radius: 50%; background: #d8c090; }
+.browserBar span { margin-left: 12px; font-size: 0.72rem; color: #8b8676; }
+.phone { border-radius: 28px; overflow: hidden; border: 7px solid var(--forest); background: var(--forest); box-shadow: 0 30px 60px #1e3d2033; }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin: 64px auto 0; padding-top: 28px; border-top: 1px solid var(--line); }
+.facts dt { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); }
+.facts dd { margin-top: 8px; font-family: var(--font-vd-title), Georgia, serif; font-size: 1.3rem; line-height: 1.3; color: var(--forest); }
+
+/* Where we started */
+.split { display: grid; grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; }
+.prose { display: grid; gap: 20px; padding-top: 42px; font-size: 1.12rem; }
+
+/* What I did: one row per step */
+.phases { margin-top: var(--gap) !important; border-top: 1px solid var(--line); }
+.phases li { display: grid; grid-template-columns: 72px 260px 1fr; gap: 24px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.phases span { font-family: var(--font-vd-title), Georgia, serif; font-size: 1.7rem; line-height: 1; color: var(--ember); }
+.phases h3 { font-family: var(--font-vd-title), Georgia, serif; font-size: 1.6rem; font-weight: 500; line-height: 1.2; color: var(--forest); }
+.phases p { color: var(--soft); max-width: 36rem; }
+
+/* Retreats */
+.forest { background: var(--forest); color: var(--ivory); }
+.forest h2 { color: var(--ivory); }
+.forest .eyebrow { color: #f5a030; }
+.intro { margin-top: 20px !important; max-width: 36rem; color: #d9dfd2; font-size: 1.05rem; }
+.retreats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: var(--gap) !important; }
+.retreats li { padding-top: 26px; border-top: 1px solid #fefaf247; }
+.retreats h3 { font-family: var(--font-vd-title), Georgia, serif; font-size: 1.7rem; font-weight: 500; line-height: 1.15; min-height: 2.3em; }
+.place { margin-top: 12px !important; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #f5a030; line-height: 1.5 !important; min-height: 3em; }
+.retreats p:not(.place) { margin-top: 10px !important; font-size: 0.97rem; color: #d9dfd2; }
+
+/* Screens */
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 56px 40px; margin-top: var(--gap); }
+.shot figcaption { margin-top: 18px; font-size: 0.97rem; line-height: 1.6; color: var(--soft); max-width: 30rem; }
+.shot figcaption strong { display: block; margin-bottom: 4px; font-family: var(--font-vd-title), Georgia, serif; font-size: 1.4rem; font-weight: 500; color: var(--forest); }
+.phones { display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; margin-top: 96px; padding: 64px 72px; border-radius: 20px; background: var(--sand); }
+.phones > p { font-family: var(--font-vd-title), Georgia, serif; font-size: clamp(2rem, 3.6vw, 3.1rem); line-height: 1.1; color: var(--forest); max-width: 9ch; }
+.phoneRow { display: flex; gap: 28px; }
+.phoneRow .phone { width: 220px; }
+
+/* Brand */
+.brand { display: grid; grid-template-columns: 6fr 5fr; gap: 80px; align-items: center; }
+.brandText { margin-top: 20px !important; font-size: 1.08rem; max-width: 34rem; }
+.swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 36px !important; }
+.swatches li { display: flex; flex-direction: column; justify-content: flex-end; min-height: 116px; padding: 12px; border-radius: 10px; border: 1px solid #1e3d201a; font-size: 0.76rem; }
+.swatches strong { font-size: 0.9rem; }
+.type { display: flex; gap: 20px; align-items: center; margin-top: 32px !important; font-size: 0.97rem; color: var(--soft); max-width: 34rem; }
+.typeSample { font-family: var(--font-vd-title), Georgia, serif; font-size: 3.4rem; line-height: 1; color: var(--forest); }
+/* The logo file is cropped tight, so the room around it comes from this box. */
+.logo { display: grid; place-items: center; aspect-ratio: 1; padding: 22%; border-radius: 20px; background: #fcfbf2; }
+
+/* Now */
+.now { display: grid; grid-template-columns: 1fr 1fr; gap: 0 80px; margin-top: var(--gap) !important; }
+.now li { padding: 28px 0; border-top: 1px solid var(--line); }
+.now h3 { font-family: var(--font-vd-title), Georgia, serif; font-size: 1.6rem; font-weight: 500; color: var(--forest); }
+.now p { margin-top: 8px !important; color: var(--soft); max-width: 30rem; }
+.teamNote { margin-top: 0 !important; padding-top: 24px; border-top: 1px solid var(--line); font-size: 0.9rem; color: #8b8676; }
+
+/* Close */
+.close { background: var(--forest); color: var(--ivory); text-align: center; }
+.close h2 { margin-inline: auto; color: var(--ivory); }
+.close p { margin: 20px auto 0 !important; max-width: 34rem; color: #d9dfd2; font-size: 1.08rem; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px 28px; margin-top: 36px; }
+.actions :global(.btn) { min-height: 52px; gap: 12px; }
+.lightLink { color: var(--ivory); font-weight: 600; border-bottom: 1px solid #fefaf266; padding-bottom: 2px; }
+.lightLink:hover { border-color: #f5a030; }
+
+@media (max-width: 900px) {
+  .page { --gap: 36px; }
+  .wrap { width: calc(100% - 40px); }
+  .section, .band, .forest, .close { padding-block: 76px; }
+  .hero { padding-block: 130px 76px; }
+  .stage { margin-top: 44px; padding: 20px 20px 48px; border-radius: 16px; }
+  .stage .browser { width: 100%; }
+  .stagePhone { right: 20px; bottom: 16px; width: 27%; border-width: 4px; border-radius: 16px; }
+  .facts { grid-template-columns: 1fr 1fr; gap: 24px 20px; margin-top: 44px; }
+  .split, .brand, .shots, .now { grid-template-columns: 1fr; gap: 0; }
+  .shots { gap: 40px; }
+  .brand { gap: 44px; }
+  .prose { padding-top: 24px; }
+  .phases li { grid-template-columns: 44px 1fr; gap: 6px 12px; padding: 22px 0; }
+  .phases p { grid-column: 2; }
+  .phases h3 { font-size: 1.4rem; }
+  .retreats { grid-template-columns: 1fr; gap: 0; }
+  .retreats li { padding: 22px 0; }
+  .retreats h3, .place { min-height: 0; }
+  .phones { grid-template-columns: 1fr; gap: 32px; margin-top: 64px; padding: 36px 20px; }
+  .phones > p { max-width: none; }
+  .phoneRow { justify-content: center; gap: 14px; }
+  .phoneRow .phone { width: 46%; max-width: 200px; border-width: 5px; border-radius: 20px; }
+  .swatches { gap: 5px; }
+  .swatches li { min-height: 84px; padding: 8px; font-size: 0.6rem; }
+  .swatches strong { font-size: 0.72rem; }
+  .logo { padding: 18%; }
+}

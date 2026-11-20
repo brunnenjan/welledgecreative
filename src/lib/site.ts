@@ -12,6 +12,7 @@ export const SITE_PAGES = [
   "/retreats",
   "/pub-websites",
   "/case-studies/brisa-bahia",
+  "/case-studies/vietnam-detox",
   "/contact",
   "/imprint",
   "/privacy",

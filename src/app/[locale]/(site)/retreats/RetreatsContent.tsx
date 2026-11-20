@@ -287,6 +287,12 @@ export default function RetreatsContent() {
                     <p>{vietnamDetox.challenge}</p>
                     <p>{vietnamDetox.work}</p>
                     <p className={styles.caseResult}>{vietnamDetox.result}</p>
+                    {vietnamDetox.cta && (
+                      <Link href={`/${locale}/case-studies/vietnam-detox`} className={styles.caseCta}>
+                        {vietnamDetox.cta}
+                        <Arrow />
+                      </Link>
+                    )}
                   </div>
                 </div>
               )}
