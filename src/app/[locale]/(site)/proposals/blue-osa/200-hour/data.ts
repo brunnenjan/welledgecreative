@@ -40,12 +40,13 @@ export const LEARN = [
   "AYAMA™: a science-backed approach to anatomy and alignment",
 ];
 
-export const FAMILY = "Forget \"staff\": at Blue Osa we have family. From managers and chefs to spa therapists and tour guides, everyone plays a role in creating the experience. And when you join the training, you become part of this extended family.";
+export const FAMILY = "From managers and chefs to spa therapists and tour guides, everyone plays a role in creating the experience. And when you join the training, you become part of this extended family.";
 
+// Google reviews as shown on their page (via Trustindex), each with five stars there.
 export const GOOGLE = [
-  { by: "Lori Tieszen", date: "May 2024", text: "If you are looking for an experiential and immersive 200 hour YTT then Blue Osa is an excellent option. The course is well designed with excellent on-line materials and videos, then the work at the resort is meaningful and well paced." },
-  { by: "Kirk Kessler", date: "May 2024", text: "I was there for 15 days for a Yoga Teacher Training. There could not be a more perfect location for a retreat, but especially something as life changing as YTT." },
-  { by: "Gabe Merizalde", date: "June 2024", text: "The friendly staff and beautiful grounds made me feel supported and able to focus on the inner workings of my mind in peace. Delicious food. Playful dogs." },
+  { by: "Lori Tieszen", date: "May 23, 2024", color: "#7b1fa2", text: "If you are looking for an experiential and immersive 200 hour YTT than Blue Osa is an excellent option. The course is well designed with excellent on-line materials and videos, then the work at the resort is meaningful and well paced. Blue Osa is a bit remote, and the wifi isn't available all over the resort, but the beautiful and restful location add to the entire experience. The food is fresh, healthy and plentiful too. Namaste 🙏" },
+  { by: "Kirk Kessler", date: "May 20, 2024", color: "#00796b", text: "It's very difficult to write a review on Blue OSA because it's two experiences in one. I was there for 15 days for a Yoga Teacher Training. That is one experience and the resort is another. But they work seamlessly hand in hand. There could not be a more perfect location for a retreat, but especially something as life changing as YTT. You will always remember your visit to Blue OSA." },
+  { by: "Gabe Merizalde", date: "June 21, 2024", color: "#c2185b", text: "Staying at blue osa for a week was so special. The friendly staff and beautiful grounds made me feel supported and able to focus on the inner workings of my mind in peace. Delicious food. Playful dogs. Wonderful place to retreat." },
 ];
 
 export const CURRICULUM = [

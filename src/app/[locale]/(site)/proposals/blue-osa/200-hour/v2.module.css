@@ -165,8 +165,6 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
 .callBox { display: grid; gap: 10px; padding: 30px; border-radius: 22px; background: #fff; color: #3a3f44; }
 .callBox strong { font-size: 1.2rem; }
 .callBox p { margin: 0 !important; color: #6d6e70 !important; font-size: 0.92rem !important; }
-.callSlots { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
-.callSlots span { height: 44px; border-radius: 10px; border: 1px dashed #b9c8d2; background: #f6f9fb; }
 
 /* Phone bar */
 .mobileBar { display: none; }
@@ -241,11 +239,27 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
 .familyImg img { object-fit: cover; }
 .family h3 { font-size: 1.9rem; font-weight: 300; color: #2f3337; line-height: 1.2; }
 .family p:not([class]) { margin-top: 14px !important; color: #4f4f4f; }
-.google { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px; }
-.google figure { margin: 0; padding: 22px; border-radius: 16px; border: 1px solid #e3e8ec; }
-.stars { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1e9cc4; }
-.google blockquote { margin: 10px 0 12px; font-size: 0.93rem; line-height: 1.6; color: #2f3337; }
-.google figcaption { font-size: 0.76rem; color: #6d6e70; }
+.googleHead { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 56px; }
+.googleHead strong { font-size: 1.05rem; color: #202124; }
+.googleNote { font-size: 0.85rem; color: #70757a; }
+.google { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; align-items: start; }
+.gCard { margin: 0; padding: 18px 20px; border-radius: 12px; background: #fff; border: 1px solid #dadce0; box-shadow: 0 1px 2px #3c40434d, 0 1px 3px 1px #3c404326; font-family: Roboto, Arial, sans-serif; }
+.gTop { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; }
+.gAvatar { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: #fff; font-size: 1.1rem; font-weight: 500; }
+.gTop strong { display: block; font-size: 0.95rem; font-weight: 500; color: #202124; }
+.gTop span:not(.gAvatar) { display: block; font-size: 0.8rem; color: #70757a; }
+.gRating { display: flex; align-items: center; gap: 6px; margin-top: 12px; }
+.gStars { color: #fbbc04; font-size: 1.05rem; letter-spacing: 1px; line-height: 1; }
+.gVerified { display: grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: #1a73e8; color: #fff; font-size: 0.6rem; font-weight: 700; }
+.gText { margin-top: 10px; }
+.gText summary { list-style: none; cursor: pointer; }
+.gText summary::-webkit-details-marker { display: none; }
+.gText blockquote { margin: 0; font-size: 0.92rem; line-height: 1.55; color: #3c4043; }
+.gText summary blockquote { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.gText[open] summary blockquote { display: none; }
+.gText[open] summary { display: none; }
+.gMore { display: inline-block; margin-top: 6px; font-size: 0.85rem; color: #70757a; }
+.gMore:hover { color: #1a73e8; }
 .rights { width: 100%; font-size: 0.72rem; color: #6f8898; }
 @media (max-width: 1000px) { .why { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 860px) {
@@ -253,3 +267,10 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
   .why, .google, .family { grid-template-columns: 1fr; }
   .family { gap: 24px; }
 }
+
+/* Polish pass */
+.root h1, .root h2, .root h3 { text-wrap: balance; hyphens: manual; }
+.learn { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important; max-width: 980px; }
+.callIcon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: #eaf8fc; color: #1e9cc4; }
+.callBox a { justify-self: start; margin-top: 6px; }
+.callBox small { font-size: 0.76rem; color: #8a959c; }
