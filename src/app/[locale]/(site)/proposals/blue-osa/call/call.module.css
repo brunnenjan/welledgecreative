@@ -1,0 +1,61 @@
+/* The call page for Blue Osa, on top of ../../proposal.module.css. Blue accents from their brand. */
+.posterButton { background: #3abce3 !important; }
+
+.points { list-style: none; padding: 0; display: grid; gap: 14px; }
+.point { display: grid; grid-template-columns: 48px 1fr 1.2fr; gap: 28px; padding: 30px; border: 1px solid #e7e3dc; border-radius: 20px; background: #fff; }
+.num { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #14324a; color: #fff; font-weight: 700; }
+.pointHead h3 { font-size: 1.35rem; }
+.asked { margin-top: 12px !important; color: #5d5a54; font-size: 0.95rem; }
+.asked span, .doneLabel { display: block; margin-bottom: 4px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #8b8780; }
+.doneLabel { color: #1e9cc4; }
+.done { list-style: none; padding: 0; display: grid; gap: 8px; }
+.done li { position: relative; padding-left: 26px; font-size: 0.97rem; line-height: 1.55; color: #2a2825; }
+.done li::before { content: "✓"; position: absolute; left: 0; color: #1e9cc4; font-weight: 700; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.links a { padding: 8px 14px; border-radius: 999px; background: #eaf8fc; color: #14324a; font-size: 0.86rem; font-weight: 700; }
+.links a:hover { background: #3abce3; color: #fff; }
+
+.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.answers > div { padding: 26px 28px; border-radius: 18px; background: #ffffff0d; border: 1px solid #ffffff1f; }
+.answers h3 { color: #fff; }
+.answers p { margin-top: 10px !important; color: #cfcac1; font-size: 0.97rem; }
+.answers > div:last-child:nth-child(odd) { grid-column: span 2; }
+
+.steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.steps li { padding: 26px 24px; border-radius: 18px; background: #f7f4ee; }
+.stepNum { display: block; margin-bottom: 14px; font-size: 1.6rem; font-weight: 300; color: #1e9cc4; }
+.steps p { margin-top: 8px !important; color: #5d5a54; font-size: 0.94rem; }
+.speed { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: center; margin-top: 24px; padding: 28px 30px; border: 1px solid #e7e3dc; border-radius: 20px; }
+.speed p { margin-top: 8px !important; color: #5d5a54; font-size: 0.94rem; }
+.speed dl { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0; }
+.speed dl div { padding: 14px 16px; border-radius: 12px; background: #f7f4ee; }
+.speed dt { font-size: 0.78rem; font-weight: 700; color: #8b8780; }
+.speed dd { margin: 4px 0 0; font-weight: 700; color: #14324a; }
+
+.overview { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: center; }
+.muted { margin-top: 18px !important; color: #5d5a54; font-size: 1.05rem; }
+.miniPath { display: flex; align-items: center; gap: 14px; }
+.miniPath > div { flex: 1; display: grid; gap: 4px; padding: 22px; border-radius: 16px; border: 1px solid #ddd6ca; background: #fff; }
+.miniPath .miniHere { border: 2px solid #3abce3; }
+.miniPath span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1e9cc4; }
+.miniPath strong { font-size: 1.5rem; color: #14324a; }
+.miniPath em { font-style: normal; color: #5d5a54; font-size: 0.9rem; }
+.miniPath i { font-style: normal; font-size: 1.4rem; color: #8b8780; }
+
+.next { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.need { list-style: none; padding: 28px 30px; border-radius: 20px; background: #f7f4ee; display: grid; gap: 12px; }
+.need li { position: relative; padding-left: 22px; color: #2a2825; }
+.need li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 8px; height: 8px; border-radius: 50%; background: #3abce3; }
+.timeline { list-style: none; padding: 0; display: grid; gap: 0; border-left: 2px solid #3abce3; }
+.timeline li { padding: 4px 0 22px 24px; color: #5d5a54; position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 9px; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid #3abce3; }
+.timeline strong { display: block; color: #14324a; }
+
+@media (max-width: 900px) {
+  .point { grid-template-columns: 1fr; gap: 16px; padding: 24px 20px; }
+  .answers, .steps, .speed, .overview, .next { grid-template-columns: 1fr; }
+  .answers > div:last-child:nth-child(odd) { grid-column: auto; }
+  .speed dl { grid-template-columns: 1fr; }
+}
+
+.rights { padding-bottom: 64px; font-size: 0.8rem; color: #8b8780; }
