@@ -274,3 +274,17 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
 .callIcon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: #eaf8fc; color: #1e9cc4; }
 .callBox a { justify-self: start; margin-top: 6px; }
 .callBox small { font-size: 0.76rem; color: #8a959c; }
+
+/* Version 3: wide galleries with 8 to 10 photos in view */
+.stayWide { grid-template-columns: 1fr !important; gap: 32px !important; align-items: start; }
+.stayWide .stayText { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 12px 56px; align-items: start; }
+.stayWide .stayText > * { grid-column: 1; }
+.stayWide .stayText > .types, .stayWide .stayText > .checks { grid-column: 2; grid-row: 1 / span 3; margin-top: 0 !important; }
+.galleryWide { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.galleryWide .galleryThumb { aspect-ratio: 4 / 3; }
+@media (max-width: 860px) {
+  .stayWide .stayText { grid-template-columns: 1fr; }
+  .stayWide .stayText > .types, .stayWide .stayText > .checks { grid-column: 1; grid-row: auto; margin-top: 16px !important; }
+  .galleryWide { grid-template-columns: repeat(2, 1fr); }
+  .galleryWide .galleryThumb:nth-child(n + 9) { display: none; }
+}

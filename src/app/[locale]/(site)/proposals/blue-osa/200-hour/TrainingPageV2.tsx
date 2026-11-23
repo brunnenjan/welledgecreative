@@ -7,7 +7,7 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import base from "../teacher-training/training.module.css";
 import styles from "./v2.module.css";
 import {
-  APPLY, CALL, COMPARE, CURRICULUM, DATES, DAY, EXPECT, FAMILY, FAQ, FAQ_COUNT, FOOD, GOOGLE, GUARANTEE, IMG, INCLUDED,
+  APPLY, CALL, COMPARE, CURRICULUM, DATES, DAY, EXPECT, FAMILY, FAQ, FAQ_COUNT, FAQ_V3, FAQ_V3_COUNT, FOOD, GOOGLE, GUARANTEE, IMG, INCLUDED,
   LEARN, MEALS, NOT_INCLUDED, PATH, PLACE_FILM, PRICES, RIGHT_FOR, ROOMS, ROOM_TYPES, URL_300, V2, VOICES, WHY,
 } from "./data";
 
@@ -47,7 +47,11 @@ function Ctas({ dark = false, compact = false }: { dark?: boolean; compact?: boo
   );
 }
 
-export default function TrainingPageV2({ heading, body }: { heading: string; body: string }) {
+export default function TrainingPageV2({ heading, body, version = 2 }: { heading: string; body: string; version?: 2 | 3 }) {
+  // Version 3 (for the call on 25 November): 8 to 10 gallery photos in view and the FAQ in full.
+  const v3 = version === 3;
+  const faq = v3 ? FAQ_V3 : FAQ;
+  const faqCount = v3 ? FAQ_V3_COUNT : FAQ_COUNT;
   const root = useRef<HTMLDivElement>(null);
   const [standalone, setStandalone] = useState(false);
   const [seo, setSeo] = useState(false);
@@ -60,6 +64,12 @@ export default function TrainingPageV2({ heading, body }: { heading: string; bod
     setStandalone(window.self === window.top);
     // Opened from the call page with ?seo=1 shows the SEO notes straight away.
     if (new URLSearchParams(window.location.search).get("seo") === "1") setSeo(true);
+    // Opened at a section (as in the phone frames): scroll there again once images and fonts have settled.
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) {
+      const t = window.setTimeout(() => document.getElementById(id)?.scrollIntoView(), 1500);
+      return () => window.clearTimeout(t);
+    }
   }, []);
 
   useEffect(() => {
@@ -93,7 +103,16 @@ export default function TrainingPageV2({ heading, body }: { heading: string; bod
     return () => window.removeEventListener("keydown", onKey);
   }, [box, step]);
 
-  const gallery = (set: string[], label: string) => (
+  const gallery = (set: string[], label: string) => v3 ? (
+    <div className={styles.galleryWide}>
+      {set.slice(0, 10).map((img, i) => (
+        <button key={img} type="button" className={styles.galleryThumb} onClick={() => setBox({ set, i })} aria-label={`Open ${label} photo ${i + 1} of ${set.length}`}>
+          <Image src={`${V2}/${img}.webp`} alt="" fill sizes="(max-width: 860px) 50vw, 20vw" />
+          {i === 9 && set.length > 10 && <span className={styles.galleryMore}>+{set.length - 10} photos</span>}
+        </button>
+      ))}
+    </div>
+  ) : (
     <div className={styles.gallery}>
       {set.slice(0, 5).map((img, i) => (
         <button key={img} type="button" className={i === 0 ? styles.galleryMain : styles.galleryThumb} onClick={() => setBox({ set, i })} aria-label={`Open ${label} photo ${i + 1} of ${set.length}`}>
@@ -335,7 +354,7 @@ export default function TrainingPageV2({ heading, body }: { heading: string; bod
       </section>
 
       {/* 9. Rooms, a real gallery */}
-      <section id="included" className={`${base.wrap} ${styles.stay}`}>
+      <section id="included" className={`${base.wrap} ${styles.stay} ${v3 ? styles.stayWide : ""}`}>
         <div className={styles.stayText} data-reveal>
           <p className={base.kicker}>Accommodations</p>
           <h2 className={heading}>Your Home During Your 200 Hour Yoga Teacher Training</h2>
@@ -349,8 +368,8 @@ export default function TrainingPageV2({ heading, body }: { heading: string; bod
 
       {/* 10. Food, a real gallery */}
       <section className={styles.foodBand}>
-        <div className={`${base.wrap} ${styles.stay} ${styles.stayFlip}`}>
-          <div data-reveal>{gallery(FOOD, "food")}</div>
+        <div className={`${base.wrap} ${styles.stay} ${v3 ? styles.stayWide : styles.stayFlip}`}>
+          {!v3 && <div data-reveal>{gallery(FOOD, "food")}</div>}
           <div className={styles.stayText} data-reveal>
             <p className={base.kicker}>Farm-to-table</p>
             <h2 className={heading}>Nourish Your Training with Farm-to-Table Meals</h2>
@@ -358,6 +377,7 @@ export default function TrainingPageV2({ heading, body }: { heading: string; bod
               {MEALS.map((m) => <li key={m}>{m}</li>)}
             </ul>
           </div>
+          {v3 && <div data-reveal>{gallery(FOOD, "food")}</div>}
         </div>
       </section>
 
@@ -502,11 +522,11 @@ export default function TrainingPageV2({ heading, body }: { heading: string; bod
           <div data-reveal>
             <p className={base.kicker}>FAQ</p>
             <h2 className={heading}>FAQs About Our 200 Hour Yoga Teacher Training Costa Rica</h2>
-            <Seo on={seo}>FAQ schema: all {FAQ_COUNT} questions</Seo>
+            <Seo on={seo}>FAQ schema: all {faqCount} questions</Seo>
             <p className={styles.muted}>Still have a question? <a href={CALL}>Book a call with our team.</a></p>
           </div>
           <div>
-            {FAQ.map((g) => (
+            {faq.map((g) => (
               <div key={g.group} className={styles.faqGroup}>
                 <h3>{g.group}</h3>
                 {g.items.map((f) => (
@@ -544,7 +564,7 @@ export default function TrainingPageV2({ heading, body }: { heading: string; bod
       <footer className={base.footer}>
         <Image src={`${IMG}/logo-white-v4.png`} alt="Blue Osa" width={110} height={57} />
         <p>Playa Tamales · Puerto Jiménez · Osa Peninsula · Costa Rica</p>
-        <p className={base.draftLabel}>Second mockup by Well Edge Creative, with your feedback built in · not a finished design</p>
+        <p className={base.draftLabel}>{v3 ? "Third mockup by Well Edge Creative: fuller galleries and the complete FAQ · not a finished design" : "Second mockup by Well Edge Creative, with your feedback built in · not a finished design"}</p>
         <p className={styles.rights}>Design concept by Well Edge Creative, shared for your review. The design passes to Blue Osa with the project.</p>
       </footer>
 

@@ -246,3 +246,18 @@ export const FAQ: { group: string; items: { q: string; a: string }[] }[] = [
 ];
 
 export const FAQ_COUNT = FAQ.reduce((n, g) => n + g.items.length, 0);
+
+// Version 3: the last questions from their page, so the FAQ matches it in full.
+export const FAQ_V3: typeof FAQ = FAQ.map((g) =>
+  g.group === "The training"
+    ? {
+        ...g,
+        items: [
+          { q: "Who is the lead instructor, and what styles does he teach?", a: "Yogi Aaron, owner and lead instructor, with 30 years of study under masters such as Alan Finger, Bryan Kest, Rod Stryker, Swami Rama and David Swenson. He created Applied Yoga Anatomy + Muscle Activation™ and teaches with a strong emphasis on yoga therapy and alignment." },
+          ...g.items,
+          { q: "Is support included after the training?", a: "Yes. You get the online resource library and the self-study modules, and ongoing support and communication after your training, at no additional charge." },
+        ],
+      }
+    : g,
+);
+export const FAQ_V3_COUNT = FAQ_V3.reduce((n, g) => n + g.items.length, 0);

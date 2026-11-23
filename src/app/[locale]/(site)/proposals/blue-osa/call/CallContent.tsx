@@ -339,7 +339,9 @@ export default function CallContent() {
             </ol>
           </div>
         </section>
-        <p className={`${styles.wrap} ${own.rights}`}>Design concept by Well Edge Creative, shared for your review. The design passes to Blue Osa with the project.</p>
+        <div className={styles.wrap}>
+          <p className={own.rights}>Design concept by Well Edge Creative, shared for your review. The design passes to Blue Osa with the project.</p>
+        </div>
       </main>
       <ProposalMotion selector={[own.point, own.answers, styles.browser, own.steps, own.speed, own.next].map((c) => `.${c}`).join(",")} />
     </>
