@@ -332,7 +332,7 @@ export default function CallContent() {
               ))}
             </ul>
             <ol className={own.timeline}>
-              <li><strong>Today</strong>We go through the page and your questions.</li>
+              <li><strong>Our call</strong>We go through the page and your questions together.</li>
               <li><strong>After the call</strong>You send staging access and the open details.</li>
               <li><strong>Within three working days</strong>I send the fixed price and a timeline.</li>
               <li><strong>Start</strong>50% to begin, 50% on your final approval before launch.</li>
