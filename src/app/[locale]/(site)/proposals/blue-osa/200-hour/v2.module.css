@@ -288,3 +288,8 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
   .galleryWide { grid-template-columns: repeat(2, 1fr); }
   .galleryWide .galleryThumb:nth-child(n + 9) { display: none; }
 }
+
+/* Version 3 hero: picture first, film fades in on larger screens */
+.heroPicture { object-fit: cover; }
+.heroFilm { animation: filmIn 1.2s ease both; }
+@keyframes filmIn { from { opacity: 0; } to { opacity: 1; } }

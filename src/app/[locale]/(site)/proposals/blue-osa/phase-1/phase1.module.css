@@ -1,0 +1,77 @@
+/* Phase 1 page for Blue Osa, on top of ../../proposal.module.css. Blue accents from their brand. */
+
+/* The page twice: a desktop browser (page rendered at 1280 px, scaled) and a phone (375 px) */
+.devices { display: grid; grid-template-columns: 1fr 395px; gap: 32px; align-items: start; }
+.desktop { border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid #ddd6ca; box-shadow: 0 30px 70px #2a20140f; }
+.desktopView { position: relative; height: 720px; overflow: hidden; }
+.phoneCol { display: grid; justify-items: center; gap: 12px; }
+.phone { width: 395px; height: 800px; border-radius: 46px; border: 10px solid #14324a; background: #14324a; overflow: hidden; box-shadow: 0 30px 60px #14324a33; }
+.phone iframe { display: block; width: 375px; height: 780px; border: 0; border-radius: 36px; background: #fff; }
+.phoneNote { font-size: 0.8rem; color: #8b8780; }
+.openMobile { display: none; }
+
+/* Four points */
+.points { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.point { padding: 28px; border: 1px solid #e7e3dc; border-radius: 20px; background: #fff; }
+.num { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 14px; border-radius: 50%; background: #14324a; color: #fff; font-weight: 700; }
+.point ul { list-style: none; padding: 0; margin-top: 14px !important; display: grid; gap: 10px; }
+.point ul li { position: relative; padding-left: 26px; font-size: 0.96rem; line-height: 1.55; color: #2a2825; }
+.point ul li::before { content: "✓"; position: absolute; left: 0; color: #1e9cc4; font-weight: 700; }
+
+/* Evidence (dark band) */
+.subhead { margin: 56px 0 18px !important; font-size: 1.15rem; color: #fff; }
+.sectionHead + .subhead { margin-top: 0 !important; }
+.tableWrap { overflow-x: auto; border-radius: 16px; border: 1px solid #ffffff26; }
+.table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 0.95rem; }
+.table th, .table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid #ffffff1a; color: #e9e6e0; }
+.table thead th { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #b9b5ad; }
+.table tbody th { font-weight: 600; color: #fff; }
+.table tbody tr:last-child th, .table tbody tr:last-child td { border-bottom: 0; }
+.target { color: #7fd8f2 !important; font-weight: 700; }
+.note { margin-top: 14px !important; max-width: 52rem; font-size: 0.9rem; color: #b9b5ad; }
+.sources { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.sources article { display: flex; flex-direction: column; gap: 10px; padding: 24px 26px; border-radius: 18px; background: #ffffff0d; border: 1px solid #ffffff1f; }
+.sources article:last-child:nth-child(odd) { grid-column: span 2; }
+.sources h4 { margin: 0; font-size: 1.05rem; color: #fff; }
+.sources p { flex: 1; color: #cfcac1; font-size: 0.95rem; }
+.sources a { font-size: 0.85rem; font-weight: 700; color: #7fd8f2; }
+.safe { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.safe li { padding: 24px; border-radius: 18px; background: #ffffff0d; border: 1px solid #ffffff1f; }
+.safe span { display: block; margin-bottom: 12px; font-size: 1.5rem; font-weight: 300; color: #7fd8f2; }
+.safe h4 { margin: 0; font-size: 1.02rem; color: #fff; }
+.safe p { margin-top: 8px !important; font-size: 0.92rem; color: #cfcac1; }
+
+/* Price */
+.price { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: start; }
+.priceCard { display: grid; gap: 8px; padding: 32px; border-radius: 22px; background: #14324a; color: #fff; }
+.priceCard span { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7fd8f2; }
+.priceCard strong { font-size: 3.2rem; line-height: 1; font-weight: 700; letter-spacing: -0.03em; }
+.priceCard p { color: #cfdbe3; font-size: 0.95rem; }
+.check { list-style: none; padding: 0; margin-top: 14px !important; display: grid; gap: 10px; }
+.check li { position: relative; padding-left: 26px; color: #2a2825; }
+.check li::before { content: "✓"; position: absolute; left: 0; color: #1e9cc4; font-weight: 700; }
+.small { margin-top: 20px !important; font-size: 0.9rem; color: #5d5a54; }
+
+/* Next */
+.next { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.need { list-style: none; padding: 0; margin-top: 24px !important; display: grid; gap: 12px; }
+.need li { position: relative; padding-left: 22px; color: #2a2825; }
+.need li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 8px; height: 8px; border-radius: 50%; background: #3abce3; }
+.timeline { list-style: none; padding: 0; display: grid; border-left: 2px solid #3abce3; }
+.timeline li { position: relative; padding: 4px 0 22px 24px; color: #5d5a54; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 9px; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid #3abce3; }
+.timeline strong { display: block; color: #14324a; }
+.rights { padding: 32px 0 64px; font-size: 0.8rem; color: #8b8780; }
+
+@media (max-width: 1100px) {
+  .devices { grid-template-columns: 1fr; }
+  .phoneCol { order: -1; }
+}
+@media (max-width: 900px) {
+  .desktop { display: none; }
+  .phone { width: min(395px, 100%); height: 720px; }
+  .phone iframe { width: 100%; height: 700px; }
+  .openMobile { display: inline-flex; margin-top: 20px; padding: 13px 22px; border-radius: 999px; background: #3abce3; color: #fff !important; font-weight: 700; }
+  .points, .sources, .safe, .price, .next { grid-template-columns: 1fr; }
+  .sources article:last-child:nth-child(odd) { grid-column: auto; }
+}

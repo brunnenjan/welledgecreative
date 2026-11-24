@@ -59,6 +59,19 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
   const [panel, setPanel] = useState(false);
   const [film, setFilm] = useState(false);
   const [box, setBox] = useState<{ set: string[]; i: number } | null>(null);
+  const [heroFilm, setHeroFilm] = useState(false);
+
+  // Version 3: the hero film loads only on larger screens, after the page itself has loaded.
+  useEffect(() => {
+    if (!v3 || !window.matchMedia("(min-width: 861px) and (prefers-reduced-motion: no-preference)").matches) return;
+    const start = () => window.setTimeout(() => setHeroFilm(true), 1200);
+    if (document.readyState === "complete") {
+      const t = start();
+      return () => window.clearTimeout(t);
+    }
+    window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
+  }, [v3]);
 
   useEffect(() => {
     setStandalone(window.self === window.top);
@@ -148,7 +161,16 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
       {/* 1. First screen: the H1 keeps the full search phrase */}
       <section id="top" className={base.hero}>
         <div className={base.heroImg}>
-          <video src={`${IMG}/drone-loop.mp4`} poster={`${IMG}/drone-poster.webp`} autoPlay muted loop playsInline aria-label="Blue Osa from the air: the Osa Peninsula coast and the retreat in the rainforest" />
+          {v3 ? (
+            <>
+              {/* Speed first: the picture is what loads first (and what Google measures), the film only
+                  joins on larger screens once the page has loaded. Phones get the picture only. */}
+              <Image src={`${IMG}/drone-poster.webp`} alt="Blue Osa from the air: the Osa Peninsula coast and the retreat in the rainforest" fill priority sizes="100vw" className={styles.heroPicture} />
+              {heroFilm && <video src={`${IMG}/drone-loop.mp4`} autoPlay muted loop playsInline preload="none" aria-hidden="true" className={styles.heroFilm} />}
+            </>
+          ) : (
+            <video src={`${IMG}/drone-loop.mp4`} poster={`${IMG}/drone-poster.webp`} autoPlay muted loop playsInline aria-label="Blue Osa from the air: the Osa Peninsula coast and the retreat in the rainforest" />
+          )}
         </div>
         <div className={base.heroShade} />
         <div className={`${base.heroText} ${styles.heroText}`}>
