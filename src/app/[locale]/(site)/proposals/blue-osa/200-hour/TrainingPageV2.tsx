@@ -7,7 +7,7 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import base from "../teacher-training/training.module.css";
 import styles from "./v2.module.css";
 import {
-  APPLY, CALL, COMPARE, CURRICULUM, DATES, DAY, EXPECT, FAMILY, FAQ, FAQ_COUNT, FAQ_V3, FAQ_V3_COUNT, FOOD, GOOGLE, GUARANTEE, IMG, INCLUDED,
+  APPLY, CALL, COMPARE, CURRICULUM, DATES, DAY, EXPECT, FAMILY, FAQ, FAQ_COUNT, FOOD, GOOGLE, GUARANTEE, IMG, INCLUDED,
   LEARN, MEALS, NOT_INCLUDED, PATH, PLACE_FILM, PRICES, RIGHT_FOR, ROOMS, ROOM_TYPES, URL_300, V2, VOICES, WHY,
 } from "./data";
 
@@ -19,6 +19,9 @@ import {
  * by side, and the price after the program details. Two switches for the call: the SEO notes and
  * the small all-inclusive line near the dates (his layout test).
  */
+
+import { FAQ_LIVE, FAQ_LIVE_COUNT } from "./faq-live";
+import { LIVE_TEXT, MORE_FILMS, type LiveKey, COMPARE_LIVE, CURRICULUM_LIVE, DEPOSIT_LIVE, INVEST_LIVE } from "./sections-live";
 
 const TRAINING_FILM = "https://www.youtube-nocookie.com/embed/U-cCEZdxw3c?autoplay=1&rel=0";
 
@@ -50,14 +53,28 @@ function Ctas({ dark = false, compact = false }: { dark?: boolean; compact?: boo
 export default function TrainingPageV2({ heading, body, version = 2 }: { heading: string; body: string; version?: 2 | 3 }) {
   // Version 3 (for the call on 25 November): 8 to 10 gallery photos in view and the FAQ in full.
   const v3 = version === 3;
-  const faq = v3 ? FAQ_V3 : FAQ;
-  const faqCount = v3 ? FAQ_V3_COUNT : FAQ_COUNT;
+  const faq = FAQ;
+  const faqCount = v3 ? FAQ_LIVE_COUNT : FAQ_COUNT;
   const root = useRef<HTMLDivElement>(null);
   const [standalone, setStandalone] = useState(false);
   const [seo, setSeo] = useState(false);
   const [priceLine, setPriceLine] = useState(true);
   const [panel, setPanel] = useState(false);
   const [film, setFilm] = useState(false);
+  const [moreFilm, setMoreFilm] = useState<string | null>(null);
+
+  // Version 3: the full text of a section from today's page, word for word, opening on tap.
+  const full = (k: LiveKey) =>
+    v3 ? (
+      <details className={styles.fullText}>
+        <summary>Read the full text</summary>
+        <div className={styles.fullBody}>
+          {LIVE_TEXT[k].map((t, i) =>
+            t.startsWith("## ") ? <p key={i}><strong>{t.slice(3)}</strong></p> : <p key={i}>{t}</p>,
+          )}
+        </div>
+      </details>
+    ) : null;
   const [box, setBox] = useState<{ set: string[]; i: number } | null>(null);
   const [heroFilm, setHeroFilm] = useState(false);
 
@@ -137,7 +154,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
   );
 
   return (
-    <div ref={root} className={`${base.site} ${styles.root} ${body}`}>
+    <div ref={root} className={`${base.site} ${styles.root} ${v3 ? styles.v3 : ""} ${body}`}>
       <style>{".cookie-banner{display:none!important}"}</style>
 
       {/* Their menu, with "Your investment" kept, and both ways in */}
@@ -233,6 +250,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
           <p>Blue Osa&apos;s 200 hour yoga teacher training in Costa Rica is an intensive 14-day immersion on the pristine Osa Peninsula. Our Yoga Alliance-certified program combines traditional yogic wisdom with the AYAMA™ methodology, offering you the fastest path to becoming a certified yoga teacher.</p>
           <blockquote className={heading}>“I made friends that will last a lifetime and am now teaching weekly yoga classes. I never imagined I would find my life purpose in my retirement years!”<cite>Adrian, YTT graduate</cite></blockquote>
         </div>
+        {full("welcome")}
       </section>
 
       {/* 3b. Why choose, and the place in their own film */}
@@ -252,6 +270,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
               </li>
             ))}
           </ol>
+          {full("why")}
           <div className={styles.placeFilm} data-reveal>
             <div className={base.film}>
               <video src={PLACE_FILM} poster={`${IMG}/film-place.webp`} controls playsInline preload="none" aria-label="The Blue Osa film: the place, the rooms, the food and the Osa Peninsula" />
@@ -273,7 +292,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
             </ul>
           </div>
           <div className={styles.modules}>
-            {CURRICULUM.map((c) => (
+            {CURRICULUM.map((c, ci) => (
               <details key={c.title} className={styles.module} data-reveal>
                 <summary>
                   <span className={`${styles.hours} ${heading}`}>{c.hours}<small>hours</small></span>
@@ -284,11 +303,12 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
                   <span className={styles.plus} aria-hidden="true" />
                 </summary>
                 <ul>
-                  {c.items.map((i) => <li key={i}>{i}</li>)}
+                  {(v3 ? CURRICULUM_LIVE[ci] : c.items).map((i) => <li key={i}>{i}</li>)}
                 </ul>
               </details>
             ))}
           </div>
+          {full("learn")}
           <div id="film" className={base.filmRow} data-reveal>
             <div>
               <h3 className={heading}>See it before you decide</h3>
@@ -305,6 +325,24 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
               )}
             </div>
           </div>
+          {v3 && (
+            <div className={styles.moreFilms} data-reveal>
+              {MORE_FILMS.map((m) => (
+                <figure key={m.id}>
+                  <div className={base.film}>
+                    {moreFilm === m.id ? (
+                      <iframe src={`https://www.youtube-nocookie.com/embed/${m.id}?autoplay=1&rel=0`} title={m.title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen />
+                    ) : (
+                      <button type="button" onClick={() => setMoreFilm(m.id)} aria-label={`Play: ${m.title}`} style={{ backgroundImage: `url(https://i.ytimg.com/vi/${m.id}/hqdefault.jpg)`, backgroundSize: "cover", backgroundPosition: "center" }}>
+                        <span className={base.play} aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+                  <figcaption>{m.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -320,6 +358,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
             <li key={r.title} data-reveal><strong>{r.title}</strong>{r.text}</li>
           ))}
         </ul>
+        {full("right")}
         <div className={styles.which} data-reveal>
           <p><strong>Already certified?</strong> The 28-day 300-hour training takes you to RYT-500.</p>
           <a href="#path">Compare the trainings ↓</a>
@@ -355,13 +394,14 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
         <div className={styles.tableWrap} data-reveal>
           <table>
             <thead>
-              <tr><th scope="col"><span className="sr-only">Feature</span></th><th scope="col">Blue Osa 14-Day Intensive</th><th scope="col">Traditional weekend programs</th></tr>
+              <tr><th scope="col"><span className="sr-only">Feature</span></th><th scope="col">Blue Osa 14-Day Intensive</th><th scope="col">{v3 ? "Traditional Weekend Programs" : "Traditional weekend programs"}</th></tr>
             </thead>
             <tbody>
-              {COMPARE.map(([f, a, b]) => <tr key={f}><th scope="row">{f}</th><td>{a}</td><td>{b}</td></tr>)}
+              {(v3 ? COMPARE_LIVE : COMPARE).map(([f, a, b]) => <tr key={f}><th scope="row">{f}</th><td data-label="Blue Osa 14-Day Intensive">{a}</td><td data-label="Traditional weekend programs">{b}</td></tr>)}
             </tbody>
           </table>
         </div>
+        {full("compare")}
       </section>
 
       {/* 8. A call, where questions come up */}
@@ -369,7 +409,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
         <div className={`${base.wrap} ${styles.callInner}`} data-reveal>
           <div>
             <h2 className={heading}>Questions? We have answers!</h2>
-            <p>Wondering what a day in training looks like, what to pack, or if you&apos;re &quot;ready enough&quot;? Book a call with us.</p>
+            <p>{v3 ? "Have questions about becoming a yoga teacher? Wondering what a day in training looks like, what to pack, or if you're 'ready enough'? Book a call with us, we’re here to help you feel confident and prepared!" : "Wondering what a day in training looks like, what to pack, or if you're \"ready enough\"? Book a call with us."}</p>
           </div>
           <a href={CALL} className={styles.btnLight}>Book a discovery call</a>
         </div>
@@ -379,13 +419,14 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
       <section id="included" className={`${base.wrap} ${styles.stay} ${v3 ? styles.stayWide : ""}`}>
         <div className={styles.stayText} data-reveal>
           <p className={base.kicker}>Accommodations</p>
-          <h2 className={heading}>Your Home During Your 200 Hour Yoga Teacher Training</h2>
+          <h2 className={heading}>{v3 ? "Accommodations" : "Your Home During Your 200 Hour Yoga Teacher Training"}</h2>
           <ul className={styles.types}>
             {ROOM_TYPES.map((r) => <li key={r.title}><strong>{r.title}</strong>{r.text}</li>)}
           </ul>
           <p className={styles.muted}>Single, double and triple occupancy.</p>
         </div>
         <div data-reveal>{gallery(ROOMS, "room")}</div>
+        {full("rooms")}
       </section>
 
       {/* 10. Food, a real gallery */}
@@ -394,12 +435,13 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
           {!v3 && <div data-reveal>{gallery(FOOD, "food")}</div>}
           <div className={styles.stayText} data-reveal>
             <p className={base.kicker}>Farm-to-table</p>
-            <h2 className={heading}>Nourish Your Training with Farm-to-Table Meals</h2>
+            <h2 className={heading}>{v3 ? "Nourish Your 200 Hour Yoga Teacher Training Journey with Farm-to-Table Meals" : "Nourish Your Training with Farm-to-Table Meals"}</h2>
             <ul className={styles.checks}>
               {MEALS.map((m) => <li key={m}>{m}</li>)}
             </ul>
           </div>
           {v3 && <div data-reveal>{gallery(FOOD, "food")}</div>}
+          {full("food")}
         </div>
       </section>
 
@@ -410,7 +452,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
         </div>
         <div data-reveal>
           <p className={base.kicker}>Your lead instructor</p>
-          <h2 className={heading}>Meet Yogi Aaron, Founder of the AYAMA™ Methodology</h2>
+          <h2 className={heading}>{v3 ? "Meet Your 200 Hour Yoga Teacher Training Lead Instructor" : "Meet Yogi Aaron, Founder of the AYAMA™ Methodology"}</h2>
           <blockquote className={heading}>“I built Blue Osa to host yoga immersions in a safe, wild, and nurturing environment.”</blockquote>
           <p>30+ years of yoga experience and countless teacher trainings, in the direct lineage of the Himalayan Tradition, infused with AYAMA, Vinyasa, Hatha, Restorative and Bhakti Yoga.</p>
           <ul className={base.badges}>
@@ -418,6 +460,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
             <li>Featured in BBC, Wall Street Journal, Outside</li>
           </ul>
         </div>
+        {full("aaron")}
       </section>
 
       {/* 11b. The Blue Osa family */}
@@ -427,9 +470,10 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
         </div>
         <div data-reveal>
           <p className={base.kicker}>Your Blue Osa family</p>
-          <h3 className={heading}>Forget &quot;staff&quot;. At Blue Osa we have family.</h3>
+          <h3 className={heading}>{v3 ? "You Belong Here at Our 200 Hour Yoga Teacher Training Costa Rica" : "Forget \"staff\". At Blue Osa we have family."}</h3>
           <p>{FAMILY}</p>
         </div>
+        {full("belong")}
       </section>
 
       {/* 12. Graduates */}
@@ -439,6 +483,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
             <p className={base.kicker}>Real stories</p>
             <h2 className={heading}>What Our 200 Hour Yoga Teacher Training Graduates Say</h2>
           </div>
+          {v3 && <p className={styles.swipeHint}>Swipe for more stories →</p>}
           <div className={styles.voices}>
             {VOICES.map((v) => (
               <figure key={v.by} data-reveal>
@@ -489,21 +534,23 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
           <div data-reveal>
             <p className={base.kicker}>Your investment</p>
             <h2 className={heading}>Invest in Your Transformation</h2>
+            {v3 && <p className={styles.investLead}>{INVEST_LIVE.join(" ")}</p>}
             <div className={base.priceTable}>
               {PRICES.map((p) => <div key={p.room}><span>{p.room}</span><strong className={heading}>{p.price}</strong></div>)}
             </div>
-            <p className={base.small}>Reserve your spot with a $300 deposit. Space is limited.</p>
+            <p className={base.small}>{v3 ? DEPOSIT_LIVE : "Reserve your spot with a $300 deposit. Space is limited."}</p>
             <div className={styles.guarantee}>
               <h3>Our Risk-Free Guarantee</h3>
               {GUARANTEE.map((g) => <p key={g.slice(0, 20)}>{g}</p>)}
             </div>
           </div>
           <div className={base.includes} data-reveal>
-            <h3>What&apos;s included</h3>
+            <h3>{v3 ? "All-Inclusive 200-Hour Yoga Teacher Training Costa Rica Package" : "What's included"}</h3>
             <ul className={base.yes}>{INCLUDED.map((i) => <li key={i}>{i}</li>)}</ul>
             <h3>Not included</h3>
             <ul className={base.no}>{NOT_INCLUDED.map((i) => <li key={i}>{i}</li>)}</ul>
           </div>
+          {full("package")}
         </div>
         <div className={base.wrap}>
           <div className={styles.threeWays} data-reveal>
@@ -518,7 +565,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
       <section id="path" className={`${base.wrap} ${styles.path}`}>
         <div className={base.head} data-reveal>
           <p className={base.kicker}>Your path</p>
-          <h2 className={heading}>From RYT-200 to RYT-500</h2>
+          <h2 className={heading}>{v3 ? "From RYT\u2011200 to RYT\u2011500" : "From RYT-200 to RYT-500"}</h2>
         </div>
         <div className={styles.pathGrid}>
           {PATH.map((p) => (
@@ -543,12 +590,23 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
         <div className={`${base.wrap} ${styles.faq}`}>
           <div data-reveal>
             <p className={base.kicker}>FAQ</p>
-            <h2 className={heading}>FAQs About Our 200 Hour Yoga Teacher Training Costa Rica</h2>
-            <Seo on={seo}>FAQ schema: all {faqCount} questions</Seo>
+            <h2 className={heading}>{v3 ? "FAQs About Our Yoga Intensive Course" : "FAQs About Our 200 Hour Yoga Teacher Training Costa Rica"}</h2>
+            <Seo on={seo}>{v3 ? "FAQ schema: kept exactly as it is today" : `FAQ schema: all ${faqCount} questions`}</Seo>
             <p className={styles.muted}>Still have a question? <a href={CALL}>Book a call with our team.</a></p>
           </div>
           <div>
-            {faq.map((g) => (
+            {v3 && FAQ_LIVE.map((g) => (
+              <div key={g.group} className={styles.faqGroup}>
+                <h3>{g.group}</h3>
+                {g.items.map((f) => (
+                  <details key={f.q}>
+                    <summary>{f.q}</summary>
+                    {f.a.map((t, i) => (t.startsWith("## ") ? <p key={i}><strong>{t.slice(3)}</strong></p> : <p key={i}>{t}</p>))}
+                  </details>
+                ))}
+              </div>
+            ))}
+            {!v3 && faq.map((g) => (
               <div key={g.group} className={styles.faqGroup}>
                 <h3>{g.group}</h3>
                 {g.items.map((f) => (
@@ -567,7 +625,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
       <section id="call" className={base.applyBand}>
         <div className={`${base.wrap} ${base.apply}`}>
           <div data-reveal>
-            <h2 className={heading}>Begin Your 200 Hour Yoga Teacher Training Journey</h2>
+            <h2 className={heading}>{v3 ? "Begin Your 200 Hour Yoga Teacher Training in Costa Rica Journey Today!" : "Begin Your 200 Hour Yoga Teacher Training Journey"}</h2>
             <p>Ready to book but want to talk logistics first? Schedule a free call with us. We&apos;ll walk you through everything and answer all your questions.</p>
             <Ctas dark />
           </div>
@@ -580,6 +638,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
             <a href={CALL} className={base.btn}>Choose a time</a>
             <small>Your existing Simplero booking and the contact form sit here, unchanged.</small>
           </div>
+          {full("begin")}
         </div>
       </section>
 

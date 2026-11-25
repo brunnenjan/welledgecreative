@@ -293,3 +293,62 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
 .heroPicture { object-fit: cover; }
 .heroFilm { animation: filmIn 1.2s ease both; }
 @keyframes filmIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Version 3: on phones the comparison becomes one card per row, so nothing is cut off or needs sideways scrolling */
+@media (max-width: 700px) {
+  .v3 .tableWrap { overflow: visible; border: 0; border-radius: 0; }
+  .v3 .compare table { min-width: 0; display: block; }
+  .v3 .compare thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .v3 .compare tbody { display: grid; gap: 12px; }
+  .v3 .compare tbody tr { display: block; border: 1px solid #e3e8ec; border-radius: 16px; overflow: hidden; background: #fff; }
+  .v3 .compare tbody th, .v3 .compare tbody td { display: block; width: auto; padding: 12px 16px; border-bottom: 0; }
+  .v3 .compare tbody th { padding-bottom: 6px; font-size: 1rem; }
+  .v3 .compare tbody td::before { content: attr(data-label); display: block; margin-bottom: 2px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #6d6e70; }
+  .v3 .compare tbody td:nth-child(2)::before { color: #14658a; }
+}
+
+/* Version 3: the full text from today's page, opening on tap, and their two further films */
+.fullText { grid-column: 1 / -1; width: 100%; margin-top: 18px; }
+.fullText summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font-weight: 700; font-size: 0.95rem; color: #1e9cc4; }
+.fullText summary::-webkit-details-marker { display: none; }
+.fullText summary::after { content: "+"; font-size: 1.2rem; font-weight: 400; line-height: 1; }
+.fullText[open] summary::after { content: "–"; }
+.fullText .fullBody { margin-top: 18px; padding-top: 22px; border-top: 1px solid #1e9cc433; columns: 2; column-gap: 56px; }
+.fullText .fullBody p { margin: 0 0 14px !important; text-align: left; font-size: 1rem !important; break-inside: avoid; }
+@media (max-width: 860px) { .fullText .fullBody { columns: 1; } }
+.moreFilms { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+.moreFilms figure { margin: 0; }
+.moreFilms figcaption { margin-top: 12px; font-size: 0.95rem; color: #c3d2dc; }
+@media (max-width: 700px) { .moreFilms { grid-template-columns: 1fr; } }
+
+/* Version 3 on phones: the same content in less scrolling. Stories and reviews swipe sideways,
+   the comparison puts both answers next to each other, and the long lists sit closer. */
+@media (max-width: 700px) {
+  .v3 .voices, .v3 .google { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding-bottom: 12px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .v3 .voices::-webkit-scrollbar, .v3 .google::-webkit-scrollbar { display: none; }
+  .v3 .voices figure, .v3 .google .gCard { flex: 0 0 84%; scroll-snap-align: start; opacity: 1 !important; transform: none !important; }
+  .v3 .swipeHint { display: block; margin-top: 4px; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: #6d6e70; }
+
+  .v3 .compare tbody tr { display: grid; grid-template-columns: 1fr 1fr; }
+  .v3 .compare tbody th { grid-column: 1 / -1; padding: 12px 14px 4px; }
+  .v3 .compare tbody td { padding: 8px 14px 12px; font-size: 0.9rem; }
+  .v3 .compare tbody td::before { font-size: 0.62rem; }
+
+  .v3 .why { gap: 8px; }
+  .v3 .why li { position: relative; padding: 14px 16px 14px 56px; }
+  .v3 .why span { position: absolute; left: 16px; top: 12px; }
+  .v3 .why strong { margin: 0 0 2px; }
+
+  .v3 .threeWays { gap: 10px; }
+  .v3 .threeWays > div { padding: 18px; gap: 6px; }
+
+  .v3 .moreFilms { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .v3 .moreFilms figcaption { margin-top: 8px; font-size: 0.8rem; line-height: 1.35; }
+  .v3 .moreFilms button > span { transform: translate(-50%, -50%) scale(0.5); }
+
+  .v3 .dates li { flex-direction: row; align-items: center; padding: 12px 14px; gap: 10px; }
+  .v3 .expectList { gap: 8px; }
+  .v3 .expectList li { padding: 14px 16px; }
+}
+.swipeHint { display: none; }
+.v3 .investLead { margin: 14px 0 22px; max-width: 34rem; font-size: 1.02rem; line-height: 1.6; }
