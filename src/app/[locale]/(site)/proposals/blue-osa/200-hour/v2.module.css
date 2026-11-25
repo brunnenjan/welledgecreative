@@ -351,4 +351,13 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
   .v3 .expectList li { padding: 14px 16px; }
 }
 .swipeHint { display: none; }
-.v3 .investLead { margin: 14px 0 22px; max-width: 34rem; font-size: 1.02rem; line-height: 1.6; }
+.v3 .investHead { margin: 14px 0 0; font-size: 1.25rem; font-weight: 700; line-height: 1.35; }
+.v3 .investLead { margin: 8px 0 22px; max-width: 34rem; font-size: 1.125rem; line-height: 1.6; }
+/* Phones: reading text never below 16 px, long text at 17 px. His page uses large type, so the new one must not read as "smaller". */
+@media (max-width: 640px) {
+  .v3 .faqGroup p, .v3 .fullBody p { font-size: 1.0625rem; line-height: 1.65; }
+  .v3 .module li, .v3 .gText, .v3 .gText blockquote, .v3 .voices blockquote, .v3 .expectList li, .v3 .why li, .v3 .guarantee p,
+  .v3 .checks li, .v3 .learn li, .v3 .schedule li, .v3 .types li, .v3 .threeWays p, .v3 .callBox p, .v3 .datesFoot, .v3 .priceLine,
+  .v3 :global(#investment) li, .v3 :global(#investment) p:not([class]), .v3 .investLead ~ p, .v3 .datesSub { font-size: 1rem; }
+  .v3 .investLead { font-size: 1.125rem; }
+}

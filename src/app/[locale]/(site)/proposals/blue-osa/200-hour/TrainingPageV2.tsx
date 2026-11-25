@@ -534,7 +534,7 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
           <div data-reveal>
             <p className={base.kicker}>Your investment</p>
             <h2 className={heading}>Invest in Your Transformation</h2>
-            {v3 && <p className={styles.investLead}>{INVEST_LIVE.join(" ")}</p>}
+            {v3 && <><p className={styles.investHead}>{INVEST_LIVE[0]}</p><p className={styles.investLead}>{INVEST_LIVE[1]}</p></>}
             <div className={base.priceTable}>
               {PRICES.map((p) => <div key={p.room}><span>{p.room}</span><strong className={heading}>{p.price}</strong></div>)}
             </div>

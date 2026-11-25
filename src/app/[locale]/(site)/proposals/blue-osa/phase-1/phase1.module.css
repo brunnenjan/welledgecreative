@@ -1,7 +1,7 @@
 /* Phase 1 page for Blue Osa, on top of ../../proposal.module.css. Blue accents from their brand. */
 
 /* The page twice: a desktop browser (page rendered at 1280 px, scaled) and a phone (375 px) */
-.devices { --frame: clamp(460px, calc(100vh - 190px), 720px); display: grid; grid-template-columns: 1fr 395px; gap: 32px; align-items: start; }
+.devices { --frame: clamp(520px, calc(100vh - 140px), 800px); display: grid; grid-template-columns: 1fr 395px; gap: 32px; align-items: start; }
 .desktop { border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid #ddd6ca; box-shadow: 0 30px 70px #2a20140f; }
 .desktopView { position: relative; height: var(--frame); overflow: hidden; }
 .phoneCol { display: grid; justify-items: center; gap: 12px; }

@@ -74,7 +74,7 @@ const CHANGES = [
   {
     title: "The length on a phone",
     today: "About 50 screens to scroll. The date list alone appears five times down the page.",
-    next: "About 30 in the mockup, with your full text, every FAQ entry, all three films and both galleries in. Photos sit in a grid and open full screen.",
+    next: "About 31 in the mockup, with your full text, every FAQ entry, all three films and both galleries in. Photos sit in a grid and open full screen.",
   },
 ];
 
@@ -107,7 +107,7 @@ const PAIRS = [
 ];
 
 const NUMBERS = [
-  { big: "50 → 30", text: "phone screens to scroll, with your full text still on the page" },
+  { big: "50 → 31", text: "phone screens to scroll, with your full text still on the page" },
   { big: "17 = 17", text: "times your exact search phrase is in the page text, today and on the new page" },
   { big: "Every screen", text: "has Apply and the call in reach. Today, Apply stops halfway down." },
 ];
@@ -198,6 +198,10 @@ const QUESTIONS = [
   {
     q: "Can you guarantee our rankings?",
     a: "No, and nobody honestly can: rankings depend on Google and on your competitors. What I can guarantee is that everything Google reads on the page stays in place (title, headings, URL, meta, schema, the text), that the page is at least as fast as today, and that your current page stays saved, so it can be switched back within the hour.",
+  },
+  {
+    q: "We already have a call bar at the bottom. What happens to it?",
+    a: "On this page the new bar takes its place, with your same call link and Apply next to it, so there are never two bars. Everything else in that tool stays untouched. How it is switched off for this one page I confirm on staging.",
   },
   {
     q: "What if the new page scores worse on staging?",
