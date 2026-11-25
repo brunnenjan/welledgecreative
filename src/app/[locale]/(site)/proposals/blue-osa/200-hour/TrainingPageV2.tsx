@@ -64,12 +64,12 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
   const [moreFilm, setMoreFilm] = useState<string | null>(null);
 
   // Version 3: the full text of a section from today's page, word for word, opening on tap.
-  const full = (k: LiveKey) =>
+  const full = (k: LiveKey, from = 0, label = "Read the full text") =>
     v3 ? (
       <details className={styles.fullText}>
-        <summary>Read the full text</summary>
+        <summary>{label}</summary>
         <div className={styles.fullBody}>
-          {LIVE_TEXT[k].map((t, i) =>
+          {LIVE_TEXT[k].slice(from).map((t, i) =>
             t.startsWith("## ") ? <p key={i}><strong>{t.slice(3)}</strong></p> : <p key={i}>{t}</p>,
           )}
         </div>
@@ -453,14 +453,24 @@ export default function TrainingPageV2({ heading, body, version = 2 }: { heading
         <div data-reveal>
           <p className={base.kicker}>Your lead instructor</p>
           <h2 className={heading}>{v3 ? "Meet Your 200 Hour Yoga Teacher Training Lead Instructor" : "Meet Yogi Aaron, Founder of the AYAMA™ Methodology"}</h2>
-          <blockquote className={heading}>“I built Blue Osa to host yoga immersions in a safe, wild, and nurturing environment.”</blockquote>
-          <p>30+ years of yoga experience and countless teacher trainings, in the direct lineage of the Himalayan Tradition, infused with AYAMA, Vinyasa, Hatha, Restorative and Bhakti Yoga.</p>
+          {v3 ? (
+            <>
+              {/* His own opening words from today's page, in view without a tap. */}
+              <p><strong>{LIVE_TEXT.aaron[0].slice(3)}</strong></p>
+              {LIVE_TEXT.aaron.slice(1, 4).map((t) => <p key={t}>{t}</p>)}
+            </>
+          ) : (
+            <>
+              <blockquote className={heading}>“I built Blue Osa to host yoga immersions in a safe, wild, and nurturing environment.”</blockquote>
+              <p>30+ years of yoga experience and countless teacher trainings, in the direct lineage of the Himalayan Tradition, infused with AYAMA, Vinyasa, Hatha, Restorative and Bhakti Yoga.</p>
+            </>
+          )}
           <ul className={base.badges}>
             <li>Travelers&apos; Choice Best of the Best 2024</li>
             <li>Featured in BBC, Wall Street Journal, Outside</li>
           </ul>
         </div>
-        {full("aaron")}
+        {full("aaron", 4, "Read the rest")}
       </section>
 
       {/* 11b. The Blue Osa family */}

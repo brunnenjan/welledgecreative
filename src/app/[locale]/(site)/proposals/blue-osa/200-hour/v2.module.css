@@ -361,3 +361,6 @@ li.scheduleHead { display: block; padding-top: 0; font-size: 0.74rem; font-weigh
   .v3 :global(#investment) li, .v3 :global(#investment) p:not([class]), .v3 .investLead ~ p, .v3 .datesSub { font-size: 1rem; }
   .v3 .investLead { font-size: 1.125rem; }
 }
+
+/* Version 3: his own opening words in the Aaron section, with air between the paragraphs */
+.v3 :global(#aaron) > div p + p { margin-top: 12px; }
