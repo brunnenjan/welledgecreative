@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import ContactTrap from "@/components/ContactTrap";
 import { useI18n } from "@/components/providers/I18nProvider";
 import { postContact } from "@/lib/contact-client";
+import { track } from "@/lib/track";
 import styles from "./contact.module.css";
 
 /** The 30-minute discovery call, the same event every page of the site links to. */
@@ -106,7 +107,11 @@ export default function ContactContent() {
     try {
       const { ok } = await postContact(data, startedAt.current);
       setStatus(ok ? "success" : "error");
-      if (ok) form.reset();
+      if (ok) {
+        // The enquiry itself: this is the number that says which pages bring clients.
+        track("generate_lead", { method: "contact_form", topic: c.topics[topic] });
+        form.reset();
+      }
     } catch (error) {
       console.error("Contact form failed", error);
       setStatus("error");

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Script from "next/script";
+import TrackClicks from "@/components/TrackClicks";
 
 const STORAGE_KEY = "wec-analytics-consent";
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-SYMEEV6EY4";
@@ -57,6 +58,8 @@ export default function CookieConsent() {
               });
             `}
           </Script>
+          {/* Enquiries and clicks are only counted once analytics were accepted. */}
+          <TrackClicks />
         </>
       )}
 
