@@ -1,0 +1,633 @@
+.page {
+  --sand: #edebe3;
+  --paper: #faf8f3;
+  --ink: #2a211c;
+  --brown: #42352f;
+  --ochre: #8e5306;
+  --teal: #0e5a5f;
+  --coral: #f8a172;
+  --line: rgba(42, 33, 28, 0.14);
+  background: #f3f0e9;
+  color: var(--ink);
+  padding: 7rem 1.25rem 5rem;
+  line-height: 1.55;
+}
+
+.intro {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.kicker,
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ochre);
+  margin-bottom: 0.9rem;
+}
+
+.h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.5rem);
+  line-height: 1.1;
+  text-wrap: balance;
+  margin-bottom: 1.25rem;
+}
+
+.lead {
+  font-size: 1.1rem;
+  text-wrap: pretty;
+}
+
+.num {
+  flex: none;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: var(--ochre);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* The proposal in one look */
+.overview {
+  list-style: none;
+  padding: 0;
+  max-width: 72rem;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+}
+
+.ov {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ovTitle {
+  font-size: 1.45rem;
+  line-height: 1.2;
+  margin-top: 0.25rem;
+}
+
+.ovRow {
+  font-size: 0.95rem;
+  display: grid;
+  grid-template-columns: 4.2rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.tagToday,
+.tagThen {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.25rem 0;
+  border-radius: 999px;
+  text-align: center;
+  margin-top: 0.15rem;
+}
+
+.tagToday {
+  background: var(--sand);
+  color: rgba(42, 33, 28, 0.75);
+}
+
+.tagThen {
+  background: var(--teal);
+  color: #fff;
+}
+
+.ovLink {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ochre);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* The sketched site */
+.site {
+  max-width: 72rem;
+  margin: 2.5rem auto 0;
+  background: var(--paper);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -40px rgba(42, 33, 28, 0.55);
+  border: 1px solid var(--line);
+}
+
+/* A slim marker above the part it changes */
+.change {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  background: #fff7ea;
+  border-block: 1px solid rgba(142, 83, 6, 0.25);
+  padding: 0.8rem clamp(1.25rem, 4vw, 3rem);
+  scroll-margin-top: 6rem;
+}
+
+.change .num {
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 0.95rem;
+}
+
+.site > .change:first-child {
+  border-top: 0;
+}
+
+.changeTitle {
+  font-weight: 600;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: min(48rem, 96vh);
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Photos are taller than their frame so they can drift while scrolling */
+.heroImg,
+.quote > img,
+.closing > img {
+  position: absolute;
+  left: 0;
+  top: -12%;
+  width: 100%;
+  height: 124%;
+  object-fit: cover;
+  z-index: -2;
+  will-change: transform;
+}
+
+.heroImg {
+  object-position: center 30%;
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(30, 22, 18, 0.5) 0%, rgba(30, 22, 18, 0.1) 26%, rgba(30, 22, 18, 0.6) 60%, rgba(30, 22, 18, 0.88) 100%);
+}
+
+.heroNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.brand {
+  font-size: 0.95rem;
+  letter-spacing: 0.34em;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.heroBody {
+  margin-top: auto;
+  padding: 3rem clamp(1.25rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+}
+
+.heroTitle {
+  font-size: clamp(2.3rem, 6.4vw, 4.8rem);
+  line-height: 1.05;
+  max-width: 14ch;
+  text-wrap: balance;
+  margin-bottom: 1rem;
+}
+
+.heroSub {
+  max-width: 34rem;
+  font-size: 1.1rem;
+  margin-bottom: 2.25rem;
+}
+
+.doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+}
+
+.door {
+  background: rgba(250, 248, 243, 0.96);
+  color: var(--ink);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.doorLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.doorTitle {
+  font-size: 1.8rem;
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+
+.doorText {
+  margin-bottom: 1.15rem;
+}
+
+.btnTeal,
+.btnDark,
+.btnSmall {
+  display: inline-block;
+  font-size: 0.74rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 999px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.btnTeal {
+  background: var(--teal);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+}
+
+.btnDark {
+  background: var(--brown);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+}
+
+.btnSmall {
+  background: var(--teal);
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+/* Blocks */
+.block {
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.tinted {
+  background: var(--sand);
+}
+
+.h2 {
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  line-height: 1.12;
+  text-wrap: balance;
+  margin-bottom: 1.75rem;
+}
+
+/* Retreats: four side by side on a wide screen */
+.retreats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14.5rem), 1fr));
+  gap: 1rem;
+}
+
+.retreat {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.retreatPhoto {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.retreatPhoto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  left: 0.85rem;
+  top: 0.85rem;
+  background: rgba(250, 248, 243, 0.95);
+  color: var(--ink);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+}
+
+.retreatBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.retreatName {
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin-bottom: 0.45rem;
+}
+
+.retreatLine {
+  font-size: 0.94rem;
+  margin-bottom: 0.9rem;
+}
+
+.incl {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.1rem;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+}
+
+.incl li {
+  padding-left: 1.3rem;
+  position: relative;
+}
+
+.incl li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.6rem;
+  height: 0.32rem;
+  border-left: 2px solid var(--teal);
+  border-bottom: 2px solid var(--teal);
+  transform: rotate(-45deg) translateY(-50%);
+}
+
+.priceRow {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+  margin-bottom: 1rem;
+}
+
+.priceMain {
+  font-weight: 600;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.priceSub {
+  font-size: 0.84rem;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.fine {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 1.25rem;
+}
+
+/* Photo bands */
+.quote,
+.closing {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  padding: clamp(5rem, 13vw, 9rem) 1.5rem;
+}
+
+.quoteShade {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 22, 18, 0.6);
+  z-index: -1;
+}
+
+.quote blockquote {
+  font-size: clamp(1.7rem, 4.2vw, 2.9rem);
+  line-height: 1.18;
+  max-width: 24ch;
+  margin-inline: auto;
+  text-wrap: balance;
+}
+
+.quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 1.25rem;
+}
+
+.closingTitle {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.closingText {
+  font-size: 0.95rem;
+  text-wrap: balance;
+}
+
+/* Passes and request form */
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.passes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.pass {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+
+.passName {
+  font-weight: 600;
+}
+
+.passWhat {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.passPrice {
+  text-align: right;
+}
+
+.formCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  box-shadow: 0 24px 50px -36px rgba(42, 33, 28, 0.6);
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0 1rem;
+}
+
+.field {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.82rem;
+  margin-bottom: 0.3rem;
+  opacity: 0.8;
+}
+
+.input {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  background: var(--paper);
+}
+
+/* Outro */
+.outro {
+  max-width: 60rem;
+  margin: 4.5rem auto 0;
+  text-align: center;
+}
+
+.outroTitle {
+  font-size: clamp(1.9rem, 4.4vw, 2.8rem);
+  margin-bottom: 1.75rem;
+}
+
+.takes {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  text-align: left;
+}
+
+.takes li {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem;
+  font-size: 0.97rem;
+}
+
+.takes strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+  color: var(--teal);
+}
+
+.note {
+  max-width: 40rem;
+  margin-inline: auto;
+  font-size: 0.97rem;
+}
+
+.sign {
+  margin-top: 1.25rem;
+  color: var(--ochre);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .navLinks {
+    display: none;
+  }
+
+  .heroImg {
+    object-position: center 55%;
+  }
+
+  .pass {
+    grid-template-columns: 1fr auto;
+  }
+
+  .pass .btnSmall {
+    grid-column: 1 / -1;
+  }
+}
+
+/* The mockup on its own page: edge to edge, no frame */
+.full {
+  max-width: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #2a211c;
+  line-height: 1.55;
+  --sand: #edebe3;
+  --paper: #faf8f3;
+  --ink: #2a211c;
+  --brown: #42352f;
+  --ochre: #8e5306;
+  --teal: #0e5a5f;
+  --coral: #f8a172;
+  --line: rgba(42, 33, 28, 0.14);
+}
