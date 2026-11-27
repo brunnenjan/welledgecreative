@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Zen_Old_Mincho } from "next/font/google";
 import Header from "@/components/Header";
 import ProposalMotion from "../ProposalMotion";
+import TribalMark from "./TribalMark";
 import { PHOTO } from "./data";
 import styles from "../proposal.module.css";
 
@@ -197,39 +198,45 @@ export default function ProposalContent() {
           <div className={styles.sectionHead}>
             <p className={styles.eyebrow}>
               <span className={styles.dot} />
-              Your brand · a thought for later
+              Your brand · a first direction
             </p>
             <h2>A mark of your own.</h2>
             <p>
-              Today the name stands as plain text. A simple mark would let people recognise Tribal Tulum on Instagram,
-              on a flyer and at the door, before they read the name. I have not drawn one here on purpose: a logo
-              should come out of a conversation with you, not out of a guess.
+              Today the name stands as plain text. This sketch takes the two T’s of Tribal Tulum: one upright, one
+              mirrored, like a reflection in the water of a cenote. Set in the typeface your headlines already use.
             </p>
           </div>
+          <p className={styles.draftNote}>
+            <strong>A first sketch, not a final design.</strong> It shows a direction. In the Brand package the mark,
+            the lettering and the line below it are developed and refined together with you.
+          </p>
 
           <div className={styles.brandBoard}>
-            <div className={`${styles.brandTile} ${styles.tileLogo}`} style={{ background: "#edebe3", color: "#0e5a5f" }}>
-              <div className={`${styles.lockup} ${serif.className}`}>
+            <div className={`${styles.brandTile} ${styles.tileLogo}`} style={{ background: "#2a1c19", color: "#f6e6d6" }}>
+              <div className={`${styles.stacked} ${serif.className}`} style={{ gap: 18 }}>
+                <TribalMark size={92} />
+                <span style={{ fontSize: "clamp(2.2rem, 4.4vw, 3.4rem)" }}>Tribal Tulum</span>
+                <small style={{ letterSpacing: "0.42em", fontSize: "0.8rem" }}>Yoga · Retreats</small>
+              </div>
+              <span className={styles.tileLabel}>Primary logo</span>
+            </div>
+            <div className={`${styles.brandTile} ${styles.tileDark}`} style={{ background: "#edebe3", color: "#2a1c19" }}>
+              <div className={`${styles.lockup} ${serif.className}`} style={{ fontSize: "clamp(1.5rem, 2.4vw, 2rem)" }}>
+                <TribalMark size={56} />
                 <span>
                   Tribal Tulum
                   <small>Yoga · Retreats</small>
                 </span>
               </div>
-              <span className={styles.tileLabel}>Your name, in the typeface you already use</span>
+              <span className={styles.tileLabel}>Side by side, on Sand</span>
             </div>
-            <div className={`${styles.brandTile} ${styles.tileDark}`} style={{ background: "#2a211c", color: "#f3dccb" }}>
-              <div className={`${styles.stacked} ${serif.className}`}>
-                <span>Tribal Tulum</span>
-                <small>Yoga · Retreats</small>
-              </div>
-              <span className={styles.tileLabel}>On a dark background</span>
-            </div>
-            <div className={`${styles.brandTile} ${styles.tileTeak}`} style={{ background: "#0e5a5f", color: "#fff" }}>
+            <div className={`${styles.brandTile} ${styles.tileTeak}`} style={{ background: "#0e5a5f", color: "#f6e6d6" }}>
               <span
-                aria-hidden="true"
-                style={{ width: 84, height: 84, borderRadius: "50%", border: "1.5px dashed rgba(255,255,255,.7)", display: "block" }}
-              />
-              <span className={styles.tileLabel}>Your mark: developed with you</span>
+                style={{ width: 104, height: 104, borderRadius: "50%", background: "#2a1c19", display: "grid", placeItems: "center" }}
+              >
+                <TribalMark size={58} />
+              </span>
+              <span className={styles.tileLabel}>Mark only: Instagram, favicon, door sign</span>
             </div>
           </div>
         </section>

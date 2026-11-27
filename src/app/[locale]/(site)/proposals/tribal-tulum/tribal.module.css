@@ -203,6 +203,9 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
   font-size: 0.95rem;
   letter-spacing: 0.34em;
 }

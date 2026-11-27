@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Figtree, Zen_Old_Mincho } from "next/font/google";
 import { SITE_URL } from "@/lib/site";
 import ProposalScroll from "../../ProposalScroll";
+import TribalMark from "../TribalMark";
 import TribalMotion from "../TribalMotion";
 import { PHOTO, passes, retreats } from "../data";
 import s from "../tribal.module.css";
@@ -28,7 +29,10 @@ export default function TribalTulumHomepageMockup() {
             <img className={s.heroImg} data-parallax src={PHOTO.sand} alt="Yoga on the sand in Tulum, seen from above" />
             <div className={s.heroShade} />
             <div className={s.heroNav}>
-              <span className={s.brand}>TRIBAL TULUM</span>
+              <span className={s.brand}>
+                <TribalMark size={30} />
+                TRIBAL TULUM
+              </span>
               <span className={s.navLinks}>
                 <span>Retreats</span>
                 <span>Classes</span>
